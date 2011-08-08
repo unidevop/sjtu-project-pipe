@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+M:/thirdparties/VTK5.6/src/Utilities/vtkjpeg/CMakeLists.txt
+M:/thirdparties/VTK5.6/src/Utilities/vtkjpeg/.NoDartCoverage
+M:/thirdparties/VTK5.6/src/Utilities/vtkjpeg/jpegDllConfig.h.in

@@ -1,0 +1,5 @@
+# CMake generation dependency list for this directory.
+M:/thirdparties/VTK5.6/src/Examples/Build/vtkLocal/CMakeLists.txt
+M:/thirdparties/VTK5.6/src/Examples/Build/vtkLocal/vtkLocalConfigure.h.in
+M:/thirdparties/VTK5.6/src/CMake/vtkMakeInstantiator.h.in
+M:/thirdparties/VTK5.6/src/CMake/vtkMakeInstantiator.cxx.in

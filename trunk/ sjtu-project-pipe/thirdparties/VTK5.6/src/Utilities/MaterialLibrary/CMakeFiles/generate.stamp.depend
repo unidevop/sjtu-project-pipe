@@ -1,0 +1,5 @@
+# CMake generation dependency list for this directory.
+M:/thirdparties/VTK5.6/src/Utilities/MaterialLibrary/CMakeLists.txt
+M:/thirdparties/VTK5.6/src/Utilities/MaterialLibrary/vtkShaderCodeLibraryMacro.h.in
+M:/thirdparties/VTK5.6/src/Utilities/MaterialLibrary/vtkMaterialXMLLibrary.h.forcebuild.in
+M:/thirdparties/VTK5.6/src/Utilities/MaterialLibrary/vtkMaterialLibraryMacro.h.in

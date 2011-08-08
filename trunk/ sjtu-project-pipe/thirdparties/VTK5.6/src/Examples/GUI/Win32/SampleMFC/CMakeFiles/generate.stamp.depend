@@ -1,0 +1,10 @@
+# CMake generation dependency list for this directory.
+M:/thirdparties/VTK5.6/src/Examples/GUI/Win32/SampleMFC/CMakeLists.txt
+C:/CMake 2.8/share/cmake-2.8/Modules/FindVTK.cmake
+M:/thirdparties/VTK5.6/src/VTKConfigVersion.cmake
+M:/thirdparties/VTK5.6/src/VTKConfig.cmake
+M:/thirdparties/VTK5.6/src/VTKLibraryDepends.cmake
+M:/thirdparties/VTK5.6/src/UseVTK.cmake
+C:/CMake 2.8/share/cmake-2.8/Modules/CMakeImportBuildSettings.cmake
+M:/thirdparties/VTK5.6/src/CMake/vtkMakeInstantiator.cmake
+M:/thirdparties/VTK5.6/src/GUISupport/MFC/VTKMFCSettings.cmake

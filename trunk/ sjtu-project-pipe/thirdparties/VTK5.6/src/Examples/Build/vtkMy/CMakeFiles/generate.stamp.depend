@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+M:/thirdparties/VTK5.6/src/Examples/Build/vtkMy/CMakeLists.txt
+M:/thirdparties/VTK5.6/src/Examples/Build/vtkMy/CMakeOptions.cmake
+M:/thirdparties/VTK5.6/src/Examples/Build/vtkMy/vtkmyConfigure.h.in

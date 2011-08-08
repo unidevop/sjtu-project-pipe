@@ -1,0 +1,958 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="9.00"
+	Name="vtkGenericFilteringDotNet"
+	ProjectGUID="{57499001-3085-47B8-BCDE-754CEFD0478B}"
+	Keyword="Win32Proj"
+	TargetFrameworkVersion="0"
+	>
+	<Platforms>
+		<Platform
+			Name="Win32"
+		/>
+	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="Debug"
+			IntermediateDirectory="vtkGenericFilteringDotNet.dir\Debug"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			ManagedExtensions="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				MkTypLibCompatible="false"
+				TargetEnvironment="1"
+				GenerateStublessProxies="true"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000"
+				Optimization="0"
+				InlineFunctionExpansion="0"
+				AdditionalIncludeDirectories="M:\thirdparties\VTK.Net\src;M:\thirdparties\VTK.Net\src\Utilities;M:\thirdparties\VTK.Net\src\VolumeRendering;M:\thirdparties\VTK.Net\src\Rendering;M:\thirdparties\VTK.Net\src\Hybrid;M:\thirdparties\VTK.Net\src\Widgets;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx;M:\thirdparties\VTK.Net\src\IO;M:\thirdparties\VTK.Net\src\Imaging;M:\thirdparties\VTK.Net\src\Graphics;M:\thirdparties\VTK.Net\src\GenericFiltering;M:\thirdparties\VTK.Net\src\Filtering;M:\thirdparties\VTK.Net\src\Common;M:\thirdparties\VTK.Net\src\Common\Testing\Cxx;M:\thirdparties\VTK.Net\src\Utilities\DICOMParser;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype\include;M:\thirdparties\VTK.Net\src\Utilities\vtknetcdf;M:\thirdparties\VTK.Net\src\Utilities\vtkexodus2\include;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype;M:\thirdparties\VTK.Net\src\Utilities\ftgl\src;M:\thirdparties\VTK.Net\src\Utilities\ftgl;"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;VTK_IN_VTK;CMAKE_INTDIR=\&quot;Debug\&quot;;vtkGenericFilteringDotNet_EXPORTS"
+				ExceptionHandling="2"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="3"
+				RuntimeTypeInfo="true"
+				AssemblerListingLocation="Debug"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="M:\thirdparties\VTK.Net\src\bin\Debug/vtkGenericFilteringDotNet.pdb"
+				WarningLevel="4"
+				DebugInformationFormat="3"
+				CompileAs="2"
+				DisableSpecificWarnings="4487"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;VTK_IN_VTK;CMAKE_INTDIR=\&quot;Debug\&quot;;vtkGenericFilteringDotNet_EXPORTS"
+				AdditionalIncludeDirectories="M:\thirdparties\VTK.Net\src;M:\thirdparties\VTK.Net\src\Utilities;M:\thirdparties\VTK.Net\src\VolumeRendering;M:\thirdparties\VTK.Net\src\Rendering;M:\thirdparties\VTK.Net\src\Hybrid;M:\thirdparties\VTK.Net\src\Widgets;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx;M:\thirdparties\VTK.Net\src\IO;M:\thirdparties\VTK.Net\src\Imaging;M:\thirdparties\VTK.Net\src\Graphics;M:\thirdparties\VTK.Net\src\GenericFiltering;M:\thirdparties\VTK.Net\src\Filtering;M:\thirdparties\VTK.Net\src\Common;M:\thirdparties\VTK.Net\src\Common\Testing\Cxx;M:\thirdparties\VTK.Net\src\Utilities\DICOMParser;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype\include;M:\thirdparties\VTK.Net\src\Utilities\vtknetcdf;M:\thirdparties\VTK.Net\src\Utilities\vtkexodus2\include;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype;M:\thirdparties\VTK.Net\src\Utilities\ftgl\src;M:\thirdparties\VTK.Net\src\Utilities\ftgl;"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86 /debug"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  ..\bin\Debug\vtkGenericFiltering.lib ..\bin\Debug\vtkGraphics.lib ..\bin\Debug\vtkFiltering.lib ..\bin\Debug\vtkCommon.lib ..\bin\Debug\vtksys.lib "
+				OutputFile="M:\thirdparties\VTK.Net\src\bin\Debug\vtkGenericFilteringDotNet.dll"
+				Version="5.0"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories=""
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile="M:\thirdparties\VTK.Net\src\bin\Debug\vtkGenericFilteringDotNet.pdb"
+				ImportLibrary="M:\thirdparties\VTK.Net\src\bin\Debug\vtkGenericFilteringDotNet.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="Release"
+			IntermediateDirectory="vtkGenericFilteringDotNet.dir\Release"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			ManagedExtensions="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				MkTypLibCompatible="false"
+				TargetEnvironment="1"
+				GenerateStublessProxies="true"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000"
+				Optimization="2"
+				InlineFunctionExpansion="2"
+				AdditionalIncludeDirectories="M:\thirdparties\VTK.Net\src;M:\thirdparties\VTK.Net\src\Utilities;M:\thirdparties\VTK.Net\src\VolumeRendering;M:\thirdparties\VTK.Net\src\Rendering;M:\thirdparties\VTK.Net\src\Hybrid;M:\thirdparties\VTK.Net\src\Widgets;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx;M:\thirdparties\VTK.Net\src\IO;M:\thirdparties\VTK.Net\src\Imaging;M:\thirdparties\VTK.Net\src\Graphics;M:\thirdparties\VTK.Net\src\GenericFiltering;M:\thirdparties\VTK.Net\src\Filtering;M:\thirdparties\VTK.Net\src\Common;M:\thirdparties\VTK.Net\src\Common\Testing\Cxx;M:\thirdparties\VTK.Net\src\Utilities\DICOMParser;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype\include;M:\thirdparties\VTK.Net\src\Utilities\vtknetcdf;M:\thirdparties\VTK.Net\src\Utilities\vtkexodus2\include;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype;M:\thirdparties\VTK.Net\src\Utilities\ftgl\src;M:\thirdparties\VTK.Net\src\Utilities\ftgl;"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;VTK_IN_VTK;CMAKE_INTDIR=\&quot;Release\&quot;;vtkGenericFilteringDotNet_EXPORTS"
+				ExceptionHandling="2"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="true"
+				AssemblerListingLocation="Release"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="M:\thirdparties\VTK.Net\src\bin\Release/vtkGenericFilteringDotNet.pdb"
+				WarningLevel="4"
+				CompileAs="2"
+				DisableSpecificWarnings="4487"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;VTK_IN_VTK;CMAKE_INTDIR=\&quot;Release\&quot;;vtkGenericFilteringDotNet_EXPORTS"
+				AdditionalIncludeDirectories="M:\thirdparties\VTK.Net\src;M:\thirdparties\VTK.Net\src\Utilities;M:\thirdparties\VTK.Net\src\VolumeRendering;M:\thirdparties\VTK.Net\src\Rendering;M:\thirdparties\VTK.Net\src\Hybrid;M:\thirdparties\VTK.Net\src\Widgets;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx;M:\thirdparties\VTK.Net\src\IO;M:\thirdparties\VTK.Net\src\Imaging;M:\thirdparties\VTK.Net\src\Graphics;M:\thirdparties\VTK.Net\src\GenericFiltering;M:\thirdparties\VTK.Net\src\Filtering;M:\thirdparties\VTK.Net\src\Common;M:\thirdparties\VTK.Net\src\Common\Testing\Cxx;M:\thirdparties\VTK.Net\src\Utilities\DICOMParser;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype\include;M:\thirdparties\VTK.Net\src\Utilities\vtknetcdf;M:\thirdparties\VTK.Net\src\Utilities\vtkexodus2\include;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype;M:\thirdparties\VTK.Net\src\Utilities\ftgl\src;M:\thirdparties\VTK.Net\src\Utilities\ftgl;"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  ..\bin\Release\vtkGenericFiltering.lib ..\bin\Release\vtkGraphics.lib ..\bin\Release\vtkFiltering.lib ..\bin\Release\vtkCommon.lib ..\bin\Release\vtksys.lib "
+				OutputFile="M:\thirdparties\VTK.Net\src\bin\Release\vtkGenericFilteringDotNet.dll"
+				Version="5.0"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories=""
+				ProgramDatabaseFile="M:\thirdparties\VTK.Net\src\bin\Release\vtkGenericFilteringDotNet.pdb"
+				ImportLibrary="M:\thirdparties\VTK.Net\src\bin\Release\vtkGenericFilteringDotNet.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="MinSizeRel|Win32"
+			OutputDirectory="MinSizeRel"
+			IntermediateDirectory="vtkGenericFilteringDotNet.dir\MinSizeRel"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			ManagedExtensions="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				MkTypLibCompatible="false"
+				TargetEnvironment="1"
+				GenerateStublessProxies="true"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000"
+				Optimization="1"
+				InlineFunctionExpansion="1"
+				AdditionalIncludeDirectories="M:\thirdparties\VTK.Net\src;M:\thirdparties\VTK.Net\src\Utilities;M:\thirdparties\VTK.Net\src\VolumeRendering;M:\thirdparties\VTK.Net\src\Rendering;M:\thirdparties\VTK.Net\src\Hybrid;M:\thirdparties\VTK.Net\src\Widgets;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx;M:\thirdparties\VTK.Net\src\IO;M:\thirdparties\VTK.Net\src\Imaging;M:\thirdparties\VTK.Net\src\Graphics;M:\thirdparties\VTK.Net\src\GenericFiltering;M:\thirdparties\VTK.Net\src\Filtering;M:\thirdparties\VTK.Net\src\Common;M:\thirdparties\VTK.Net\src\Common\Testing\Cxx;M:\thirdparties\VTK.Net\src\Utilities\DICOMParser;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype\include;M:\thirdparties\VTK.Net\src\Utilities\vtknetcdf;M:\thirdparties\VTK.Net\src\Utilities\vtkexodus2\include;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype;M:\thirdparties\VTK.Net\src\Utilities\ftgl\src;M:\thirdparties\VTK.Net\src\Utilities\ftgl;"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;VTK_IN_VTK;CMAKE_INTDIR=\&quot;MinSizeRel\&quot;;vtkGenericFilteringDotNet_EXPORTS"
+				ExceptionHandling="1"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="true"
+				AssemblerListingLocation="MinSizeRel"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="M:\thirdparties\VTK.Net\src\bin\MinSizeRel/vtkGenericFilteringDotNet.pdb"
+				WarningLevel="4"
+				CompileAs="2"
+				DisableSpecificWarnings="4487"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;VTK_IN_VTK;CMAKE_INTDIR=\&quot;MinSizeRel\&quot;;vtkGenericFilteringDotNet_EXPORTS"
+				AdditionalIncludeDirectories="M:\thirdparties\VTK.Net\src;M:\thirdparties\VTK.Net\src\Utilities;M:\thirdparties\VTK.Net\src\VolumeRendering;M:\thirdparties\VTK.Net\src\Rendering;M:\thirdparties\VTK.Net\src\Hybrid;M:\thirdparties\VTK.Net\src\Widgets;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx;M:\thirdparties\VTK.Net\src\IO;M:\thirdparties\VTK.Net\src\Imaging;M:\thirdparties\VTK.Net\src\Graphics;M:\thirdparties\VTK.Net\src\GenericFiltering;M:\thirdparties\VTK.Net\src\Filtering;M:\thirdparties\VTK.Net\src\Common;M:\thirdparties\VTK.Net\src\Common\Testing\Cxx;M:\thirdparties\VTK.Net\src\Utilities\DICOMParser;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype\include;M:\thirdparties\VTK.Net\src\Utilities\vtknetcdf;M:\thirdparties\VTK.Net\src\Utilities\vtkexodus2\include;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype;M:\thirdparties\VTK.Net\src\Utilities\ftgl\src;M:\thirdparties\VTK.Net\src\Utilities\ftgl;"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  ..\bin\MinSizeRel\vtkGenericFiltering.lib ..\bin\MinSizeRel\vtkGraphics.lib ..\bin\MinSizeRel\vtkFiltering.lib ..\bin\MinSizeRel\vtkCommon.lib ..\bin\MinSizeRel\vtksys.lib "
+				OutputFile="M:\thirdparties\VTK.Net\src\bin\MinSizeRel\vtkGenericFilteringDotNet.dll"
+				Version="5.0"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories=""
+				ProgramDatabaseFile="M:\thirdparties\VTK.Net\src\bin\MinSizeRel\vtkGenericFilteringDotNet.pdb"
+				ImportLibrary="M:\thirdparties\VTK.Net\src\bin\MinSizeRel\vtkGenericFilteringDotNet.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="RelWithDebInfo|Win32"
+			OutputDirectory="RelWithDebInfo"
+			IntermediateDirectory="vtkGenericFilteringDotNet.dir\RelWithDebInfo"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			ManagedExtensions="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				MkTypLibCompatible="false"
+				TargetEnvironment="1"
+				GenerateStublessProxies="true"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000"
+				Optimization="2"
+				InlineFunctionExpansion="1"
+				AdditionalIncludeDirectories="M:\thirdparties\VTK.Net\src;M:\thirdparties\VTK.Net\src\Utilities;M:\thirdparties\VTK.Net\src\VolumeRendering;M:\thirdparties\VTK.Net\src\Rendering;M:\thirdparties\VTK.Net\src\Hybrid;M:\thirdparties\VTK.Net\src\Widgets;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx;M:\thirdparties\VTK.Net\src\IO;M:\thirdparties\VTK.Net\src\Imaging;M:\thirdparties\VTK.Net\src\Graphics;M:\thirdparties\VTK.Net\src\GenericFiltering;M:\thirdparties\VTK.Net\src\Filtering;M:\thirdparties\VTK.Net\src\Common;M:\thirdparties\VTK.Net\src\Common\Testing\Cxx;M:\thirdparties\VTK.Net\src\Utilities\DICOMParser;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype\include;M:\thirdparties\VTK.Net\src\Utilities\vtknetcdf;M:\thirdparties\VTK.Net\src\Utilities\vtkexodus2\include;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype;M:\thirdparties\VTK.Net\src\Utilities\ftgl\src;M:\thirdparties\VTK.Net\src\Utilities\ftgl;"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;VTK_IN_VTK;CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;;vtkGenericFilteringDotNet_EXPORTS"
+				ExceptionHandling="1"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="true"
+				AssemblerListingLocation="RelWithDebInfo"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="M:\thirdparties\VTK.Net\src\bin\RelWithDebInfo/vtkGenericFilteringDotNet.pdb"
+				WarningLevel="4"
+				DebugInformationFormat="3"
+				CompileAs="2"
+				DisableSpecificWarnings="4487"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;VTK_IN_VTK;CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;;vtkGenericFilteringDotNet_EXPORTS"
+				AdditionalIncludeDirectories="M:\thirdparties\VTK.Net\src;M:\thirdparties\VTK.Net\src\Utilities;M:\thirdparties\VTK.Net\src\VolumeRendering;M:\thirdparties\VTK.Net\src\Rendering;M:\thirdparties\VTK.Net\src\Hybrid;M:\thirdparties\VTK.Net\src\Widgets;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx;M:\thirdparties\VTK.Net\src\IO;M:\thirdparties\VTK.Net\src\Imaging;M:\thirdparties\VTK.Net\src\Graphics;M:\thirdparties\VTK.Net\src\GenericFiltering;M:\thirdparties\VTK.Net\src\Filtering;M:\thirdparties\VTK.Net\src\Common;M:\thirdparties\VTK.Net\src\Common\Testing\Cxx;M:\thirdparties\VTK.Net\src\Utilities\DICOMParser;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype\include;M:\thirdparties\VTK.Net\src\Utilities\vtknetcdf;M:\thirdparties\VTK.Net\src\Utilities\vtkexodus2\include;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype;M:\thirdparties\VTK.Net\src\Utilities\ftgl\src;M:\thirdparties\VTK.Net\src\Utilities\ftgl;"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86 /debug"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  ..\bin\RelWithDebInfo\vtkGenericFiltering.lib ..\bin\RelWithDebInfo\vtkGraphics.lib ..\bin\RelWithDebInfo\vtkFiltering.lib ..\bin\RelWithDebInfo\vtkCommon.lib ..\bin\RelWithDebInfo\vtksys.lib "
+				OutputFile="M:\thirdparties\VTK.Net\src\bin\RelWithDebInfo\vtkGenericFilteringDotNet.dll"
+				Version="5.0"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories=""
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile="M:\thirdparties\VTK.Net\src\bin\RelWithDebInfo\vtkGenericFilteringDotNet.pdb"
+				ImportLibrary="M:\thirdparties\VTK.Net\src\bin\RelWithDebInfo\vtkGenericFilteringDotNet.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+	</Configurations>
+	<References>
+		<AssemblyReference
+			RelativePath="System.dll"
+			AssemblyName="System, Version=2.0.0.0, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
+			MinFrameworkVersion="131072"
+		/>
+		<ProjectReference
+			ReferencedProjectIdentifier="{60F63C48-3AFB-4878-BD73-EFB00CDE85C6}"
+			RelativePathToProject=".\Common\vtkCommonDotNet.vcproj"
+		/>
+		<ProjectReference
+			ReferencedProjectIdentifier="{C5C50907-A08A-40F5-AC19-1130C1FE03F4}"
+			RelativePathToProject=".\Filtering\vtkFilteringDotNet.vcproj"
+		/>
+		<ProjectReference
+			ReferencedProjectIdentifier="{F8607B21-061B-4AA1-8972-DDA3C4EDDA02}"
+			RelativePathToProject=".\Graphics\vtkGraphicsDotNet.vcproj"
+		/>
+	</References>
+	<Files>
+		<Filter
+			Name="Source Files"
+			>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericClipDotNet.cxx"
+				>
+			</File>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericContourFilterDotNet.cxx"
+				>
+			</File>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericCutterDotNet.cxx"
+				>
+			</File>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericDataSetTessellatorDotNet.cxx"
+				>
+			</File>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGeometryFilterDotNet.cxx"
+				>
+			</File>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGlyph3DFilterDotNet.cxx"
+				>
+			</File>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericOutlineFilterDotNet.cxx"
+				>
+			</File>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericProbeFilterDotNet.cxx"
+				>
+			</File>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericStreamTracerDotNet.cxx"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="CMake Rules"
+			>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericClipDotNet.cxx.rule"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericClip"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericClip.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericClipDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericClip.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericClipDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericClip"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericClip.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericClipDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericClip.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericClipDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MinSizeRel|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericClip"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericClip.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericClipDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericClip.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericClipDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="RelWithDebInfo|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericClip"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericClip.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericClipDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericClip.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericClipDotNet.cxx"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericContourFilterDotNet.cxx.rule"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericContourFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericContourFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericContourFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericContourFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericContourFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericContourFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericContourFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericContourFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericContourFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericContourFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MinSizeRel|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericContourFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericContourFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericContourFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericContourFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericContourFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="RelWithDebInfo|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericContourFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericContourFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericContourFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericContourFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericContourFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericCutterDotNet.cxx.rule"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericCutter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericCutter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericCutterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericCutter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericCutterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericCutter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericCutter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericCutterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericCutter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericCutterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MinSizeRel|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericCutter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericCutter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericCutterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericCutter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericCutterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="RelWithDebInfo|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericCutter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericCutter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericCutterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericCutter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericCutterDotNet.cxx"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericDataSetTessellatorDotNet.cxx.rule"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericDataSetTessellator"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericDataSetTessellator.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericDataSetTessellatorDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericDataSetTessellator.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericDataSetTessellatorDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericDataSetTessellator"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericDataSetTessellator.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericDataSetTessellatorDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericDataSetTessellator.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericDataSetTessellatorDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MinSizeRel|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericDataSetTessellator"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericDataSetTessellator.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericDataSetTessellatorDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericDataSetTessellator.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericDataSetTessellatorDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="RelWithDebInfo|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericDataSetTessellator"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericDataSetTessellator.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericDataSetTessellatorDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericDataSetTessellator.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericDataSetTessellatorDotNet.cxx"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGeometryFilterDotNet.cxx.rule"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericGeometryFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericGeometryFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericGeometryFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGeometryFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGeometryFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericGeometryFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericGeometryFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericGeometryFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGeometryFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGeometryFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MinSizeRel|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericGeometryFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericGeometryFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericGeometryFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGeometryFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGeometryFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="RelWithDebInfo|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericGeometryFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericGeometryFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericGeometryFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGeometryFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGeometryFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGlyph3DFilterDotNet.cxx.rule"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericGlyph3DFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericGlyph3DFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericGlyph3DFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGlyph3DFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGlyph3DFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericGlyph3DFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericGlyph3DFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericGlyph3DFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGlyph3DFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGlyph3DFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MinSizeRel|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericGlyph3DFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericGlyph3DFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericGlyph3DFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGlyph3DFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGlyph3DFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="RelWithDebInfo|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericGlyph3DFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericGlyph3DFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericGlyph3DFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGlyph3DFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericGlyph3DFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericOutlineFilterDotNet.cxx.rule"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericOutlineFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericOutlineFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericOutlineFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericOutlineFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericOutlineFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericOutlineFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericOutlineFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericOutlineFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericOutlineFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericOutlineFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MinSizeRel|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericOutlineFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericOutlineFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericOutlineFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericOutlineFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericOutlineFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="RelWithDebInfo|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericOutlineFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericOutlineFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericOutlineFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericOutlineFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericOutlineFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericProbeFilterDotNet.cxx.rule"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericProbeFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericProbeFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericProbeFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericProbeFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericProbeFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericProbeFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericProbeFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericProbeFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericProbeFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericProbeFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MinSizeRel|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericProbeFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericProbeFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericProbeFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericProbeFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericProbeFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="RelWithDebInfo|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericProbeFilter"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericProbeFilter.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericProbeFilterDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericProbeFilter.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericProbeFilterDotNet.cxx"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericStreamTracerDotNet.cxx.rule"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericStreamTracer"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericStreamTracer.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericStreamTracerDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericStreamTracer.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericStreamTracerDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericStreamTracer"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericStreamTracer.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericStreamTracerDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericStreamTracer.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericStreamTracerDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MinSizeRel|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericStreamTracer"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericStreamTracer.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericStreamTracerDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericStreamTracer.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericStreamTracerDotNet.cxx"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="RelWithDebInfo|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="DotNet Wrapping vtkGenericStreamTracer"
+						CommandLine="..\bin\$(OutDir)\vtkWrapDotNet.exe M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericStreamTracer.h M:/thirdparties/VTK.Net/src/Wrapping/hints 1 M:/thirdparties/VTK.Net/src/GenericFiltering/vtkGenericStreamTracerDotNet.cxx&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+						AdditionalDependencies="M:\thirdparties\VTK.Net\src\bin\$(OutDir)\vtkWrapDotNet.exe;M:\thirdparties\VTK.Net\src\Wrapping\hints;M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericStreamTracer.h;"
+						Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\vtkGenericStreamTracerDotNet.cxx"
+					/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+		<File
+			RelativePath="M:\thirdparties\VTK.Net\src\GenericFiltering\CMakeLists.txt"
+			>
+			<FileConfiguration
+				Name="Debug|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule M:/thirdparties/VTK.Net/src/GenericFiltering/CMakeLists.txt"
+					CommandLine="&quot;C:\CMake 2.8\bin\cmake.exe&quot; -HM:/thirdparties/VTK.Net/src -BM:/thirdparties/VTK.Net/src --check-stamp-file M:\thirdparties\VTK.Net\src\GenericFiltering\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+					AdditionalDependencies="M:\thirdparties\VTK.Net\src\GenericFiltering\CMakeLists.txt;M:\thirdparties\VTK.Net\src\CMake\KitCommonBlock.cmake;M:\thirdparties\VTK.Net\src\CMake\vtkMakeInstantiator.h.in;M:\thirdparties\VTK.Net\src\CMake\vtkMakeInstantiator.cxx.in;M:\thirdparties\VTK.Net\src\CMake\KitCommonDotNetWrapBlock.cmake;M:\thirdparties\VTK.Net\src\CMake\vtkWrapperInit.data.in;M:\thirdparties\VTK.Net\src\CMake\vtkKit.cmake.in;M:\thirdparties\VTK.Net\src\CMake\vtkKit.cmake.in;M:\thirdparties\VTK.Net\src\GenericFiltering\CMakeLists.txt;"
+					Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\CMakeFiles\generate.stamp"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule M:/thirdparties/VTK.Net/src/GenericFiltering/CMakeLists.txt"
+					CommandLine="&quot;C:\CMake 2.8\bin\cmake.exe&quot; -HM:/thirdparties/VTK.Net/src -BM:/thirdparties/VTK.Net/src --check-stamp-file M:\thirdparties\VTK.Net\src\GenericFiltering\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+					AdditionalDependencies="M:\thirdparties\VTK.Net\src\GenericFiltering\CMakeLists.txt;M:\thirdparties\VTK.Net\src\CMake\KitCommonBlock.cmake;M:\thirdparties\VTK.Net\src\CMake\vtkMakeInstantiator.h.in;M:\thirdparties\VTK.Net\src\CMake\vtkMakeInstantiator.cxx.in;M:\thirdparties\VTK.Net\src\CMake\KitCommonDotNetWrapBlock.cmake;M:\thirdparties\VTK.Net\src\CMake\vtkWrapperInit.data.in;M:\thirdparties\VTK.Net\src\CMake\vtkKit.cmake.in;M:\thirdparties\VTK.Net\src\CMake\vtkKit.cmake.in;M:\thirdparties\VTK.Net\src\GenericFiltering\CMakeLists.txt;"
+					Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\CMakeFiles\generate.stamp"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="MinSizeRel|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule M:/thirdparties/VTK.Net/src/GenericFiltering/CMakeLists.txt"
+					CommandLine="&quot;C:\CMake 2.8\bin\cmake.exe&quot; -HM:/thirdparties/VTK.Net/src -BM:/thirdparties/VTK.Net/src --check-stamp-file M:\thirdparties\VTK.Net\src\GenericFiltering\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+					AdditionalDependencies="M:\thirdparties\VTK.Net\src\GenericFiltering\CMakeLists.txt;M:\thirdparties\VTK.Net\src\CMake\KitCommonBlock.cmake;M:\thirdparties\VTK.Net\src\CMake\vtkMakeInstantiator.h.in;M:\thirdparties\VTK.Net\src\CMake\vtkMakeInstantiator.cxx.in;M:\thirdparties\VTK.Net\src\CMake\KitCommonDotNetWrapBlock.cmake;M:\thirdparties\VTK.Net\src\CMake\vtkWrapperInit.data.in;M:\thirdparties\VTK.Net\src\CMake\vtkKit.cmake.in;M:\thirdparties\VTK.Net\src\CMake\vtkKit.cmake.in;M:\thirdparties\VTK.Net\src\GenericFiltering\CMakeLists.txt;"
+					Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\CMakeFiles\generate.stamp"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="RelWithDebInfo|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule M:/thirdparties/VTK.Net/src/GenericFiltering/CMakeLists.txt"
+					CommandLine="&quot;C:\CMake 2.8\bin\cmake.exe&quot; -HM:/thirdparties/VTK.Net/src -BM:/thirdparties/VTK.Net/src --check-stamp-file M:\thirdparties\VTK.Net\src\GenericFiltering\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto :VCReportError&#x0D;&#x0A;"
+					AdditionalDependencies="M:\thirdparties\VTK.Net\src\GenericFiltering\CMakeLists.txt;M:\thirdparties\VTK.Net\src\CMake\KitCommonBlock.cmake;M:\thirdparties\VTK.Net\src\CMake\vtkMakeInstantiator.h.in;M:\thirdparties\VTK.Net\src\CMake\vtkMakeInstantiator.cxx.in;M:\thirdparties\VTK.Net\src\CMake\KitCommonDotNetWrapBlock.cmake;M:\thirdparties\VTK.Net\src\CMake\vtkWrapperInit.data.in;M:\thirdparties\VTK.Net\src\CMake\vtkKit.cmake.in;M:\thirdparties\VTK.Net\src\CMake\vtkKit.cmake.in;M:\thirdparties\VTK.Net\src\GenericFiltering\CMakeLists.txt;"
+					Outputs="M:\thirdparties\VTK.Net\src\GenericFiltering\CMakeFiles\generate.stamp"
+				/>
+			</FileConfiguration>
+		</File>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

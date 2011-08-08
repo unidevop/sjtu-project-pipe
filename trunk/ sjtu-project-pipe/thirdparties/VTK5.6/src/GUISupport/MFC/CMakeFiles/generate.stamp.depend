@@ -1,0 +1,5 @@
+# CMake generation dependency list for this directory.
+M:/thirdparties/VTK5.6/src/GUISupport/MFC/CMakeLists.txt
+M:/thirdparties/VTK5.6/src/GUISupport/MFC/VTKMFCSettings.cmake
+M:/thirdparties/VTK5.6/src/GUISupport/MFC/VTKMFCSettings.cmake
+M:/thirdparties/VTK5.6/src/GUISupport/MFC/vtkMFCConfigure.h.in

@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+M:/thirdparties/VTK5.6/src/Utilities/vtkzlib/CMakeLists.txt
+M:/thirdparties/VTK5.6/src/Utilities/vtkzlib/.NoDartCoverage
+M:/thirdparties/VTK5.6/src/Utilities/vtkzlib/zlibDllConfig.h.in

@@ -1,0 +1,11 @@
+# CMake generation dependency list for this directory.
+M:/thirdparties/VTK5.6/src/Utilities/LastConfigureStep/CMakeLists.txt
+M:/thirdparties/VTK5.6/src/vtkGenerateVTKConfig.cmake
+M:/thirdparties/VTK5.6/src/CMake/vtkTclTkMacros.cmake
+M:/thirdparties/VTK5.6/src/VTKConfig.cmake.in
+M:/thirdparties/VTK5.6/src/VTKConfigVersion.cmake.in
+M:/thirdparties/VTK5.6/src/VTKConfig.cmake.in
+M:/thirdparties/VTK5.6/src/VTKConfig.cmake.in
+M:/thirdparties/VTK5.6/src/VTKConfig.cmake.in
+M:/thirdparties/VTK5.6/src/VTKConfig.cmake.in
+M:/thirdparties/VTK5.6/src/VTKConfigVersion.cmake.in

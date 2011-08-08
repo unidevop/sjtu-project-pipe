@@ -1,0 +1,3 @@
+# CMake generation dependency list for this directory.
+M:/thirdparties/VTK5.6/src/Utilities/Cosmo/CMakeLists.txt
+M:/thirdparties/VTK5.6/src/Utilities/Cosmo/CosmoDefinition.h.in
