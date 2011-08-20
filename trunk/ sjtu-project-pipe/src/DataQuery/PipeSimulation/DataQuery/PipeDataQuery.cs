@@ -18,7 +18,14 @@ namespace PipeSimulation.DataQuery
         protected int m_lastInclineMeasureId = 0;
 
         protected SqlConnection m_dbConn;
-        private   Timer m_timer = new Timer(10000);
+        //  100 milliseconds
+        private   Timer m_timer = new Timer(100);
+
+        // default incline to GPS time tolerance is 0.3s
+        private static TimeSpan m_inclineGPSMeasureTimeTolerance = new TimeSpan(0, 0, 0, 300);
+
+        // default incline and GPS time tolerance is 0.01s
+        private static TimeSpan m_GPSMeasureTimeTolerance = new TimeSpan(0, 0, 0, 10);
 
         // interval is in milliseconds
         public PipeDataQuery(string dbAdress, string dbName, string userName, string password, double interval)
@@ -162,7 +169,7 @@ namespace PipeSimulation.DataQuery
 
             List<InclineRecord> lstInclineRecords = ToInclineRecords(sqlDataReader);
 
-            return ExtractPipeInfo(lstGPSRecords, lstInclineRecords);
+            return ExtractPipeInfo(lstGPSRecords, lstInclineRecords, out m_lastGPSMeasureId, out m_lastInclineMeasureId);
         }
 
         protected List<GPSRecord> ToGPSRecords(SqlDataReader sqlDataReader)
@@ -172,13 +179,13 @@ namespace PipeSimulation.DataQuery
 
             while (sqlDataReader.Read())
             {
-                record.MeasureId = (int)(sqlDataReader[0]);
-                record.PipeId = (string)(sqlDataReader[1]);
-                record.ProjectPointId = (int)(sqlDataReader[2]);
-                record.MeasureTime = (DateTime)(sqlDataReader[3]);
-                record.Location = new Point3D((Double)(sqlDataReader[4]),
-                                              (Double)(sqlDataReader[5]),
-                                              (Double)(sqlDataReader[6]));
+                record.MeasureId = sqlDataReader.GetInt32(0);
+                record.PipeId = sqlDataReader.GetString(1);
+                record.ProjectPointId = sqlDataReader.GetInt32(2);
+                record.MeasureTime = sqlDataReader.GetDateTime(3);
+                record.Location = new Point3D(sqlDataReader.GetDouble(4),
+                                              sqlDataReader.GetDouble(5),
+                                              sqlDataReader.GetDouble(6));
 
                 lstRecords.Add(record);
             }
@@ -193,12 +200,12 @@ namespace PipeSimulation.DataQuery
 
             while (sqlDataReader.Read())
             {
-                record.MeasureId = (int)(sqlDataReader[0]);
-                record.PipeId = (string)(sqlDataReader[1]);
-                record.ProjectPointId = (int)(sqlDataReader[2]);
-                record.MeasureTime = (DateTime)(sqlDataReader[3]);
-                record.Alpha = (double)(sqlDataReader[4]);
-                record.Beta = (double)(sqlDataReader[5]);
+                record.MeasureId = sqlDataReader.GetInt32(0);
+                record.PipeId = sqlDataReader.GetString(1);
+                record.ProjectPointId = sqlDataReader.GetInt32(2);
+                record.MeasureTime = sqlDataReader.GetDateTime(3);
+                record.Alpha = sqlDataReader.GetDouble(4);
+                record.Beta = sqlDataReader.GetDouble(5);
 
                 lstRecords.Add(record);
             }
@@ -206,47 +213,163 @@ namespace PipeSimulation.DataQuery
             return lstRecords;
         }
 
-        protected PipeInfo ExtractPipeInfo(List<GPSRecord> lstGPSRecords, List<InclineRecord> lstInclineRecords)
+        protected PipeInfo ExtractPipeInfo(List<GPSRecord> lstGPSRecords, List<InclineRecord> lstInclineRecords,
+                                          out int lastGPSMeasureId, out int lastInclineMeasureId)
         {
-            // TODO: to be implemented
-            PipeInfo pipeInfo = null;
+            for (int idx = lstInclineRecords.Count - 1; idx >= 0; idx++)
+            {
+                PipeInfo pipeInfo = ExtractPipeInfo(lstGPSRecords, lstInclineRecords[idx], out lastGPSMeasureId);
 
-            return pipeInfo;
-        }
+                if (pipeInfo != null)
+                {
+                    lastInclineMeasureId = idx;
 
-        // Query
-        public bool IsPipeStarted(int iPipeId)
-        {
-            return false;
-        }
+                    return pipeInfo;
+                }
+            }
+            lastGPSMeasureId = 0;
+            lastInclineMeasureId = 0;
 
-        public bool IsPipeEnded(int iPipeId)
-        {
-            return false;
-        }
-
-        public int GetPipeRecordCount(int iPipeId)
-        {
-            return 0;
-        }
-
-        public PipeInfo GetPipeRecord(int iPipeId, int iRecoredIndex)
-        {
             return null;
         }
 
-        public DateTime GetPipeStartTime(int iPipeId)
+        protected PipeInfo ExtractPipeInfo(List<GPSRecord> lstGPSRecords, InclineRecord inclineRcd, out int lastGPSMeasureId)
         {
+            for (int idx = lstGPSRecords.Count - 1; idx >= 0; idx++ )
+            {
+                // find first matching GPS Record
+                if (inclineRcd.PipeId == lstGPSRecords[idx].PipeId &&
+                    (inclineRcd.MeasureTime - lstGPSRecords[idx].MeasureTime).Duration() <= m_inclineGPSMeasureTimeTolerance)
+                {
+                    for (int jdx = idx - 1; jdx >= 0; jdx ++ )
+                    {
+                        //  find send matching GPS Record
+                        if (inclineRcd.PipeId == lstGPSRecords[jdx].PipeId &&
+                            lstGPSRecords[idx].ProjectPointId != lstGPSRecords[jdx].ProjectPointId &&
+                            (lstGPSRecords[idx].MeasureTime - lstGPSRecords[jdx].MeasureTime).Duration() <= m_GPSMeasureTimeTolerance)
+                        {
+                            GPSRecord  gpsPrjPt1 = (lstGPSRecords[idx].ProjectPointId < lstGPSRecords[jdx].ProjectPointId) ?
+                                lstGPSRecords[idx] : lstGPSRecords[jdx];
+                            GPSRecord  gpsPrjPt2 = (lstGPSRecords[idx].ProjectPointId < lstGPSRecords[jdx].ProjectPointId) ?
+                                lstGPSRecords[jdx] : lstGPSRecords[idx];
+
+                            PipeInfo pipeInfo = new PipeInfo(inclineRcd.PipeId, gpsPrjPt1.Location, gpsPrjPt2.Location,
+                                inclineRcd.Alpha, inclineRcd.Beta, inclineRcd.MeasureTime);
+                            lastGPSMeasureId = idx;
+
+                            return pipeInfo;
+                        }
+                    }
+                }
+            }
+            lastGPSMeasureId = 0;
+
+            return null;
+        }
+
+        // Query
+        public abstract bool IsPipeStarted(string iPipeId);
+
+        public abstract bool IsPipeEnded(string iPipeId);
+
+        public int GetPipeRecordCount(string iPipeId)
+        {
+            SqlCommand sqlCmd = null;
+            SqlDataReader sqlDataReader = null;
+
+            string strInclineSql = "SELECT COUNT(MeasureID) FROM InclineMeasure";
+
+            //  read Incline records
+            sqlCmd = new SqlCommand(strInclineSql, m_dbConn);
+            sqlDataReader = sqlCmd.ExecuteReader();
+
+            if (sqlDataReader.Read())
+                return sqlDataReader.GetInt32(0);
+
+            return 0;
+        }
+
+        public PipeInfo GetPipeRecord(string iPipeId, int iRecordIndex)
+        {
+            SqlCommand sqlCmd = null;
+            SqlDataReader sqlDataReader = null;
+
+            string strInclineSql = String.Format("SELECT TOP 1 * FROM (SELECT TOP {0} * FROM InclineMeasure WHERE PipeID = '{1}') InclineMeasure ORDER BY MeasureTime DESC",
+                iRecordIndex, iPipeId);
+
+            //  read Incline records
+            sqlCmd = new SqlCommand(strInclineSql, m_dbConn);
+            sqlDataReader = sqlCmd.ExecuteReader();
+
+            List<InclineRecord> lstInclineRecords = ToInclineRecords(sqlDataReader);
+
+            if (lstInclineRecords.Count == 1)
+            {
+                string strGpsSql = String.Format("SELECT * FROM GPSMeasure WHERE ABS(DATEDIFF(SECOND, MeasureTime, '{0}')) <= 1",
+                                                 lstInclineRecords[0].MeasureTime);
+
+                //  read GPS records
+                sqlCmd = new SqlCommand(strGpsSql, m_dbConn);
+                sqlDataReader = sqlCmd.ExecuteReader();
+
+                List<GPSRecord> lstGPSRecords = ToGPSRecords(sqlDataReader);
+                int lastGPSMeasureId;
+
+                return ExtractPipeInfo(lstGPSRecords, lstInclineRecords[0], out lastGPSMeasureId);
+            }
+
+            return null;
+        }
+
+        public DateTime GetPipeStartTime(string iPipeId)
+        {
+            SqlCommand sqlCmd = null;
+            SqlDataReader sqlDataReader = null;
+
+            string strInclineSql = String.Format("SELECT TOP 1 MeasureTime FROM InclineMeasure WHERE PipeID = '{0}'", iPipeId);
+
+            //  read Incline records
+            sqlCmd = new SqlCommand(strInclineSql, m_dbConn);
+            sqlDataReader = sqlCmd.ExecuteReader();
+
+            if (sqlDataReader.Read())
+                return sqlDataReader.GetDateTime(0);
+
             return new DateTime();
         }
 
-        public DateTime GetPipeEndTime(int iPipeId)
+        public DateTime GetPipeEndTime(string iPipeId)
         {
+            SqlCommand sqlCmd = null;
+            SqlDataReader sqlDataReader = null;
+
+            string strInclineSql = String.Format("SELECT TOP 1 MeasureTime FROM InclineMeasure WHERE PipeID = '{0}' ORDER BY MeasureTime DESC", iPipeId);
+
+            //  read Incline records
+            sqlCmd = new SqlCommand(strInclineSql, m_dbConn);
+            sqlDataReader = sqlCmd.ExecuteReader();
+
+            if (sqlDataReader.Read())
+                return sqlDataReader.GetDateTime(0);
+
             return new DateTime();
         }
 
-        public DateTime GetPipeTime(int iPipeId, int iRecordIndex)
+        public DateTime GetPipeTime(string iPipeId, int iRecordIndex)
         {
+            SqlCommand sqlCmd = null;
+            SqlDataReader sqlDataReader = null;
+
+            string strInclineSql = String.Format("SELECT TOP 1 * FROM (SELECT TOP {0} MeasureTime FROM InclineMeasure WHERE PipeID = '{1}') InclineMeasure ORDER BY MeasureTime DESC",
+                iRecordIndex, iPipeId);
+
+            //  read Incline records
+            sqlCmd = new SqlCommand(strInclineSql, m_dbConn);
+            sqlDataReader = sqlCmd.ExecuteReader();
+
+            if (sqlDataReader.Read())
+                return sqlDataReader.GetDateTime(0);
+
             return new DateTime();
         }
 
@@ -296,7 +419,39 @@ namespace PipeSimulation.DataQuery
             List<InclineRecord> lstInclineRecords = ToInclineRecords(sqlDataReader);
             lstInclineRecords.Reverse();
 
-            return ExtractPipeInfo(lstGPSRecords, lstInclineRecords);
+            return ExtractPipeInfo(lstGPSRecords, lstInclineRecords, out m_lastGPSMeasureId, out m_lastInclineMeasureId);
+        }
+
+        // Query
+        public override bool IsPipeStarted(string iPipeId)
+        {
+            string strGpsSql = "SELECT TOP 1 PipeID FROM GPSMeasure ORDER BY MeasureID DESC";
+
+            SqlCommand sqlCmd = null;
+            SqlDataReader sqlDataReader = null;
+
+            //  read GPS records
+            sqlCmd = new SqlCommand(strGpsSql, m_dbConn);
+            sqlDataReader = sqlCmd.ExecuteReader();
+
+            if (sqlDataReader.Read() && (sqlDataReader.GetString(0)) == iPipeId)
+                return true;
+
+            string strInclineSql = "SELECT TOP 1 PipeID FROM InclineMeasure ORDER BY MeasureID DESC";
+
+            //  read Incline records
+            sqlCmd = new SqlCommand(strInclineSql, m_dbConn);
+            sqlDataReader = sqlCmd.ExecuteReader();
+
+            if (sqlDataReader.Read() && (sqlDataReader.GetString(0)) == iPipeId)
+                return true;
+
+            return false;
+        }
+
+        public override bool IsPipeEnded(string iPipeId)
+        {
+            return !IsPipeStarted(iPipeId);
         }
     }
 
@@ -322,6 +477,18 @@ namespace PipeSimulation.DataQuery
             PipeInfo pipeInfo = null;
 
             return pipeInfo;
+        }
+
+        // TODO: to be implemented
+        public override bool IsPipeStarted(string iPipeId)
+        {
+            return false;
+        }
+
+        // TODO: to be implemented
+        public override bool IsPipeEnded(string iPipeId)
+        {
+            return false;
         }
     }
 }
