@@ -22,14 +22,14 @@ namespace PipeSimulation.DataQuery
         bool IsConnected { get; }
 
         // Query
-        bool IsPipeStarted(string iPipeId);
-        bool IsPipeEnded(string iPipeId);
-        int GetPipeRecordCount(string iPipeId);
-        PipeInfo GetPipeRecord(string iPipeId, int iRecoredIndex);
+        bool IsPipeStarted(int iPipeId);
+        bool IsPipeEnded(int iPipeId);
+        int GetPipeRecordCount(int iPipeId);
+        PipeInfo GetPipeRecord(int iPipeId, int iRecoredIndex);
 
-        DateTime GetPipeStartTime(string iPipeId);
-        DateTime GetPipeEndTime(string iPipeId);
-        DateTime GetPipeTime(string iPipeId, int iRecordIndex);
+        DateTime GetPipeStartTime(int iPipeId);
+        DateTime GetPipeEndTime(int iPipeId);
+        DateTime GetPipeTime(int iPipeId, int iRecordIndex);
 
         PipeInfo GetLatesetData();
 

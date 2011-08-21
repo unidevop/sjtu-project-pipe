@@ -268,16 +268,16 @@ namespace PipeSimulation.DataQuery
         }
 
         // Query
-        public abstract bool IsPipeStarted(string iPipeId);
+        public abstract bool IsPipeStarted(int iPipeId);
 
-        public abstract bool IsPipeEnded(string iPipeId);
+        public abstract bool IsPipeEnded(int iPipeId);
 
-        public int GetPipeRecordCount(string iPipeId)
+        public int GetPipeRecordCount(int iPipeId)
         {
             SqlCommand sqlCmd = null;
             SqlDataReader sqlDataReader = null;
 
-            string strInclineSql = "SELECT COUNT(MeasureID) FROM InclineMeasure";
+            string strInclineSql = String.Format("SELECT COUNT(MeasureID) FROM InclineMeasure WHERE PipeID={0}", iPipeId);
 
             //  read Incline records
             sqlCmd = new SqlCommand(strInclineSql, m_dbConn);
@@ -289,12 +289,12 @@ namespace PipeSimulation.DataQuery
             return 0;
         }
 
-        public PipeInfo GetPipeRecord(string iPipeId, int iRecordIndex)
+        public PipeInfo GetPipeRecord(int iPipeId, int iRecordIndex)
         {
             SqlCommand sqlCmd = null;
             SqlDataReader sqlDataReader = null;
 
-            string strInclineSql = String.Format("SELECT TOP 1 * FROM (SELECT TOP {0} * FROM InclineMeasure WHERE PipeID = '{1}') InclineMeasure ORDER BY MeasureTime DESC",
+            string strInclineSql = String.Format("SELECT TOP 1 * FROM (SELECT TOP {0} * FROM InclineMeasure WHERE PipeID = {1}) InclineMeasure ORDER BY MeasureTime DESC",
                 iRecordIndex, iPipeId);
 
             //  read Incline records
@@ -321,12 +321,12 @@ namespace PipeSimulation.DataQuery
             return null;
         }
 
-        public DateTime GetPipeStartTime(string iPipeId)
+        public DateTime GetPipeStartTime(int iPipeId)
         {
             SqlCommand sqlCmd = null;
             SqlDataReader sqlDataReader = null;
 
-            string strInclineSql = String.Format("SELECT TOP 1 MeasureTime FROM InclineMeasure WHERE PipeID = '{0}'", iPipeId);
+            string strInclineSql = String.Format("SELECT TOP 1 MeasureTime FROM InclineMeasure WHERE PipeID = {0}", iPipeId);
 
             //  read Incline records
             sqlCmd = new SqlCommand(strInclineSql, m_dbConn);
@@ -338,12 +338,12 @@ namespace PipeSimulation.DataQuery
             return new DateTime();
         }
 
-        public DateTime GetPipeEndTime(string iPipeId)
+        public DateTime GetPipeEndTime(int iPipeId)
         {
             SqlCommand sqlCmd = null;
             SqlDataReader sqlDataReader = null;
 
-            string strInclineSql = String.Format("SELECT TOP 1 MeasureTime FROM InclineMeasure WHERE PipeID = '{0}' ORDER BY MeasureTime DESC", iPipeId);
+            string strInclineSql = String.Format("SELECT TOP 1 MeasureTime FROM InclineMeasure WHERE PipeID = {0} ORDER BY MeasureTime DESC", iPipeId);
 
             //  read Incline records
             sqlCmd = new SqlCommand(strInclineSql, m_dbConn);
@@ -355,12 +355,12 @@ namespace PipeSimulation.DataQuery
             return new DateTime();
         }
 
-        public DateTime GetPipeTime(string iPipeId, int iRecordIndex)
+        public DateTime GetPipeTime(int iPipeId, int iRecordIndex)
         {
             SqlCommand sqlCmd = null;
             SqlDataReader sqlDataReader = null;
 
-            string strInclineSql = String.Format("SELECT TOP 1 * FROM (SELECT TOP {0} MeasureTime FROM InclineMeasure WHERE PipeID = '{1}') InclineMeasure ORDER BY MeasureTime DESC",
+            string strInclineSql = String.Format("SELECT TOP 1 * FROM (SELECT TOP {0} MeasureTime FROM InclineMeasure WHERE PipeID = {1}) InclineMeasure ORDER BY MeasureTime DESC",
                 iRecordIndex, iPipeId);
 
             //  read Incline records
@@ -423,7 +423,7 @@ namespace PipeSimulation.DataQuery
         }
 
         // Query
-        public override bool IsPipeStarted(string iPipeId)
+        public override bool IsPipeStarted(int iPipeId)
         {
             string strGpsSql = "SELECT TOP 1 PipeID FROM GPSMeasure ORDER BY MeasureID DESC";
 
@@ -434,7 +434,7 @@ namespace PipeSimulation.DataQuery
             sqlCmd = new SqlCommand(strGpsSql, m_dbConn);
             sqlDataReader = sqlCmd.ExecuteReader();
 
-            if (sqlDataReader.Read() && (sqlDataReader.GetString(0)) == iPipeId)
+            if (sqlDataReader.Read() && (sqlDataReader.GetInt32(0)) == iPipeId)
                 return true;
 
             string strInclineSql = "SELECT TOP 1 PipeID FROM InclineMeasure ORDER BY MeasureID DESC";
@@ -443,13 +443,13 @@ namespace PipeSimulation.DataQuery
             sqlCmd = new SqlCommand(strInclineSql, m_dbConn);
             sqlDataReader = sqlCmd.ExecuteReader();
 
-            if (sqlDataReader.Read() && (sqlDataReader.GetString(0)) == iPipeId)
+            if (sqlDataReader.Read() && (sqlDataReader.GetInt32(0)) == iPipeId)
                 return true;
 
             return false;
         }
 
-        public override bool IsPipeEnded(string iPipeId)
+        public override bool IsPipeEnded(int iPipeId)
         {
             return !IsPipeStarted(iPipeId);
         }
@@ -480,13 +480,13 @@ namespace PipeSimulation.DataQuery
         }
 
         // TODO: to be implemented
-        public override bool IsPipeStarted(string iPipeId)
+        public override bool IsPipeStarted(int iPipeId)
         {
             return false;
         }
 
         // TODO: to be implemented
-        public override bool IsPipeEnded(string iPipeId)
+        public override bool IsPipeEnded(int iPipeId)
         {
             return false;
         }
