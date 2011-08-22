@@ -141,6 +141,9 @@ void vtk3DSImporter::ComputeNormalsOff()
 
   vtk3DSImporter::~vtk3DSImporter() { }
 
+/// <summary>
+/// Return the ActorCollection
+/// </summary>
 vtkActorCollection^ vtk3DSImporter::ActorCollection()
 {
 	::vtkActorCollection* retVal = static_cast<::vtkActorCollection*>(vtk::ConvertManagedToNative<::vtk3DSImporter>(m_instance)->ActorCollection);

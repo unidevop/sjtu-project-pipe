@@ -142,7 +142,9 @@ public:
   /// </remarks>
   virtual ~vtk3DSImporter();
 
-	vtkActorCollection^ ActorCollection();
+  /// <summary>
+  /// Return the ActorCollection
+  vtkActorCollection^ ActorCollection();
 };
 
 } // end vtkHybrid
