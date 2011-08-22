@@ -1,0 +1,15 @@
+
+vtk3DWidget vtkWidgets
+vtkBoxWidget vtkWidgets
+vtkImagePlaneWidget vtkWidgets
+vtkImageTracerWidget vtkWidgets
+vtkImplicitPlaneWidget vtkWidgets
+vtkLineWidget vtkWidgets
+vtkOrientationMarkerWidget vtkWidgets
+vtkPlaneWidget vtkWidgets
+vtkPointWidget vtkWidgets
+vtkPolyDataSourceWidget vtkWidgets
+vtkScalarBarWidget vtkWidgets
+vtkSphereWidget vtkWidgets
+vtkSplineWidget vtkWidgets
+vtkXYPlotWidget vtkWidgets

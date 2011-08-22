@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+M:/thirdparties/VTK.Net/src/Utilities/vtkpng/CMakeLists.txt
+M:/thirdparties/VTK.Net/src/Utilities/vtkpng/.NoDartCoverage
+M:/thirdparties/VTK.Net/src/Utilities/vtkpng/pngDllConfig.h.in

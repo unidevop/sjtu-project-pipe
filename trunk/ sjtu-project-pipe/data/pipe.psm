@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<System>
+  <Pipes>
+    
+    <!-- The first pipe-->
+    <Pipe width ="45" height ="20" length ="80" >
+      <ModelPath>models\Pipe1.3ds</ModelPath>
+      <Pylon>
+        <ModelPath>models\taojiao1_1.3ds</ModelPath>
+      </Pylon>
+      <Pylon>
+        <ModelPath>models\taojiao1_2.3ds</ModelPath>
+      </Pylon>
+    </Pipe>
+    
+    <!-- The second pipe-->
+    <Pipe width ="36" height ="15" length ="90" d1 ="80" d2 ="" t1 ="" t2 ="">
+      <ModelPath>models\pipe2.3ds</ModelPath>
+      <Pylon>
+        <ModelPath>models\taojiao2_1.3ds</ModelPath>
+      </Pylon>
+      <Pylon>
+        <ModelPath>models\taojiao2_2.3ds</ModelPath>
+      </Pylon>
+    </Pipe>
+
+    <!-- The third pipe-->
+    <Pipe width ="36" height ="15" length ="90" d1 ="80" d2 ="" t1 ="" t2 ="">
+      <ModelPath>models\pipe3.3ds</ModelPath>
+      <Pylon>
+        <ModelPath>models\taojiao3_1.3ds</ModelPath>
+      </Pylon>
+      <Pylon>
+        <ModelPath>models\taojiao3_2.3ds</ModelPath>
+      </Pylon>
+    </Pipe>
+
+    <!-- The forth pipe-->
+    <Pipe width ="36" height ="15" length ="90" d1 ="80" d2 ="" t1 ="" t2 ="">
+       <ModelPath>models\pipe4.3ds</ModelPath>
+   </Pipe>
+  </Pipes>
+  <Model>
+    <ModelPath>models\anbian.3ds</ModelPath>
+  </Model>
+</System>

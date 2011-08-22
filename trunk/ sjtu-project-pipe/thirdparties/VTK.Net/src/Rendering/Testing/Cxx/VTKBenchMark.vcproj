@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding = "Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="9.00"
+	Name="VTKBenchMark"
+	ProjectGUID="{6F0611A8-BA15-4471-9E7D-56994608F5AE}"
+	Keyword="Win32Proj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="Debug"
+			IntermediateDirectory="VTKBenchMark.dir\Debug"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000"
+				AdditionalIncludeDirectories="M:\thirdparties\VTK.Net\src;M:\thirdparties\VTK.Net\src\Utilities;M:\thirdparties\VTK.Net\src\VolumeRendering;M:\thirdparties\VTK.Net\src\Rendering;M:\thirdparties\VTK.Net\src\Hybrid;M:\thirdparties\VTK.Net\src\Widgets;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx;M:\thirdparties\VTK.Net\src\IO;M:\thirdparties\VTK.Net\src\Imaging;M:\thirdparties\VTK.Net\src\Graphics;M:\thirdparties\VTK.Net\src\GenericFiltering;M:\thirdparties\VTK.Net\src\Filtering;M:\thirdparties\VTK.Net\src\Common;M:\thirdparties\VTK.Net\src\Common\Testing\Cxx;M:\thirdparties\VTK.Net\src\Utilities\DICOMParser;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype\include;M:\thirdparties\VTK.Net\src\Utilities\vtknetcdf;M:\thirdparties\VTK.Net\src\Utilities\vtkexodus2\include;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype;M:\thirdparties\VTK.Net\src\Utilities\ftgl\src;M:\thirdparties\VTK.Net\src\Utilities\ftgl;"
+				BasicRuntimeChecks="3"
+				CompileAs="2"
+				DebugInformationFormat="3"
+				ExceptionHandling="1"
+				InlineFunctionExpansion="0"
+				Optimization="0"
+				RuntimeLibrary="3"
+				RuntimeTypeInfo="TRUE"
+				WarningLevel="4"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;VTK_IN_VTK;CMAKE_INTDIR=\&quot;Debug\&quot;"
+				AssemblerListingLocation="Debug"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="M:\thirdparties\VTK.Net\src\bin\Debug/VTKBenchMark.pdb"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="M:\thirdparties\VTK.Net\src;M:\thirdparties\VTK.Net\src\Utilities;M:\thirdparties\VTK.Net\src\VolumeRendering;M:\thirdparties\VTK.Net\src\Rendering;M:\thirdparties\VTK.Net\src\Hybrid;M:\thirdparties\VTK.Net\src\Widgets;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx;M:\thirdparties\VTK.Net\src\IO;M:\thirdparties\VTK.Net\src\Imaging;M:\thirdparties\VTK.Net\src\Graphics;M:\thirdparties\VTK.Net\src\GenericFiltering;M:\thirdparties\VTK.Net\src\Filtering;M:\thirdparties\VTK.Net\src\Common;M:\thirdparties\VTK.Net\src\Common\Testing\Cxx;M:\thirdparties\VTK.Net\src\Utilities\DICOMParser;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype\include;M:\thirdparties\VTK.Net\src\Utilities\vtknetcdf;M:\thirdparties\VTK.Net\src\Utilities\vtkexodus2\include;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype;M:\thirdparties\VTK.Net\src\Utilities\ftgl\src;M:\thirdparties\VTK.Net\src\Utilities\ftgl;"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;VTK_IN_VTK;CMAKE_INTDIR=\&quot;Debug\&quot;"/>
+			<Tool
+				Name="VCMIDLTool"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86 /debug"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  ..\..\..\bin\Debug\vtkRendering.lib ..\..\..\bin\Debug\vtkIO.lib ..\..\..\bin\Debug\vtkDICOMParser.lib ..\..\..\bin\Debug\vtkpng.lib ..\..\..\bin\Debug\vtktiff.lib ..\..\..\bin\Debug\vtkzlib.lib ..\..\..\bin\Debug\vtkjpeg.lib ..\..\..\bin\Debug\vtkexpat.lib vfw32.lib ..\..\..\bin\Debug\vtkMPEG2Encode.lib ..\..\..\bin\Debug\vtkGraphics.lib ..\..\..\bin\Debug\vtkImaging.lib ..\..\..\bin\Debug\vtkFiltering.lib ..\..\..\bin\Debug\vtkCommon.lib ..\..\..\bin\Debug\vtksys.lib ..\..\..\bin\Debug\vtkftgl.lib ..\..\..\bin\Debug\vtkfreetype.lib opengl32.lib "
+				OutputFile="M:\thirdparties\VTK.Net\src\bin\Debug\VTKBenchMark.exe"
+				Version="0.0"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="..\..\..\bin\Debug\$(OutDir),..\..\..\bin\Debug"
+				ProgramDatabaseFile="M:\thirdparties\VTK.Net\src\bin\Debug/VTKBenchMark.pdb"
+				GenerateDebugInformation="TRUE"
+				SubSystem="1"
+				ImportLibrary="M:\thirdparties\VTK.Net\src\bin\Debug\VTKBenchMark.lib"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="Release"
+			IntermediateDirectory="VTKBenchMark.dir\Release"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000"
+				AdditionalIncludeDirectories="M:\thirdparties\VTK.Net\src;M:\thirdparties\VTK.Net\src\Utilities;M:\thirdparties\VTK.Net\src\VolumeRendering;M:\thirdparties\VTK.Net\src\Rendering;M:\thirdparties\VTK.Net\src\Hybrid;M:\thirdparties\VTK.Net\src\Widgets;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx;M:\thirdparties\VTK.Net\src\IO;M:\thirdparties\VTK.Net\src\Imaging;M:\thirdparties\VTK.Net\src\Graphics;M:\thirdparties\VTK.Net\src\GenericFiltering;M:\thirdparties\VTK.Net\src\Filtering;M:\thirdparties\VTK.Net\src\Common;M:\thirdparties\VTK.Net\src\Common\Testing\Cxx;M:\thirdparties\VTK.Net\src\Utilities\DICOMParser;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype\include;M:\thirdparties\VTK.Net\src\Utilities\vtknetcdf;M:\thirdparties\VTK.Net\src\Utilities\vtkexodus2\include;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype;M:\thirdparties\VTK.Net\src\Utilities\ftgl\src;M:\thirdparties\VTK.Net\src\Utilities\ftgl;"
+				CompileAs="2"
+				ExceptionHandling="1"
+				InlineFunctionExpansion="2"
+				Optimization="2"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="TRUE"
+				WarningLevel="4"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;VTK_IN_VTK;CMAKE_INTDIR=\&quot;Release\&quot;"
+				AssemblerListingLocation="Release"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="M:\thirdparties\VTK.Net\src\bin\Release/VTKBenchMark.pdb"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="M:\thirdparties\VTK.Net\src;M:\thirdparties\VTK.Net\src\Utilities;M:\thirdparties\VTK.Net\src\VolumeRendering;M:\thirdparties\VTK.Net\src\Rendering;M:\thirdparties\VTK.Net\src\Hybrid;M:\thirdparties\VTK.Net\src\Widgets;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx;M:\thirdparties\VTK.Net\src\IO;M:\thirdparties\VTK.Net\src\Imaging;M:\thirdparties\VTK.Net\src\Graphics;M:\thirdparties\VTK.Net\src\GenericFiltering;M:\thirdparties\VTK.Net\src\Filtering;M:\thirdparties\VTK.Net\src\Common;M:\thirdparties\VTK.Net\src\Common\Testing\Cxx;M:\thirdparties\VTK.Net\src\Utilities\DICOMParser;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype\include;M:\thirdparties\VTK.Net\src\Utilities\vtknetcdf;M:\thirdparties\VTK.Net\src\Utilities\vtkexodus2\include;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype;M:\thirdparties\VTK.Net\src\Utilities\ftgl\src;M:\thirdparties\VTK.Net\src\Utilities\ftgl;"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;VTK_IN_VTK;CMAKE_INTDIR=\&quot;Release\&quot;"/>
+			<Tool
+				Name="VCMIDLTool"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  ..\..\..\bin\Release\vtkRendering.lib ..\..\..\bin\Release\vtkIO.lib ..\..\..\bin\Release\vtkDICOMParser.lib ..\..\..\bin\Release\vtkpng.lib ..\..\..\bin\Release\vtktiff.lib ..\..\..\bin\Release\vtkzlib.lib ..\..\..\bin\Release\vtkjpeg.lib ..\..\..\bin\Release\vtkexpat.lib vfw32.lib ..\..\..\bin\Release\vtkMPEG2Encode.lib ..\..\..\bin\Release\vtkGraphics.lib ..\..\..\bin\Release\vtkImaging.lib ..\..\..\bin\Release\vtkFiltering.lib ..\..\..\bin\Release\vtkCommon.lib ..\..\..\bin\Release\vtksys.lib ..\..\..\bin\Release\vtkftgl.lib ..\..\..\bin\Release\vtkfreetype.lib opengl32.lib "
+				OutputFile="M:\thirdparties\VTK.Net\src\bin\Release\VTKBenchMark.exe"
+				Version="0.0"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="..\..\..\bin\Release\$(OutDir),..\..\..\bin\Release"
+				ProgramDatabaseFile="M:\thirdparties\VTK.Net\src\bin\Release/VTKBenchMark.pdb"
+				SubSystem="1"
+				ImportLibrary="M:\thirdparties\VTK.Net\src\bin\Release\VTKBenchMark.lib"/>
+		</Configuration>
+		<Configuration
+			Name="MinSizeRel|Win32"
+			OutputDirectory="MinSizeRel"
+			IntermediateDirectory="VTKBenchMark.dir\MinSizeRel"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000"
+				AdditionalIncludeDirectories="M:\thirdparties\VTK.Net\src;M:\thirdparties\VTK.Net\src\Utilities;M:\thirdparties\VTK.Net\src\VolumeRendering;M:\thirdparties\VTK.Net\src\Rendering;M:\thirdparties\VTK.Net\src\Hybrid;M:\thirdparties\VTK.Net\src\Widgets;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx;M:\thirdparties\VTK.Net\src\IO;M:\thirdparties\VTK.Net\src\Imaging;M:\thirdparties\VTK.Net\src\Graphics;M:\thirdparties\VTK.Net\src\GenericFiltering;M:\thirdparties\VTK.Net\src\Filtering;M:\thirdparties\VTK.Net\src\Common;M:\thirdparties\VTK.Net\src\Common\Testing\Cxx;M:\thirdparties\VTK.Net\src\Utilities\DICOMParser;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype\include;M:\thirdparties\VTK.Net\src\Utilities\vtknetcdf;M:\thirdparties\VTK.Net\src\Utilities\vtkexodus2\include;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype;M:\thirdparties\VTK.Net\src\Utilities\ftgl\src;M:\thirdparties\VTK.Net\src\Utilities\ftgl;"
+				CompileAs="2"
+				ExceptionHandling="1"
+				InlineFunctionExpansion="1"
+				Optimization="1"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="TRUE"
+				WarningLevel="4"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;VTK_IN_VTK;CMAKE_INTDIR=\&quot;MinSizeRel\&quot;"
+				AssemblerListingLocation="MinSizeRel"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="M:\thirdparties\VTK.Net\src\bin\MinSizeRel/VTKBenchMark.pdb"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="M:\thirdparties\VTK.Net\src;M:\thirdparties\VTK.Net\src\Utilities;M:\thirdparties\VTK.Net\src\VolumeRendering;M:\thirdparties\VTK.Net\src\Rendering;M:\thirdparties\VTK.Net\src\Hybrid;M:\thirdparties\VTK.Net\src\Widgets;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx;M:\thirdparties\VTK.Net\src\IO;M:\thirdparties\VTK.Net\src\Imaging;M:\thirdparties\VTK.Net\src\Graphics;M:\thirdparties\VTK.Net\src\GenericFiltering;M:\thirdparties\VTK.Net\src\Filtering;M:\thirdparties\VTK.Net\src\Common;M:\thirdparties\VTK.Net\src\Common\Testing\Cxx;M:\thirdparties\VTK.Net\src\Utilities\DICOMParser;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype\include;M:\thirdparties\VTK.Net\src\Utilities\vtknetcdf;M:\thirdparties\VTK.Net\src\Utilities\vtkexodus2\include;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype;M:\thirdparties\VTK.Net\src\Utilities\ftgl\src;M:\thirdparties\VTK.Net\src\Utilities\ftgl;"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;VTK_IN_VTK;CMAKE_INTDIR=\&quot;MinSizeRel\&quot;"/>
+			<Tool
+				Name="VCMIDLTool"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  ..\..\..\bin\MinSizeRel\vtkRendering.lib ..\..\..\bin\MinSizeRel\vtkIO.lib ..\..\..\bin\MinSizeRel\vtkDICOMParser.lib ..\..\..\bin\MinSizeRel\vtkpng.lib ..\..\..\bin\MinSizeRel\vtktiff.lib ..\..\..\bin\MinSizeRel\vtkzlib.lib ..\..\..\bin\MinSizeRel\vtkjpeg.lib ..\..\..\bin\MinSizeRel\vtkexpat.lib vfw32.lib ..\..\..\bin\MinSizeRel\vtkMPEG2Encode.lib ..\..\..\bin\MinSizeRel\vtkGraphics.lib ..\..\..\bin\MinSizeRel\vtkImaging.lib ..\..\..\bin\MinSizeRel\vtkFiltering.lib ..\..\..\bin\MinSizeRel\vtkCommon.lib ..\..\..\bin\MinSizeRel\vtksys.lib ..\..\..\bin\MinSizeRel\vtkftgl.lib ..\..\..\bin\MinSizeRel\vtkfreetype.lib opengl32.lib "
+				OutputFile="M:\thirdparties\VTK.Net\src\bin\MinSizeRel\VTKBenchMark.exe"
+				Version="0.0"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="..\..\..\bin\MinSizeRel\$(OutDir),..\..\..\bin\MinSizeRel"
+				ProgramDatabaseFile="M:\thirdparties\VTK.Net\src\bin\MinSizeRel/VTKBenchMark.pdb"
+				SubSystem="1"
+				ImportLibrary="M:\thirdparties\VTK.Net\src\bin\MinSizeRel\VTKBenchMark.lib"/>
+		</Configuration>
+		<Configuration
+			Name="RelWithDebInfo|Win32"
+			OutputDirectory="RelWithDebInfo"
+			IntermediateDirectory="VTKBenchMark.dir\RelWithDebInfo"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000"
+				AdditionalIncludeDirectories="M:\thirdparties\VTK.Net\src;M:\thirdparties\VTK.Net\src\Utilities;M:\thirdparties\VTK.Net\src\VolumeRendering;M:\thirdparties\VTK.Net\src\Rendering;M:\thirdparties\VTK.Net\src\Hybrid;M:\thirdparties\VTK.Net\src\Widgets;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx;M:\thirdparties\VTK.Net\src\IO;M:\thirdparties\VTK.Net\src\Imaging;M:\thirdparties\VTK.Net\src\Graphics;M:\thirdparties\VTK.Net\src\GenericFiltering;M:\thirdparties\VTK.Net\src\Filtering;M:\thirdparties\VTK.Net\src\Common;M:\thirdparties\VTK.Net\src\Common\Testing\Cxx;M:\thirdparties\VTK.Net\src\Utilities\DICOMParser;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype\include;M:\thirdparties\VTK.Net\src\Utilities\vtknetcdf;M:\thirdparties\VTK.Net\src\Utilities\vtkexodus2\include;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype;M:\thirdparties\VTK.Net\src\Utilities\ftgl\src;M:\thirdparties\VTK.Net\src\Utilities\ftgl;"
+				CompileAs="2"
+				DebugInformationFormat="3"
+				ExceptionHandling="1"
+				InlineFunctionExpansion="1"
+				Optimization="2"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="TRUE"
+				WarningLevel="4"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;VTK_IN_VTK;CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;"
+				AssemblerListingLocation="RelWithDebInfo"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="M:\thirdparties\VTK.Net\src\bin\RelWithDebInfo/VTKBenchMark.pdb"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="M:\thirdparties\VTK.Net\src;M:\thirdparties\VTK.Net\src\Utilities;M:\thirdparties\VTK.Net\src\VolumeRendering;M:\thirdparties\VTK.Net\src\Rendering;M:\thirdparties\VTK.Net\src\Hybrid;M:\thirdparties\VTK.Net\src\Widgets;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx;M:\thirdparties\VTK.Net\src\IO;M:\thirdparties\VTK.Net\src\Imaging;M:\thirdparties\VTK.Net\src\Graphics;M:\thirdparties\VTK.Net\src\GenericFiltering;M:\thirdparties\VTK.Net\src\Filtering;M:\thirdparties\VTK.Net\src\Common;M:\thirdparties\VTK.Net\src\Common\Testing\Cxx;M:\thirdparties\VTK.Net\src\Utilities\DICOMParser;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype\include;M:\thirdparties\VTK.Net\src\Utilities\vtknetcdf;M:\thirdparties\VTK.Net\src\Utilities\vtkexodus2\include;M:\thirdparties\VTK.Net\src\Utilities\vtkfreetype;M:\thirdparties\VTK.Net\src\Utilities\ftgl\src;M:\thirdparties\VTK.Net\src\Utilities\ftgl;"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;VTK_IN_VTK;CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;"/>
+			<Tool
+				Name="VCMIDLTool"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86 /debug"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  ..\..\..\bin\RelWithDebInfo\vtkRendering.lib ..\..\..\bin\RelWithDebInfo\vtkIO.lib ..\..\..\bin\RelWithDebInfo\vtkDICOMParser.lib ..\..\..\bin\RelWithDebInfo\vtkpng.lib ..\..\..\bin\RelWithDebInfo\vtktiff.lib ..\..\..\bin\RelWithDebInfo\vtkzlib.lib ..\..\..\bin\RelWithDebInfo\vtkjpeg.lib ..\..\..\bin\RelWithDebInfo\vtkexpat.lib vfw32.lib ..\..\..\bin\RelWithDebInfo\vtkMPEG2Encode.lib ..\..\..\bin\RelWithDebInfo\vtkGraphics.lib ..\..\..\bin\RelWithDebInfo\vtkImaging.lib ..\..\..\bin\RelWithDebInfo\vtkFiltering.lib ..\..\..\bin\RelWithDebInfo\vtkCommon.lib ..\..\..\bin\RelWithDebInfo\vtksys.lib ..\..\..\bin\RelWithDebInfo\vtkftgl.lib ..\..\..\bin\RelWithDebInfo\vtkfreetype.lib opengl32.lib "
+				OutputFile="M:\thirdparties\VTK.Net\src\bin\RelWithDebInfo\VTKBenchMark.exe"
+				Version="0.0"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="..\..\..\bin\RelWithDebInfo\$(OutDir),..\..\..\bin\RelWithDebInfo"
+				ProgramDatabaseFile="M:\thirdparties\VTK.Net\src\bin\RelWithDebInfo/VTKBenchMark.pdb"
+				GenerateDebugInformation="TRUE"
+				SubSystem="1"
+				ImportLibrary="M:\thirdparties\VTK.Net\src\bin\RelWithDebInfo\VTKBenchMark.lib"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\CMakeLists.txt">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule M:/thirdparties/VTK.Net/src/Rendering/Testing/Cxx/CMakeLists.txt"
+					CommandLine="&quot;C:\CMake 2.8\bin\cmake.exe&quot; -HM:/thirdparties/VTK.Net/src -BM:/thirdparties/VTK.Net/src --check-stamp-file M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto :VCReportError"
+					AdditionalDependencies="M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\CMakeLists.txt;&quot;C:\CMake 2.8\share\cmake-2.8\Templates\TestDriver.cxx.in&quot;;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\CMakeLists.txt;"
+					Outputs="M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule M:/thirdparties/VTK.Net/src/Rendering/Testing/Cxx/CMakeLists.txt"
+					CommandLine="&quot;C:\CMake 2.8\bin\cmake.exe&quot; -HM:/thirdparties/VTK.Net/src -BM:/thirdparties/VTK.Net/src --check-stamp-file M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto :VCReportError"
+					AdditionalDependencies="M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\CMakeLists.txt;&quot;C:\CMake 2.8\share\cmake-2.8\Templates\TestDriver.cxx.in&quot;;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\CMakeLists.txt;"
+					Outputs="M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MinSizeRel|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule M:/thirdparties/VTK.Net/src/Rendering/Testing/Cxx/CMakeLists.txt"
+					CommandLine="&quot;C:\CMake 2.8\bin\cmake.exe&quot; -HM:/thirdparties/VTK.Net/src -BM:/thirdparties/VTK.Net/src --check-stamp-file M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto :VCReportError"
+					AdditionalDependencies="M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\CMakeLists.txt;&quot;C:\CMake 2.8\share\cmake-2.8\Templates\TestDriver.cxx.in&quot;;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\CMakeLists.txt;"
+					Outputs="M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="RelWithDebInfo|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule M:/thirdparties/VTK.Net/src/Rendering/Testing/Cxx/CMakeLists.txt"
+					CommandLine="&quot;C:\CMake 2.8\bin\cmake.exe&quot; -HM:/thirdparties/VTK.Net/src -BM:/thirdparties/VTK.Net/src --check-stamp-file M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto :VCReportError"
+					AdditionalDependencies="M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\CMakeLists.txt;&quot;C:\CMake 2.8\share\cmake-2.8\Templates\TestDriver.cxx.in&quot;;M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\CMakeLists.txt;"
+					Outputs="M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+			</File>
+		<Filter
+			Name="Source Files"
+			Filter="">
+			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\Rendering\Testing\Cxx\VTKBenchMark.cxx">
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>
