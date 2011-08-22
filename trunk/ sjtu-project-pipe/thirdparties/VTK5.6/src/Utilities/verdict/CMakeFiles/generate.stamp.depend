@@ -1,4 +1,0 @@
-# CMake generation dependency list for this directory.
-M:/thirdparties/VTK5.6/src/Utilities/verdict/CMakeLists.txt
-M:/thirdparties/VTK5.6/src/Utilities/verdict/verdict_mangle.h.in
-M:/thirdparties/VTK5.6/src/Utilities/verdict/verdict.h.in

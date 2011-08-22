@@ -1,5 +1,0 @@
-# CMake generation dependency list for this directory.
-M:/thirdparties/VTK.Net/src/Utilities/vtkexpat/CMakeLists.txt
-M:/thirdparties/VTK.Net/src/Utilities/vtkexpat/expatConfig.h.in
-M:/thirdparties/VTK.Net/src/Utilities/vtkexpat/expatDllConfig.h.in
-M:/thirdparties/VTK.Net/src/Utilities/vtkexpat/.NoDartCoverage

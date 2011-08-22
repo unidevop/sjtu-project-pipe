@@ -1,4 +1,0 @@
-# CMake generation dependency list for this directory.
-M:/thirdparties/VTK.Net/src/Utilities/vtkmpeg2encode/CMakeLists.txt
-M:/thirdparties/VTK.Net/src/Utilities/vtkmpeg2encode/.NoDartCoverage
-M:/thirdparties/VTK.Net/src/Utilities/vtkmpeg2encode/mpeg2encDllConfig.h.in

@@ -1,4 +1,0 @@
-# CMake generation dependency list for this directory.
-M:/thirdparties/VTK5.6/src/Examples/Modelling/Cxx/CMakeLists.txt
-M:/thirdparties/VTK5.6/src/Rendering/vtkTestingObjectFactory.cmake
-C:/CMake 2.8/share/cmake-2.8/Templates/TestDriver.cxx.in
