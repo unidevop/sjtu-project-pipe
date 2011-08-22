@@ -1,0 +1,9 @@
+# CMake generation dependency list for this directory.
+M:/thirdparties/VTK.Net/src/Utilities/vtknetcdf/CMakeLists.txt
+C:/CMake 2.8/share/cmake-2.8/Modules/CheckIncludeFiles.cmake
+C:/CMake 2.8/share/cmake-2.8/Modules/CheckFunctionExists.cmake
+C:/CMake 2.8/share/cmake-2.8/Modules/CheckTypeSize.cmake
+C:/CMake 2.8/share/cmake-2.8/Modules/CheckIncludeFile.cmake
+C:/CMake 2.8/share/cmake-2.8/Modules/CheckSymbolExists.cmake
+C:/CMake 2.8/share/cmake-2.8/Modules/TestBigEndian.cmake
+M:/thirdparties/VTK.Net/src/Utilities/vtknetcdf/ncconfig.h.in

@@ -1,0 +1,60 @@
+Checking for non-standard argument to stl allocator<>::max_size failed to compile with the following output:
+Change Dir: M:/thirdparties/VTK.Net/src/Utilities/kwsys/CMakeFiles/CMakeTmp
+
+Run Build Command:c:\PROGRA~1\MICROS~1.0\Common7\IDE\devenv.com CMAKE_TRY_COMPILE.sln /build Debug /project cmTryCompileExec
+
+Microsoft (R) Visual Studio Version 9.0.30729.1.
+Copyright (C) Microsoft Corp. All rights reserved.
+1>------ Build started: Project: cmTryCompileExec, Configuration: Debug Win32 ------
+1>Compiling...
+1>Microsoft (R) 32-bit C/C++ Optimizing Compiler Version 15.00.30729.01 for 80x86
+1>Copyright (C) Microsoft Corporation.  All rights reserved.
+1>cl /Od /D "WIN32" /D "_WINDOWS" /D "_DEBUG" /D "TEST_KWSYS_STL_HAS_ALLOCATOR_MAX_SIZE_ARGUMENT" /D "KWSYS_STL_HAVE_STD=1" /D "CMAKE_INTDIR=\"Debug\"" /D "_MBCS" /FD /EHsc /RTC1 /MDd /Fo"cmTryCompileExec.dir\Debug\\" /Fd"M:\thirdparties\VTK.Net\src\Utilities\kwsys\CMakeFiles\CMakeTmp\Debug/cmTryCompileExec.pdb" /W4 /c /Zi /TP   /Zm1000
+1>   ..\..\kwsysPlatformCxxTests.cxx
+1>kwsysPlatformCxxTests.cxx
+1>..\..\kwsysPlatformCxxTests.cxx(190) : error C2660: 'std::allocator<_Ty>::max_size' : function does not take 1 arguments
+1>        with
+1>        [
+1>            _Ty=char
+1>        ]
+1>Build log was saved at "file://m:\thirdparties\VTK.Net\src\Utilities\kwsys\CMakeFiles\CMakeTmp\cmTryCompileExec.dir\Debug\BuildLog.htm"
+1>cmTryCompileExec - 1 error(s), 0 warning(s)
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
+
+
+
+Checking whether "<>" is needed for template friends failed to compile with the following output:
+Change Dir: M:/thirdparties/VTK.Net/src/Utilities/kwsys/CMakeFiles/CMakeTmp
+
+Run Build Command:c:\PROGRA~1\MICROS~1.0\Common7\IDE\devenv.com CMAKE_TRY_COMPILE.sln /build Debug /project cmTryCompileExec
+
+Microsoft (R) Visual Studio Version 9.0.30729.1.
+Copyright (C) Microsoft Corp. All rights reserved.
+1>------ Build started: Project: cmTryCompileExec, Configuration: Debug Win32 ------
+1>Compiling...
+1>Microsoft (R) 32-bit C/C++ Optimizing Compiler Version 15.00.30729.01 for 80x86
+1>Copyright (C) Microsoft Corporation.  All rights reserved.
+1>cl /Od /D "WIN32" /D "_WINDOWS" /D "_DEBUG" /D "TEST_KWSYS_CXX_HAS_NULL_TEMPLATE_ARGS" /D "CMAKE_INTDIR=\"Debug\"" /D "_MBCS" /FD /EHsc /RTC1 /MDd /Fo"cmTryCompileExec.dir\Debug\\" /Fd"M:\thirdparties\VTK.Net\src\Utilities\kwsys\CMakeFiles\CMakeTmp\Debug/cmTryCompileExec.pdb" /W4 /c /Zi /TP   /Zm1000
+1>   ..\..\kwsysPlatformCxxTests.cxx
+1>kwsysPlatformCxxTests.cxx
+1>..\..\kwsysPlatformCxxTests.cxx(80) : error C2248: 'A<T>::x' : cannot access private member declared in class 'A<T>'
+1>        with
+1>        [
+1>            T=int
+1>        ]
+1>        ..\..\kwsysPlatformCxxTests.cxx(77) : see declaration of 'A<T>::x'
+1>        with
+1>        [
+1>            T=int
+1>        ]
+1>        ..\..\kwsysPlatformCxxTests.cxx(81) : see reference to function template instantiation 'int f<int>(A<T> &)' being compiled
+1>        with
+1>        [
+1>            T=int
+1>        ]
+1>Build log was saved at "file://m:\thirdparties\VTK.Net\src\Utilities\kwsys\CMakeFiles\CMakeTmp\cmTryCompileExec.dir\Debug\BuildLog.htm"
+1>cmTryCompileExec - 1 error(s), 0 warning(s)
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
+
+
+

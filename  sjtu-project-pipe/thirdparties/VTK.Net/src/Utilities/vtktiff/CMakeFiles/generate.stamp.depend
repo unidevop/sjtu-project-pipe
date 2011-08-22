@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+M:/thirdparties/VTK.Net/src/Utilities/vtktiff/CMakeLists.txt
+M:/thirdparties/VTK.Net/src/Utilities/vtktiff/.NoDartCoverage
+M:/thirdparties/VTK.Net/src/Utilities/vtktiff/tiffDllConfig.h.in

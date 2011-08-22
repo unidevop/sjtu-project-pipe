@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B63DFD16-8D70-46FF-93D2-39B523FEBBFD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PipeSimulation</RootNamespace>
+    <AssemblyName>PipeSimulation</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\thirdparties\VTK.Net\src\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\thirdparties\VTK.Net\src\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\thirdparties\VTK.Net\src\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>..\..\thirdparties\VTK.Net\src\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="vtkCommonDotNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86" />
+    <Reference Include="vtkFilteringDotNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86" />
+    <Reference Include="vtkGenericFilteringDotNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86" />
+    <Reference Include="vtkGraphicsDotNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86" />
+    <Reference Include="vtkHybridDotNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86" />
+    <Reference Include="vtkImagingDotNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86" />
+    <Reference Include="vtkIODotNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86" />
+    <Reference Include="vtkRenderingDotNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86" />
+    <Reference Include="vtkVolumeRenderingDotNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86" />
+    <Reference Include="vtkWidgetsDotNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppFramework\app.cs" />
+    <Compile Include="Commands\command_id.cs" />
+    <Compile Include="Commands\command_impl.cs" />
+    <Compile Include="Commands\savepicturecommand.cs" />
+    <Compile Include="Commands\view_commands.cs" />
+    <Compile Include="DataModel\statisticDisplayer.cs" />
+    <Compile Include="DataModel\CommonDefinition.cs" />
+    <Compile Include="DataModel\datamode_impl.cs" />
+    <Compile Include="DataModel\models.cs" />
+    <Compile Include="ModelDriven\driveModel.cs" />
+    <Compile Include="ModelDriven\driveModel_impl.cs" />
+    <Compile Include="Scene\sceneNode_impl.cs" />
+    <Compile Include="AppFramework\app_interface.cs" />
+    <Compile Include="Commands\command_interface.cs" />
+    <Compile Include="DataModel\dataModel.cs" />
+    <Compile Include="ModelDriven\observerMode.cs" />
+    <Compile Include="Scene\sceneNode.cs" />
+    <Compile Include="ModelDriven\observeMode_impl.cs" />
+    <Compile Include="DataModel\statistic.cs" />
+    <Compile Include="SplashScreen\SplashScreen.cs" />
+    <Compile Include="SplashScreen\SplashScreenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen\SplashScreenForm.designer.cs">
+      <DependentUpon>SplashScreenForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilites\aviWriter.cs" />
+    <Compile Include="Utilites\folderSearch.cs" />
+    <Compile Include="Utilites\InfoPostor.cs" />
+    <Compile Include="main.cs" />
+    <Compile Include="MainUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainUI.Designer.cs">
+      <DependentUpon>MainUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MainUI.resx">
+      <DependentUpon>MainUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Utilites\imageOuputUtil.cs" />
+    <Compile Include="Utilites\modelReader.cs" />
+    <Compile Include="Utilites\videoWriter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataQuery\DataQuery.csproj">
+      <Project>{C0A7CE25-8185-476C-9BB3-6806996E7AC0}</Project>
+      <Name>DataQuery</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\vtkFormsWindow\vtkFormsWindow.vcproj">
+      <Project>{607B6335-3997-4360-8353-8B15A84F35D5}</Project>
+      <Name>vtkFormsWindow</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\SWOrbit.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\SWPan.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\SWZoom.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\res\NavBarOrbit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\res\NavBarPan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\res\NavBarZoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\res\NavBarZoomAll.png" />
+    <EmbeddedResource Include="SplashScreen\SplashScreenForm.resx">
+      <DependentUpon>SplashScreenForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\BackView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\BottomView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\FrontView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\LeftView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\NEIsoMetric.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\NWIsoMetric.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\RightView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\SEIsoMetric.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\SWIsoMetric.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\TopView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\res\logo.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\BeginingAnimation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\EndAnimation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\StartAnimation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\StopAnimation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\res\record_icon.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

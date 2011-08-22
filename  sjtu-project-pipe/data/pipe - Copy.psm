@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<System>
+  <Pipes>
+    
+    <!-- The first pipe-->
+    <Pipe width ="45" height ="20" length ="80" >
+      <ModelPath>pipe_1.3ds</ModelPath>
+      <Pylon height ="70" d ="30" t ="30">
+         <ModelPath>tajia_1.3ds</ModelPath>
+      </Pylon>
+      <Pylon height ="60" d ="40" t ="45">
+         <ModelPath>dianpian_1.3ds</ModelPath>
+      </Pylon>
+    </Pipe>
+    
+    <!-- The second pipe--><!--
+    <Model Id ="66DDCDF5-811A-4B17-9DF2-D7212D7679AA" type ="pipe"  width ="36" height ="15" length ="90" d1 ="80" d2 ="" t1 ="" t2 ="">
+      <ModelPath>pipe_2.3ds</ModelPath>
+      <Models>
+        <Model Id="091F682D-17E2-482F-B24F-6261FA7D8744" type ="">
+          <ModelPath>tajia_2.3ds</ModelPath>
+        </Model>
+        <Model Id="447AA3F5-4A64-4B1C-AD78-0C26B6B3461D" type ="">
+          <ModelPath>dianpian_2.3ds</ModelPath>
+        </Model>
+      </Models>
+    </Model>-->
+  </Pipes>
+</System>
