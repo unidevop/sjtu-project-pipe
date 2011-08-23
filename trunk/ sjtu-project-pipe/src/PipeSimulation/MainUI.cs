@@ -117,14 +117,55 @@ namespace PipeSimulation
         // Initialize the text actor
         private void InitializeTextActor()
         {
-            // Initialize the text
-            CStatisticTextSceneDisplayer sceneTextDisplayer = IApp.theApp.StatisticTextDisplayer as CStatisticTextSceneDisplayer;
-            if (sceneTextDisplayer != null)
+            // Initialize the text for statistic
+            CTextSceneDisplayer statisticTextDisplayer = IApp.theApp.StatisticTextDisplayer as CTextSceneDisplayer;
+            if (statisticTextDisplayer != null)
             {
-                sceneTextDisplayer.Setup();
+                statisticTextDisplayer.Setup();
+                statisticTextDisplayer.TextActor.GetTextProperty().SetFontSize(18);
+                statisticTextDisplayer.TextActor.GetTextProperty().SetJustificationToLeft();
+                statisticTextDisplayer.TextActor.GetTextProperty().SetVerticalJustificationToTop();
+                statisticTextDisplayer.TextActor.GetTextProperty().SetColor(1.0, 0.0, 0.0);
+            }
 
-                IApp.theApp.vtkControl.SizeChanged += sceneTextDisplayer.OnControlSizeChanged;
-                //IApp.theApp.vtkControl.Paint += sceneTextDisplayer.OnControlPaint;
+            // Initialize the text for warning
+            CTextSceneDisplayer warningTextDisplayer = IApp.theApp.WarningTextDisplayer as CTextSceneDisplayer;
+            if (warningTextDisplayer != null)
+            {
+                warningTextDisplayer.Setup();
+                warningTextDisplayer.TextActor.GetTextProperty().SetFontSize(18);
+                warningTextDisplayer.TextActor.GetTextProperty().SetJustificationToRight();
+                warningTextDisplayer.TextActor.GetTextProperty().SetVerticalJustificationToTop();
+                warningTextDisplayer.TextActor.GetTextProperty().SetColor(1.0, 0.0, 0.0);
+            }
+            
+            // Watch the size changed to reposition the text actors
+            IApp.theApp.vtkControl.SizeChanged += OnControlSizeChanged;
+        }
+
+        protected void OnControlSizeChanged(object sender, EventArgs e)
+        {
+            Control control = sender as Control;
+            if (control == null) return;
+
+            vtk.vtkTextActor textActorStatistic = IApp.theApp.StatisticTextDisplayer.TextActor;
+            vtk.vtkTextActor textActorWarning = IApp.theApp.WarningTextDisplayer.TextActor;
+
+            Size sizeControl = control.Size;
+            if (sizeControl.Width <= CTextSceneDisplayer.sMinX
+            || sizeControl.Height <= CTextSceneDisplayer.sMinY)
+            {
+                textActorStatistic.VisibilityOff();
+                textActorWarning.VisibilityOff();
+            }
+            else
+            {
+                textActorStatistic.VisibilityOn();
+                textActorWarning.VisibilityOn();
+
+                // Update statistic text display positon
+                textActorStatistic.SetDisplayPosition(CTextSceneDisplayer.sMinX, (sizeControl.Height - CTextSceneDisplayer.sMinY));
+                textActorWarning.SetDisplayPosition(sizeControl.Width - CTextSceneDisplayer.sMinX, (sizeControl.Height - CTextSceneDisplayer.sMinY));
             }
         }
 
@@ -795,7 +836,11 @@ namespace PipeSimulation
         public void OnRenderCallback(vtk.vtkObject caller, uint eventId, object clientData, IntPtr callData)
         {
             // Update the Text Display
-            IApp.theApp.StatisticTextDisplayer.DisplayStatisticText();
+            CStatisticData data = new CStatisticData();
+            IApp.theApp.StatisticTextDisplayer.DisplayText(data.ToString());
+
+            CStatisticData data2 = new CStatisticData();
+            IApp.theApp.WarningTextDisplayer.DisplayText(data2.ToString());
 
             // Update the Video record
             if (IApp.theApp.VideoWriter.IsRecording)
