@@ -61,6 +61,13 @@ namespace PipeSimulation
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showStatisticTextDisplayer = new System.Windows.Forms.ToolStripMenuItem();
+            this.showWarningTextDisplayer = new System.Windows.Forms.ToolStripMenuItem();
+            this.showWCS = new System.Windows.Forms.ToolStripMenuItem();
+            this.showNonePipeObjects = new System.Windows.Forms.ToolStripMenuItem();
+
             this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.monitorModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.replayModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -337,6 +344,7 @@ namespace PipeSimulation
             this.menuStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.viewToolStripMenuItem,
             this.modeToolStripMenuItem,
             this.toolsToolStripMenuItem,
             this.aboutToolStripMenuItem});
@@ -387,6 +395,50 @@ namespace PipeSimulation
             this.replayModeToolStripMenuItem.Text = "Replay Mode";
             this.replayModeToolStripMenuItem.Click += new System.EventHandler(this.replayModeToolStripMenuItem_Click);
             this.replayModeToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.R;
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showStatisticTextDisplayer,
+            this.showWarningTextDisplayer,
+            this.showWCS,
+            this.showNonePipeObjects});
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.viewToolStripMenuItem.Text = "&View";
+            this.viewToolStripMenuItem.DropDownOpening += new EventHandler(viewToolStripMenuItem_DropDownOpening);
+            // 
+            // showStatisticTextDisplayer
+            // 
+            this.showStatisticTextDisplayer.Name = "showStatisticTextDisplayer";
+            this.showStatisticTextDisplayer.Size = new System.Drawing.Size(151, 22);
+            this.showStatisticTextDisplayer.Text = "Show Statistic Text";
+            this.showStatisticTextDisplayer.Click += new EventHandler(showStatisticTextDisplayer_Click);
+            this.showStatisticTextDisplayer.ShortcutKeys = Keys.Control | Keys.Shift | Keys.D1;
+            // 
+            // showWarningTextDisplayer
+            // 
+            this.showWarningTextDisplayer.Name = "showWarningTextDisplayer";
+            this.showWarningTextDisplayer.Size = new System.Drawing.Size(151, 22);
+            this.showWarningTextDisplayer.Text = "Show Warning Text";
+            this.showWarningTextDisplayer.Click +=new EventHandler(showWarningTextDisplayer_Click);
+            this.showWarningTextDisplayer.ShortcutKeys = Keys.Control | Keys.Shift | Keys.D2;
+            // 
+            // showWCS
+            // 
+            this.showWCS.Name = "showWCS";
+            this.showWCS.Size = new System.Drawing.Size(151, 22);
+            this.showWCS.Text = "Show WCS";
+            this.showWCS.Click += new EventHandler(showWCS_Click);
+            this.showWCS.ShortcutKeys = Keys.Control | Keys.Shift | Keys.D3;
+            // 
+            // showNonePipeObjects
+            // 
+            this.showNonePipeObjects.Name = "showNonePipeObjects";
+            this.showNonePipeObjects.Size = new System.Drawing.Size(151, 22);
+            this.showNonePipeObjects.Text = "Show none pipe models";
+            this.showNonePipeObjects.Click += new EventHandler(showNonePipeObjects_Click);
+            this.showNonePipeObjects.ShortcutKeys = Keys.Control | Keys.Shift | Keys.D4;
             // 
             // toolsToolStripMenuItem
             // 
@@ -798,6 +850,11 @@ namespace PipeSimulation
         private ToolStripMenuItem modeToolStripMenuItem;
         private ToolStripMenuItem monitorModeToolStripMenuItem;
         private ToolStripMenuItem replayModeToolStripMenuItem;
+        private ToolStripMenuItem viewToolStripMenuItem;
+        private ToolStripMenuItem showStatisticTextDisplayer;
+        private ToolStripMenuItem showWarningTextDisplayer;
+        private ToolStripMenuItem showWCS;
+        private ToolStripMenuItem showNonePipeObjects;
         private ToolStrip toolStripReplay;
         private ToolStripComboBox toolStripComboBoxPipes;
         private ToolStripSeparator toolStripSeparator3;
