@@ -26,7 +26,8 @@ namespace PipeSimulation
             abstract public IObserverModeManager ObserverModeManager { get; }
             abstract public IDataQuery DataQuery { get; }
             abstract public IDataDriven DataDriven { get; }
-            abstract public IStatisticTextDisplayer StatisticTextDisplayer { get; }
+            abstract public ITextDisplayer StatisticTextDisplayer { get; }
+            abstract public ITextDisplayer WarningTextDisplayer { get; }
             abstract public IVideoWriter VideoWriter { get; }
             public static IApp theApp
             {
