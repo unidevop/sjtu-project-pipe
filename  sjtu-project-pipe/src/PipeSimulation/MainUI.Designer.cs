@@ -80,10 +80,10 @@ namespace PipeSimulation
             this.toolStripButtonStopAnimation = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonBegining = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonEnd = new System.Windows.Forms.ToolStripButton();
+            this.viewSpecificTimerScene = new System.Windows.Forms.ToolStripButton();
             this.trackBarAnimation = new System.Windows.Forms.TrackBar();
             this.toolStripLabelAnimationTime = new System.Windows.Forms.ToolStripLabel();
             this.toolTipAnimation = new System.Windows.Forms.ToolTip(this.components);
-            this.dateTimerPicker = new System.Windows.Forms.DateTimePicker();
             this.splitContainerMain.Panel2.SuspendLayout();
             this.splitContainerMain.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -472,7 +472,8 @@ namespace PipeSimulation
             this.toolStripButtonEnd,
             new System.Windows.Forms.ToolStripControlHost(this.trackBarAnimation, this.trackBarAnimation.Name),
             this.toolStripLabelAnimationTime,
-            new System.Windows.Forms.ToolStripControlHost(this.dateTimerPicker, this.dateTimerPicker.Name) });
+            this.toolStripSeparator3,
+            this.viewSpecificTimerScene});
             this.toolStripReplay.Location = new System.Drawing.Point(0, 49);
             this.toolStripReplay.Name = "toolStripReplay";
             this.toolStripReplay.Size = new System.Drawing.Size(763, 48);
@@ -533,6 +534,14 @@ namespace PipeSimulation
             this.toolStripButtonEnd.Text = "toolStripButton1";
             this.toolStripButtonEnd.Click += new EventHandler(toolStripButtonEnd_Click);
             // 
+            // viewSpecificTimerScene
+            // 
+            this.viewSpecificTimerScene.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            this.viewSpecificTimerScene.Name = "viewSpecificTimerScene";
+            this.viewSpecificTimerScene.Size = new System.Drawing.Size(40, 45);
+            this.viewSpecificTimerScene.Text = "View Specific Time";
+            this.viewSpecificTimerScene.Click += new EventHandler(viewSpecificTimerScene_Click);
+            // 
             // trackBarAnimation
             // 
             this.trackBarAnimation.Location = new System.Drawing.Point(230, 1);
@@ -549,15 +558,6 @@ namespace PipeSimulation
             this.toolStripLabelAnimationTime.Name = "toolStripLabelAnimationTime";
             this.toolStripLabelAnimationTime.Size = new System.Drawing.Size(86, 45);
             this.toolStripLabelAnimationTime.Text = "toolStripLabel1";
-            //
-            // dateTimerPicker
-            //
-            this.dateTimerPicker.Location = new System.Drawing.Point(420, 64);
-            this.dateTimerPicker.Name = "dateTimePicker1";
-            this.dateTimerPicker.Size = new System.Drawing.Size(164, 22);
-            this.dateTimerPicker.TabIndex = 0;
-            this.dateTimerPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimerPicker.CustomFormat = "dd/MM/yyyy HH:mm:ss";
             // 
             // toolTipAnimation
             // 
@@ -805,9 +805,9 @@ namespace PipeSimulation
         private ToolStripButton toolStripButtonStopAnimation;
         private ToolStripButton toolStripButtonBegining;
         private ToolStripButton toolStripButtonEnd;
+        private ToolStripButton viewSpecificTimerScene;
         private TrackBar trackBarAnimation;
         private ToolStripLabel toolStripLabelAnimationTime;
         private ToolTip toolTipAnimation;
-        private DateTimePicker dateTimerPicker;
     }
 }

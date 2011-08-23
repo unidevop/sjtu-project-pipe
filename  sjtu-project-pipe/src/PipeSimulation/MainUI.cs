@@ -590,6 +590,8 @@ namespace PipeSimulation
 
             toolStripButtonStopAnimation.Checked = false;
             toolStripButtonStopAnimation.Enabled = true;
+
+            viewSpecificTimerScene.Enabled = false;
         }
 
         private delegate void UpdateTrackProgress(int t);
@@ -624,6 +626,8 @@ namespace PipeSimulation
 
             trackBarAnimation.Value = 0;
             UpdateAnimationLabelText();
+
+            viewSpecificTimerScene.Enabled = true;
         }
 
         private void observerManager_ModeChanged()
@@ -800,5 +804,21 @@ namespace PipeSimulation
             }
         }
 
+        void viewSpecificTimerScene_Click(object sender, EventArgs e)
+        {
+            // Get the current date time
+            DateTime dateTime = DateTime.Now;
+
+            // Pop up the Specify timer dialog
+            using (SpecifyTime form = new SpecifyTime())
+            {
+                form.InitialDateTime = dateTime;
+                if (DialogResult.OK == form.ShowDialog())
+                {
+                    dateTime = form.SelectedDateTime;
+                    // Update the scene
+                }
+            }
+        }
     }
 }
