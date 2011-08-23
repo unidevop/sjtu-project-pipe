@@ -865,5 +865,54 @@ namespace PipeSimulation
                 }
             }
         }
+
+        void showNonePipeObjects_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void showWCS_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void showWarningTextDisplayer_Click(object sender, EventArgs e)
+        {
+            bool vis = showWarningTextDisplayer.Checked;
+            if (!vis)
+            {
+                IApp.theApp.WarningTextDisplayer.TextActor.VisibilityOn();
+            }
+            else
+            {
+                IApp.theApp.WarningTextDisplayer.TextActor.VisibilityOff();
+            }
+            IApp.theApp.RenderWindow.GetInteractor().Render();
+        }
+
+        void showStatisticTextDisplayer_Click(object sender, EventArgs e)
+        {
+            bool vis = showStatisticTextDisplayer.Checked;
+            if (!vis)
+            {
+                IApp.theApp.StatisticTextDisplayer.TextActor.VisibilityOn();
+            }
+            else
+            {
+                IApp.theApp.StatisticTextDisplayer.TextActor.VisibilityOff();
+            }
+            IApp.theApp.RenderWindow.GetInteractor().Render();
+        }
+
+        void viewToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            // Visibility for statistic text displayer
+            showStatisticTextDisplayer.Enabled = !(string.IsNullOrEmpty(IApp.theApp.StatisticTextDisplayer.TextActor.GetInput()));
+            showStatisticTextDisplayer.Checked = (IApp.theApp.StatisticTextDisplayer.TextActor.GetVisibility() != 0);
+
+            // Visibility for statistic text displayer
+            showWarningTextDisplayer.Enabled = !(string.IsNullOrEmpty(IApp.theApp.WarningTextDisplayer.TextActor.GetInput()));
+            showWarningTextDisplayer.Checked = (IApp.theApp.WarningTextDisplayer.TextActor.GetVisibility() != 0); 
+        }
     }
 }
