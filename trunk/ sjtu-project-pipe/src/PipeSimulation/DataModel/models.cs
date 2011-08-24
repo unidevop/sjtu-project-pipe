@@ -43,13 +43,20 @@ namespace PipeSimulation
                         obj3dsImporter.SetRenderWindow(IApp.theApp.RenderWindow);
                         obj3dsImporter.Read();
 
-                        vtk.vtkActorCollection actorCollection = obj3dsImporter.ActorCollection();
-                        ModelNode = actorCollection.GetLastProp();
-
-                        // Default should be visibility off for none static models
-                        if (!(this is CStaticModel))
+                        try
                         {
-                            ModelNode.VisibilityOff();
+                            // Handle the exception that none actor is create
+                            vtk.vtkActorCollection actorCollection = obj3dsImporter.ActorCollection();
+                            ModelNode = actorCollection.GetLastProp();
+
+                            // Default should be visibility off for none static models
+                            if (!(this is CStaticModel))
+                            {
+                                ModelNode.VisibilityOff();
+                            }
+                        }
+                        catch
+                        {
                         }
                     }
                 }

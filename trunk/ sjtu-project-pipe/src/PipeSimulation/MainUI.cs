@@ -870,30 +870,47 @@ namespace PipeSimulation
 
         void showNonePipeObjects_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            bool bChecked = showNonePipeObjects.Checked;
+
+            // Visibility for none pipe models
+            foreach (CStaticModel staticModel in IApp.theApp.DataModel.StaticsModels)
+            {
+                if (staticModel.ModelNode != null)
+                {
+                    if (bChecked)
+                    {
+                        staticModel.ModelNode.VisibilityOn();
+                    }
+                    else
+                    {
+                        staticModel.ModelNode.VisibilityOff();
+                    }
+                    
+                }
+            }
+            IApp.theApp.RenderWindow.GetInteractor().Render();
         }
 
         void showWCS_Click(object sender, EventArgs e)
         {
             if (null == axesWidget) return;
 
-            ShowHideProp(axesWidget.GetOrientationMarker());
+            ShowHideProp(axesWidget.GetOrientationMarker(), showWCS.Checked);
         }
 
         void showWarningTextDisplayer_Click(object sender, EventArgs e)
         {
-            ShowHideProp(IApp.theApp.WarningTextDisplayer.TextActor);
+            ShowHideProp(IApp.theApp.WarningTextDisplayer.TextActor, showWarningTextDisplayer.Checked);
         }
 
         void showStatisticTextDisplayer_Click(object sender, EventArgs e)
         {
-            ShowHideProp(IApp.theApp.StatisticTextDisplayer.TextActor);
+            ShowHideProp(IApp.theApp.StatisticTextDisplayer.TextActor, showStatisticTextDisplayer.Checked);
         }
 
-        private void ShowHideProp(vtk.vtkProp prop)
+        private void ShowHideProp(vtk.vtkProp prop, bool vis)
         {
-            bool vis = (prop.GetVisibility() != 0);
-            if (!vis)
+            if (vis)
             {
                 prop.VisibilityOn();
             }
@@ -924,6 +941,26 @@ namespace PipeSimulation
             }
             showWCS.Checked = bWCSVisible;
 
+            // Visibility for none pipe models
+            // They should work at the same.
+            showNonePipeObjects.Enabled = (IApp.theApp.DataModel.StaticsModels.Count != 0);
+            bool bNonePipeObjectsVisbile = true;
+            try
+            {
+                foreach (CStaticModel staticModel in IApp.theApp.DataModel.StaticsModels)
+                {
+                    if (staticModel.ModelNode.GetVisibility() == 0)
+                    {
+                        bNonePipeObjectsVisbile = false;
+                        break;
+                    }
+                }
+            }
+            catch
+            {
+                bNonePipeObjectsVisbile = false;
+            }
+            showNonePipeObjects.Checked = bNonePipeObjectsVisbile; 
         }
     }
 }
