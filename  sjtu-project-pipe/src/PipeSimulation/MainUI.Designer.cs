@@ -415,6 +415,7 @@ namespace PipeSimulation
             this.showStatisticTextDisplayer.Text = "Show Statistic Text";
             this.showStatisticTextDisplayer.Click += new EventHandler(showStatisticTextDisplayer_Click);
             this.showStatisticTextDisplayer.ShortcutKeys = Keys.Control | Keys.D1;
+            this.showStatisticTextDisplayer.CheckOnClick = true;
             // 
             // showWarningTextDisplayer
             // 
@@ -423,6 +424,7 @@ namespace PipeSimulation
             this.showWarningTextDisplayer.Text = "Show Warning Text";
             this.showWarningTextDisplayer.Click +=new EventHandler(showWarningTextDisplayer_Click);
             this.showWarningTextDisplayer.ShortcutKeys = Keys.Control | Keys.D2;
+            this.showWarningTextDisplayer.CheckOnClick = true;
             // 
             // showWCS
             // 
@@ -431,6 +433,7 @@ namespace PipeSimulation
             this.showWCS.Text = "Show WCS";
             this.showWCS.Click += new EventHandler(showWCS_Click);
             this.showWCS.ShortcutKeys = Keys.Control | Keys.D3;
+            this.showWCS.CheckOnClick = true;
             // 
             // showNonePipeObjects
             // 
@@ -439,6 +442,7 @@ namespace PipeSimulation
             this.showNonePipeObjects.Text = "Show none pipe models";
             this.showNonePipeObjects.Click += new EventHandler(showNonePipeObjects_Click);
             this.showNonePipeObjects.ShortcutKeys = Keys.Control | Keys.D4;
+            this.showNonePipeObjects.CheckOnClick = true;
             // 
             // toolsToolStripMenuItem
             // 
