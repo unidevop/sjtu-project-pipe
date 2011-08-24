@@ -167,6 +167,8 @@ namespace PipeSimulation
                 textActorStatistic.SetDisplayPosition(CTextSceneDisplayer.sMinX, (sizeControl.Height - CTextSceneDisplayer.sMinY));
                 textActorWarning.SetDisplayPosition(sizeControl.Width - CTextSceneDisplayer.sMinX, (sizeControl.Height - CTextSceneDisplayer.sMinY));
             }
+
+            IApp.theApp.RenderWindow.GetInteractor().Render();
         }
 
         protected override Boolean ProcessCmdKey(ref Message msg, Keys keyData)
@@ -873,34 +875,33 @@ namespace PipeSimulation
 
         void showWCS_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (null == axesWidget) return;
+
+            ShowHideProp(axesWidget.GetOrientationMarker());
         }
 
         void showWarningTextDisplayer_Click(object sender, EventArgs e)
         {
-            bool vis = showWarningTextDisplayer.Checked;
-            if (!vis)
-            {
-                IApp.theApp.WarningTextDisplayer.TextActor.VisibilityOn();
-            }
-            else
-            {
-                IApp.theApp.WarningTextDisplayer.TextActor.VisibilityOff();
-            }
-            IApp.theApp.RenderWindow.GetInteractor().Render();
+            ShowHideProp(IApp.theApp.WarningTextDisplayer.TextActor);
         }
 
         void showStatisticTextDisplayer_Click(object sender, EventArgs e)
         {
-            bool vis = showStatisticTextDisplayer.Checked;
+            ShowHideProp(IApp.theApp.StatisticTextDisplayer.TextActor);
+        }
+
+        private void ShowHideProp(vtk.vtkProp prop)
+        {
+            bool vis = (prop.GetVisibility() != 0);
             if (!vis)
             {
-                IApp.theApp.StatisticTextDisplayer.TextActor.VisibilityOn();
+                prop.VisibilityOn();
             }
             else
             {
-                IApp.theApp.StatisticTextDisplayer.TextActor.VisibilityOff();
+                prop.VisibilityOff();
             }
+
             IApp.theApp.RenderWindow.GetInteractor().Render();
         }
 
@@ -913,6 +914,16 @@ namespace PipeSimulation
             // Visibility for statistic text displayer
             showWarningTextDisplayer.Enabled = !(string.IsNullOrEmpty(IApp.theApp.WarningTextDisplayer.TextActor.GetInput()));
             showWarningTextDisplayer.Checked = (IApp.theApp.WarningTextDisplayer.TextActor.GetVisibility() != 0); 
+
+            // Visibility for WCS
+            showWCS.Enabled = (axesWidget != null);
+            bool bWCSVisible = false;
+            if (axesWidget != null)
+            {
+                bWCSVisible = (axesWidget.GetOrientationMarker().GetVisibility() != 0);
+            }
+            showWCS.Checked = bWCSVisible;
+
         }
     }
 }

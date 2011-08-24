@@ -414,7 +414,7 @@ namespace PipeSimulation
             this.showStatisticTextDisplayer.Size = new System.Drawing.Size(151, 22);
             this.showStatisticTextDisplayer.Text = "Show Statistic Text";
             this.showStatisticTextDisplayer.Click += new EventHandler(showStatisticTextDisplayer_Click);
-            this.showStatisticTextDisplayer.ShortcutKeys = Keys.Control | Keys.Shift | Keys.D1;
+            this.showStatisticTextDisplayer.ShortcutKeys = Keys.Control | Keys.D1;
             // 
             // showWarningTextDisplayer
             // 
@@ -422,7 +422,7 @@ namespace PipeSimulation
             this.showWarningTextDisplayer.Size = new System.Drawing.Size(151, 22);
             this.showWarningTextDisplayer.Text = "Show Warning Text";
             this.showWarningTextDisplayer.Click +=new EventHandler(showWarningTextDisplayer_Click);
-            this.showWarningTextDisplayer.ShortcutKeys = Keys.Control | Keys.Shift | Keys.D2;
+            this.showWarningTextDisplayer.ShortcutKeys = Keys.Control | Keys.D2;
             // 
             // showWCS
             // 
@@ -430,7 +430,7 @@ namespace PipeSimulation
             this.showWCS.Size = new System.Drawing.Size(151, 22);
             this.showWCS.Text = "Show WCS";
             this.showWCS.Click += new EventHandler(showWCS_Click);
-            this.showWCS.ShortcutKeys = Keys.Control | Keys.Shift | Keys.D3;
+            this.showWCS.ShortcutKeys = Keys.Control | Keys.D3;
             // 
             // showNonePipeObjects
             // 
@@ -438,7 +438,7 @@ namespace PipeSimulation
             this.showNonePipeObjects.Size = new System.Drawing.Size(151, 22);
             this.showNonePipeObjects.Text = "Show none pipe models";
             this.showNonePipeObjects.Click += new EventHandler(showNonePipeObjects_Click);
-            this.showNonePipeObjects.ShortcutKeys = Keys.Control | Keys.Shift | Keys.D4;
+            this.showNonePipeObjects.ShortcutKeys = Keys.Control | Keys.D4;
             // 
             // toolsToolStripMenuItem
             // 
