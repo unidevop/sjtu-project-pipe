@@ -211,12 +211,13 @@ namespace PipeSimulation
 
         private void InitializeDataQuery()
         {
-            IDataQuery dataQuery = IApp.theApp.DataQuery;
-            if (dataQuery == null) return;
+            // Initialize the data query
+            IRealtimeDataQuery realtimeDataQuery = IApp.theApp.RealTimeDataQuery;
+            if (realtimeDataQuery == null) return;
 
             // Connect to data engine
-            dataQuery.Connect();
-            if (!dataQuery.IsConnected)
+            realtimeDataQuery.Connect();
+            if (!realtimeDataQuery.IsConnected)
             {
                 MessageBox.Show("Critial Error:  cannot connect the data engine.", this.Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
@@ -224,7 +225,20 @@ namespace PipeSimulation
             }
 
             // Setup the callback event
-            dataQuery.DataArrivedCallback += new DataArrivedCallbackType(dataQuery_DataArrivedCallback);
+            realtimeDataQuery.DataArrivedCallback += new DataArrivedCallbackType(dataQuery_DataArrivedCallback);
+
+            // Initialize history data query
+            IHistoryDataQuery historyDataQuery = IApp.theApp.HistoryTimeDataQuery;
+            if (historyDataQuery == null) return;
+
+            // Connect to data engine
+            historyDataQuery.Connect();
+            if (!historyDataQuery.IsConnected)
+            {
+                MessageBox.Show("Critial Error:  cannot connect the data engine.", this.Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
         }
 
         private void dataQuery_DataArrivedCallback(PipeInfo queryResult)
@@ -281,15 +295,15 @@ namespace PipeSimulation
             // But if we found that all pipes have already completed, we should switch to replay mode
             ObserverMode.ObserverMode eDefaultMode = ObserverMode.ObserverMode.eMonitorMode;
 
-            IDataQuery dataQuery = IApp.theApp.DataQuery;
-            if (dataQuery != null)
-            {
-                int iPipeCount = IApp.theApp.DataModel.PipeModels.Count;
-                if (dataQuery.IsPipeEnded(iPipeCount - 1))
-                {
-                    eDefaultMode = ObserverMode.ObserverMode.eReplayMode;
-                }
-            }
+            //IDataQuery dataQuery = IApp.theApp.DataQuery;
+            //if (dataQuery != null)
+            //{
+            //    int iPipeCount = IApp.theApp.DataModel.PipeModels.Count;
+            //    if (dataQuery.IsPipeEnded(iPipeCount - 1))
+            //    {
+            //        eDefaultMode = ObserverMode.ObserverMode.eReplayMode;
+            //    }
+            //}
 
             IApp.theApp.ObserverModeManager.EnterObserverMode(eDefaultMode);
         }
@@ -574,11 +588,11 @@ namespace PipeSimulation
             string strAnimationTime = iRecordIndex.ToString();
 
             // Get the real time expression
-            IDataQuery dataQuery = IApp.theApp.DataQuery;
+            IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
             if (dataQuery != null)
             {
                 DateTime dateTime = dataQuery.GetPipeTime(toolStripComboBoxPipes.SelectedIndex, iRecordIndex);
-                strAnimationTime = string.Concat(dateTime.ToLongDateString(),  " ", dateTime.ToLongTimeString());
+                strAnimationTime = string.Concat(dateTime.ToLongDateString(), " ", dateTime.ToLongTimeString());
             }
 
             // Update the label
@@ -687,7 +701,7 @@ namespace PipeSimulation
                 toolStripComboBoxPipes.Items.Clear();
 
                 // Insert started pipes
-                IDataQuery dataQuery = IApp.theApp.DataQuery;
+                IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
                 if (dataQuery != null)
                 {
                     int pipeModelCount = IApp.theApp.DataModel.PipeModels.Count;
@@ -711,19 +725,19 @@ namespace PipeSimulation
                     int pipeModelCount = IApp.theApp.DataModel.PipeModels.Count;
                     for (int i = 0; i < pipeModelCount; ++i)
                     {
-                            string strComboboxItem = string.Format("The No.{0} pipe", i + 1);
-                            toolStripComboBoxPipes.Items.Add(strComboboxItem);
-                    } 
+                        string strComboboxItem = string.Format("The No.{0} pipe", i + 1);
+                        toolStripComboBoxPipes.Items.Add(strComboboxItem);
+                    }
                     toolStripComboBoxPipes.SelectedIndex = 0; ;
                 }
             }
             else
             {
                 // Must in monitor mode
-                IDataQuery dataQuery = IApp.theApp.DataQuery;
+                IRealtimeDataQuery dataQuery = IApp.theApp.RealTimeDataQuery;
                 if (dataQuery != null)
                 {
-                    PipeInfo queryResult = dataQuery.GetLatesetData();
+                    PipeInfo queryResult = dataQuery.FetchLatestData();
                     // Drive model
                     IApp.theApp.DataDriven.DriveModel(queryResult);
                 }
@@ -751,11 +765,11 @@ namespace PipeSimulation
 
             // Query the time
             int[] trackRange = { 0, 100};
-            IDataQuery dataQuery = IApp.theApp.DataQuery;
+            IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
             if (dataQuery != null)
             {
                 // Get all count
-                trackRange[1] = dataQuery.GetPipeRecordCount(replayMode.LastPipeIdIndex);
+                trackRange[1] = (int)dataQuery.GetPipeRecordCount(replayMode.LastPipeIdIndex);
             }
 
             trackBarAnimation.Value = trackRange[0];
