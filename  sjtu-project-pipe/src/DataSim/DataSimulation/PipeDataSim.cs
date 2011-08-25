@@ -18,7 +18,7 @@ namespace DataSimulation
         SqlDataAdapter m_inclineDataAdapter = null;
 
         //  100 milliseconds
-        private Timer m_timer = new Timer(300);
+        private Timer m_timer = null; //new Timer(300);
 
         private int m_gpsSampleMark = 0;
         private int m_curPipeId = 0;
@@ -26,9 +26,10 @@ namespace DataSimulation
         private static readonly double m_maxAngle = 8.0;
         private static readonly double m_prjDistance = 60.0;
 
-        public PipeDataSim(string connString)
+        public PipeDataSim(string connString, double interval)
         {
             m_connString = connString;
+            m_timer = new Timer(interval);
 
             Connect();
         }
