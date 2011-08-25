@@ -60,7 +60,12 @@ namespace PipeSimulation.PipeApp
             get { return m_observerModeManager; }
         }
 
-        public override IDataQuery DataQuery 
+        public override IRealtimeDataQuery RealTimeDataQuery 
+        {
+            get { return null; }
+        }
+
+        public override IHistoryDataQuery HistoryTimeDataQuery 
         {
             get { return null; }
         }

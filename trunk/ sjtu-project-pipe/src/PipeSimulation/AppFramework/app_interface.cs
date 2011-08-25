@@ -24,7 +24,8 @@ namespace PipeSimulation
             abstract public IDataModel DataModel { get; }
             abstract public void SetStatusBarText(string statusBarText);
             abstract public IObserverModeManager ObserverModeManager { get; }
-            abstract public IDataQuery DataQuery { get; }
+            abstract public IRealtimeDataQuery RealTimeDataQuery { get; }
+            abstract public IHistoryDataQuery HistoryTimeDataQuery { get; }
             abstract public IDataDriven DataDriven { get; }
             abstract public ITextDisplayer StatisticTextDisplayer { get; }
             abstract public ITextDisplayer WarningTextDisplayer { get; }
