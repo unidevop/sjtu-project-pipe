@@ -16,7 +16,8 @@ namespace DataSimulation
             {
                 string connStr = ConfigurationManager.ConnectionStrings["SQLDBConn"].ConnectionString;
 
-                dataSim = new PipeDataSim(connStr);
+                dataSim = new PipeDataSim(connStr,
+                    Convert.ToDouble(ConfigurationManager.AppSettings["WriteInterval"]));
 
                 //Console.WriteLine("按任意键继续...");
                 Console.ReadLine();
