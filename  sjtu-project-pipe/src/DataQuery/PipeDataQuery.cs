@@ -27,6 +27,8 @@ namespace PipeSimulation.DataQuery
         // default incline and GPS time tolerance is 0.01s
         private static TimeSpan m_GPSMeasureTimeTolerance = new TimeSpan(0, 0, 0, 10);
 
+        public event DataArrivedCallbackType DataArrivedCallback;
+
         // interval is in milliseconds
         public PipeDataQuery(string dbAdress, string dbName, string userName, string password, double interval)
         {
@@ -377,8 +379,6 @@ namespace PipeSimulation.DataQuery
         {
             return ReadLatestData();
         }
-
-        public event DataArrivedCallbackType DataArrivedCallback;
     }
 
     class RealTimeDataQuery : PipeDataQuery
