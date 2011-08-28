@@ -252,30 +252,106 @@ namespace PipeSimulation
             IApp.theApp.DataDriven.DriveModel(queryResult);
         }
 
+        //private void InitializeScene()
+        //{
+        //    // Let the scene show SW Isometric
+        //    IApp.theApp.vtkControl.ShowSWIsoMetricView();
+
+        //    // Initialize the WCS
+        //    if (axesWidget != null) return;
+
+        //    vtk.vtkAxesActor axesActor = new vtk.vtkAxesActor();
+        //    axesActor.SetShaftTypeToCylinder();
+        //    axesActor.SetXAxisLabelText("X");
+        //    axesActor.SetYAxisLabelText("Y");
+        //    axesActor.SetZAxisLabelText("Z");
+        //    axesActor.SetTotalLength(1.5, 1.5, 1.5);
+
+        //    axesWidget = new vtk.vtkOrientationMarkerWidget();
+        //    axesWidget.SetViewport(0.0, 0.0, 0.25, 0.25);
+        //    axesWidget.SetOrientationMarker(axesActor);
+        //    axesWidget.KeyPressActivationOff();
+        //    axesWidget.SetInteractor(IApp.theApp.RenderWindow.GetInteractor());
+        //    axesWidget.SetEnabled(1);
+        //    axesWidget.InteractiveOff();
+        //}
+        private vtk.vtkActor t;
         private void InitializeScene()
         {
             // Let the scene show SW Isometric
             IApp.theApp.vtkControl.ShowSWIsoMetricView();
 
-            // Initialize the WCS
-            if (axesWidget != null) return;
+            //// Initialize the WCS
+            //if (axesWidget != null) return;
 
-            vtk.vtkAxesActor axesActor = new vtk.vtkAxesActor();
-            axesActor.SetShaftTypeToCylinder();
-            axesActor.SetXAxisLabelText("X");
-            axesActor.SetYAxisLabelText("Y");
-            axesActor.SetZAxisLabelText("Z");
-            axesActor.SetTotalLength(1.5, 1.5, 1.5);
+            //vtk.vtkAxesActor axesActor = new vtk.vtkAxesActor();
+            //axesActor.SetShaftTypeToCylinder();
+            //axesActor.SetXAxisLabelText("X");
+            //axesActor.SetYAxisLabelText("Y");
+            //axesActor.SetZAxisLabelText("Z");
+            //axesActor.SetTotalLength(1.5, 1.5, 1.5);
 
-            axesWidget = new vtk.vtkOrientationMarkerWidget();
-            axesWidget.SetViewport(0.0, 0.0, 0.25, 0.25);
-            axesWidget.SetOrientationMarker(axesActor);
-            axesWidget.KeyPressActivationOff();
-            axesWidget.SetInteractor(IApp.theApp.RenderWindow.GetInteractor());
-            axesWidget.SetEnabled(1);
-            axesWidget.InteractiveOff();
+            //axesWidget = new vtk.vtkOrientationMarkerWidget();
+            //axesWidget.SetViewport(0.0, 0.0, 0.25, 0.25);
+            //axesWidget.SetOrientationMarker(axesActor);
+            //axesWidget.KeyPressActivationOff();
+            //axesWidget.SetInteractor(IApp.theApp.RenderWindow.GetInteractor());
+            //axesWidget.SetEnabled(1);
+            //axesWidget.InteractiveOff();
+
+            double[] bounds = new double[6];
+            vtk.vtkRenderer render = IApp.theApp.RenderWindow.GetRenderers().GetFirstRenderer();
+            render.ComputeVisiblePropBounds(bounds);
+
+            double[] center = new double[3];
+            center[0] = (bounds[0] + bounds[1]) / 2.0;
+            center[1] = (bounds[2] + bounds[3]) / 2.0;
+            center[2] = (bounds[4] + bounds[5]) / 2.0;
+
+            double w1 = bounds[1] - bounds[0];
+            double w2 = bounds[3] - bounds[2];
+            double w3 = bounds[5] - bounds[4];
+            w1 *= w1;
+            w2 *= w2;
+            w3 *= w3;
+            double radius = w1 + w2 + w3;
+
+            // If we have just a single point, pick a radius of 1.0
+            radius = (radius == 0) ? (1.0) : (radius);
+
+            // compute the radius of the enclosing sphere
+            radius = Math.Sqrt(radius) * 20;
+
+
+            //// Draw a sphere
+            //vtk.vtkSphereSource sphereSrc = new vtk.vtkSphereSource();
+            //sphereSrc.SetCenter(center[0], center[1], center[2]);
+            //sphereSrc.SetThetaResolution(100);
+            //sphereSrc.SetPhiResolution(100);
+            //sphereSrc.SetRadius(radius);
+
+            //vtk.vtkTextureMapToSphere textureSphere = new vtk.vtkTextureMapToSphere();
+            //textureSphere.SetInput(sphereSrc.GetOutput());
+            //textureSphere.PreventSeamOn();
+
+            //vtk.vtkTransformTextureCoords coords = new vtk.vtkTransformTextureCoords();
+            //coords.SetInput(textureSphere.GetOutput());
+
+            //vtk.vtkDataSetMapper datasetmapper = new vtk.vtkDataSetMapper();
+            //datasetmapper.SetInput(coords.GetOutput());
+
+            //vtk.vtkTexture texture = new vtk.vtkTexture();
+            //vtk.vtkJPEGReader reader = new vtk.vtkJPEGReader();
+            //reader.SetFileName(@"C:\sky3.jpg");
+            //texture.SetInput(reader.GetOutput());
+            //texture.InterpolateOn();
+
+            //t = new vtk.vtkActor();
+            //t.SetMapper(datasetmapper);
+            //t.SetTexture(texture);
+
+            //IApp.theApp.RenderWindow.GetRenderers().GetFirstRenderer().AddActor(t);
         }
-
         private void InitializeObserverMode()
         {
             // Connect to ObserverManager.ModeChanged event
@@ -828,17 +904,22 @@ namespace PipeSimulation
 
         void startRecordAVIToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Pop up the file dilaog to get a file path
-            SaveFileDialog saveDlg = new SaveFileDialog();
-            saveDlg.Filter = "AVI Video | *.avi";
-            saveDlg.Title = "Save AVI";
-            saveDlg.ShowDialog();
+            //// Pop up the file dilaog to get a file path
+            //SaveFileDialog saveDlg = new SaveFileDialog();
+            //saveDlg.Filter = "AVI Video | *.avi";
+            //saveDlg.Title = "Save AVI";
+            //saveDlg.ShowDialog();
 
-            // Start record
-            if (saveDlg.FileName != "")
+            //// Start record
+            //if (saveDlg.FileName != "")
+            //{
+            //    IApp.theApp.VideoWriter.FilePath = saveDlg.FileName;
+            //    IApp.theApp.VideoWriter.StartRecord();
+            //}
+
+            using (test test = new test())
             {
-                IApp.theApp.VideoWriter.FilePath = saveDlg.FileName;
-                IApp.theApp.VideoWriter.StartRecord();
+                test.ShowDialog();
             }
         }
 

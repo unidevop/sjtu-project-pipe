@@ -169,9 +169,10 @@ namespace PipeSimulation
             this.toolStripSEIsoMetricView,
             this.toolStripNEIsoMetricView,
             this.toolStripNWIsoMetricView});
+            this.toolStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(763, 25);
+            this.toolStrip.Size = new System.Drawing.Size(763, 64);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip";
             // 
@@ -530,6 +531,7 @@ namespace PipeSimulation
             this.toolStripLabelAnimationTime,
             this.toolStripSeparator3,
             this.viewSpecificTimerScene});
+            this.toolStripReplay.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStripReplay.Location = new System.Drawing.Point(0, 49);
             this.toolStripReplay.Name = "toolStripReplay";
             this.toolStripReplay.Size = new System.Drawing.Size(763, 48);
@@ -586,7 +588,7 @@ namespace PipeSimulation
             this.toolStripButtonEnd.Image = global::PipeSimulation.Properties.Resources.EndAnimation;
             this.toolStripButtonEnd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEnd.Name = "toolStripButtonEnd";
-            this.toolStripButtonEnd.Size = new System.Drawing.Size(23, 45);
+            this.toolStripButtonEnd.Size = new System.Drawing.Size(60, 80);
             this.toolStripButtonEnd.Text = "toolStripButton1";
             this.toolStripButtonEnd.Click += new EventHandler(toolStripButtonEnd_Click);
             // 
