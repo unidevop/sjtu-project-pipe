@@ -904,22 +904,17 @@ namespace PipeSimulation
 
         void startRecordAVIToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //// Pop up the file dilaog to get a file path
-            //SaveFileDialog saveDlg = new SaveFileDialog();
-            //saveDlg.Filter = "AVI Video | *.avi";
-            //saveDlg.Title = "Save AVI";
-            //saveDlg.ShowDialog();
+            // Pop up the file dilaog to get a file path
+            SaveFileDialog saveDlg = new SaveFileDialog();
+            saveDlg.Filter = "AVI Video | *.avi";
+            saveDlg.Title = "Save AVI";
+            saveDlg.ShowDialog();
 
-            //// Start record
-            //if (saveDlg.FileName != "")
-            //{
-            //    IApp.theApp.VideoWriter.FilePath = saveDlg.FileName;
-            //    IApp.theApp.VideoWriter.StartRecord();
-            //}
-
-            using (test test = new test())
+            // Start record
+            if (saveDlg.FileName != "")
             {
-                test.ShowDialog();
+                IApp.theApp.VideoWriter.FilePath = saveDlg.FileName;
+                IApp.theApp.VideoWriter.StartRecord();
             }
         }
 
