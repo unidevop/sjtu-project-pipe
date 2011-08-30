@@ -121,7 +121,6 @@
     </Compile>
     <Compile Include="Utilites\aviWriter.cs" />
     <Compile Include="Utilites\folderSearch.cs" />
-    <Compile Include="Utilites\InfoPostor.cs" />
     <Compile Include="main.cs" />
     <Compile Include="MainUI.cs">
       <SubType>Form</SubType>
