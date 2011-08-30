@@ -38,6 +38,7 @@ namespace PipeSimulation
             Thread splashthread = new Thread(new ThreadStart(SplashScreen.ShowSplashScreen));
             splashthread.IsBackground = true;
             splashthread.Start();
+            splashthread.CurrentUICulture = new System.Globalization.CultureInfo(/*MSG0*/"zh-chs");
 
             InitializeComponent();
         }
