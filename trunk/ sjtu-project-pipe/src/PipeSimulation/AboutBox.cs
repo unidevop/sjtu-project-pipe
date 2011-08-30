@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using PipeSimulation.Properties;
 
 namespace PipeSimulation
 {
@@ -13,9 +14,9 @@ namespace PipeSimulation
         public AboutBox()
         {
             InitializeComponent();
-            this.Text = String.Format("About {0} {0}", AssemblyTitle);
+            this.Text = String.Format(Resources.IDS_ABOUT_TITLE, AssemblyTitle);
             this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("Version {0} {0}", AssemblyVersion);
+            this.labelVersion.Text = String.Format(Resources.IDS_ABOUT_VERSION, AssemblyVersion);
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription;
@@ -31,7 +32,7 @@ namespace PipeSimulation
                 if (attributes.Length > 0)
                 {
                     AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
-                    if (titleAttribute.Title != "")
+                    if (titleAttribute.Title != /*MSG0*/"")
                     {
                         return titleAttribute.Title;
                     }
@@ -55,7 +56,7 @@ namespace PipeSimulation
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
                 if (attributes.Length == 0)
                 {
-                    return "";
+                    return /*MSG0*/"";
                 }
                 return ((AssemblyDescriptionAttribute)attributes[0]).Description;
             }
@@ -68,7 +69,7 @@ namespace PipeSimulation
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
                 if (attributes.Length == 0)
                 {
-                    return "";
+                    return /*MSG0*/"";
                 }
                 return ((AssemblyProductAttribute)attributes[0]).Product;
             }
@@ -81,7 +82,7 @@ namespace PipeSimulation
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
                 if (attributes.Length == 0)
                 {
-                    return "";
+                    return /*MSG0*/"";
                 }
                 return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
             }
@@ -94,7 +95,7 @@ namespace PipeSimulation
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
                 if (attributes.Length == 0)
                 {
-                    return "";
+                    return /*MSG0*/"";
                 }
                 return ((AssemblyCompanyAttribute)attributes[0]).Company;
             }

@@ -19,6 +19,7 @@ using PipeSimulation.DataModel;
 using PipeSimulation.ObserverMode;
 using PipeSimulation.DataQuery;
 using SplashScreenThreaded;
+using PipeSimulation.Properties;
 
 namespace PipeSimulation
 {
@@ -56,7 +57,7 @@ namespace PipeSimulation
             // Initialzie Observer mode
             InitializeObserverMode();
 
-            SplashScreen.UdpateStatusText("Load data...");
+            SplashScreen.UdpateStatusText(Resources.IDS_IMPORT_MODELS);
             Thread.Sleep(2000);
 
             // Initialize the vtk models
@@ -75,10 +76,10 @@ namespace PipeSimulation
             
             //// Test
             //// Add some information
-            CInfoPostorUtility.Instance().PostString("[2011.08.10 21:40:36] Pipe1 No1. x = 35, y = 38 z = 40");
-            CInfoPostorUtility.Instance().PostString("[2011.08.10 21:40:36] Pipe1 No2. x = 67, y = 89 z = 90");
+            //CInfoPostorUtility.Instance().PostString("[2011.08.10 21:40:36] Pipe1 No1. x = 35, y = 38 z = 40");
+            //CInfoPostorUtility.Instance().PostString("[2011.08.10 21:40:36] Pipe1 No2. x = 67, y = 89 z = 90");
 
-            SplashScreen.UdpateStatusText("Starting!");
+            SplashScreen.UdpateStatusText(Resources.IDS_START_APP);
             Thread.Sleep(1500);
 
             // Activate this form
@@ -99,13 +100,13 @@ namespace PipeSimulation
             // Step1: Check if video is still recoding, must end record before exit
             if (IApp.theApp.VideoWriter.IsRecording)
             {
-                MessageBox.Show("Video is still recording, please end it before exit!", this.Text);
+                MessageBox.Show(Resources.IDS_WARNING_ISRECORDING, this.Text);
                 e.Cancel = true;
                 return;
             }
 
             // Step 2: Double check to ask if user really want to exit
-            if (DialogResult.Yes != MessageBox.Show("Would you really like to exit?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            if (DialogResult.Yes != MessageBox.Show(Resources.IDS_WARNING_EXIT, this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
                 e.Cancel = true;
                 return;
@@ -219,7 +220,7 @@ namespace PipeSimulation
             realtimeDataQuery.Connect();
             if (!realtimeDataQuery.IsConnected)
             {
-                MessageBox.Show("Critial Error:  cannot connect the data engine.", this.Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.IDS_ERROR_DATAENGINE_CONNECT, this.Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -235,7 +236,7 @@ namespace PipeSimulation
             historyDataQuery.Connect();
             if (!historyDataQuery.IsConnected)
             {
-                MessageBox.Show("Critial Error:  cannot connect the data engine.", this.Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.IDS_ERROR_DATAENGINE_CONNECT, this.Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -252,106 +253,30 @@ namespace PipeSimulation
             IApp.theApp.DataDriven.DriveModel(queryResult);
         }
 
-        //private void InitializeScene()
-        //{
-        //    // Let the scene show SW Isometric
-        //    IApp.theApp.vtkControl.ShowSWIsoMetricView();
-
-        //    // Initialize the WCS
-        //    if (axesWidget != null) return;
-
-        //    vtk.vtkAxesActor axesActor = new vtk.vtkAxesActor();
-        //    axesActor.SetShaftTypeToCylinder();
-        //    axesActor.SetXAxisLabelText("X");
-        //    axesActor.SetYAxisLabelText("Y");
-        //    axesActor.SetZAxisLabelText("Z");
-        //    axesActor.SetTotalLength(1.5, 1.5, 1.5);
-
-        //    axesWidget = new vtk.vtkOrientationMarkerWidget();
-        //    axesWidget.SetViewport(0.0, 0.0, 0.25, 0.25);
-        //    axesWidget.SetOrientationMarker(axesActor);
-        //    axesWidget.KeyPressActivationOff();
-        //    axesWidget.SetInteractor(IApp.theApp.RenderWindow.GetInteractor());
-        //    axesWidget.SetEnabled(1);
-        //    axesWidget.InteractiveOff();
-        //}
-        private vtk.vtkActor t;
         private void InitializeScene()
         {
             // Let the scene show SW Isometric
             IApp.theApp.vtkControl.ShowSWIsoMetricView();
 
-            //// Initialize the WCS
-            //if (axesWidget != null) return;
+            // Initialize the WCS
+            if (axesWidget != null) return;
 
-            //vtk.vtkAxesActor axesActor = new vtk.vtkAxesActor();
-            //axesActor.SetShaftTypeToCylinder();
-            //axesActor.SetXAxisLabelText("X");
-            //axesActor.SetYAxisLabelText("Y");
-            //axesActor.SetZAxisLabelText("Z");
-            //axesActor.SetTotalLength(1.5, 1.5, 1.5);
+            vtk.vtkAxesActor axesActor = new vtk.vtkAxesActor();
+            axesActor.SetShaftTypeToCylinder();
+            axesActor.SetXAxisLabelText(/*MSG0*/"X");
+            axesActor.SetYAxisLabelText(/*MSG0*/"Y");
+            axesActor.SetZAxisLabelText(/*MSG0*/"Z");
+            axesActor.SetTotalLength(1.5, 1.5, 1.5);
 
-            //axesWidget = new vtk.vtkOrientationMarkerWidget();
-            //axesWidget.SetViewport(0.0, 0.0, 0.25, 0.25);
-            //axesWidget.SetOrientationMarker(axesActor);
-            //axesWidget.KeyPressActivationOff();
-            //axesWidget.SetInteractor(IApp.theApp.RenderWindow.GetInteractor());
-            //axesWidget.SetEnabled(1);
-            //axesWidget.InteractiveOff();
-
-            double[] bounds = new double[6];
-            vtk.vtkRenderer render = IApp.theApp.RenderWindow.GetRenderers().GetFirstRenderer();
-            render.ComputeVisiblePropBounds(bounds);
-
-            double[] center = new double[3];
-            center[0] = (bounds[0] + bounds[1]) / 2.0;
-            center[1] = (bounds[2] + bounds[3]) / 2.0;
-            center[2] = (bounds[4] + bounds[5]) / 2.0;
-
-            double w1 = bounds[1] - bounds[0];
-            double w2 = bounds[3] - bounds[2];
-            double w3 = bounds[5] - bounds[4];
-            w1 *= w1;
-            w2 *= w2;
-            w3 *= w3;
-            double radius = w1 + w2 + w3;
-
-            // If we have just a single point, pick a radius of 1.0
-            radius = (radius == 0) ? (1.0) : (radius);
-
-            // compute the radius of the enclosing sphere
-            radius = Math.Sqrt(radius) * 20;
-
-
-            //// Draw a sphere
-            //vtk.vtkSphereSource sphereSrc = new vtk.vtkSphereSource();
-            //sphereSrc.SetCenter(center[0], center[1], center[2]);
-            //sphereSrc.SetThetaResolution(100);
-            //sphereSrc.SetPhiResolution(100);
-            //sphereSrc.SetRadius(radius);
-
-            //vtk.vtkTextureMapToSphere textureSphere = new vtk.vtkTextureMapToSphere();
-            //textureSphere.SetInput(sphereSrc.GetOutput());
-            //textureSphere.PreventSeamOn();
-
-            //vtk.vtkTransformTextureCoords coords = new vtk.vtkTransformTextureCoords();
-            //coords.SetInput(textureSphere.GetOutput());
-
-            //vtk.vtkDataSetMapper datasetmapper = new vtk.vtkDataSetMapper();
-            //datasetmapper.SetInput(coords.GetOutput());
-
-            //vtk.vtkTexture texture = new vtk.vtkTexture();
-            //vtk.vtkJPEGReader reader = new vtk.vtkJPEGReader();
-            //reader.SetFileName(@"C:\sky3.jpg");
-            //texture.SetInput(reader.GetOutput());
-            //texture.InterpolateOn();
-
-            //t = new vtk.vtkActor();
-            //t.SetMapper(datasetmapper);
-            //t.SetTexture(texture);
-
-            //IApp.theApp.RenderWindow.GetRenderers().GetFirstRenderer().AddActor(t);
+            axesWidget = new vtk.vtkOrientationMarkerWidget();
+            axesWidget.SetViewport(0.0, 0.0, 0.25, 0.25);
+            axesWidget.SetOrientationMarker(axesActor);
+            axesWidget.KeyPressActivationOff();
+            axesWidget.SetInteractor(IApp.theApp.RenderWindow.GetInteractor());
+            axesWidget.SetEnabled(1);
+            axesWidget.InteractiveOff();
         }
+
         private void InitializeObserverMode()
         {
             // Connect to ObserverManager.ModeChanged event
@@ -415,11 +340,11 @@ namespace PipeSimulation
             // Get the assembly executing data path
             //String strPath = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
 
-            string xmlFile = System.IO.Path.Combine(CFolderUtility.DataFolder(), @"pipe.psm");
+            string xmlFile = System.IO.Path.Combine(CFolderUtility.DataFolder(), /*MSG0*/@"pipe.psm");
 
             if (!System.IO.File.Exists(xmlFile))
             {
-                MessageBox.Show("Critial Error: Cannot find " + xmlFile, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format(Resources.IDS_ERROR_DATAFILE_NOT_FOUND, xmlFile), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -439,7 +364,7 @@ namespace PipeSimulation
                 xmlDoc.Load(xmlFile);
 
                 // Read models
-                XmlNodeList pipeNodes = xmlDoc.SelectNodes(ModelXMLDefinition.RootNode + "//" + ModelXMLDefinition.PipeGroup + "//" + ModelXMLDefinition.Pipe);
+                XmlNodeList pipeNodes = xmlDoc.SelectNodes(ModelXMLDefinition.RootNode + /*MSG0*/"//" + ModelXMLDefinition.PipeGroup + /*MSG0*/"//" + ModelXMLDefinition.Pipe);
                 foreach (XmlNode pipeNode in pipeNodes)
                 {
                     CPipeModel pipeModel = new CPipeModel();
@@ -450,7 +375,7 @@ namespace PipeSimulation
                 }
 
                 // Read others
-                XmlNodeList otherModels = xmlDoc.SelectNodes(ModelXMLDefinition.RootNode + "//" + ModelXMLDefinition.Model);
+                XmlNodeList otherModels = xmlDoc.SelectNodes(ModelXMLDefinition.RootNode + /*MSG0*/"//" + ModelXMLDefinition.Model);
                 foreach (XmlNode otherModel in otherModels)
                 {
                     CStaticModel staticModel = new CStaticModel();
@@ -462,7 +387,7 @@ namespace PipeSimulation
             }
             catch (SystemException)
             {
-                MessageBox.Show("Critial Error: Load errors in " + xmlFile, this.Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format(Resources.IDS_ERROR_LOAD_XML, xmlFile), this.Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -501,7 +426,7 @@ namespace PipeSimulation
             }
             catch (SystemException)
             {
-                MessageBox.Show("Error: Some models are not loaded correctly.", this.Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.IDS_ERROR_LOAD_MODEL, this.Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -668,7 +593,7 @@ namespace PipeSimulation
             if (dataQuery != null)
             {
                 DateTime dateTime = dataQuery.GetPipeTime(toolStripComboBoxPipes.SelectedIndex, iRecordIndex);
-                strAnimationTime = string.Concat(dateTime.ToLongDateString(), " ", dateTime.ToLongTimeString());
+                strAnimationTime = string.Concat(dateTime.ToLongDateString(), /*MSG0*/" ", dateTime.ToLongTimeString());
             }
 
             // Update the label
@@ -785,7 +710,7 @@ namespace PipeSimulation
                     {
                         if (dataQuery.IsPipeStarted(i))
                         {
-                            string strComboboxItem = string.Format("The No.{0} pipe", i + 1);
+                            string strComboboxItem = string.Format(Resources.IDS_PIPE_INDEX, i + 1);
                             toolStripComboBoxPipes.Items.Add(strComboboxItem);
                         }
                     }
@@ -801,7 +726,7 @@ namespace PipeSimulation
                     int pipeModelCount = IApp.theApp.DataModel.PipeModels.Count;
                     for (int i = 0; i < pipeModelCount; ++i)
                     {
-                        string strComboboxItem = string.Format("The No.{0} pipe", i + 1);
+                        string strComboboxItem = string.Format(Resources.IDS_PIPE_INDEX, i + 1);
                         toolStripComboBoxPipes.Items.Add(strComboboxItem);
                     }
                     toolStripComboBoxPipes.SelectedIndex = 0; ;
@@ -887,7 +812,7 @@ namespace PipeSimulation
             // Prompt the user to open that video
             if (File.Exists(strFilePath))
             {
-                string strMessageText = string.Format("Generating the video at \"{0}\" successfully. \r\nWould you like to open it?", strFilePath);
+                string strMessageText = string.Format(Resources.IDS_VIDEO_OUTPUT_SUCCEED, strFilePath);
                 if (DialogResult.Yes == MessageBox.Show(strMessageText, this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                 {
                     try
@@ -896,7 +821,8 @@ namespace PipeSimulation
                     }
                     catch
                     {
-                        MessageBox.Show(string.Concat("\"", strFilePath , "\"", " cannot be opened!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error));
+                        
+                        MessageBox.Show(string.Format(Resources.IDS_VIDEO_OPENFILE_FAIL, strFilePath), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -906,12 +832,12 @@ namespace PipeSimulation
         {
             // Pop up the file dilaog to get a file path
             SaveFileDialog saveDlg = new SaveFileDialog();
-            saveDlg.Filter = "AVI Video | *.avi";
-            saveDlg.Title = "Save AVI";
+            saveDlg.Filter = Resources.IDS_AVI_FILTER;
+            saveDlg.Title = Resources.IDS_VIDEO_TITLE;
             saveDlg.ShowDialog();
 
             // Start record
-            if (saveDlg.FileName != "")
+            if (!string.IsNullOrEmpty(saveDlg.FileName))
             {
                 IApp.theApp.VideoWriter.FilePath = saveDlg.FileName;
                 IApp.theApp.VideoWriter.StartRecord();

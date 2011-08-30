@@ -37,64 +37,63 @@
             // 
             // okBtn
             // 
+            this.okBtn.AccessibleDescription = null;
+            this.okBtn.AccessibleName = null;
+            resources.ApplyResources(this.okBtn, "okBtn");
+            this.okBtn.BackgroundImage = null;
             this.okBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okBtn.Location = new System.Drawing.Point(152, 73);
+            this.okBtn.Font = null;
             this.okBtn.Name = "okBtn";
-            this.okBtn.Size = new System.Drawing.Size(75, 23);
-            this.okBtn.TabIndex = 0;
-            this.okBtn.Text = "Ok";
             this.okBtn.UseVisualStyleBackColor = true;
             // 
             // cancelBtn
             // 
+            this.cancelBtn.AccessibleDescription = null;
+            this.cancelBtn.AccessibleName = null;
+            resources.ApplyResources(this.cancelBtn, "cancelBtn");
+            this.cancelBtn.BackgroundImage = null;
             this.cancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelBtn.Location = new System.Drawing.Point(233, 73);
+            this.cancelBtn.Font = null;
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.cancelBtn.TabIndex = 1;
-            this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker.CustomFormat = "yyyy/MM/dd HH:mm:ss";
+            this.dateTimePicker.AccessibleDescription = null;
+            this.dateTimePicker.AccessibleName = null;
+            resources.ApplyResources(this.dateTimePicker, "dateTimePicker");
+            this.dateTimePicker.BackgroundImage = null;
+            this.dateTimePicker.CalendarFont = null;
+            this.dateTimePicker.Font = null;
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker.Location = new System.Drawing.Point(12, 41);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(296, 21);
-            this.dateTimePicker.TabIndex = 2;
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.AccessibleDescription = null;
+            this.label1.AccessibleName = null;
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Font = null;
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(257, 12);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Specify a time to view the specific scene:";
             // 
             // SpecifyTime
             // 
             this.AcceptButton = this.okBtn;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AccessibleDescription = null;
+            this.AccessibleName = null;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = null;
             this.CancelButton = this.cancelBtn;
-            this.ClientSize = new System.Drawing.Size(320, 105);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.okBtn);
+            this.Font = null;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "SpecifyTime";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Specify a time";
             this.ResumeLayout(false);
             this.PerformLayout();
 

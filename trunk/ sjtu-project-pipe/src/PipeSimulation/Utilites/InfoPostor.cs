@@ -29,8 +29,8 @@ namespace PipeSimulation
                     m_textBox = IApp.theApp.MainUI.InformationControl as TextBoxBase;
                 }
 
-                msg.Trim("\r\n".ToCharArray());
-                msg += "\r\n";
+                msg.Trim(/*MSG0*/"\r\n".ToCharArray());
+                msg += /*MSG0*/"\r\n";
 
                 try
                 {

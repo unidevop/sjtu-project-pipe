@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B63DFD16-8D70-46FF-93D2-39B523FEBBFD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -225,9 +225,21 @@
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AboutBox.zh-CHS.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainUI.zh-CHS.resx">
+      <DependentUpon>MainUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\res\logo.JPG" />
     <EmbeddedResource Include="SpecifyTime.resx">
       <DependentUpon>SpecifyTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpecifyTime.zh-CHS.resx">
+      <DependentUpon>SpecifyTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen\SplashScreenForm.zh-CHS.resx">
+      <DependentUpon>SplashScreenForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

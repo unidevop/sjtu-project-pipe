@@ -96,7 +96,88 @@ namespace PipeSimulation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Move the graphics window view in any direction planar to the screen.
+        ///   Looks up a localized string similar to 关于 {0} {0}.
+        /// </summary>
+        internal static string IDS_ABOUT_TITLE {
+            get {
+                return ResourceManager.GetString("IDS_ABOUT_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 版本 {0} {0}.
+        /// </summary>
+        internal static string IDS_ABOUT_VERSION {
+            get {
+                return ResourceManager.GetString("IDS_ABOUT_VERSION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AVI 文件|*.avi.
+        /// </summary>
+        internal static string IDS_AVI_FILTER {
+            get {
+                return ResourceManager.GetString("IDS_AVI_FILTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 致命错误：不能连接到数据库。.
+        /// </summary>
+        internal static string IDS_ERROR_DATAENGINE_CONNECT {
+            get {
+                return ResourceManager.GetString("IDS_ERROR_DATAENGINE_CONNECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 致命错误：不能找到{0}。.
+        /// </summary>
+        internal static string IDS_ERROR_DATAFILE_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("IDS_ERROR_DATAFILE_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 错误：读取某些模型文件出错。.
+        /// </summary>
+        internal static string IDS_ERROR_LOAD_MODEL {
+            get {
+                return ResourceManager.GetString("IDS_ERROR_LOAD_MODEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 致命错误：读取{0}出错。.
+        /// </summary>
+        internal static string IDS_ERROR_LOAD_XML {
+            get {
+                return ResourceManager.GetString("IDS_ERROR_LOAD_XML", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 导入模型....
+        /// </summary>
+        internal static string IDS_IMPORT_MODELS {
+            get {
+                return ResourceManager.GetString("IDS_IMPORT_MODELS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [实时监听模式].
+        /// </summary>
+        internal static string IDS_MONITOR_MODE_TEXT {
+            get {
+                return ResourceManager.GetString("IDS_MONITOR_MODE_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 平移视图.
         /// </summary>
         internal static string IDS_PAN_DESC {
             get {
@@ -105,7 +186,34 @@ namespace PipeSimulation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dynamically rotates the view.
+        ///   Looks up a localized string similar to 第{0}段沉管.
+        /// </summary>
+        internal static string IDS_PIPE_INDEX {
+            get {
+                return ResourceManager.GetString("IDS_PIPE_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PNG 文件|*.png.
+        /// </summary>
+        internal static string IDS_PNG_FILTER {
+            get {
+                return ResourceManager.GetString("IDS_PNG_FILTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [回放模式].
+        /// </summary>
+        internal static string IDS_REPLAY_MODE_TEXT {
+            get {
+                return ResourceManager.GetString("IDS_REPLAY_MODE_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 旋转视图.
         /// </summary>
         internal static string IDS_ROTATE_DESC {
             get {
@@ -114,7 +222,70 @@ namespace PipeSimulation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dynamically zooms in or out.
+        ///   Looks up a localized string similar to 截取当前屏幕.
+        /// </summary>
+        internal static string IDS_SAVE_PICTURE_TITLE {
+            get {
+                return ResourceManager.GetString("IDS_SAVE_PICTURE_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 启动程序....
+        /// </summary>
+        internal static string IDS_START_APP {
+            get {
+                return ResourceManager.GetString("IDS_START_APP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 不能打开{0}。.
+        /// </summary>
+        internal static string IDS_VIDEO_OPENFILE_FAIL {
+            get {
+                return ResourceManager.GetString("IDS_VIDEO_OPENFILE_FAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 视频文件{0}已经录制成功。您想打开该视频吗？.
+        /// </summary>
+        internal static string IDS_VIDEO_OUTPUT_SUCCEED {
+            get {
+                return ResourceManager.GetString("IDS_VIDEO_OUTPUT_SUCCEED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 保存视频文件.
+        /// </summary>
+        internal static string IDS_VIDEO_TITLE {
+            get {
+                return ResourceManager.GetString("IDS_VIDEO_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 您真的想退出程序？.
+        /// </summary>
+        internal static string IDS_WARNING_EXIT {
+            get {
+                return ResourceManager.GetString("IDS_WARNING_EXIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 正在录制视频，关闭程序前请先停止录制！.
+        /// </summary>
+        internal static string IDS_WARNING_ISRECORDING {
+            get {
+                return ResourceManager.GetString("IDS_WARNING_ISRECORDING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 缩放视图.
         /// </summary>
         internal static string IDS_ZOOM_DESC {
             get {

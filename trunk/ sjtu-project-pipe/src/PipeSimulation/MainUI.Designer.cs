@@ -174,7 +174,7 @@ namespace PipeSimulation
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(763, 64);
             this.toolStrip.TabIndex = 0;
-            this.toolStrip.Text = "toolStrip";
+            this.toolStrip.Text = "视图工具条";
             // 
             // toolStripRotate
             // 
@@ -183,8 +183,8 @@ namespace PipeSimulation
             this.toolStripRotate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripRotate.Name = "toolStripRotate";
             this.toolStripRotate.Size = new System.Drawing.Size(23, 22);
-            this.toolStripRotate.Text = "toolStripButton1";
-            this.toolStripRotate.ToolTipText = "Rotate";
+            this.toolStripRotate.Text = "旋转";
+            this.toolStripRotate.ToolTipText = "旋转";
             this.toolStripRotate.Click += new System.EventHandler(this.toolStripRotate_Click);
             // 
             // toolStripPan
@@ -194,8 +194,8 @@ namespace PipeSimulation
             this.toolStripPan.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripPan.Name = "toolStripPan";
             this.toolStripPan.Size = new System.Drawing.Size(23, 22);
-            this.toolStripPan.Text = "toolStripButton1";
-            this.toolStripPan.ToolTipText = "Pan";
+            this.toolStripPan.Text = "平移";
+            this.toolStripPan.ToolTipText = "平移";
             this.toolStripPan.Click += new System.EventHandler(this.toolStripPan_Click);
             // 
             // toolStripZoom
@@ -205,8 +205,8 @@ namespace PipeSimulation
             this.toolStripZoom.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripZoom.Name = "toolStripZoom";
             this.toolStripZoom.Size = new System.Drawing.Size(23, 22);
-            this.toolStripZoom.Text = "toolStripButton1";
-            this.toolStripZoom.ToolTipText = "Zoom";
+            this.toolStripZoom.Text = "缩放";
+            this.toolStripZoom.ToolTipText = "缩放";
             this.toolStripZoom.Click += new System.EventHandler(this.toolStripZoom_Click);
             // 
             // toolStripZoomAll
@@ -216,8 +216,8 @@ namespace PipeSimulation
             this.toolStripZoomAll.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripZoomAll.Name = "toolStripZoomAll";
             this.toolStripZoomAll.Size = new System.Drawing.Size(23, 22);
-            this.toolStripZoomAll.Text = "toolStripButton1";
-            this.toolStripZoomAll.ToolTipText = "Zoom All";
+            this.toolStripZoomAll.Text = "缩放全部";
+            this.toolStripZoomAll.ToolTipText = "Z缩放全部";
             this.toolStripZoomAll.Click += new System.EventHandler(this.toolStripZoomAll_Click);
             // 
             // toolStripSeparator1
@@ -232,8 +232,8 @@ namespace PipeSimulation
             this.toolStripTopView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripTopView.Name = "toolStripTopView";
             this.toolStripTopView.Size = new System.Drawing.Size(23, 22);
-            this.toolStripTopView.Text = "toolStripButton1";
-            this.toolStripTopView.ToolTipText = "Top view";
+            this.toolStripTopView.Text = "俯视";
+            this.toolStripTopView.ToolTipText = "查看俯视视图";
             this.toolStripTopView.Click += new System.EventHandler(this.toolStripTopView_Click);
             // 
             // toolStripBottomView
@@ -243,8 +243,8 @@ namespace PipeSimulation
             this.toolStripBottomView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBottomView.Name = "toolStripBottomView";
             this.toolStripBottomView.Size = new System.Drawing.Size(23, 22);
-            this.toolStripBottomView.Text = "toolStripButton1";
-            this.toolStripBottomView.ToolTipText = "Bottom view";
+            this.toolStripBottomView.Text = "仰视";
+            this.toolStripBottomView.ToolTipText = "查看仰视视图";
             this.toolStripBottomView.Click += new System.EventHandler(this.toolStripBottomView_Click);
             // 
             // toolStripFrontView
@@ -254,8 +254,8 @@ namespace PipeSimulation
             this.toolStripFrontView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripFrontView.Name = "toolStripFrontView";
             this.toolStripFrontView.Size = new System.Drawing.Size(23, 22);
-            this.toolStripFrontView.Text = "toolStripButton1";
-            this.toolStripFrontView.ToolTipText = "Front view";
+            this.toolStripFrontView.Text = "正视";
+            this.toolStripFrontView.ToolTipText = "查看正视视图";
             this.toolStripFrontView.Click += new System.EventHandler(this.toolStripFrontView_Click);
             // 
             // toolStripBackView
@@ -265,8 +265,8 @@ namespace PipeSimulation
             this.toolStripBackView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBackView.Name = "toolStripBackView";
             this.toolStripBackView.Size = new System.Drawing.Size(23, 22);
-            this.toolStripBackView.Text = "toolStripButton1";
-            this.toolStripBackView.ToolTipText = "Back view";
+            this.toolStripBackView.Text = "后视";
+            this.toolStripBackView.ToolTipText = "查看后视视图";
             this.toolStripBackView.Click += new System.EventHandler(this.toolStripBackView_Click);
             // 
             // toolStripLeftView
@@ -276,8 +276,8 @@ namespace PipeSimulation
             this.toolStripLeftView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripLeftView.Name = "toolStripLeftView";
             this.toolStripLeftView.Size = new System.Drawing.Size(23, 22);
-            this.toolStripLeftView.Text = "toolStripButton1";
-            this.toolStripLeftView.ToolTipText = "Top view";
+            this.toolStripLeftView.Text = "左视";
+            this.toolStripLeftView.ToolTipText = "查看左视视图";
             this.toolStripLeftView.Click += new System.EventHandler(this.toolStripLeftView_Click);
             // 
             // toolStripRightView
@@ -287,8 +287,8 @@ namespace PipeSimulation
             this.toolStripRightView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripRightView.Name = "toolStripRightView";
             this.toolStripRightView.Size = new System.Drawing.Size(23, 22);
-            this.toolStripRightView.Text = "toolStripButton1";
-            this.toolStripRightView.ToolTipText = "Right view";
+            this.toolStripRightView.Text = "右视";
+            this.toolStripRightView.ToolTipText = "查看右视视图";
             this.toolStripRightView.Click += new System.EventHandler(this.toolStripRightView_Click);
             // 
             // toolStripSeparator2
@@ -303,8 +303,8 @@ namespace PipeSimulation
             this.toolStripSWIsoMetricView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSWIsoMetricView.Name = "toolStripSWIsoMetricView";
             this.toolStripSWIsoMetricView.Size = new System.Drawing.Size(23, 22);
-            this.toolStripSWIsoMetricView.Text = "toolStripButton1";
-            this.toolStripSWIsoMetricView.ToolTipText = "SW Isometric";
+            this.toolStripSWIsoMetricView.Text = "西南等轴测视图";
+            this.toolStripSWIsoMetricView.ToolTipText = "查看西南等轴测视图";
             this.toolStripSWIsoMetricView.Click += new System.EventHandler(this.toolStripSWIsoMetricView_Click);
             // 
             // toolStripSEIsoMetricView
@@ -314,8 +314,8 @@ namespace PipeSimulation
             this.toolStripSEIsoMetricView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSEIsoMetricView.Name = "toolStripSEIsoMetricView";
             this.toolStripSEIsoMetricView.Size = new System.Drawing.Size(23, 22);
-            this.toolStripSEIsoMetricView.Text = "toolStripButton1";
-            this.toolStripSEIsoMetricView.ToolTipText = "SE Isometric";
+            this.toolStripSEIsoMetricView.Text = "东南等轴测视图";
+            this.toolStripSEIsoMetricView.ToolTipText = "查看东南等轴测视图";
             this.toolStripSEIsoMetricView.Click += new System.EventHandler(this.toolStripSEIsoMetricView_Click);
             // 
             // toolStripNEIsoMetricView
@@ -325,8 +325,8 @@ namespace PipeSimulation
             this.toolStripNEIsoMetricView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripNEIsoMetricView.Name = "toolStripNEIsoMetricView";
             this.toolStripNEIsoMetricView.Size = new System.Drawing.Size(23, 22);
-            this.toolStripNEIsoMetricView.Text = "toolStripButton1";
-            this.toolStripNEIsoMetricView.ToolTipText = "NE Isometric";
+            this.toolStripNEIsoMetricView.Text = "东北等轴测视图";
+            this.toolStripNEIsoMetricView.ToolTipText = "查看东北等轴测视图";
             this.toolStripNEIsoMetricView.Click += new System.EventHandler(this.toolStripNEIsoMetricView_Click);
             // 
             // toolStripNWIsoMetricView
@@ -336,8 +336,8 @@ namespace PipeSimulation
             this.toolStripNWIsoMetricView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripNWIsoMetricView.Name = "toolStripNWIsoMetricView";
             this.toolStripNWIsoMetricView.Size = new System.Drawing.Size(23, 22);
-            this.toolStripNWIsoMetricView.Text = "toolStripButton1";
-            this.toolStripNWIsoMetricView.ToolTipText = "NW Isometric";
+            this.toolStripNWIsoMetricView.Text = "西北等轴测视图";
+            this.toolStripNWIsoMetricView.ToolTipText = "查看西北等轴测视图";
             this.toolStripNWIsoMetricView.Click += new System.EventHandler(this.toolStripNWIsoMetricView_Click);
             // 
             // menuStrip
@@ -353,7 +353,7 @@ namespace PipeSimulation
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(763, 24);
             this.menuStrip.TabIndex = 2;
-            this.menuStrip.Text = "menuStrip";
+            this.menuStrip.Text = "菜单工具条";
             // 
             // fileToolStripMenuItem
             // 
@@ -361,13 +361,13 @@ namespace PipeSimulation
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "&File";
+            this.fileToolStripMenuItem.Text = "系统(&S)";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
-            this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.Text = "退出(&x)";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             this.exitToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.F4;
             // 
@@ -378,14 +378,14 @@ namespace PipeSimulation
             this.replayModeToolStripMenuItem});
             this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
             this.modeToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.modeToolStripMenuItem.Text = "&Mode";
+            this.modeToolStripMenuItem.Text = "模式(&M)";
             this.modeToolStripMenuItem.DropDownOpening += new System.EventHandler(this.modeToolStripMenuItem_DropDownOpening);
             // 
             // monitorModeToolStripMenuItem
             // 
             this.monitorModeToolStripMenuItem.Name = "monitorModeToolStripMenuItem";
             this.monitorModeToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.monitorModeToolStripMenuItem.Text = "Monitor Mode";
+            this.monitorModeToolStripMenuItem.Text = "实时监听模式";
             this.monitorModeToolStripMenuItem.Click += new System.EventHandler(this.monitorModeToolStripMenuItem_Click);
             this.monitorModeToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.M;
             // 
@@ -393,7 +393,7 @@ namespace PipeSimulation
             // 
             this.replayModeToolStripMenuItem.Name = "replayModeToolStripMenuItem";
             this.replayModeToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.replayModeToolStripMenuItem.Text = "Replay Mode";
+            this.replayModeToolStripMenuItem.Text = "回放模式";
             this.replayModeToolStripMenuItem.Click += new System.EventHandler(this.replayModeToolStripMenuItem_Click);
             this.replayModeToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.R;
             // 
@@ -406,14 +406,14 @@ namespace PipeSimulation
             this.showNonePipeObjects});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.viewToolStripMenuItem.Text = "&View";
+            this.viewToolStripMenuItem.Text = "视图(&V)";
             this.viewToolStripMenuItem.DropDownOpening += new EventHandler(viewToolStripMenuItem_DropDownOpening);
             // 
             // showStatisticTextDisplayer
             // 
             this.showStatisticTextDisplayer.Name = "showStatisticTextDisplayer";
             this.showStatisticTextDisplayer.Size = new System.Drawing.Size(151, 22);
-            this.showStatisticTextDisplayer.Text = "Show Statistic Text";
+            this.showStatisticTextDisplayer.Text = "显隐统计文本";
             this.showStatisticTextDisplayer.Click += new EventHandler(showStatisticTextDisplayer_Click);
             this.showStatisticTextDisplayer.ShortcutKeys = Keys.Control | Keys.D1;
             this.showStatisticTextDisplayer.CheckOnClick = true;
@@ -422,8 +422,8 @@ namespace PipeSimulation
             // 
             this.showWarningTextDisplayer.Name = "showWarningTextDisplayer";
             this.showWarningTextDisplayer.Size = new System.Drawing.Size(151, 22);
-            this.showWarningTextDisplayer.Text = "Show Warning Text";
-            this.showWarningTextDisplayer.Click +=new EventHandler(showWarningTextDisplayer_Click);
+            this.showWarningTextDisplayer.Text = "显隐报警文本";
+            this.showWarningTextDisplayer.Click += new EventHandler(showWarningTextDisplayer_Click);
             this.showWarningTextDisplayer.ShortcutKeys = Keys.Control | Keys.D2;
             this.showWarningTextDisplayer.CheckOnClick = true;
             // 
@@ -431,7 +431,7 @@ namespace PipeSimulation
             // 
             this.showWCS.Name = "showWCS";
             this.showWCS.Size = new System.Drawing.Size(151, 22);
-            this.showWCS.Text = "Show WCS";
+            this.showWCS.Text = "显隐坐标系";
             this.showWCS.Click += new EventHandler(showWCS_Click);
             this.showWCS.ShortcutKeys = Keys.Control | Keys.D3;
             this.showWCS.CheckOnClick = true;
@@ -440,7 +440,7 @@ namespace PipeSimulation
             // 
             this.showNonePipeObjects.Name = "showNonePipeObjects";
             this.showNonePipeObjects.Size = new System.Drawing.Size(151, 22);
-            this.showNonePipeObjects.Text = "Show none pipe models";
+            this.showNonePipeObjects.Text = "显隐非沉管物体";
             this.showNonePipeObjects.Click += new EventHandler(showNonePipeObjects_Click);
             this.showNonePipeObjects.ShortcutKeys = Keys.Control | Keys.D4;
             this.showNonePipeObjects.CheckOnClick = true;
@@ -453,14 +453,14 @@ namespace PipeSimulation
             this.stopRecordAVIToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.toolsToolStripMenuItem.Text = "&Tools";
+            this.toolsToolStripMenuItem.Text = "工具(&T)";
             this.toolsToolStripMenuItem.DropDownOpening += new EventHandler(toolsToolStripMenuItem_DropDownOpening);
             // 
             // saveAsPNGToolStripMenuItem
             // 
             this.saveAsPNGToolStripMenuItem.Name = "saveAsPNGToolStripMenuItem";
             this.saveAsPNGToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.saveAsPNGToolStripMenuItem.Text = "Save As Picture";
+            this.saveAsPNGToolStripMenuItem.Text = "截取当前屏幕";
             this.saveAsPNGToolStripMenuItem.Click += new System.EventHandler(this.saveAsPNGToolStripMenuItem_Click);
             this.saveAsPNGToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.P;
             // 
@@ -468,7 +468,7 @@ namespace PipeSimulation
             // 
             this.startRecordAVIToolStripMenuItem.Name = "startRecordAVIToolStripMenuItem";
             this.startRecordAVIToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.startRecordAVIToolStripMenuItem.Text = "Start Record";
+            this.startRecordAVIToolStripMenuItem.Text = "开始录制视频";
             this.startRecordAVIToolStripMenuItem.Click += new EventHandler(startRecordAVIToolStripMenuItem_Click);
             this.startRecordAVIToolStripMenuItem.Image = global::PipeSimulation.Properties.Resources.record_icon;
             this.startRecordAVIToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
@@ -477,7 +477,7 @@ namespace PipeSimulation
             // 
             this.stopRecordAVIToolStripMenuItem.Name = "stopRecordAVIToolStripMenuItem";
             this.stopRecordAVIToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.stopRecordAVIToolStripMenuItem.Text = "End Record";
+            this.stopRecordAVIToolStripMenuItem.Text = "停止录制视频";
             this.stopRecordAVIToolStripMenuItem.Click += new EventHandler(stopRecordAVIToolStripMenuItem_Click);
             this.stopRecordAVIToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.E;
             // 
@@ -488,19 +488,20 @@ namespace PipeSimulation
             this.aboutToolStripMenuItem1});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.aboutToolStripMenuItem.Text = "&Help";
+            this.aboutToolStripMenuItem.Text = "帮助(&H)";
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.helpToolStripMenuItem.Text = "&Help";
+            this.helpToolStripMenuItem.Text = "帮助";
+            this.helpToolStripMenuItem.ShortcutKeys = Keys.F1;
             // 
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
             this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
-            this.aboutToolStripMenuItem1.Text = "&About";
+            this.aboutToolStripMenuItem1.Text = "关于(&A)";
             this.aboutToolStripMenuItem1.Click += new EventHandler(aboutToolStripMenuItem1_Click);
             // 
             // statusStrip1
@@ -511,7 +512,7 @@ namespace PipeSimulation
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(763, 22);
             this.statusStrip1.TabIndex = 3;
-            this.statusStrip1.Text = "statusStrip";
+            this.statusStrip1.Text = "状态工具栏";
             // 
             // toolStripStatusLabel
             // 
@@ -536,7 +537,7 @@ namespace PipeSimulation
             this.toolStripReplay.Name = "toolStripReplay";
             this.toolStripReplay.Size = new System.Drawing.Size(763, 48);
             this.toolStripReplay.TabIndex = 4;
-            this.toolStripReplay.Text = "toolStrip1";
+            this.toolStripReplay.Text = "回放工具栏";
             // 
             // toolStripComboBoxPipes
             // 
@@ -559,7 +560,7 @@ namespace PipeSimulation
             this.toolStripButtonStartAnimation.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonStartAnimation.Name = "toolStripButtonStartAnimation";
             this.toolStripButtonStartAnimation.Size = new System.Drawing.Size(23, 45);
-            this.toolStripButtonStartAnimation.Text = "toolStripButton1";
+            this.toolStripButtonStartAnimation.Text = "播放";
             this.toolStripButtonStartAnimation.Click += new EventHandler(toolStripButtonStartAnimation_Click);
             // 
             // toolStripButtonStopAnimation
@@ -569,7 +570,7 @@ namespace PipeSimulation
             this.toolStripButtonStopAnimation.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonStopAnimation.Name = "toolStripButtonStopAnimation";
             this.toolStripButtonStopAnimation.Size = new System.Drawing.Size(23, 45);
-            this.toolStripButtonStopAnimation.Text = "toolStripButton1";
+            this.toolStripButtonStopAnimation.Text = "停止";
             this.toolStripButtonStopAnimation.Click += new EventHandler(toolStripButtonStopAnimation_Click);
             // 
             // toolStripButtonBegining
@@ -579,7 +580,7 @@ namespace PipeSimulation
             this.toolStripButtonBegining.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonBegining.Name = "toolStripButtonBegining";
             this.toolStripButtonBegining.Size = new System.Drawing.Size(23, 45);
-            this.toolStripButtonBegining.Text = "toolStripButton1";
+            this.toolStripButtonBegining.Text = "最前";
             this.toolStripButtonBegining.Click += new EventHandler(toolStripButtonBegining_Click);
             // 
             // toolStripButtonEnd
@@ -589,7 +590,7 @@ namespace PipeSimulation
             this.toolStripButtonEnd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEnd.Name = "toolStripButtonEnd";
             this.toolStripButtonEnd.Size = new System.Drawing.Size(60, 80);
-            this.toolStripButtonEnd.Text = "toolStripButton1";
+            this.toolStripButtonEnd.Text = "最后";
             this.toolStripButtonEnd.Click += new EventHandler(toolStripButtonEnd_Click);
             // 
             // viewSpecificTimerScene
@@ -597,7 +598,7 @@ namespace PipeSimulation
             this.viewSpecificTimerScene.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.viewSpecificTimerScene.Name = "viewSpecificTimerScene";
             this.viewSpecificTimerScene.Size = new System.Drawing.Size(40, 45);
-            this.viewSpecificTimerScene.Text = "View Specific Time";
+            this.viewSpecificTimerScene.Text = "查看任意时刻";
             this.viewSpecificTimerScene.Click += new EventHandler(viewSpecificTimerScene_Click);
             // 
             // trackBarAnimation
@@ -615,7 +616,7 @@ namespace PipeSimulation
             // 
             this.toolStripLabelAnimationTime.Name = "toolStripLabelAnimationTime";
             this.toolStripLabelAnimationTime.Size = new System.Drawing.Size(86, 45);
-            this.toolStripLabelAnimationTime.Text = "toolStripLabel1";
+            this.toolStripLabelAnimationTime.Text = "";
             // 
             // toolTipAnimation
             // 
@@ -635,7 +636,7 @@ namespace PipeSimulation
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainUI";
-            this.Text = "Pipe Simulation";
+            this.Text = "天津沉管模拟";
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.splitContainerMain.Panel2.ResumeLayout(false);
             this.splitContainerMain.ResumeLayout(false);
@@ -652,6 +653,7 @@ namespace PipeSimulation
             this.FormClosing += new FormClosingEventHandler(MainUI_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.SplitContainer splitContainerMain;
@@ -668,43 +670,43 @@ namespace PipeSimulation
         }
 
 
-        static void myCallback(vtk.vtkObject caller, uint eventId,
-            object clientData, IntPtr callData)
-        {
-            System.Diagnostics.Debug.WriteLine("Callback has been called.");
-            vtk.vtkBoxWidget boxWidget = vtk.vtkBoxWidget.SafeDownCast(caller);
-            if (null != boxWidget)
-            {
-                using (vtk.vtkTransform t = new vtk.vtkTransform())
-                {
-                    boxWidget.GetTransform(t);
-                    boxWidget.GetProp3D().SetUserTransform(t);
-                }
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Caller is not a box widget.");
-            }
-        }
+        //static void myCallback(vtk.vtkObject caller, uint eventId,
+        //    object clientData, IntPtr callData)
+        //{
+        //    System.Diagnostics.Debug.WriteLine("Callback has been called.");
+        //    vtk.vtkBoxWidget boxWidget = vtk.vtkBoxWidget.SafeDownCast(caller);
+        //    if (null != boxWidget)
+        //    {
+        //        using (vtk.vtkTransform t = new vtk.vtkTransform())
+        //        {
+        //            boxWidget.GetTransform(t);
+        //            boxWidget.GetProp3D().SetUserTransform(t);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        System.Diagnostics.Debug.WriteLine("Caller is not a box widget.");
+        //    }
+        //}
 
 
-        static void PrintCameraPosition(vtk.vtkObject caller, uint eventId,
-                                            object clientData, IntPtr callData)
-        {
-            System.Diagnostics.Debug.WriteLine("Callback has been called.");
-            vtk.vtkRenderer ren = vtk.vtkRenderer.SafeDownCast(caller);
-            if (ren != null)
-            {
-                double[] position = ren.GetActiveCamera().GetPosition();
-                Console.WriteLine(String.Format("{0}, {1}, {2}",
+        //static void PrintCameraPosition(vtk.vtkObject caller, uint eventId,
+        //                                    object clientData, IntPtr callData)
+        //{
+        //    System.Diagnostics.Debug.WriteLine("Callback has been called.");
+        //    vtk.vtkRenderer ren = vtk.vtkRenderer.SafeDownCast(caller);
+        //    if (ren != null)
+        //    {
+        //        double[] position = ren.GetActiveCamera().GetPosition();
+        //        Console.WriteLine(String.Format("{0}, {1}, {2}",
 
-                    position[0], position[1], position[2]));
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Caller is not a renderer.");
-            }
-        }
+        //            position[0], position[1], position[2]));
+        //    }
+        //    else
+        //    {
+        //        System.Diagnostics.Debug.WriteLine("Caller is not a renderer.");
+        //    }
+        //}
 
         void AddConeToWindow(vtk.vtkRenderWindow renWin)
         {
@@ -786,44 +788,44 @@ namespace PipeSimulation
             //this->AxesWidget->KeyPressActivationOff();
         }
 
-        void AddFlamingoToWindow(vtk.vtkRenderWindow renWin)
-        {
-            // This example demonstrates the use of vtk3DSImporter.
-            // vtk3DSImporter is used to load 3D Studio files.  Unlike writers,
-            // importers can load scenes (data as well as lights, cameras, actors
-            // etc.). Importers will either generate an instance of vtkRenderWindow
-            // and/or vtkRenderer or will use the ones you specify.
+        //void AddFlamingoToWindow(vtk.vtkRenderWindow renWin)
+        //{
+        //    // This example demonstrates the use of vtk3DSImporter.
+        //    // vtk3DSImporter is used to load 3D Studio files.  Unlike writers,
+        //    // importers can load scenes (data as well as lights, cameras, actors
+        //    // etc.). Importers will either generate an instance of vtkRenderWindow
+        //    // and/or vtkRenderer or will use the ones you specify.
 
-            // Create the importer and read a file
-            vtk.vtk3DSImporter importer = new vtk.vtk3DSImporter();
-            importer.ComputeNormalsOn();
-            importer.SetFileName(@"M:\data\7.3ds");
-            importer.Read();
+        //    // Create the importer and read a file
+        //    vtk.vtk3DSImporter importer = new vtk.vtk3DSImporter();
+        //    importer.ComputeNormalsOn();
+        //    importer.SetFileName(@"M:\data\7.3ds");
+        //    importer.Read();
 
-            // Here we let the importer create a renderer and a render window for
-            // us. We could have also create and assigned those ourselves like so:
-            importer.SetRenderWindow(renWin);
+        //    // Here we let the importer create a renderer and a render window for
+        //    // us. We could have also create and assigned those ourselves like so:
+        //    importer.SetRenderWindow(renWin);
 
-            // Assign an interactor.
-            // We have to ask the importer for it's render window.
+        //    // Assign an interactor.
+        //    // We have to ask the importer for it's render window.
 
-            // Set some properties on the renderer.
-            // We have to ask the importer for it's renderer.
-            vtk.vtkRenderer ren = importer.GetRenderer();
-            renWin.AddRenderer(ren);
-            ren.SetBackground(0.1, 0.2, 0.4);
+        //    // Set some properties on the renderer.
+        //    // We have to ask the importer for it's renderer.
+        //    vtk.vtkRenderer ren = importer.GetRenderer();
+        //    renWin.AddRenderer(ren);
+        //    ren.SetBackground(0.1, 0.2, 0.4);
 
-            // Position the camera:
-            // change view up to +z
-            vtk.vtkCamera camera = ren.GetActiveCamera();
-            camera.SetPosition(0, 1, 0);
-            camera.SetFocalPoint(0, 0, 0);
-            camera.SetViewUp(0, 0, 1);
-            // let the renderer compute good position and focal point
-            ren.ResetCamera();
-            camera.Dolly(1.4);
-            ren.ResetCameraClippingRange();
-        }
+        //    // Position the camera:
+        //    // change view up to +z
+        //    vtk.vtkCamera camera = ren.GetActiveCamera();
+        //    camera.SetPosition(0, 1, 0);
+        //    camera.SetFocalPoint(0, 0, 0);
+        //    camera.SetViewUp(0, 0, 1);
+        //    // let the renderer compute good position and focal point
+        //    ren.ResetCamera();
+        //    camera.Dolly(1.4);
+        //    ren.ResetCameraClippingRange();
+        //}
         private vtk.vtkOrientationMarkerWidget axesWidget;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem1;
