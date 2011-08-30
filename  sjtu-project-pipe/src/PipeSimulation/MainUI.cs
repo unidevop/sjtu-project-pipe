@@ -62,7 +62,7 @@ namespace PipeSimulation
             Thread.Sleep(2000);
 
             // Initialize the vtk models
-            this.AddConeToWindow(this.vtkFormsWindowControl.GetRenderWindow());
+            InitializeRenderWindow(this.vtkFormsWindowControl.GetRenderWindow());
 
             // Initialize the data model
             InitializeDataModel();
@@ -72,13 +72,6 @@ namespace PipeSimulation
 
             // Initialize the text actor
             InitializeTextActor();
-
-            //this.AddFlamingoToWindow(this.vtkFormsWindowControl2.GetRenderWindow()); 
-            
-            //// Test
-            //// Add some information
-            //CInfoPostorUtility.Instance().PostString("[2011.08.10 21:40:36] Pipe1 No1. x = 35, y = 38 z = 40");
-            //CInfoPostorUtility.Instance().PostString("[2011.08.10 21:40:36] Pipe1 No2. x = 67, y = 89 z = 90");
 
             SplashScreen.UdpateStatusText(Resources.IDS_START_APP);
             Thread.Sleep(1500);
@@ -143,6 +136,26 @@ namespace PipeSimulation
             
             // Watch the size changed to reposition the text actors
             IApp.theApp.vtkControl.SizeChanged += OnControlSizeChanged;
+        }
+
+        void InitializeRenderWindow(vtk.vtkRenderWindow renWin)
+        {
+            //
+            // Create the Renderer and assign actors to it. A renderer is like a
+            // viewport. It is part or all of a window on the screen and it is
+            // responsible for drawing the actors it has.  We also set the background
+            // color here
+            //
+            vtk.vtkRenderer ren1 = new vtk.vtkRenderer();
+            ////ren1.AddActor(coneActor);
+            ren1.SetBackground(0.1f, 0.2f, 0.4f);
+
+            ////
+            //// Finally we create the render window which will show up on the screen
+            //// We put our renderer into the render window using AddRenderer. We also
+            //// set the size to be 300 pixels by 300
+            ////
+            renWin.AddRenderer(ren1);
         }
 
         protected void OnControlSizeChanged(object sender, EventArgs e)
