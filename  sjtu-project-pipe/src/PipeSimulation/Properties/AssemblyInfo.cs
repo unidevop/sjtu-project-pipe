@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PipeSimulation")]
+[assembly: AssemblyTitle("天津沉管模拟")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("SJTU, Inc.")]
+[assembly: AssemblyCompany("上海交通大学海洋工程学院")]
 [assembly: AssemblyProduct("PipeSimulation")]
-[assembly: AssemblyCopyright("Copyright © SJTU, Inc. 2011")]
+[assembly: AssemblyCopyright("版权所有 © 上海交通大学海洋工程学院2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -3,6 +3,7 @@ using PipeSimulation.Commands;
 using PipeSimulation.PipeApp;
 using System.Windows.Forms;
 using PipeSimulation.Utility;
+using PipeSimulation.Properties;
 
 namespace PipeSimulation
 {
@@ -21,12 +22,12 @@ namespace PipeSimulation
                 {
                     // Step 1: Pop up a file save dialog to get a output path
                     SaveFileDialog saveDlg = new SaveFileDialog();
-                    saveDlg.Filter = "PNG Image|*.png";
-                    saveDlg.Title = "Save current scene";
+                    saveDlg.Filter = Resources.IDS_PNG_FILTER;
+                    saveDlg.Title = Resources.IDS_SAVE_PICTURE_TITLE;
                     saveDlg.ShowDialog();
 
                     // Step 2: Output a png image
-                    if (saveDlg.FileName != "")
+                    if (saveDlg.FileName != /*MSG0*/"")
                     {
                         CImageOutputUtil.OutputImageFromCurrentSence(IApp.theApp.RenderWindow, saveDlg.FileName);
                     }

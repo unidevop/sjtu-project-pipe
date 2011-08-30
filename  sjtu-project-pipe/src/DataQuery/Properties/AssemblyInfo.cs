@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("DataQuery")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("SJTU")]
+[assembly: AssemblyCompany("上海交通大学海洋工程学院")]
 [assembly: AssemblyProduct("DataQuery")]
-[assembly: AssemblyCopyright("Copyright © SJTU 2011")]
+[assembly: AssemblyCopyright("版权所有 © 上海交通大学海洋工程学院2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -151,7 +151,7 @@ namespace PipeSimulation
             public double Width { get { return m_dWidth; } internal set { m_dWidth = value; } }
             public double Height { get { return m_dHeight; } internal set { m_dHeight = value; } }
 
-            [System.Runtime.CompilerServices.IndexerName("Pylon")]
+            [System.Runtime.CompilerServices.IndexerName(/*MSG0*/"Pylon")]
             public CPylonModel this[int index]
             {
                 get

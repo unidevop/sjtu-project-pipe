@@ -28,7 +28,7 @@ namespace PipeSimulation
             {
 #if DEBUG
                 // Hard code now, need to be change after migrate the new solution file sturcture.
-                return @"M:\Data\";
+                return /*MSG0*/@"M:\Data\";
 #else
                 {
                     // The data folder should be at the parent level of the current assembly executing path
@@ -37,18 +37,18 @@ namespace PipeSimulation
                     // --- PipeSimlation.exe
                     // Data
                     string strAssemblyPath = CFolderUtility.AssemblyExecutingPath(); // Bin.PipeSimulation.exe
-                    //string strAssemblyPath = @"M:\bin\PipeSimulation.exe";
+                    //string strAssemblyPath = /*MSG0*/@"M:\bin\PipeSimulation.exe";
 
                     strAssemblyPath = Path.GetDirectoryName(strAssemblyPath); // Bin folder
                     strAssemblyPath = Path.GetDirectoryName(strAssemblyPath); // Bin folder
-                    //strAssemblyPath = Path.Combine(strAssemblyPath, "..\\..\\");
-                    //int iIndex = strAssemblyPath.LastIndexOf('\\');
+                    //strAssemblyPath = Path.Combine(strAssemblyPath, /*MSG0*/"..\\..\\");
+                    //int iIndex = strAssemblyPath.LastIndexOf(/*MSG0*/'\\');
                     //if (iIndex != -1)
                     //{
                     //    strAssemblyPath = strAssemblyPath.Substring(0, iIndex + 1);
                     //}
 
-                    return strAssemblyPath + @"\Data\";
+                    return strAssemblyPath + /*MSG0*/@"\Data\";
                 }
 #endif
             }

@@ -44,7 +44,7 @@ namespace PipeSimulation.Utility
             if (IsRecording) return;
 
             // Check the file path
-            if (string.IsNullOrEmpty(FilePath)) throw new ArgumentNullException("FilePath is not set!");
+            if (string.IsNullOrEmpty(FilePath)) throw new ArgumentNullException(/*MSG0*/"FilePath is not set!");
 
             // Initialize the window to image filter and AVI writer
             m_WindowToImageFilter = new vtk.vtkWindowToImageFilter();
@@ -78,7 +78,7 @@ namespace PipeSimulation.Utility
         public void CaptureData()
         {
             // Check if start to recrod yet
-            if (!IsRecording) throw new ApplicationException("Not start record yet!");
+            if (!IsRecording) throw new ApplicationException(/*MSG0*/"Not start record yet!");
 
             try
             {

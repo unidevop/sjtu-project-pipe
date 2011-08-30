@@ -128,13 +128,13 @@
     <value>res\FrontView.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IDS_PAN_DESC" xml:space="preserve">
-    <value>Move the graphics window view in any direction planar to the screen</value>
+    <value>平移视图</value>
   </data>
   <data name="IDS_ROTATE_DESC" xml:space="preserve">
-    <value>Dynamically rotates the view</value>
+    <value>旋转视图</value>
   </data>
   <data name="IDS_ZOOM_DESC" xml:space="preserve">
-    <value>Dynamically zooms in or out</value>
+    <value>缩放视图</value>
   </data>
   <data name="LeftView" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>res\LeftView.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -195,5 +195,62 @@
   </data>
   <data name="record_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>res\record_icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IDS_ABOUT_TITLE" xml:space="preserve">
+    <value>关于 {0} {0}</value>
+  </data>
+  <data name="IDS_ABOUT_VERSION" xml:space="preserve">
+    <value>版本 {0} {0}</value>
+  </data>
+  <data name="IDS_AVI_FILTER" xml:space="preserve">
+    <value>AVI 文件|*.avi</value>
+  </data>
+  <data name="IDS_ERROR_DATAENGINE_CONNECT" xml:space="preserve">
+    <value>致命错误：不能连接到数据库。</value>
+  </data>
+  <data name="IDS_ERROR_DATAFILE_NOT_FOUND" xml:space="preserve">
+    <value>致命错误：不能找到{0}。</value>
+  </data>
+  <data name="IDS_ERROR_LOAD_MODEL" xml:space="preserve">
+    <value>错误：读取某些模型文件出错。</value>
+  </data>
+  <data name="IDS_ERROR_LOAD_XML" xml:space="preserve">
+    <value>致命错误：读取{0}出错。</value>
+  </data>
+  <data name="IDS_IMPORT_MODELS" xml:space="preserve">
+    <value>导入模型...</value>
+  </data>
+  <data name="IDS_MONITOR_MODE_TEXT" xml:space="preserve">
+    <value>[实时监听模式]</value>
+  </data>
+  <data name="IDS_PIPE_INDEX" xml:space="preserve">
+    <value>第{0}段沉管</value>
+  </data>
+  <data name="IDS_PNG_FILTER" xml:space="preserve">
+    <value>PNG 文件|*.png</value>
+  </data>
+  <data name="IDS_REPLAY_MODE_TEXT" xml:space="preserve">
+    <value>[回放模式]</value>
+  </data>
+  <data name="IDS_SAVE_PICTURE_TITLE" xml:space="preserve">
+    <value>截取当前屏幕</value>
+  </data>
+  <data name="IDS_START_APP" xml:space="preserve">
+    <value>启动程序...</value>
+  </data>
+  <data name="IDS_VIDEO_OPENFILE_FAIL" xml:space="preserve">
+    <value>不能打开{0}。</value>
+  </data>
+  <data name="IDS_VIDEO_OUTPUT_SUCCEED" xml:space="preserve">
+    <value>视频文件{0}已经录制成功。您想打开该视频吗？</value>
+  </data>
+  <data name="IDS_VIDEO_TITLE" xml:space="preserve">
+    <value>保存视频文件</value>
+  </data>
+  <data name="IDS_WARNING_EXIT" xml:space="preserve">
+    <value>您真的想退出程序？</value>
+  </data>
+  <data name="IDS_WARNING_ISRECORDING" xml:space="preserve">
+    <value>正在录制视频，关闭程序前请先停止录制！</value>
   </data>
 </root>
