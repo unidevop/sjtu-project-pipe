@@ -12,7 +12,7 @@ namespace PipeSimulation.DataQuery
     /// </summary>
     public class PipeInfo
     {
-        private string m_pipeId;
+        private int     m_pipeId;
         //private Point3D m_ctrlPt;
         private Point3D m_startPt;
         private Point3D m_endPt;
@@ -20,7 +20,12 @@ namespace PipeSimulation.DataQuery
         private double m_beta;
         private DateTime m_time;
 
-        public PipeInfo(string pipeId, Point3D startPt, Point3D endPt, /*Point3D ctrlPt, */
+        public PipeInfo(int pipeId)
+        {
+            m_pipeId = pipeId;
+        }
+
+        public PipeInfo(int pipeId, Point3D startPt, Point3D endPt, /*Point3D ctrlPt, */
                         double alpha, double beta, DateTime time)
         {
             m_pipeId = pipeId;
@@ -32,7 +37,7 @@ namespace PipeSimulation.DataQuery
             m_time = time;
         }
 
-        public string PipeId
+        public int PipeId
         {
             get
             {
@@ -58,6 +63,10 @@ namespace PipeSimulation.DataQuery
             {
                 return m_startPt;
             }
+            set
+            {
+                m_startPt = value;
+            }
         }
 
         public Point3D EndPoint
@@ -65,6 +74,10 @@ namespace PipeSimulation.DataQuery
             get
             {
                 return m_endPt;
+            }
+            set
+            {
+                m_endPt = value;
             }
         }
 
@@ -74,6 +87,10 @@ namespace PipeSimulation.DataQuery
             {
                 return m_alpha;
             }
+            set
+            {
+                m_alpha = value;
+            }
         }
 
         public double Beta
@@ -81,6 +98,10 @@ namespace PipeSimulation.DataQuery
             get
             {
                 return m_beta;
+            }
+            set
+            {
+                m_beta = value;
             }
         }
 
@@ -99,6 +120,10 @@ namespace PipeSimulation.DataQuery
             get
             {
                 return m_time;
+            }
+            set
+            {
+                m_time = value;
             }
         }
     }
