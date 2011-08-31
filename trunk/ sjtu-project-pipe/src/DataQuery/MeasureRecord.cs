@@ -9,7 +9,7 @@ namespace PipeSimulation.DataQuery
     abstract class BaseMeasureRecord
     {
         private int m_measureId = 0;
-        private string m_pipeId;
+        private int m_pipeId;
         private int m_projectPtId = 0;
         private DateTime m_measureTime;
 
@@ -29,7 +29,7 @@ namespace PipeSimulation.DataQuery
             }
         }
 
-        public string PipeId
+        public int PipeId
         {
             get
             {
