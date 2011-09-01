@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Configuration;
 using PipeSimulation.Commands;
 using PipeSimulation.DataModel;
 using PipeSimulation.ObserverMode;
@@ -22,12 +23,28 @@ namespace PipeSimulation.PipeApp
         private CTextSceneDisplayer m_StatisticTextDisplayer = new CTextSceneDisplayer();
         private CTextSceneDisplayer m_warningTextDisplayer = new CTextSceneDisplayer();
         private IVideoWriter m_videoWriter = new CAVIWriter();
+        private IRealtimeDataQuery  m_realTimeQuery = null;
+        private IHistoryDataQuery m_historyQuery = null;
 
         public AppImpl(MainUI mainUI)
         {
             m_mainUI = mainUI;
             m_vtkControl = m_mainUI.vtkControl;
             m_vtkRenderWindow = m_vtkControl.GetRenderWindow();
+
+            try
+            {
+                string dbConnStr = ConfigurationManager.ConnectionStrings["SQLDBConn"].ConnectionString;
+                double readInterval = Convert.ToDouble(ConfigurationManager.AppSettings["ReadInterval"]);
+
+                m_realTimeQuery = DataQueryManager.GetRealTimeQuery(dbConnStr, readInterval);
+                m_historyQuery = DataQueryManager.GetHistoricalQuery(dbConnStr);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: {0}", ex.Message);
+                Console.WriteLine("Exception: {0}", ex.StackTrace);
+            }
         }
 
         public override MainUI MainUI
@@ -62,12 +79,12 @@ namespace PipeSimulation.PipeApp
 
         public override IRealtimeDataQuery RealTimeDataQuery 
         {
-            get { return null; }
+            get { return m_realTimeQuery; }
         }
 
         public override IHistoryDataQuery HistoryTimeDataQuery 
         {
-            get { return null; }
+            get { return m_historyQuery; }
         }
 
         public override IDataDriven DataDriven 
