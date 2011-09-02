@@ -17,11 +17,13 @@ namespace PipeSimulation.DataQuery
 
         protected SqlConnection m_dbConn;
 
+#if !NEW_DATA_APPROACH
         // default incline to GPS time tolerance is 0.3s
         protected static TimeSpan m_inclineGPSMeasureTimeTolerance = new TimeSpan(0, 0, 0, 300);
 
         // default incline and GPS time tolerance is 0.01s
         protected static TimeSpan m_GPSMeasureTimeTolerance = new TimeSpan(0, 0, 0, 10);
+#endif
 
         // interval is in milliseconds
         public PipeDataQuery(string dbAdress, string dbName, string userName, string password)
@@ -173,8 +175,8 @@ namespace PipeSimulation.DataQuery
 
             return ToPipeInfo(sqlDataReader);
         }
-#endif
 
+#else
         protected List<GPSRecord> ToGPSRecords(SqlDataReader sqlDataReader)
         {
             List<GPSRecord> lstRecords = null;
@@ -225,7 +227,7 @@ namespace PipeSimulation.DataQuery
 
                 if (pipeInfo != null)
                 {
-                    lastInclineMeasureId = idx;
+                    lastInclineMeasureId = lstInclineRecords[idx].MeasureId;
 
                     return pipeInfo;
                 }
@@ -258,7 +260,7 @@ namespace PipeSimulation.DataQuery
 
                             PipeInfo pipeInfo = new PipeInfo(inclineRcd.PipeId, gpsPrjPt1.Location, gpsPrjPt2.Location,
                                 inclineRcd.Alpha, inclineRcd.Beta, inclineRcd.MeasureTime);
-                            lastGPSMeasureId = idx;
+                            lastGPSMeasureId = lstGPSRecords[idx].MeasureId;
 
                             return pipeInfo;
                         }
@@ -269,6 +271,7 @@ namespace PipeSimulation.DataQuery
 
             return null;
         }
+#endif
     }
 
     class RealTimeDataQuery : PipeDataQuery, IRealtimeDataQuery
@@ -323,11 +326,7 @@ namespace PipeSimulation.DataQuery
 
             if (!m_isReading)
             {
-#if NEW_DATA_APPROACH
-                latestData = ReadLatestData();
-#else
                 latestData = ReadStartData();
-#endif
 
                 if (latestData != null)
                     m_isReading = true;
@@ -352,6 +351,25 @@ namespace PipeSimulation.DataQuery
         }
 
 #if NEW_DATA_APPROACH
+        protected PipeInfo ReadStartData()
+        {
+            string strSql = @"SELECT TOP 1 GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
+              GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, InclineMeasure.Angle1, InclineMeasure.Angle2, GPS1.MeasureID, InclineMeasure.MeasureID 
+              FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON (GPS1.PipeID=GPS2.PipeID AND
+              GPS1.MeasureTime = GPS2.MeasureTime AND GPS1.ProjectPointID < GPS2.ProjectPointID) 
+              INNER JOIN InclineMeasure ON (GPS1.PipeID=InclineMeasure.PipeID AND GPS1.MeasureTime=InclineMeasure.MeasureTime)
+              ORDER BY GPS1.MeasureID DESC";
+
+            SqlCommand sqlCmd = null;
+            SqlDataReader sqlDataReader = null;
+
+            //  read GPS records
+            sqlCmd = new SqlCommand(strSql, m_dbConn);
+            sqlDataReader = sqlCmd.ExecuteReader();
+
+            return ToPipeInfo(sqlDataReader, out m_lastGPSMeasureId, out m_lastInclineMeasureId);
+        }
+
         protected PipeInfo ReadLatestUnReadData()
         {
             string strSql = String.Format(@"SELECT TOP 1 GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
@@ -430,38 +448,6 @@ namespace PipeSimulation.DataQuery
         {
             return ReadLatestData();
         }
-
-        // Query
-        //public override bool IsPipeStarted(int iPipeId)
-        //{
-        //    string strGpsSql = "SELECT TOP 1 PipeID FROM GPSMeasure ORDER BY MeasureID DESC";
-
-        //    SqlCommand sqlCmd = null;
-        //    SqlDataReader sqlDataReader = null;
-
-        //    //  read GPS records
-        //    sqlCmd = new SqlCommand(strGpsSql, m_dbConn);
-        //    sqlDataReader = sqlCmd.ExecuteReader();
-
-        //    if (sqlDataReader.Read() && (sqlDataReader.GetInt32(0)) == iPipeId)
-        //        return true;
-
-        //    string strInclineSql = "SELECT TOP 1 PipeID FROM InclineMeasure ORDER BY MeasureID DESC";
-
-        //    //  read Incline records
-        //    sqlCmd = new SqlCommand(strInclineSql, m_dbConn);
-        //    sqlDataReader = sqlCmd.ExecuteReader();
-
-        //    if (sqlDataReader.Read() && (sqlDataReader.GetInt32(0)) == iPipeId)
-        //        return true;
-
-        //    return false;
-        //}
-
-        //public override bool IsPipeEnded(int iPipeId)
-        //{
-        //    return !IsPipeStarted(iPipeId);
-        //}
     }
 
     class HistoricalDataQuery : PipeDataQuery, IHistoryDataQuery
@@ -480,18 +466,55 @@ namespace PipeSimulation.DataQuery
         {
         }
 
+#if NEW_DATA_APPROACH
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="iPipeId"></param>
+        /// <returns></returns>
         public bool IsPipeStarted(int iPipeId)
         {
             PipeInfo pipeInfo = ReadLatestData();
 
-            return pipeInfo.PipeId >= iPipeId;
+            return pipeInfo != null ? pipeInfo.PipeId >= iPipeId : false;
         }
+#else
+         //Query
+        public bool IsPipeStarted(int iPipeId)
+        {
+            string strGpsSql = "SELECT TOP 1 PipeID FROM GPSMeasure ORDER BY MeasureID DESC";
 
+            SqlCommand sqlCmd = null;
+            SqlDataReader sqlDataReader = null;
+
+            //  read GPS records
+            sqlCmd = new SqlCommand(strGpsSql, m_dbConn);
+            sqlDataReader = sqlCmd.ExecuteReader();
+
+            if (sqlDataReader.Read() && (sqlDataReader.GetInt32(0)) >= iPipeId)
+                return true;
+
+            string strInclineSql = "SELECT TOP 1 PipeID FROM InclineMeasure ORDER BY MeasureID DESC";
+
+            //  read Incline records
+            sqlCmd = new SqlCommand(strInclineSql, m_dbConn);
+            sqlDataReader = sqlCmd.ExecuteReader();
+
+            if (sqlDataReader.Read() && (sqlDataReader.GetInt32(0)) >= iPipeId)
+                return true;
+
+            return false;
+        }
+#endif
+
+        /// <summary>
+        /// Cannot work with last pipe
+        /// </summary>
+        /// <param name="iPipeId"></param>
+        /// <returns></returns>
         public bool IsPipeEnded(int iPipeId)
         {
-            PipeInfo pipeInfo = ReadLatestData();
-
-            return pipeInfo.PipeId < iPipeId;
+            return IsPipeStarted(iPipeId + 1);
         }
 
         public long GetPipeRecordCount(int iPipeId)
