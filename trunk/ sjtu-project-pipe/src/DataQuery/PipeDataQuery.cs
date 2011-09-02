@@ -166,14 +166,17 @@ namespace PipeSimulation.DataQuery
               INNER JOIN InclineMeasure ON (GPS1.PipeID=InclineMeasure.PipeID AND GPS1.MeasureTime=InclineMeasure.MeasureTime)
               ORDER BY GPS1.MeasureID DESC";
 
-            SqlCommand sqlCmd = null;
-            SqlDataReader sqlDataReader = null;
-
-            //  read GPS records
-            sqlCmd = new SqlCommand(strSql, m_dbConn);
-            sqlDataReader = sqlCmd.ExecuteReader();
-
-            return ToPipeInfo(sqlDataReader);
+            lock (m_dbConn)
+            {
+                //  read GPS records
+                using (SqlCommand sqlCmd = new SqlCommand(strSql, m_dbConn))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
+                    {
+                        return ToPipeInfo(sqlDataReader);
+                    }
+                } 
+            }
         }
 
 #else
@@ -322,7 +325,7 @@ namespace PipeSimulation.DataQuery
 
         void ReadData(object sender, ElapsedEventArgs e)
         {
-            lock (m_timer)
+            lock (m_timer)  //  avoid self competition
             {
                 try
                 {
@@ -371,13 +374,16 @@ namespace PipeSimulation.DataQuery
               INNER JOIN InclineMeasure ON (GPS1.PipeID=InclineMeasure.PipeID AND GPS1.MeasureTime=InclineMeasure.MeasureTime)
               ORDER BY GPS1.MeasureID DESC";
 
-            //  read GPS records
-            using (SqlCommand sqlCmd = new SqlCommand(strSql, m_dbConn))
+            lock (m_dbConn)
             {
-                using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
+                //  read GPS records
+                using (SqlCommand sqlCmd = new SqlCommand(strSql, m_dbConn))
                 {
-                    return ToPipeInfo(sqlDataReader, out m_lastGPSMeasureId, out m_lastInclineMeasureId);
-                }
+                    using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
+                    {
+                        return ToPipeInfo(sqlDataReader, out m_lastGPSMeasureId, out m_lastInclineMeasureId);
+                    }
+                } 
             }
         }
 
@@ -391,13 +397,16 @@ namespace PipeSimulation.DataQuery
               GPS1.MeasureTime=InclineMeasure.MeasureTime AND InclineMeasure.MeasureID>{1})
               ORDER BY GPS1.MeasureID DESC", m_lastGPSMeasureId, m_lastInclineMeasureId);
 
-            //  read GPS records
-            using (SqlCommand sqlCmd = new SqlCommand(strSql, m_dbConn))
+            lock (m_dbConn)
             {
-                using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
+                //  read GPS records
+                using (SqlCommand sqlCmd = new SqlCommand(strSql, m_dbConn))
                 {
-                    return ToPipeInfo(sqlDataReader, out m_lastGPSMeasureId, out m_lastInclineMeasureId);
-                }
+                    using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
+                    {
+                        return ToPipeInfo(sqlDataReader, out m_lastGPSMeasureId, out m_lastInclineMeasureId);
+                    }
+                } 
             }
         }
 
@@ -530,28 +539,27 @@ namespace PipeSimulation.DataQuery
 
         public long GetPipeRecordCount(int iPipeId)
         {
-            SqlCommand sqlCmd = null;
-            SqlDataReader sqlDataReader = null;
-
             string strInclineSql = String.Format(@"SELECT COUNT(MeasureID) FROM InclineMeasure
                                                    WHERE PipeID={0}", iPipeId);
 
-            //  read Incline records
-            sqlCmd = new SqlCommand(strInclineSql, m_dbConn);
-            sqlDataReader = sqlCmd.ExecuteReader();
-
-            if (sqlDataReader.Read())
-                return sqlDataReader.GetInt64(0);
-
+            lock (m_dbConn)
+            {
+                //  read Incline records
+                using (SqlCommand sqlCmd = new SqlCommand(strInclineSql, m_dbConn))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
+                    {
+                        if (sqlDataReader.Read())
+                            return sqlDataReader.GetInt32(0);
+                    }
+                } 
+            }
             return 0;
         }
 
 #if NEW_DATA_APPROACH
         public PipeInfo GetPipeRecord(int iPipeId, int iRecordIndex)
         {
-            SqlCommand sqlCmd = null;
-            SqlDataReader sqlDataReader = null;
-
             string strSql = String.Format(@"SELECT GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
                 GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, IM1.Angle1, IM1.Angle2
                 FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON 
@@ -561,18 +569,21 @@ namespace PipeSimulation.DataQuery
                 ORDER BY MeasureID ASC) InclineMeasure ORDER BY MeasureID DESC))",
                 iRecordIndex, iPipeId);
 
-            //  read Incline records
-            sqlCmd = new SqlCommand(strSql, m_dbConn);
-            sqlDataReader = sqlCmd.ExecuteReader();
-
-            return ToPipeInfo(sqlDataReader);
+            lock (m_dbConn)
+            {
+                //  read record
+                using (SqlCommand sqlCmd = new SqlCommand(strSql, m_dbConn))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
+                    {
+                        return ToPipeInfo(sqlDataReader);
+                    }
+                } 
+            }
         }
 
         public PipeInfo GetPipeRecord(DateTime dateTime)
         {
-            SqlCommand sqlCmd = null;
-            SqlDataReader sqlDataReader = null;
-
             string strSql = String.Format(@"SELECT GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
                 GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, IM1.Angle1, IM1.Angle2
                 FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON 
@@ -581,11 +592,17 @@ namespace PipeSimulation.DataQuery
                 ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{0}')) < {1})",
                 dateTime, m_timeTolerance.TotalMilliseconds);
 
-            //  read Incline records
-            sqlCmd = new SqlCommand(strSql, m_dbConn);
-            sqlDataReader = sqlCmd.ExecuteReader();
-
-            return ToPipeInfo(sqlDataReader);
+            lock (m_dbConn)
+            {
+                //  read record
+                using (SqlCommand sqlCmd = new SqlCommand(strSql, m_dbConn))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
+                    {
+                        return ToPipeInfo(sqlDataReader);
+                    }
+                } 
+            }
         }
 #else
         public PipeInfo GetPipeRecord(int iPipeId, int iRecordIndex)
@@ -628,55 +645,64 @@ namespace PipeSimulation.DataQuery
 
         public DateTime GetPipeStartTime(int iPipeId)
         {
-            SqlCommand sqlCmd = null;
-            SqlDataReader sqlDataReader = null;
-
             string strInclineSql = String.Format(@"SELECT TOP 1 MeasureTime FROM InclineMeasure
                                                    WHERE PipeID = {0}", iPipeId);
 
-            //  read Incline records
-            sqlCmd = new SqlCommand(strInclineSql, m_dbConn);
-            sqlDataReader = sqlCmd.ExecuteReader();
-
-            if (sqlDataReader.Read())
-                return sqlDataReader.GetDateTime(0);
+            lock (m_dbConn)
+            {
+                //  read Incline records
+                using (SqlCommand sqlCmd = new SqlCommand(strInclineSql, m_dbConn))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
+                    {
+                        if (sqlDataReader.Read())
+                            return sqlDataReader.GetDateTime(0);
+                    }
+                } 
+            }
 
             return new DateTime();
         }
 
         public DateTime GetPipeEndTime(int iPipeId)
         {
-            SqlCommand sqlCmd = null;
-            SqlDataReader sqlDataReader = null;
-
             string strInclineSql = String.Format(@"SELECT TOP 1 MeasureTime FROM InclineMeasure
                                                    WHERE PipeID = {0} ORDER BY MeasureTime DESC", iPipeId);
 
-            //  read Incline records
-            sqlCmd = new SqlCommand(strInclineSql, m_dbConn);
-            sqlDataReader = sqlCmd.ExecuteReader();
-
-            if (sqlDataReader.Read())
-                return sqlDataReader.GetDateTime(0);
+            lock (m_dbConn)
+            {
+                //  read Incline records
+                using (SqlCommand sqlCmd = new SqlCommand(strInclineSql, m_dbConn))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
+                    {
+                        if (sqlDataReader.Read())
+                            return sqlDataReader.GetDateTime(0);
+                    }
+                } 
+            }
 
             return new DateTime();
         }
 
         public DateTime GetPipeTime(int iPipeId, int iRecordIndex)
         {
-            SqlCommand sqlCmd = null;
-            SqlDataReader sqlDataReader = null;
-
             string strInclineSql = String.Format(@"SELECT TOP 1 * FROM (SELECT TOP {0} MeasureTime FROM InclineMeasure
                                                    WHERE PipeID = {1}) InclineMeasure ORDER BY MeasureTime DESC",
                                                  iRecordIndex, iPipeId);
 
-            //  read Incline records
-            sqlCmd = new SqlCommand(strInclineSql, m_dbConn);
-            sqlDataReader = sqlCmd.ExecuteReader();
-
-            if (sqlDataReader.Read())
-                return sqlDataReader.GetDateTime(0);
+            lock (m_dbConn)
+            {
+                //  read Incline records
+                using (SqlCommand sqlCmd = new SqlCommand(strInclineSql, m_dbConn))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
+                    {
+                        if (sqlDataReader.Read())
+                            return sqlDataReader.GetDateTime(0);
+                    }
+                } 
+            }
 
             return new DateTime();
         }

@@ -729,7 +729,7 @@ namespace PipeSimulation
                         }
                     }
 
-                    if (pipeModelCount != 0)
+                    if (pipeModelCount != 0 && toolStripComboBoxPipes.Items.Count > 0)
                     {
                         toolStripComboBoxPipes.SelectedIndex = 0;
                     }
