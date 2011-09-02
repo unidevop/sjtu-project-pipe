@@ -32,7 +32,7 @@ namespace PipeSimulation.DataQuery
                 String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3};",
                 dbAdress, dbName, userName, password);
 
-            Connect();
+            //Connect();
         }
 
         // interval is in milliseconds
@@ -40,7 +40,7 @@ namespace PipeSimulation.DataQuery
         {
             m_connString = connString;
 
-            Connect();
+            //Connect();
         }
 
         ~PipeDataQuery()
@@ -124,22 +124,22 @@ namespace PipeSimulation.DataQuery
 
             if (sqlDataReader.Read())
             {
-                pipeInfo = new PipeInfo(sqlDataReader.GetInt32(0));
+                pipeInfo = new PipeInfo((int)(sqlDataReader.GetDecimal(0)));
 
                 pipeInfo.Time = sqlDataReader.GetDateTime(1);
-                pipeInfo.StartPoint = new Point3D(sqlDataReader.GetDouble(2),
-                                                  sqlDataReader.GetDouble(3),
-                                                  sqlDataReader.GetDouble(4));
-                pipeInfo.EndPoint = new Point3D(sqlDataReader.GetDouble(5),
-                                                  sqlDataReader.GetDouble(6),
-                                                  sqlDataReader.GetDouble(7));
-                pipeInfo.Alpha = sqlDataReader.GetDouble(8);
-                pipeInfo.Beta = sqlDataReader.GetDouble(9);
+                pipeInfo.StartPoint = new Point3D((double)(sqlDataReader.GetDecimal(2)),
+                                                  (double)(sqlDataReader.GetDecimal(3)),
+                                                  (double)(sqlDataReader.GetDecimal(4)));
+                pipeInfo.EndPoint = new Point3D((double)(sqlDataReader.GetDecimal(5)),
+                                                 (double)(sqlDataReader.GetDecimal(6)),
+                                                 (double)(sqlDataReader.GetDecimal(7)));
+                pipeInfo.Alpha = (double)(sqlDataReader.GetDecimal(8));
+                pipeInfo.Beta = (double)(sqlDataReader.GetDecimal(9));
 
                 if (sqlDataReader.FieldCount > 10)
                 {
-                    lastGPSMeasureId = sqlDataReader.GetInt32(10);
-                    lastInclineMeasureId = sqlDataReader.GetInt32(11);
+                    lastGPSMeasureId = (int)(sqlDataReader.GetDecimal(10));
+                    lastInclineMeasureId = (int)(sqlDataReader.GetDecimal(11));
                 }
             }
 
@@ -322,24 +322,35 @@ namespace PipeSimulation.DataQuery
 
         void ReadData(object sender, ElapsedEventArgs e)
         {
-            PipeInfo latestData = null;
-
-            if (!m_isReading)
+            lock (m_timer)
             {
-                latestData = ReadStartData();
+                try
+                {
+                    PipeInfo latestData = null;
 
-                if (latestData != null)
-                    m_isReading = true;
-            }
-            else
+                    if (!m_isReading)
+                    {
+                        latestData = ReadStartData();
+
+                        if (latestData != null)
+                            m_isReading = true;
+                    }
+                    else
 #if NEW_DATA_APPROACH
-                latestData = ReadLatestUnReadData();
+                        latestData = ReadLatestUnReadData();
 #else
                 latestData = ReadLatestData();
 #endif
 
-            if (latestData != null && DataArrivedCallback != null)
-                DataArrivedCallback(latestData);
+                    if (latestData != null && DataArrivedCallback != null)
+                        DataArrivedCallback(latestData);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Exception: {0}", ex.Message);
+                    Console.WriteLine("Exception: {0}", ex.StackTrace);
+                }
+            }
         }
 
         protected override void EndReadData()
@@ -360,14 +371,14 @@ namespace PipeSimulation.DataQuery
               INNER JOIN InclineMeasure ON (GPS1.PipeID=InclineMeasure.PipeID AND GPS1.MeasureTime=InclineMeasure.MeasureTime)
               ORDER BY GPS1.MeasureID DESC";
 
-            SqlCommand sqlCmd = null;
-            SqlDataReader sqlDataReader = null;
-
             //  read GPS records
-            sqlCmd = new SqlCommand(strSql, m_dbConn);
-            sqlDataReader = sqlCmd.ExecuteReader();
-
-            return ToPipeInfo(sqlDataReader, out m_lastGPSMeasureId, out m_lastInclineMeasureId);
+            using (SqlCommand sqlCmd = new SqlCommand(strSql, m_dbConn))
+            {
+                using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
+                {
+                    return ToPipeInfo(sqlDataReader, out m_lastGPSMeasureId, out m_lastInclineMeasureId);
+                }
+            }
         }
 
         protected PipeInfo ReadLatestUnReadData()
@@ -380,14 +391,14 @@ namespace PipeSimulation.DataQuery
               GPS1.MeasureTime=InclineMeasure.MeasureTime AND InclineMeasure.MeasureID>{1})
               ORDER BY GPS1.MeasureID DESC", m_lastGPSMeasureId, m_lastInclineMeasureId);
 
-            SqlCommand sqlCmd = null;
-            SqlDataReader sqlDataReader = null;
-
             //  read GPS records
-            sqlCmd = new SqlCommand(strSql, m_dbConn);
-            sqlDataReader = sqlCmd.ExecuteReader();
-
-            return ToPipeInfo(sqlDataReader, out m_lastGPSMeasureId, out m_lastInclineMeasureId);
+            using (SqlCommand sqlCmd = new SqlCommand(strSql, m_dbConn))
+            {
+                using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
+                {
+                    return ToPipeInfo(sqlDataReader, out m_lastGPSMeasureId, out m_lastInclineMeasureId);
+                }
+            }
         }
 
 #else
