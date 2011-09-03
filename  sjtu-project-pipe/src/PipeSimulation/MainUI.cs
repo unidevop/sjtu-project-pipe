@@ -250,6 +250,8 @@ namespace PipeSimulation
             }
         }
 
+        private delegate void dataQuery_DataArrivedCallback_Invoke(PipeInfo queryResult);
+
         private void dataQuery_DataArrivedCallback(PipeInfo queryResult)
         {
             // A message is arrived, we need to sync this to drive the model
@@ -257,8 +259,15 @@ namespace PipeSimulation
             // Must in monitor mode
             if (IApp.theApp.ObserverModeManager.ActiveModeType != ObserverMode.ObserverMode.eMonitorMode) return;
 
-            // Drive  Model
-            IApp.theApp.DataDriven.DriveModel(queryResult);
+            if (IApp.theApp.vtkControl.InvokeRequired)
+            {
+                dataQuery_DataArrivedCallback_Invoke d = new dataQuery_DataArrivedCallback_Invoke(dataQuery_DataArrivedCallback);
+                this.Invoke(d, new object[] { queryResult });
+            }
+            else
+            {
+                IApp.theApp.DataDriven.DriveModel(queryResult);
+            }
         }
 
         private void InitializeScene()
@@ -750,14 +759,16 @@ namespace PipeSimulation
             }
             else
             {
-                // Must in monitor mode
-                IRealtimeDataQuery dataQuery = IApp.theApp.RealTimeDataQuery;
-                if (dataQuery != null && dataQuery.IsConnected)
-                {
-                    PipeInfo queryResult = dataQuery.FetchLatestData();
-                    // Drive model
-                    IApp.theApp.DataDriven.DriveModel(queryResult);
-                }
+                //trackBarAnimation.Value = 10;
+
+                //// Must in monitor mode
+                //IRealtimeDataQuery dataQuery = IApp.theApp.RealTimeDataQuery;
+                //if (dataQuery != null && dataQuery.IsConnected)
+                //{
+                //    PipeInfo queryResult = dataQuery.FetchLatestData();
+                //    // Drive model
+                //    IApp.theApp.DataDriven.DriveModel(queryResult);
+                //}
             }
         }
 
