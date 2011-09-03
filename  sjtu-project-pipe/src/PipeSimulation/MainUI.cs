@@ -226,33 +226,27 @@ namespace PipeSimulation
 
         private void InitializeDataQuery()
         {
-            // Initialize the data query
-            IRealtimeDataQuery realtimeDataQuery = IApp.theApp.RealTimeDataQuery;
-            if (realtimeDataQuery == null) return;
+            try
+            {// Initialize the data query
+                IRealtimeDataQuery realtimeDataQuery = IApp.theApp.RealTimeDataQuery;
+                if (realtimeDataQuery == null) return;
 
-            // Connect to data engine
-            realtimeDataQuery.Connect();
-            if (!realtimeDataQuery.IsConnected)
-            {
-                MessageBox.Show(Resources.IDS_ERROR_DATAENGINE_CONNECT, this.Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-                return;
+                // Setup the callback event
+                realtimeDataQuery.DataArrivedCallback += new DataArrivedCallbackType(dataQuery_DataArrivedCallback);
+
+                 // Initialize history data query
+                IHistoryDataQuery historyDataQuery = IApp.theApp.HistoryTimeDataQuery;
+                if (historyDataQuery == null) return;
+
+               // Connect to data engine
+                realtimeDataQuery.Connect();
+
+                // Connect to data engine
+                historyDataQuery.Connect();
             }
-
-            // Setup the callback event
-            realtimeDataQuery.DataArrivedCallback += new DataArrivedCallbackType(dataQuery_DataArrivedCallback);
-
-            // Initialize history data query
-            IHistoryDataQuery historyDataQuery = IApp.theApp.HistoryTimeDataQuery;
-            if (historyDataQuery == null) return;
-
-            // Connect to data engine
-            historyDataQuery.Connect();
-            if (!historyDataQuery.IsConnected)
+            catch
             {
-                MessageBox.Show(Resources.IDS_ERROR_DATAENGINE_CONNECT, this.Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-                return;
+                MessageBox.Show(Resources.IDS_ERROR_DATAENGINE_CONNECT, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -401,7 +395,7 @@ namespace PipeSimulation
             }
             catch (SystemException)
             {
-                MessageBox.Show(string.Format(Resources.IDS_ERROR_LOAD_XML, xmlFile), this.Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format(Resources.IDS_ERROR_LOAD_XML, xmlFile), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -440,7 +434,7 @@ namespace PipeSimulation
             }
             catch (SystemException)
             {
-                MessageBox.Show(Resources.IDS_ERROR_LOAD_MODEL, this.Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.IDS_ERROR_LOAD_MODEL, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -604,7 +598,7 @@ namespace PipeSimulation
 
             // Get the real time expression
             IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
-            if (dataQuery != null)
+            if (dataQuery != null && dataQuery.IsConnected)
             {
                 DateTime dateTime =  (iRecordIndex != 0) ? 
                     dataQuery.GetPipeTime(toolStripComboBoxPipes.SelectedIndex + 1, iRecordIndex) :
@@ -720,7 +714,7 @@ namespace PipeSimulation
 
                 // Insert started pipes
                 IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
-                if (dataQuery != null)
+                if (dataQuery != null && dataQuery.IsConnected)
                 {
                     int pipeModelCount = IApp.theApp.DataModel.PipeModels.Count;
                     for (int i = 0; i < pipeModelCount; ++i)
@@ -753,7 +747,7 @@ namespace PipeSimulation
             {
                 // Must in monitor mode
                 IRealtimeDataQuery dataQuery = IApp.theApp.RealTimeDataQuery;
-                if (dataQuery != null)
+                if (dataQuery != null && dataQuery.IsConnected)
                 {
                     PipeInfo queryResult = dataQuery.FetchLatestData();
                     // Drive model
@@ -784,7 +778,7 @@ namespace PipeSimulation
             // Query the time
             int[] trackRange = { 0, 100};
             IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
-            if (dataQuery != null)
+            if (dataQuery != null && dataQuery.IsConnected)
             {
                 // Get all count
                 trackRange[1] = (int)dataQuery.GetPipeRecordCount(replayMode.LastPipeIdIndex + 1);
