@@ -55,9 +55,6 @@ namespace PipeSimulation
             // Initalize the Data Query, must be called before InitializeObserverMode
             InitializeDataQuery();
 
-            // Initialzie Observer mode
-            InitializeObserverMode();
-
             SplashScreen.UdpateStatusText(Resources.IDS_IMPORT_MODELS);
             Thread.Sleep(2000);
 
@@ -73,6 +70,9 @@ namespace PipeSimulation
             // Initialize the text actor
             InitializeTextActor();
 
+            // Initialzie Observer mode
+            InitializeObserverMode();
+            
             SplashScreen.UdpateStatusText(Resources.IDS_START_APP);
             Thread.Sleep(1500);
 
@@ -302,7 +302,7 @@ namespace PipeSimulation
             // Enter the default mode.
             // Default mode should be Monitor mode.
             // But if we found that all pipes have already completed, we should switch to replay mode
-            ObserverMode.ObserverMode eDefaultMode = ObserverMode.ObserverMode.eMonitorMode;
+            ObserverMode.ObserverMode eDefaultMode = ObserverMode.ObserverMode.eReplayMode;
 
             //IDataQuery dataQuery = IApp.theApp.DataQuery;
             //if (dataQuery != null)
@@ -740,7 +740,12 @@ namespace PipeSimulation
                         string strComboboxItem = string.Format(Resources.IDS_PIPE_INDEX, i + 1);
                         toolStripComboBoxPipes.Items.Add(strComboboxItem);
                     }
-                    toolStripComboBoxPipes.SelectedIndex = 0; ;
+
+                    // Make sure there is at least one pipe.
+                    if (pipeModelCount > 0)
+                    {
+                        toolStripComboBoxPipes.SelectedIndex = 0; ;
+                    }
                 }
             }
             else
