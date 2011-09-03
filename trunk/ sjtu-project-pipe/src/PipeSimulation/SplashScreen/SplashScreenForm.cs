@@ -35,6 +35,15 @@ namespace SplashScreenThreaded
             progressBar1.Show();
         }
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var cp = base.CreateParams; cp.ExStyle |= 0x80;  // Turn on WS_EX_TOOLWINDOW            
+                return cp;
+            }
+        } 
+
         /// <summary>
         /// Displays the splashscreen
         /// </summary>
