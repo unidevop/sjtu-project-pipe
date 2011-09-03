@@ -34,9 +34,10 @@ namespace PipeSimulation
 
             public void DriveModel(int iPipeId, int iRecordId)
             {
-                if (IApp.theApp.HistoryTimeDataQuery != null)
+                IHistoryDataQuery dateQuery = IApp.theApp.HistoryTimeDataQuery;
+                if (dateQuery != null && dateQuery.IsConnected)
                 {
-                    DriveModel(IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(iPipeId + 1, iRecordId));
+                    DriveModel(dateQuery.GetPipeRecord(iPipeId + 1, iRecordId));
                 }
                 else
                 {
