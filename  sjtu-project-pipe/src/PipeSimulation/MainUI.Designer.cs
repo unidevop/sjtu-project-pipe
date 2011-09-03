@@ -635,7 +635,8 @@ namespace PipeSimulation
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainUI";
             this.Text = "天津沉管模拟";
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            Bitmap appicationBmp = global::PipeSimulation.Properties.Resources.application;
+            this.Icon = Icon.FromHandle(appicationBmp.GetHicon());
             this.splitContainerMain.Panel2.ResumeLayout(false);
             this.splitContainerMain.ResumeLayout(false);
             this.toolStrip.ResumeLayout(false);
