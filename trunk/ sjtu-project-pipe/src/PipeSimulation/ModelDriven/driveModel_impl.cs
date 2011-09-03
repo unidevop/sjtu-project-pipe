@@ -11,6 +11,8 @@ namespace PipeSimulation
         // This class is used to drive the models according to the data query result
         public class CDataDriven : IDataDriven
         {
+            private PipeInfo m_currentPipeInfo = null;
+
             public CDataDriven()
             {
             }
@@ -19,6 +21,9 @@ namespace PipeSimulation
 
             public void DriveModel(PipeInfo queryResult)
             {
+                // Save the current pipe info
+                m_currentPipeInfo = queryResult;
+
                 IApp.theApp.RenderWindow.GetInteractor().Render();
 
                 //// The most logic should be here
@@ -44,6 +49,13 @@ namespace PipeSimulation
                     DriveModel(iRecordId);
                 }
             }
+
+            public PipeInfo CurrentData 
+            {
+                get { return m_currentPipeInfo; }
+            }
+
+            #endregion
 
             // Test function
             private void DriveModel(int iProgress)
@@ -97,7 +109,6 @@ namespace PipeSimulation
             {
                 node.PokeMatrix(transform.GetMatrix());
             }
-            #endregion
         }
     }
 }

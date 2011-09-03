@@ -584,12 +584,12 @@ namespace PipeSimulation
             if (replayMode == null) return;
 
             replayMode.ReplayAnimationEngine.AnimationProgress = trackBarAnimation.Value;
+            
+            // Drive  the model
+            IApp.theApp.DataDriven.DriveModel(toolStripComboBoxPipes.SelectedIndex, trackBarAnimation.Value);
 
             // Set the lable 
             UpdateAnimationLabelText();
-
-            // Drive  the model
-            IApp.theApp.DataDriven.DriveModel(toolStripComboBoxPipes.SelectedIndex, trackBarAnimation.Value);
             
             //toolTipAnimation.SetToolTip(trackBarAnimation, string.Empty);
             //toolTipAnimation.Show(trackBsarAnimation.Value.ToString(), trackBarAnimation);
@@ -605,16 +605,31 @@ namespace PipeSimulation
             int iRecordIndex = trackBarAnimation.Value;
             string strAnimationTime = iRecordIndex.ToString();
 
-            // Get the real time expression
-            IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
-            if (dataQuery != null && dataQuery.IsConnected)
-            {
-                DateTime dateTime =  (iRecordIndex != 0) ? 
-                    dataQuery.GetPipeTime(toolStripComboBoxPipes.SelectedIndex + 1, iRecordIndex) :
-                    dataQuery.GetPipeStartTime(toolStripComboBoxPipes.SelectedIndex + 1);
+            DateTime dateTime;
 
-                strAnimationTime = string.Concat(dateTime.ToLongDateString(), /*MSG0*/" ", dateTime.ToLongTimeString());
+            // Get the current pipe info
+            PipeInfo pipeInfo = IApp.theApp.DataDriven.CurrentData;
+            if (pipeInfo != null)
+            {
+                dateTime = pipeInfo.Time;
             }
+            else
+            {
+                // Get the real time expression
+                IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
+                if (dataQuery != null && dataQuery.IsConnected)
+                {
+                    dateTime = (iRecordIndex != 0) ?
+                        dataQuery.GetPipeTime(toolStripComboBoxPipes.SelectedIndex + 1, iRecordIndex) :
+                        dataQuery.GetPipeStartTime(toolStripComboBoxPipes.SelectedIndex + 1);
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            strAnimationTime = string.Concat(dateTime.ToLongDateString(), /*MSG0*/" ", dateTime.ToLongTimeString());
 
             // Update the label
             toolStripLabelAnimationTime.Text = strAnimationTime;
@@ -686,10 +701,11 @@ namespace PipeSimulation
             else
             {
                 trackBarAnimation.Value = t;
-                UpdateAnimationLabelText();
 
                 // Drive  the model
                 IApp.theApp.DataDriven.DriveModel(toolStripComboBoxPipes.SelectedIndex, trackBarAnimation.Value);
+
+                UpdateAnimationLabelText();
             }
         }
 
@@ -806,11 +822,11 @@ namespace PipeSimulation
             // Update the replay animation engine total progress
             replayMode.ReplayAnimationEngine.AnimationTotalProgress = trackRange[1];
 
-            // Update the animation label text
-            UpdateAnimationLabelText();
-
             // Update the render window
             IApp.theApp.RenderWindow.GetInteractor().Render();
+
+            // Update the animation label text
+            UpdateAnimationLabelText();
         }
 
         void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -884,8 +900,8 @@ namespace PipeSimulation
             CStatisticData data = new CStatisticData();
             IApp.theApp.StatisticTextDisplayer.DisplayText(data.ToString());
 
-            CStatisticData data2 = new CStatisticData();
-            IApp.theApp.WarningTextDisplayer.DisplayText(data2.ToString());
+           // CStatisticData data2 = new CStatisticData();
+            IApp.theApp.WarningTextDisplayer.DisplayText(string.Empty);
 
             // Update the Video record
             if (IApp.theApp.VideoWriter.IsRecording)
