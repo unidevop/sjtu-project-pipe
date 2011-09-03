@@ -51,6 +51,7 @@
             this.label1.AccessibleDescription = null;
             this.label1.AccessibleName = null;
             resources.ApplyResources(this.label1, "label1");
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Name = "label1";
             // 
@@ -84,7 +85,7 @@
             this.Icon = null;
             this.Name = "SplashScreenForm";
             this.ShowInTaskbar = false;
-            this.TopMost = true;
+            this.TopLevel = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SplashForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

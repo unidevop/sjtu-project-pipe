@@ -206,7 +206,7 @@
     <value>AVI 文件|*.avi</value>
   </data>
   <data name="IDS_ERROR_DATAENGINE_CONNECT" xml:space="preserve">
-    <value>致命错误：不能连接到数据库。</value>
+    <value>不能连接到数据库。</value>
   </data>
   <data name="IDS_ERROR_DATAFILE_NOT_FOUND" xml:space="preserve">
     <value>致命错误：不能找到{0}。</value>
