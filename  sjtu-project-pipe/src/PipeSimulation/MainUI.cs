@@ -606,7 +606,10 @@ namespace PipeSimulation
             IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
             if (dataQuery != null)
             {
-                DateTime dateTime = dataQuery.GetPipeTime(toolStripComboBoxPipes.SelectedIndex, iRecordIndex);
+                DateTime dateTime =  (iRecordIndex != 0) ? 
+                    dataQuery.GetPipeTime(toolStripComboBoxPipes.SelectedIndex + 1, iRecordIndex) :
+                    dataQuery.GetPipeStartTime(toolStripComboBoxPipes.SelectedIndex + 1);
+
                 strAnimationTime = string.Concat(dateTime.ToLongDateString(), /*MSG0*/" ", dateTime.ToLongTimeString());
             }
 
@@ -722,7 +725,7 @@ namespace PipeSimulation
                     int pipeModelCount = IApp.theApp.DataModel.PipeModels.Count;
                     for (int i = 0; i < pipeModelCount; ++i)
                     {
-                        if (dataQuery.IsPipeStarted(i))
+                        if (dataQuery.IsPipeStarted(i + 1))
                         {
                             string strComboboxItem = string.Format(Resources.IDS_PIPE_INDEX, i + 1);
                             toolStripComboBoxPipes.Items.Add(strComboboxItem);
@@ -784,7 +787,7 @@ namespace PipeSimulation
             if (dataQuery != null)
             {
                 // Get all count
-                trackRange[1] = (int)dataQuery.GetPipeRecordCount(replayMode.LastPipeIdIndex);
+                trackRange[1] = (int)dataQuery.GetPipeRecordCount(replayMode.LastPipeIdIndex + 1);
             }
 
             trackBarAnimation.Value = trackRange[0];

@@ -29,14 +29,14 @@ namespace PipeSimulation
 
                 //// Drive the working in progress pipe to its location
 
-                //// Update the infomation output
+                //// Update the information output
             }
 
             public void DriveModel(int iPipeId, int iRecordId)
             {
                 if (IApp.theApp.HistoryTimeDataQuery != null)
                 {
-                    DriveModel(IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(iPipeId, iRecordId));
+                    DriveModel(IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(iPipeId + 1, iRecordId));
                 }
                 else
                 {
