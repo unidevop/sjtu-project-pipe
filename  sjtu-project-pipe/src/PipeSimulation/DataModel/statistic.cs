@@ -2,6 +2,8 @@
 using PipeSimulation.ObserverMode;
 using PipeSimulation.PipeApp;
 using PipeSimulation.Properties;
+using PipeSimulation.DataQuery;
+using PipeSimulation.DataDriven;
 
 namespace PipeSimulation.DataModel
 {
@@ -16,40 +18,52 @@ namespace PipeSimulation.DataModel
 
         public override string ToString()
         {
-            // The text show be below
-            // Current Mode: [Monitor Mode].
-            // We are working on the No.N pipe.
-            // The Delta X is 100.
-            // The Delta Y is 100.
+            // The text should be as below
+            
+            // No.N tube
+            // GPS1: (x,y,z)
+            // GPS2: (x, y,z)
+            // Time: 2009-10-32 8:30:32
+            // Alpha:        Maximum is :
+            // Beta::        Maximum is 
+            // The delta x is
+            // The delta y is 
+            // Sink height is:
 
             string strString = string.Empty;
             const string strChangeLine =  /*MSG0*/"\r\n";
+            
+            // Get Pipe info
+            PipeInfo pipeInfo = IApp.theApp.DataDriven.CurrentData;
+            if (pipeInfo == null) return strString;
 
-            // Get observer mode
-            CObserverModeManager modeManager = IApp.theApp.ObserverModeManager as CObserverModeManager;
-            string strCurrentMode;
-            if (IApp.theApp.ObserverModeManager.ActiveModeType == ObserverMode.ObserverMode.eMonitorMode)
-            {
-                strCurrentMode = Resources.IDS_MONITOR_MODE_TEXT;
-            }
-            else
-            {
-                strCurrentMode = Resources.IDS_REPLAY_MODE_TEXT;
-            }
-            //strString = string.Concat(strString, "Current Mode is ", strCurrentMode, strChangeLine);
+            // No.N tube
+            const string strPipeIndexFormat = "No.{0}";
+            strString = string.Concat(strString, string.Format(strPipeIndexFormat, pipeInfo.PipeId), strChangeLine);
 
-            // Get Message
-            //strString = string.Concat(strString, "You are focusing on No.1 pipe.", strChangeLine);
+            // GPS1
+            strString = string.Concat(strString, string.Concat("GPS1: (", pipeInfo.StartPoint.ToString(), ")"), strChangeLine);
 
-            // Animation
-            strString = string.Concat(strString, modeManager.ReplayMode.ReplayAnimationEngine.AnimationProgress.ToString(), strChangeLine);
+            // GPS2
+            strString = string.Concat(strString, string.Concat("GPS2: (", pipeInfo.EndPoint.ToString(), ")"), strChangeLine);
 
-            // Delta x
-            //strString = string.Concat(strString, "The Delta X is 100.", strChangeLine);
+            // Alpha
+            const string strAlphaFormat = "Alpha is {0}, Maximum value is {1}";
+            strString = string.Concat(strString, string.Format(strAlphaFormat, pipeInfo.Alpha, pipeInfo.Alpha), strChangeLine);
 
-            // Delta y
-            //strString = string.Concat(strString, "The Delta Y is 100.", strChangeLine);
+            // Beta
+            const string strBetaFormat = "Beta is {0}, Maximum value is {1}";
+            strString = string.Concat(strString, string.Format(strBetaFormat, pipeInfo.Beta, pipeInfo.Beta), strChangeLine);
 
+            // Delta x, need to calcaulate
+            strString = string.Concat(strString, "The Delta Y is 100.", strChangeLine);
+
+            // Delta y, need to calcaulate
+            strString = string.Concat(strString, "The Delta Y is 100.", strChangeLine);
+
+            // Sink height, need to calcaulate
+            const string strSinkHeight = "The sink height is {0}.";
+            strString = string.Concat(strString, string.Format(strSinkHeight, pipeInfo.StartPoint.Z.ToString()), strChangeLine);
 
             return strString;
         }

@@ -11,6 +11,7 @@ namespace PipeSimulation
         /// </summary>
         public interface IDataDriven
         {
+            PipeInfo CurrentData { get;}
             void DriveModel(PipeInfo queryResult);
             void DriveModel(int iPipeId, int iRecordId);
         }
