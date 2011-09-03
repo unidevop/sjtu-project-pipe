@@ -33,7 +33,7 @@
             this.labelProductName = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelCopyright = new System.Windows.Forms.Label();
-            this.labelCompanyName = new System.Windows.Forms.Label();
+            this.labelAuthorizeTo = new System.Windows.Forms.Label();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.okButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel.SuspendLayout();
@@ -49,8 +49,8 @@
             this.tableLayoutPanel.Controls.Add(this.logoPictureBox, 0, 0);
             this.tableLayoutPanel.Controls.Add(this.labelProductName, 1, 0);
             this.tableLayoutPanel.Controls.Add(this.labelVersion, 1, 1);
-            this.tableLayoutPanel.Controls.Add(this.labelCopyright, 1, 2);
-            this.tableLayoutPanel.Controls.Add(this.labelCompanyName, 1, 3);
+            this.tableLayoutPanel.Controls.Add(this.labelCopyright, 1, 3);
+            this.tableLayoutPanel.Controls.Add(this.labelAuthorizeTo, 1, 2);
             this.tableLayoutPanel.Controls.Add(this.textBoxDescription, 1, 4);
             this.tableLayoutPanel.Controls.Add(this.okButton, 1, 5);
             this.tableLayoutPanel.Font = null;
@@ -62,7 +62,9 @@
             this.logoPictureBox.AccessibleName = null;
             resources.ApplyResources(this.logoPictureBox, "logoPictureBox");
             this.logoPictureBox.BackgroundImage = null;
+            this.logoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.logoPictureBox.Font = null;
+            this.logoPictureBox.Image = global::PipeSimulation.Properties.Resources.application;
             this.logoPictureBox.ImageLocation = null;
             this.logoPictureBox.Name = "logoPictureBox";
             this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 6);
@@ -74,7 +76,7 @@
             this.labelProductName.AccessibleName = null;
             resources.ApplyResources(this.labelProductName, "labelProductName");
             this.labelProductName.Font = null;
-            this.labelProductName.MaximumSize = new System.Drawing.Size(0, 17);
+            this.labelProductName.MaximumSize = new System.Drawing.Size(0, 16);
             this.labelProductName.Name = "labelProductName";
             // 
             // labelVersion
@@ -83,7 +85,7 @@
             this.labelVersion.AccessibleName = null;
             resources.ApplyResources(this.labelVersion, "labelVersion");
             this.labelVersion.Font = null;
-            this.labelVersion.MaximumSize = new System.Drawing.Size(0, 17);
+            this.labelVersion.MaximumSize = new System.Drawing.Size(0, 16);
             this.labelVersion.Name = "labelVersion";
             // 
             // labelCopyright
@@ -92,17 +94,17 @@
             this.labelCopyright.AccessibleName = null;
             resources.ApplyResources(this.labelCopyright, "labelCopyright");
             this.labelCopyright.Font = null;
-            this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 17);
+            this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 16);
             this.labelCopyright.Name = "labelCopyright";
             // 
-            // labelCompanyName
+            // labelAuthorizeTo
             // 
-            this.labelCompanyName.AccessibleDescription = null;
-            this.labelCompanyName.AccessibleName = null;
-            resources.ApplyResources(this.labelCompanyName, "labelCompanyName");
-            this.labelCompanyName.Font = null;
-            this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 17);
-            this.labelCompanyName.Name = "labelCompanyName";
+            this.labelAuthorizeTo.AccessibleDescription = null;
+            this.labelAuthorizeTo.AccessibleName = null;
+            resources.ApplyResources(this.labelAuthorizeTo, "labelAuthorizeTo");
+            this.labelAuthorizeTo.Font = null;
+            this.labelAuthorizeTo.MaximumSize = new System.Drawing.Size(0, 16);
+            this.labelAuthorizeTo.Name = "labelAuthorizeTo";
             // 
             // textBoxDescription
             // 
@@ -156,7 +158,7 @@
         private System.Windows.Forms.Label labelProductName;
         private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.Label labelCopyright;
-        private System.Windows.Forms.Label labelCompanyName;
+        private System.Windows.Forms.Label labelAuthorizeTo;
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.Button okButton;
     }

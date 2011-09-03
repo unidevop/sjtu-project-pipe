@@ -634,7 +634,7 @@ namespace PipeSimulation
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainUI";
-            this.Text = "天津沉管模拟";
+            this.Text = "3D-Immersed Tube SPS";
             Bitmap appicationBmp = global::PipeSimulation.Properties.Resources.application;
             this.Icon = Icon.FromHandle(appicationBmp.GetHicon());
             this.splitContainerMain.Panel2.ResumeLayout(false);
