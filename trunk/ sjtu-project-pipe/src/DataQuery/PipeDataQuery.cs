@@ -473,7 +473,7 @@ namespace PipeSimulation.DataQuery
     class HistoricalDataQuery : PipeDataQuery, IHistoryDataQuery
     {
         // default time tolerance is 0.5s
-        protected static TimeSpan m_timeTolerance = new TimeSpan(0, 0, 0, 500);
+        protected static TimeSpan m_timeTolerance = new TimeSpan(0, 0, 0, 0, 500);
 
         public HistoricalDataQuery(string dbAdress, string dbName,
                                    string userName, string password)
@@ -589,8 +589,9 @@ namespace PipeSimulation.DataQuery
                 FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON 
                 (GPS1.PipeID=GPS2.PipeID AND GPS1.MeasureTime=GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID) 
                 INNER JOIN InclineMeasure AS IM1 ON (GPS1.PipeID=IM1.PipeID AND GPS1.MeasureTime=IM1.MeasureTime AND 
-                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{0}')) < {1})",
-                dateTime, m_timeTolerance.TotalMilliseconds);
+                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{0}')) < {1}) ORDER BY
+                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{2}'))",
+                dateTime, m_timeTolerance.TotalMilliseconds, dateTime);
 
             lock (m_dbConn)
             {
