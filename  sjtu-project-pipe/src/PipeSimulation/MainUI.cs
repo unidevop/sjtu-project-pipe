@@ -1006,7 +1006,42 @@ namespace PipeSimulation
                 if (DialogResult.OK == form.ShowDialog())
                 {
                     dateTime = form.SelectedDateTime;
+
                     // Update the scene
+                    IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
+
+                    if (dataQuery != null && dataQuery.IsConnected)
+                    {
+                        try
+                        {
+                            PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(dateTime);
+                            if (pipeInfo == null)
+                            {
+                                MessageBox.Show(Resources.IDS_NODATA_TO_TIME, this.Text);
+                                return;
+                            }
+
+                            // Drive Pipe Index
+                            if (toolStripComboBoxPipes.Items.Count > pipeInfo.PipeId)
+                            {
+                                toolStripComboBoxPipes.SelectedIndex = pipeInfo.PipeId;
+                            }
+
+                            // Update the track bar value
+                            // How to get a track bar value by the date time
+                            
+                            // Drive Model
+                            IApp.theApp.DataDriven.DriveModel(pipeInfo);
+
+                            // Update Animation Text
+                            UpdateAnimationLabelText();
+                        }
+                        catch (SystemException)
+                        {
+                            MessageBox.Show(Resources.IDS_NODATA_TO_TIME, this.Text);
+                            return;
+                        }
+                    }
                 }
             }
         }
