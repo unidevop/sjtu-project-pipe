@@ -59,6 +59,7 @@ namespace PipeSimulation
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AngleWarningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showStatisticTextDisplayer = new System.Windows.Forms.ToolStripMenuItem();
@@ -358,7 +359,7 @@ namespace PipeSimulation
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            m_connSettingMenuItem,toolStripSeparator4,  this.exitToolStripMenuItem});
+            m_connSettingMenuItem,this.AngleWarningToolStripMenuItem, toolStripSeparator4, this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "系统(&S)";
@@ -370,6 +371,13 @@ namespace PipeSimulation
             this.exitToolStripMenuItem.Text = "退出(&x)";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             this.exitToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.F4;
+            // 
+            // AngleWarningToolStripMenuItem
+            // 
+            this.AngleWarningToolStripMenuItem.Name = "AngleWarningToolStripMenuItem";
+            this.AngleWarningToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.AngleWarningToolStripMenuItem.Text = "倾角预警信息配置";
+            this.AngleWarningToolStripMenuItem.Click += new System.EventHandler(this.AngleWarningToolStripMenuItem_Click);
             // 
             // modeToolStripMenuItem
             // 
@@ -680,6 +688,7 @@ namespace PipeSimulation
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AngleWarningToolStripMenuItem;
 
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

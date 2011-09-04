@@ -166,6 +166,15 @@ namespace PipeSimulation.Properties {
         }
         
         /// <summary>
+        ///   查找类似 最大倾角必须大于0 的本地化字符串。
+        /// </summary>
+        internal static string IDS_ERROR_MAXIMUMANGLE {
+            get {
+                return ResourceManager.GetString("IDS_ERROR_MAXIMUMANGLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 导入模型... 的本地化字符串。
         /// </summary>
         internal static string IDS_IMPORT_MODELS {
@@ -198,6 +207,15 @@ namespace PipeSimulation.Properties {
         internal static string IDS_PIPE_INDEX {
             get {
                 return ResourceManager.GetString("IDS_PIPE_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 所有沉管 的本地化字符串。
+        /// </summary>
+        internal static string IDS_PIPES_ALL {
+            get {
+                return ResourceManager.GetString("IDS_PIPES_ALL", resourceCulture);
             }
         }
         
