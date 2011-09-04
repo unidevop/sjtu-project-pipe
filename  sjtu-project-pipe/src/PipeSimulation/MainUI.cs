@@ -996,8 +996,15 @@ namespace PipeSimulation
 
         void viewSpecificTimerScene_Click(object sender, EventArgs e)
         {
-            // Get the current date time
+            // Date time variable
             DateTime dateTime = DateTime.Now;
+            
+            // Get the current scene pipe info
+            PipeInfo currentPipeInfo = IApp.theApp.DataDriven.CurrentData;
+            if (currentPipeInfo != null)
+            {
+                dateTime = currentPipeInfo.Time;
+            }
 
             // Pop up the Specify timer dialog
             using (SpecifyTime form = new SpecifyTime())
