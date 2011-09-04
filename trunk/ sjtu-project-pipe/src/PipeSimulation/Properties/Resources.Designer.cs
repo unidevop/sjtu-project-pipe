@@ -193,6 +193,15 @@ namespace PipeSimulation.Properties {
         }
         
         /// <summary>
+        ///   查找类似 找不到该时刻的数据 的本地化字符串。
+        /// </summary>
+        internal static string IDS_NODATA_TO_TIME {
+            get {
+                return ResourceManager.GetString("IDS_NODATA_TO_TIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 平移视图 的本地化字符串。
         /// </summary>
         internal static string IDS_PAN_DESC {

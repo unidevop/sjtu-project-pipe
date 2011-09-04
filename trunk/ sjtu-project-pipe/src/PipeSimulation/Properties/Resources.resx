@@ -262,4 +262,7 @@
   <data name="IDS_PIPES_ALL" xml:space="preserve">
     <value>所有沉管</value>
   </data>
+  <data name="IDS_NODATA_TO_TIME" xml:space="preserve">
+    <value>找不到该时刻的数据</value>
+  </data>
 </root>
