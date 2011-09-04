@@ -86,20 +86,6 @@ namespace PipeSimulation.DataQuery
             }
         }
 
-        //public SqlDataReader TestDataConn()
-        //{
-        //    //try
-        //    //{
-        //    SqlCommand sqlcom = new SqlCommand("SELECT * FROM GPSMeasure", m_dbConn);
-
-        //    return sqlcom.ExecuteReader();
-        //    //}
-        //    //catch (Exception a)
-        //    //{
-
-        //    //}
-        //}
-
         // Flag to indicate if connect to data engine successfully
         public bool IsConnected
         {
@@ -116,15 +102,54 @@ namespace PipeSimulation.DataQuery
         protected virtual void EndReadData()
         {
         }
+
+        protected virtual void SetMaxAngle(PipeInfo pipeInfo)
+        {
+            double maxAbsAlpha;
+            double maxAbsBeta;
+
+            QueryMaxAngle(pipeInfo, out maxAbsAlpha, out maxAbsBeta);
+
+            pipeInfo.MaxAbsAlpha = maxAbsAlpha;
+            pipeInfo.MaxAbsBeta = maxAbsBeta;
+        }
+
+        protected void QueryMaxAngle(PipeInfo pipeInfo, out double maxAbsAlpha, out double maxAbsBeta)
+        {
+            string strInclineSql = String.Format(@"SELECT MAX(ABS(Angle1)) AS MaxAlpha, MAX(ABS(Angle2)) AS MaxBeta 
+                                                   FROM InclineMeasure WHERE PipeID='{0}' AND MeasureID <='{1}'",
+                                                   pipeInfo.PipeId, pipeInfo.InclineMeasureId);
+
+            lock (m_dbConn)
+            {
+                maxAbsAlpha = 0.0;
+                maxAbsBeta = 0.0;
+
+                //  read Incline records
+                using (SqlCommand sqlCmd = new SqlCommand(strInclineSql, m_dbConn))
+                {
+                    using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
+                    {
+                        if (sqlDataReader.Read())
+                        {
+                            maxAbsAlpha = (double)(sqlDataReader.GetDecimal(0));
+                            maxAbsBeta = (double)(sqlDataReader.GetDecimal(1));
+                        }
+                    }
+                }
+            }
+        }
         
 #if NEW_DATA_APPROACH
-        protected PipeInfo ToPipeInfo(SqlDataReader sqlDataReader, out int lastGPSMeasureId, out int lastInclineMeasureId)
+        protected PipeInfo ToPipeInfo(SqlDataReader sqlDataReader)
         {
             PipeInfo pipeInfo = null;
 
-            if (sqlDataReader.Read())
+            if (sqlDataReader.Read() && sqlDataReader.FieldCount > 11)
             {
-                pipeInfo = new PipeInfo((int)(sqlDataReader.GetDecimal(0)));
+                pipeInfo = new PipeInfo((int)(sqlDataReader.GetDecimal(0)),
+                                        (int)(sqlDataReader.GetDecimal(10)),
+                                        (int)(sqlDataReader.GetDecimal(11)));
 
                 pipeInfo.Time = sqlDataReader.GetDateTime(1);
                 pipeInfo.StartPoint = new Point3D((double)(sqlDataReader.GetDecimal(2)),
@@ -136,34 +161,20 @@ namespace PipeSimulation.DataQuery
                 pipeInfo.Alpha = (double)(sqlDataReader.GetDecimal(8));
                 pipeInfo.Beta = (double)(sqlDataReader.GetDecimal(9));
 
-                if (sqlDataReader.FieldCount > 10)
-                {
-                    lastGPSMeasureId = (int)(sqlDataReader.GetDecimal(10));
-                    lastInclineMeasureId = (int)(sqlDataReader.GetDecimal(11));
-                }
+                sqlDataReader.Close();
+                SetMaxAngle(pipeInfo);
             }
 
-            lastGPSMeasureId = 0;
-            lastInclineMeasureId = 0;
-
             return pipeInfo;
-        }
-
-        protected PipeInfo ToPipeInfo(SqlDataReader sqlDataReader)
-        {
-            int lastGPSMeasureId;
-            int lastInclineMeasureId;
-
-            return ToPipeInfo(sqlDataReader, out lastGPSMeasureId, out lastInclineMeasureId);
         }
 
         protected PipeInfo ReadLatestData()
         {
             string strSql = @"SELECT TOP 1 GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
-              GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, InclineMeasure.Angle1, InclineMeasure.Angle2
+              GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, IM.Angle1, IM.Angle2, GPS1.MeasureID, IM.MeasureID 
               FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON (GPS1.PipeID=GPS2.PipeID AND
               GPS1.MeasureTime = GPS2.MeasureTime AND GPS1.ProjectPointID < GPS2.ProjectPointID) 
-              INNER JOIN InclineMeasure ON (GPS1.PipeID=InclineMeasure.PipeID AND GPS1.MeasureTime=InclineMeasure.MeasureTime)
+              INNER JOIN InclineMeasure AS IM ON (GPS1.PipeID=IM.PipeID AND GPS1.MeasureTime=IM.MeasureTime)
               ORDER BY GPS1.MeasureID DESC";
 
             lock (m_dbConn)
@@ -288,6 +299,10 @@ namespace PipeSimulation.DataQuery
         protected int m_lastGPSMeasureId = 0;
         protected int m_lastInclineMeasureId = 0;
 
+        private int m_currentPipeId = 0;
+        private double m_maxAbsAlpha = 0.0;
+        private double m_maxAbsBeta = 0.0;
+
 #if !NEW_DATA_APPROACH
         private static readonly int m_firstReadCnt = 10;
 #endif
@@ -367,34 +382,28 @@ namespace PipeSimulation.DataQuery
 #if NEW_DATA_APPROACH
         protected PipeInfo ReadStartData()
         {
-            string strSql = @"SELECT TOP 1 GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
-              GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, InclineMeasure.Angle1, InclineMeasure.Angle2, GPS1.MeasureID, InclineMeasure.MeasureID 
-              FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON (GPS1.PipeID=GPS2.PipeID AND
-              GPS1.MeasureTime = GPS2.MeasureTime AND GPS1.ProjectPointID < GPS2.ProjectPointID) 
-              INNER JOIN InclineMeasure ON (GPS1.PipeID=InclineMeasure.PipeID AND GPS1.MeasureTime=InclineMeasure.MeasureTime)
-              ORDER BY GPS1.MeasureID DESC";
+            PipeInfo pipeInfo = ReadLatestData();
 
-            lock (m_dbConn)
+            if (pipeInfo != null)
             {
-                //  read GPS records
-                using (SqlCommand sqlCmd = new SqlCommand(strSql, m_dbConn))
-                {
-                    using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
-                    {
-                        return ToPipeInfo(sqlDataReader, out m_lastGPSMeasureId, out m_lastInclineMeasureId);
-                    }
-                } 
+                m_lastGPSMeasureId = pipeInfo.GpsMeasureId;
+                m_lastInclineMeasureId = pipeInfo.InclineMeasureId;
+
+                m_currentPipeId = pipeInfo.PipeId;
+                QueryMaxAngle(pipeInfo, out m_maxAbsAlpha, out m_maxAbsBeta);
             }
+
+            return pipeInfo;
         }
 
         protected PipeInfo ReadLatestUnReadData()
         {
             string strSql = String.Format(@"SELECT TOP 1 GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
-              GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, InclineMeasure.Angle1, InclineMeasure.Angle2, GPS1.MeasureID, InclineMeasure.MeasureID 
+              GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, IM.Angle1, IM.Angle2, GPS1.MeasureID, IM.MeasureID 
               FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON (GPS1.PipeID=GPS2.PipeID AND
-              GPS1.MeasureTime = GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID AND GPS1.MeasureID>{0}) 
-              INNER JOIN InclineMeasure ON (GPS1.PipeID=InclineMeasure.PipeID AND
-              GPS1.MeasureTime=InclineMeasure.MeasureTime AND InclineMeasure.MeasureID>{1})
+              GPS1.MeasureTime = GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID AND GPS1.MeasureID>'{0}') 
+              INNER JOIN InclineMeasure AS IM ON (GPS1.PipeID=IM.PipeID AND
+              GPS1.MeasureTime=IM.MeasureTime AND IM.MeasureID>'{1}')
               ORDER BY GPS1.MeasureID DESC", m_lastGPSMeasureId, m_lastInclineMeasureId);
 
             lock (m_dbConn)
@@ -404,7 +413,15 @@ namespace PipeSimulation.DataQuery
                 {
                     using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
                     {
-                        return ToPipeInfo(sqlDataReader, out m_lastGPSMeasureId, out m_lastInclineMeasureId);
+                        PipeInfo pipeInfo = ToPipeInfo(sqlDataReader);
+
+                        if (pipeInfo != null)
+                        {
+                            m_lastGPSMeasureId = pipeInfo.GpsMeasureId;
+                            m_lastInclineMeasureId = pipeInfo.InclineMeasureId;
+                        }
+
+                        return pipeInfo;
                     }
                 } 
             }
@@ -467,6 +484,30 @@ namespace PipeSimulation.DataQuery
         public PipeInfo FetchLatestData()
         {
             return ReadLatestData();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pipeInfo"></param>
+        protected override void SetMaxAngle(PipeInfo pipeInfo)
+        {
+            if (pipeInfo.PipeId > m_currentPipeId)
+            {
+                m_maxAbsAlpha = pipeInfo.Alpha;
+                m_maxAbsBeta = pipeInfo.Beta;
+            }
+            else if (pipeInfo.PipeId == m_currentPipeId)
+            {
+                if (Math.Abs(pipeInfo.Alpha) > m_maxAbsAlpha)
+                    m_maxAbsAlpha = pipeInfo.Alpha;
+
+                if (Math.Abs(pipeInfo.Beta) > m_maxAbsBeta)
+                    m_maxAbsBeta = pipeInfo.Beta;
+            }
+
+            pipeInfo.MaxAbsAlpha = m_maxAbsAlpha;
+            pipeInfo.MaxAbsBeta = m_maxAbsBeta;
         }
     }
 
@@ -561,11 +602,11 @@ namespace PipeSimulation.DataQuery
         public PipeInfo GetPipeRecord(int iPipeId, int iRecordIndex)
         {
             string strSql = String.Format(@"SELECT GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
-                GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, IM1.Angle1, IM1.Angle2
+                GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, IM1.Angle1, IM1.Angle2, GPS1.MeasureID, IM1.MeasureID 
                 FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON 
                 (GPS1.PipeID=GPS2.PipeID AND GPS1.MeasureTime=GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID) 
                 INNER JOIN InclineMeasure AS IM1 ON (GPS1.PipeID=IM1.PipeID AND GPS1.MeasureTime=IM1.MeasureTime AND IM1.MeasureID=
-                (SELECT TOP 1 * FROM (SELECT TOP {0} MeasureID FROM InclineMeasure AS IM2 WHERE IM2.PipeID = {1} 
+                (SELECT TOP 1 * FROM (SELECT TOP {0} MeasureID FROM InclineMeasure AS IM2 WHERE IM2.PipeID = '{1}' 
                 ORDER BY MeasureID ASC) InclineMeasure ORDER BY MeasureID DESC))",
                 iRecordIndex, iPipeId);
 
@@ -585,7 +626,7 @@ namespace PipeSimulation.DataQuery
         public PipeInfo GetPipeRecord(DateTime dateTime)
         {
             string strSql = String.Format(@"SELECT GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
-                GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, IM1.Angle1, IM1.Angle2
+                GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, IM1.Angle1, IM1.Angle2, GPS1.MeasureID, IM1.MeasureID 
                 FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON 
                 (GPS1.PipeID=GPS2.PipeID AND GPS1.MeasureTime=GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID) 
                 INNER JOIN InclineMeasure AS IM1 ON (GPS1.PipeID=IM1.PipeID AND GPS1.MeasureTime=IM1.MeasureTime AND 
