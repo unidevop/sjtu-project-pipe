@@ -117,7 +117,523 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="splitContainerMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="splitContainerMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 97</value>
+  </data>
+  <data name="splitContainerMain.Panel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitContainerMain.Panel2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitContainerMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 100</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="splitContainerMain.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="splitContainerMain.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="richTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="richTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="richTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 141</value>
+  </data>
+  <data name="richTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="richTextBox.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="richTextBox.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="clearButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 144</value>
+  </data>
+  <data name="clearButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 24</value>
+  </data>
+  <data name="clearButton.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="clearButton.Text" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="clearButton.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="toolStripRotate.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripRotate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 36</value>
+  </data>
+  <data name="toolStripRotate.Text" xml:space="preserve">
+    <value>旋转</value>
+  </data>
+  <data name="toolStripRotate.ToolTipText" xml:space="preserve">
+    <value>旋转</value>
+  </data>
+  <data name="toolStripPan.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripPan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 36</value>
+  </data>
+  <data name="toolStripPan.Text" xml:space="preserve">
+    <value>平移</value>
+  </data>
+  <data name="toolStripPan.ToolTipText" xml:space="preserve">
+    <value>平移</value>
+  </data>
+  <data name="toolStripZoom.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripZoom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 36</value>
+  </data>
+  <data name="toolStripZoom.Text" xml:space="preserve">
+    <value>缩放</value>
+  </data>
+  <data name="toolStripZoom.ToolTipText" xml:space="preserve">
+    <value>缩放</value>
+  </data>
+  <data name="toolStripZoomAll.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripZoomAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 36</value>
+  </data>
+  <data name="toolStripZoomAll.Text" xml:space="preserve">
+    <value>缩放全部</value>
+  </data>
+  <data name="toolStripZoomAll.ToolTipText" xml:space="preserve">
+    <value>Z缩放全部</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 39</value>
+  </data>
+  <data name="toolStripTopView.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripTopView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 36</value>
+  </data>
+  <data name="toolStripTopView.Text" xml:space="preserve">
+    <value>俯视</value>
+  </data>
+  <data name="toolStripTopView.ToolTipText" xml:space="preserve">
+    <value>查看俯视视图</value>
+  </data>
+  <data name="toolStripBottomView.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripBottomView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 36</value>
+  </data>
+  <data name="toolStripBottomView.Text" xml:space="preserve">
+    <value>仰视</value>
+  </data>
+  <data name="toolStripBottomView.ToolTipText" xml:space="preserve">
+    <value>查看仰视视图</value>
+  </data>
+  <data name="toolStripFrontView.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripFrontView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 36</value>
+  </data>
+  <data name="toolStripFrontView.Text" xml:space="preserve">
+    <value>正视</value>
+  </data>
+  <data name="toolStripFrontView.ToolTipText" xml:space="preserve">
+    <value>查看正视视图</value>
+  </data>
+  <data name="toolStripBackView.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripBackView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 36</value>
+  </data>
+  <data name="toolStripBackView.Text" xml:space="preserve">
+    <value>后视</value>
+  </data>
+  <data name="toolStripBackView.ToolTipText" xml:space="preserve">
+    <value>查看后视视图</value>
+  </data>
+  <data name="toolStripLeftView.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripLeftView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 36</value>
+  </data>
+  <data name="toolStripLeftView.Text" xml:space="preserve">
+    <value>左视</value>
+  </data>
+  <data name="toolStripLeftView.ToolTipText" xml:space="preserve">
+    <value>查看左视视图</value>
+  </data>
+  <data name="toolStripRightView.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripRightView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 36</value>
+  </data>
+  <data name="toolStripRightView.Text" xml:space="preserve">
+    <value>右视</value>
+  </data>
+  <data name="toolStripRightView.ToolTipText" xml:space="preserve">
+    <value>查看右视视图</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 39</value>
+  </data>
+  <data name="toolStripSWIsoMetricView.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripSWIsoMetricView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 36</value>
+  </data>
+  <data name="toolStripSWIsoMetricView.Text" xml:space="preserve">
+    <value>西南等轴测视图</value>
+  </data>
+  <data name="toolStripSWIsoMetricView.ToolTipText" xml:space="preserve">
+    <value>查看西南等轴测视图</value>
+  </data>
+  <data name="toolStripSEIsoMetricView.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripSEIsoMetricView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 36</value>
+  </data>
+  <data name="toolStripSEIsoMetricView.Text" xml:space="preserve">
+    <value>东南等轴测视图</value>
+  </data>
+  <data name="toolStripSEIsoMetricView.ToolTipText" xml:space="preserve">
+    <value>查看东南等轴测视图</value>
+  </data>
+  <data name="toolStripNEIsoMetricView.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripNEIsoMetricView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 36</value>
+  </data>
+  <data name="toolStripNEIsoMetricView.Text" xml:space="preserve">
+    <value>东北等轴测视图</value>
+  </data>
+  <data name="toolStripNEIsoMetricView.ToolTipText" xml:space="preserve">
+    <value>查看东北等轴测视图</value>
+  </data>
+  <data name="toolStripNWIsoMetricView.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripNWIsoMetricView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 36</value>
+  </data>
+  <data name="toolStripNWIsoMetricView.Text" xml:space="preserve">
+    <value>西北等轴测视图</value>
+  </data>
+  <data name="toolStripNWIsoMetricView.ToolTipText" xml:space="preserve">
+    <value>查看西北等轴测视图</value>
+  </data>
+  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>763, 39</value>
+  </data>
+  <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="toolStrip.Text" xml:space="preserve">
+    <value>视图工具条</value>
+  </data>
+  <data name="toolStrip.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="m_connSettingMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 22</value>
+  </data>
+  <data name="m_connSettingMenuItem.Text" xml:space="preserve">
+    <value>Connection Setting</value>
+  </data>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 6</value>
+  </data>
+  <data name="exitToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Alt+F4</value>
+  </data>
+  <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 22</value>
+  </data>
+  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
+    <value>退出(&amp;x)</value>
+  </data>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 21</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>系统(&amp;S)</value>
+  </data>
+  <data name="showStatisticTextDisplayer.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+1</value>
+  </data>
+  <data name="showStatisticTextDisplayer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="showStatisticTextDisplayer.Text" xml:space="preserve">
+    <value>显隐统计文本</value>
+  </data>
+  <data name="showWarningTextDisplayer.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+2</value>
+  </data>
+  <data name="showWarningTextDisplayer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="showWarningTextDisplayer.Text" xml:space="preserve">
+    <value>显隐报警文本</value>
+  </data>
+  <data name="showWCS.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+3</value>
+  </data>
+  <data name="showWCS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="showWCS.Text" xml:space="preserve">
+    <value>显隐坐标系</value>
+  </data>
+  <data name="showNonePipeObjects.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+4</value>
+  </data>
+  <data name="showNonePipeObjects.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 22</value>
+  </data>
+  <data name="showNonePipeObjects.Text" xml:space="preserve">
+    <value>显隐非沉管物体</value>
+  </data>
+  <data name="viewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 21</value>
+  </data>
+  <data name="viewToolStripMenuItem.Text" xml:space="preserve">
+    <value>视图(&amp;V)</value>
+  </data>
+  <data name="monitorModeToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+M</value>
+  </data>
+  <data name="monitorModeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 22</value>
+  </data>
+  <data name="monitorModeToolStripMenuItem.Text" xml:space="preserve">
+    <value>实时监听模式</value>
+  </data>
+  <data name="replayModeToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+R</value>
+  </data>
+  <data name="replayModeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 22</value>
+  </data>
+  <data name="replayModeToolStripMenuItem.Text" xml:space="preserve">
+    <value>回放模式</value>
+  </data>
+  <data name="modeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 21</value>
+  </data>
+  <data name="modeToolStripMenuItem.Text" xml:space="preserve">
+    <value>模式(&amp;M)</value>
+  </data>
+  <data name="saveAsPNGToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+P</value>
+  </data>
+  <data name="saveAsPNGToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="saveAsPNGToolStripMenuItem.Text" xml:space="preserve">
+    <value>截取当前屏幕</value>
+  </data>
+  <data name="startRecordAVIToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+S</value>
+  </data>
+  <data name="startRecordAVIToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="startRecordAVIToolStripMenuItem.Text" xml:space="preserve">
+    <value>开始录制视频</value>
+  </data>
+  <data name="stopRecordAVIToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+E</value>
+  </data>
+  <data name="stopRecordAVIToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="stopRecordAVIToolStripMenuItem.Text" xml:space="preserve">
+    <value>停止录制视频</value>
+  </data>
+  <data name="toolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 21</value>
+  </data>
+  <data name="toolsToolStripMenuItem.Text" xml:space="preserve">
+    <value>工具(&amp;T)</value>
+  </data>
+  <data name="helpToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>F1</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="aboutToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="aboutToolStripMenuItem1.Text" xml:space="preserve">
+    <value>关于(&amp;A)</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 21</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>帮助(&amp;H)</value>
+  </data>
+  <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>763, 25</value>
+  </data>
+  <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="menuStrip.Text" xml:space="preserve">
+    <value>菜单工具条</value>
+  </data>
+  <data name="menuStrip.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="toolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 17</value>
+  </data>
+  <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 496</value>
+  </data>
+  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>763, 22</value>
+  </data>
+  <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="statusStrip1.Text" xml:space="preserve">
+    <value>状态工具栏</value>
+  </data>
+  <data name="statusStrip1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="toolStripComboBoxPipes.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <data name="toolStripComboBoxPipes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 45</value>
+  </data>
+  <data name="toolStripButtonStartAnimation.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonStartAnimation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 42</value>
+  </data>
+  <data name="toolStripButtonStartAnimation.Text" xml:space="preserve">
+    <value>播放</value>
+  </data>
+  <data name="toolStripButtonStopAnimation.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonStopAnimation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 42</value>
+  </data>
+  <data name="toolStripButtonStopAnimation.Text" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="toolStripButtonBegining.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonBegining.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 42</value>
+  </data>
+  <data name="toolStripButtonBegining.Text" xml:space="preserve">
+    <value>最前</value>
+  </data>
+  <data name="toolStripButtonEnd.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonEnd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 42</value>
+  </data>
+  <data name="toolStripButtonEnd.Text" xml:space="preserve">
+    <value>最后</value>
+  </data>
+  <data name="toolStripLabelAnimationTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 42</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 45</value>
+  </data>
+  <data name="viewSpecificTimerScene.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 42</value>
+  </data>
+  <data name="viewSpecificTimerScene.Text" xml:space="preserve">
+    <value>查看任意时刻</value>
+  </data>
+  <data name="toolStripReplay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 64</value>
+  </data>
+  <data name="toolStripReplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>763, 45</value>
+  </data>
+  <data name="toolStripReplay.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="toolStripReplay.Text" xml:space="preserve">
+    <value>回放工具栏</value>
+  </data>
+  <data name="toolStripReplay.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="trackBarAnimation.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackBarAnimation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>276, 1</value>
+  </data>
+  <data name="trackBarAnimation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 42</value>
+  </data>
+  <data name="trackBarAnimation.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="trackBarAnimation.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>763, 518</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>天津沉管模拟</value>
+    <value>3D-Immersed Tube SPS</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

@@ -1105,5 +1105,15 @@ namespace PipeSimulation
             }
             showNonePipeObjects.Checked = bNonePipeObjectsVisbile; 
         }
+
+        private void ConnectionSettingMenuItem_Click(object sender, EventArgs e)
+        {
+            using (ConnectionSetting form = new ConnectionSetting())
+            {
+                if (DialogResult.OK == form.ShowDialog())
+                {
+                }
+            }
+        }
     }
 }
