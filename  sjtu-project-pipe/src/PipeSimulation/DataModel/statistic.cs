@@ -37,15 +37,25 @@ namespace PipeSimulation.DataModel
             PipeInfo pipeInfo = IApp.theApp.DataDriven.CurrentData;
             if (pipeInfo == null) return strString;
 
+
+
             // No.N tube
             const string strPipeIndexFormat = "No.{0}";
             strString = string.Concat(strString, string.Format(strPipeIndexFormat, pipeInfo.PipeId), strChangeLine);
 
+            // Get current observer mode
+            ObserverMode.ObserverMode currentMode = IApp.theApp.ObserverModeManager.ActiveModeType;
+            if (currentMode == ObserverMode.ObserverMode.eMonitorMode)
+            {
+                // Add time
+                strString = string.Concat(strString, "Time: ", pipeInfo.Time, strChangeLine);
+            }
+            
             // GPS1
-            strString = string.Concat(strString, string.Concat("GPS1: (", pipeInfo.StartPoint.ToString(), ")"), strChangeLine);
+            strString = string.Concat(strString, "GPS1: (", pipeInfo.StartPoint.ToString(), ")", strChangeLine);
 
             // GPS2
-            strString = string.Concat(strString, string.Concat("GPS2: (", pipeInfo.EndPoint.ToString(), ")"), strChangeLine);
+            strString = string.Concat(strString, "GPS2: (", pipeInfo.EndPoint.ToString(), ")", strChangeLine);
 
             // Alpha
             const string strAlphaFormat = "Alpha is {0}, Maximum value is {1}";
