@@ -768,7 +768,7 @@ namespace PipeSimulation
                     {
                         // Also add a all item in the combobox
                         //string strComboboxItem = string.Format(Resources.IDS_PIPE_INDEX, i + 1);
-                        string strComboboxItem = "所有沉管";
+                        string strComboboxItem = Resources.IDS_PIPES_ALL;
                         toolStripComboBoxPipes.Items.Insert(0, strComboboxItem);
 
                         toolStripComboBoxPipes.SelectedIndex = 0;
@@ -984,8 +984,8 @@ namespace PipeSimulation
             CStatisticData data = new CStatisticData();
             IApp.theApp.StatisticTextDisplayer.DisplayText(data.ToString());
 
-           // CStatisticData data2 = new CStatisticData();
-            IApp.theApp.WarningTextDisplayer.DisplayText(string.Empty);
+            CAngleWarningData angleWarningData = new CAngleWarningData();
+            IApp.theApp.WarningTextDisplayer.DisplayText(angleWarningData.ToString());
 
             // Update the Video record
             if (IApp.theApp.VideoWriter.IsRecording)
@@ -1113,6 +1113,14 @@ namespace PipeSimulation
                 if (DialogResult.OK == form.ShowDialog())
                 {
                 }
+            }
+        }
+
+        private void AngleWarningToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (AngleWarningConfiguration configForm = new AngleWarningConfiguration())
+            {
+                configForm.ShowDialog();
             }
         }
     }
