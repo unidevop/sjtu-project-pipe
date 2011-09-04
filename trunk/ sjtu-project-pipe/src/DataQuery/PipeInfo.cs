@@ -13,29 +13,35 @@ namespace PipeSimulation.DataQuery
     public class PipeInfo
     {
         private int     m_pipeId;
-        //private Point3D m_ctrlPt;
         private Point3D m_startPt;
         private Point3D m_endPt;
         private double m_alpha;
         private double m_beta;
         private DateTime m_time;
 
-        public PipeInfo(int pipeId)
+        private int m_gpsMeasureId;
+        private int m_inclineMeasureId;
+        private double m_maxAlpha;
+        private double m_maxBeta;
+
+        public PipeInfo(int pipeId, int gpsMeasureId, int inclineMeasureId)
         {
             m_pipeId = pipeId;
+            m_gpsMeasureId = gpsMeasureId;
+            m_inclineMeasureId = inclineMeasureId;
         }
 
-        public PipeInfo(int pipeId, Point3D startPt, Point3D endPt, /*Point3D ctrlPt, */
-                        double alpha, double beta, DateTime time)
-        {
-            m_pipeId = pipeId;
-            //m_ctrlPt = ctrlPt;
-            m_startPt = startPt;
-            m_endPt = endPt;
-            m_alpha = alpha;
-            m_beta = beta;
-            m_time = time;
-        }
+        //public PipeInfo(int pipeId, Point3D startPt, Point3D endPt, /*Point3D ctrlPt, */
+        //                double alpha, double beta, DateTime time)
+        //{
+        //    m_pipeId = pipeId;
+        //    //m_ctrlPt = ctrlPt;
+        //    m_startPt = startPt;
+        //    m_endPt = endPt;
+        //    m_alpha = alpha;
+        //    m_beta = beta;
+        //    m_time = time;
+        //}
 
         public int PipeId
         {
@@ -45,17 +51,21 @@ namespace PipeSimulation.DataQuery
             }
         }
 
-        //public Point3D ControlPoint
-        //{
-        //    get
-        //    {
-        //        Point3D ctrlPt = new Point3D((m_startPt.X + m_endPt.X) / 2,
-        //                                     (m_startPt.Y + m_endPt.Y) / 2,
-        //                                     (m_startPt.Z + m_endPt.Z) / 2);
-        //        //return (m_startPt + m_endPt) / 2;
-        //        return ctrlPt;
-        //    }
-        //}
+        internal int GpsMeasureId
+        {
+            get
+            {
+                return m_gpsMeasureId;
+            }
+        }
+
+        internal int InclineMeasureId
+        {
+            get
+            {
+                return m_inclineMeasureId;
+            }
+        }
 
         public Point3D StartPoint
         {
@@ -102,6 +112,30 @@ namespace PipeSimulation.DataQuery
             set
             {
                 m_beta = value;
+            }
+        }
+
+        public double MaxAbsAlpha
+        {
+            get
+            {
+                return m_maxAlpha;
+            }
+            set
+            {
+                m_maxAlpha = value;
+            }
+        }
+
+        public double MaxAbsBeta
+        {
+            get
+            {
+                return m_maxBeta;
+            }
+            set
+            {
+                m_maxBeta = value;
             }
         }
 

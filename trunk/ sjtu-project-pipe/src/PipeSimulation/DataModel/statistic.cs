@@ -59,19 +59,19 @@ namespace PipeSimulation.DataModel
 
             // Alpha
             const string strAlphaFormat = "Alpha is {0}, Maximum value is {1}";
-            strString = string.Concat(strString, string.Format(strAlphaFormat, pipeInfo.Alpha, pipeInfo.Alpha), strChangeLine);
+            strString = string.Concat(strString, string.Format(strAlphaFormat, pipeInfo.Alpha, pipeInfo.MaxAbsAlpha), strChangeLine);
 
             // Beta
             const string strBetaFormat = "Beta is {0}, Maximum value is {1}";
-            strString = string.Concat(strString, string.Format(strBetaFormat, pipeInfo.Beta, pipeInfo.Beta), strChangeLine);
+            strString = string.Concat(strString, string.Format(strBetaFormat, pipeInfo.Beta, pipeInfo.MaxAbsBeta), strChangeLine);
 
-            // Delta x, need to calcaulate
+            // Delta x, need to calculate
             strString = string.Concat(strString, "The Delta Y is 100.", strChangeLine);
 
-            // Delta y, need to calcaulate
+            // Delta y, need to calculate
             strString = string.Concat(strString, "The Delta Y is 100.", strChangeLine);
 
-            // Sink height, need to calcaulate
+            // Sink height, need to calculate
             const string strSinkHeight = "The sink height is {0}.";
             strString = string.Concat(strString, string.Format(strSinkHeight, pipeInfo.StartPoint.Z.ToString()), strChangeLine);
 
