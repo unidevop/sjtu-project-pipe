@@ -81,6 +81,8 @@ namespace PipeSimulation
             private System.Timers.Timer m_timer = new System.Timers.Timer();
             private int m_iAnimationProgress = 0;
             private int m_iAnimationTotalProgress = 100;
+            private DateTime m_startDateTime;
+            private DateTime m_endDateTime;
 
             public CReplayAnimationEngine()
             {
@@ -187,7 +189,7 @@ namespace PipeSimulation
 
             private void StartTimer()
             {
-                m_timer.Interval = 100; // Change the interval here
+                m_timer.Interval = 200; // Change the interval here
                 m_timer.Elapsed += new System.Timers.ElapsedEventHandler(m_timer_Elapsed);
                 m_timer.Enabled = true;
             }
@@ -206,6 +208,18 @@ namespace PipeSimulation
             private void StopTimer()
             {
                 m_timer.Elapsed -= m_timer_Elapsed;
+            }
+
+            public DateTime AnimationStartTime
+            {
+                get { return m_startDateTime; }
+                set { m_startDateTime = value; }
+            }
+
+            public DateTime AnimationEndTime
+            {
+                get { return m_endDateTime; }
+                set { m_endDateTime = value; }
             }
         }
 

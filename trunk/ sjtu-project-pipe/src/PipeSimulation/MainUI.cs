@@ -584,19 +584,29 @@ namespace PipeSimulation
             if (replayMode == null) return;
 
             replayMode.ReplayAnimationEngine.AnimationProgress = trackBarAnimation.Value;
-            
-            // Drive  the model
-            IApp.theApp.DataDriven.DriveModel(toolStripComboBoxPipes.SelectedIndex, trackBarAnimation.Value);
 
-            // Set the lable 
+            // Drive model
+            DriveModeByTrackBarValue(replayMode, trackBarAnimation.Value);
+        }
+
+        private void DriveModeByTrackBarValue(CReplayMode replayMode, int iValue)
+        {
+            // Get the time corresponding to the time t
+            DateTime startTime = replayMode.ReplayAnimationEngine.AnimationStartTime;
+            DateTime endTime = replayMode.ReplayAnimationEngine.AnimationEndTime;
+
+            DateTime specificTime;
+            double linearValue = 1.0 * (iValue - trackBarAnimation.Minimum) / (trackBarAnimation.Maximum - trackBarAnimation.Minimum);
+            double intelopValue = (endTime - startTime).Ticks * linearValue;
+            specificTime = startTime + new TimeSpan((long)(intelopValue));
+
+            // Pipe Info
+            PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(specificTime);
+
+            // Drive the model
+            IApp.theApp.DataDriven.DriveModel(pipeInfo);
+
             UpdateAnimationLabelText();
-            
-            //toolTipAnimation.SetToolTip(trackBarAnimation, string.Empty);
-            //toolTipAnimation.Show(trackBsarAnimation.Value.ToString(), trackBarAnimation);
-            //// This message is sent when user drag the track bar
-            //int value = trackBarAnimation.Value;
-
-            //MessageBox.Show("Track bar value is " + value.ToString());
         }
 
         private void UpdateAnimationLabelText()
@@ -700,12 +710,15 @@ namespace PipeSimulation
             }
             else
             {
+                // The current observer mode instance must be CReplayMode
+                CReplayMode replayMode = IApp.theApp.ObserverModeManager.ActiveModeInstance as CReplayMode;
+                if (replayMode == null) return; 
+                
+                // Update the control value
                 trackBarAnimation.Value = t;
 
-                // Drive  the model
-                IApp.theApp.DataDriven.DriveModel(toolStripComboBoxPipes.SelectedIndex, trackBarAnimation.Value);
-
-                UpdateAnimationLabelText();
+                // Drive model
+                DriveModeByTrackBarValue(replayMode, t);
             }
         }
 
@@ -753,38 +766,50 @@ namespace PipeSimulation
 
                     if (pipeModelCount != 0 && toolStripComboBoxPipes.Items.Count > 0)
                     {
+                        // Also add a all item in the combobox
+                        //string strComboboxItem = string.Format(Resources.IDS_PIPE_INDEX, i + 1);
+                        string strComboboxItem = "所有沉管";
+                        toolStripComboBoxPipes.Items.Insert(0, strComboboxItem);
+
                         toolStripComboBoxPipes.SelectedIndex = 0;
                     }
-                }
-                else
-                {
-                    // Just for test, should be delete after Data query is work
-                    int pipeModelCount = IApp.theApp.DataModel.PipeModels.Count;
-                    for (int i = 0; i < pipeModelCount; ++i)
+                    else
                     {
-                        string strComboboxItem = string.Format(Resources.IDS_PIPE_INDEX, i + 1);
-                        toolStripComboBoxPipes.Items.Add(strComboboxItem);
-                    }
+                        // Set the selected index as -1
+                        toolStripComboBoxPipes.SelectedIndex = -1;
 
-                    // Make sure there is at least one pipe.
-                    if (pipeModelCount > 0)
-                    {
-                        toolStripComboBoxPipes.SelectedIndex = 0; ;
+                        // Seems that the above statement won't activate the below message, so we will force to update it.
+                        toolStripComboBoxPipes_SelectedIndexChanged(toolStripComboBoxPipes, null);
                     }
                 }
+                //else
+                //{
+                //    // Just for test, should be delete after Data query is work
+                //    int pipeModelCount = IApp.theApp.DataModel.PipeModels.Count;
+                //    for (int i = 0; i < pipeModelCount; ++i)
+                //    {
+                //        string strComboboxItem = string.Format(Resources.IDS_PIPE_INDEX, i + 1);
+                //        toolStripComboBoxPipes.Items.Add(strComboboxItem);
+                //    }
+
+                //    // Make sure there is at least one pipe.
+                //    if (pipeModelCount > 0)
+                //    {
+                //        toolStripComboBoxPipes.SelectedIndex = 0; ;
+                //    }
+                //}
             }
             else
             {
-                //trackBarAnimation.Value = 10;
+                // Must in monitor mode
+                IRealtimeDataQuery dataQuery = IApp.theApp.RealTimeDataQuery;
+                if (dataQuery != null && dataQuery.IsConnected)
+                {
+                    PipeInfo queryResult = dataQuery.FetchLatestData();
 
-                //// Must in monitor mode
-                //IRealtimeDataQuery dataQuery = IApp.theApp.RealTimeDataQuery;
-                //if (dataQuery != null && dataQuery.IsConnected)
-                //{
-                //    PipeInfo queryResult = dataQuery.FetchLatestData();
-                //    // Drive model
-                //    IApp.theApp.DataDriven.DriveModel(queryResult);
-                //}
+                    // Drive model
+                    IApp.theApp.DataDriven.DriveModel(queryResult);
+                }
             }
         }
 
@@ -797,8 +822,17 @@ namespace PipeSimulation
             // Force to stop the animation
             replayMode.ReplayAnimationEngine.StopAnimation();
 
-            // On Sel Change
-            replayMode.LastPipeIdIndex = toolStripComboBoxPipes.SelectedIndex;
+            // if the selected index is -1, then we disable all the replay items.
+            int iSelectedIndex = toolStripComboBoxPipes.SelectedIndex;
+            bool bNoOneSelected = (iSelectedIndex == -1);
+            foreach (ToolStripItem toolStripItem in toolStripReplay.Items)
+            {
+                toolStripItem.Enabled = !bNoOneSelected;
+            }
+            if (bNoOneSelected)
+            {
+                return;
+            }
 
             // Update the start, stop
             toolStripButtonStartAnimation.Checked = false;
@@ -808,22 +842,72 @@ namespace PipeSimulation
             toolStripButtonStopAnimation.Enabled = false;
 
             // Query the time
-            int[] trackRange = { 0, 100};
+            DateTime beginingTime = DateTime.Now;
+            DateTime endTime = DateTime.Now;
+
             IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
             if (dataQuery != null && dataQuery.IsConnected)
             {
-                // Get all count
-                trackRange[1] = (int)dataQuery.GetPipeRecordCount(replayMode.LastPipeIdIndex + 1);
+                if (iSelectedIndex == 0) // View all pipes
+                {
+                    // Must from the 1st pipe
+                    beginingTime = dataQuery.GetPipeStartTime(1);
+
+                    int pipeModelCount = IApp.theApp.DataModel.PipeModels.Count;
+                    for (int i = pipeModelCount; i > 0; --i)
+                    {
+                        if (dataQuery.IsPipeStarted(i))
+                        {
+                            endTime = dataQuery.GetPipeEndTime(i);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    //// View specifc pipe and Get all count
+                    //trackRange[1] = (int)dataQuery.GetPipeRecordCount(iSelectedIndex); // iSelectedIndex should start from 1
+
+                    // Get the beginning time
+                    beginingTime = dataQuery.GetPipeStartTime(iSelectedIndex);
+
+                    // Get the end time
+                    endTime = dataQuery.GetPipeEndTime(iSelectedIndex);
+                }
             }
 
+            // Set Range for the track bar
+            // This logic is stated as below
+            // If the total seconds of timespan is large than int.MaxValue, the int.MaxValue is used as the maximum range
+            // If the total seconds of timespan is small than int.MaxValue, the total seconds will be used as the maximum range
+
+            int[] trackRange = { 0, int.MaxValue };
+
+            TimeSpan timeDuration = (endTime - beginingTime);
+            double totalSeconds = timeDuration.TotalSeconds;
+
+            if (totalSeconds > int.MaxValue)
+            {
+                trackRange[1] = int.MaxValue;
+            }
+            else
+            {
+                trackRange[1] = (int)totalSeconds;
+            }
+            
             trackBarAnimation.Value = trackRange[0];
             trackBarAnimation.SetRange(trackRange[0], trackRange[1]);
 
             // Update the replay animation engine total progress
             replayMode.ReplayAnimationEngine.AnimationTotalProgress = trackRange[1];
 
+            // Save the beingging time and end time
+            replayMode.ReplayAnimationEngine.AnimationStartTime = beginingTime;
+            replayMode.ReplayAnimationEngine.AnimationEndTime = endTime;
+
             // Update the render window
-            IApp.theApp.RenderWindow.GetInteractor().Render();
+            PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(beginingTime);
+            IApp.theApp.DataDriven.DriveModel(pipeInfo);
 
             // Update the animation label text
             UpdateAnimationLabelText();
