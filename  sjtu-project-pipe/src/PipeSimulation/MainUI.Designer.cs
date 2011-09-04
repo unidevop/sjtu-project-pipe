@@ -90,6 +90,8 @@ namespace PipeSimulation
             this.toolStripLabelAnimationTime = new System.Windows.Forms.ToolStripLabel();
             this.toolTipAnimation = new System.Windows.Forms.ToolTip(this.components);
             this.splitContainerMain.Panel2.SuspendLayout();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.m_connSettingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerMain.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -356,7 +358,7 @@ namespace PipeSimulation
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
+            m_connSettingMenuItem,toolStripSeparator4,  this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "系统(&S)";
@@ -621,6 +623,23 @@ namespace PipeSimulation
             this.toolTipAnimation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(10)))));
             this.toolTipAnimation.IsBalloon = true;
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.AccessibleDescription = null;
+            this.toolStripSeparator4.AccessibleName = null;
+            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            // 
+            // m_connSettingMenuItem
+            // 
+            this.m_connSettingMenuItem.AccessibleDescription = null;
+            this.m_connSettingMenuItem.AccessibleName = null;
+            resources.ApplyResources(this.m_connSettingMenuItem, "m_connSettingMenuItem");
+            this.m_connSettingMenuItem.BackgroundImage = null;
+            this.m_connSettingMenuItem.Name = "m_connSettingMenuItem";
+            this.m_connSettingMenuItem.ShortcutKeyDisplayString = null;
+            this.m_connSettingMenuItem.Click += new System.EventHandler(this.ConnectionSettingMenuItem_Click);
+            // 
             // MainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -716,5 +735,7 @@ namespace PipeSimulation
         private TrackBar trackBarAnimation;
         private ToolStripLabel toolStripLabelAnimationTime;
         private ToolTip toolTipAnimation;
+        private ToolStripMenuItem m_connSettingMenuItem;
+        private ToolStripSeparator toolStripSeparator4;
     }
 }

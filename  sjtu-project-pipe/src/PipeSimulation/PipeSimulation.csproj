@@ -94,6 +94,12 @@
     <Compile Include="Commands\command_impl.cs" />
     <Compile Include="Commands\savepicturecommand.cs" />
     <Compile Include="Commands\view_commands.cs" />
+    <Compile Include="ConnectionSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectionSetting.Designer.cs">
+      <DependentUpon>ConnectionSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\statisticDisplayer.cs" />
     <Compile Include="DataModel\CommonDefinition.cs" />
     <Compile Include="DataModel\datamode_impl.cs" />
@@ -228,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AboutBox.zh-CHS.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnectionSetting.resx">
+      <DependentUpon>ConnectionSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainUI.zh-CHS.resx">
       <DependentUpon>MainUI.cs</DependentUpon>
