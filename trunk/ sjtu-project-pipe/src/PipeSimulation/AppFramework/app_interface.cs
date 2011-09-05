@@ -35,6 +35,8 @@ namespace PipeSimulation
                 get;
                 set;
             }
+
+            abstract public void RenderScene();
         }
     }
 }

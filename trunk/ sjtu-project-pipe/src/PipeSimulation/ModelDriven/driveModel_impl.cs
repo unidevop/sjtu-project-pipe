@@ -24,7 +24,7 @@ namespace PipeSimulation
                 // Save the current pipe info
                 m_currentPipeInfo = queryResult;
 
-                IApp.theApp.RenderWindow.GetInteractor().Render();
+                IApp.theApp.RenderScene();
 
                 //// The most logic should be here
 
@@ -70,7 +70,7 @@ namespace PipeSimulation
                 DrivePipeModel(2, (iProgress >= 60 && iProgress < 90), (iProgress >= 90), 1.0 * (iProgress - 60) / 30);
                 DrivePipeModel(3, (iProgress >= 90 && iProgress <= 100), (iProgress >= 100), 1.0 * (iProgress - 90) / 10);
 
-                IApp.theApp.RenderWindow.GetInteractor().Render();
+                IApp.theApp.RenderScene();
             }
 
             private static double dMoveDistance = 1000;
