@@ -37,8 +37,6 @@ namespace PipeSimulation
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainUI));
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.vtkFormsWindowControl = new vtk.vtkFormsWindowControl();
-            this.richTextBox = new System.Windows.Forms.RichTextBox();
-            this.clearButton = new System.Windows.Forms.Button();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripRotate = new System.Windows.Forms.ToolStripButton();
             this.toolStripPan = new System.Windows.Forms.ToolStripButton();
@@ -79,6 +77,7 @@ namespace PipeSimulation
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusObserverMode = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripReplay = new System.Windows.Forms.ToolStrip();
             this.toolStripComboBoxPipes = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -130,26 +129,6 @@ namespace PipeSimulation
             this.vtkFormsWindowControl.Size = new System.Drawing.Size(297, 266);
             this.vtkFormsWindowControl.TabIndex = 0;
             this.vtkFormsWindowControl.Text = "vtkFormsWindowControl";
-            // 
-            // richTextBox
-            // 
-            this.richTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.richTextBox.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox.Name = "richTextBox";
-            this.richTextBox.ReadOnly = true;
-            this.richTextBox.Size = new System.Drawing.Size(219, 141);
-            this.richTextBox.TabIndex = 0;
-            this.richTextBox.Text = "";
-            // 
-            // clearButton
-            // 
-            this.clearButton.Location = new System.Drawing.Point(3, 144);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(75, 24);
-            this.clearButton.TabIndex = 1;
-            this.clearButton.Text = "Clear";
-            this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // toolStrip
             // 
@@ -515,7 +494,7 @@ namespace PipeSimulation
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel});
+            this.toolStripStatusLabel, this.toolStripStatusObserverMode});
             this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(763, 22);
@@ -525,7 +504,20 @@ namespace PipeSimulation
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(300, 17);
+            this.toolStripStatusLabel.AutoSize = false;
+            this.toolStripStatusLabel.TextAlign = ContentAlignment.MiddleLeft;
+            this.toolStripStatusLabel.Text = "准备就绪";
+            // 
+            // toolStripStatusObserverMode;
+            // 
+            this.toolStripStatusObserverMode.Name = "toolStripStatusLabel";
+            this.toolStripStatusObserverMode.Size = new System.Drawing.Size(80, 17);
+            this.toolStripStatusObserverMode.Text = "test";
+            //this.toolStripStatusObserverMode.BorderSides = ToolStripStatusLabelBorderSides.All;
+            //this.toolStripStatusObserverMode.BorderStyle = Border3DStyle.SunkenInner;
+            this.toolStripStatusObserverMode.AutoSize = true;
+            this.toolStripStatusObserverMode.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // toolStripReplay
             // 
@@ -720,8 +712,7 @@ namespace PipeSimulation
         private ToolStripButton toolStripNEIsoMetricView;
         private ToolStripButton toolStripNWIsoMetricView;
         private ToolStripStatusLabel toolStripStatusLabel;
-        private RichTextBox richTextBox;
-        private Button clearButton;
+        private ToolStripStatusLabel toolStripStatusObserverMode;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem helpToolStripMenuItem;

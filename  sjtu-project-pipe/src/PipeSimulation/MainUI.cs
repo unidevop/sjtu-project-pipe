@@ -43,6 +43,40 @@ namespace PipeSimulation
             InitializeComponent();
         }
 
+        // Handle the OnIdle event
+        public void OnIdle(object sender, EventArgs e)
+        {
+            UpdateObserverMode();
+        }
+
+        private void UpdateObserverMode()
+        {
+            // Get Observer mode
+            ObserverMode.ObserverMode observerMode = IApp.theApp.ObserverModeManager.ActiveModeType;
+
+            string strMessage = null;
+            if (observerMode == ObserverMode.ObserverMode.eMonitorMode)
+            {
+                strMessage = Resources.IDS_MONITOR_MODE_TEXT;
+            }
+            else if (observerMode == ObserverMode.ObserverMode.eReplayMode)
+            {
+                strMessage = Resources.IDS_REPLAY_MODE_TEXT;
+            }
+
+            if (string.IsNullOrEmpty(strMessage)) return;
+            strMessage = string.Format(Resources.IDS_STATUS_OBSERVER_MODE, strMessage);
+
+            // Update the stats strip
+            try
+            {
+                toolStripStatusObserverMode.Text = strMessage;
+            }
+            catch
+            {
+            }
+        }
+
         // Handler for form load
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -217,12 +251,6 @@ namespace PipeSimulation
         {
             get { return statusStrip1; }
         }
-
-        public Control InformationControl
-        {
-            get { return richTextBox; }
-        }
-
 
         private void InitializeDataQuery()
         {
@@ -522,14 +550,6 @@ namespace PipeSimulation
             IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kSaveAsPicture, null);
         }
 
-        private void clearButton_Click(object sender, EventArgs e)
-        {
-            TextBoxBase informationTextBox = InformationControl as TextBoxBase;
-            if (informationTextBox != null)
-            {
-                informationTextBox.Clear();
-            }
-        }
 
         private void splitContainerMain_SplitterMoving(object sender, SplitterCancelEventArgs e)
         {

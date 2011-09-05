@@ -274,6 +274,24 @@ namespace PipeSimulation.Properties {
         }
         
         /// <summary>
+        ///   查找类似 现在运行的是【{0}】。 的本地化字符串。
+        /// </summary>
+        internal static string IDS_STATUS_OBSERVER_MODE {
+            get {
+                return ResourceManager.GetString("IDS_STATUS_OBSERVER_MODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 准备就绪 的本地化字符串。
+        /// </summary>
+        internal static string IDS_STATUS_READY {
+            get {
+                return ResourceManager.GetString("IDS_STATUS_READY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 不能打开{0}。 的本地化字符串。
         /// </summary>
         internal static string IDS_VIDEO_OPENFILE_FAIL {

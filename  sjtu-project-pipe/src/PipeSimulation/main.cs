@@ -15,7 +15,10 @@ namespace PipeSimulation
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(/*MSG0*/"zh-chs");
-            Application.Run(new MainUI());
+
+            MainUI mainFrm = new MainUI();
+            Application.Idle += new EventHandler(mainFrm.OnIdle);
+            Application.Run(mainFrm);
         }
     }
 }

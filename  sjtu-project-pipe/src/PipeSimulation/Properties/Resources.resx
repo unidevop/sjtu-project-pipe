@@ -265,4 +265,10 @@
   <data name="IDS_NODATA_TO_TIME" xml:space="preserve">
     <value>找不到该时刻的数据</value>
   </data>
+  <data name="IDS_STATUS_OBSERVER_MODE" xml:space="preserve">
+    <value>现在运行的是【{0}】。</value>
+  </data>
+  <data name="IDS_STATUS_READY" xml:space="preserve">
+    <value>准备就绪</value>
+  </data>
 </root>
