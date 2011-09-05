@@ -130,6 +130,24 @@ namespace PipeSimulation.Properties {
         }
         
         /// <summary>
+        ///   查找类似 数据库已经成功连接。 的本地化字符串。
+        /// </summary>
+        internal static string IDS_DB_CONNECTED {
+            get {
+                return ResourceManager.GetString("IDS_DB_CONNECTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 未连接到数据库。 的本地化字符串。
+        /// </summary>
+        internal static string IDS_DB_DIS_CONNECTED {
+            get {
+                return ResourceManager.GetString("IDS_DB_DIS_CONNECTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 不能连接到数据库。 的本地化字符串。
         /// </summary>
         internal static string IDS_ERROR_DATAENGINE_CONNECT {
