@@ -46,7 +46,11 @@ namespace PipeSimulation
         // Handle the OnIdle event
         public void OnIdle(object sender, EventArgs e)
         {
+            // Update Obsever mode
             UpdateObserverMode();
+
+            // Update Database Status
+            UpdateDatabaseStatus();
         }
 
         private void UpdateObserverMode()
@@ -71,6 +75,36 @@ namespace PipeSimulation
             try
             {
                 toolStripStatusObserverMode.Text = strMessage;
+            }
+            catch
+            {
+            }
+        }
+
+        private void UpdateDatabaseStatus()
+        {
+            // Get DataQuery
+            IHistoryDataQuery hisDataQuery = IApp.theApp.HistoryTimeDataQuery;
+            IRealtimeDataQuery realTimeDataQuery = IApp.theApp.RealTimeDataQuery;
+
+            bool bConnected = false;
+            string strMessage = null;
+            if (hisDataQuery == null || !hisDataQuery.IsConnected
+             || realTimeDataQuery == null || !realTimeDataQuery.IsConnected)
+            {
+                strMessage = Resources.IDS_DB_DIS_CONNECTED;
+            }
+            else
+            {
+                strMessage = Resources.IDS_DB_CONNECTED;
+                bConnected = true;
+            }
+
+            // Update the stats strip
+            try
+            {
+                toolStripStatusDatabaseStatus.ForeColor = bConnected ? Color.Black : Color.Red;
+                toolStripStatusDatabaseStatus.Text = strMessage;
             }
             catch
             {

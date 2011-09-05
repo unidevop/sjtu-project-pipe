@@ -78,6 +78,7 @@ namespace PipeSimulation
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusObserverMode = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusDatabaseStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripReplay = new System.Windows.Forms.ToolStrip();
             this.toolStripComboBoxPipes = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -494,7 +495,7 @@ namespace PipeSimulation
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel, this.toolStripStatusObserverMode});
+            this.toolStripStatusLabel, this.toolStripStatusDatabaseStatus, this.toolStripStatusObserverMode});
             this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(763, 22);
@@ -509,13 +510,23 @@ namespace PipeSimulation
             this.toolStripStatusLabel.TextAlign = ContentAlignment.MiddleLeft;
             this.toolStripStatusLabel.Text = "准备就绪";
             // 
+            // toolStripStatusDatabaseStatus;
+            // 
+            this.toolStripStatusDatabaseStatus.Name = "toolStripStatusLabe3";
+            this.toolStripStatusDatabaseStatus.Size = new System.Drawing.Size(130, 17);
+            this.toolStripStatusDatabaseStatus.Text = "";
+            this.toolStripStatusDatabaseStatus.BorderSides = ToolStripStatusLabelBorderSides.All;
+            this.toolStripStatusDatabaseStatus.BorderStyle = Border3DStyle.SunkenInner;
+            this.toolStripStatusDatabaseStatus.AutoSize = true;
+            this.toolStripStatusDatabaseStatus.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // toolStripStatusObserverMode;
             // 
-            this.toolStripStatusObserverMode.Name = "toolStripStatusLabel";
+            this.toolStripStatusObserverMode.Name = "toolStripStatusLabe2";
             this.toolStripStatusObserverMode.Size = new System.Drawing.Size(80, 17);
-            this.toolStripStatusObserverMode.Text = "test";
-            //this.toolStripStatusObserverMode.BorderSides = ToolStripStatusLabelBorderSides.All;
-            //this.toolStripStatusObserverMode.BorderStyle = Border3DStyle.SunkenInner;
+            this.toolStripStatusObserverMode.Text = "";
+            this.toolStripStatusObserverMode.BorderSides = ToolStripStatusLabelBorderSides.All;
+            this.toolStripStatusObserverMode.BorderStyle = Border3DStyle.SunkenInner;
             this.toolStripStatusObserverMode.AutoSize = true;
             this.toolStripStatusObserverMode.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -713,6 +724,7 @@ namespace PipeSimulation
         private ToolStripButton toolStripNWIsoMetricView;
         private ToolStripStatusLabel toolStripStatusLabel;
         private ToolStripStatusLabel toolStripStatusObserverMode;
+        private ToolStripStatusLabel toolStripStatusDatabaseStatus;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem helpToolStripMenuItem;

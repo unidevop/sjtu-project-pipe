@@ -271,4 +271,10 @@
   <data name="IDS_STATUS_READY" xml:space="preserve">
     <value>准备就绪</value>
   </data>
+  <data name="IDS_DB_CONNECTED" xml:space="preserve">
+    <value>数据库已经成功连接。</value>
+  </data>
+  <data name="IDS_DB_DIS_CONNECTED" xml:space="preserve">
+    <value>未连接到数据库。</value>
+  </data>
 </root>
