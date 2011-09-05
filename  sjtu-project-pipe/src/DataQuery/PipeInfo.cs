@@ -15,8 +15,8 @@ namespace PipeSimulation.DataQuery
         private int     m_pipeId;
         private Point3D m_startPt;
         private Point3D m_endPt;
-        private double m_alpha;
-        private double m_beta;
+        private double m_lattInclineAngle;
+        private double m_longInclineAngle;
         private DateTime m_time;
 
         private int m_gpsMeasureId;
@@ -91,27 +91,27 @@ namespace PipeSimulation.DataQuery
             }
         }
 
-        public double Alpha
+        public double LatitudinalInclineAngle
         {
             get
             {
-                return m_alpha;
+                return m_lattInclineAngle;
             }
             set
             {
-                m_alpha = value;
+                m_lattInclineAngle = value;
             }
         }
 
-        public double Beta
+        public double LongitudinalInclineAngle
         {
             get
             {
-                return m_beta;
+                return m_longInclineAngle;
             }
             set
             {
-                m_beta = value;
+                m_longInclineAngle = value;
             }
         }
 
@@ -143,7 +143,7 @@ namespace PipeSimulation.DataQuery
         {
             get
             {
-                MatrixCreater maxtrixCreator = new MatrixCreater(m_startPt, m_endPt, m_alpha, m_beta);
+                MatrixCreater maxtrixCreator = new MatrixCreater(m_startPt, m_endPt, m_lattInclineAngle, m_longInclineAngle);
 
                 return maxtrixCreator.GetMatrix();
             }

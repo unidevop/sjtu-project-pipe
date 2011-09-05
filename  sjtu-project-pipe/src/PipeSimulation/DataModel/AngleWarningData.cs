@@ -30,7 +30,7 @@ namespace PipeSimulation.DataModel
             if (null == warningConfig) return strString;
 
             // Get the current Alpha angle
-            double dAlphaAngle = pipeInfo.Alpha;
+            double dAlphaAngle = pipeInfo.LatitudinalInclineAngle;
             if (warningConfig.IsAlphaWarning(dAlphaAngle))
             {
                 string strAlphaFormat;
@@ -40,7 +40,7 @@ namespace PipeSimulation.DataModel
             }
 
             // Get the current Beta angle
-            double dBetaAngle = pipeInfo.Beta;
+            double dBetaAngle = pipeInfo.LongitudinalInclineAngle;
             if (warningConfig.IsBetaWarning(dBetaAngle))
             {
                 string strBetaFormat;
