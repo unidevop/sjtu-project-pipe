@@ -158,8 +158,8 @@ namespace PipeSimulation.DataQuery
                 pipeInfo.EndPoint = new Point3D((double)(sqlDataReader.GetDecimal(5)),
                                                  (double)(sqlDataReader.GetDecimal(6)),
                                                  (double)(sqlDataReader.GetDecimal(7)));
-                pipeInfo.Alpha = (double)(sqlDataReader.GetDecimal(8));
-                pipeInfo.Beta = (double)(sqlDataReader.GetDecimal(9));
+                pipeInfo.LongitudinalInclineAngle = (double)(sqlDataReader.GetDecimal(8));
+                pipeInfo.LatitudinalInclineAngle = (double)(sqlDataReader.GetDecimal(9));
 
                 sqlDataReader.Close();
                 SetMaxAngle(pipeInfo);
@@ -494,16 +494,16 @@ namespace PipeSimulation.DataQuery
         {
             if (pipeInfo.PipeId > m_currentPipeId)
             {
-                m_maxAbsAlpha = pipeInfo.Alpha;
-                m_maxAbsBeta = pipeInfo.Beta;
+                m_maxAbsAlpha = pipeInfo.LatitudinalInclineAngle;
+                m_maxAbsBeta = pipeInfo.LongitudinalInclineAngle;
             }
             else if (pipeInfo.PipeId == m_currentPipeId)
             {
-                if (Math.Abs(pipeInfo.Alpha) > m_maxAbsAlpha)
-                    m_maxAbsAlpha = pipeInfo.Alpha;
+                if (Math.Abs(pipeInfo.LatitudinalInclineAngle) > m_maxAbsAlpha)
+                    m_maxAbsAlpha = pipeInfo.LatitudinalInclineAngle;
 
-                if (Math.Abs(pipeInfo.Beta) > m_maxAbsBeta)
-                    m_maxAbsBeta = pipeInfo.Beta;
+                if (Math.Abs(pipeInfo.LongitudinalInclineAngle) > m_maxAbsBeta)
+                    m_maxAbsBeta = pipeInfo.LongitudinalInclineAngle;
             }
 
             pipeInfo.MaxAbsAlpha = m_maxAbsAlpha;

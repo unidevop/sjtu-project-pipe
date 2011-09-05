@@ -10,15 +10,15 @@ namespace PipeSimulation.DataQuery
     {
         private Point3D m_startPt;
         private Point3D m_endPt;
-        private double m_alpha;
-        private double m_beta;
+        private double m_lattInclineAngle;
+        private double m_longInclineAngle;
 
-        public MatrixCreater(Point3D startPt, Point3D endPt, double alpha, double beta)
+        public MatrixCreater(Point3D startPt, Point3D endPt, double lattInclineAngle, double longInclineAngle)
         {
             m_startPt = startPt;
             m_endPt   = endPt;
-            m_alpha   = alpha;
-            m_beta    = beta;
+            m_lattInclineAngle   = lattInclineAngle;
+            m_longInclineAngle   = longInclineAngle;
         }
 
         public Matrix3D GetMatrix()
@@ -44,7 +44,7 @@ namespace PipeSimulation.DataQuery
 
         private Vector3D GetYVector()
         {
-            double inclineRad = Math.PI * m_alpha / 180.0;
+            double inclineRad = Math.PI * m_lattInclineAngle / 180.0;
             double cosIncline = Math.Cos(inclineRad);
             double sinIncline = Math.Sin(inclineRad);
 
@@ -57,8 +57,12 @@ namespace PipeSimulation.DataQuery
 
             double cosTheta = (-A * C + B * Math.Sqrt(A2B2 - C * C)) / A2B2;
 
+            // Z component of Vector Z
+            double VZZ = -cosIncline * ((xVector.X * A/B + xVector.Y) * cosTheta + xVector.X * C/B);
+
+            if (VZZ <= 0.0)
             // another solution
-//            double cosTheta = (-A * C - B * Math.Sqrt(A2B2 - C * C)) / A2B2;
+                cosTheta = (-A * C - B * Math.Sqrt(A2B2 - C * C)) / A2B2;
 
             double sinTheta = -(A*cosTheta + C) / B;
 
