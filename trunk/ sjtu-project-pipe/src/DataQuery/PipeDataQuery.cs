@@ -625,14 +625,20 @@ namespace PipeSimulation.DataQuery
 
         public PipeInfo GetPipeRecord(DateTime dateTime)
         {
-            string strSql = String.Format(@"SELECT GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
+//            string strSql = String.Format(@"SELECT GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
+//                GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, IM1.Angle1, IM1.Angle2, GPS1.MeasureID, IM1.MeasureID 
+//                FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON 
+//                (GPS1.PipeID=GPS2.PipeID AND GPS1.MeasureTime=GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID) 
+//                INNER JOIN InclineMeasure AS IM1 ON (GPS1.PipeID=IM1.PipeID AND GPS1.MeasureTime=IM1.MeasureTime AND 
+//                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{0}')) < {1}) ORDER BY
+//                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{2}'))",
+//                dateTime, m_timeTolerance.TotalMilliseconds, dateTime);
+            string strSql = String.Format(@"SELECT TOP 1 GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
                 GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, IM1.Angle1, IM1.Angle2, GPS1.MeasureID, IM1.MeasureID 
                 FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON 
                 (GPS1.PipeID=GPS2.PipeID AND GPS1.MeasureTime=GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID) 
-                INNER JOIN InclineMeasure AS IM1 ON (GPS1.PipeID=IM1.PipeID AND GPS1.MeasureTime=IM1.MeasureTime AND 
-                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{0}')) < {1}) ORDER BY
-                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{2}'))",
-                dateTime, m_timeTolerance.TotalMilliseconds, dateTime);
+                INNER JOIN InclineMeasure AS IM1 ON (GPS1.PipeID=IM1.PipeID AND GPS1.MeasureTime=IM1.MeasureTime) ORDER BY
+                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{0}'))", dateTime);
 
             lock (m_dbConn)
             {
