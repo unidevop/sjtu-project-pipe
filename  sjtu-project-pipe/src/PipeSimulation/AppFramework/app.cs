@@ -119,5 +119,13 @@ namespace PipeSimulation.PipeApp
             {
             }
         }
+
+        public override void RenderScene()
+        {
+            if (vtkControl != null)
+            {
+                vtkControl.Invalidate();
+            }
+        }
     }
 }

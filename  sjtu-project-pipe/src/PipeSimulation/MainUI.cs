@@ -183,7 +183,7 @@ namespace PipeSimulation
                 textActorWarning.SetDisplayPosition(sizeControl.Width - CTextSceneDisplayer.sMinX, (sizeControl.Height - CTextSceneDisplayer.sMinY));
             }
 
-            IApp.theApp.RenderWindow.GetInteractor().Render();
+            IApp.theApp.RenderScene();
         }
 
         protected override Boolean ProcessCmdKey(ref Message msg, Keys keyData)
@@ -533,25 +533,10 @@ namespace PipeSimulation
 
         private void splitContainerMain_SplitterMoving(object sender, SplitterCancelEventArgs e)
         {
-            //if (sender == splitContainerMain)
-            //{
-            //    // Update the VTK control
-            //    //vtkFormsWindowControl.PerformLayout();
-            //    //vtkFormsWindowControl.ResumeLayout();
-            //   vtkFormsWindowControl.GetRenderWindow().Render();
-            //    vtkFormsWindowControl.GetRenderWindow().GetInteractor().UpdateSize(vtkFormsWindowControl.Size.Width, vtkFormsWindowControl.Size.Height);
-            //}
         }
 
         private void splitContainerMain_SplitterMoved(object sender, SplitterEventArgs e)
         {
-            //if (sender == splitContainerMain)
-            //{
-            //    // Update the VTK control
-            //    //vtkFormsWindowControl.PerformLayout();
-            //    vtkFormsWindowControl.ResumeLayout();
-            //    //vtkFormsWindowControl.GetRenderWindow().Render();
-            //}
         }
 
         private void modeToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
@@ -710,6 +695,11 @@ namespace PipeSimulation
             }
             else
             {
+                if (IApp.theApp.RenderWindow.CheckInRenderStatus() != 0)
+                {
+                    return;
+                }
+
                 // The current observer mode instance must be CReplayMode
                 CReplayMode replayMode = IApp.theApp.ObserverModeManager.ActiveModeInstance as CReplayMode;
                 if (replayMode == null) return; 
@@ -1073,7 +1063,8 @@ namespace PipeSimulation
                     
                 }
             }
-            IApp.theApp.RenderWindow.GetInteractor().Render();
+
+            IApp.theApp.RenderScene();
         }
 
         void showWCS_Click(object sender, EventArgs e)
@@ -1104,7 +1095,7 @@ namespace PipeSimulation
                 prop.VisibilityOff();
             }
 
-            IApp.theApp.RenderWindow.GetInteractor().Render();
+            IApp.theApp.RenderScene();
         }
 
         void viewToolStripMenuItem_DropDownOpening(object sender, EventArgs e)

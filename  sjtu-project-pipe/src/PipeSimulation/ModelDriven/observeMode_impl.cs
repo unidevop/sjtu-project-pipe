@@ -196,6 +196,9 @@ namespace PipeSimulation
 
             private void m_timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
             {
+                // Suspend the thread to give the UI thread a change to update.
+                System.Threading.Thread.Sleep(0);
+
                 m_iAnimationProgress += 1;
                 if (m_iAnimationProgress > AnimationTotalProgress)
                 {
