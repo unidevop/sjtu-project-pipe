@@ -141,39 +141,6 @@
   <data name="splitContainerMain.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="richTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="richTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="richTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 141</value>
-  </data>
-  <data name="richTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="richTextBox.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="richTextBox.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="clearButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 144</value>
-  </data>
-  <data name="clearButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 24</value>
-  </data>
-  <data name="clearButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="clearButton.Text" xml:space="preserve">
-    <value>Clear</value>
-  </data>
-  <data name="clearButton.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="toolStripRotate.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>

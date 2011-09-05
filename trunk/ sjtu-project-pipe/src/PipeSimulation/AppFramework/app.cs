@@ -113,7 +113,15 @@ namespace PipeSimulation.PipeApp
             try
             {
                 ToolStripLabel labelControl = statusBar.Items[0] as ToolStripLabel;
-                labelControl.Text = statusBarText;
+
+                if (string.IsNullOrEmpty(statusBarText))
+                {
+                    labelControl.Text = global::PipeSimulation.Properties.Resources.IDS_STATUS_READY;
+                }
+                else
+                {
+                    labelControl.Text = statusBarText;
+                }
             }
             catch (NullReferenceException)
             {
