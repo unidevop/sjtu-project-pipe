@@ -509,6 +509,7 @@ namespace PipeSimulation
             this.toolStripStatusLabel.AutoSize = false;
             this.toolStripStatusLabel.TextAlign = ContentAlignment.MiddleLeft;
             this.toolStripStatusLabel.Text = "准备就绪";
+            this.toolStripStatusLabel.Spring = true;
             // 
             // toolStripStatusDatabaseStatus;
             // 
