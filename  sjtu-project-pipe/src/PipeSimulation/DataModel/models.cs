@@ -83,7 +83,17 @@ namespace PipeSimulation
 
             #endregion
         }
-        
+
+        /// <summary>
+        /// A status enum to represent the status of pipe model
+        /// </summary>
+        public enum PipeStatus
+        {
+            eNotStartedYet,     // The pipe has not been started yet
+            eWorkingInProgess,  // The pipe is working in progress
+            eDone               // The pipe is already been done
+        }
+
         /// <summary>
         /// Define a class to represent the pipe
         /// Which is a model and also work with some others models together
@@ -94,9 +104,11 @@ namespace PipeSimulation
             private double m_dLength;
             private double m_dWidth;
             private double m_dHeight;
+            private PipeStatus m_ePipeStatus;
 
             public CPipeModel() : base(null)
             {
+                Status = PipeStatus.eNotStartedYet;
             }
 
             // Parameters
@@ -159,6 +171,60 @@ namespace PipeSimulation
                     if (index >= Children.Count || index < 0) return null;
                     return Children[index] as CPylonModel;
                 }
+            }
+
+            // Pipe Status
+            public PipeStatus Status
+            {
+                get { return m_ePipeStatus; }
+                set
+                {
+                    if (m_ePipeStatus == value) return;
+                    m_ePipeStatus = value;
+
+                    // Deal with the Plyon Models for different models
+                    if (m_ePipeStatus == PipeStatus.eNotStartedYet)
+                    {
+                        Visible = false;
+                        foreach (ISceneNode node in Children)
+                        {
+                            node.Visible = false;
+                        }
+                    }
+                    else if (m_ePipeStatus == PipeStatus.eWorkingInProgess)
+                    {
+                        Visible = true;
+                        foreach (ISceneNode node in Children)
+                        {
+                            node.Visible = true;
+                        }
+                    }
+                    else if (m_ePipeStatus == PipeStatus.eDone)
+                    {
+                        Visible = true;
+                        foreach (ISceneNode node in Children)
+                        {
+                            node.Visible = false;
+                        }
+                    }
+                }
+            }
+
+            // Drive Model
+            public void DriveModel(vtk.vtkTransform transform)
+            {
+                vtk.vtkProp actor = ModelNode as vtk.vtkProp;
+                _DrivdeModel(actor, transform);
+                foreach (ISceneNode node in Children)
+                {
+                    _DrivdeModel(node.ModelNode, transform);
+                }
+            }
+
+            private void _DrivdeModel(vtk.vtkProp node, vtk.vtkTransform transform)
+            {
+                if (node == null || transform == null) return;
+                node.PokeMatrix(transform.GetMatrix());
             }
         }
 

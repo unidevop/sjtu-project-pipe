@@ -170,6 +170,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Utilites\imageOuputUtil.cs" />
+    <Compile Include="Utilites\Matrix3dExtension.cs" />
     <Compile Include="Utilites\modelReader.cs" />
     <Compile Include="Utilites\videoWriter.cs" />
   </ItemGroup>

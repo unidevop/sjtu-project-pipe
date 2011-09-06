@@ -3,6 +3,8 @@ using PipeSimulation.DataModel;
 using PipeSimulation.DataQuery;
 using PipeSimulation.PipeApp;
 using PipeSimulation.SceneGraph;
+using System.Windows.Media.Media3D;
+using PipeSimulation.Utility;
 
 namespace PipeSimulation
 {
@@ -24,17 +26,44 @@ namespace PipeSimulation
                 // Save the current pipe info
                 m_currentPipeInfo = queryResult;
 
+                // Assert Valid
+                if (m_currentPipeInfo == null) return;
+
+                // The main logic to drive the model should be as below
+                // Get the working in progress pipe id.
+                // Drive previous pipe to its location and remove the other components
+                // Drive the working in progress pipe to its location
+                
+                vtk.vtkTransform transformation = m_currentPipeInfo.Matrix.ToVTKTransformation();
+
+                int iCurrentPipeIndex = m_currentPipeInfo.PipeId;
+                for (int iPipeIndex = IApp.theApp.DataModel.PipeModels.Count; iPipeIndex >= 1; --iPipeIndex)
+                {
+                    CPipeModel pipeModel = IApp.theApp.DataModel.PipeModels[iPipeIndex - 1];
+                    if (pipeModel == null) continue;
+
+                    if (iPipeIndex > iCurrentPipeIndex)
+                    {
+                        pipeModel.Status = PipeStatus.eNotStartedYet;
+                    }
+                    else if (iPipeIndex == iCurrentPipeIndex)
+                    {
+                        pipeModel.Status = PipeStatus.eWorkingInProgess;
+
+                        // Drive the model
+                        pipeModel.DriveModel(transformation);
+                    }
+                    else if (iPipeIndex < iCurrentPipeIndex)
+                    {
+                        pipeModel.Status = PipeStatus.eDone;
+
+                        // Drive the model
+                        pipeModel.DriveModel(transformation);
+                    }
+                }
+
+                // Render the scene
                 IApp.theApp.RenderScene();
-
-                //// The most logic should be here
-
-                //// Get the working in progress pipe id.
-
-                //// Drive previous pipe to its location and remove the other components
-
-                //// Drive the working in progress pipe to its location
-
-                //// Update the information output
             }
 
             public void DriveModel(int iPipeId, int iRecordId)
