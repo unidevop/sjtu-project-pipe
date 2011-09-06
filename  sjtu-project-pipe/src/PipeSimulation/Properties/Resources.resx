@@ -277,4 +277,10 @@
   <data name="IDS_DB_DIS_CONNECTED" xml:space="preserve">
     <value>未连接到数据库。</value>
   </data>
+  <data name="IDS_FATAL_ERROR_TEXT" xml:space="preserve">
+    <value>请联系开发者关于以下信息:</value>
+  </data>
+  <data name="IDS_FATAL_ERROR_TITLE" xml:space="preserve">
+    <value>致命错误</value>
+  </data>
 </root>
