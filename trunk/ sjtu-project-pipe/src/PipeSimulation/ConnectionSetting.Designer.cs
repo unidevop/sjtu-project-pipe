@@ -29,144 +29,224 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectionSetting));
+            this.m_connectBtn = new System.Windows.Forms.Button();
+            this.m_connGroup = new System.Windows.Forms.GroupBox();
+            this.m_autoConnInterval = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.m_autoConnect = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.m_hasDataSource = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.m_dbServer = new System.Windows.Forms.TextBox();
-            this.m_dbServerLabel = new System.Windows.Forms.Label();
-            this.m_userNameLabel = new System.Windows.Forms.Label();
             this.m_userName = new System.Windows.Forms.TextBox();
             this.m_pwdLabel = new System.Windows.Forms.Label();
+            this.m_userNameLabel = new System.Windows.Forms.Label();
             this.m_password = new System.Windows.Forms.MaskedTextBox();
+            this.m_dbServerLabel = new System.Windows.Forms.Label();
+            this.m_dbServer = new System.Windows.Forms.TextBox();
             this.m_saveBtn = new System.Windows.Forms.Button();
-            this.m_cancelBtn = new System.Windows.Forms.Button();
-            this.m_connectBtn = new System.Windows.Forms.Button();
-            this.m_status = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.m_resetBtn = new System.Windows.Forms.Button();
+            this.m_configGroup = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.m_connGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.m_autoConnInterval)).BeginInit();
+            this.m_configGroup.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // m_hasDataSource
-            // 
-            this.m_hasDataSource.AutoSize = true;
-            this.m_hasDataSource.Location = new System.Drawing.Point(12, 81);
-            this.m_hasDataSource.Name = "m_hasDataSource";
-            this.m_hasDataSource.Size = new System.Drawing.Size(90, 16);
-            this.m_hasDataSource.TabIndex = 0;
-            this.m_hasDataSource.Text = "Data source";
-            this.m_hasDataSource.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.m_cancelBtn);
-            this.panel1.Controls.Add(this.m_saveBtn);
-            this.panel1.Controls.Add(this.m_password);
-            this.panel1.Controls.Add(this.m_pwdLabel);
-            this.panel1.Controls.Add(this.m_userName);
-            this.panel1.Controls.Add(this.m_userNameLabel);
-            this.panel1.Controls.Add(this.m_dbServerLabel);
-            this.panel1.Controls.Add(this.m_dbServer);
-            this.panel1.Location = new System.Drawing.Point(12, 112);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(376, 148);
-            this.panel1.TabIndex = 1;
-            // 
-            // m_dbServer
-            // 
-            this.m_dbServer.Location = new System.Drawing.Point(127, 23);
-            this.m_dbServer.Name = "m_dbServer";
-            this.m_dbServer.Size = new System.Drawing.Size(233, 21);
-            this.m_dbServer.TabIndex = 2;
-            // 
-            // m_dbServerLabel
-            // 
-            this.m_dbServerLabel.AutoSize = true;
-            this.m_dbServerLabel.Location = new System.Drawing.Point(10, 26);
-            this.m_dbServerLabel.Name = "m_dbServerLabel";
-            this.m_dbServerLabel.Size = new System.Drawing.Size(95, 12);
-            this.m_dbServerLabel.TabIndex = 3;
-            this.m_dbServerLabel.Text = "Dababase Server";
-            // 
-            // m_userNameLabel
-            // 
-            this.m_userNameLabel.AutoSize = true;
-            this.m_userNameLabel.Location = new System.Drawing.Point(10, 52);
-            this.m_userNameLabel.Name = "m_userNameLabel";
-            this.m_userNameLabel.Size = new System.Drawing.Size(59, 12);
-            this.m_userNameLabel.TabIndex = 4;
-            this.m_userNameLabel.Text = "User Name";
-            // 
-            // m_userName
-            // 
-            this.m_userName.Location = new System.Drawing.Point(127, 49);
-            this.m_userName.Name = "m_userName";
-            this.m_userName.Size = new System.Drawing.Size(148, 21);
-            this.m_userName.TabIndex = 5;
-            // 
-            // m_pwdLabel
-            // 
-            this.m_pwdLabel.AutoSize = true;
-            this.m_pwdLabel.Location = new System.Drawing.Point(10, 83);
-            this.m_pwdLabel.Name = "m_pwdLabel";
-            this.m_pwdLabel.Size = new System.Drawing.Size(53, 12);
-            this.m_pwdLabel.TabIndex = 6;
-            this.m_pwdLabel.Text = "Password";
-            // 
-            // m_password
-            // 
-            this.m_password.Location = new System.Drawing.Point(127, 83);
-            this.m_password.Name = "m_password";
-            this.m_password.Size = new System.Drawing.Size(148, 21);
-            this.m_password.TabIndex = 7;
-            // 
-            // m_saveBtn
-            // 
-            this.m_saveBtn.Location = new System.Drawing.Point(66, 110);
-            this.m_saveBtn.Name = "m_saveBtn";
-            this.m_saveBtn.Size = new System.Drawing.Size(75, 23);
-            this.m_saveBtn.TabIndex = 8;
-            this.m_saveBtn.Text = "Save";
-            this.m_saveBtn.UseVisualStyleBackColor = true;
-            // 
-            // m_cancelBtn
-            // 
-            this.m_cancelBtn.Location = new System.Drawing.Point(237, 110);
-            this.m_cancelBtn.Name = "m_cancelBtn";
-            this.m_cancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.m_cancelBtn.TabIndex = 9;
-            this.m_cancelBtn.Text = "Cancel";
-            this.m_cancelBtn.UseVisualStyleBackColor = true;
             // 
             // m_connectBtn
             // 
-            this.m_connectBtn.Location = new System.Drawing.Point(12, 12);
+            this.m_connectBtn.AccessibleDescription = null;
+            this.m_connectBtn.AccessibleName = null;
+            resources.ApplyResources(this.m_connectBtn, "m_connectBtn");
+            this.m_connectBtn.BackgroundImage = null;
+            this.m_connectBtn.Font = null;
             this.m_connectBtn.Name = "m_connectBtn";
-            this.m_connectBtn.Size = new System.Drawing.Size(75, 23);
-            this.m_connectBtn.TabIndex = 2;
-            this.m_connectBtn.Text = "Connect";
             this.m_connectBtn.UseVisualStyleBackColor = true;
+            this.m_connectBtn.Click += new System.EventHandler(this.ConnectButtonClick);
             // 
-            // m_status
+            // m_connGroup
             // 
-            this.m_status.AutoSize = true;
-            this.m_status.Location = new System.Drawing.Point(10, 51);
-            this.m_status.Name = "m_status";
-            this.m_status.Size = new System.Drawing.Size(95, 12);
-            this.m_status.TabIndex = 3;
-            this.m_status.Text = "Database status";
+            this.m_connGroup.AccessibleDescription = null;
+            this.m_connGroup.AccessibleName = null;
+            resources.ApplyResources(this.m_connGroup, "m_connGroup");
+            this.m_connGroup.BackgroundImage = null;
+            this.m_connGroup.Controls.Add(this.m_autoConnInterval);
+            this.m_connGroup.Controls.Add(this.label2);
+            this.m_connGroup.Controls.Add(this.m_autoConnect);
+            this.m_connGroup.Controls.Add(this.label1);
+            this.m_connGroup.Font = null;
+            this.m_connGroup.Name = "m_connGroup";
+            this.m_connGroup.TabStop = false;
+            // 
+            // m_autoConnInterval
+            // 
+            this.m_autoConnInterval.AccessibleDescription = null;
+            this.m_autoConnInterval.AccessibleName = null;
+            resources.ApplyResources(this.m_autoConnInterval, "m_autoConnInterval");
+            this.m_autoConnInterval.Font = null;
+            this.m_autoConnInterval.Name = "m_autoConnInterval";
+            this.m_autoConnInterval.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label2
+            // 
+            this.label2.AccessibleDescription = null;
+            this.label2.AccessibleName = null;
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Font = null;
+            this.label2.Name = "label2";
+            // 
+            // m_autoConnect
+            // 
+            this.m_autoConnect.AccessibleDescription = null;
+            this.m_autoConnect.AccessibleName = null;
+            resources.ApplyResources(this.m_autoConnect, "m_autoConnect");
+            this.m_autoConnect.BackgroundImage = null;
+            this.m_autoConnect.Font = null;
+            this.m_autoConnect.Name = "m_autoConnect";
+            this.m_autoConnect.UseVisualStyleBackColor = true;
+            this.m_autoConnect.CheckedChanged += new System.EventHandler(this.AutoConnectCheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AccessibleDescription = null;
+            this.label1.AccessibleName = null;
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Font = null;
+            this.label1.Name = "label1";
+            // 
+            // m_hasDataSource
+            // 
+            this.m_hasDataSource.AccessibleDescription = null;
+            this.m_hasDataSource.AccessibleName = null;
+            resources.ApplyResources(this.m_hasDataSource, "m_hasDataSource");
+            this.m_hasDataSource.BackgroundImage = null;
+            this.m_hasDataSource.Font = null;
+            this.m_hasDataSource.Name = "m_hasDataSource";
+            this.m_hasDataSource.UseVisualStyleBackColor = true;
+            this.m_hasDataSource.CheckedChanged += new System.EventHandler(this.HasDataSourceCheckedChanged);
+            // 
+            // m_userName
+            // 
+            this.m_userName.AccessibleDescription = null;
+            this.m_userName.AccessibleName = null;
+            resources.ApplyResources(this.m_userName, "m_userName");
+            this.m_userName.BackgroundImage = null;
+            this.m_userName.Font = null;
+            this.m_userName.Name = "m_userName";
+            // 
+            // m_pwdLabel
+            // 
+            this.m_pwdLabel.AccessibleDescription = null;
+            this.m_pwdLabel.AccessibleName = null;
+            resources.ApplyResources(this.m_pwdLabel, "m_pwdLabel");
+            this.m_pwdLabel.Font = null;
+            this.m_pwdLabel.Name = "m_pwdLabel";
+            // 
+            // m_userNameLabel
+            // 
+            this.m_userNameLabel.AccessibleDescription = null;
+            this.m_userNameLabel.AccessibleName = null;
+            resources.ApplyResources(this.m_userNameLabel, "m_userNameLabel");
+            this.m_userNameLabel.Font = null;
+            this.m_userNameLabel.Name = "m_userNameLabel";
+            // 
+            // m_password
+            // 
+            this.m_password.AccessibleDescription = null;
+            this.m_password.AccessibleName = null;
+            resources.ApplyResources(this.m_password, "m_password");
+            this.m_password.BackgroundImage = null;
+            this.m_password.Font = null;
+            this.m_password.Name = "m_password";
+            // 
+            // m_dbServerLabel
+            // 
+            this.m_dbServerLabel.AccessibleDescription = null;
+            this.m_dbServerLabel.AccessibleName = null;
+            resources.ApplyResources(this.m_dbServerLabel, "m_dbServerLabel");
+            this.m_dbServerLabel.Font = null;
+            this.m_dbServerLabel.Name = "m_dbServerLabel";
+            // 
+            // m_dbServer
+            // 
+            this.m_dbServer.AccessibleDescription = null;
+            this.m_dbServer.AccessibleName = null;
+            resources.ApplyResources(this.m_dbServer, "m_dbServer");
+            this.m_dbServer.BackgroundImage = null;
+            this.m_dbServer.Font = null;
+            this.m_dbServer.Name = "m_dbServer";
+            // 
+            // m_saveBtn
+            // 
+            this.m_saveBtn.AccessibleDescription = null;
+            this.m_saveBtn.AccessibleName = null;
+            resources.ApplyResources(this.m_saveBtn, "m_saveBtn");
+            this.m_saveBtn.BackgroundImage = null;
+            this.m_saveBtn.Font = null;
+            this.m_saveBtn.Name = "m_saveBtn";
+            this.m_saveBtn.UseVisualStyleBackColor = true;
+            // 
+            // m_resetBtn
+            // 
+            this.m_resetBtn.AccessibleDescription = null;
+            this.m_resetBtn.AccessibleName = null;
+            resources.ApplyResources(this.m_resetBtn, "m_resetBtn");
+            this.m_resetBtn.BackgroundImage = null;
+            this.m_resetBtn.Font = null;
+            this.m_resetBtn.Name = "m_resetBtn";
+            this.m_resetBtn.UseVisualStyleBackColor = true;
+            // 
+            // m_configGroup
+            // 
+            this.m_configGroup.AccessibleDescription = null;
+            this.m_configGroup.AccessibleName = null;
+            resources.ApplyResources(this.m_configGroup, "m_configGroup");
+            this.m_configGroup.BackgroundImage = null;
+            this.m_configGroup.Controls.Add(this.m_dbServer);
+            this.m_configGroup.Controls.Add(this.m_dbServerLabel);
+            this.m_configGroup.Controls.Add(this.m_password);
+            this.m_configGroup.Controls.Add(this.m_userNameLabel);
+            this.m_configGroup.Controls.Add(this.m_pwdLabel);
+            this.m_configGroup.Controls.Add(this.m_userName);
+            this.m_configGroup.Font = null;
+            this.m_configGroup.Name = "m_configGroup";
+            this.m_configGroup.TabStop = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.AccessibleDescription = null;
+            this.groupBox2.AccessibleName = null;
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.BackgroundImage = null;
+            this.groupBox2.Controls.Add(this.m_resetBtn);
+            this.groupBox2.Controls.Add(this.m_configGroup);
+            this.groupBox2.Controls.Add(this.m_connGroup);
+            this.groupBox2.Controls.Add(this.m_saveBtn);
+            this.groupBox2.Font = null;
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
             // 
             // ConnectionSetting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AccessibleDescription = null;
+            this.AccessibleName = null;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 267);
-            this.Controls.Add(this.m_status);
+            this.BackgroundImage = null;
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.m_connectBtn);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.m_hasDataSource);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Font = null;
             this.Name = "ConnectionSetting";
-            this.Text = "ConnectionSetting";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.m_connGroup.ResumeLayout(false);
+            this.m_connGroup.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.m_autoConnInterval)).EndInit();
+            this.m_configGroup.ResumeLayout(false);
+            this.m_configGroup.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,17 +254,22 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox m_hasDataSource;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label m_dbServerLabel;
-        private System.Windows.Forms.TextBox m_dbServer;
-        private System.Windows.Forms.Label m_userNameLabel;
-        private System.Windows.Forms.TextBox m_userName;
-        private System.Windows.Forms.Button m_cancelBtn;
-        private System.Windows.Forms.Button m_saveBtn;
-        private System.Windows.Forms.MaskedTextBox m_password;
-        private System.Windows.Forms.Label m_pwdLabel;
         private System.Windows.Forms.Button m_connectBtn;
-        private System.Windows.Forms.Label m_status;
+        private System.Windows.Forms.CheckBox m_autoConnect;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown m_autoConnInterval;
+        private System.Windows.Forms.GroupBox m_connGroup;
+        private System.Windows.Forms.GroupBox m_configGroup;
+        private System.Windows.Forms.Button m_resetBtn;
+        private System.Windows.Forms.Button m_saveBtn;
+        private System.Windows.Forms.TextBox m_dbServer;
+        private System.Windows.Forms.Label m_dbServerLabel;
+        private System.Windows.Forms.MaskedTextBox m_password;
+        private System.Windows.Forms.Label m_userNameLabel;
+        private System.Windows.Forms.Label m_pwdLabel;
+        private System.Windows.Forms.TextBox m_userName;
+        private System.Windows.Forms.CheckBox m_hasDataSource;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

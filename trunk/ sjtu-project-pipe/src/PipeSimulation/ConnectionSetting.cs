@@ -15,5 +15,29 @@ namespace PipeSimulation
         {
             InitializeComponent();
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            m_autoConnect.Checked = true;
+            m_hasDataSource.Checked = true;
+        }
+
+        private void AutoConnectCheckedChanged(object sender, EventArgs e)
+        {
+            m_autoConnInterval.Enabled = m_autoConnect.Checked;
+        }
+
+        private void ConnectButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HasDataSourceCheckedChanged(object sender, EventArgs e)
+        {
+            m_configGroup.Enabled = m_hasDataSource.Checked;
+            m_connGroup.Enabled = m_hasDataSource.Checked;
+        }
     }
 }
