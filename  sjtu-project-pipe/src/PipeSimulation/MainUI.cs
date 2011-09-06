@@ -40,6 +40,12 @@ namespace PipeSimulation
             splashthread.Start();
             splashthread.CurrentUICulture = new System.Globalization.CultureInfo(/*MSG0*/"zh-chs");
 
+            // Make sure we ouptput all the vtk errors to a temp file.
+            vtk.vtkFileOutputWindow t = new vtk.vtkFileOutputWindow();
+            t.SetFileName(System.IO.Path.GetTempPath() + /*MSG0*/"PipeSimulation.error");
+            //t.SetAppend(1);
+            vtk.vtkOutputWindow.SetInstance(t);
+
             InitializeComponent();
         }
 
