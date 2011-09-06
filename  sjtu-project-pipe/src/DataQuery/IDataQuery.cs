@@ -34,7 +34,17 @@ namespace PipeSimulation.DataQuery
     public interface IRealtimeDataQuery : IBaseDataQuery
     {
         /// <summary>
-        /// Fecth the latest data from data engine
+        /// Begin to read data and push to the client
+        /// </summary>
+        void Activate();
+
+        /// <summary>
+        /// End reading data
+        /// </summary>
+        void Deactivate();
+
+        /// <summary>
+        /// Fetch the latest data from data engine
         /// </summary>
         /// <returns></returns>
         PipeInfo FetchLatestData();
@@ -50,7 +60,7 @@ namespace PipeSimulation.DataQuery
     {
         /// <summary>
         /// This function is used to determine if the given pipe id is started
-        /// If there are some recoreds for this given pipe id, return true, vise visa.
+        /// If there are some records for this given pipe id, return true, vise visa.
         /// </summary>
         /// <param name="iPipeId">the pipe id</param>
         /// <returns></returns>
@@ -58,7 +68,7 @@ namespace PipeSimulation.DataQuery
 
         /// <summary>
         /// This function is used to determine if the given pipe is positioned completely.
-        /// If there are some recoreds for next pipe id, return true, vise visa
+        /// If there are some records for next pipe id, return true, vise visa
         /// </summary>
         /// <param name="iPipeId">the given pipe id</param>
         /// <returns></returns>
@@ -84,7 +94,7 @@ namespace PipeSimulation.DataQuery
         /// </summary>
         /// <param name="dateTime">date time</param>
         /// <returns></returns>
-        PipeInfo GetPipeRecord(DateTime dateTime);
+        PipeInfo GetPipeRecord(DateTime dateTime, bool bFindNearest);
 
         /// <summary>
         /// Get Start time for the given pipe id, IsPipeStarted function must be called before calling this function.

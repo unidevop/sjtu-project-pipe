@@ -254,6 +254,9 @@
     <EmbeddedResource Include="ConnectionSetting.resx">
       <DependentUpon>ConnectionSetting.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConnectionSetting.zh-CHS.resx">
+      <DependentUpon>ConnectionSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainUI.zh-CHS.resx">
       <DependentUpon>MainUI.cs</DependentUpon>
     </EmbeddedResource>

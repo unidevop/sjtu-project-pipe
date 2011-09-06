@@ -646,7 +646,7 @@ namespace PipeSimulation
             specificTime = startTime + new TimeSpan((long)(intelopValue));
 
             // Pipe Info
-            PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(specificTime);
+            PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(specificTime, false);
 
             // Drive the model
             IApp.theApp.DataDriven.DriveModel(pipeInfo);
@@ -797,6 +797,12 @@ namespace PipeSimulation
             // Update the toolbar
             if (mode == ObserverMode.ObserverMode.eReplayMode)
             {
+                IRealtimeDataQuery realtimeDataQuery = IApp.theApp.RealTimeDataQuery;
+
+                //  deactivate real time query first even it's not connected
+                if (realtimeDataQuery != null)
+                    realtimeDataQuery.Deactivate();
+
                 // Clear the combox 
                 toolStripComboBoxPipes.Items.Clear();
 
@@ -859,6 +865,8 @@ namespace PipeSimulation
 
                     // Drive model
                     IApp.theApp.DataDriven.DriveModel(queryResult);
+
+                    dataQuery.Activate();
                 }
             }
         }
@@ -956,7 +964,7 @@ namespace PipeSimulation
             replayMode.ReplayAnimationEngine.AnimationEndTime = endTime;
 
             // Update the render window
-            PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(beginingTime);
+            PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(beginingTime, false);
             IApp.theApp.DataDriven.DriveModel(pipeInfo);
 
             // Update the animation label text
@@ -1071,7 +1079,7 @@ namespace PipeSimulation
                     {
                         try
                         {
-                            PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(dateTime);
+                            PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(dateTime, true);
                             if (pipeInfo == null)
                             {
                                 MessageBox.Show(Resources.IDS_NODATA_TO_TIME, this.Text);
