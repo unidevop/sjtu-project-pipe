@@ -33,9 +33,6 @@ namespace PipeSimulation
                 // Get the working in progress pipe id.
                 // Drive previous pipe to its location and remove the other components
                 // Drive the working in progress pipe to its location
-                
-                vtk.vtkTransform transformation = m_currentPipeInfo.Matrix.ToVTKTransformation();
-
                 int iCurrentPipeIndex = m_currentPipeInfo.PipeId;
                 for (int iPipeIndex = IApp.theApp.DataModel.PipeModels.Count; iPipeIndex >= 1; --iPipeIndex)
                 {
@@ -51,14 +48,21 @@ namespace PipeSimulation
                         pipeModel.Status = PipeStatus.eWorkingInProgess;
 
                         // Drive the model
-                        pipeModel.DriveModel(transformation);
+                        pipeModel.DriveModel(m_currentPipeInfo.Matrix.ToVTKTransformation());
                     }
                     else if (iPipeIndex < iCurrentPipeIndex)
                     {
                         pipeModel.Status = PipeStatus.eDone;
 
+                        // Cache the final transform
+                        // I think m_currentPipeInfo.Matrix.ToVTKTransformation really cost a lot.
+                        if (pipeModel.FinalTransform == null)
+                        {
+                            pipeModel.FinalTransform = m_currentPipeInfo.Matrix.ToVTKTransformation();
+                        }
+
                         // Drive the model
-                        pipeModel.DriveModel(transformation);
+                        pipeModel.DriveModel(pipeModel.FinalTransform);
                     }
                 }
 

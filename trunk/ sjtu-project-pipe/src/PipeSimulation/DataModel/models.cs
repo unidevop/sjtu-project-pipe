@@ -105,6 +105,7 @@ namespace PipeSimulation
             private double m_dWidth;
             private double m_dHeight;
             private PipeStatus m_ePipeStatus;
+            private vtk.vtkTransform m_transFormFinal = null;
 
             public CPipeModel() : base(null)
             {
@@ -213,6 +214,10 @@ namespace PipeSimulation
             // Drive Model
             public void DriveModel(vtk.vtkTransform transform)
             {
+                // We don't allow to drive the model when the status is not started.
+                if (Status == PipeStatus.eNotStartedYet) return;
+
+                // Only drive the model when the pipe is working progress
                 vtk.vtkProp actor = ModelNode as vtk.vtkProp;
                 _DrivdeModel(actor, transform);
                 foreach (ISceneNode node in Children)
@@ -225,6 +230,16 @@ namespace PipeSimulation
             {
                 if (node == null || transform == null) return;
                 node.PokeMatrix(transform.GetMatrix());
+            }
+
+            // Cached final transform
+            public vtk.vtkTransform FinalTransform
+            {
+                get { return m_transFormFinal; }
+                set
+                {
+                    m_transFormFinal = value;
+                }
             }
         }
 
