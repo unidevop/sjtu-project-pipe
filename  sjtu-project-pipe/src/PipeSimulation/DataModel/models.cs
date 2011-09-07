@@ -4,6 +4,7 @@ using PipeSimulation.SceneGraph;
 using PipeSimulation.Utility;
 using System.Collections.Generic;
 using PipeSimulation.PipeApp;
+using PipeSimulation.DataQuery;
 
 namespace PipeSimulation
 {
@@ -106,6 +107,7 @@ namespace PipeSimulation
             private double m_dHeight;
             private PipeStatus m_ePipeStatus;
             private vtk.vtkTransform m_transFormFinal = null;
+            private PipeInfo m_finalPipeInfo = null;
 
             public CPipeModel() : base(null)
             {
@@ -214,6 +216,9 @@ namespace PipeSimulation
             // Drive Model
             public void DriveModel(vtk.vtkTransform transform)
             {
+                // Assert valid
+                if (transform == null) return;
+
                 // We don't allow to drive the model when the status is not started.
                 if (Status == PipeStatus.eNotStartedYet) return;
 
@@ -236,9 +241,20 @@ namespace PipeSimulation
             public vtk.vtkTransform FinalTransform
             {
                 get { return m_transFormFinal; }
+            }
+
+            // Cached final pipe info
+            public PipeInfo FinalPipeInfo
+            {
+                get { return m_finalPipeInfo; }
                 set
                 {
-                    m_transFormFinal = value;
+                    m_finalPipeInfo = value;
+
+                    if (m_finalPipeInfo != null)
+                    {
+                        m_transFormFinal = m_finalPipeInfo.Matrix.ToVTKTransformation();
+                    }
                 }
             }
         }

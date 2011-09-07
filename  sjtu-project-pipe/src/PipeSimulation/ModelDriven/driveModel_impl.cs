@@ -23,11 +23,11 @@ namespace PipeSimulation
 
             public void DriveModel(PipeInfo queryResult)
             {
+                // Assert Valid
+                if (queryResult == null) return;
+
                 // Save the current pipe info
                 m_currentPipeInfo = queryResult;
-
-                // Assert Valid
-                if (m_currentPipeInfo == null) return;
 
                 // The main logic to drive the model should be as below
                 // Get the working in progress pipe id.
@@ -47,6 +47,16 @@ namespace PipeSimulation
                     {
                         pipeModel.Status = PipeStatus.eWorkingInProgess;
 
+                        // Here, we should pay more attention that if the m_currentPipeInfo is the last one for this pipe model
+                        // Also, the distance between the connection point should be taken into account
+                        if ((pipeModel.FinalPipeInfo != null && pipeModel.FinalPipeInfo.Time == m_currentPipeInfo.Time/*time is not enough*/))
+                        {
+                            // Mark the status as done
+                            pipeModel.Status = PipeStatus.eDone;
+                            pipeModel.DriveModel(pipeModel.FinalTransform);
+                            continue;
+                        }
+
                         // Drive the model
                         pipeModel.DriveModel(m_currentPipeInfo.Matrix.ToVTKTransformation());
                     }
@@ -54,11 +64,18 @@ namespace PipeSimulation
                     {
                         pipeModel.Status = PipeStatus.eDone;
 
-                        // Cache the final transform
-                        // I think m_currentPipeInfo.Matrix.ToVTKTransformation really cost a lot.
-                        if (pipeModel.FinalTransform == null)
+                        // Caceh the final pipe info
+                        // I think every time to query the pipe info really cost a lot
+                        if (pipeModel.FinalPipeInfo == null)
                         {
-                            pipeModel.FinalTransform = m_currentPipeInfo.Matrix.ToVTKTransformation();
+                            // Find the final pipe info this pipe model
+                            IHistoryDataQuery historyDataQuery = IApp.theApp.HistoryTimeDataQuery;
+                            PipeInfo lastPipeInfo = historyDataQuery.GetPipeRecord(historyDataQuery.GetPipeEndTime(iPipeIndex), true);
+                            if (lastPipeInfo != null)
+                            {
+                                // Cache it
+                                pipeModel.FinalPipeInfo = lastPipeInfo;
+                            }
                         }
 
                         // Drive the model
