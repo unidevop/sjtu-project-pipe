@@ -21,23 +21,27 @@ namespace PipeSimulation
             base.OnLoad(e);
 
             m_autoConnect.Checked = true;
-            m_hasDataSource.Checked = true;
+            m_isConfigConn.Checked = false;
+
+            AutoConnect_CheckedChanged(m_autoConnect, null);
+            IsConfigConnection_CheckedChanged(m_isConfigConn, null);
         }
 
-        private void AutoConnectCheckedChanged(object sender, EventArgs e)
+        private void AutoConnect_CheckedChanged(object sender, EventArgs e)
         {
             m_autoConnInterval.Enabled = m_autoConnect.Checked;
         }
 
-        private void ConnectButtonClick(object sender, EventArgs e)
+        private void Connect_ButtonClick(object sender, EventArgs e)
         {
 
         }
 
-        private void HasDataSourceCheckedChanged(object sender, EventArgs e)
+        private void IsConfigConnection_CheckedChanged(object sender, EventArgs e)
         {
-            m_configGroup.Enabled = m_hasDataSource.Checked;
-            m_connGroup.Enabled = m_hasDataSource.Checked;
+            m_connConfigGroup.Enabled = m_isConfigConn.Checked;
+            //m_configGroup.Enabled = m_isConfigConn.Checked;
+            //m_connGroup.Enabled = m_isConfigConn.Checked;
         }
     }
 }
