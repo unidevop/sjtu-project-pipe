@@ -47,6 +47,24 @@ namespace PipeSimulation.PipeApp
             }
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (m_realTimeQuery != null)
+                {
+                    m_realTimeQuery.Dispose();
+                    m_realTimeQuery = null;
+                }
+
+                if (m_historyQuery != null)
+                {
+                    m_historyQuery.Dispose();
+                    m_historyQuery = null;
+                }
+            }
+        }
+
         public override MainUI MainUI
         {
             get { return m_mainUI; }

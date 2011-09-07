@@ -334,7 +334,7 @@
     <value>185, 22</value>
   </data>
   <data name="m_connSettingMenuItem.Text" xml:space="preserve">
-    <value>Connection Setting</value>
+    <value>连接设置</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 6</value>

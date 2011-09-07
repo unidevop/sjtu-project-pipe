@@ -15,7 +15,7 @@ namespace PipeSimulation
 {
     namespace PipeApp
     {
-        public abstract class IApp
+        public abstract class IApp : IDisposable
         {
             abstract public MainUI MainUI { get; }
             abstract public vtkFormsWindowControl vtkControl { get; }
@@ -35,6 +35,14 @@ namespace PipeSimulation
                 get;
                 set;
             }
+
+            public void Dispose()
+            {
+                Dispose(true);
+                GC.SuppressFinalize(this);
+            }
+
+            protected abstract void Dispose(bool disposing);
 
             abstract public void RenderScene();
         }

@@ -8,6 +8,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
+using PipeSimulation.PipeApp;
+
 namespace PipeSimulation
 {
     partial class MainUI
@@ -23,9 +25,16 @@ namespace PipeSimulation
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing)
             {
-                components.Dispose();
+                if (components != null)
+                    components.Dispose();
+
+                if (IApp.theApp != null)
+                {
+                    IApp.theApp.Dispose();
+                    IApp.theApp = null;
+                }
             }
             base.Dispose(disposing);
         }

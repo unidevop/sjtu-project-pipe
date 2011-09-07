@@ -35,7 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.m_autoConnect = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.m_hasDataSource = new System.Windows.Forms.CheckBox();
+            this.m_isConfigConn = new System.Windows.Forms.CheckBox();
             this.m_userName = new System.Windows.Forms.TextBox();
             this.m_pwdLabel = new System.Windows.Forms.Label();
             this.m_userNameLabel = new System.Windows.Forms.Label();
@@ -45,11 +45,11 @@
             this.m_saveBtn = new System.Windows.Forms.Button();
             this.m_resetBtn = new System.Windows.Forms.Button();
             this.m_configGroup = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.m_connConfigGroup = new System.Windows.Forms.GroupBox();
             this.m_connGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_autoConnInterval)).BeginInit();
             this.m_configGroup.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.m_connConfigGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // m_connectBtn
@@ -61,7 +61,7 @@
             this.m_connectBtn.Font = null;
             this.m_connectBtn.Name = "m_connectBtn";
             this.m_connectBtn.UseVisualStyleBackColor = true;
-            this.m_connectBtn.Click += new System.EventHandler(this.ConnectButtonClick);
+            this.m_connectBtn.Click += new System.EventHandler(this.Connect_ButtonClick);
             // 
             // m_connGroup
             // 
@@ -107,7 +107,7 @@
             this.m_autoConnect.Font = null;
             this.m_autoConnect.Name = "m_autoConnect";
             this.m_autoConnect.UseVisualStyleBackColor = true;
-            this.m_autoConnect.CheckedChanged += new System.EventHandler(this.AutoConnectCheckedChanged);
+            this.m_autoConnect.CheckedChanged += new System.EventHandler(this.AutoConnect_CheckedChanged);
             // 
             // label1
             // 
@@ -117,16 +117,16 @@
             this.label1.Font = null;
             this.label1.Name = "label1";
             // 
-            // m_hasDataSource
+            // m_isConfigConn
             // 
-            this.m_hasDataSource.AccessibleDescription = null;
-            this.m_hasDataSource.AccessibleName = null;
-            resources.ApplyResources(this.m_hasDataSource, "m_hasDataSource");
-            this.m_hasDataSource.BackgroundImage = null;
-            this.m_hasDataSource.Font = null;
-            this.m_hasDataSource.Name = "m_hasDataSource";
-            this.m_hasDataSource.UseVisualStyleBackColor = true;
-            this.m_hasDataSource.CheckedChanged += new System.EventHandler(this.HasDataSourceCheckedChanged);
+            this.m_isConfigConn.AccessibleDescription = null;
+            this.m_isConfigConn.AccessibleName = null;
+            resources.ApplyResources(this.m_isConfigConn, "m_isConfigConn");
+            this.m_isConfigConn.BackgroundImage = null;
+            this.m_isConfigConn.Font = null;
+            this.m_isConfigConn.Name = "m_isConfigConn";
+            this.m_isConfigConn.UseVisualStyleBackColor = true;
+            this.m_isConfigConn.CheckedChanged += new System.EventHandler(this.IsConfigConnection_CheckedChanged);
             // 
             // m_userName
             // 
@@ -215,19 +215,19 @@
             this.m_configGroup.Name = "m_configGroup";
             this.m_configGroup.TabStop = false;
             // 
-            // groupBox2
+            // m_connConfigGroup
             // 
-            this.groupBox2.AccessibleDescription = null;
-            this.groupBox2.AccessibleName = null;
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.BackgroundImage = null;
-            this.groupBox2.Controls.Add(this.m_resetBtn);
-            this.groupBox2.Controls.Add(this.m_configGroup);
-            this.groupBox2.Controls.Add(this.m_connGroup);
-            this.groupBox2.Controls.Add(this.m_saveBtn);
-            this.groupBox2.Font = null;
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
+            this.m_connConfigGroup.AccessibleDescription = null;
+            this.m_connConfigGroup.AccessibleName = null;
+            resources.ApplyResources(this.m_connConfigGroup, "m_connConfigGroup");
+            this.m_connConfigGroup.BackgroundImage = null;
+            this.m_connConfigGroup.Controls.Add(this.m_resetBtn);
+            this.m_connConfigGroup.Controls.Add(this.m_configGroup);
+            this.m_connConfigGroup.Controls.Add(this.m_connGroup);
+            this.m_connConfigGroup.Controls.Add(this.m_saveBtn);
+            this.m_connConfigGroup.Font = null;
+            this.m_connConfigGroup.Name = "m_connConfigGroup";
+            this.m_connConfigGroup.TabStop = false;
             // 
             // ConnectionSetting
             // 
@@ -236,9 +236,9 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = null;
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.m_connConfigGroup);
             this.Controls.Add(this.m_connectBtn);
-            this.Controls.Add(this.m_hasDataSource);
+            this.Controls.Add(this.m_isConfigConn);
             this.Font = null;
             this.Name = "ConnectionSetting";
             this.m_connGroup.ResumeLayout(false);
@@ -246,7 +246,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.m_autoConnInterval)).EndInit();
             this.m_configGroup.ResumeLayout(false);
             this.m_configGroup.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            this.m_connConfigGroup.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,7 +269,7 @@
         private System.Windows.Forms.Label m_userNameLabel;
         private System.Windows.Forms.Label m_pwdLabel;
         private System.Windows.Forms.TextBox m_userName;
-        private System.Windows.Forms.CheckBox m_hasDataSource;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox m_isConfigConn;
+        private System.Windows.Forms.GroupBox m_connConfigGroup;
     }
 }

@@ -167,16 +167,17 @@
   <data name="m_connGroup.Text" xml:space="preserve">
     <value>连接</value>
   </data>
-  <data name="m_hasDataSource.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="m_isConfigConn.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="m_isConfigConn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="m_hasDataSource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 11</value>
-  </data>
-  <data name="m_hasDataSource.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="m_isConfigConn.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 16</value>
   </data>
-  <data name="m_hasDataSource.Text" xml:space="preserve">
+  <data name="m_isConfigConn.Text" xml:space="preserve">
     <value>数据库配置</value>
   </data>
   <data name="m_pwdLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -233,10 +234,7 @@
   <data name="m_configGroup.Text" xml:space="preserve">
     <value>数据库</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 28</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="m_connConfigGroup.Size" type="System.Drawing.Size, System.Drawing">
     <value>404, 267</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
