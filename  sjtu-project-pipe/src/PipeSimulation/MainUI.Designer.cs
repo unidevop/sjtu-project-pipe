@@ -161,7 +161,7 @@ namespace PipeSimulation
             // 
             this.toolStripRotate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripRotate.Image = global::PipeSimulation.Properties.Resources.NavBarOrbit;
-            this.toolStripRotate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripRotate.ImageTransparentColor = System.Drawing.Color.White;
             this.toolStripRotate.Name = "toolStripRotate";
             this.toolStripRotate.Size = new System.Drawing.Size(23, 22);
             this.toolStripRotate.Text = "旋转";
@@ -172,7 +172,7 @@ namespace PipeSimulation
             // 
             this.toolStripPan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripPan.Image = global::PipeSimulation.Properties.Resources.NavBarPan;
-            this.toolStripPan.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripPan.ImageTransparentColor = System.Drawing.Color.White;
             this.toolStripPan.Name = "toolStripPan";
             this.toolStripPan.Size = new System.Drawing.Size(23, 22);
             this.toolStripPan.Text = "平移";
@@ -183,7 +183,7 @@ namespace PipeSimulation
             // 
             this.toolStripZoom.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripZoom.Image = global::PipeSimulation.Properties.Resources.NavBarZoom;
-            this.toolStripZoom.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripZoom.ImageTransparentColor = System.Drawing.Color.White;
             this.toolStripZoom.Name = "toolStripZoom";
             this.toolStripZoom.Size = new System.Drawing.Size(23, 22);
             this.toolStripZoom.Text = "缩放";
@@ -194,7 +194,7 @@ namespace PipeSimulation
             // 
             this.toolStripZoomAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripZoomAll.Image = global::PipeSimulation.Properties.Resources.NavBarZoomAll;
-            this.toolStripZoomAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripZoomAll.ImageTransparentColor = System.Drawing.Color.White;
             this.toolStripZoomAll.Name = "toolStripZoomAll";
             this.toolStripZoomAll.Size = new System.Drawing.Size(23, 22);
             this.toolStripZoomAll.Text = "缩放全部";
@@ -210,7 +210,7 @@ namespace PipeSimulation
             // 
             this.toolStripTopView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripTopView.Image = global::PipeSimulation.Properties.Resources.TopView;
-            this.toolStripTopView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripTopView.ImageTransparentColor = System.Drawing.Color.White;
             this.toolStripTopView.Name = "toolStripTopView";
             this.toolStripTopView.Size = new System.Drawing.Size(23, 22);
             this.toolStripTopView.Text = "俯视";
@@ -221,7 +221,7 @@ namespace PipeSimulation
             // 
             this.toolStripBottomView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripBottomView.Image = global::PipeSimulation.Properties.Resources.BottomView;
-            this.toolStripBottomView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBottomView.ImageTransparentColor = System.Drawing.Color.White;
             this.toolStripBottomView.Name = "toolStripBottomView";
             this.toolStripBottomView.Size = new System.Drawing.Size(23, 22);
             this.toolStripBottomView.Text = "仰视";
@@ -232,7 +232,7 @@ namespace PipeSimulation
             // 
             this.toolStripFrontView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripFrontView.Image = global::PipeSimulation.Properties.Resources.FrontView;
-            this.toolStripFrontView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripFrontView.ImageTransparentColor = System.Drawing.Color.White;
             this.toolStripFrontView.Name = "toolStripFrontView";
             this.toolStripFrontView.Size = new System.Drawing.Size(23, 22);
             this.toolStripFrontView.Text = "正视";
@@ -243,7 +243,7 @@ namespace PipeSimulation
             // 
             this.toolStripBackView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripBackView.Image = global::PipeSimulation.Properties.Resources.BackView;
-            this.toolStripBackView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBackView.ImageTransparentColor = System.Drawing.Color.White;
             this.toolStripBackView.Name = "toolStripBackView";
             this.toolStripBackView.Size = new System.Drawing.Size(23, 22);
             this.toolStripBackView.Text = "后视";
@@ -254,7 +254,7 @@ namespace PipeSimulation
             // 
             this.toolStripLeftView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripLeftView.Image = global::PipeSimulation.Properties.Resources.LeftView;
-            this.toolStripLeftView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripLeftView.ImageTransparentColor = System.Drawing.Color.White;
             this.toolStripLeftView.Name = "toolStripLeftView";
             this.toolStripLeftView.Size = new System.Drawing.Size(23, 22);
             this.toolStripLeftView.Text = "左视";
@@ -265,7 +265,7 @@ namespace PipeSimulation
             // 
             this.toolStripRightView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripRightView.Image = global::PipeSimulation.Properties.Resources.RightView;
-            this.toolStripRightView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripRightView.ImageTransparentColor = System.Drawing.Color.White;
             this.toolStripRightView.Name = "toolStripRightView";
             this.toolStripRightView.Size = new System.Drawing.Size(23, 22);
             this.toolStripRightView.Text = "右视";
