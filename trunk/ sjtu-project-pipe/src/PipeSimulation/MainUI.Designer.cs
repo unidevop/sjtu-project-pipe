@@ -559,6 +559,7 @@ namespace PipeSimulation
             this.toolStripComboBoxPipes.Size = new System.Drawing.Size(121, 48);
             this.toolStripComboBoxPipes.DropDownStyle = ComboBoxStyle.DropDownList;
             this.toolStripComboBoxPipes.SelectedIndexChanged += new EventHandler(toolStripComboBoxPipes_SelectedIndexChanged);
+            this.toolStripComboBoxPipes.FlatStyle = FlatStyle.Standard;
             // 
             // toolStripSeparator3
             // 
@@ -569,7 +570,7 @@ namespace PipeSimulation
             // 
             this.toolStripButtonStartAnimation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonStartAnimation.Image = global::PipeSimulation.Properties.Resources.StartAnimation;
-            this.toolStripButtonStartAnimation.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonStartAnimation.ImageTransparentColor = System.Drawing.Color.White;
             this.toolStripButtonStartAnimation.Name = "toolStripButtonStartAnimation";
             this.toolStripButtonStartAnimation.Size = new System.Drawing.Size(23, 45);
             this.toolStripButtonStartAnimation.Text = "播放";
@@ -579,7 +580,7 @@ namespace PipeSimulation
             // 
             this.toolStripButtonStopAnimation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonStopAnimation.Image = global::PipeSimulation.Properties.Resources.StopAnimation;
-            this.toolStripButtonStopAnimation.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonStopAnimation.ImageTransparentColor = System.Drawing.Color.White;
             this.toolStripButtonStopAnimation.Name = "toolStripButtonStopAnimation";
             this.toolStripButtonStopAnimation.Size = new System.Drawing.Size(23, 45);
             this.toolStripButtonStopAnimation.Text = "停止";
@@ -589,7 +590,7 @@ namespace PipeSimulation
             // 
             this.toolStripButtonBegining.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonBegining.Image = global::PipeSimulation.Properties.Resources.BeginingAnimation;
-            this.toolStripButtonBegining.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonBegining.ImageTransparentColor = System.Drawing.Color.White;
             this.toolStripButtonBegining.Name = "toolStripButtonBegining";
             this.toolStripButtonBegining.Size = new System.Drawing.Size(23, 45);
             this.toolStripButtonBegining.Text = "最前";
@@ -599,7 +600,7 @@ namespace PipeSimulation
             // 
             this.toolStripButtonEnd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonEnd.Image = global::PipeSimulation.Properties.Resources.EndAnimation;
-            this.toolStripButtonEnd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonEnd.ImageTransparentColor = System.Drawing.Color.White;
             this.toolStripButtonEnd.Name = "toolStripButtonEnd";
             this.toolStripButtonEnd.Size = new System.Drawing.Size(60, 80);
             this.toolStripButtonEnd.Text = "最后";
@@ -623,6 +624,7 @@ namespace PipeSimulation
             this.trackBarAnimation.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarAnimation.Value = 3;
             this.trackBarAnimation.Scroll += new System.EventHandler(this.trackBarAnimation_Scroll);
+            this.trackBarAnimation.BackColor = Color.White;
             // 
             // toolStripLabelAnimationTime
             // 
