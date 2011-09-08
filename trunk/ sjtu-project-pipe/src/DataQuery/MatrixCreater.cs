@@ -55,18 +55,43 @@ namespace PipeSimulation.DataQuery
             double C = xVector.Z * sinIncline;
             double A2B2 = A*A + B*B;
 
-            double cosTheta = (-A * C + B * Math.Sqrt(A2B2 - C * C)) / A2B2;
+            Vector3D zVector;
 
-            // Z component of Vector Z
-            double VZZ = -cosIncline * ((xVector.X * A/B + xVector.Y) * cosTheta + xVector.X * C/B);
+            if (A2B2 != 0.0)
+            {
+                double sinTheta = 0.0;
+                double cosTheta = 0.0;
 
-            if (VZZ <= 0.0)
-            // another solution
-                cosTheta = (-A * C - B * Math.Sqrt(A2B2 - C * C)) / A2B2;
+                if (B != 0.0)
+                {
+                    sinTheta = (-A * C + B * Math.Sqrt(A2B2 - C * C)) / A2B2;
 
-            double sinTheta = -(A*cosTheta + C) / B;
+                    // Z component of Vector Z should be less than zero (VZZ < 0)
+                    //double VZZ = -cosIncline * ((xVector.X * A / B + xVector.Y) * sinTheta + xVector.X * C / B);
+                    double VZZ = -(A2B2*sinTheta + A*C)/B;
 
-            return new Vector3D(cosIncline * cosTheta, cosIncline * sinTheta, sinIncline);
+                    if (VZZ >= 0.0)
+                        // another solution
+                        sinTheta = (-A * C - B * Math.Sqrt(A2B2 - C * C)) / A2B2;
+
+                    cosTheta = -(A * sinTheta + C) / B;
+                }
+                else
+                {
+                    sinTheta = -C / A;
+
+                    double absCosTheta = Math.Sqrt(1 - sinTheta * sinTheta);
+
+                    //  VZZ = A * cosTheta (VZZ < 0)
+                    cosTheta = (A > 0) ? -absCosTheta : absCosTheta;
+                }
+
+                zVector = new Vector3D(cosIncline * sinTheta, cosIncline * cosTheta, sinIncline);
+            }
+            else
+                zVector = new Vector3D(0.0, 0.0, 1.0);  //  Or (0.0, 0.0, -1.0)
+
+            return zVector;
         }
     }
 }
