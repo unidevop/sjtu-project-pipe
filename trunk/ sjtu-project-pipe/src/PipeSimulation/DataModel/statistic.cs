@@ -4,6 +4,7 @@ using PipeSimulation.PipeApp;
 using PipeSimulation.Properties;
 using PipeSimulation.DataQuery;
 using PipeSimulation.DataDriven;
+using System.Collections.Generic;
 
 namespace PipeSimulation.DataModel
 {
@@ -12,9 +13,7 @@ namespace PipeSimulation.DataModel
     /// </summary>
     public class CStatisticData
     {
-        private string m_DeltaX;
-        private string m_DeltaY;
-        private string m_DeltaZ;
+        private IList<CPipeConnectionPointPair> m_connPointPairList = null;
 
         public CStatisticData()
         {
@@ -68,26 +67,41 @@ namespace PipeSimulation.DataModel
             const string strBetaFormat = "Beta is {0}, Maximum value is {1}";
             strString = string.Concat(strString, string.Format(strBetaFormat, pipeInfo.LongitudinalInclineAngle, pipeInfo.MaxAbsBeta), strChangeLine);
 
-            // Delta x, need to calculate
-            if (!string.IsNullOrEmpty(m_DeltaX))
+            // Connection Point
+            int iPairIndex = 1;
+            foreach (CPipeConnectionPointPair pair in m_connPointPairList)
             {
+                if (pair == null) continue;
+
+                string strDeltaX;
+                strDeltaX = Math.Abs(pair.EndConnectionPoint[0] - pair.StartConnectionPoint[0]).ToString();
+
+                string strDeltaY;
+                strDeltaY = Math.Abs(pair.EndConnectionPoint[1] - pair.StartConnectionPoint[1]).ToString();
+
+                string strDeltaZ;
+                strDeltaZ= Math.Abs(pair.EndConnectionPoint[2] - pair.StartConnectionPoint[2]).ToString();
+
+                // Overall
+                const string strOverallFormat = "///////The N0.{0} connection point pair:///////";
+                strString = string.Concat(strString, string.Format(strOverallFormat, iPairIndex), strChangeLine);
+
+
+                // Delta x, need to calculate
                 const string strDeltaXFormat = "The Delta X is {0}.";
-                strString = string.Concat(strString, string.Format(strDeltaXFormat, m_DeltaX), strChangeLine);
+                strString = string.Concat(strString, string.Format(strDeltaXFormat, strDeltaX), strChangeLine);
+
+                // Delta y, need to calculate
+                const string strDeltaYFormat = "The Delta Y is {0}.";
+                strString = string.Concat(strString, string.Format(strDeltaYFormat, strDeltaY), strChangeLine);
+
+                // Delta z, need to calculate
+                const string strDeltaZFormat = "The Delta Z is {0}.";
+                strString = string.Concat(strString, string.Format(strDeltaZFormat, strDeltaZ), strChangeLine);
+
+                iPairIndex++;
             }
 
-            // Delta y, need to calculate
-            if (!string.IsNullOrEmpty(m_DeltaY))
-            {
-                const string strDeltaXFormat = "The Delta Y is {0}.";
-                strString = string.Concat(strString, string.Format(strDeltaXFormat, m_DeltaY), strChangeLine);
-            }
-
-            // Delta z, need to calculate
-            if (!string.IsNullOrEmpty(m_DeltaZ))
-            {
-                const string strDeltaXFormat = "The Delta Z is {0}.";
-                strString = string.Concat(strString, string.Format(strDeltaXFormat, m_DeltaZ), strChangeLine);
-            }
 
             // Sink height, need to calculate
             const string strSinkHeight = "The sink height is {0}.";
@@ -102,22 +116,12 @@ namespace PipeSimulation.DataModel
             set { m_strWorkingItemMessage = value; }
         }
 
-        public string DeltaX
+        public IList<CPipeConnectionPointPair> ConnectionPointPairList
         {
-            set { m_DeltaX = value; }
+            set
+            {
+                m_connPointPairList = value;
+            }
         }
-
-        public string DeltaY
-        {
-            set { m_DeltaY = value; }
-        }
-
-        public string DeltaZ
-        {
-            set { m_DeltaZ = value; }
-        }
-        //public string 
-
-        //private string m_
    }
 }
