@@ -105,6 +105,76 @@ namespace PipeSimulation
             eDone               // The pipe is already been done
         }
 
+        public class CPoint
+        {
+            private double[] m_startConnectionPoint = new double[3]; // This value is used to determine the connection point to the previous pipe model
+        }
+
+        public class CPipeConnectionPointPair
+        {
+            private double[] m_startConnectionPoint = new double[3]; // This value is used to determine the connection point to the previous pipe model
+            private double[] m_endConnectionPoint = new double[3];  // This value is used to determine the connection point to the next pipe model
+
+            public CPipeConnectionPointPair()
+            {
+            }
+
+            public virtual void ReadFromXMLNode(XmlNode connectionPairNode)
+            {
+                // Read the start connection point
+                XmlNode startConnectionPointNode = connectionPairNode.SelectSingleNode(ModelXMLDefinition.pipeStartConnPoint);
+                ReadConnectionPoint(startConnectionPointNode, m_startConnectionPoint);
+
+                // Read the end connection point
+                XmlNode endConnectionPointNode = connectionPairNode.SelectSingleNode(ModelXMLDefinition.pipeEndConnPoint);
+                ReadConnectionPoint(endConnectionPointNode, m_endConnectionPoint);
+            }
+
+            public double[] StartConnectionPoint 
+            { 
+                get 
+                {
+                    return m_startConnectionPoint; 
+                }
+                set
+                {
+                    m_startConnectionPoint = value;
+                }
+            }
+            public double[] EndConnectionPoint
+            { 
+                get 
+                { 
+                    return m_endConnectionPoint; 
+                }
+                set
+                {
+                    m_endConnectionPoint = value;
+                }
+            }
+
+            private void ReadConnectionPoint(XmlNode node, double[] coords)
+            {
+                if (null == node || null == coords) return;
+
+                foreach (XmlAttribute attri in node.Attributes)
+                {
+                    if (string.Compare(attri.Name, ModelXMLDefinition.pipeCoordX, true) == 0)
+                    {
+                        coords[0] = double.Parse(attri.InnerText);
+                    }
+                    else if (string.Compare(attri.Name, ModelXMLDefinition.pipeCoordY, true) == 0)
+                    {
+                        coords[1] = double.Parse(attri.InnerText);
+                    }
+                    else if (string.Compare(attri.Name, ModelXMLDefinition.pipeCoordZ, true) == 0)
+                    {
+                        coords[2] = double.Parse(attri.InnerText);
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Define a class to represent the pipe
         /// Which is a model and also work with some others models together
@@ -118,8 +188,7 @@ namespace PipeSimulation
             private PipeStatus m_ePipeStatus;
             private vtk.vtkTransform m_transFormFinal = null;
             private PipeInfo m_finalPipeInfo = null;
-            private double[] m_startConnectionPoint = new double[3]; // This value is used to determine the connection point to the previous pipe model
-            private double[] m_endConnectionPoint = new double[3];  // This value is used to determine the connection point to the next pipe model
+            private IList<CPipeConnectionPointPair> m_connectionPointPairList = new List<CPipeConnectionPointPair>();
 
             public CPipeModel() : base(null)
             {
@@ -166,13 +235,14 @@ namespace PipeSimulation
                        normalNode.ReadFromXMLNode(pylonNode);
                    }
 
-                    // Read the start connection point
-                   XmlNode startConnectionPointNode = pipeNode.SelectSingleNode(ModelXMLDefinition.pipeStartConnPoint);
-                   ReadConnectionPoint(startConnectionPointNode, m_startConnectionPoint);
-
-                    // Read the end connection point
-                   XmlNode endConnectionPointNode = pipeNode.SelectSingleNode(ModelXMLDefinition.pipeEndConnPoint);
-                   ReadConnectionPoint(endConnectionPointNode, m_endConnectionPoint);
+                   // Read Connection Pair
+                   XmlNodeList connectionPairNodes = pipeNode.SelectNodes(ModelXMLDefinition.pipeConnectionPointPair);
+                   foreach (XmlNode connectionPairNode in connectionPairNodes)
+                   {
+                       CPipeConnectionPointPair connectionPair = new CPipeConnectionPointPair();
+                       connectionPair.ReadFromXMLNode(connectionPairNode);
+                       m_connectionPointPairList.Add(connectionPair);
+                   }
                 }
                 catch (SystemException)
                 {
@@ -180,33 +250,11 @@ namespace PipeSimulation
                 }
             }
 
-            private void ReadConnectionPoint(XmlNode node, double[] coords)
-            {
-                if (null == node || null == coords) return;
-
-                foreach (XmlAttribute attri in node.Attributes)
-                {
-                    if (string.Compare(attri.Name, ModelXMLDefinition.pipeCoordX, true) == 0)
-                    {
-                        coords[0] = double.Parse(attri.InnerText);
-                    }
-                    else if (string.Compare(attri.Name, ModelXMLDefinition.pipeCoordY, true) == 0)
-                    {
-                        coords[1] = double.Parse(attri.InnerText);
-                    }
-                    else if (string.Compare(attri.Name, ModelXMLDefinition.pipeCoordZ, true) == 0)
-                    {
-                        coords[2] = double.Parse(attri.InnerText);
-                    }
-                }
-            }
-
             // Getter
             public double Length { get { return m_dLength; } internal set { m_dLength = value; } }
             public double Width { get { return m_dWidth; } internal set { m_dWidth = value; } }
             public double Height { get { return m_dHeight; } internal set { m_dHeight = value; } }
-            public double[] StartConnectionPoint { get { return m_startConnectionPoint; } }
-            public double[] EndConnectionPoint { get { return m_endConnectionPoint; } }
+            public IList<CPipeConnectionPointPair> ConnectionPointPairList { get { return m_connectionPointPairList; } }
 
             [System.Runtime.CompilerServices.IndexerName(/*MSG0*/"Pylon")]
             public CPylonModel this[int index]

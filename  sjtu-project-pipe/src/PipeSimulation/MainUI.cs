@@ -1038,25 +1038,18 @@ namespace PipeSimulation
         /// <param name="callData"></param>
         public void OnRenderCallback(vtk.vtkObject caller, uint eventId, object clientData, IntPtr callData)
         {
-            // Update the Text Display
-            CStatisticData statisticData = new CStatisticData();
-
             // Update the connection indicator
-            CPipeConnetionUtility pipeConnectionUtility = new CPipeConnetionUtility();
-            if (pipeConnectionUtility.CalcaulateConnection(IApp.theApp.DataDriven.CurrentData))
+            IList<CPipeConnectionPointPair> connectionPointPairList = null;
+            if (CPipeConnetionUtility.CalcaulateConnection(IApp.theApp.DataDriven.CurrentData, out connectionPointPairList))
             {
                 CPipeConnectionIndicator pipeConnectionIndicator = IApp.theApp.PipeConnectionIndicator;
+                pipeConnectionIndicator.Update(connectionPointPairList);
 
-                pipeConnectionIndicator.StartConnectionPoint = pipeConnectionUtility.StartConnectionPoint;
-                pipeConnectionIndicator.EndConnectionPoint = pipeConnectionUtility.EndConnectionPoint;
-
-                pipeConnectionIndicator.Update();
-
-                // Calculate the distance
-                statisticData.DeltaX = Math.Abs(pipeConnectionUtility.EndConnectionPoint[0] - pipeConnectionUtility.StartConnectionPoint[0]).ToString();
-                statisticData.DeltaY = Math.Abs(pipeConnectionUtility.EndConnectionPoint[1] - pipeConnectionUtility.StartConnectionPoint[1]).ToString();
-                statisticData.DeltaZ = Math.Abs(pipeConnectionUtility.EndConnectionPoint[2] - pipeConnectionUtility.StartConnectionPoint[2]).ToString();
             }
+
+            // Update the Text Display
+            CStatisticData statisticData = new CStatisticData();
+            statisticData.ConnectionPointPairList = connectionPointPairList;
 
             IApp.theApp.StatisticTextDisplayer.DisplayText(statisticData.ToString());
 
