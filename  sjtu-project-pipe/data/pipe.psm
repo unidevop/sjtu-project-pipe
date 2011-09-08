@@ -12,8 +12,14 @@
 			<Pylon>
 				<ModelPath>models\taojia1_2.3ds</ModelPath>
 			</Pylon>
-			<StartConnectionPoint x ="0" y ="0" z ="0"/>
-			<EndConnectionPoint x="10000" y ="0" z ="0"/>
+			<ConnectionPointPair>
+				<StartConnectionPoint x ="-15000" y ="0" z ="0"/>
+				<EndConnectionPoint x="-25000" y ="0" z ="0"/>
+			</ConnectionPointPair>
+			<ConnectionPointPair>
+				<StartConnectionPoint x ="-25000" y ="0" z ="0"/>
+				<EndConnectionPoint x="-35000" y ="0" z ="0"/>
+			</ConnectionPointPair>
 		</Pipe>
 
 		<!-- The sceond pipe-->
@@ -25,8 +31,14 @@
 			<Pylon>
 				<ModelPath>models\taojia2_2.3ds</ModelPath>
 			</Pylon>
-			<StartConnectionPoint x ="10000" y ="0" z ="0"/>
-			<EndConnectionPoint x="20000" y ="0" z ="0"/>
+			<ConnectionPointPair>
+				<StartConnectionPoint x ="-5000" y ="0" z ="0"/>
+				<EndConnectionPoint x="-15000" y ="0" z ="0"/>
+			</ConnectionPointPair>
+			<ConnectionPointPair>
+				<StartConnectionPoint x ="-15000" y ="0" z ="0"/>
+				<EndConnectionPoint x="-25000" y ="0" z ="0"/>
+			</ConnectionPointPair>
 		</Pipe>
 
 		<!-- The third pipe-->
@@ -38,8 +50,14 @@
 			<Pylon>
 				<ModelPath>models\taojia3_2.3ds</ModelPath>
 			</Pylon>
-			<StartConnectionPoint x ="20000" y ="0" z ="0"/>
-			<EndConnectionPoint x="30000" y ="0" z ="0"/>
+			<ConnectionPointPair>
+				<StartConnectionPoint x ="0" y ="0" z ="0"/>
+				<EndConnectionPoint x="-10000" y ="0" z ="0"/>
+			</ConnectionPointPair>
+			<ConnectionPointPair>
+				<StartConnectionPoint x ="-5000" y ="0" z ="0"/>
+				<EndConnectionPoint x="-15000" y ="0" z ="0"/>
+			</ConnectionPointPair>
 		</Pipe>
 
 		<!-- The forth pipe--><!--
