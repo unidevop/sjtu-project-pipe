@@ -54,14 +54,14 @@ namespace PipeSimulation.DataModel
             }
             
             // GPS1
-            strString = string.Concat(strString, "GPS1: (", pipeInfo.StartPoint.ToString(), ")", strChangeLine);
+            strString = string.Concat(strString, "///////////////////////", strChangeLine, "GPS1: (", pipeInfo.StartPoint.ToString(), ")", strChangeLine);
 
             // GPS2
             strString = string.Concat(strString, "GPS2: (", pipeInfo.EndPoint.ToString(), ")", strChangeLine);
 
             // Alpha
             const string strAlphaFormat = "Alpha is {0}, Maximum value is {1}";
-            strString = string.Concat(strString, string.Format(strAlphaFormat, pipeInfo.LatitudinalInclineAngle, pipeInfo.MaxAbsAlpha), strChangeLine);
+            strString = string.Concat(strString, "///////////////////////", strChangeLine, string.Format(strAlphaFormat, pipeInfo.LatitudinalInclineAngle, pipeInfo.MaxAbsAlpha), strChangeLine);
 
             // Beta
             const string strBetaFormat = "Beta is {0}, Maximum value is {1}";
@@ -83,8 +83,8 @@ namespace PipeSimulation.DataModel
                 strDeltaZ= Math.Abs(pair.EndConnectionPoint[2] - pair.StartConnectionPoint[2]).ToString();
 
                 // Overall
-                const string strOverallFormat = "///////The N0.{0} connection point pair:///////";
-                strString = string.Concat(strString, string.Format(strOverallFormat, iPairIndex), strChangeLine);
+                const string strOverallFormat = "The N0.{0} connection point pair:";
+                strString = string.Concat(strString, "///////////////////////", strChangeLine, string.Format(strOverallFormat, iPairIndex), strChangeLine);
 
 
                 // Delta x, need to calculate
@@ -101,11 +101,6 @@ namespace PipeSimulation.DataModel
 
                 iPairIndex++;
             }
-
-
-            // Sink height, need to calculate
-            const string strSinkHeight = "The sink height is {0}.";
-            strString = string.Concat(strString, string.Format(strSinkHeight, pipeInfo.StartPoint.Z.ToString()), strChangeLine);
 
             return strString;
         }
