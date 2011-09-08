@@ -422,7 +422,7 @@ namespace PipeSimulation.DataQuery
             string strSql = String.Format(@"SELECT TOP 1 GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
               GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, IM.Angle1, IM.Angle2, GPS1.MeasureID, IM.MeasureID 
               FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON (GPS1.PipeID=GPS2.PipeID AND
-              GPS1.MeasureTime = GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID AND GPS1.MeasureID>'{0}') 
+              GPS1.MeasureTime = GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID AND GPS1.MeasureID>{0}) 
               INNER JOIN InclineMeasure AS IM ON (GPS1.PipeID=IM.PipeID AND
               GPS1.MeasureTime=IM.MeasureTime AND IM.MeasureID>'{1}')
               ORDER BY GPS1.MeasureID DESC", m_lastGPSMeasureId, m_lastInclineMeasureId);
@@ -595,7 +595,7 @@ namespace PipeSimulation.DataQuery
         public long GetPipeRecordCount(int iPipeId)
         {
             string strInclineSql = String.Format(@"SELECT COUNT(MeasureID) FROM InclineMeasure
-                                                   WHERE PipeID={0}", iPipeId);
+                                                   WHERE PipeID='{0}'", iPipeId);
 
             lock (m_dbConn)
             {
@@ -620,7 +620,7 @@ namespace PipeSimulation.DataQuery
                 FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON 
                 (GPS1.PipeID=GPS2.PipeID AND GPS1.MeasureTime=GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID) 
                 INNER JOIN InclineMeasure AS IM1 ON (GPS1.PipeID=IM1.PipeID AND GPS1.MeasureTime=IM1.MeasureTime AND IM1.MeasureID=
-                (SELECT TOP 1 * FROM (SELECT TOP {0} MeasureID FROM InclineMeasure AS IM2 WHERE IM2.PipeID = '{1}' 
+                (SELECT TOP 1 * FROM (SELECT TOP {0} MeasureID FROM InclineMeasure AS IM2 WHERE IM2.PipeID='{1}' 
                 ORDER BY MeasureID ASC) InclineMeasure ORDER BY MeasureID DESC))",
                 iRecordIndex, iPipeId);
 
@@ -640,8 +640,8 @@ namespace PipeSimulation.DataQuery
                 FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON 
                 (GPS1.PipeID=GPS2.PipeID AND GPS1.MeasureTime=GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID) 
                 INNER JOIN InclineMeasure AS IM1 ON (GPS1.PipeID=IM1.PipeID AND GPS1.MeasureTime=IM1.MeasureTime AND 
-                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{0}')) < {1}) ORDER BY
-                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{2}'))",
+                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{0:yyyy-MM-dd HH:mm:ss.fff}')) < {1}) ORDER BY
+                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{2:yyyy-MM-dd HH:mm:ss.fff}'))",
                 dateTime, m_timeTolerance.TotalMilliseconds, dateTime);
 
             return QueryRecord(strSql);
@@ -688,7 +688,7 @@ namespace PipeSimulation.DataQuery
         public DateTime GetPipeStartTime(int iPipeId)
         {
             string strInclineSql = String.Format(@"SELECT TOP 1 MeasureTime FROM InclineMeasure
-                                                   WHERE PipeID = {0}", iPipeId);
+                                                   WHERE PipeID='{0}'", iPipeId);
 
             lock (m_dbConn)
             {
@@ -709,7 +709,7 @@ namespace PipeSimulation.DataQuery
         public DateTime GetPipeEndTime(int iPipeId)
         {
             string strInclineSql = String.Format(@"SELECT TOP 1 MeasureTime FROM InclineMeasure
-                                                   WHERE PipeID = {0} ORDER BY MeasureTime DESC", iPipeId);
+                                                   WHERE PipeID='{0}' ORDER BY MeasureTime DESC", iPipeId);
 
             lock (m_dbConn)
             {
@@ -730,7 +730,7 @@ namespace PipeSimulation.DataQuery
         public DateTime GetPipeTime(int iPipeId, int iRecordIndex)
         {
             string strInclineSql = String.Format(@"SELECT TOP 1 * FROM (SELECT TOP {0} MeasureTime FROM InclineMeasure
-                                                   WHERE PipeID = {1}) InclineMeasure ORDER BY MeasureTime DESC",
+                                                   WHERE PipeID='{1}') InclineMeasure ORDER BY MeasureTime DESC",
                                                  iRecordIndex, iPipeId);
 
             lock (m_dbConn)
