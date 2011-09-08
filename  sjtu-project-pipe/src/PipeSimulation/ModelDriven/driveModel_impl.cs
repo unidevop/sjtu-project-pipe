@@ -79,7 +79,10 @@ namespace PipeSimulation
                         }
 
                         // Drive the model
-                        pipeModel.DriveModel(pipeModel.FinalTransform);
+                        if (pipeModel.FinalTransform != null)
+                        {
+                            pipeModel.DriveModel(pipeModel.FinalTransform);
+                        }
                     }
                 }
 
@@ -129,7 +132,6 @@ namespace PipeSimulation
             {
                 // if iProgress is between the [0, 30), we should show the first pipe 
                 CPipeModel pipeModel = IApp.theApp.DataModel.PipeModels[iPipeId];
-                vtk.vtkProp actor = pipeModel.ModelNode as vtk.vtkProp;
 
                 pipeModel.Visible = bWorking || bFinished;
                 foreach (ISceneNode node in pipeModel.Children)
@@ -148,16 +150,16 @@ namespace PipeSimulation
                 transform.Translate(0, 0, dDeltaDistance);
                 transform.Update();
 
-                DrivdeModel(actor, transform);
+                DrivdeModel(pipeModel.ModelNode, transform);
                 foreach (ISceneNode node in pipeModel.Children)
                 {
                     DrivdeModel(node.ModelNode, transform);
                 }
             }
 
-            private void DrivdeModel(vtk.vtkProp node, vtk.vtkTransform transform)
+            private void DrivdeModel(CModelNode node, vtk.vtkTransform transform)
             {
-                node.PokeMatrix(transform.GetMatrix());
+                node.PokeMatrix(transform);
             }
         }
     }

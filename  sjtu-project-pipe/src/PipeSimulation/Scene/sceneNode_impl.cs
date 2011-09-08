@@ -38,7 +38,7 @@ namespace PipeSimulation
         {
             private ISceneNode m_parentNode;
             private IList<ISceneNode> m_childrenList = new List<ISceneNode>();
-            private vtk.vtkProp m_modelNode = null;
+            private CModelNode m_modelNode = null;
 
             public CSceneNode(ISceneNode parentNode)
             {
@@ -59,7 +59,7 @@ namespace PipeSimulation
                 {
                     if (null != ModelNode)
                     {
-                        return (ModelNode.GetVisibility() != 0);
+                        return (ModelNode.Visibility);
                     }
 
                     return false;
@@ -68,12 +68,12 @@ namespace PipeSimulation
                 {
                     if (null != ModelNode)
                     {
-                        ModelNode.SetVisibility(value ? 1 : 0);
+                        ModelNode.Visibility = value;
                     }
                 }
             }
 
-            public vtk.vtkProp ModelNode
+             public CModelNode ModelNode
             {
                 get { return m_modelNode; }
                 protected set

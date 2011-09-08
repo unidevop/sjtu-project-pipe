@@ -47,13 +47,23 @@ namespace PipeSimulation
                         try
                         {
                             // Handle the exception that none actor is create
+                            if (ModelNode == null)
+                                ModelNode = new CModelNode();
+
                             vtk.vtkActorCollection actorCollection = obj3dsImporter.ActorCollection();
-                            ModelNode = actorCollection.GetLastProp();
+                            actorCollection.InitTraversal();
+                            for (int iIndex = 0; iIndex < actorCollection.GetNumberOfItems(); ++iIndex)
+                            {
+                                vtk.vtkActor actor = actorCollection.GetNextActor();
+                                if (actor == null) continue;
+
+                                ModelNode.AddItem(actor);
+                            }
 
                             // Default should be visibility off for none static models
                             if (!(this is CStaticModel))
                             {
-                                ModelNode.VisibilityOff();
+                                ModelNode.Visibility = false;
                             }
                         }
                         catch
@@ -108,6 +118,8 @@ namespace PipeSimulation
             private PipeStatus m_ePipeStatus;
             private vtk.vtkTransform m_transFormFinal = null;
             private PipeInfo m_finalPipeInfo = null;
+            private double[] m_startConnectionPoint = new double[3]; // This value is used to determine the connection point to the previous pipe model
+            private double[] m_endConnectionPoint = new double[3];  // This value is used to determine the connection point to the next pipe model
 
             public CPipeModel() : base(null)
             {
@@ -153,18 +165,48 @@ namespace PipeSimulation
                        CPylonModel normalNode = new CPylonModel(this);
                        normalNode.ReadFromXMLNode(pylonNode);
                    }
+
+                    // Read the start connection point
+                   XmlNode startConnectionPointNode = pipeNode.SelectSingleNode(ModelXMLDefinition.pipeStartConnPoint);
+                   ReadConnectionPoint(startConnectionPointNode, m_startConnectionPoint);
+
+                    // Read the end connection point
+                   XmlNode endConnectionPointNode = pipeNode.SelectSingleNode(ModelXMLDefinition.pipeEndConnPoint);
+                   ReadConnectionPoint(endConnectionPointNode, m_endConnectionPoint);
                 }
                 catch (SystemException)
                 {
                     throw;
                 }
+            }
 
+            private void ReadConnectionPoint(XmlNode node, double[] coords)
+            {
+                if (null == node || null == coords) return;
+
+                foreach (XmlAttribute attri in node.Attributes)
+                {
+                    if (string.Compare(attri.Name, ModelXMLDefinition.pipeCoordX, true) == 0)
+                    {
+                        coords[0] = double.Parse(attri.InnerText);
+                    }
+                    else if (string.Compare(attri.Name, ModelXMLDefinition.pipeCoordY, true) == 0)
+                    {
+                        coords[1] = double.Parse(attri.InnerText);
+                    }
+                    else if (string.Compare(attri.Name, ModelXMLDefinition.pipeCoordZ, true) == 0)
+                    {
+                        coords[2] = double.Parse(attri.InnerText);
+                    }
+                }
             }
 
             // Getter
             public double Length { get { return m_dLength; } internal set { m_dLength = value; } }
             public double Width { get { return m_dWidth; } internal set { m_dWidth = value; } }
             public double Height { get { return m_dHeight; } internal set { m_dHeight = value; } }
+            public double[] StartConnectionPoint { get { return m_startConnectionPoint; } }
+            public double[] EndConnectionPoint { get { return m_endConnectionPoint; } }
 
             [System.Runtime.CompilerServices.IndexerName(/*MSG0*/"Pylon")]
             public CPylonModel this[int index]
@@ -223,12 +265,12 @@ namespace PipeSimulation
                 if (Status == PipeStatus.eNotStartedYet) return;
 
                 // Only drive the model when the pipe is working progress
-                vtk.vtkProp actor = ModelNode as vtk.vtkProp;
-                _DrivdeModel(actor, transform);
-                foreach (ISceneNode node in Children)
-                {
-                    _DrivdeModel(node.ModelNode, transform);
-                }
+                //vtk.vtkProp actor = ModelNode as vtk.vtkProp;
+                //_DrivdeModel(actor, transform);
+                //foreach (ISceneNode node in Children)
+                //{
+                //    _DrivdeModel(node.ModelNode, transform);
+                //}
             }
 
             private void _DrivdeModel(vtk.vtkProp node, vtk.vtkTransform transform)

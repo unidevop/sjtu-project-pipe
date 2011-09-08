@@ -54,6 +54,11 @@ namespace PipeSimulation
             public static string pipeLength { get { return /*MSG0*/"Length"; } }
             public static string pipeWidth { get { return /*MSG0*/"Width"; } }
             public static string pipeHeight { get { return /*MSG0*/"Height"; } }
+            public static string pipeStartConnPoint { get { return /*MSG0*/"StartConnectionPoint"; } }
+            public static string pipeEndConnPoint { get { return /*MSG0*/"EndConnectionPoint"; } }
+            public static string pipeCoordX { get { return /*MSG0*/"x"; } }
+            public static string pipeCoordY { get { return /*MSG0*/"y"; } }
+            public static string pipeCoordZ { get { return /*MSG0*/"z"; } }
 
             // Pylon Parameters
             public static string pylonHeight { get { return /*MSG0*/"Height"; } }
