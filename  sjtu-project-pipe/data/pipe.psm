@@ -7,41 +7,51 @@
     <Pipe width ="45" height ="20" length ="80" >
       <ModelPath>models\Pipe1.3ds</ModelPath>
       <Pylon>
-        <ModelPath>models\taojiao1_1.3ds</ModelPath>
+        <ModelPath>models\taojia1_1.3ds</ModelPath>
       </Pylon>
       <Pylon>
-        <ModelPath>models\taojiao1_2.3ds</ModelPath>
+        <ModelPath>models\taojia1_2.3ds</ModelPath>
       </Pylon>
     </Pipe>
     
     <!-- The second pipe-->
     <Pipe width ="36" height ="15" length ="90" d1 ="80" d2 ="" t1 ="" t2 ="">
-      <ModelPath>models\pipe2.3ds</ModelPath>
+      <ModelPath>models\Pipe2.3ds</ModelPath>
       <Pylon>
-        <ModelPath>models\taojiao2_1.3ds</ModelPath>
+        <ModelPath>models\taojia2_1.3ds</ModelPath>
       </Pylon>
       <Pylon>
-        <ModelPath>models\taojiao2_2.3ds</ModelPath>
+        <ModelPath>models\taojia2_2.3ds</ModelPath>
       </Pylon>
     </Pipe>
 
     <!-- The third pipe-->
     <Pipe width ="36" height ="15" length ="90" d1 ="80" d2 ="" t1 ="" t2 ="">
-      <ModelPath>models\pipe3.3ds</ModelPath>
+      <ModelPath>models\Pipe3.3ds</ModelPath>
       <Pylon>
-        <ModelPath>models\taojiao3_1.3ds</ModelPath>
+        <ModelPath>models\taojia3_1.3ds</ModelPath>
       </Pylon>
       <Pylon>
-        <ModelPath>models\taojiao3_2.3ds</ModelPath>
+        <ModelPath>models\taojia3_2.3ds</ModelPath>
       </Pylon>
     </Pipe>
-
-    <!-- The forth pipe-->
-    <Pipe width ="36" height ="15" length ="90" d1 ="80" d2 ="" t1 ="" t2 ="">
-       <ModelPath>models\pipe4.3ds</ModelPath>
-   </Pipe>
   </Pipes>
   <Model>
     <ModelPath>models\anbian.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\jicao.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\anmai0.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\anmai2.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\anbianjizuo.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\ganwu.3ds</ModelPath>
   </Model>
 </System>
