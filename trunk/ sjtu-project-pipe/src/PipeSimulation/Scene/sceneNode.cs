@@ -28,10 +28,10 @@ namespace PipeSimulation
             bool Visible { get; set; }
 
             /// <summary>
-            /// Return a vtkProp to represent this node in the scene
+            /// Return a CModelNode to represent this node in the scene
             /// Can be NULL
             /// </summary>
-            vtk.vtkProp ModelNode { get; }
+            CModelNode ModelNode { get; }
 
             /// <summary>
             /// Children methods.
@@ -66,6 +66,49 @@ namespace PipeSimulation
             bool IsLoaded { get; }
         }
 
-        
+        // Make a wrapper to vtk.vtkProCollection
+        public class CModelNode : vtk.vtkPropCollection
+        {
+            public CModelNode()
+            {
+            }
+
+            public bool Visibility
+            {
+                get
+                {
+                    vtk.vtkProp lastProp = GetLastProp();
+                    if (lastProp == null) return false;
+
+                    return (lastProp.GetVisibility() != 0);
+                }
+
+                set
+                {
+                    int iVisibility = value ? 1 : 0;
+
+                    InitTraversal();
+                    for (int iIndex = 0; iIndex < GetNumberOfItems(); ++iIndex)
+                    {
+                        vtk.vtkProp prop = GetNextProp();
+                        if (prop == null) continue;
+
+                        prop.SetVisibility(iVisibility);
+                    }
+                }
+            }
+
+            public void PokeMatrix(vtk.vtkTransform transform)
+            {
+                InitTraversal();
+                for (int iIndex = 0; iIndex < GetNumberOfItems(); ++iIndex)
+                {
+                    vtk.vtkProp prop = GetNextProp();
+                    if (prop == null) continue;
+
+                    prop.PokeMatrix(transform.GetMatrix());
+                }
+            }
+        }
     }
 }

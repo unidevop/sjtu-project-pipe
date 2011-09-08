@@ -1039,8 +1039,26 @@ namespace PipeSimulation
         public void OnRenderCallback(vtk.vtkObject caller, uint eventId, object clientData, IntPtr callData)
         {
             // Update the Text Display
-            CStatisticData data = new CStatisticData();
-            IApp.theApp.StatisticTextDisplayer.DisplayText(data.ToString());
+            CStatisticData statisticData = new CStatisticData();
+
+            // Update the connection indicator
+            CPipeConnetionUtility pipeConnectionUtility = new CPipeConnetionUtility();
+            if (pipeConnectionUtility.CalcaulateConnection(IApp.theApp.DataDriven.CurrentData))
+            {
+                CPipeConnectionIndicator pipeConnectionIndicator = IApp.theApp.PipeConnectionIndicator;
+
+                pipeConnectionIndicator.StartConnectionPoint = pipeConnectionUtility.StartConnectionPoint;
+                pipeConnectionIndicator.EndConnectionPoint = pipeConnectionUtility.EndConnectionPoint;
+
+                pipeConnectionIndicator.Update();
+
+                // Calculate the distance
+                statisticData.DeltaX = Math.Abs(pipeConnectionUtility.EndConnectionPoint[0] - pipeConnectionUtility.StartConnectionPoint[0]).ToString();
+                statisticData.DeltaY = Math.Abs(pipeConnectionUtility.EndConnectionPoint[1] - pipeConnectionUtility.StartConnectionPoint[1]).ToString();
+                statisticData.DeltaZ = Math.Abs(pipeConnectionUtility.EndConnectionPoint[2] - pipeConnectionUtility.StartConnectionPoint[2]).ToString();
+            }
+
+            IApp.theApp.StatisticTextDisplayer.DisplayText(statisticData.ToString());
 
             CAngleWarningData angleWarningData = new CAngleWarningData();
             IApp.theApp.WarningTextDisplayer.DisplayText(angleWarningData.ToString());
@@ -1120,15 +1138,7 @@ namespace PipeSimulation
             {
                 if (staticModel.ModelNode != null)
                 {
-                    if (bChecked)
-                    {
-                        staticModel.ModelNode.VisibilityOn();
-                    }
-                    else
-                    {
-                        staticModel.ModelNode.VisibilityOff();
-                    }
-                    
+                    staticModel.ModelNode.Visibility = bChecked;
                 }
             }
 
@@ -1193,7 +1203,7 @@ namespace PipeSimulation
             {
                 foreach (CStaticModel staticModel in IApp.theApp.DataModel.StaticsModels)
                 {
-                    if (staticModel.ModelNode.GetVisibility() == 0)
+                    if (staticModel.ModelNode.Visibility)
                     {
                         bNonePipeObjectsVisbile = false;
                         break;

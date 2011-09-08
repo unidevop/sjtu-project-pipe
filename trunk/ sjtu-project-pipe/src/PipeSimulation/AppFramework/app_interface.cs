@@ -9,6 +9,7 @@ using PipeSimulation.ObserverMode;
 using PipeSimulation.DataQuery;
 using PipeSimulation.DataDriven;
 using PipeSimulation.Utility;
+using PipeSimulation.SceneGraph;
 using vtk;
 
 namespace PipeSimulation
@@ -30,6 +31,7 @@ namespace PipeSimulation
             abstract public ITextDisplayer StatisticTextDisplayer { get; }
             abstract public ITextDisplayer WarningTextDisplayer { get; }
             abstract public IVideoWriter VideoWriter { get; }
+            abstract public CPipeConnectionIndicator PipeConnectionIndicator { get; }
             public static IApp theApp
             {
                 get;

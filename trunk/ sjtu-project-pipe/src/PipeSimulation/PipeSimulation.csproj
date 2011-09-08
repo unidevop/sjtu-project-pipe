@@ -115,6 +115,7 @@
     <Compile Include="DataModel\models.cs" />
     <Compile Include="ModelDriven\driveModel.cs" />
     <Compile Include="ModelDriven\driveModel_impl.cs" />
+    <Compile Include="Scene\PipeConnectionIndicator.cs" />
     <Compile Include="Scene\sceneNode_impl.cs" />
     <Compile Include="AppFramework\app_interface.cs" />
     <Compile Include="Commands\command_interface.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="Utilites\imageOuputUtil.cs" />
     <Compile Include="Utilites\Matrix3dExtension.cs" />
     <Compile Include="Utilites\modelReader.cs" />
+    <Compile Include="Utilites\PipeConnectionUtility.cs" />
     <Compile Include="Utilites\videoWriter.cs" />
   </ItemGroup>
   <ItemGroup>

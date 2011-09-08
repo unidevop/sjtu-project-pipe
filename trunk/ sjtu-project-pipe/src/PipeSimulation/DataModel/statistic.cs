@@ -12,6 +12,10 @@ namespace PipeSimulation.DataModel
     /// </summary>
     public class CStatisticData
     {
+        private string m_DeltaX;
+        private string m_DeltaY;
+        private string m_DeltaZ;
+
         public CStatisticData()
         {
         }
@@ -36,7 +40,6 @@ namespace PipeSimulation.DataModel
             // Get Pipe info
             PipeInfo pipeInfo = IApp.theApp.DataDriven.CurrentData;
             if (pipeInfo == null) return strString;
-
 
 
             // No.N tube
@@ -66,10 +69,25 @@ namespace PipeSimulation.DataModel
             strString = string.Concat(strString, string.Format(strBetaFormat, pipeInfo.LongitudinalInclineAngle, pipeInfo.MaxAbsBeta), strChangeLine);
 
             // Delta x, need to calculate
-            strString = string.Concat(strString, "The Delta Y is 100.", strChangeLine);
+            if (!string.IsNullOrEmpty(m_DeltaX))
+            {
+                const string strDeltaXFormat = "The Delta X is {0}.";
+                strString = string.Concat(strString, string.Format(strDeltaXFormat, m_DeltaX), strChangeLine);
+            }
 
             // Delta y, need to calculate
-            strString = string.Concat(strString, "The Delta Y is 100.", strChangeLine);
+            if (!string.IsNullOrEmpty(m_DeltaY))
+            {
+                const string strDeltaXFormat = "The Delta Y is {0}.";
+                strString = string.Concat(strString, string.Format(strDeltaXFormat, m_DeltaY), strChangeLine);
+            }
+
+            // Delta z, need to calculate
+            if (!string.IsNullOrEmpty(m_DeltaZ))
+            {
+                const string strDeltaXFormat = "The Delta Z is {0}.";
+                strString = string.Concat(strString, string.Format(strDeltaXFormat, m_DeltaZ), strChangeLine);
+            }
 
             // Sink height, need to calculate
             const string strSinkHeight = "The sink height is {0}.";
@@ -84,6 +102,20 @@ namespace PipeSimulation.DataModel
             set { m_strWorkingItemMessage = value; }
         }
 
+        public string DeltaX
+        {
+            set { m_DeltaX = value; }
+        }
+
+        public string DeltaY
+        {
+            set { m_DeltaY = value; }
+        }
+
+        public string DeltaZ
+        {
+            set { m_DeltaZ = value; }
+        }
         //public string 
 
         //private string m_

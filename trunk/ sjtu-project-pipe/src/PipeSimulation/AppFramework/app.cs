@@ -7,6 +7,7 @@ using PipeSimulation.ObserverMode;
 using PipeSimulation.DataQuery;
 using PipeSimulation.DataDriven;
 using PipeSimulation.Utility;
+using PipeSimulation.SceneGraph;
 using vtk;
 
 namespace PipeSimulation.PipeApp
@@ -25,6 +26,7 @@ namespace PipeSimulation.PipeApp
         private IVideoWriter m_videoWriter = new CAVIWriter();
         private IRealtimeDataQuery  m_realTimeQuery = null;
         private IHistoryDataQuery m_historyQuery = null;
+        private CPipeConnectionIndicator m_PipeConnectionIndicator = null;
 
         public AppImpl(MainUI mainUI)
         {
@@ -123,6 +125,18 @@ namespace PipeSimulation.PipeApp
         public override IVideoWriter VideoWriter 
         {
             get { return m_videoWriter; }
+        }
+
+        public override CPipeConnectionIndicator PipeConnectionIndicator 
+        {
+            get 
+            {
+                if (null == m_PipeConnectionIndicator)
+                {
+                    m_PipeConnectionIndicator = new CPipeConnectionIndicator(RenderWindow.GetRenderers().GetFirstRenderer());
+                }
+                return m_PipeConnectionIndicator; 
+            }
         }
 
         public override void SetStatusBarText(string statusBarText)
