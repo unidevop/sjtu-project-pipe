@@ -37,11 +37,14 @@ namespace PipeSimulation
             splashthread.Start();
             splashthread.CurrentUICulture = new System.Globalization.CultureInfo(/*MSG0*/"zh-chs");
 
-            // Make sure we ouptput all the vtk errors to a temp file.
+            // Make sure we ouptput all the vtk errors to a temp file in relese mode
+            // Else use the win32 output window
+#if !DEBUG
             vtk.vtkFileOutputWindow t = new vtk.vtkFileOutputWindow();
             t.SetFileName(System.IO.Path.GetTempPath() + /*MSG0*/"PipeSimulation.error");
             //t.SetAppend(1);
             vtk.vtkOutputWindow.SetInstance(t);
+#endif
 
             InitializeComponent();
         }
@@ -1206,14 +1209,14 @@ namespace PipeSimulation
             // Visibility for none pipe models
             // They should work at the same.
             showNonePipeObjects.Enabled = (IApp.theApp.DataModel.StaticsModels.Count != 0);
-            bool bNonePipeObjectsVisbile = true;
+            bool bNonePipeObjectsVisbile = false;
             try
             {
                 foreach (CStaticModel staticModel in IApp.theApp.DataModel.StaticsModels)
                 {
                     if (staticModel.ModelNode.Visibility)
                     {
-                        bNonePipeObjectsVisbile = false;
+                        bNonePipeObjectsVisbile = true;
                         break;
                     }
                 }

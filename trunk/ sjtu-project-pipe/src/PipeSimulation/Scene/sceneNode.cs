@@ -100,6 +100,14 @@ namespace PipeSimulation
 
             public void PokeMatrix(vtk.vtkTransform transform)
             {
+                // Something goes wrong with the transform,
+                // Use a temp transform instead.
+                transform = new vtk.vtkTransform();
+                Random ro = new Random();
+                //transform.Translate(ro.NextDouble() * -20000, ro.NextDouble() * -5000, ro.NextDouble() * -14000);
+                transform.Translate(0, 0, ro.NextDouble() * -14000);
+                transform.Update();
+
                 InitTraversal();
                 for (int iIndex = 0; iIndex < GetNumberOfItems(); ++iIndex)
                 {

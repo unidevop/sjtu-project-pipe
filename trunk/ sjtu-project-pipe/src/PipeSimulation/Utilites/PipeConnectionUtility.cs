@@ -27,10 +27,10 @@ namespace PipeSimulation.Utility
             if (null == currentPipeModel) return false;
 
             // Get current pipe transformation
-            vtk.vtkTransform transform = new vtk.vtkTransform();//currentPipeInfo.Matrix.ToVTKTransformation();
-            Random ro = new Random();
-            transform.Translate(ro.NextDouble() * -20000, ro.NextDouble() * -5000, ro.NextDouble() * -14000);
-            transform.Update();
+            vtk.vtkTransform transform = currentPipeInfo.Matrix.ToVTKTransformation();
+            //Random ro = new Random();
+            //transform.Translate(ro.NextDouble() * -20000, ro.NextDouble() * -5000, ro.NextDouble() * -14000);
+            //transform.Update();
 
             // How to calculate the start and end connection point.
             if (iPipeIndex == 1) // First pipe
