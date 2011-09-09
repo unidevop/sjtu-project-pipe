@@ -8,6 +8,7 @@ namespace PipeSimulation.SceneGraph
     {
         const int LINEWIDTH = 2;
         private vtk.vtkActor m_actor = null;
+        private vtk.vtkPoints m_points = null;
 
         public CPipeConnectionIndicator(vtk.vtkRenderer renderer)
         {
@@ -27,46 +28,106 @@ namespace PipeSimulation.SceneGraph
             renderer.AddActor(m_actor);
         }
 
+        //public void Update(IList<CPipeConnectionPointPair> connPointPairList)
+        //{
+        //    if (m_actor == null) return;
+
+        //    //// Invisible
+        //    //if (connPointPairList == null)
+        //    //{
+        //    //    Visible = false;
+        //    //    return;
+        //    //}
+
+        //    //// Create points
+        //    //vtk.vtkPoints points = new vtk.vtkPoints();
+        //    //foreach (CPipeConnectionPointPair pair in connPointPairList)
+        //    //{
+        //    //    points.InsertNextPoint(pair.StartConnectionPoint);
+        //    //    points.InsertNextPoint(pair.EndConnectionPoint);
+        //    //}
+
+        //    //vtk.vtkCellArray lines = new vtk.vtkCellArray();
+
+        //    //int iPairCount = connPointPairList.Count;
+        //    //for (int i = 0; i < iPairCount; ++i)
+        //    //{
+        //    //    // Create Linee
+        //    //    vtk.vtkLine line = new vtk.vtkLine();
+        //    //    line.GetPointIds().SetId(0, i * 2);
+        //    //    line.GetPointIds().SetId(1, i * 2 + 1);
+
+        //    //    lines.InsertNextCell(line);
+        //    //}
+
+        //    //vtk.vtkPolyData polyData = new vtk.vtkPolyData();
+        //    //polyData.SetPoints(points);
+        //    //polyData.SetLines(lines);
+
+        //    //vtk.vtkPolyDataMapper dataMapper = new vtk.vtkPolyDataMapper();
+        //    //dataMapper.SetInput(polyData);
+
+        //    //m_actor.SetMapper(dataMapper);
+        //}
+
         public void Update(IList<CPipeConnectionPointPair> connPointPairList)
         {
             if (m_actor == null) return;
 
-            //// Invisible
-            //if (connPointPairList == null)
-            //{
-            //    Visible = false;
-            //    return;
-            //}
+            // Invisible
+            if (connPointPairList == null)
+            {
+                Visible = false;
+                return;
+            }
 
-            //// Create points
-            //vtk.vtkPoints points = new vtk.vtkPoints();
-            //foreach (CPipeConnectionPointPair pair in connPointPairList)
-            //{
-            //    points.InsertNextPoint(pair.StartConnectionPoint);
-            //    points.InsertNextPoint(pair.EndConnectionPoint);
-            //}
+            // Update points
+            if (m_points == null)
+            {
+                m_points = new vtk.vtkPoints();
+                
+                // Create Points
+                m_points.Reset();
+                foreach (CPipeConnectionPointPair pair in connPointPairList)
+                {
+                    m_points.InsertNextPoint(pair.StartConnectionPoint);
+                    m_points.InsertNextPoint(pair.EndConnectionPoint);
+                }
 
-            //vtk.vtkCellArray lines = new vtk.vtkCellArray();
+                vtk.vtkCellArray lines = new vtk.vtkCellArray();
+                for (int i = 0; i < connPointPairList.Count; ++i)
+                {
+                    // Create Linee
+                    vtk.vtkLine line = new vtk.vtkLine();
+                    line.GetPointIds().SetId(0, i * 2);
+                    line.GetPointIds().SetId(1, i * 2 + 1);
 
-            //int iPairCount = connPointPairList.Count;
-            //for (int i = 0; i < iPairCount; ++i)
-            //{
-            //    // Create Linee
-            //    vtk.vtkLine line = new vtk.vtkLine();
-            //    line.GetPointIds().SetId(0, i * 2);
-            //    line.GetPointIds().SetId(1, i * 2 + 1);
+                    lines.InsertNextCell(line);
+                }
 
-            //    lines.InsertNextCell(line);
-            //}
+                vtk.vtkPolyData polyData = new vtk.vtkPolyData();
+                polyData.SetPoints(m_points);
+                polyData.SetLines(lines);
 
-            //vtk.vtkPolyData polyData = new vtk.vtkPolyData();
-            //polyData.SetPoints(points);
-            //polyData.SetLines(lines);
+                vtk.vtkPolyDataMapper dataMapper = new vtk.vtkPolyDataMapper();
+                dataMapper.SetInput(polyData);
 
-            //vtk.vtkPolyDataMapper dataMapper = new vtk.vtkPolyDataMapper();
-            //dataMapper.SetInput(polyData);
-
-            //m_actor.SetMapper(dataMapper);
+                m_actor.SetMapper(dataMapper);
+            }
+            else if (m_points.GetNumberOfPoints() != connPointPairList.Count * 2)
+            {
+                return;
+            }
+            else
+            {
+                m_points.Reset();
+                foreach (CPipeConnectionPointPair pair in connPointPairList)
+                {
+                    m_points.InsertNextPoint(pair.StartConnectionPoint);
+                    m_points.InsertNextPoint(pair.EndConnectionPoint);
+                }
+                m_points.Modified();
+            }
         }
 
         public bool Visible
