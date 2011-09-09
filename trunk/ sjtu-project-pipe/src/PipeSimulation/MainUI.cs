@@ -25,9 +25,6 @@ namespace PipeSimulation
 {
     public partial class MainUI : Form
     {
-        // SplashScreenForm
-        private SplashScreenForm sf = new SplashScreenForm();
-
         public MainUI()
         {
             // Splash Screen suppor
@@ -312,7 +309,7 @@ namespace PipeSimulation
             }
             catch
             {
-                MessageBox.Show(Resources.IDS_ERROR_DATAENGINE_CONNECT, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(new Form(){TopMost = true}, Resources.IDS_ERROR_DATAENGINE_CONNECT, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -427,7 +424,7 @@ namespace PipeSimulation
 
             if (!System.IO.File.Exists(xmlFile))
             {
-                MessageBox.Show(string.Format(Resources.IDS_ERROR_DATAFILE_NOT_FOUND, xmlFile), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(new Form(){TopMost = true}, string.Format(Resources.IDS_ERROR_DATAFILE_NOT_FOUND, xmlFile), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -470,7 +467,7 @@ namespace PipeSimulation
             }
             catch (SystemException)
             {
-                MessageBox.Show(string.Format(Resources.IDS_ERROR_LOAD_XML, xmlFile), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(new Form(){TopMost = true}, string.Format(Resources.IDS_ERROR_LOAD_XML, xmlFile), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
@@ -509,7 +506,7 @@ namespace PipeSimulation
             }
             catch (SystemException)
             {
-                MessageBox.Show(Resources.IDS_ERROR_LOAD_MODEL, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(new Form(){TopMost = true}, Resources.IDS_ERROR_LOAD_MODEL, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
