@@ -64,6 +64,16 @@ namespace PipeSimulation.PipeApp
                     m_historyQuery.Dispose();
                     m_historyQuery = null;
                 }
+
+                // Make sure we clear all the member variables
+                m_commandManager = null;
+                m_dataModel = null;
+                m_observerModeManager = null;
+                m_dataDriven = null;
+                m_StatisticTextDisplayer = null;
+                m_warningTextDisplayer = null;
+                m_videoWriter = null;
+                m_PipeConnectionIndicator = null;
             }
         }
 
