@@ -313,18 +313,17 @@ namespace PipeSimulation
                 if (Status == PipeStatus.eNotStartedYet) return;
 
                 // Only drive the model when the pipe is working progress
-                //vtk.vtkProp actor = ModelNode as vtk.vtkProp;
-                //_DrivdeModel(actor, transform);
-                //foreach (ISceneNode node in Children)
-                //{
-                //    _DrivdeModel(node.ModelNode, transform);
-                //}
+                _DrivdeModel(ModelNode, transform);
+                foreach (ISceneNode node in Children)
+                {
+                    _DrivdeModel(node.ModelNode, transform);
+                }
             }
 
-            private void _DrivdeModel(vtk.vtkProp node, vtk.vtkTransform transform)
+            private void _DrivdeModel(CModelNode modelNode, vtk.vtkTransform transform)
             {
-                if (node == null || transform == null) return;
-                node.PokeMatrix(transform.GetMatrix());
+                if (modelNode == null || transform == null) return;
+                modelNode.PokeMatrix(transform);
             }
 
             // Cached final transform

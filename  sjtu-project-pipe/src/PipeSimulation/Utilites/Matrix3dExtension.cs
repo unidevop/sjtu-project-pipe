@@ -34,7 +34,7 @@ namespace PipeSimulation.Utility
             vtk.vtkTransform vtkTransform = new vtk.vtkTransform();
             vtkTransform.SetMatrix(matData);
 
-            return new vtk.vtkTransform();
+            return vtkTransform;
         }
     }
 }
