@@ -646,12 +646,16 @@ namespace PipeSimulation
             specificTime = startTime + new TimeSpan((long)(intelopValue));
 
             // Pipe Info
-            PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(specificTime, false);
+            IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
+            if (dataQuery != null && dataQuery.IsConnected)
+            {
+                PipeInfo pipeInfo = dataQuery.GetPipeRecord(specificTime, false);
 
-            // Drive the model
-            IApp.theApp.DataDriven.DriveModel(pipeInfo);
+                // Drive the model
+                IApp.theApp.DataDriven.DriveModel(pipeInfo);
 
-            UpdateAnimationLabelText();
+                UpdateAnimationLabelText();
+            }
         }
 
         private void UpdateAnimationLabelText()
@@ -838,6 +842,15 @@ namespace PipeSimulation
                         toolStripComboBoxPipes_SelectedIndexChanged(toolStripComboBoxPipes, null);
                     }
                 }
+                else
+                {
+                    // Disable the control in replay modes
+                    // Set the selected index as -1
+                    toolStripComboBoxPipes.SelectedIndex = -1;
+
+                    // Seems that the above statement won't activate the below message, so we will force to update it.
+                    toolStripComboBoxPipes_SelectedIndexChanged(toolStripComboBoxPipes, null);
+                }
                 //else
                 //{
                 //    // Just for test, should be delete after Data query is work
@@ -952,6 +965,10 @@ namespace PipeSimulation
             {
                 trackRange[1] = (int)totalSeconds;
             }
+            if (trackRange[1] <= 0)
+            {
+                trackRange[1] = 100;
+            }
             
             trackBarAnimation.Value = trackRange[0];
             trackBarAnimation.SetRange(trackRange[0], trackRange[1]);
@@ -964,11 +981,14 @@ namespace PipeSimulation
             replayMode.ReplayAnimationEngine.AnimationEndTime = endTime;
 
             // Update the render window
-            PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(beginingTime, false);
-            IApp.theApp.DataDriven.DriveModel(pipeInfo);
+            if (dataQuery != null && dataQuery.IsConnected)
+            {
+                PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(beginingTime, false);
+                IApp.theApp.DataDriven.DriveModel(pipeInfo);
 
-            // Update the animation label text
-            UpdateAnimationLabelText();
+                // Update the animation label text
+                UpdateAnimationLabelText();
+            }
         }
 
         void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
