@@ -297,14 +297,12 @@ namespace PipeSimulation
             try
             {// Initialize the data query
                 IRealtimeDataQuery realtimeDataQuery = IApp.theApp.RealTimeDataQuery;
-                if (realtimeDataQuery == null) return;
 
                 // Setup the callback event
                 realtimeDataQuery.DataArrivedCallback += new DataArrivedCallbackType(dataQuery_DataArrivedCallback);
 
                  // Initialize history data query
                 IHistoryDataQuery historyDataQuery = IApp.theApp.HistoryTimeDataQuery;
-                if (historyDataQuery == null) return;
 
                // Connect to data engine
                 realtimeDataQuery.Connect();
