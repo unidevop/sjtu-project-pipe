@@ -35,7 +35,7 @@ namespace PipeSimulation.DataModel
             if (warningConfig.IsAlphaWarning(dAlphaAngle))
             {
                 string strAlphaFormat;
-                strAlphaFormat = /*MSG0*/"Alpha: {0} > {1}.";
+                strAlphaFormat = /*MSG0*/"Alpha: {0} exceeds the limit {1}.";
 
                 strString = string.Concat(strString, string.Format(strAlphaFormat, 
                                           string.Format(strAngleFormat, Math.Abs(dAlphaAngle)), 
@@ -47,7 +47,7 @@ namespace PipeSimulation.DataModel
             if (warningConfig.IsBetaWarning(dBetaAngle))
             {
                 string strBetaFormat;
-                strBetaFormat = /*MSG0*/"Beta: {0} > {1}.";
+                strBetaFormat = /*MSG0*/"Beta: {0} exceeds the limit {1}.";
 
                 strString = string.Concat(strString, string.Format(strBetaFormat, 
                                           string.Format(strAngleFormat, Math.Abs(dBetaAngle)), 
