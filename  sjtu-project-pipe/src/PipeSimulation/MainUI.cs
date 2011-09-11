@@ -336,11 +336,8 @@ namespace PipeSimulation
             }
         }
 
-        private void InitializeScene()
+        private void InitializeWCS()
         {
-            // Let the scene show SW Isometric
-            IApp.theApp.vtkControl.ShowSWIsoMetricView();
-
             // Initialize the WCS
             if (axesWidget != null) return;
 
@@ -358,6 +355,59 @@ namespace PipeSimulation
             axesWidget.SetInteractor(IApp.theApp.RenderWindow.GetInteractor());
             axesWidget.SetEnabled(1);
             axesWidget.InteractiveOff();
+        }
+
+        private void InitializeReferenceOrigin()
+        {
+            if (originCaption != null) return;
+
+            // Show Origin
+            originCaption = new vtk.vtkCaptionActor2D();
+            originCaption.GetCaptionTextProperty().SetFontSize(18);
+            originCaption.GetCaptionTextProperty().SetColor(0, 1, 1);
+            originCaption.GetProperty().SetColor(0, 1, 1);
+            originCaption.GetProperty().SetLineWidth(3);
+            originCaption.ThreeDimensionalLeaderOn();
+            //originCaption.LeaderOff();
+
+            originCaption.SetAttachmentPoint(0, 0, 0);
+            originCaption.SetCaption(/*MSG0*/"Reference Origin");
+            originCaption.SetPosition(15, 15);
+            originCaption.BorderOff();
+            //originCaption.SetWidth(0.25);
+            //originCaption.SetHeight(0.1);
+            originCaption.GetTextActor().SetScaledText(0);
+            originCaption.SetMaximumLeaderGlyphSize(10);
+            originCaption.SetLeaderGlyphSize(0.025);
+
+            //vtk.vtkRegularPolygonSource circel = new vtk.vtkRegularPolygonSource();
+            //circel.SetRadius(300);
+            //circel.SetNumberOfSides(16);
+            //circel.GeneratePolylineOn();
+            //circel.GeneratePolygonOff();
+
+            //vtk.vtkSphereSource sphere = new vtk.vtkSphereSource();
+            //sphere.SetPhiResolution(100);
+            //sphere.SetThetaResolution(100);
+
+            //originCaption.SetLeaderGlyph(circel.GetOutput());
+
+            //originCaption.SetPosition2(10, 1);
+
+            originCaption.VisibilityOff();
+            IApp.theApp.RenderWindow.GetRenderers().GetFirstRenderer().AddActor(originCaption);
+        }
+
+        private void InitializeScene()
+        {
+            // Initialize WCS
+            InitializeWCS();
+
+            // Initialize Reference Origin
+            InitializeReferenceOrigin();
+
+            // Let the scene show SW Isometric
+            IApp.theApp.vtkControl.ShowSWIsoMetricView();
         }
 
         private void InitializeObserverMode()
@@ -1156,6 +1206,13 @@ namespace PipeSimulation
             IApp.theApp.RenderScene();
         }
 
+        void showOrigin_Click(object sender, EventArgs e)
+        {
+            if (null == originCaption) return;
+
+            ShowHideProp(originCaption, showOrigin.Checked);
+        }
+
         void showWCS_Click(object sender, EventArgs e)
         {
             if (null == axesWidget) return;
@@ -1205,6 +1262,15 @@ namespace PipeSimulation
                 bWCSVisible = (axesWidget.GetOrientationMarker().GetVisibility() != 0);
             }
             showWCS.Checked = bWCSVisible;
+
+            // Visibility for Origin
+            showOrigin.Enabled = (originCaption != null);
+            bool bOriginVisible = false;
+            if (originCaption != null)
+            {
+                bOriginVisible = (originCaption.GetVisibility() != 0);
+            }
+            showOrigin.Checked = bOriginVisible;
 
             // Visibility for none pipe models
             // They should work at the same.

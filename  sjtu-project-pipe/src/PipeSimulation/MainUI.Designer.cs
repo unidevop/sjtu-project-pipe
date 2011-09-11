@@ -73,6 +73,7 @@ namespace PipeSimulation
             this.showWarningTextDisplayer = new System.Windows.Forms.ToolStripMenuItem();
             this.showWCS = new System.Windows.Forms.ToolStripMenuItem();
             this.showNonePipeObjects = new System.Windows.Forms.ToolStripMenuItem();
+            this.showOrigin = new System.Windows.Forms.ToolStripMenuItem();
 
             this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.monitorModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -400,7 +401,8 @@ namespace PipeSimulation
             this.showStatisticTextDisplayer,
             this.showWarningTextDisplayer,
             this.showWCS,
-            this.showNonePipeObjects});
+            this.showNonePipeObjects,
+            this.showOrigin});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.viewToolStripMenuItem.Text = "视图(&V)";
@@ -441,6 +443,15 @@ namespace PipeSimulation
             this.showNonePipeObjects.Click += new EventHandler(showNonePipeObjects_Click);
             this.showNonePipeObjects.ShortcutKeys = Keys.Control | Keys.D4;
             this.showNonePipeObjects.CheckOnClick = true;
+            // 
+            // showOrigin
+            // 
+            this.showOrigin.Name = "showOrigin";
+            this.showOrigin.Size = new System.Drawing.Size(151, 22);
+            this.showOrigin.Text = "显隐参考原点";
+            this.showOrigin.Click += new EventHandler(showOrigin_Click);
+            this.showOrigin.ShortcutKeys = Keys.Control | Keys.D5;
+            this.showOrigin.CheckOnClick = true;
             // 
             // toolsToolStripMenuItem
             // 
@@ -712,6 +723,7 @@ namespace PipeSimulation
         }
 
         private vtk.vtkOrientationMarkerWidget axesWidget;
+        private vtk.vtkCaptionActor2D originCaption;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem1;
         private ToolStripMenuItem toolsToolStripMenuItem;
@@ -748,6 +760,7 @@ namespace PipeSimulation
         private ToolStripMenuItem showWarningTextDisplayer;
         private ToolStripMenuItem showWCS;
         private ToolStripMenuItem showNonePipeObjects;
+        private ToolStripMenuItem showOrigin;
         private ToolStrip toolStripReplay;
         private ToolStripComboBox toolStripComboBoxPipes;
         private ToolStripSeparator toolStripSeparator3;
