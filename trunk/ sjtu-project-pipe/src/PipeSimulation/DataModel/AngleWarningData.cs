@@ -30,13 +30,16 @@ namespace PipeSimulation.DataModel
             if (null == warningConfig) return strString;
 
             // Get the current Alpha angle
+            const string strAngleFormat = "{0:0.###}";
             double dAlphaAngle = pipeInfo.LatitudinalInclineAngle;
             if (warningConfig.IsAlphaWarning(dAlphaAngle))
             {
                 string strAlphaFormat;
-                strAlphaFormat = /*MSG0*/"Current Alpha angle {0} is greater than maximum angle {1}.";
+                strAlphaFormat = /*MSG0*/"Alpha: {0} > {1}.";
 
-                strString = string.Concat(strString, string.Format(strAlphaFormat, dAlphaAngle, warningConfig.AlphaMaximum), strChangeLine);
+                strString = string.Concat(strString, string.Format(strAlphaFormat, 
+                                          string.Format(strAngleFormat, Math.Abs(dAlphaAngle)), 
+                                          string.Format(strAngleFormat, warningConfig.AlphaMaximum)), strChangeLine);
             }
 
             // Get the current Beta angle
@@ -44,18 +47,24 @@ namespace PipeSimulation.DataModel
             if (warningConfig.IsBetaWarning(dBetaAngle))
             {
                 string strBetaFormat;
-                strBetaFormat = /*MSG0*/"Current Beta angle {0} is greater than maximum angle {1}.";
+                strBetaFormat = /*MSG0*/"Beta: {0} > {1}.";
 
-                strString = string.Concat(strString, string.Format(strBetaFormat, dBetaAngle, warningConfig.BetaMaximum), strChangeLine);
+                strString = string.Concat(strString, string.Format(strBetaFormat, 
+                                          string.Format(strAngleFormat, Math.Abs(dBetaAngle)), 
+                                          string.Format(strAngleFormat, warningConfig.BetaMaximum)), strChangeLine);
             }
 
             // Insert the waring text
+            string strWarningText;
+            strWarningText = /*MSG0*/"------Warning!!!------" + strChangeLine;
+
             if (!string.IsNullOrEmpty(strString))
             {
-                string strWarningText;
-                strWarningText = /*MSG0*/"Warning!!!" + strChangeLine;
-
                 strString = string.Concat(strWarningText, strString);
+            }
+            else
+            {
+                strString = string.Concat(strWarningText, "No warnings.");
             }
 
             return strString;
