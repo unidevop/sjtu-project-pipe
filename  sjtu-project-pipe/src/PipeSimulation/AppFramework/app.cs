@@ -22,6 +22,7 @@ namespace PipeSimulation.PipeApp
         private IObserverModeManager m_observerModeManager = new CObserverModeManager();
         private IDataDriven m_dataDriven = new CDataDriven();
         private CTextSceneDisplayer m_StatisticTextDisplayer = new CTextSceneDisplayer();
+        private CTextSceneDisplayer m_StatisticTextDisplayerAdditional = new CTextSceneDisplayer();
         private CTextSceneDisplayer m_warningTextDisplayer = new CTextSceneDisplayer();
         private IVideoWriter m_videoWriter = new CAVIWriter();
         private IRealtimeDataQuery  m_realTimeQuery = null;
@@ -125,6 +126,11 @@ namespace PipeSimulation.PipeApp
         public override ITextDisplayer StatisticTextDisplayer
         {
             get { return m_StatisticTextDisplayer; }
+        }
+
+        public override ITextDisplayer StatisticTextDisplayerAdditional
+        {
+            get { return m_StatisticTextDisplayerAdditional; }
         }
 
         public override ITextDisplayer WarningTextDisplayer

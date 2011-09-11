@@ -29,6 +29,7 @@ namespace PipeSimulation
             abstract public IHistoryDataQuery HistoryTimeDataQuery { get; }
             abstract public IDataDriven DataDriven { get; }
             abstract public ITextDisplayer StatisticTextDisplayer { get; }
+            abstract public ITextDisplayer StatisticTextDisplayerAdditional { get; }
             abstract public ITextDisplayer WarningTextDisplayer { get; }
             abstract public IVideoWriter VideoWriter { get; }
             abstract public CPipeConnectionIndicator PipeConnectionIndicator { get; }

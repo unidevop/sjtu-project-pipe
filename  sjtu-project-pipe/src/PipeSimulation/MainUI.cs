@@ -194,7 +194,18 @@ namespace PipeSimulation
                 statisticTextDisplayer.TextActor.GetTextProperty().SetFontSize(18);
                 statisticTextDisplayer.TextActor.GetTextProperty().SetJustificationToLeft();
                 statisticTextDisplayer.TextActor.GetTextProperty().SetVerticalJustificationToTop();
-                statisticTextDisplayer.TextActor.GetTextProperty().SetColor(1.0, 0.0, 0.0);
+                statisticTextDisplayer.TextActor.GetTextProperty().SetColor(0.0, 1.0, 0.0);
+            }
+
+            // Initialize the text for statistic additional
+            CTextSceneDisplayer statisticTextDisplayerAdditional = IApp.theApp.StatisticTextDisplayerAdditional as CTextSceneDisplayer;
+            if (statisticTextDisplayerAdditional != null)
+            {
+                statisticTextDisplayerAdditional.Setup();
+                statisticTextDisplayerAdditional.TextActor.GetTextProperty().SetFontSize(18);
+                statisticTextDisplayerAdditional.TextActor.GetTextProperty().SetJustificationToLeft();
+                statisticTextDisplayerAdditional.TextActor.GetTextProperty().SetVerticalJustificationToTop();
+                statisticTextDisplayerAdditional.TextActor.GetTextProperty().SetColor(1.0, 1.0, 0.0);
             }
 
             // Initialize the text for warning
@@ -255,6 +266,9 @@ namespace PipeSimulation
                 // Update statistic text display positon
                 textActorStatistic.SetDisplayPosition(CTextSceneDisplayer.sMinX, (sizeControl.Height - CTextSceneDisplayer.sMinY));
                 textActorWarning.SetDisplayPosition(sizeControl.Width - CTextSceneDisplayer.sMinX, (sizeControl.Height - CTextSceneDisplayer.sMinY));
+
+                textActorStatistic.VisibilityOn();
+                IApp.theApp.StatisticTextDisplayerAdditional.TextActor.SetDisplayPosition(CTextSceneDisplayer.sMinX + 110, (sizeControl.Height - CTextSceneDisplayer.sMinY));
             }
 
             IApp.theApp.RenderScene();
@@ -1119,8 +1133,12 @@ namespace PipeSimulation
             CStatisticData statisticData = new CStatisticData();
             statisticData.ConnectionPointPairList = connectionPointPairList;
 
-            IApp.theApp.StatisticTextDisplayer.DisplayText(statisticData.ToString());
+            IApp.theApp.StatisticTextDisplayer.DisplayText(statisticData.ToTextString());
 
+            // Make sure we make the StatisticTextDisplayerAdditional appeal after the StatisticTextDisplayer
+            IApp.theApp.StatisticTextDisplayerAdditional.DisplayText(statisticData.ToDataString());
+
+            // Update the WarningTextDisplayer
             CAngleWarningData angleWarningData = new CAngleWarningData();
             IApp.theApp.WarningTextDisplayer.DisplayText(angleWarningData.ToString());
 
@@ -1227,7 +1245,9 @@ namespace PipeSimulation
 
         void showStatisticTextDisplayer_Click(object sender, EventArgs e)
         {
-            ShowHideProp(IApp.theApp.StatisticTextDisplayer.TextActor, showStatisticTextDisplayer.Checked);
+            bool bChecked = showStatisticTextDisplayer.Checked;
+            ShowHideProp(IApp.theApp.StatisticTextDisplayer.TextActor, bChecked);
+            ShowHideProp(IApp.theApp.StatisticTextDisplayerAdditional.TextActor, bChecked);
         }
 
         private void ShowHideProp(vtk.vtkProp prop, bool vis)
@@ -1309,6 +1329,8 @@ namespace PipeSimulation
             using (AngleWarningConfiguration configForm = new AngleWarningConfiguration())
             {
                 configForm.ShowDialog();
+
+                IApp.theApp.RenderScene();
             }
         }
     }
