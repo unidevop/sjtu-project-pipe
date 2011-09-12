@@ -37,8 +37,9 @@ namespace PipeSimulation.PipeApp
 
             try
             {
-                string dbConnStr = ConfigurationManager.ConnectionStrings["SQLDBConn"].ConnectionString;
-                double readInterval = Convert.ToDouble(ConfigurationManager.AppSettings["ReadInterval"]);
+                ConnectionConfig connConfig = ConnectionConfig.Instance();
+                string dbConnStr = connConfig.ConnectionString;
+                double readInterval = connConfig.ReadInterval;
 
                 m_realTimeQuery = DataQueryManager.GetRealTimeQuery(dbConnStr, readInterval);
                 m_historyQuery = DataQueryManager.GetHistoricalQuery(dbConnStr);
