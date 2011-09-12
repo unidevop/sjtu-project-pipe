@@ -27,10 +27,10 @@ namespace PipeSimulation.DataQuery
             Vector3D vecY = GetYVector();
             Vector3D vecZ = Vector3D.CrossProduct(vecX, vecY);
 
-            return new Matrix3D(vecX.X, vecY.X, vecZ.X, 0.0,
-                                vecX.Y, vecY.Y, vecZ.Y, 0.0,
-                                vecX.Z, vecY.Z, vecZ.Z, 0.0,
-                                m_startPt.X, m_startPt.Y, m_startPt.Z, 1.0);
+            return new Matrix3D(vecX.X, vecY.X, vecZ.X, m_startPt.X,
+                                vecX.Y, vecY.Y, vecZ.Y, m_startPt.Y,
+                                vecX.Z, vecY.Z, vecZ.Z, m_startPt.Z,
+                                0, 0, 0, 1.0);
         }
 
         private Vector3D GetXVector()
