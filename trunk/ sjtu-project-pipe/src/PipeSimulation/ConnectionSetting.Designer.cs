@@ -89,6 +89,7 @@
             0,
             0,
             0});
+            this.m_autoConnInterval.ValueChanged += new System.EventHandler(this.AutoConnInterval_ValueChanged);
             // 
             // label2
             // 
@@ -136,6 +137,7 @@
             this.m_userName.BackgroundImage = null;
             this.m_userName.Font = null;
             this.m_userName.Name = "m_userName";
+            this.m_userName.TextChanged += new System.EventHandler(this.UserName_TextChanged);
             // 
             // m_pwdLabel
             // 
@@ -161,6 +163,8 @@
             this.m_password.BackgroundImage = null;
             this.m_password.Font = null;
             this.m_password.Name = "m_password";
+            this.m_password.UseSystemPasswordChar = true;
+            this.m_password.TextChanged += new System.EventHandler(this.Password_TextChanged);
             // 
             // m_dbServerLabel
             // 
@@ -178,6 +182,7 @@
             this.m_dbServer.BackgroundImage = null;
             this.m_dbServer.Font = null;
             this.m_dbServer.Name = "m_dbServer";
+            this.m_dbServer.TextChanged += new System.EventHandler(this.DbServer_TextChanged);
             // 
             // m_saveBtn
             // 
@@ -188,6 +193,7 @@
             this.m_saveBtn.Font = null;
             this.m_saveBtn.Name = "m_saveBtn";
             this.m_saveBtn.UseVisualStyleBackColor = true;
+            this.m_saveBtn.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // m_resetBtn
             // 
@@ -198,6 +204,7 @@
             this.m_resetBtn.Font = null;
             this.m_resetBtn.Name = "m_resetBtn";
             this.m_resetBtn.UseVisualStyleBackColor = true;
+            this.m_resetBtn.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // m_configGroup
             // 

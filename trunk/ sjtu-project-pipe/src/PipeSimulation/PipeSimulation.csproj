@@ -138,6 +138,7 @@
       <DependentUpon>SplashScreenForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilites\aviWriter.cs" />
+    <Compile Include="Utilites\ConnectionConfig.cs" />
     <Compile Include="Utilites\folderSearch.cs" />
     <Compile Include="main.cs" />
     <Compile Include="MainUI.cs">
