@@ -32,10 +32,18 @@ namespace PipeSimulation.Utility
         {
             if (m_modified)
             {
-                m_config.Save(ConfigurationSaveMode.Modified);
+                //ConnectionSection oldConnSec = ConfigurationManager.GetSection("connectionSection") as ConnectionSection;
+                //ConnectionSection newConnSec = new ConnectionSection();
+
+                //newConnSec.AutoConnect = oldConnSec.AutoConnect;
+                //newConnSec.ReadInterval = oldConnSec.ReadInterval;
+
+                //m_config.Sections.Remove("connectionSection");
+                //m_config.Sections.Add("connectionSection", newConnSec);
+                m_config.Save(ConfigurationSaveMode.Full);
 
                 ConfigurationManager.RefreshSection("ConnectionStrings");
-                //ConfigurationManager.RefreshSection("ConnectionStrings");
+                ConfigurationManager.RefreshSection("connectionSection");
             }
         }
 
@@ -95,9 +103,12 @@ namespace PipeSimulation.Utility
             {
                 //Hashtable ht = m_config.GetSection("connectionSection") as Hashtable;
 
-                Hashtable ht = ConfigurationManager.GetSection("connectionSection") as Hashtable;
+                //Hashtable ht = ConfigurationManager.GetSection("connectionSection") as Hashtable;
 
-                return Convert.ToBoolean(ht["AutoConnect"]);
+                //return Convert.ToBoolean(ht["AutoConnect"]);
+                ConnectionSection connSec = ConfigurationManager.GetSection("connectionSection") as ConnectionSection;
+
+                return connSec.AutoConnect;
 
                 //System.Collections.Specialized.NameValueCollection nv = ConfigurationManager.GetSection("connectionSection")
                 //    as System.Collections.Specialized.NameValueCollection;
@@ -105,8 +116,12 @@ namespace PipeSimulation.Utility
             }
             set
             {
-                m_config.Sections.Remove("connectionSection");
-//                m_config.Sections.Add(new );
+                //m_config.Sections.Remove("connectionSection");
+                ConnectionSection connSec = m_config.GetSection("connectionSection") as ConnectionSection;
+
+                //connSec.SectionInformation.ForceSave = true;
+                connSec.AutoConnect = value;
+                m_modified = true;
             }
         }
 
@@ -114,15 +129,69 @@ namespace PipeSimulation.Utility
         {
             get
             {
-                Hashtable ht = ConfigurationManager.GetSection("connectionSection") as Hashtable;
+                ConnectionSection connSec = ConfigurationManager.GetSection("connectionSection") as ConnectionSection;
 
-                return Convert.ToDouble(ht["ReadInterval"]);
+                return connSec.ReadInterval.TotalMilliseconds;
+                //Hashtable ht = ConfigurationManager.GetSection("connectionSection") as Hashtable;
+
+                //return Convert.ToDouble(ht["ReadInterval"]);
                 //System.Collections.Specialized.NameValueCollection nv = ConfigurationManager.GetSection("connectionSection")
                 //    as System.Collections.Specialized.NameValueCollection;
 
                 //return Convert.ToDouble(nv["ReadInterval"]);
             }
+            set
+            {
+                ConnectionSection connSec = m_config.GetSection("connectionSection") as ConnectionSection;
+
+                //connSec.SectionInformation.ForceSave = true;
+                connSec.ReadInterval = TimeSpan.FromMilliseconds(value);
+                m_modified = true;
+            }
         }
 
+    }
+
+    // Define a custom section.
+    // The CustomSection type allows to define a custom section 
+    // programmatically.
+    public sealed class ConnectionSection : ConfigurationSection
+    {
+        // CustomSection constructor.
+        public ConnectionSection()
+        {
+        }
+
+        [ConfigurationProperty("AutoConnect", DefaultValue = "true", IsRequired = true)]
+        public bool AutoConnect
+        {
+            get
+            {
+                return (bool)this["AutoConnect"];
+            }
+            set
+            {
+                this["AutoConnect"] = value;
+            }
+        }
+
+        [ConfigurationProperty("ReadInterval", DefaultValue = "0:0:0.500", IsRequired = true)]
+        [TimeSpanValidator(MinValueString = "0:0:0.100", MaxValueString = "0:10:0", ExcludeRange = false)]
+        public TimeSpan ReadInterval
+        {
+            get
+            {
+                return (TimeSpan)this["ReadInterval"];
+            }
+            set
+            {
+                this["ReadInterval"] = value;
+            }
+        }
+
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
     }
 }
