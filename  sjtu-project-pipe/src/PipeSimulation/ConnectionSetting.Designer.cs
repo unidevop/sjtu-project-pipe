@@ -82,7 +82,13 @@
             this.m_autoConnInterval.AccessibleDescription = null;
             this.m_autoConnInterval.AccessibleName = null;
             resources.ApplyResources(this.m_autoConnInterval, "m_autoConnInterval");
+            this.m_autoConnInterval.DecimalPlaces = 1;
             this.m_autoConnInterval.Font = null;
+            this.m_autoConnInterval.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.m_autoConnInterval.Name = "m_autoConnInterval";
             this.m_autoConnInterval.Value = new decimal(new int[] {
             1,

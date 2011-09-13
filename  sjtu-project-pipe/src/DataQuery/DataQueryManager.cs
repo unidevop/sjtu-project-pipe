@@ -7,12 +7,12 @@ namespace PipeSimulation.DataQuery
 {
     public class DataQueryManager
     {
-        public static IRealtimeDataQuery GetRealTimeQuery(string dbAdress, string dbName, string userName, string password, double interval)
+        public static IRealtimeDataQuery GetRealTimeQuery(string dbAdress, string dbName, string userName, string password, TimeSpan interval)
         {
             return new RealTimeDataQuery(dbAdress, dbName, userName, password, interval);
         }
 
-        public static IRealtimeDataQuery GetRealTimeQuery(string connString, double interval)
+        public static IRealtimeDataQuery GetRealTimeQuery(string connString, TimeSpan interval)
         {
             return new RealTimeDataQuery(connString, interval);
         }

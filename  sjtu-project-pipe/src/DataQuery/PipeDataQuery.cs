@@ -323,16 +323,16 @@ namespace PipeSimulation.DataQuery
 
         public RealTimeDataQuery(string dbAdress, string dbName,
                                  string userName, string password,
-                                 double interval)
+                                 TimeSpan interval)
             : base(dbAdress, dbName, userName, password)
         {
-            m_timer.Interval = interval;
+            m_timer.Interval = interval.TotalMilliseconds;
         }
 
-        public RealTimeDataQuery(string connString, double interval)
+        public RealTimeDataQuery(string connString, TimeSpan interval)
             : base(connString)
         {
-            m_timer.Interval = interval;
+            m_timer.Interval = interval.TotalMilliseconds;
         }
 
         protected override void Dispose(bool disposing)
