@@ -67,6 +67,8 @@ namespace PipeSimulation
                 ConnectionConfig connCfg = ConnectionConfig.Instance();
 
                 connCfg.SetConnectionString(m_dbServer.Text, m_userName.Text, m_password.Text);
+                connCfg.IsAutoConnect = m_autoConnect.Checked;
+                connCfg.ReadInterval = 800;//m_autoConnInterval.Value;
                 connCfg.Save();
 
                 m_modified = false;
