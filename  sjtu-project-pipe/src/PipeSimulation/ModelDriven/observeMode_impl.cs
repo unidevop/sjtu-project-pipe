@@ -202,10 +202,22 @@ namespace PipeSimulation
                 m_iAnimationProgress += 1;
                 if (m_iAnimationProgress > AnimationTotalProgress)
                 {
-                    m_iAnimationProgress = 0;
+                    bool bLoopPlay = false; // In future, get this value from the config file
+                    if (!bLoopPlay)
+                    {
+                        DriveModel(AnimationTotalProgress);
+                        StopAnimation();
+                    }
+                    else
+                    {
+                        m_iAnimationProgress = 0;
+                        DriveModel(m_iAnimationProgress);
+                    }
                 }
-
-                DriveModel(m_iAnimationProgress);
+                else
+                {
+                    DriveModel(m_iAnimationProgress);
+                }
             }
 
             private void StopTimer()

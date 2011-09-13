@@ -837,20 +837,29 @@ namespace PipeSimulation
                 DriveModeByTrackBarValue(replayMode, t);
             }
         }
+        private delegate void StopAnimationProgress();
 
         private void ReplayAnimationEngine_AnimationStopped()
         {
-            // Update the UI
-            toolStripButtonStartAnimation.Checked = false;
-            toolStripButtonStartAnimation.Enabled = true;
+            if (trackBarAnimation.InvokeRequired)
+            {
+                StopAnimationProgress d = new StopAnimationProgress(ReplayAnimationEngine_AnimationStopped);
+                this.Invoke(d, new object[] { });
+            }
+            else
+            {
+                // Update the UI
+                toolStripButtonStartAnimation.Checked = false;
+                toolStripButtonStartAnimation.Enabled = true;
 
-            toolStripButtonStopAnimation.Checked = false;
-            toolStripButtonStopAnimation.Enabled = false;
+                toolStripButtonStopAnimation.Checked = false;
+                toolStripButtonStopAnimation.Enabled = false;
 
-            trackBarAnimation.Value = 0;
-            UpdateAnimationLabelText();
+                trackBarAnimation.Value = 0;
+                UpdateAnimationLabelText();
 
-            viewSpecificTimerScene.Enabled = true;
+                viewSpecificTimerScene.Enabled = true;
+            }
         }
 
         private void observerManager_ModeChanged()

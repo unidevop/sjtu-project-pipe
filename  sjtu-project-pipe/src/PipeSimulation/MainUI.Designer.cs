@@ -478,8 +478,8 @@ namespace PipeSimulation
             this.startRecordAVIToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.startRecordAVIToolStripMenuItem.Text = "开始录制视频";
             this.startRecordAVIToolStripMenuItem.Click += new EventHandler(startRecordAVIToolStripMenuItem_Click);
-            this.startRecordAVIToolStripMenuItem.Image = global::PipeSimulation.Properties.Resources.record_icon;
-            this.startRecordAVIToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
+            //this.startRecordAVIToolStripMenuItem.Image = global::PipeSimulation.Properties.Resources.record_icon;
+            this.startRecordAVIToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.R;
             // 
             // stopRecordAVIToolStripMenuItem
             // 
@@ -576,7 +576,8 @@ namespace PipeSimulation
             this.toolStripComboBoxPipes.Items.AddRange(new object[] { });
             this.toolStripComboBoxPipes.MaxDropDownItems = 80;
             this.toolStripComboBoxPipes.Name = "toolStripComboBoxPipes";
-            this.toolStripComboBoxPipes.Size = new System.Drawing.Size(121, 48);
+            this.toolStripComboBoxPipes.Size = new System.Drawing.Size(160, 48);
+            this.toolStripComboBoxPipes.AutoSize = true;
             this.toolStripComboBoxPipes.DropDownStyle = ComboBoxStyle.DropDownList;
             this.toolStripComboBoxPipes.SelectedIndexChanged += new EventHandler(toolStripComboBoxPipes_SelectedIndexChanged);
             this.toolStripComboBoxPipes.FlatStyle = FlatStyle.Standard;

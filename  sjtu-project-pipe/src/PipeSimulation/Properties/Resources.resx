@@ -224,7 +224,7 @@
     <value>[实时监听模式]</value>
   </data>
   <data name="IDS_PIPE_INDEX" xml:space="preserve">
-    <value>第{0}段沉管</value>
+    <value>查看第{0}段沉管沉放过程</value>
   </data>
   <data name="IDS_PNG_FILTER" xml:space="preserve">
     <value>PNG 文件|*.png</value>
@@ -260,7 +260,7 @@
     <value>最大倾角必须大于0</value>
   </data>
   <data name="IDS_PIPES_ALL" xml:space="preserve">
-    <value>所有沉管</value>
+    <value>查看所有沉管沉放过程</value>
   </data>
   <data name="IDS_NODATA_TO_TIME" xml:space="preserve">
     <value>找不到该时刻的数据</value>
