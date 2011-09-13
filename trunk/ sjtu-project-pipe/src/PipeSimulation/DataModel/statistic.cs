@@ -168,7 +168,7 @@ namespace PipeSimulation.DataModel
                 if (pair == null) continue;
 
                 // Overall
-                const string strOverallFormat = "No.{0} connection points:";
+                const string strOverallFormat = "No.{0} connection point:";
                 strString = string.Concat(strString, strChangeLine, string.Format(strOverallFormat, iPairIndex), strChangeLine);
 
                 // Distance, need to calculate
