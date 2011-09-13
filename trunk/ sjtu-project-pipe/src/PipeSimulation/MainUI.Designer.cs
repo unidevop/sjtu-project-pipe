@@ -93,6 +93,7 @@ namespace PipeSimulation
             this.toolStripComboBoxPipes = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonStartAnimation = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonPauseAnimation = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonStopAnimation = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonBegining = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonEnd = new System.Windows.Forms.ToolStripButton();
@@ -557,6 +558,7 @@ namespace PipeSimulation
             this.toolStripComboBoxPipes,
             this.toolStripSeparator3,
             this.toolStripButtonStartAnimation,
+            this.toolStripButtonPauseAnimation,
             this.toolStripButtonStopAnimation,
             this.toolStripButtonBegining,
             this.toolStripButtonEnd,
@@ -596,6 +598,16 @@ namespace PipeSimulation
             this.toolStripButtonStartAnimation.Size = new System.Drawing.Size(23, 45);
             this.toolStripButtonStartAnimation.Text = "播放";
             this.toolStripButtonStartAnimation.Click += new EventHandler(toolStripButtonStartAnimation_Click);
+            // 
+            // toolStripButtonPauseAnimation
+            // 
+            this.toolStripButtonPauseAnimation.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonPauseAnimation.Image = global::PipeSimulation.Properties.Resources.PauseAnimation;
+            this.toolStripButtonPauseAnimation.ImageTransparentColor = System.Drawing.Color.White;
+            this.toolStripButtonPauseAnimation.Name = "toolStripButtonPauseAnimation";
+            this.toolStripButtonPauseAnimation.Size = new System.Drawing.Size(23, 45);
+            this.toolStripButtonPauseAnimation.Text = "暂停";
+            this.toolStripButtonPauseAnimation.Click += new EventHandler(toolStripButtonPauseAnimation_Click);
             // 
             // toolStripButtonStopAnimation
             // 
@@ -766,6 +778,7 @@ namespace PipeSimulation
         private ToolStripComboBox toolStripComboBoxPipes;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripButton toolStripButtonStartAnimation;
+        private ToolStripButton toolStripButtonPauseAnimation;
         private ToolStripButton toolStripButtonStopAnimation;
         private ToolStripButton toolStripButtonBegining;
         private ToolStripButton toolStripButtonEnd;
