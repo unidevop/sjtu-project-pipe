@@ -12,14 +12,15 @@
 			<Pylon>
 				<ModelPath>models\taojia1_2.3ds</ModelPath>
 			</Pylon>
-			<ConnectionPointPair>
-				<StartConnectionPoint x ="-15000" y ="0" z ="0"/>
-				<EndConnectionPoint x="-25000" y ="0" z ="0"/>
-			</ConnectionPointPair>
-			<ConnectionPointPair>
-				<StartConnectionPoint x ="-25000" y ="0" z ="0"/>
-				<EndConnectionPoint x="-35000" y ="0" z ="0"/>
-			</ConnectionPointPair>
+      <ConnectionPointPair>
+        <StartConnectionPoint x ="-235116.461" y ="75416.969" z ="-25792.029"/>
+        <EndConnectionPoint  x ="-153359.747" y ="55340.901" z ="-25028.983"/>
+      </ConnectionPointPair>
+      <ConnectionPointPair>
+        <StartConnectionPoint x ="-234971.018" y ="75484.624" z ="-35441.464"/>
+        <EndConnectionPoint x ="-153719.74" y ="56069.001" z ="-34695.806"/>
+      </ConnectionPointPair>
+      
 		</Pipe>
 
 		<!-- The sceond pipe-->
@@ -31,14 +32,14 @@
 			<Pylon>
 				<ModelPath>models\taojia2_2.3ds</ModelPath>
 			</Pylon>
-			<ConnectionPointPair>
-				<StartConnectionPoint x ="-5000" y ="0" z ="0"/>
-				<EndConnectionPoint x="-15000" y ="0" z ="0"/>
-			</ConnectionPointPair>
-			<ConnectionPointPair>
-				<StartConnectionPoint x ="-15000" y ="0" z ="0"/>
-				<EndConnectionPoint x="-25000" y ="0" z ="0"/>
-			</ConnectionPointPair>
+      <ConnectionPointPair>
+        <StartConnectionPoint x ="-153359.747" y ="55340.901" z ="-25028.983"/>
+        <EndConnectionPoint x ="-70698.053" y ="37366.167" z ="-19756.397"/>
+      </ConnectionPointPair>
+      <ConnectionPointPair>
+        <StartConnectionPoint x ="-153719.74" y ="56069.001" z ="-34695.806"/>
+        <EndConnectionPoint x ="-70696.411" y ="37478.381" z ="-29433.135"/>
+      </ConnectionPointPair>
 		</Pipe>
 
 		<!-- The third pipe-->
@@ -50,15 +51,16 @@
 			<Pylon>
 				<ModelPath>models\taojia3_2.3ds</ModelPath>
 			</Pylon>
-			<ConnectionPointPair>
-				<StartConnectionPoint x ="0" y ="0" z ="0"/>
-				<EndConnectionPoint x="-10000" y ="0" z ="0"/>
-			</ConnectionPointPair>
-			<ConnectionPointPair>
-				<StartConnectionPoint x ="-5000" y ="0" z ="0"/>
-				<EndConnectionPoint x="-15000" y ="0" z ="0"/>
-			</ConnectionPointPair>
-		</Pipe>
+
+      <ConnectionPointPair>
+        <StartConnectionPoint x ="-70698.053" y ="37366.167" z ="-19756.397"/>
+        <EndConnectionPoint x="0" y ="0" z ="0"/> <!--Don't care-->
+      </ConnectionPointPair>
+      <ConnectionPointPair>
+        <StartConnectionPoint x ="-70696.411" y ="37478.381" z ="-29433.135"/>
+        <EndConnectionPoint x="0" y ="0" z ="0"/> <!--Don't care-->
+      </ConnectionPointPair>
+    </Pipe>
 
 		<!-- The forth pipe--><!--
 		<Pipe width ="36" height ="15" length ="90" d1 ="80" d2 ="" t1 ="" t2 ="">
