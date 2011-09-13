@@ -28,6 +28,7 @@ namespace PipeSimulation.PipeApp
         private IRealtimeDataQuery  m_realTimeQuery = null;
         private IHistoryDataQuery m_historyQuery = null;
         private CPipeConnectionIndicator m_PipeConnectionIndicator = null;
+        private ConnectionConfig m_connectionCfg = new ConnectionConfig();
 
         public AppImpl(MainUI mainUI)
         {
@@ -37,18 +38,23 @@ namespace PipeSimulation.PipeApp
 
             try
             {
-                ConnectionConfig connConfig = ConnectionConfig.Instance();
-                string dbConnStr = connConfig.ConnectionString;
-                double readInterval = connConfig.ReadInterval;
+                ConnectionCfg.ConfigChanged += OnConnectionChanged;
 
-                m_realTimeQuery = DataQueryManager.GetRealTimeQuery(dbConnStr, readInterval);
-                m_historyQuery = DataQueryManager.GetHistoricalQuery(dbConnStr);
+                CreateDataQueryComp();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Exception: {0}", ex.Message);
                 Console.WriteLine("Exception: {0}", ex.StackTrace);
             }
+        }
+
+        private void CreateDataQueryComp()
+        {
+            string dbConnStr = ConnectionCfg.ConnectionString;
+
+            m_realTimeQuery = DataQueryManager.GetRealTimeQuery(dbConnStr, ConnectionCfg.ReadInterval);
+            m_historyQuery = DataQueryManager.GetHistoricalQuery(dbConnStr);
         }
 
         protected override void Dispose(bool disposing)
@@ -156,6 +162,14 @@ namespace PipeSimulation.PipeApp
             }
         }
 
+        public override ConnectionConfig ConnectionCfg
+        {
+            get
+            {
+                return m_connectionCfg;
+            }
+        }
+
         public override void SetStatusBarText(string statusBarText)
         {
             StatusStrip statusBar = IApp.theApp.MainUI.StatusStrip;
@@ -183,6 +197,23 @@ namespace PipeSimulation.PipeApp
             {
                 vtkControl.Invalidate();
             }
+        }
+
+        protected void OnConnectionChanged()
+        {
+            RealTimeDataQuery.Disconnect();
+            RealTimeDataQuery.Dispose();
+
+            HistoryTimeDataQuery.Disconnect();
+            HistoryTimeDataQuery.Dispose();
+
+            CreateDataQueryComp();
+
+            RealTimeDataQuery.Connect();
+            HistoryTimeDataQuery.Connect();
+
+            if (ObserverModeManager.ActiveModeType == ObserverMode.ObserverMode.eMonitorMode)
+                RealTimeDataQuery.Activate();
         }
     }
 }

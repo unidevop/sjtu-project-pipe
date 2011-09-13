@@ -33,6 +33,8 @@ namespace PipeSimulation
             abstract public ITextDisplayer WarningTextDisplayer { get; }
             abstract public IVideoWriter VideoWriter { get; }
             abstract public CPipeConnectionIndicator PipeConnectionIndicator { get; }
+            abstract public ConnectionConfig ConnectionCfg { get; }
+
             public static IApp theApp
             {
                 get;

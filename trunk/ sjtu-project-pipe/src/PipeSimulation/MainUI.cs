@@ -93,6 +93,20 @@ namespace PipeSimulation
             IHistoryDataQuery hisDataQuery = IApp.theApp.HistoryTimeDataQuery;
             IRealtimeDataQuery realTimeDataQuery = IApp.theApp.RealTimeDataQuery;
 
+            if (IApp.theApp.ConnectionCfg.IsAutoConnect)
+            {
+                if (hisDataQuery != null && !hisDataQuery.IsConnected)
+                    hisDataQuery.Connect();
+
+                if (realTimeDataQuery != null && !realTimeDataQuery.IsConnected)
+                {
+                    realTimeDataQuery.Connect();
+
+                    if (IApp.theApp.ObserverModeManager.ActiveModeType == ObserverMode.ObserverMode.eMonitorMode)
+                        realTimeDataQuery.Activate();
+                }
+            }
+
             bool bConnected = false;
             string strMessage = null;
             if (hisDataQuery == null || !hisDataQuery.IsConnected

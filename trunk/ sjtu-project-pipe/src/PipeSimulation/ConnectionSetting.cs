@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using PipeSimulation.Utility;
+using PipeSimulation.PipeApp;
+using PipeSimulation.DataQuery;
 
 namespace PipeSimulation
 {
@@ -28,13 +30,13 @@ namespace PipeSimulation
 
         private void LoadConfig()
         {
-            ConnectionConfig connCfg = ConnectionConfig.Instance();
+            ConnectionConfig connCfg = IApp.theApp.ConnectionCfg;
 
             m_dbServer.Text = connCfg.DbAdress;
             m_userName.Text = connCfg.UserName;
             m_password.Text = connCfg.Password;
             m_autoConnect.Checked = connCfg.IsAutoConnect;
-            m_autoConnInterval.Value = (decimal)(connCfg.ReadInterval / 1000.0);
+            m_autoConnInterval.Value = (decimal)(connCfg.ReadInterval.TotalMilliseconds / 1000.0);
 
             m_isConfigConn.Checked = false;
 
@@ -47,7 +49,20 @@ namespace PipeSimulation
 
         private void Connect_ButtonClick(object sender, EventArgs e)
         {
+            // Get DataQuery
+            IHistoryDataQuery hisDataQuery = IApp.theApp.HistoryTimeDataQuery;
+            IRealtimeDataQuery realTimeDataQuery = IApp.theApp.RealTimeDataQuery;
 
+            if (hisDataQuery != null && !hisDataQuery.IsConnected)
+                hisDataQuery.Connect();
+
+            if (realTimeDataQuery != null && !realTimeDataQuery.IsConnected)
+            {
+                realTimeDataQuery.Connect();
+
+                if (IApp.theApp.ObserverModeManager.ActiveModeType == ObserverMode.ObserverMode.eMonitorMode)
+                    realTimeDataQuery.Activate();
+            }
         }
 
         private void IsConfigConnection_CheckedChanged(object sender, EventArgs e)
@@ -64,11 +79,13 @@ namespace PipeSimulation
         {
             if (m_modified)
             {
-                ConnectionConfig connCfg = ConnectionConfig.Instance();
+                ConnectionConfig connCfg = IApp.theApp.ConnectionCfg;
 
                 connCfg.SetConnectionString(m_dbServer.Text, m_userName.Text, m_password.Text);
                 connCfg.IsAutoConnect = m_autoConnect.Checked;
-                connCfg.ReadInterval = 800;//m_autoConnInterval.Value;
+                connCfg.ReadInterval = TimeSpan.FromMilliseconds((double)m_autoConnInterval.Value * 1000.0);
+
+                //  TODO: check on invalid values
                 connCfg.Save();
 
                 m_modified = false;
