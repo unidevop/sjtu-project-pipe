@@ -893,6 +893,10 @@ namespace PipeSimulation
             }
             else
             {
+                // The current observer mode instance must be CReplayMode
+                CReplayMode replayMode = IApp.theApp.ObserverModeManager.ActiveModeInstance as CReplayMode;
+                if (replayMode == null) return;
+                
                 // Update the UI
                 toolStripButtonStartAnimation.Checked = false;
                 toolStripButtonStartAnimation.Enabled = true;
@@ -903,7 +907,7 @@ namespace PipeSimulation
                 toolStripButtonStopAnimation.Checked = false;
                 toolStripButtonStopAnimation.Enabled = false;
 
-                trackBarAnimation.Value = 0;
+                trackBarAnimation.Value = replayMode.ReplayAnimationEngine.AnimationProgress;
                 UpdateAnimationLabelText();
 
                 viewSpecificTimerScene.Enabled = true;

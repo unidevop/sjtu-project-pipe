@@ -149,7 +149,7 @@ namespace PipeSimulation
                 // Stop the timer
                 StopTimer();
 
-                m_iAnimationProgress = 0;
+                //m_iAnimationProgress = 0;
             }
 
             public void DriveModel(int t)
@@ -247,7 +247,8 @@ namespace PipeSimulation
                     bool bLoopPlay = false; // In future, get this value from the config file
                     if (!bLoopPlay)
                     {
-                        DriveModel(AnimationTotalProgress);
+                        m_iAnimationProgress = AnimationTotalProgress;
+                        DriveModel(m_iAnimationProgress);
                         StopAnimation();
                     }
                     else
