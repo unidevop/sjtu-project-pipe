@@ -437,6 +437,13 @@ namespace PipeSimulation.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap PauseAnimation {
+            get {
+                object obj = ResourceManager.GetObject("PauseAnimation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap record_icon {
             get {
                 object obj = ResourceManager.GetObject("record_icon", resourceCulture);

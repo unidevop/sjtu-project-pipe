@@ -295,6 +295,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="application.ico" />
+    <None Include="Properties\res\PauseAnimation.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

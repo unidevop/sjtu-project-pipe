@@ -78,6 +78,7 @@ namespace PipeSimulation
         public class CReplayAnimationEngine
         {
             private bool m_bIsRunning = false;
+            private bool m_bIsPaused = false;
             private System.Timers.Timer m_timer = new System.Timers.Timer();
             private int m_iAnimationProgress = 0;
             private int m_iAnimationTotalProgress = 100;
@@ -92,32 +93,59 @@ namespace PipeSimulation
 
             public void StartAnimation()
             {
-                // If already running, return
-                if (m_bIsRunning) return;
-                m_bIsRunning = true;
+                if (m_bIsPaused)
+                {
+                    m_bIsPaused = false;
+                    m_bIsRunning = true;
+
+                    // Fire the event
+                    if (AnimationResume != null)
+                    {
+                        AnimationResume();
+                    }
+                }
+                else
+                {
+                    // If already running, return
+                    if (m_bIsRunning) return;
+                    m_bIsRunning = true;
+
+                    // Fire the event
+                    if (AnimationStartted != null)
+                    {
+                        AnimationStartted();
+                    }
+
+                    // Start timer
+                    StartTimer();
+                }
+            }
+
+            public void PauseAnimation()
+            {
+                if (m_bIsPaused == true) return;
+
+                m_bIsRunning = false;
+                m_bIsPaused = true;
 
                 // Fire the event
-                if (AnimationStartted != null)
+                if (AnimationPaused != null)
                 {
-                    AnimationStartted();
+                    AnimationPaused();
                 }
-
-                // Start timer
-                StartTimer();
             }
 
             public void StopAnimation()
             {
-                // If not running, return
-                if (!m_bIsRunning) return;
                 m_bIsRunning = false;
+                m_bIsPaused = false;
 
                 // Fire the event
                 if (AnimationStopped != null)
                 {
                     AnimationStopped();
                 }
-
+                
                 // Stop the timer
                 StopTimer();
 
@@ -147,6 +175,11 @@ namespace PipeSimulation
             public bool IsRunning
             {
                 get { return m_bIsRunning; }
+            }
+
+            public bool IsPaused
+            {
+                get { return m_bIsPaused; }
             }
 
             public int AnimationTotalProgress
@@ -181,6 +214,12 @@ namespace PipeSimulation
             public delegate void AnimationRunningHandler(int t);
             public event AnimationRunningHandler AnimationRunning;
 
+            public delegate void AnimationPausedHandler();
+            public event AnimationPausedHandler AnimationPaused;
+
+            public delegate void AnimationResumeHandler();
+            public event AnimationResumeHandler AnimationResume;
+
             public delegate void AnimationStoppedHandler();
             public event AnimationStoppedHandler AnimationStopped;
 
@@ -198,6 +237,9 @@ namespace PipeSimulation
             {
                 // Suspend the thread to give the UI thread a change to update.
                 System.Threading.Thread.Sleep(0);
+
+                // If the animation is paused, directly return
+                if (m_bIsPaused) return;
 
                 m_iAnimationProgress += 1;
                 if (m_iAnimationProgress > AnimationTotalProgress)

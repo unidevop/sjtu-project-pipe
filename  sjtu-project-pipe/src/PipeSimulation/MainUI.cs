@@ -436,6 +436,8 @@ namespace PipeSimulation
             // Replay mode
             observerManager.ReplayMode.ReplayAnimationEngine.AnimationStartted += new CReplayAnimationEngine.AnimationStarttedHandler(ReplayAnimationEngine_AnimationStartted);
             observerManager.ReplayMode.ReplayAnimationEngine.AnimationRunning += new CReplayAnimationEngine.AnimationRunningHandler(ReplayAnimationEngine_AnimationRunning);
+            observerManager.ReplayMode.ReplayAnimationEngine.AnimationPaused += new CReplayAnimationEngine.AnimationPausedHandler(ReplayAnimationEngine_AnimationPaused);
+            observerManager.ReplayMode.ReplayAnimationEngine.AnimationResume += new CReplayAnimationEngine.AnimationResumeHandler(ReplayAnimationEngine_AnimationResume);
             observerManager.ReplayMode.ReplayAnimationEngine.AnimationStopped += new CReplayAnimationEngine.AnimationStoppedHandler(ReplayAnimationEngine_AnimationStopped);
 
             // Enter the default mode.
@@ -767,6 +769,17 @@ namespace PipeSimulation
             replayMode.ReplayAnimationEngine.StartAnimation();
         }
 
+        private void toolStripButtonPauseAnimation_Click(object sender, EventArgs e)
+        {
+            // CReplayMode.PauseAnimation
+
+            // The current observer mode instance must be CReplayMode
+            CReplayMode replayMode = IApp.theApp.ObserverModeManager.ActiveModeInstance as CReplayMode;
+            if (replayMode == null) return;
+
+            replayMode.ReplayAnimationEngine.PauseAnimation();
+        }
+
         private void toolStripButtonStopAnimation_Click(object sender, EventArgs e)
         {
             // CReplayMode.StopAnimation
@@ -802,6 +815,39 @@ namespace PipeSimulation
             toolStripButtonStartAnimation.Checked = true;
             toolStripButtonStartAnimation.Enabled = true;
 
+            toolStripButtonPauseAnimation.Checked = false;
+            toolStripButtonPauseAnimation.Enabled = true;
+
+            toolStripButtonStopAnimation.Checked = false;
+            toolStripButtonStopAnimation.Enabled = true;
+
+            viewSpecificTimerScene.Enabled = false;
+        }
+
+        private void ReplayAnimationEngine_AnimationResume()
+        {
+            // Update the UI
+            toolStripButtonStartAnimation.Checked = true;
+            toolStripButtonStartAnimation.Enabled = true;
+
+            toolStripButtonPauseAnimation.Checked = false;
+            toolStripButtonPauseAnimation.Enabled = true;
+
+            toolStripButtonStopAnimation.Checked = false;
+            toolStripButtonStopAnimation.Enabled = true;
+
+            viewSpecificTimerScene.Enabled = false;
+        }
+
+        private void ReplayAnimationEngine_AnimationPaused()
+        {
+            // Update the UI
+            toolStripButtonStartAnimation.Checked = false;
+            toolStripButtonStartAnimation.Enabled = true;
+
+            toolStripButtonPauseAnimation.Checked = true;
+            toolStripButtonPauseAnimation.Enabled = true;
+
             toolStripButtonStopAnimation.Checked = false;
             toolStripButtonStopAnimation.Enabled = true;
 
@@ -809,7 +855,6 @@ namespace PipeSimulation
         }
 
         private delegate void UpdateTrackProgress(int t);
-
         private void ReplayAnimationEngine_AnimationRunning(int t)
         {
             // Notice this maybe a unsafe thread call.
@@ -837,8 +882,8 @@ namespace PipeSimulation
                 DriveModeByTrackBarValue(replayMode, t);
             }
         }
-        private delegate void StopAnimationProgress();
 
+        private delegate void StopAnimationProgress();
         private void ReplayAnimationEngine_AnimationStopped()
         {
             if (trackBarAnimation.InvokeRequired)
@@ -851,6 +896,9 @@ namespace PipeSimulation
                 // Update the UI
                 toolStripButtonStartAnimation.Checked = false;
                 toolStripButtonStartAnimation.Enabled = true;
+
+                toolStripButtonPauseAnimation.Checked = false;
+                toolStripButtonPauseAnimation.Enabled = false;
 
                 toolStripButtonStopAnimation.Checked = false;
                 toolStripButtonStopAnimation.Enabled = false;
@@ -979,6 +1027,9 @@ namespace PipeSimulation
             // Update the start, stop
             toolStripButtonStartAnimation.Checked = false;
             toolStripButtonStartAnimation.Enabled = true;
+
+            toolStripButtonPauseAnimation.Checked = false;
+            toolStripButtonPauseAnimation.Enabled = false;
 
             toolStripButtonStopAnimation.Checked = false;
             toolStripButtonStopAnimation.Enabled = false;
