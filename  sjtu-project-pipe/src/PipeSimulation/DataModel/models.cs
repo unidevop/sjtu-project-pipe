@@ -5,12 +5,12 @@ using PipeSimulation.Utility;
 using System.Collections.Generic;
 using PipeSimulation.PipeApp;
 using PipeSimulation.DataQuery;
+using PipeSimulation.Geometry;
 
 namespace PipeSimulation
 {
     namespace DataModel
     {
-
         /// <summary>
         /// This class is used to repsent the node from disk
         /// </summary>
@@ -105,76 +105,6 @@ namespace PipeSimulation
             eDone               // The pipe is already been done
         }
 
-        public class CPoint
-        {
-            private double[] m_startConnectionPoint = new double[3]; // This value is used to determine the connection point to the previous pipe model
-        }
-
-        public class CPipeConnectionPointPair
-        {
-            private double[] m_startConnectionPoint = new double[3]; // This value is used to determine the connection point to the previous pipe model
-            private double[] m_endConnectionPoint = new double[3];  // This value is used to determine the connection point to the next pipe model
-
-            public CPipeConnectionPointPair()
-            {
-            }
-
-            public virtual void ReadFromXMLNode(XmlNode connectionPairNode)
-            {
-                // Read the start connection point
-                XmlNode startConnectionPointNode = connectionPairNode.SelectSingleNode(ModelXMLDefinition.pipeStartConnPoint);
-                ReadConnectionPoint(startConnectionPointNode, m_startConnectionPoint);
-
-                // Read the end connection point
-                XmlNode endConnectionPointNode = connectionPairNode.SelectSingleNode(ModelXMLDefinition.pipeEndConnPoint);
-                ReadConnectionPoint(endConnectionPointNode, m_endConnectionPoint);
-            }
-
-            public double[] StartConnectionPoint 
-            { 
-                get 
-                {
-                    return m_startConnectionPoint; 
-                }
-                set
-                {
-                    m_startConnectionPoint = value;
-                }
-            }
-            public double[] EndConnectionPoint
-            { 
-                get 
-                { 
-                    return m_endConnectionPoint; 
-                }
-                set
-                {
-                    m_endConnectionPoint = value;
-                }
-            }
-
-            private void ReadConnectionPoint(XmlNode node, double[] coords)
-            {
-                if (null == node || null == coords) return;
-
-                foreach (XmlAttribute attri in node.Attributes)
-                {
-                    if (string.Compare(attri.Name, ModelXMLDefinition.pipeCoordX, true) == 0)
-                    {
-                        coords[0] = double.Parse(attri.InnerText);
-                    }
-                    else if (string.Compare(attri.Name, ModelXMLDefinition.pipeCoordY, true) == 0)
-                    {
-                        coords[1] = double.Parse(attri.InnerText);
-                    }
-                    else if (string.Compare(attri.Name, ModelXMLDefinition.pipeCoordZ, true) == 0)
-                    {
-                        coords[2] = double.Parse(attri.InnerText);
-                    }
-                }
-            }
-        }
-
         /// <summary>
         /// Define a class to represent the pipe
         /// Which is a model and also work with some others models together
@@ -189,6 +119,7 @@ namespace PipeSimulation
             private vtk.vtkTransform m_transFormFinal = null;
             private PipeInfo m_finalPipeInfo = null;
             private IList<CPipeConnectionPointPair> m_connectionPointPairList = new List<CPipeConnectionPointPair>();
+            private CUCS m_gpsUCS = new CUCS();
 
             public CPipeModel() : base(null)
             {
@@ -243,6 +174,13 @@ namespace PipeSimulation
                        connectionPair.ReadFromXMLNode(connectionPairNode);
                        m_connectionPointPairList.Add(connectionPair);
                    }
+
+                    // Read the GPS UCS
+                   XmlNode gpsUCSNode = pipeNode.SelectSingleNode(ModelXMLDefinition.pipeGPSUCS);
+                   if (gpsUCSNode != null)
+                   {
+                       m_gpsUCS.ReadFromXMLNode(gpsUCSNode);
+                   }
                 }
                 catch (SystemException)
                 {
@@ -255,6 +193,7 @@ namespace PipeSimulation
             public double Width { get { return m_dWidth; } internal set { m_dWidth = value; } }
             public double Height { get { return m_dHeight; } internal set { m_dHeight = value; } }
             public IList<CPipeConnectionPointPair> ConnectionPointPairList { get { return m_connectionPointPairList; } }
+            public CUCS GPSUCS { get { return m_gpsUCS; } }
 
             [System.Runtime.CompilerServices.IndexerName(/*MSG0*/"Pylon")]
             public CPylonModel this[int index]
@@ -342,7 +281,7 @@ namespace PipeSimulation
 
                     if (m_finalPipeInfo != null)
                     {
-                        m_transFormFinal = m_finalPipeInfo.Matrix.ToVTKTransformation();
+                        m_transFormFinal = Utility.CPipeTransformUtility.TransformGPSMatrix(GPSUCS.UCSTransform, m_finalPipeInfo.Matrix.ToVTKTransformation());
                     }
                 }
             }

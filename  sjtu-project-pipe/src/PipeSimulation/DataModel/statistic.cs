@@ -5,6 +5,7 @@ using PipeSimulation.Properties;
 using PipeSimulation.DataQuery;
 using PipeSimulation.DataDriven;
 using System.Collections.Generic;
+using PipeSimulation.Geometry;
 
 namespace PipeSimulation.DataModel
 {
@@ -85,9 +86,9 @@ namespace PipeSimulation.DataModel
             {
                 if (pair == null) continue;
 
-                double dx = Math.Abs(pair.EndConnectionPoint[0] - pair.StartConnectionPoint[0]);
-                double dy = Math.Abs(pair.EndConnectionPoint[1] - pair.StartConnectionPoint[1]);
-                double dz = Math.Abs(pair.EndConnectionPoint[2] - pair.StartConnectionPoint[2]);
+                double dx = Math.Abs(pair.EndConnectionPoint.X - pair.StartConnectionPoint.X);
+                double dy = Math.Abs(pair.EndConnectionPoint.Y - pair.StartConnectionPoint.Y);
+                double dz = Math.Abs(pair.EndConnectionPoint.Z - pair.StartConnectionPoint.Z);
                 double dDist = Math.Sqrt(dx * dx + dy * dy + dz * dz);
 
                 // Overall
