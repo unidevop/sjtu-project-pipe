@@ -46,6 +46,7 @@ namespace PipeSimulation
             public static string PipeGroup { get { return /*MSG0*/"Pipes"; } }
             public static string Pipe { get { return /*MSG0*/"Pipe"; } }
             public static string Pylon { get { return /*MSG0*/"Pylon"; } }
+            public static string FillModel { get { return /*MSG0*/"FillModel"; } }
             public static string Model { get { return /*MSG0*/"Model"; } }
 
             public static string modelPath { get { return /*MSG0*/"ModelPath"; } }

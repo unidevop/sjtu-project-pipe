@@ -599,9 +599,9 @@ namespace PipeSimulation
 
                         foreach (ISceneNode sceneNode in pipeModel.Children)
                         {
-                            CPylonModel pylonModel = sceneNode as CPylonModel;
-                            if (pylonModel != null)
-                                pylonModel.LoadModel(System.IO.Path.Combine(CFolderUtility.DataFolder(), pylonModel.ModelPath));
+                            IDiskModel subDiskModel = sceneNode as IDiskModel;
+                            if (subDiskModel != null)
+                                subDiskModel.LoadModel(System.IO.Path.Combine(CFolderUtility.DataFolder(), subDiskModel.ModelPath));
                         }
                     }
                }
