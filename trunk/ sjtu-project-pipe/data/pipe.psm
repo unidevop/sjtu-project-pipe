@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <System>
-	<Pipes>
+  <Pipes>
 
-		<!-- The first pipe-->
-		<Pipe width ="45" height ="20" length ="80" >
-			<ModelPath>models\Pipe1.3ds</ModelPath>
-			<Pylon>
-				<ModelPath>models\taojia1_1.3ds</ModelPath>
-			</Pylon>
-			<Pylon>
-				<ModelPath>models\taojia1_2.3ds</ModelPath>
-			</Pylon>
+    <!-- The first pipe-->
+    <Pipe width ="45" height ="20" length ="80" >
+      <ModelPath>models\Pipe1.3ds</ModelPath>
+      <Pylon>
+        <ModelPath>models\taojia1_1.3ds</ModelPath>
+      </Pylon>
+      <Pylon>
+        <ModelPath>models\taojia1_2.3ds</ModelPath>
+      </Pylon>
       <ConnectionPointPair>
         <StartConnectionPoint x ="-235116.461" y ="75416.969" z ="-25792.029"/>
         <EndConnectionPoint  x ="-153359.747" y ="55340.901" z ="-25028.983"/>
@@ -20,18 +20,22 @@
         <StartConnectionPoint x ="-234971.018" y ="75484.624" z ="-35441.464"/>
         <EndConnectionPoint x ="-153719.74" y ="56069.001" z ="-34695.806"/>
       </ConnectionPointPair>
-      
-		</Pipe>
+      <GPSUCS>
+        <Origin x ="-226248.224" y ="70098.901" z ="-6698.504"/>
+        <XAxis x ="57247.261" y ="-14065.963" z ="170.635"/>
+        <YAxis x ="-8475.11" y ="-34434.105" z ="-371.714"/>
+      </GPSUCS>
+    </Pipe>
 
-		<!-- The sceond pipe-->
-		<Pipe width ="36" height ="15" length ="90" d1 ="80" d2 ="" t1 ="" t2 ="">
-			<ModelPath>models\pipe2.3ds</ModelPath>
-			<Pylon>
-				<ModelPath>models\taojia2_1.3ds</ModelPath>
-			</Pylon>
-			<Pylon>
-				<ModelPath>models\taojia2_2.3ds</ModelPath>
-			</Pylon>
+    <!-- The sceond pipe-->
+    <Pipe width ="36" height ="15" length ="90" d1 ="80" d2 ="" t1 ="" t2 ="">
+      <ModelPath>models\pipe2.3ds</ModelPath>
+      <Pylon>
+        <ModelPath>models\taojia2_1.3ds</ModelPath>
+      </Pylon>
+      <Pylon>
+        <ModelPath>models\taojia2_2.3ds</ModelPath>
+      </Pylon>
       <ConnectionPointPair>
         <StartConnectionPoint x ="-153359.747" y ="55340.901" z ="-25028.983"/>
         <EndConnectionPoint x ="-70698.053" y ="37366.167" z ="-19756.397"/>
@@ -40,49 +44,61 @@
         <StartConnectionPoint x ="-153719.74" y ="56069.001" z ="-34695.806"/>
         <EndConnectionPoint x ="-70696.411" y ="37478.381" z ="-29433.135"/>
       </ConnectionPointPair>
-		</Pipe>
+      <GPSUCS>
+        <Origin x ="-144803.078" y ="50463.118" z ="-5649.716"/>
+        <XAxis x ="57514.718" y ="-12505.52" z ="3537.019"/>
+        <YAxis x ="-3895.667" y ="-17314.195" z ="119.871"/>
+      </GPSUCS>
+    </Pipe>
 
-		<!-- The third pipe-->
-		<Pipe width ="36" height ="15" length ="90" d1 ="80" d2 ="" t1 ="" t2 ="">
-			<ModelPath>models\pipe3.3ds</ModelPath>
-			<Pylon>
-				<ModelPath>models\taojia3_1.3ds</ModelPath>
-			</Pylon>
-			<Pylon>
-				<ModelPath>models\taojia3_2.3ds</ModelPath>
-			</Pylon>
-
+    <!-- The third pipe-->
+    <Pipe width ="36" height ="15" length ="90" d1 ="80" d2 ="" t1 ="" t2 ="">
+      <ModelPath>models\pipe3.3ds</ModelPath>
+      <Pylon>
+        <ModelPath>models\taojia3_1.3ds</ModelPath>
+      </Pylon>
+      <Pylon>
+        <ModelPath>models\taojia3_2.3ds</ModelPath>
+      </Pylon>
       <ConnectionPointPair>
         <StartConnectionPoint x ="-70698.053" y ="37366.167" z ="-19756.397"/>
-        <EndConnectionPoint x="0" y ="0" z ="0"/> <!--Don't care-->
+        <EndConnectionPoint x="0" y ="0" z ="0"/>
+        <!--Don't care-->
       </ConnectionPointPair>
       <ConnectionPointPair>
         <StartConnectionPoint x ="-70696.411" y ="37478.381" z ="-29433.135"/>
-        <EndConnectionPoint x="0" y ="0" z ="0"/> <!--Don't care-->
+        <EndConnectionPoint x="0" y ="0" z ="0"/>
+        <!--Don't care-->
       </ConnectionPointPair>
+      <GPSUCS>
+        <Origin x ="-65513.397" y ="33306.774" z ="-108.073"/>
+        <XAxis x ="57646.792" y ="-10987.172" z ="6829.311"/>
+        <YAxis x ="-2334.43" y ="-17570.674" z ="286.695"/>
+      </GPSUCS>
     </Pipe>
 
-		<!-- The forth pipe--><!--
+    <!-- The forth pipe-->
+    <!--
 		<Pipe width ="36" height ="15" length ="90" d1 ="80" d2 ="" t1 ="" t2 ="">
 			<ModelPath>models\pipe4.3ds</ModelPath>
 		</Pipe>-->
-	</Pipes>
-	<Model>
-		<ModelPath>models\anbian.3ds</ModelPath>
-	</Model>
-	<Model>
-		<ModelPath>models\jicao.3ds</ModelPath>
-	</Model>
-	<Model>
-		<ModelPath>models\anmai0.3ds</ModelPath>
-	</Model>
-	<Model>
-		<ModelPath>models\anmai2.3ds</ModelPath>
-	</Model>
-	<Model>
-		<ModelPath>models\anbianjizuo.3ds</ModelPath>
-	</Model>
-	<Model>
-		<ModelPath>models\ganwu.3ds</ModelPath>
-	</Model>
+  </Pipes>
+  <Model>
+    <ModelPath>models\anbian.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\jicao.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\anmai0.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\anmai2.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\anbianjizuo.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\ganwu.3ds</ModelPath>
+  </Model>
 </System>
