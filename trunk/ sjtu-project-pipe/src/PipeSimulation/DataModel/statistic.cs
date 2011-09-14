@@ -57,18 +57,18 @@ namespace PipeSimulation.DataModel
             const string strCoordFormat = "{0,15:0,0.000}";
             string strStartPoint;
             strStartPoint = string.Concat("(",
-                                          string.Format(strCoordFormat, pipeInfo.StartPoint.X), " ,",
-                                          string.Format(strCoordFormat, pipeInfo.StartPoint.Y), " ,",
-                                          string.Format(strCoordFormat, pipeInfo.StartPoint.Z), ")");
+                                          string.Format(strCoordFormat, pipeInfo.StartPoint.X * IApp.theApp.DataModel.GPSUnitToMeter), " ,",
+                                          string.Format(strCoordFormat, pipeInfo.StartPoint.Y * IApp.theApp.DataModel.GPSUnitToMeter), " ,",
+                                          string.Format(strCoordFormat, pipeInfo.StartPoint.Z * IApp.theApp.DataModel.GPSUnitToMeter), ")");
 
             strString = string.Concat(strString, strChangeLine, strStartPoint, strChangeLine);
 
             // GPS2
             string strEndPoint;
             strEndPoint = string.Concat("(",
-                                          string.Format(strCoordFormat, pipeInfo.EndPoint.X), " ,",
-                                          string.Format(strCoordFormat, pipeInfo.EndPoint.Y), " ,",
-                                          string.Format(strCoordFormat, pipeInfo.EndPoint.Z), ")");
+                                          string.Format(strCoordFormat, pipeInfo.EndPoint.X * IApp.theApp.DataModel.GPSUnitToMeter), " ,",
+                                          string.Format(strCoordFormat, pipeInfo.EndPoint.Y * IApp.theApp.DataModel.GPSUnitToMeter), " ,",
+                                          string.Format(strCoordFormat, pipeInfo.EndPoint.Z * IApp.theApp.DataModel.GPSUnitToMeter), ")");
             strString = string.Concat(strString, strEndPoint, strChangeLine);
 
             // Alpha
@@ -97,16 +97,16 @@ namespace PipeSimulation.DataModel
                 const string strValueFormat = "{0:0.###}";
 
                 // Distance
-                strString = string.Concat(strString, string.Format(strValueFormat, dDist), strChangeLine);
+                strString = string.Concat(strString, string.Format(strValueFormat, dDist * IApp.theApp.DataModel.ModelingUnitToMeter), strChangeLine);
 
                 // Delta x, need to calculate
-                strString = string.Concat(strString, string.Format(strValueFormat, dx), strChangeLine);
+                strString = string.Concat(strString, string.Format(strValueFormat, dx * IApp.theApp.DataModel.ModelingUnitToMeter), strChangeLine);
 
                 // Delta y, need to calculate
-                strString = string.Concat(strString, string.Format(strValueFormat, dy), strChangeLine);
+                strString = string.Concat(strString, string.Format(strValueFormat, dy * IApp.theApp.DataModel.ModelingUnitToMeter), strChangeLine);
 
                 // Delta z, need to calculate
-                strString = string.Concat(strString, string.Format(strValueFormat, dz), strChangeLine);
+                strString = string.Concat(strString, string.Format(strValueFormat, dz * IApp.theApp.DataModel.ModelingUnitToMeter), strChangeLine);
 
                 iPairIndex++;
             }
@@ -149,17 +149,17 @@ namespace PipeSimulation.DataModel
             }
             
             // GPS1
-            strString = string.Concat(strString, strChangeLine, "GPS1:", strChangeLine);
+            strString = string.Concat(strString, strChangeLine, "GPS1(MM):", strChangeLine);
 
             // GPS2
-            strString = string.Concat(strString, "GPS2: ", strChangeLine);
+            strString = string.Concat(strString, "GPS2(MM): ", strChangeLine);
 
             // Alpha
-            strString = string.Concat(strString, strChangeLine, "Alpha:", strChangeLine);
+            strString = string.Concat(strString, strChangeLine, "Alpha Deg:", strChangeLine);
             strString = string.Concat(strString, "Max Alpha:", strChangeLine);
 
             // Beta
-            strString = string.Concat(strString, strChangeLine, "Beta:", strChangeLine);
+            strString = string.Concat(strString, strChangeLine, "Beta Deg:", strChangeLine);
             strString = string.Concat(strString, "Max Beta:", strChangeLine);
 
             // Connection Point
@@ -169,7 +169,7 @@ namespace PipeSimulation.DataModel
                 if (pair == null) continue;
 
                 // Overall
-                const string strOverallFormat = "No.{0} connection point:";
+                const string strOverallFormat = "No.{0} connection point (M):";
                 strString = string.Concat(strString, strChangeLine, string.Format(strOverallFormat, iPairIndex), strChangeLine);
 
                 // Distance, need to calculate
