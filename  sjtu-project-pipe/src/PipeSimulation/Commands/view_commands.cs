@@ -86,6 +86,7 @@ namespace PipeSimulation.Commands
             IApp.theApp.vtkControl.MouseDown -= vtkControl_MouseDown;
             IApp.theApp.vtkControl.MouseMove -= vtkControl_MouseMove;
             IApp.theApp.vtkControl.MouseUp -= vtkControl_MouseUp;
+            IApp.theApp.vtkControl.MouseWheel -= vtkControl_MouseWheel;
         }
     }
 
@@ -158,6 +159,7 @@ namespace PipeSimulation.Commands
             IApp.theApp.vtkControl.MouseDown -= vtkControl_MouseDown;
             IApp.theApp.vtkControl.MouseMove -= vtkControl_MouseMove;
             IApp.theApp.vtkControl.MouseUp -= vtkControl_MouseUp;
+            IApp.theApp.vtkControl.MouseWheel -= vtkControl_MouseWheel;
         }
     }
 
@@ -230,6 +232,7 @@ namespace PipeSimulation.Commands
             IApp.theApp.vtkControl.MouseDown -= vtkControl_MouseDown;
             IApp.theApp.vtkControl.MouseMove -= vtkControl_MouseMove;
             IApp.theApp.vtkControl.MouseUp -= vtkControl_MouseUp;
+            IApp.theApp.vtkControl.MouseWheel -= vtkControl_MouseWheel;
         }
     }
 
