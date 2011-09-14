@@ -102,7 +102,8 @@ namespace PipeSimulation
         {
             eNotStartedYet,     // The pipe has not been started yet
             eWorkingInProgess,  // The pipe is working in progress
-            eDone               // The pipe is already been done
+            eDone,              // The pipe is already been done
+            eFill               // Thi pipe should be filled
         }
 
         /// <summary>
@@ -158,12 +159,20 @@ namespace PipeSimulation
                        //ModelPath = System.IO.Path.Combine(CFolderUtility.DataFolder(), modelPathNode.InnerText);
                    }
 
-                    // Read the pylons and other models
+                    // Read the pylons models
                    XmlNodeList pylonNodes = pipeNode.SelectNodes(ModelXMLDefinition.Pylon);
                    foreach (XmlNode pylonNode in pylonNodes)
                    {
                        CPylonModel normalNode = new CPylonModel(this);
                        normalNode.ReadFromXMLNode(pylonNode);
+                   }
+
+                   // Read the fill models
+                   XmlNodeList fillNodes = pipeNode.SelectNodes(ModelXMLDefinition.FillModel);
+                   foreach (XmlNode fillNode in fillNodes)
+                   {
+                       CFillModel normalNode = new CFillModel(this);
+                       normalNode.ReadFromXMLNode(fillNode);
                    }
 
                    // Read Connection Pair
@@ -195,15 +204,25 @@ namespace PipeSimulation
             public IList<CPipeConnectionPointPair> ConnectionPointPairList { get { return m_connectionPointPairList; } }
             public CUCS GPSUCS { get { return m_gpsUCS; } }
 
-            [System.Runtime.CompilerServices.IndexerName(/*MSG0*/"Pylon")]
-            public CPylonModel this[int index]
-            {
-                get
-                {
-                    if (index >= Children.Count || index < 0) return null;
-                    return Children[index] as CPylonModel;
-                }
-            }
+            //[System.Runtime.CompilerServices.IndexerName(/*MSG0*/"Pylon")]
+            //public CPylonModel this[int index]
+            //{
+            //    get
+            //    {
+            //        if (index >= Children.Count || index < 0) return null;
+            //        return Children[index] as CPylonModel;
+            //    }
+            //}
+
+            //[System.Runtime.CompilerServices.IndexerName(/*MSG0*/"FillModel")]
+            //public CFillModel this[int index]
+            //{
+            //    get
+            //    {
+            //        if (index >= Children.Count || index < 0) return null;
+            //        return Children[index] as CFillModel;
+            //    }
+            //}
 
             // Pipe Status
             public PipeStatus Status
@@ -215,28 +234,43 @@ namespace PipeSimulation
                     m_ePipeStatus = value;
 
                     // Deal with the Plyon Models for different models
-                    if (m_ePipeStatus == PipeStatus.eNotStartedYet)
+                    bool bNotStartedYet = (m_ePipeStatus == PipeStatus.eNotStartedYet);
+                    Visible = !bNotStartedYet;
+                    //if (m_ePipeStatus == PipeStatus.eNotStartedYet)
+                    //{
+                    //    Visible = false;
+                    //  }
+                    //else if (m_ePipeStatus == PipeStatus.eWorkingInProgess)
+                    //{
+                    //    Visible = true;
+
+                    //}
+                    //else if (m_ePipeStatus == PipeStatus.eDone)
+                    //{
+                    //    Visible = true;
+                    //}
+                    //else if (m_ePipeStatus == PipeStatus.eFill)
+                    //{
+                    //    Visible = true;
+                    //}
+
+                    // show/hide the plyon models
+                    bool bWorkingInProgress = (m_ePipeStatus == PipeStatus.eWorkingInProgess);
+                    foreach (ISceneNode node in Children)
                     {
-                        Visible = false;
-                        foreach (ISceneNode node in Children)
+                        if (node is CPylonModel)
                         {
-                            node.Visible = false;
+                            node.Visible = bWorkingInProgress;
                         }
                     }
-                    else if (m_ePipeStatus == PipeStatus.eWorkingInProgess)
+
+                    // show/hide the fill models
+                    bool bFill = (m_ePipeStatus == PipeStatus.eFill);
+                    foreach (ISceneNode node in Children)
                     {
-                        Visible = true;
-                        foreach (ISceneNode node in Children)
+                        if (node is CFillModel)
                         {
-                            node.Visible = true;
-                        }
-                    }
-                    else if (m_ePipeStatus == PipeStatus.eDone)
-                    {
-                        Visible = true;
-                        foreach (ISceneNode node in Children)
-                        {
-                            node.Visible = false;
+                            node.Visible = bFill;
                         }
                     }
                 }
@@ -255,7 +289,10 @@ namespace PipeSimulation
                 _DrivdeModel(ModelNode, transform);
                 foreach (ISceneNode node in Children)
                 {
-                    _DrivdeModel(node.ModelNode, transform);
+                    if (node is CPylonModel)
+                    {
+                        _DrivdeModel(node.ModelNode, transform);
+                    }
                 }
             }
 
@@ -344,6 +381,38 @@ namespace PipeSimulation
             public double D { get { return m_dD; } internal set { m_dD = value; } }
             public double T { get { return m_dT; } internal set { m_dT = value; } }
             public double Height { get { return m_dHeight; } internal set { m_dHeight = value; } }
+        }
+        public class CFillModel : CSceneNodeFromDisk
+        {
+            public CFillModel(ISceneNode parentNode)
+                : base(parentNode)
+            {
+            }
+
+            public virtual void ReadFromXMLNode(XmlNode node)
+            {
+                try
+                {
+                    // Deal with model path, must be only one
+                    XmlNode modelPathNode = node.SelectSingleNode(ModelXMLDefinition.modelPath);
+                    if (modelPathNode != null)
+                    {
+                        //ModelPath = System.IO.Path.Combine(CFolderUtility.DataFolder(), modelPathNode.InnerText);
+                        ModelPath = modelPathNode.InnerText;
+                    }
+
+                    //// Deal with sub models
+                    //XmlNode modelsNode = node.SelectSingleNode(ModelXMLDefinition.ModelsNode);
+                    //if (modelsNode != null)
+                    //{
+                    //    CModelXMLReader.ReadModels(this, modelsNode);
+                    //}
+                }
+                catch (SystemException)
+                {
+                    throw;
+                }
+            }
         }
 
         public class CStaticModel : CSceneNodeFromDisk

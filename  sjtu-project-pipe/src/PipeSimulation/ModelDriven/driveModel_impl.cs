@@ -51,8 +51,17 @@ namespace PipeSimulation
                         // Also, the distance between the connection point should be taken into account
                         if ((pipeModel.FinalPipeInfo != null && pipeModel.FinalPipeInfo.Time == m_currentPipeInfo.Time/*time is not enough*/))
                         {
-                            // Mark the status as done
-                            pipeModel.Status = PipeStatus.eDone;
+                            // Mark the status as fill and its previous model
+                            pipeModel.Status = PipeStatus.eFill;
+                            if (IApp.theApp.DataModel.PipeModels.Count > 1)
+                            {
+                                CPipeModel previousModel = IApp.theApp.DataModel.PipeModels[iPipeIndex - 2];
+                                if (null != previousModel)
+                                {
+                                    previousModel.Status = PipeStatus.eFill;
+                                }
+                            }
+
                             pipeModel.DriveModel(pipeModel.FinalTransform);
                             continue;
                         }
@@ -63,7 +72,15 @@ namespace PipeSimulation
                     }
                     else if (iPipeIndex < iCurrentPipeIndex)
                     {
-                        pipeModel.Status = PipeStatus.eDone;
+                        // Conside the refill mode
+                        if (iCurrentPipeIndex - iPipeIndex >= 1) // Fill Condition
+                        {
+                            pipeModel.Status = PipeStatus.eFill;
+                        }
+                        else
+                        {
+                            pipeModel.Status = PipeStatus.eDone;
+                        }
 
                         // Caceh the final pipe info
                         // I think every time to query the pipe info really cost a lot
