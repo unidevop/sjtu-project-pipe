@@ -548,6 +548,34 @@ namespace PipeSimulation
                     // Add to static models
                     IApp.theApp.DataModel.StaticsModels.Add(staticModel);
                 }
+
+                // Read the Modeling UCS to GPS
+                XmlNode modelingUCS = xmlDoc.SelectSingleNode(ModelXMLDefinition.RootNode + /*MSG0*/"//" + ModelXMLDefinition.pipeModelingUCS);
+                if (modelingUCS != null)
+                {
+                    CUCS ucs = new CUCS();
+                    ucs.ReadFromXMLNode(modelingUCS);
+
+                    IApp.theApp.DataModel.ModelingUCStoGPSUCS = ucs;
+                }
+
+                // Read the Modeling Unit to Meter
+                XmlNode ModelingUnitToMeterNode = xmlDoc.SelectSingleNode(ModelXMLDefinition.RootNode + /*MSG0*/"//" + ModelXMLDefinition.pipeModelingUnitToMeter);
+                if (ModelingUnitToMeterNode != null)
+                {
+                    double dValue = double.Parse(ModelingUnitToMeterNode.InnerText);
+
+                    IApp.theApp.DataModel.ModelingUnitToMeter = dValue;
+                }
+
+                // Read the GPSUnitToMeter
+                XmlNode GPSUnitToMeterNode = xmlDoc.SelectSingleNode(ModelXMLDefinition.RootNode + /*MSG0*/"//" + ModelXMLDefinition.pipeGPSUnitToMeter);
+                if (GPSUnitToMeterNode != null)
+                {
+                    double dValue = double.Parse(GPSUnitToMeterNode.InnerText);
+
+                    IApp.theApp.DataModel.GPSUnitToMeter = dValue;
+                }
             }
             catch (SystemException)
             {

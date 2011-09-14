@@ -64,6 +64,9 @@ namespace PipeSimulation
             public static string pipeUCSOrigin { get { return /*MSG0*/"Origin"; } }
             public static string pipeUCSXAxis { get { return /*MSG0*/"XAxis"; } }
             public static string pipeUCSYAxis { get { return /*MSG0*/"YAxis"; } }
+            public static string pipeModelingUCS { get { return /*MSG0*/"ModelingUCS"; } }
+            public static string pipeModelingUnitToMeter { get { return /*MSG0*/"ModelingUnitToMeter"; } }
+            public static string pipeGPSUnitToMeter { get { return /*MSG0*/"GPSUnitToMeter"; } }
 
             // Pylon Parameters
             public static string pylonHeight { get { return /*MSG0*/"Height"; } }
