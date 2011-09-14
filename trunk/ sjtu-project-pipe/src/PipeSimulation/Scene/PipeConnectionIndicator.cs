@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using PipeSimulation.DataModel;
+using PipeSimulation.Geometry;
 
 namespace PipeSimulation.SceneGraph
 {
@@ -90,8 +91,8 @@ namespace PipeSimulation.SceneGraph
                 m_points.Reset();
                 foreach (CPipeConnectionPointPair pair in connPointPairList)
                 {
-                    m_points.InsertNextPoint(pair.StartConnectionPoint);
-                    m_points.InsertNextPoint(pair.EndConnectionPoint);
+                    m_points.InsertNextPoint(pair.StartConnectionPoint.Point);
+                    m_points.InsertNextPoint(pair.EndConnectionPoint.Point);
                 }
 
                 vtk.vtkCellArray lines = new vtk.vtkCellArray();
@@ -123,8 +124,8 @@ namespace PipeSimulation.SceneGraph
                 m_points.Reset();
                 foreach (CPipeConnectionPointPair pair in connPointPairList)
                 {
-                    m_points.InsertNextPoint(pair.StartConnectionPoint);
-                    m_points.InsertNextPoint(pair.EndConnectionPoint);
+                    m_points.InsertNextPoint(pair.StartConnectionPoint.Point);
+                    m_points.InsertNextPoint(pair.EndConnectionPoint.Point);
                 }
                 m_points.Modified();
             }

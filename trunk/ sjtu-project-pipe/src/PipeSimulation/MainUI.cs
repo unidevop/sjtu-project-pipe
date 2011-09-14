@@ -20,6 +20,7 @@ using PipeSimulation.ObserverMode;
 using PipeSimulation.DataQuery;
 using SplashScreenThreaded;
 using PipeSimulation.Properties;
+using PipeSimulation.Geometry;
 
 namespace PipeSimulation
 {

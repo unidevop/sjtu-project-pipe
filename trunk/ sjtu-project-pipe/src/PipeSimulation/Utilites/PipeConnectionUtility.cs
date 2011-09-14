@@ -3,6 +3,7 @@ using PipeSimulation.PipeApp;
 using PipeSimulation.DataQuery;
 using PipeSimulation.DataModel;
 using System.Collections.Generic;
+using PipeSimulation.Geometry;
 
 namespace PipeSimulation.Utility
 {
@@ -27,7 +28,8 @@ namespace PipeSimulation.Utility
             if (null == currentPipeModel) return false;
 
             // Get current pipe transformation
-            vtk.vtkTransform transform = currentPipeInfo.Matrix.ToVTKTransformation();
+            //vtk.vtkTransform transform = currentPipeInfo.Matrix.ToVTKTransformation();
+            vtk.vtkTransform transform = Utility.CPipeTransformUtility.TransformGPSMatrix(currentPipeModel.GPSUCS.UCSTransform, currentPipeInfo.Matrix.ToVTKTransformation());
             //Random ro = new Random();
             //transform.Translate(ro.NextDouble() * -20000, ro.NextDouble() * -5000, ro.NextDouble() * -14000);
             //transform.Update();
@@ -35,6 +37,37 @@ namespace PipeSimulation.Utility
             // How to calculate the start and end connection point.
             if (iPipeIndex == 1) // First pipe
             {
+#if DEBUG
+                CPipeConnectionPointPair pair = currentPipeModel.ConnectionPointPairList[0];
+
+                CPipeConnectionPointPair newPair1 = new CPipeConnectionPointPair();
+
+                // If the pipe is first pipe, we should use its start connection point to be the previous end connection point.
+                newPair1.StartConnectionPoint = pair.StartConnectionPoint;
+
+                // The end point should be the pipe model's current start connection point
+                //transform.TransformPoint(pair.StartConnectionPoint, newPair.EndConnectionPoint);
+                double[] startPoint = new double[3];
+                startPoint[0] = currentPipeInfo.StartPoint.X;
+                startPoint[1] = currentPipeInfo.StartPoint.Y;
+                startPoint[2] = currentPipeInfo.StartPoint.Z;
+                newPair1.EndConnectionPoint = new CPoint3D(startPoint);
+
+                connectionPointPair.Add(newPair1);
+
+
+                CPipeConnectionPointPair newPair2 = new CPipeConnectionPointPair();
+
+                // If the pipe is first pipe, we should use its start connection point to be the previous end connection point.
+                newPair2.StartConnectionPoint = currentPipeModel.ConnectionPointPairList[1].StartConnectionPoint;
+                
+                // The end point should be the pipe model's current start connection point
+                double[] ptTransformed = new double[3];
+                transform.TransformPoint(pair.StartConnectionPoint.Point, ptTransformed);
+                newPair2.EndConnectionPoint = new CPoint3D(ptTransformed);
+                connectionPointPair.Add(newPair2);
+
+#else
                 foreach (CPipeConnectionPointPair pair in currentPipeModel.ConnectionPointPairList)
                 {
                     CPipeConnectionPointPair newPair = new CPipeConnectionPointPair();
@@ -47,6 +80,7 @@ namespace PipeSimulation.Utility
 
                     connectionPointPair.Add(newPair);
                 }
+#endif
             }
             //else if (iPipeIndex == iPipeTotalCount)
             //{
@@ -59,7 +93,36 @@ namespace PipeSimulation.Utility
             else
             {
                 CPipeModel previousPipeModel = IApp.theApp.DataModel.PipeModels[iPipeIndex - 1];
+#if DEBUG
+                CPipeConnectionPointPair pair = previousPipeModel.ConnectionPointPairList[0];
 
+                CPipeConnectionPointPair newPair1 = new CPipeConnectionPointPair();
+
+                // If the pipe is first pipe, we should use its start connection point to be the previous end connection point.
+                newPair1.StartConnectionPoint = pair.StartConnectionPoint;
+
+                // The end point should be the pipe model's current start connection point
+                //transform.TransformPoint(pair.StartConnectionPoint, newPair.EndConnectionPoint);
+                double[] startPoint = new double[3];
+                startPoint[0] = currentPipeInfo.StartPoint.X;
+                startPoint[1] = currentPipeInfo.StartPoint.Y;
+                startPoint[2] = currentPipeInfo.StartPoint.Z;
+                newPair1.EndConnectionPoint = new CPoint3D(startPoint);
+
+                connectionPointPair.Add(newPair1);
+
+
+                CPipeConnectionPointPair newPair2 = new CPipeConnectionPointPair();
+
+                // If the pipe is first pipe, we should use its start connection point to be the previous end connection point.
+                newPair2.StartConnectionPoint = currentPipeModel.ConnectionPointPairList[1].StartConnectionPoint;
+
+                // The end point should be the pipe model's current start connection point
+                double[] ptTransformed = new double[3];
+                transform.TransformPoint(pair.StartConnectionPoint.Point, ptTransformed);
+                newPair2.EndConnectionPoint = new CPoint3D(ptTransformed);
+                connectionPointPair.Add(newPair2);
+#else
                 foreach (CPipeConnectionPointPair pair in previousPipeModel.ConnectionPointPairList)
                 {
                     CPipeConnectionPointPair newPair = new CPipeConnectionPointPair();
@@ -69,9 +132,15 @@ namespace PipeSimulation.Utility
 
                     // The end point should be the pipe model's current start connection point
                     transform.TransformPoint(pair.StartConnectionPoint, newPair.EndConnectionPoint);
+                    //double[] startPoint = new double[3];
+                    //startPoint[0] = currentPipeInfo.StartPoint.X;
+                    //startPoint[1] = currentPipeInfo.StartPoint.Y;
+                    //startPoint[2] = currentPipeInfo.StartPoint.Z;
+                    //CopyPoint(startPoint, newPair.EndConnectionPoint);
 
                     connectionPointPair.Add(newPair);
                 }
+#endif
             }
 
             return true;

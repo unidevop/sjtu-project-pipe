@@ -60,6 +60,10 @@ namespace PipeSimulation
             public static string pipeCoordX { get { return /*MSG0*/"x"; } }
             public static string pipeCoordY { get { return /*MSG0*/"y"; } }
             public static string pipeCoordZ { get { return /*MSG0*/"z"; } }
+            public static string pipeGPSUCS { get { return /*MSG0*/"GPSUCS"; } }
+            public static string pipeUCSOrigin { get { return /*MSG0*/"Origin"; } }
+            public static string pipeUCSXAxis { get { return /*MSG0*/"XAxis"; } }
+            public static string pipeUCSYAxis { get { return /*MSG0*/"YAxis"; } }
 
             // Pylon Parameters
             public static string pylonHeight { get { return /*MSG0*/"Height"; } }
