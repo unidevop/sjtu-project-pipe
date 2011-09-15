@@ -47,5 +47,15 @@ namespace PipeSimulation.DataModel
         {
             get { return m_angleWarningConfiguration; }
         }
+
+        /// <summary>
+        /// The value is used to control the distance of the connected point pair.
+        /// If the distance is smaller or equal to this value, then we think two pipes are connected.
+        /// This unit is Meter.
+        /// </summary>
+        public double ConnectedPipeTolerance
+        {
+            get { return 0.1; }
+        }
     }
 }

@@ -50,5 +50,37 @@ namespace PipeSimulation.Geometry
                 m_endConnectionPoint = new CPoint3D(value.Point);
             }
         }
+
+        /// <summary>
+        /// Get the distance
+        /// </summary>
+        public double Distance
+        {
+            get { return Math.Sqrt(Math.Pow(DeltaX, 2) + Math.Pow(DeltaY, 2) + Math.Pow(DeltaZ, 2));}
+        }
+
+        /// <summary>
+        /// The EndConnectionPoint.x - StartConnectionPoint.x
+        /// </summary>
+        public double DeltaX
+        {
+            get { return m_endConnectionPoint.X - m_startConnectionPoint.X; }
+        }
+
+        /// <summary>
+        /// The EndConnectionPoint.y - StartConnectionPoint.y
+        /// </summary>
+        public double DeltaY
+        {
+            get { return m_endConnectionPoint.Y - m_startConnectionPoint.Y; }
+        }
+
+        /// <summary>
+        /// The EndConnectionPoint.z - StartConnectionPoint.z
+        /// </summary>
+        public double DeltaZ
+        {
+            get { return m_endConnectionPoint.Z - m_startConnectionPoint.Z; }
+        }
     }
 }
