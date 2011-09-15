@@ -77,7 +77,14 @@ namespace PipeSimulation.Commands
 
         void vtkControl_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            IApp.theApp.vtkControl.SetInteractorStyleState(1); // for rotate
+            if (e.Button == System.Windows.Forms.MouseButtons.Middle)
+            {
+                IApp.theApp.vtkControl.SetInteractorStyleState(2); // for pan
+            }
+            else
+            {
+                IApp.theApp.vtkControl.SetInteractorStyleState(1); // for rotate
+            }
             IApp.theApp.vtkControl.FireMouseDown(e);
         }
 
@@ -150,7 +157,7 @@ namespace PipeSimulation.Commands
 
         void vtkControl_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            IApp.theApp.vtkControl.SetInteractorStyleState(2); // for rotate
+            IApp.theApp.vtkControl.SetInteractorStyleState(2); // for pan
             IApp.theApp.vtkControl.FireMouseDown(e);
         }
 
@@ -223,7 +230,14 @@ namespace PipeSimulation.Commands
 
         void vtkControl_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            IApp.theApp.vtkControl.SetInteractorStyleState(4); // for rotate
+            if (e.Button == System.Windows.Forms.MouseButtons.Middle)
+            {
+                IApp.theApp.vtkControl.SetInteractorStyleState(2); // for pan
+            }
+            else
+            {
+                IApp.theApp.vtkControl.SetInteractorStyleState(4); // for zoom
+            }
             IApp.theApp.vtkControl.FireMouseDown(e);
         }
 
