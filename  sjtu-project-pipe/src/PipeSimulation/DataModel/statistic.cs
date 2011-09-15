@@ -86,10 +86,10 @@ namespace PipeSimulation.DataModel
             {
                 if (pair == null) continue;
 
-                double dx = Math.Abs(pair.EndConnectionPoint.X - pair.StartConnectionPoint.X);
-                double dy = Math.Abs(pair.EndConnectionPoint.Y - pair.StartConnectionPoint.Y);
-                double dz = Math.Abs(pair.EndConnectionPoint.Z - pair.StartConnectionPoint.Z);
-                double dDist = Math.Sqrt(dx * dx + dy * dy + dz * dz);
+                double dx = Math.Abs(pair.DeltaX);
+                double dy = Math.Abs(pair.DeltaY);
+                double dz = Math.Abs(pair.DeltaZ);
+                double dDist = pair.Distance;
 
                 // Overall
                 strString = string.Concat(strString, strChangeLine, strChangeLine);

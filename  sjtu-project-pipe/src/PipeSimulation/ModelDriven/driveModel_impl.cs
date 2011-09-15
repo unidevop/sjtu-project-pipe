@@ -5,6 +5,8 @@ using PipeSimulation.PipeApp;
 using PipeSimulation.SceneGraph;
 using System.Windows.Media.Media3D;
 using PipeSimulation.Utility;
+using System.Collections.Generic;
+using PipeSimulation.Geometry;
 
 namespace PipeSimulation
 {
@@ -49,8 +51,12 @@ namespace PipeSimulation
 
                         // Here, we should pay more attention that if the m_currentPipeInfo is the last one for this pipe model
                         // Also, the distance between the connection point should be taken into account
-                        if ((pipeModel.FinalPipeInfo != null && pipeModel.FinalPipeInfo.Time == m_currentPipeInfo.Time/*time is not enough*/))
+                        if ((pipeModel.FinalPipeInfo != null && pipeModel.FinalPipeInfo.Time == m_currentPipeInfo.Time/*time is not enough*/)
+                           || IsConnectedToPreviousPipe(m_currentPipeInfo))
                         {
+                            // Cache the final pipe info for the finished pipe
+                            CacheFinalPipeInfoForFinishedPipe(pipeModel, iPipeIndex);
+
                             // Mark the status as fill and its previous model
                             pipeModel.Status = PipeStatus.eFill;
                             if (IApp.theApp.DataModel.PipeModels.Count > 1)
@@ -73,7 +79,7 @@ namespace PipeSimulation
                     else if (iPipeIndex < iCurrentPipeIndex)
                     {
                         // Conside the refill mode
-                        if (iCurrentPipeIndex - iPipeIndex >= 1) // Fill Condition
+                        if (iCurrentPipeIndex - iPipeIndex > 1) // Fill Condition
                         {
                             pipeModel.Status = PipeStatus.eFill;
                         }
@@ -81,20 +87,9 @@ namespace PipeSimulation
                         {
                             pipeModel.Status = PipeStatus.eDone;
                         }
-
-                        // Caceh the final pipe info
-                        // I think every time to query the pipe info really cost a lot
-                        if (pipeModel.FinalPipeInfo == null)
-                        {
-                            // Find the final pipe info this pipe model
-                            IHistoryDataQuery historyDataQuery = IApp.theApp.HistoryTimeDataQuery;
-                            PipeInfo lastPipeInfo = historyDataQuery.GetPipeRecord(historyDataQuery.GetPipeEndTime(iPipeIndex), true);
-                            if (lastPipeInfo != null)
-                            {
-                                // Cache it
-                                pipeModel.FinalPipeInfo = lastPipeInfo;
-                            }
-                        }
+                        
+                        // Cache the final pipe info for the finished pipe
+                        CacheFinalPipeInfoForFinishedPipe(pipeModel, iPipeIndex);
 
                         // Drive the model
                         if (pipeModel.FinalTransform != null)
@@ -127,6 +122,42 @@ namespace PipeSimulation
             }
 
             #endregion
+
+            private bool IsConnectedToPreviousPipe(PipeInfo currentPipeInfo)
+            {
+                // Update the connection indicator
+                IList<CPipeConnectionPointPair> connectionPointPairList = null;
+                if (!CPipeConnetionUtility.CalcaulateConnection(currentPipeInfo, out connectionPointPairList)) return false;
+
+                // Make sure each connection pair's distance is in our tolerance
+                double dConnectedTolerance = ApplicationOptions.Instance().ConnectedPipeTolerance; // Unit is M
+                foreach (CPipeConnectionPointPair pair in connectionPointPairList)
+                {
+                    if (pair.Distance * IApp.theApp.DataModel.ModelingUnitToMeter > dConnectedTolerance)
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+            
+            private void CacheFinalPipeInfoForFinishedPipe(CPipeModel pipeModel, int iPipeIndex)
+            {
+                // Caceh the final pipe info
+                // I think every time to query the pipe info really cost a lot
+                if (pipeModel.FinalPipeInfo == null)
+                {
+                    // Find the final pipe info this pipe model
+                    IHistoryDataQuery historyDataQuery = IApp.theApp.HistoryTimeDataQuery;
+                    PipeInfo lastPipeInfo = historyDataQuery.GetPipeRecord(historyDataQuery.GetPipeEndTime(iPipeIndex), true);
+                    if (lastPipeInfo != null)
+                    {
+                        // Cache it
+                        pipeModel.FinalPipeInfo = lastPipeInfo;
+                    }
+                }
+            }
 
             // Test function
             private void DriveModel(int iProgress)
