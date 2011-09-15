@@ -250,6 +250,13 @@ namespace PipeSimulation
             ////ren1.AddActor(coneActor);
             ren1.SetBackground(0.1f, 0.2f, 0.4f);
 
+            // Set default project as the parallel camera.
+            vtk.vtkCamera camera = ren1.GetActiveCamera();
+            if (camera != null)
+            {
+                camera.SetParallelProjection(1);
+            }
+
             ////
             //// Finally we create the render window which will show up on the screen
             //// We put our renderer into the render window using AddRenderer. We also
@@ -1373,6 +1380,16 @@ namespace PipeSimulation
 
         void viewToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
         {
+            // Visbility for parallel and pespective project
+            vtk.vtkCamera activeCamera = IApp.theApp.RenderWindow.GetRenderers().GetFirstRenderer().GetActiveCamera();
+            showParallelCamera.Enabled = (activeCamera != null);
+            showPerspectiveCamera.Enabled = (activeCamera != null);
+            if (activeCamera != null)
+            {
+                showPerspectiveCamera.Checked = (activeCamera.GetParallelProjection() == 0);
+                showParallelCamera.Checked = (activeCamera.GetParallelProjection() != 0);
+            }
+
             // Visibility for statistic text displayer
             showStatisticTextDisplayer.Enabled = !(string.IsNullOrEmpty(IApp.theApp.StatisticTextDisplayer.TextActor.GetInput()));
             showStatisticTextDisplayer.Checked = (IApp.theApp.StatisticTextDisplayer.TextActor.GetVisibility() != 0);
@@ -1419,6 +1436,30 @@ namespace PipeSimulation
                 bNonePipeObjectsVisbile = false;
             }
             showNonePipeObjects.Checked = bNonePipeObjectsVisbile; 
+        }
+
+        private void showPerspectiveCamera_Click(object sender, EventArgs e)
+        {
+            // Visbility for parallel and pespective project
+            vtk.vtkCamera activeCamera = IApp.theApp.RenderWindow.GetRenderers().GetFirstRenderer().GetActiveCamera();
+            if (activeCamera != null && activeCamera.GetParallelProjection() != 0)
+            {
+                activeCamera.SetParallelProjection(0);
+            }
+
+            IApp.theApp.RenderScene();
+        }
+
+        private void showParallelCamera_Click(object sender, EventArgs e)
+        {
+            // Visbility for parallel and pespective project
+            vtk.vtkCamera activeCamera = IApp.theApp.RenderWindow.GetRenderers().GetFirstRenderer().GetActiveCamera();
+            if (activeCamera != null && activeCamera.GetParallelProjection() == 0)
+            {
+                activeCamera.SetParallelProjection(1);
+            }
+
+            IApp.theApp.RenderScene();
         }
 
         private void ConnectionSettingMenuItem_Click(object sender, EventArgs e)

@@ -69,6 +69,8 @@ namespace PipeSimulation
             this.AngleWarningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showPerspectiveCamera = new System.Windows.Forms.ToolStripMenuItem();
+            this.showParallelCamera = new System.Windows.Forms.ToolStripMenuItem();
             this.showStatisticTextDisplayer = new System.Windows.Forms.ToolStripMenuItem();
             this.showWarningTextDisplayer = new System.Windows.Forms.ToolStripMenuItem();
             this.showWCS = new System.Windows.Forms.ToolStripMenuItem();
@@ -399,6 +401,9 @@ namespace PipeSimulation
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showParallelCamera,
+            this.showPerspectiveCamera,
+            this.toolStripSeparator4,
             this.showStatisticTextDisplayer,
             this.showWarningTextDisplayer,
             this.showWCS,
@@ -408,6 +413,22 @@ namespace PipeSimulation
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.viewToolStripMenuItem.Text = "视图(&V)";
             this.viewToolStripMenuItem.DropDownOpening += new EventHandler(viewToolStripMenuItem_DropDownOpening);
+            // 
+            // showParallelCamera
+            // 
+            this.showParallelCamera.Name = "showParallelCamera";
+            this.showParallelCamera.Size = new System.Drawing.Size(151, 22);
+            this.showParallelCamera.Text = "正视投影";
+            this.showParallelCamera.Click += new EventHandler(showParallelCamera_Click);
+            this.showParallelCamera.ShortcutKeys = Keys.Control | Keys.O;
+            // 
+            // showPerspectiveCamera
+            // 
+            this.showPerspectiveCamera.Name = "showPerspectiveCamera";
+            this.showPerspectiveCamera.Size = new System.Drawing.Size(151, 22);
+            this.showPerspectiveCamera.Text = "透视投影";
+            this.showPerspectiveCamera.Click += new EventHandler(showPerspectiveCamera_Click);
+            this.showPerspectiveCamera.ShortcutKeys = Keys.Control | Keys.P;
             // 
             // showStatisticTextDisplayer
             // 
@@ -769,6 +790,8 @@ namespace PipeSimulation
         private ToolStripMenuItem monitorModeToolStripMenuItem;
         private ToolStripMenuItem replayModeToolStripMenuItem;
         private ToolStripMenuItem viewToolStripMenuItem;
+        private ToolStripMenuItem showPerspectiveCamera;
+        private ToolStripMenuItem showParallelCamera;
         private ToolStripMenuItem showStatisticTextDisplayer;
         private ToolStripMenuItem showWarningTextDisplayer;
         private ToolStripMenuItem showWCS;
