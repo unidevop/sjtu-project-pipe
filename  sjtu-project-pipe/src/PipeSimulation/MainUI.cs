@@ -94,19 +94,26 @@ namespace PipeSimulation
             IHistoryDataQuery hisDataQuery = IApp.theApp.HistoryTimeDataQuery;
             IRealtimeDataQuery realTimeDataQuery = IApp.theApp.RealTimeDataQuery;
 
-            if (IApp.theApp.ConnectionCfg.IsAutoConnect)
-            {
-                if (hisDataQuery != null && !hisDataQuery.IsConnected)
-                    hisDataQuery.Connect();
+            // Very low performance if the database is not connected
+            //try
+            //{
+            //    if (IApp.theApp.ConnectionCfg.IsAutoConnect)
+            //    {
+            //        if (hisDataQuery != null && !hisDataQuery.IsConnected)
+            //            hisDataQuery.Connect();
 
-                if (realTimeDataQuery != null && !realTimeDataQuery.IsConnected)
-                {
-                    realTimeDataQuery.Connect();
+            //        if (realTimeDataQuery != null && !realTimeDataQuery.IsConnected)
+            //        {
+            //            realTimeDataQuery.Connect();
 
-                    if (IApp.theApp.ObserverModeManager.ActiveModeType == ObserverMode.ObserverMode.eMonitorMode)
-                        realTimeDataQuery.Activate();
-                }
-            }
+            //            if (IApp.theApp.ObserverModeManager.ActiveModeType == ObserverMode.ObserverMode.eMonitorMode)
+            //                realTimeDataQuery.Activate();
+            //        }
+            //    }
+            //}
+            //catch
+            //{
+            //}
 
             bool bConnected = false;
             string strMessage = null;
@@ -250,6 +257,11 @@ namespace PipeSimulation
             ////ren1.AddActor(coneActor);
             //ren1.SetBackground(0.1f, 0.2f, 0.4f);
             ren1.SetBackground(150.0/255, 190.0/255, 220.0/255);
+            // Setup the background gradient
+             //RGB(150, 190, 220)和RGB(230, 230, 230)
+            //ren1.GradientBackgroundOn();
+            //ren1.SetBackground(150.0 / 255, 190.0 / 255, 220.0 / 255);
+            //ren1.SetBackground2(230.0 / 255, 230.0 / 255, 230.0 / 255);
 
             // Set default project as the parallel camera.
             vtk.vtkCamera camera = ren1.GetActiveCamera();
