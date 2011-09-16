@@ -55,7 +55,7 @@ namespace PipeSimulation.DataModel
         /// </summary>
         public double ConnectedPipeTolerance
         {
-            get { return 0.1; }
+            get { return 0.42; }
         }
     }
 }
