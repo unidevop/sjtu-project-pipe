@@ -57,16 +57,24 @@ namespace PipeSimulation
                             // Cache the final pipe info for the finished pipe
                             CacheFinalPipeInfoForFinishedPipe(pipeModel, iPipeIndex);
 
-                            // Mark the status as fill and its previous model
-                            pipeModel.Status = PipeStatus.eFill;
-                            if (IApp.theApp.DataModel.PipeModels.Count > 1 && iPipeIndex > 2)
+                            bool bLastPipe = (iCurrentPipeIndex == IApp.theApp.DataModel.PipeModels.Count);
+                            if (bLastPipe)
                             {
-                                CPipeModel previousModel = IApp.theApp.DataModel.PipeModels[iPipeIndex - 2];
-                                if (null != previousModel)
-                                {
-                                    previousModel.Status = PipeStatus.eFill;
-                                }
+                                pipeModel.Status = PipeStatus.eFill;
                             }
+                            else
+                            {
+                                // Mark the status as fill and its previous model
+                                pipeModel.Status = PipeStatus.eDone;
+                            }
+                            //if (IApp.theApp.DataModel.PipeModels.Count > 1 && iPipeIndex > 2)
+                            //{
+                            //    CPipeModel previousModel = IApp.theApp.DataModel.PipeModels[iPipeIndex - 2];
+                            //    if (null != previousModel)
+                            //    {
+                            //        previousModel.Status = PipeStatus.eFill;
+                            //    }
+                            //}
 
                             pipeModel.DriveModel(pipeModel.FinalTransform);
                             continue;
@@ -79,21 +87,15 @@ namespace PipeSimulation
                     else if (iPipeIndex < iCurrentPipeIndex)
                     {
                         // Conside the refill mode
-                        if (iCurrentPipeIndex - iPipeIndex > 1) // Fill Condition
+                        // Get the next pipe status
+                        CPipeModel previousModel = IApp.theApp.DataModel.PipeModels[iPipeIndex];
+                        if (previousModel != null && (previousModel.Status == PipeStatus.eDone || previousModel.Status == PipeStatus.eFill))
                         {
                             pipeModel.Status = PipeStatus.eFill;
                         }
                         else
                         {
-                            // If the iPipeIndex belong to the last two on 
-                            if (iCurrentPipeIndex + 1 > IApp.theApp.DataModel.PipeModels.Count)
-                            {
-                                pipeModel.Status = PipeStatus.eFill;
-                            }
-                            else
-                            {
-                                pipeModel.Status = PipeStatus.eDone;
-                            }
+                            pipeModel.Status = PipeStatus.eDone;
                         }
                         
                         // Cache the final pipe info for the finished pipe
