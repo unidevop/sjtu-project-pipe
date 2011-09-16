@@ -13,7 +13,7 @@
 				<ModelPath>models\taojia1_2.3ds</ModelPath>
 			</Pylon>
 			<FillModel>
-				<ModelPath>models\Pipe2.3ds</ModelPath>
+				<ModelPath>models\fill1.3ds</ModelPath>
 			</FillModel>
 			<ConnectionPointPair>
 				<StartConnectionPoint x ="-235116.461" y ="75416.969" z ="-25792.029"/>
@@ -26,7 +26,7 @@
 			<GPSUCS>
 				<Origin x ="-226248.224" y ="70098.901" z ="-6698.504"/>
 				<XAxis x ="57247.261" y ="-14065.963" z ="170.635"/>
-				<YAxis x ="-8475.11" y ="-34434.105" z ="-371.714"/>
+				<YAxis x ="-0.238615578635244" y ="-0.971109791519786" z ="0.00289455470926842"/>
 			</GPSUCS>
 		</Pipe>
 
@@ -40,7 +40,7 @@
 				<ModelPath>models\taojia2_2.3ds</ModelPath>
 			</Pylon>
 			<FillModel>
-				<ModelPath>models\Pipe3.3ds</ModelPath>
+				<ModelPath>models\fill2.3ds</ModelPath>
 			</FillModel>
 			<ConnectionPointPair>
 				<StartConnectionPoint x ="-153359.747" y ="55340.901" z ="-25028.983"/>
@@ -53,7 +53,7 @@
 			<GPSUCS>
 				<Origin x ="-144803.078" y ="50463.118" z ="-5649.716"/>
 				<XAxis x ="57514.718" y ="-12505.52" z ="3537.019"/>
-				<YAxis x ="-3895.667" y ="-17314.195" z ="119.871"/>
+				<YAxis x ="-0.21246727280262" y ="-0.977168183061553" z ="0"/>
 			</GPSUCS>
 		</Pipe>
 
@@ -67,7 +67,7 @@
 				<ModelPath>models\taojia3_2.3ds</ModelPath>
 			</Pylon>
 			<FillModel>
-				<ModelPath>models\Pipe1.3ds</ModelPath>
+				<ModelPath>models\fill3.3ds</ModelPath>
 			</FillModel>
 			<ConnectionPointPair>
 				<StartConnectionPoint x ="-70698.053" y ="37366.167" z ="-19756.397"/>
@@ -82,7 +82,7 @@
 			<GPSUCS>
 				<Origin x ="-65513.397" y ="33306.774" z ="-108.073"/>
 				<XAxis x ="57646.792" y ="-10987.172" z ="6829.311"/>
-				<YAxis x ="-2334.43" y ="-17570.674" z ="286.695"/>
+				<YAxis x ="-0.187224411510865" y ="-0.982317168604117" z ="0"/>
 			</GPSUCS>
 		</Pipe>
 
