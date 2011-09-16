@@ -332,7 +332,7 @@ namespace DataSimulation
 
             dataSet.Tables["GPSMeasure"].Rows.Add(newRow);
 
-            Console.Write("Current pipe id: {0}, time: {1}, gps1:({2}, {3}, {4})", 
+            Console.Write("Pipe id: {0}, time: {1}, gps1:({2}, {3}, {4})", 
                 m_id, m_curMeasureTime, newRow["X"], newRow["Y"], newRow["Z"]);
         }
 
