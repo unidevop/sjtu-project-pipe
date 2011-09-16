@@ -47,10 +47,14 @@ namespace PipeSimulation.Geometry
             vecY = System.Windows.Media.Media3D.Vector3D.CrossProduct(vecZ, vecX);
 
             System.Windows.Media.Media3D.Matrix3D matrix;
-            matrix = new System.Windows.Media.Media3D.Matrix3D(vecX.X, vecY.X, vecZ.X, origin.X,
-                                                               vecX.Y, vecY.Y, vecZ.Y, origin.Y,
-                                                               vecX.Z, vecY.Z, vecZ.Z, origin.Z,
-                                                               0, 0, 0, 1.0);
+            matrix = new System.Windows.Media.Media3D.Matrix3D(vecX.X, vecX.Y, vecX.Z, origin.X,
+                    vecY.X, vecY.Y, vecY.Z, origin.Y,
+                    vecZ.X, vecZ.Y, vecZ.Z, origin.Z,
+                    0, 0, 0, 1.0);
+            //matrix = new System.Windows.Media.Media3D.Matrix3D(vecX.X, vecY.X, vecZ.X, origin.X,
+            //                                                   vecX.Y, vecY.Y, vecZ.Y, origin.Y,
+            //                                                   vecX.Z, vecY.Z, vecZ.Z, origin.Z,
+            //                                                   0, 0, 0, 1.0);
 
             // Set transform
             m_tranform = matrix.ToVTKTransformation();
