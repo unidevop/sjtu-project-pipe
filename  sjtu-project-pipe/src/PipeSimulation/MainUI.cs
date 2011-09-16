@@ -248,7 +248,8 @@ namespace PipeSimulation
             //
             vtk.vtkRenderer ren1 = new vtk.vtkRenderer();
             ////ren1.AddActor(coneActor);
-            ren1.SetBackground(0.1f, 0.2f, 0.4f);
+            //ren1.SetBackground(0.1f, 0.2f, 0.4f);
+            ren1.SetBackground(150.0/255, 190.0/255, 220.0/255);
 
             // Set default project as the parallel camera.
             vtk.vtkCamera camera = ren1.GetActiveCamera();
