@@ -317,7 +317,7 @@ namespace DataSimulation
             {
                 // interpolation point of 1st point's track
                 Point3D pt1 = m_startPt1 + (m_endPt1 - m_startPt1) *
-                    (m_curMeasureTime - m_measureStartTime).TotalSeconds / (m_measureEndTime - m_measureStartTime).TotalSeconds;
+                    (m_curMeasureTime - m_measureStartTime).TotalSeconds / (m_backfillTime - m_measureStartTime).TotalSeconds;
                 newRow["X"] = pt1.X;
                 newRow["Y"] = pt1.Y;
                 newRow["Z"] = pt1.Z;
@@ -347,7 +347,7 @@ namespace DataSimulation
             {
                 // interpolation point of 2nd point's track
                 Point3D interpolationPt2 = m_startPt2 + (m_endPt2 - m_startPt2) *
-                    (m_curMeasureTime - m_measureStartTime).TotalSeconds / (m_measureEndTime - m_measureStartTime).TotalSeconds;
+                    (m_curMeasureTime - m_measureStartTime).TotalSeconds / (m_backfillTime - m_measureStartTime).TotalSeconds;
 
                 Point3D pt1;
                 Point3D pt2;
@@ -364,7 +364,7 @@ namespace DataSimulation
                 {
                     // interpolation point of 1st point's track
                     pt1 = m_startPt1 + (m_endPt1 - m_startPt1) *
-                        (m_curMeasureTime - m_measureStartTime).TotalSeconds / (m_measureEndTime - m_measureStartTime).TotalSeconds;
+                        (m_curMeasureTime - m_measureStartTime).TotalSeconds / (m_backfillTime - m_measureStartTime).TotalSeconds;
                 }
 
                 Vector3D pipeDir = interpolationPt2 - pt1;
