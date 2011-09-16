@@ -16,12 +16,12 @@
 				<ModelPath>models\fill1.3ds</ModelPath>
 			</FillModel>
 			<ConnectionPointPair>
-				<StartConnectionPoint x ="-235116.461" y ="75416.969" z ="-25792.029"/>
-				<EndConnectionPoint  x ="-153359.747" y ="55340.901" z ="-25028.983"/>
+				<StartConnectionPoint x ="-235211.724" y ="75361.969" z ="-25792.029"/>
+				<EndConnectionPoint x ="-153190.094" y ="55299.383" z ="-25040.506"/>
 			</ConnectionPointPair>
 			<ConnectionPointPair>
-				<StartConnectionPoint x ="-234971.018" y ="75484.624" z ="-35441.464"/>
-				<EndConnectionPoint x ="-153719.74" y ="56069.001" z ="-34695.806"/>
+				<StartConnectionPoint x ="-235132.114" y ="75449.096" z ="-35442.246"/>
+				<EndConnectionPoint x ="-153359.74" y ="55445.462" z ="-34695.806"/>
 			</ConnectionPointPair>
 			<GPSUCS>
 				<Origin x ="-226248.224" y ="70098.901" z ="-6698.504"/>
@@ -43,11 +43,11 @@
 				<ModelPath>models\fill2.3ds</ModelPath>
 			</FillModel>
 			<ConnectionPointPair>
-				<StartConnectionPoint x ="-153359.747" y ="55340.901" z ="-25028.983"/>
+				<StartConnectionPoint x ="-153190.094" y ="55299.383" z ="-25040.506"/>
 				<EndConnectionPoint x ="-70698.053" y ="37366.167" z ="-19756.397"/>
 			</ConnectionPointPair>
 			<ConnectionPointPair>
-				<StartConnectionPoint x ="-153719.74" y ="56069.001" z ="-34695.806"/>
+				<StartConnectionPoint x ="-153359.74" y ="55445.462" z ="-34695.806"/>
 				<EndConnectionPoint x ="-70696.411" y ="37478.381" z ="-29433.135"/>
 			</ConnectionPointPair>
 			<GPSUCS>
@@ -110,7 +110,13 @@
 	<Model>
 		<ModelPath>models\ganwu.3ds</ModelPath>
 	</Model>
-	<ModelingUCS>
+  <Model>
+    <ModelPath>models\water1.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\water2.3ds</ModelPath>
+  </Model>
+  <ModelingUCS>
 		<Origin x ="0" y ="0" z ="0"/>
 		<XAxis x ="1" y ="0" z ="0"/>
 		<YAxis x ="0" y ="1" z ="0"/>
