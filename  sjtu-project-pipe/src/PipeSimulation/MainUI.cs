@@ -255,8 +255,8 @@ namespace PipeSimulation
             //
             vtk.vtkRenderer ren1 = new vtk.vtkRenderer();
             ////ren1.AddActor(coneActor);
-            //ren1.SetBackground(0.1f, 0.2f, 0.4f);
-            ren1.SetBackground(150.0/255, 190.0/255, 220.0/255);
+            ren1.SetBackground(0.3f, 0.2f, 0.4f);
+            //ren1.SetBackground(150.0/255, 190.0/255, 220.0/255);
             // Setup the background gradient
              //RGB(150, 190, 220)和RGB(230, 230, 230)
             //ren1.GradientBackgroundOn();
