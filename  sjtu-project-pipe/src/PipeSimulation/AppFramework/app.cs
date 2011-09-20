@@ -17,6 +17,7 @@ namespace PipeSimulation.PipeApp
         private MainUI m_mainUI;
         private vtkFormsWindowControl m_vtkControl;
         private vtkRenderWindow m_vtkRenderWindow;
+        private CRendererManager m_rendererManager = new CRendererManager();
         private ICommandManager m_commandManager = new CCommandManager();
         private IDataModel m_dataModel = new CDataModel();
         private IObserverModeManager m_observerModeManager = new CObserverModeManager();
@@ -98,6 +99,11 @@ namespace PipeSimulation.PipeApp
         public override vtkRenderWindow RenderWindow
         {
             get { return m_vtkRenderWindow; }
+        }
+
+        public override IRendererManager RendererManager
+        {
+            get { return m_rendererManager; }
         }
 
         public override ICommandManager CommandManager

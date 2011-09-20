@@ -247,35 +247,33 @@ namespace PipeSimulation
 
         void InitializeRenderWindow(vtk.vtkRenderWindow renWin)
         {
-            //
-            // Create the Renderer and assign actors to it. A renderer is like a
-            // viewport. It is part or all of a window on the screen and it is
-            // responsible for drawing the actors it has.  We also set the background
-            // color here
-            //
-            vtk.vtkRenderer ren1 = new vtk.vtkRenderer();
-            ////ren1.AddActor(coneActor);
-            ren1.SetBackground(0.3f, 0.2f, 0.4f);
-            //ren1.SetBackground(150.0/255, 190.0/255, 220.0/255);
-            // Setup the background gradient
-             //RGB(150, 190, 220)和RGB(230, 230, 230)
-            //ren1.GradientBackgroundOn();
-            //ren1.SetBackground(150.0 / 255, 190.0 / 255, 220.0 / 255);
-            //ren1.SetBackground2(230.0 / 255, 230.0 / 255, 230.0 / 255);
+            IRendererManager renderManager = IApp.theApp.RendererManager;
+            if (renderManager == null) return;
 
-            // Set default project as the parallel camera.
-            vtk.vtkCamera camera = ren1.GetActiveCamera();
-            if (camera != null)
-            {
-                camera.SetParallelProjection(1);
-            }
+            // Main Renderer
+            vtk.vtkRenderer mainRenderer = renderManager.MainRenderer;
+            mainRenderer.SetBackground(0.1f, 0.2f, 0.4f);
+            renWin.AddRenderer(mainRenderer);
 
-            ////
-            //// Finally we create the render window which will show up on the screen
-            //// We put our renderer into the render window using AddRenderer. We also
-            //// set the size to be 300 pixels by 300
-            ////
-            renWin.AddRenderer(ren1);
+            // TopView Renderer
+            vtk.vtkRenderer topViewRender = renderManager.TopViewRenderer;
+            topViewRender.SetBackground(0.1f, 0.2f, 0.4f);
+            renWin.AddRenderer(topViewRender);
+
+            // Main Renderer
+            vtk.vtkRenderer frontViewRenderer = renderManager.FrontViewRenderer;
+            frontViewRenderer.SetBackground(0.1f, 0.2f, 0.4f);
+            renWin.AddRenderer(frontViewRenderer);
+
+            // Main Renderer
+            vtk.vtkRenderer rightViewRenderer = renderManager.RightViewRenderer;
+            rightViewRenderer.SetBackground(0.1f, 0.2f, 0.4f);
+            renWin.AddRenderer(rightViewRenderer);
+
+            // Set up layout strategy
+            CRenderersLayoutStrategy renderersLayoutStrategy = new CRenderersLayoutStrategy(renderManager);
+            IApp.theApp.vtkControl.SizeChanged += renderersLayoutStrategy.OnControlSizeChanged;
+            renderManager.RendererLayoutStrategy = renderersLayoutStrategy;
         }
 
         protected void OnControlSizeChanged(object sender, EventArgs e)
@@ -456,7 +454,10 @@ namespace PipeSimulation
             InitializeReferenceOrigin();
 
             // Let the scene show SW Isometric
-            IApp.theApp.vtkControl.ShowSWIsoMetricView();
+            IApp.theApp.vtkControl.ShowSWIsoMetricView(IApp.theApp.RendererManager.MainRenderer);
+            //IApp.theApp.vtkControl.ShowTopView(IApp.theApp.RendererManager.TopViewRenderer);
+            //IApp.theApp.vtkControl.ShowFrontView(IApp.theApp.RendererManager.FrontViewRenderer);
+            //IApp.theApp.vtkControl.ShowRightView(IApp.theApp.RendererManager.RightViewRenderer);
         }
 
         private void InitializeObserverMode()

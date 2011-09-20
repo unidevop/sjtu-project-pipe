@@ -21,6 +21,7 @@ namespace PipeSimulation
             abstract public MainUI MainUI { get; }
             abstract public vtkFormsWindowControl vtkControl { get; }
             abstract public vtk.vtkRenderWindow RenderWindow { get; }
+            abstract public IRendererManager RendererManager { get; }
             abstract public ICommandManager CommandManager { get; }
             abstract public IDataModel DataModel { get; }
             abstract public void SetStatusBarText(string statusBarText);

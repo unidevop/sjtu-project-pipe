@@ -61,16 +61,16 @@ namespace vtk {
 	void SetInteractorStyleState(int iState);
 	void ResetCamera();
 
-    void ShowTopView();
-    void ShowBottomView();
-    void ShowLeftView();
-    void ShowRightView();
-    void ShowFrontView();
-    void ShowBackView();
-	void ShowSWIsoMetricView();
-	void ShowSEIsoMetricView();
-	void ShowNEIsoMetricView();
-	void ShowNWIsoMetricView();
+    void ShowTopView(vtkRenderer^ renderer);
+    void ShowBottomView(vtkRenderer^ renderer);
+    void ShowLeftView(vtkRenderer^ renderer);
+    void ShowRightView(vtkRenderer^ renderer);
+    void ShowFrontView(vtkRenderer^ renderer);
+    void ShowBackView(vtkRenderer^ renderer);
+	void ShowSWIsoMetricView(vtkRenderer^ renderer);
+	void ShowSEIsoMetricView(vtkRenderer^ renderer);
+	void ShowNEIsoMetricView(vtkRenderer^ renderer);
+	void ShowNWIsoMetricView(vtkRenderer^ renderer);
 
   protected:
     /// <summary>
