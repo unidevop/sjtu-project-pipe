@@ -285,7 +285,7 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowTopView();
+            IApp.theApp.vtkControl.ShowTopView(IApp.theApp.RendererManager.ActiveRenderer);
             Terminate();
         }
 
@@ -307,7 +307,7 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowBottomView();
+            IApp.theApp.vtkControl.ShowBottomView(IApp.theApp.RendererManager.ActiveRenderer);
             Terminate();
         }
 
@@ -329,7 +329,7 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowFrontView();
+            IApp.theApp.vtkControl.ShowFrontView(IApp.theApp.RendererManager.ActiveRenderer);
             Terminate();
         }
 
@@ -351,7 +351,7 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowBackView();
+            IApp.theApp.vtkControl.ShowBackView(IApp.theApp.RendererManager.ActiveRenderer);
             Terminate();
         }
 
@@ -373,7 +373,7 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowLeftView();
+            IApp.theApp.vtkControl.ShowLeftView(IApp.theApp.RendererManager.ActiveRenderer);
             Terminate();
         }
 
@@ -395,7 +395,7 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowRightView();
+            IApp.theApp.vtkControl.ShowRightView(IApp.theApp.RendererManager.ActiveRenderer);
             Terminate();
         }
 
@@ -417,7 +417,7 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowSWIsoMetricView();
+            IApp.theApp.vtkControl.ShowSWIsoMetricView(IApp.theApp.RendererManager.ActiveRenderer);
             Terminate();
         }
 
@@ -439,7 +439,7 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowSEIsoMetricView();
+            IApp.theApp.vtkControl.ShowSEIsoMetricView(IApp.theApp.RendererManager.ActiveRenderer);
             Terminate();
         }
 
@@ -461,7 +461,7 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowNEIsoMetricView();
+            IApp.theApp.vtkControl.ShowNEIsoMetricView(IApp.theApp.RendererManager.ActiveRenderer);
             Terminate();
         }
 
@@ -483,7 +483,7 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowNWIsoMetricView();
+            IApp.theApp.vtkControl.ShowNWIsoMetricView(IApp.theApp.RendererManager.ActiveRenderer);
             Terminate();
         }
 
