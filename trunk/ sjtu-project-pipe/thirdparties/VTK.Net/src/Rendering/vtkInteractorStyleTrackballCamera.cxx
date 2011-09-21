@@ -45,25 +45,25 @@ void vtkInteractorStyleTrackballCamera::OnMouseMove()
   switch (this->State) 
     {
     case VTKIS_ROTATE:
-      this->FindPokedRenderer(x, y);
+      //this->FindPokedRenderer(x, y);
       this->Rotate();
       this->InvokeEvent(vtkCommand::InteractionEvent, NULL);
       break;
 
     case VTKIS_PAN:
-      this->FindPokedRenderer(x, y);
+      //this->FindPokedRenderer(x, y);
       this->Pan();
       this->InvokeEvent(vtkCommand::InteractionEvent, NULL);
       break;
 
     case VTKIS_DOLLY:
-      this->FindPokedRenderer(x, y);
+      //this->FindPokedRenderer(x, y);
       this->Dolly();
       this->InvokeEvent(vtkCommand::InteractionEvent, NULL);
       break;
 
     case VTKIS_SPIN:
-      this->FindPokedRenderer(x, y);
+      //this->FindPokedRenderer(x, y);
       this->Spin();
       this->InvokeEvent(vtkCommand::InteractionEvent, NULL);
       break;
@@ -73,8 +73,8 @@ void vtkInteractorStyleTrackballCamera::OnMouseMove()
 //----------------------------------------------------------------------------
 void vtkInteractorStyleTrackballCamera::OnLeftButtonDown() 
 { 
-  this->FindPokedRenderer(this->Interactor->GetEventPosition()[0], 
-                          this->Interactor->GetEventPosition()[1]);
+  //this->FindPokedRenderer(this->Interactor->GetEventPosition()[0], 
+  //                        this->Interactor->GetEventPosition()[1]);
   if (this->CurrentRenderer == NULL)
     {
     return;
@@ -180,8 +180,8 @@ void vtkInteractorStyleTrackballCamera::OnRightButtonUp()
 //----------------------------------------------------------------------------
 void vtkInteractorStyleTrackballCamera::OnMouseWheelForward() 
 {
-  this->FindPokedRenderer(this->Interactor->GetEventPosition()[0], 
-                          this->Interactor->GetEventPosition()[1]);
+  //this->FindPokedRenderer(this->Interactor->GetEventPosition()[0], 
+  //                        this->Interactor->GetEventPosition()[1]);
   if (this->CurrentRenderer == NULL)
     {
     return;
@@ -196,8 +196,8 @@ void vtkInteractorStyleTrackballCamera::OnMouseWheelForward()
 //----------------------------------------------------------------------------
 void vtkInteractorStyleTrackballCamera::OnMouseWheelBackward()
 {
-  this->FindPokedRenderer(this->Interactor->GetEventPosition()[0], 
-                          this->Interactor->GetEventPosition()[1]);
+  //this->FindPokedRenderer(this->Interactor->GetEventPosition()[0], 
+  //                        this->Interactor->GetEventPosition()[1]);
   if (this->CurrentRenderer == NULL)
     {
     return;
