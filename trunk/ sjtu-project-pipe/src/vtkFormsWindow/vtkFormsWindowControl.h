@@ -57,7 +57,7 @@ namespace vtk {
     void FireKeyDown( System::Windows::Forms::KeyEventArgs^ ea );
     void FireKeyUp( System::Windows::Forms::KeyEventArgs^ ea );
 
-	void SetInteractorTrackBall();
+	void SetInteractorTrackBall(vtkRenderer^ renderer);
 	void SetInteractorStyleState(int iState);
 	void ResetCamera();
 

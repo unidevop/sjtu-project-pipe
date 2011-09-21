@@ -713,12 +713,12 @@ namespace PipeSimulation
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(763, 561);
-            this.Controls.Add(this.statusStrip1);
             //this.Controls.Add(this.splitContainerMain);
             this.Controls.Add(this.vtkFormsWindowControl);
             this.Controls.Add(this.toolStripReplay);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
+            this.Controls.Add(this.statusStrip1);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainUI";
             this.Text = "3D-Immersed Tube SPS";

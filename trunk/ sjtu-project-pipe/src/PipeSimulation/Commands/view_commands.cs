@@ -4,6 +4,58 @@ using PipeSimulation.Properties;
 
 namespace PipeSimulation.Commands
 {
+    public class CSwitchActiveRendererCommand : CCommand
+    {
+        public CSwitchActiveRendererCommand(ICommandManager commandManager)
+            : base(commandManager, (ulong)CommandIds.kSwitchActiveRender)
+        {
+            m_bIsViewCommand = false;
+        }
+        protected override void OnActivate()
+        {
+            WatchEvents();
+        }
+
+        protected override void OnTerminate()
+        {
+            StopWatchEvents();
+        }
+
+        protected override void OnSuspend()
+        {
+            StopWatchEvents();
+        }
+
+        protected override void OnResume()
+        {
+            WatchEvents();
+        }
+
+        private void WatchEvents()
+        {
+            IApp.theApp.vtkControl.MouseDown += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseDown);
+            IApp.theApp.vtkControl.SetInteractorStyleState(0); // for none
+
+            SetStatusBarText(Resources.IDS_STATUS_READY);
+        }
+
+        private void StopWatchEvents()
+        {
+            IApp.theApp.vtkControl.MouseDown -= vtkControl_MouseDown;
+            IApp.theApp.vtkControl.SetInteractorStyleState(0); // for none
+        }
+
+        void vtkControl_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            // Invert the e.Y
+            int iX = e.X;
+            int iY = IApp.theApp.vtkControl.Size.Height - e.Y;
+
+            // Activate the renderer
+            IApp.theApp.RendererManager.ActiveRenderer = IApp.theApp.RenderWindow.GetInteractor().FindPokedRenderer(iX, iY);
+            IApp.theApp.RenderScene();
+        }
+    }
 
 // Copy from vtkInteractorStyle.h
 //#define VTKIS_ROTATE       1
@@ -49,7 +101,7 @@ namespace PipeSimulation.Commands
 
         private void WatchEvents()
         {
-            IApp.theApp.vtkControl.SetInteractorTrackBall();
+            IApp.theApp.vtkControl.SetInteractorTrackBall(IApp.theApp.RendererManager.ActiveRenderer);
             IApp.theApp.vtkControl.MouseDown += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseDown);
             IApp.theApp.vtkControl.MouseMove += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseMove);
             IApp.theApp.vtkControl.MouseUp += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseUp);
@@ -130,7 +182,7 @@ namespace PipeSimulation.Commands
 
         private void WatchEvents()
         {
-            IApp.theApp.vtkControl.SetInteractorTrackBall();
+            IApp.theApp.vtkControl.SetInteractorTrackBall(IApp.theApp.RendererManager.ActiveRenderer);
             IApp.theApp.vtkControl.MouseDown += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseDown);
             IApp.theApp.vtkControl.MouseMove += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseMove);
             IApp.theApp.vtkControl.MouseUp += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseUp);
@@ -203,7 +255,7 @@ namespace PipeSimulation.Commands
 
         private void WatchEvents()
         {
-            IApp.theApp.vtkControl.SetInteractorTrackBall();
+            IApp.theApp.vtkControl.SetInteractorTrackBall(IApp.theApp.RendererManager.ActiveRenderer);
             IApp.theApp.vtkControl.MouseDown += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseDown);
             IApp.theApp.vtkControl.MouseMove += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseMove);
             IApp.theApp.vtkControl.MouseUp += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseUp);

@@ -482,11 +482,12 @@ namespace vtk
     //__super::OnMouseMove(ea);
     }
   
-  void vtkFormsWindowControl::SetInteractorTrackBall()
+  void vtkFormsWindowControl::SetInteractorTrackBall(vtkRenderer^ renderer)
   {
 	  ::vtkInteractorStyleSwitch* style = ::vtkInteractorStyleSwitch::SafeDownCast(
 		  static_cast<::vtkWin32RenderWindowInteractor*>(this->GetInteractorNative())->GetInteractorStyle());
 	  style->SetCurrentStyleToTrackballCamera();
+	  style->SetCurrentRenderer(::vtkRenderer::SafeDownCast(static_cast<::vtkObjectBase*>(renderer->GetNativePointer().ToPointer())));
   }
   void vtkFormsWindowControl::SetInteractorStyleState(int iState)
   {
