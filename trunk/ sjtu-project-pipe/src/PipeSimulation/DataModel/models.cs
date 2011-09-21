@@ -57,6 +57,14 @@ namespace PipeSimulation
                                 vtk.vtkActor actor = actorCollection.GetNextActor();
                                 if (actor == null) continue;
 
+                                //if (!(this is CStaticModel))
+                                //{
+                                    IRendererManager renderManager = IApp.theApp.RendererManager;
+                                    renderManager.TopViewRenderer.AddActor(actor);
+                                    renderManager.RightViewRenderer.AddActor(actor);
+                                    renderManager.FrontViewRenderer.AddActor(actor);
+                                //}
+
                                 ModelNode.AddItem(actor);
                             }
 
