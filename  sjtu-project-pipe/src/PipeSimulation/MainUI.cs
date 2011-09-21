@@ -278,6 +278,8 @@ namespace PipeSimulation
 
         protected void OnControlSizeChanged(object sender, EventArgs e)
         {
+            UpdateWCS();
+
             Control control = sender as Control;
             if (control == null) return;
 
@@ -383,25 +385,94 @@ namespace PipeSimulation
             }
         }
 
-        private void InitializeWCS()
+        private vtk.vtkOrientationMarkerWidget axesWidgetaMain;
+        private vtk.vtkOrientationMarkerWidget axesWidgetTopView;
+        private vtk.vtkOrientationMarkerWidget axesWidgetFrontView;
+        private vtk.vtkOrientationMarkerWidget axesWidgetRightView;
+        private void UpdateWCS()
         {
+
             // Initialize the WCS
-            if (axesWidget != null) return;
+            if (axesWidgetaMain == null)
+            {
+                vtk.vtkAxesActor axesActor = new vtk.vtkAxesActor();
+                axesActor.SetShaftTypeToCylinder();
+                axesActor.SetXAxisLabelText(/*MSG0*/"X");
+                axesActor.SetYAxisLabelText(/*MSG0*/"Y");
+                axesActor.SetZAxisLabelText(/*MSG0*/"Z");
+                axesActor.SetTotalLength(1.5, 1.5, 1.5);
 
-            vtk.vtkAxesActor axesActor = new vtk.vtkAxesActor();
-            axesActor.SetShaftTypeToCylinder();
-            axesActor.SetXAxisLabelText(/*MSG0*/"X");
-            axesActor.SetYAxisLabelText(/*MSG0*/"Y");
-            axesActor.SetZAxisLabelText(/*MSG0*/"Z");
-            axesActor.SetTotalLength(1.5, 1.5, 1.5);
+                axesWidgetaMain = new vtk.vtkOrientationMarkerWidget();
+                axesWidgetaMain.SetCurrentRenderer(IApp.theApp.RendererManager.MainRenderer);
+                axesWidgetaMain.SetOrientationMarker(axesActor);
+                axesWidgetaMain.KeyPressActivationOff();
+                axesWidgetaMain.SetInteractor(IApp.theApp.RenderWindow.GetInteractor());
+                axesWidgetaMain.SetEnabled(1);
+                axesWidgetaMain.InteractiveOff();
+            }
+            double[] mainViewport = IApp.theApp.RendererManager.MainRenderer.GetViewport();
+            axesWidgetaMain.SetViewport(0.0, 0.0, 0.25, 0.25);
 
-            axesWidget = new vtk.vtkOrientationMarkerWidget();
-            axesWidget.SetViewport(0.0, 0.0, 0.25, 0.25);
-            axesWidget.SetOrientationMarker(axesActor);
-            axesWidget.KeyPressActivationOff();
-            axesWidget.SetInteractor(IApp.theApp.RenderWindow.GetInteractor());
-            axesWidget.SetEnabled(1);
-            axesWidget.InteractiveOff();
+
+            if (axesWidgetTopView == null)
+            {
+                vtk.vtkAxesActor axesActor = new vtk.vtkAxesActor();
+                axesActor.SetShaftTypeToLine();
+                axesActor.SetXAxisLabelText(/*MSG0*/"X");
+                axesActor.SetYAxisLabelText(/*MSG0*/"Y");
+                axesActor.SetZAxisLabelText(/*MSG0*/"Z");
+                axesActor.SetTotalLength(2.5, 2.5, 2.5); 
+
+                axesWidgetTopView = new vtk.vtkOrientationMarkerWidget();
+                axesWidgetTopView.SetCurrentRenderer(IApp.theApp.RendererManager.TopViewRenderer);
+                axesWidgetTopView.SetOrientationMarker(axesActor);
+                axesWidgetTopView.KeyPressActivationOff();
+                axesWidgetTopView.SetInteractor(IApp.theApp.RenderWindow.GetInteractor());
+                axesWidgetTopView.SetEnabled(1);
+                axesWidgetTopView.InteractiveOff();
+            }
+            double[] topViewport = IApp.theApp.RendererManager.TopViewRenderer.GetViewport();
+            axesWidgetTopView.SetViewport(topViewport[0], topViewport[1], topViewport[0] + 0.08, topViewport[1] + 0.2);
+
+            if (axesWidgetFrontView == null)
+            {
+                vtk.vtkAxesActor axesActor = new vtk.vtkAxesActor();
+                axesActor.SetShaftTypeToLine();
+                axesActor.SetXAxisLabelText(/*MSG0*/"X");
+                axesActor.SetYAxisLabelText(/*MSG0*/"Y");
+                axesActor.SetZAxisLabelText(/*MSG0*/"Z");
+                axesActor.SetTotalLength(2.5, 2.5, 2.5); 
+                
+                axesWidgetFrontView = new vtk.vtkOrientationMarkerWidget();
+                axesWidgetFrontView.SetCurrentRenderer(IApp.theApp.RendererManager.FrontViewRenderer);
+                axesWidgetFrontView.SetOrientationMarker(axesActor);
+                axesWidgetFrontView.KeyPressActivationOff();
+                axesWidgetFrontView.SetInteractor(IApp.theApp.RenderWindow.GetInteractor());
+                axesWidgetFrontView.SetEnabled(1);
+                axesWidgetFrontView.InteractiveOff();
+            }
+            double[] frontViewport = IApp.theApp.RendererManager.FrontViewRenderer.GetViewport();
+            axesWidgetFrontView.SetViewport(frontViewport[0], frontViewport[1], frontViewport[0] + 0.08, frontViewport[1] + 0.2);
+
+            if (axesWidgetRightView == null)
+            {
+                vtk.vtkAxesActor axesActor = new vtk.vtkAxesActor();
+                axesActor.SetShaftTypeToLine();
+                axesActor.SetXAxisLabelText(/*MSG0*/"X");
+                axesActor.SetYAxisLabelText(/*MSG0*/"Y");
+                axesActor.SetZAxisLabelText(/*MSG0*/"Z");
+                axesActor.SetTotalLength(2.5, 2.5, 2.5); 
+                
+                axesWidgetRightView = new vtk.vtkOrientationMarkerWidget();
+                axesWidgetRightView.SetCurrentRenderer(IApp.theApp.RendererManager.RightViewRenderer);
+                axesWidgetRightView.SetOrientationMarker(axesActor);
+                axesWidgetRightView.KeyPressActivationOff();
+                axesWidgetRightView.SetInteractor(IApp.theApp.RenderWindow.GetInteractor());
+                axesWidgetRightView.SetEnabled(1);
+                axesWidgetRightView.InteractiveOff();
+            }
+            double[] rightViewport = IApp.theApp.RendererManager.RightViewRenderer.GetViewport();
+            axesWidgetRightView.SetViewport(rightViewport[0], rightViewport[1], rightViewport[0]+0.08, rightViewport[1] + 0.22);
         }
 
         private void InitializeReferenceOrigin()
@@ -448,16 +519,16 @@ namespace PipeSimulation
         private void InitializeScene()
         {
             // Initialize WCS
-            InitializeWCS();
+            UpdateWCS();
 
             // Initialize Reference Origin
             InitializeReferenceOrigin();
 
             // Let the scene show SW Isometric
             IApp.theApp.vtkControl.ShowSWIsoMetricView(IApp.theApp.RendererManager.MainRenderer);
-            //IApp.theApp.vtkControl.ShowTopView(IApp.theApp.RendererManager.TopViewRenderer);
-            //IApp.theApp.vtkControl.ShowFrontView(IApp.theApp.RendererManager.FrontViewRenderer);
-            //IApp.theApp.vtkControl.ShowRightView(IApp.theApp.RendererManager.RightViewRenderer);
+            IApp.theApp.vtkControl.ShowTopView(IApp.theApp.RendererManager.TopViewRenderer);
+            IApp.theApp.vtkControl.ShowFrontView(IApp.theApp.RendererManager.FrontViewRenderer);
+            IApp.theApp.vtkControl.ShowRightView(IApp.theApp.RendererManager.RightViewRenderer);
         }
 
         private void InitializeObserverMode()
@@ -1361,9 +1432,23 @@ namespace PipeSimulation
 
         void showWCS_Click(object sender, EventArgs e)
         {
-            if (null == axesWidget) return;
-
-            ShowHideProp(axesWidget.GetOrientationMarker(), showWCS.Checked);
+            bool bChecked = showWCS.Checked;
+            if (axesWidgetaMain != null)
+            {
+                ShowHideProp(axesWidgetaMain.GetOrientationMarker(), bChecked);
+            }
+            if (axesWidgetFrontView != null)
+            {
+                ShowHideProp(axesWidgetFrontView.GetOrientationMarker(), bChecked);
+            }
+            if (axesWidgetTopView != null)
+            {
+                ShowHideProp(axesWidgetTopView.GetOrientationMarker(), bChecked);
+            }
+            if (axesWidgetRightView != null)
+            {
+                ShowHideProp(axesWidgetRightView.GetOrientationMarker(), bChecked);
+            }
         }
 
         void showWarningTextDisplayer_Click(object sender, EventArgs e)
@@ -1410,14 +1495,14 @@ namespace PipeSimulation
 
             // Visibility for statistic text displayer
             showWarningTextDisplayer.Enabled = !(string.IsNullOrEmpty(IApp.theApp.WarningTextDisplayer.TextActor.GetInput()));
-            showWarningTextDisplayer.Checked = (IApp.theApp.WarningTextDisplayer.TextActor.GetVisibility() != 0); 
+            showWarningTextDisplayer.Checked = (IApp.theApp.WarningTextDisplayer.TextActor.GetVisibility() != 0);
 
             // Visibility for WCS
-            showWCS.Enabled = (axesWidget != null);
+            showWCS.Enabled = (axesWidgetaMain != null);
             bool bWCSVisible = false;
-            if (axesWidget != null)
+            if (axesWidgetaMain != null)
             {
-                bWCSVisible = (axesWidget.GetOrientationMarker().GetVisibility() != 0);
+                bWCSVisible = (axesWidgetaMain.GetOrientationMarker().GetVisibility() != 0);
             }
             showWCS.Checked = bWCSVisible;
 

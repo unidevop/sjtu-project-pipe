@@ -756,7 +756,6 @@ namespace PipeSimulation
             this.Close();
         }
 
-        private vtk.vtkOrientationMarkerWidget axesWidget;
         private vtk.vtkCaptionActor2D originCaption;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem1;
