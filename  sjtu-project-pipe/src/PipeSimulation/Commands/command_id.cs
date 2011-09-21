@@ -4,6 +4,7 @@
     {
         enum CommandIds
         {
+            kSwitchActiveRender,
             kRotate,
             kPan,
             kZoom,

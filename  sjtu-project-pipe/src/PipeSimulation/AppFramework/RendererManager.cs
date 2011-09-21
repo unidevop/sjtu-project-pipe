@@ -63,6 +63,16 @@ namespace PipeSimulation.PipeApp
             }
             set
             {
+                if (value == null) return;
+
+                if (m_activeRender != value)
+                {
+                    // Fire the active render changed event
+                    if (ActiveRenderChanged != null)
+                    {
+                        ActiveRenderChanged(m_activeRender, value);
+                    }
+                }
                m_activeRender = value;
             }
         }
@@ -77,5 +87,9 @@ namespace PipeSimulation.PipeApp
         }
 
         #endregion
+
+        // Define a delegate
+        public delegate void ActiveRenderChangedHandler(vtk.vtkRenderer previousRender, vtk.vtkRenderer newRenderer);
+        public event ActiveRenderChangedHandler ActiveRenderChanged;
     }
 }

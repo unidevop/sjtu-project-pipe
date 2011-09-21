@@ -247,8 +247,10 @@ namespace PipeSimulation
 
         void InitializeRenderWindow(vtk.vtkRenderWindow renWin)
         {
-            IRendererManager renderManager = IApp.theApp.RendererManager;
+            CRendererManager renderManager = IApp.theApp.RendererManager as CRendererManager;
             if (renderManager == null) return;
+
+            renderManager.ActiveRenderChanged += new CRendererManager.ActiveRenderChangedHandler(renderManager_ActiveRenderChanged);
 
             // Main Renderer
             vtk.vtkRenderer mainRenderer = renderManager.MainRenderer;
@@ -274,6 +276,19 @@ namespace PipeSimulation
             CRenderersLayoutStrategy renderersLayoutStrategy = new CRenderersLayoutStrategy(renderManager);
             IApp.theApp.vtkControl.SizeChanged += renderersLayoutStrategy.OnControlSizeChanged;
             renderManager.RendererLayoutStrategy = renderersLayoutStrategy;
+        }
+
+        void renderManager_ActiveRenderChanged(vtk.vtkRenderer previousRender, vtk.vtkRenderer newRenderer)
+        {
+            if (previousRender != null && previousRender.HasViewProp(m_activerRenderOutlineActor) != 0)
+            {
+                previousRender.RemoveViewProp(m_activerRenderOutlineActor);
+            }
+
+            if (newRenderer != null && previousRender.HasViewProp(m_activerRenderOutlineActor) == 0)
+            {
+                newRenderer.AddViewProp(m_activerRenderOutlineActor);
+            }
         }
 
         protected void OnControlSizeChanged(object sender, EventArgs e)
@@ -323,6 +338,9 @@ namespace PipeSimulation
         private void OnPressEscapeKey()
         {
             IApp.theApp.CommandManager.StopActiveCommand();
+
+            // Always make the CSwitchActiveRendererCommand as the default command
+            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kSwitchActiveRender, null);
         }
 
         /// <summary>
@@ -472,7 +490,7 @@ namespace PipeSimulation
                 axesWidgetRightView.InteractiveOff();
             }
             double[] rightViewport = IApp.theApp.RendererManager.RightViewRenderer.GetViewport();
-            axesWidgetRightView.SetViewport(rightViewport[0], rightViewport[1], rightViewport[0]+0.08, rightViewport[1] + 0.22);
+            axesWidgetRightView.SetViewport(rightViewport[0], rightViewport[1], rightViewport[0]+0.08, rightViewport[1] + 0.2);
         }
 
         private void InitializeReferenceOrigin()
@@ -570,6 +588,7 @@ namespace PipeSimulation
         /// </summary>
         private void InitializeCommands()
         {
+            new CSwitchActiveRendererCommand(IApp.theApp.CommandManager);
             new CRotateCommand(IApp.theApp.CommandManager);
             new CPanCommand(IApp.theApp.CommandManager);
             new CZoomCommand(IApp.theApp.CommandManager);
@@ -585,6 +604,8 @@ namespace PipeSimulation
             new CNEIsometricCommand(IApp.theApp.CommandManager);
             new CNWIsometricCommand(IApp.theApp.CommandManager);
             new CSaveAsPictureCmd(IApp.theApp.CommandManager);
+
+            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kSwitchActiveRender, null);
         }
 
         // Initialize data model
@@ -1346,7 +1367,61 @@ namespace PipeSimulation
             {
                 IApp.theApp.VideoWriter.CaptureData();
             }
+
+            // Draw a outline
+            if (m_activerRenderOutlineActor == null)
+            {
+                m_activerRenderOutlineActor = new vtk.vtkActor2D();
+
+                m_activerRenderOutlinePoints = new vtk.vtkPolyData();
+                m_activerRenderOutlinePoints.Allocate(5, 0);
+                //vtk.vtkIdTypeArray
+                //m_activerRenderOutlinePoints.Allocate();
+
+                vtk.vtkIdList idList = new vtk.vtkIdList();
+                idList.SetNumberOfIds(5);
+                
+                vtk.vtkPoints points = new vtk.vtkPoints();
+                idList.InsertId(0, points.InsertNextPoint(1, 1, 0));
+                idList.InsertId(1, points.InsertNextPoint(2, 1, 0));
+                idList.InsertId(2, points.InsertNextPoint(2, 2, 0));
+                idList.InsertId(3, points.InsertNextPoint(1, 2, 0));
+                idList.InsertId(4, idList.GetId(0));
+
+                m_activerRenderOutlinePoints.SetPoints(points);
+                m_activerRenderOutlinePoints.InsertNextCell(4, idList);
+
+                vtk.vtkCoordinate coordinate = new vtk.vtkCoordinate();
+                coordinate.SetCoordinateSystemToDisplay();
+                vtk.vtkPolyDataMapper2D mapper = new vtk.vtkPolyDataMapper2D();
+                mapper.SetInput(m_activerRenderOutlinePoints);
+                mapper.SetTransformCoordinate(coordinate);
+
+                m_activerRenderOutlineActor.SetMapper(mapper);
+                m_activerRenderOutlineActor.SetPosition(0, 0);
+                m_activerRenderOutlineActor.SetPosition2(1, 1);
+
+                m_activerRenderOutlineActor.GetProperty().SetColor(1, 1, 0);
+                m_activerRenderOutlineActor.GetProperty().SetLineWidth(3);
+            }
+
+            if (IApp.theApp.RendererManager.ActiveRenderer.HasViewProp(m_activerRenderOutlineActor) == 0)
+            {
+                IApp.theApp.RendererManager.ActiveRenderer.AddActor(m_activerRenderOutlineActor);
+            }
+
+            double[] vp = IApp.theApp.RendererManager.ActiveRenderer.GetViewport();
+            IApp.theApp.RendererManager.ActiveRenderer.NormalizedDisplayToDisplay(ref vp[0], ref vp[1]);
+            IApp.theApp.RendererManager.ActiveRenderer.NormalizedDisplayToDisplay(ref vp[2], ref vp[3]);
+
+            m_activerRenderOutlinePoints.GetPoints().SetPoint(0, vp[0] + 1, vp[1] + 1, 0);
+            m_activerRenderOutlinePoints.GetPoints().SetPoint(1, vp[2] - 1, vp[1] + 1, 0);
+            m_activerRenderOutlinePoints.GetPoints().SetPoint(2, vp[2] - 1, vp[3] - 1, 0);
+            m_activerRenderOutlinePoints.GetPoints().SetPoint(3, vp[0] + 1, vp[3] - 1, 0);
         }
+
+        private vtk.vtkPolyData m_activerRenderOutlinePoints = null;
+        private vtk.vtkActor2D m_activerRenderOutlineActor = null;
 
         void viewSpecificTimerScene_Click(object sender, EventArgs e)
         {
