@@ -86,10 +86,16 @@ namespace PipeSimulation
                 connCfg.ReadInterval = TimeSpan.FromMilliseconds((double)m_autoConnInterval.Value * 1000.0);
 
                 //  TODO: check on invalid values
-                connCfg.Save();
-
-                m_modified = false;
-                OnModified();
+                try
+                {
+                    connCfg.Save();
+                    m_modified = false;
+                    OnModified();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, IApp.theApp.MainUI.Text);
+                }
             }
         }
 

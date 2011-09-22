@@ -27,12 +27,12 @@ namespace PipeSimulation.Utility
             {
                 m_config.Save(ConfigurationSaveMode.Modified);
 
-                if (ConfigChanged != null)
-                    ConfigChanged();
-
-                ConfigurationManager.RefreshSection("ConnectionStrings");
+                ConfigurationManager.RefreshSection("connectionStrings");
                 ConfigurationManager.RefreshSection("connectionSection");
                 m_modified = false;
+
+                if (ConfigChanged != null)
+                    ConfigChanged();
             }
         }
 
