@@ -713,8 +713,8 @@ void vtkInteractorStyle::OnChar()
 
     case 'r' :
     case 'R' :
-      this->FindPokedRenderer(rwi->GetEventPosition()[0], 
-                              rwi->GetEventPosition()[1]);
+      //this->FindPokedRenderer(rwi->GetEventPosition()[0], 
+      //                        rwi->GetEventPosition()[1]);
       this->CurrentRenderer->ResetCamera();
       rwi->Render();
       break;
