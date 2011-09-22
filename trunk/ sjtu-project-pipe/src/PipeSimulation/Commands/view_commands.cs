@@ -42,7 +42,6 @@ namespace PipeSimulation.Commands
         private void StopWatchEvents()
         {
             IApp.theApp.vtkControl.MouseDown -= vtkControl_MouseDown;
-            IApp.theApp.vtkControl.SetInteractorStyleState(0); // for none
         }
 
         void vtkControl_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
