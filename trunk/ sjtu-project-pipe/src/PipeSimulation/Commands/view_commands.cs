@@ -47,9 +47,19 @@ namespace PipeSimulation.Commands
 
         void vtkControl_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            ActivateRendererByPos(e.X, e.Y);
+        }
+
+        /// <summary>
+        /// Activate a renderer by position
+        /// </summary>
+        /// <param name="screenX"></param>
+        /// <param name="screenY"></param>
+        public static void ActivateRendererByPos(int screenX, int screenY)
+        {
             // Invert the e.Y
-            int iX = e.X;
-            int iY = IApp.theApp.vtkControl.Size.Height - e.Y;
+            int iX = screenX;
+            int iY = IApp.theApp.vtkControl.Size.Height - screenY;
 
             // Activate the renderer
             IApp.theApp.RendererManager.ActiveRenderer = IApp.theApp.RenderWindow.GetInteractor().FindPokedRenderer(iX, iY);
@@ -101,7 +111,6 @@ namespace PipeSimulation.Commands
 
         private void WatchEvents()
         {
-            IApp.theApp.vtkControl.SetInteractorTrackBall(IApp.theApp.RendererManager.ActiveRenderer);
             IApp.theApp.vtkControl.MouseDown += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseDown);
             IApp.theApp.vtkControl.MouseMove += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseMove);
             IApp.theApp.vtkControl.MouseUp += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseUp);
@@ -129,6 +138,10 @@ namespace PipeSimulation.Commands
 
         void vtkControl_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            // Switch the active rendere by mouse down
+            CSwitchActiveRendererCommand.ActivateRendererByPos(e.X, e.Y);
+            IApp.theApp.vtkControl.SetInteractorTrackBall(IApp.theApp.RendererManager.ActiveRenderer);
+
             if (e.Button == System.Windows.Forms.MouseButtons.Middle)
             {
                 IApp.theApp.vtkControl.SetInteractorStyleState(2); // for pan
@@ -182,7 +195,6 @@ namespace PipeSimulation.Commands
 
         private void WatchEvents()
         {
-            IApp.theApp.vtkControl.SetInteractorTrackBall(IApp.theApp.RendererManager.ActiveRenderer);
             IApp.theApp.vtkControl.MouseDown += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseDown);
             IApp.theApp.vtkControl.MouseMove += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseMove);
             IApp.theApp.vtkControl.MouseUp += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseUp);
@@ -209,6 +221,10 @@ namespace PipeSimulation.Commands
 
         void vtkControl_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            // Switch the active rendere by mouse down
+            CSwitchActiveRendererCommand.ActivateRendererByPos(e.X, e.Y);
+            IApp.theApp.vtkControl.SetInteractorTrackBall(IApp.theApp.RendererManager.ActiveRenderer);
+
             IApp.theApp.vtkControl.SetInteractorStyleState(2); // for pan
             IApp.theApp.vtkControl.FireMouseDown(e);
         }
@@ -255,7 +271,6 @@ namespace PipeSimulation.Commands
 
         private void WatchEvents()
         {
-            IApp.theApp.vtkControl.SetInteractorTrackBall(IApp.theApp.RendererManager.ActiveRenderer);
             IApp.theApp.vtkControl.MouseDown += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseDown);
             IApp.theApp.vtkControl.MouseMove += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseMove);
             IApp.theApp.vtkControl.MouseUp += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseUp);
@@ -282,6 +297,10 @@ namespace PipeSimulation.Commands
 
         void vtkControl_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            // Switch the active rendere by mouse down
+            CSwitchActiveRendererCommand.ActivateRendererByPos(e.X, e.Y);
+            IApp.theApp.vtkControl.SetInteractorTrackBall(IApp.theApp.RendererManager.ActiveRenderer);
+
             if (e.Button == System.Windows.Forms.MouseButtons.Middle)
             {
                 IApp.theApp.vtkControl.SetInteractorStyleState(2); // for pan
@@ -315,6 +334,7 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
+            IApp.theApp.vtkControl.SetInteractorTrackBall(IApp.theApp.RendererManager.ActiveRenderer);
             IApp.theApp.vtkControl.ResetCamera();
             Terminate();
         }

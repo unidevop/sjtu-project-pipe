@@ -1555,7 +1555,7 @@ namespace PipeSimulation
         void viewToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
         {
             // Visbility for parallel and pespective project
-            vtk.vtkCamera activeCamera = IApp.theApp.RenderWindow.GetRenderers().GetFirstRenderer().GetActiveCamera();
+            vtk.vtkCamera activeCamera = IApp.theApp.RendererManager.ActiveRenderer.GetActiveCamera();
             showParallelCamera.Enabled = (activeCamera != null);
             showPerspectiveCamera.Enabled = (activeCamera != null);
             if (activeCamera != null)
@@ -1615,7 +1615,7 @@ namespace PipeSimulation
         private void showPerspectiveCamera_Click(object sender, EventArgs e)
         {
             // Visbility for parallel and pespective project
-            vtk.vtkCamera activeCamera = IApp.theApp.RenderWindow.GetRenderers().GetFirstRenderer().GetActiveCamera();
+            vtk.vtkCamera activeCamera = IApp.theApp.RendererManager.ActiveRenderer.GetActiveCamera();
             if (activeCamera != null && activeCamera.GetParallelProjection() != 0)
             {
                 activeCamera.SetParallelProjection(0);
@@ -1627,7 +1627,7 @@ namespace PipeSimulation
         private void showParallelCamera_Click(object sender, EventArgs e)
         {
             // Visbility for parallel and pespective project
-            vtk.vtkCamera activeCamera = IApp.theApp.RenderWindow.GetRenderers().GetFirstRenderer().GetActiveCamera();
+            vtk.vtkCamera activeCamera = IApp.theApp.RendererManager.ActiveRenderer.GetActiveCamera();
             if (activeCamera != null && activeCamera.GetParallelProjection() == 0)
             {
                 activeCamera.SetParallelProjection(1);
