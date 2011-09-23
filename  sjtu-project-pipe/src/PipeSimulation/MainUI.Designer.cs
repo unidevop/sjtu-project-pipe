@@ -76,6 +76,8 @@ namespace PipeSimulation
             this.showWCS = new System.Windows.Forms.ToolStripMenuItem();
             this.showNonePipeObjects = new System.Windows.Forms.ToolStripMenuItem();
             this.showOrigin = new System.Windows.Forms.ToolStripMenuItem();
+            this.showActiveRendererMaximize = new System.Windows.Forms.ToolStripMenuItem();
+            this.showActiveRendererBackToOriginal = new System.Windows.Forms.ToolStripMenuItem();
 
             this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.monitorModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -408,7 +410,9 @@ namespace PipeSimulation
             this.showWarningTextDisplayer,
             this.showWCS,
             this.showNonePipeObjects,
-            this.showOrigin});
+            this.showOrigin,
+            this.showActiveRendererMaximize,
+            this.showActiveRendererBackToOriginal});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.viewToolStripMenuItem.Text = "视图(&V)";
@@ -474,6 +478,27 @@ namespace PipeSimulation
             this.showOrigin.Click += new EventHandler(showOrigin_Click);
             this.showOrigin.ShortcutKeys = Keys.Control | Keys.D5;
             this.showOrigin.CheckOnClick = true;
+
+            // 
+            // showActiveRendererMaximize
+            // 
+            this.showActiveRendererMaximize.Name = "showActiveRendererMaximize";
+            this.showActiveRendererMaximize.Size = new System.Drawing.Size(151, 22);
+            this.showActiveRendererMaximize.Text = "最大化当前视角";
+            this.showActiveRendererMaximize.Click += new EventHandler(showActiveRendererMaximize_Click);
+            this.showActiveRendererMaximize.ShortcutKeys = Keys.Control | Keys.Shift | Keys.M;
+            this.showActiveRendererMaximize.CheckOnClick = true;
+            this.showActiveRendererMaximize.Visible = false;
+            // 
+            // showActiveRendererBackToOriginal
+            // 
+            this.showActiveRendererBackToOriginal.Name = "showActiveRendererBackToOriginal";
+            this.showActiveRendererBackToOriginal.Size = new System.Drawing.Size(151, 22);
+            this.showActiveRendererBackToOriginal.Text = "还原当前视角";
+            this.showActiveRendererBackToOriginal.Click += new EventHandler(showActiveRendererBackToOriginal_Click);
+            this.showActiveRendererBackToOriginal.ShortcutKeys = Keys.Control | Keys.Shift | Keys.B;
+            this.showActiveRendererBackToOriginal.CheckOnClick = true;
+            this.showActiveRendererBackToOriginal.Visible = false;
             // 
             // toolsToolStripMenuItem
             // 
@@ -796,6 +821,8 @@ namespace PipeSimulation
         private ToolStripMenuItem showWCS;
         private ToolStripMenuItem showNonePipeObjects;
         private ToolStripMenuItem showOrigin;
+        private ToolStripMenuItem showActiveRendererMaximize;
+        private ToolStripMenuItem showActiveRendererBackToOriginal;
         private ToolStrip toolStripReplay;
         private ToolStripComboBox toolStripComboBoxPipes;
         private ToolStripSeparator toolStripSeparator3;

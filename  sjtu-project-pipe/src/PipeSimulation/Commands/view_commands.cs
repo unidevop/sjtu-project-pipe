@@ -61,7 +61,23 @@ namespace PipeSimulation.Commands
             int iY = IApp.theApp.vtkControl.Size.Height - screenY;
 
             // Activate the renderer
-            IApp.theApp.RendererManager.ActiveRenderer = IApp.theApp.RenderWindow.GetInteractor().FindPokedRenderer(iX, iY);
+            if (IApp.theApp.RendererManager.TopViewRenderer.IsInViewport(iX, iY) != 0)
+            {
+                IApp.theApp.RendererManager.ActiveRenderer = IApp.theApp.RendererManager.TopViewRenderer;
+            }
+            else if (IApp.theApp.RendererManager.RightViewRenderer.IsInViewport(iX, iY) != 0)
+            {
+                IApp.theApp.RendererManager.ActiveRenderer = IApp.theApp.RendererManager.RightViewRenderer;
+            }
+            else if (IApp.theApp.RendererManager.FrontViewRenderer.IsInViewport(iX, iY) != 0)
+            {
+                IApp.theApp.RendererManager.ActiveRenderer = IApp.theApp.RendererManager.FrontViewRenderer;
+            }
+            else
+            {
+                IApp.theApp.RendererManager.ActiveRenderer = IApp.theApp.RendererManager.MainRenderer;
+            }
+            //IApp.theApp.RendererManager.ActiveRenderer = IApp.theApp.RenderWindow.GetInteractor().FindPokedRenderer(iX, iY);
             IApp.theApp.RenderScene();
         }
     }

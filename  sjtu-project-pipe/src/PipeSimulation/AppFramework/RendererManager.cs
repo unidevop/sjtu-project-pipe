@@ -13,7 +13,7 @@ namespace PipeSimulation.PipeApp
         vtk.vtkRenderer RightViewRenderer { get; }
 
         vtk.vtkRenderer ActiveRenderer { get; set; }
-        IRendererLayoutStrategy RendererLayoutStrategy { set; }
+        IRendererLayoutStrategy RendererLayoutStrategy { get; set; }
     }
 
     /// <summary>
@@ -79,6 +79,7 @@ namespace PipeSimulation.PipeApp
 
         public IRendererLayoutStrategy RendererLayoutStrategy
         {
+            get { return m_RendererLayoutStrategy; }
             set 
             {
                 m_RendererLayoutStrategy = value;
