@@ -260,21 +260,23 @@ namespace PipeSimulation
             // TopView Renderer
             vtk.vtkRenderer topViewRender = renderManager.TopViewRenderer;
             topViewRender.SetBackground(0.1f, 0.2f, 0.4f);
+            //topViewRender.SetBackground(1,0,0);
             renWin.AddRenderer(topViewRender);
 
-            // Main Renderer
+            // front Renderer
             vtk.vtkRenderer frontViewRenderer = renderManager.FrontViewRenderer;
             frontViewRenderer.SetBackground(0.1f, 0.2f, 0.4f);
+            //frontViewRenderer.SetBackground(0,1,0);
             renWin.AddRenderer(frontViewRenderer);
 
-            // Main Renderer
+            // right Renderer
             vtk.vtkRenderer rightViewRenderer = renderManager.RightViewRenderer;
             rightViewRenderer.SetBackground(0.1f, 0.2f, 0.4f);
+            //rightViewRenderer.SetBackground(0, 0, 1);
             renWin.AddRenderer(rightViewRenderer);
 
             // Set up layout strategy
             CRenderersLayoutStrategy renderersLayoutStrategy = new CRenderersLayoutStrategy(renderManager);
-            IApp.theApp.vtkControl.SizeChanged += renderersLayoutStrategy.OnControlSizeChanged;
             renderManager.RendererLayoutStrategy = renderersLayoutStrategy;
         }
 
@@ -319,6 +321,12 @@ namespace PipeSimulation
 
                 textActorStatistic.VisibilityOn();
                 IApp.theApp.StatisticTextDisplayerAdditional.TextActor.SetDisplayPosition(CTextSceneDisplayer.sMinX + 110, (sizeControl.Height - CTextSceneDisplayer.sMinY));
+            }
+
+            // Update the renderer laoyout strategy
+            if (IApp.theApp.RendererManager.RendererLayoutStrategy != null)
+            {
+                IApp.theApp.RendererManager.RendererLayoutStrategy.ApplyLayout();
             }
 
             IApp.theApp.RenderScene();
@@ -738,6 +746,7 @@ namespace PipeSimulation
         private void toolStripRotate_Click(object sender, EventArgs e)
         {
             IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kRotate, sender);
+            
         }
 
         private void toolStripPan_Click(object sender, EventArgs e)
@@ -1654,6 +1663,20 @@ namespace PipeSimulation
 
                 IApp.theApp.RenderScene();
             }
+        }
+
+        private void showActiveRendererMaximize_Click(object sender, EventArgs e)
+        {
+            CMaximizeActiverRendererLayoutStrategy maximizeActiverRenderLayoutStrategy = new CMaximizeActiverRendererLayoutStrategy(IApp.theApp.RendererManager);
+            IApp.theApp.RendererManager.RendererLayoutStrategy = maximizeActiverRenderLayoutStrategy;
+            IApp.theApp.RenderScene();
+        }
+
+        private void showActiveRendererBackToOriginal_Click(object sender, EventArgs e)
+        {
+            CRenderersLayoutStrategy renderersLayoutStrategy = new CRenderersLayoutStrategy(IApp.theApp.RendererManager);
+            IApp.theApp.RendererManager.RendererLayoutStrategy = renderersLayoutStrategy;
+            IApp.theApp.RenderScene();
         }
     }
 }
