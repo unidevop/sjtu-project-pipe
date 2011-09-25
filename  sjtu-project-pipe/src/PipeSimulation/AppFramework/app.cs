@@ -162,7 +162,11 @@ namespace PipeSimulation.PipeApp
             {
                 if (null == m_PipeConnectionIndicator)
                 {
-                    m_PipeConnectionIndicator = new CPipeConnectionIndicator(RenderWindow.GetRenderers().GetFirstRenderer());
+                    m_PipeConnectionIndicator = new CPipeConnectionIndicator();
+                    m_rendererManager.MainRenderer.AddActor(m_PipeConnectionIndicator.Actor);
+                    m_rendererManager.TopViewRenderer.AddActor(m_PipeConnectionIndicator.Actor);
+                    m_rendererManager.RightViewRenderer.AddActor(m_PipeConnectionIndicator.Actor);
+                    m_rendererManager.FrontViewRenderer.AddActor(m_PipeConnectionIndicator.Actor);
                 }
                 return m_PipeConnectionIndicator; 
             }
