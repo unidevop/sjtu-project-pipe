@@ -11,10 +11,8 @@ namespace PipeSimulation.SceneGraph
         private vtk.vtkActor m_actor = null;
         private vtk.vtkPoints m_points = null;
 
-        public CPipeConnectionIndicator(vtk.vtkRenderer renderer)
+        public CPipeConnectionIndicator()
         {
-            if (renderer == null) return;
-
             // Construct a line
             //m_lineSource = new vtk.vtkLineSource();
 
@@ -25,8 +23,6 @@ namespace PipeSimulation.SceneGraph
             //m_actor.SetMapper(dataMapper);
             m_actor.GetProperty().SetLineWidth(LINEWIDTH);
             m_actor.GetProperty().SetColor(1, 1, 0); // Yellow
-
-            renderer.AddActor(m_actor);
         }
 
         //public void Update(IList<CPipeConnectionPointPair> connPointPairList)
@@ -143,6 +139,11 @@ namespace PipeSimulation.SceneGraph
                 if (null == m_actor) return;
                 m_actor.SetVisibility(value ? 1 : 0);
             }
+        }
+
+        public vtk.vtkActor Actor
+        {
+            get { return m_actor; }
         }
     }
 }
