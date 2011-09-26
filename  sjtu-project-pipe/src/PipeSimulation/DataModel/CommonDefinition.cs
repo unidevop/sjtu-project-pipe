@@ -73,6 +73,8 @@ namespace PipeSimulation
             public static string pylonHeight { get { return /*MSG0*/"Height"; } }
             public static string d { get { return /*MSG0*/"d"; } }
             public static string t { get { return /*MSG0*/"t"; } }
+
+            public static string showInMultipleViews { get { return /*MSGO*/"showInMultipleView"; } }
         }
     }
 }
