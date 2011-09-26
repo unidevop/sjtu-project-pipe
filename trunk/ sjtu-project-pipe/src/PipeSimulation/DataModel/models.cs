@@ -17,10 +17,38 @@ namespace PipeSimulation
         public class CSceneNodeFromDisk : CSceneNode, IDiskModel
         {
             private string m_modelPath = string.Empty;
+            private bool m_bShowInMultipleView = false;
 
             public CSceneNodeFromDisk(ISceneNode parentNode)
                 : base(parentNode)
             {
+            }
+
+            protected void LoadModelPathNode(XmlNode node)
+            {
+                try
+                {
+                    // Deal with model path, must be only one
+                    XmlNode modelPathNode = node.SelectSingleNode(ModelXMLDefinition.modelPath);
+                    if (modelPathNode != null)
+                    {
+                        //ModelPath = System.IO.Path.Combine(CFolderUtility.DataFolder(), modelPathNode.InnerText);
+                        ModelPath = modelPathNode.InnerText;
+
+                        // Read the show in multiple views option
+                        try
+                        {
+                            XmlAttribute attrib = node.Attributes[ModelXMLDefinition.showInMultipleViews];
+                            m_bShowInMultipleView = (int.Parse(attrib.Value) != 0);
+                        }
+                        catch
+                        {
+                        }
+                    }
+                }
+                catch
+                {
+                }
             }
 
             #region IDiskModel Members
@@ -57,7 +85,7 @@ namespace PipeSimulation
                                 vtk.vtkActor actor = actorCollection.GetNextActor();
                                 if (actor == null) continue;
 
-                                if (!(this is CStaticModel))
+                                if (m_bShowInMultipleView)
                                 {
                                     IRendererManager renderManager = IApp.theApp.RendererManager;
                                     renderManager.TopViewRenderer.AddActor(actor);
@@ -160,12 +188,7 @@ namespace PipeSimulation
                     }
 
                     // Deal with model path, must be only one
-                   XmlNode modelPathNode = pipeNode.SelectSingleNode(ModelXMLDefinition.modelPath);
-                   if (modelPathNode != null)
-                   {
-                       ModelPath = modelPathNode.InnerText;
-                       //ModelPath = System.IO.Path.Combine(CFolderUtility.DataFolder(), modelPathNode.InnerText);
-                   }
+                    LoadModelPathNode(pipeNode);
 
                     // Read the pylons models
                    XmlNodeList pylonNodes = pipeNode.SelectNodes(ModelXMLDefinition.Pylon);
@@ -365,12 +388,7 @@ namespace PipeSimulation
                     }
                     
                     // Deal with model path, must be only one
-                    XmlNode modelPathNode = node.SelectSingleNode(ModelXMLDefinition.modelPath);
-                    if (modelPathNode != null)
-                    {
-                        //ModelPath = System.IO.Path.Combine(CFolderUtility.DataFolder(), modelPathNode.InnerText);
-                        ModelPath = modelPathNode.InnerText;
-                    }
+                    LoadModelPathNode(node);
 
                     //// Deal with sub models
                     //XmlNode modelsNode = node.SelectSingleNode(ModelXMLDefinition.ModelsNode);
@@ -402,12 +420,7 @@ namespace PipeSimulation
                 try
                 {
                     // Deal with model path, must be only one
-                    XmlNode modelPathNode = node.SelectSingleNode(ModelXMLDefinition.modelPath);
-                    if (modelPathNode != null)
-                    {
-                        //ModelPath = System.IO.Path.Combine(CFolderUtility.DataFolder(), modelPathNode.InnerText);
-                        ModelPath = modelPathNode.InnerText;
-                    }
+                    LoadModelPathNode(node);
 
                     //// Deal with sub models
                     //XmlNode modelsNode = node.SelectSingleNode(ModelXMLDefinition.ModelsNode);
@@ -435,11 +448,7 @@ namespace PipeSimulation
                 try
                 {
                     // Deal with model path, must be only one
-                    XmlNode modelPathNode = node.SelectSingleNode(ModelXMLDefinition.modelPath);
-                    if (modelPathNode != null)
-                    {
-                        ModelPath = modelPathNode.InnerText;
-                    }
+                    LoadModelPathNode(node);
                 }
                 catch (SystemException)
                 {
