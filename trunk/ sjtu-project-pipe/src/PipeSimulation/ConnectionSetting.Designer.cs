@@ -35,7 +35,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.m_autoConnect = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.m_isConfigConn = new System.Windows.Forms.CheckBox();
             this.m_userName = new System.Windows.Forms.TextBox();
             this.m_pwdLabel = new System.Windows.Forms.Label();
             this.m_userNameLabel = new System.Windows.Forms.Label();
@@ -46,6 +45,7 @@
             this.m_resetBtn = new System.Windows.Forms.Button();
             this.m_configGroup = new System.Windows.Forms.GroupBox();
             this.m_connConfigGroup = new System.Windows.Forms.GroupBox();
+            this.m_cancelBtn = new System.Windows.Forms.Button();
             this.m_connGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_autoConnInterval)).BeginInit();
             this.m_configGroup.SuspendLayout();
@@ -123,17 +123,6 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.Font = null;
             this.label1.Name = "label1";
-            // 
-            // m_isConfigConn
-            // 
-            this.m_isConfigConn.AccessibleDescription = null;
-            this.m_isConfigConn.AccessibleName = null;
-            resources.ApplyResources(this.m_isConfigConn, "m_isConfigConn");
-            this.m_isConfigConn.BackgroundImage = null;
-            this.m_isConfigConn.Font = null;
-            this.m_isConfigConn.Name = "m_isConfigConn";
-            this.m_isConfigConn.UseVisualStyleBackColor = true;
-            this.m_isConfigConn.CheckedChanged += new System.EventHandler(this.IsConfigConnection_CheckedChanged);
             // 
             // m_userName
             // 
@@ -242,6 +231,17 @@
             this.m_connConfigGroup.Name = "m_connConfigGroup";
             this.m_connConfigGroup.TabStop = false;
             // 
+            // m_cancelBtn
+            // 
+            this.m_cancelBtn.AccessibleDescription = null;
+            this.m_cancelBtn.AccessibleName = null;
+            resources.ApplyResources(this.m_cancelBtn, "m_cancelBtn");
+            this.m_cancelBtn.BackgroundImage = null;
+            this.m_cancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.m_cancelBtn.Font = null;
+            this.m_cancelBtn.Name = "m_cancelBtn";
+            this.m_cancelBtn.UseVisualStyleBackColor = true;
+            // 
             // ConnectionSetting
             // 
             this.AccessibleDescription = null;
@@ -249,9 +249,10 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = null;
+            this.CancelButton = this.m_cancelBtn;
+            this.Controls.Add(this.m_cancelBtn);
             this.Controls.Add(this.m_connConfigGroup);
             this.Controls.Add(this.m_connectBtn);
-            this.Controls.Add(this.m_isConfigConn);
             this.Font = null;
             this.Name = "ConnectionSetting";
             this.m_connGroup.ResumeLayout(false);
@@ -261,7 +262,6 @@
             this.m_configGroup.PerformLayout();
             this.m_connConfigGroup.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -282,7 +282,7 @@
         private System.Windows.Forms.Label m_userNameLabel;
         private System.Windows.Forms.Label m_pwdLabel;
         private System.Windows.Forms.TextBox m_userName;
-        private System.Windows.Forms.CheckBox m_isConfigConn;
         private System.Windows.Forms.GroupBox m_connConfigGroup;
+        private System.Windows.Forms.Button m_cancelBtn;
     }
 }

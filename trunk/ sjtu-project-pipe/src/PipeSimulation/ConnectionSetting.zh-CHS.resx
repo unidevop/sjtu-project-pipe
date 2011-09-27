@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="m_connectBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 311</value>
+    <value>78, 273</value>
   </data>
   <data name="m_connectBtn.Text" xml:space="preserve">
     <value>手动连接</value>
@@ -166,19 +166,6 @@
   </data>
   <data name="m_connGroup.Text" xml:space="preserve">
     <value>连接</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="m_isConfigConn.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="m_isConfigConn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_isConfigConn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 16</value>
-  </data>
-  <data name="m_isConfigConn.Text" xml:space="preserve">
-    <value>数据库配置</value>
   </data>
   <data name="m_pwdLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -234,11 +221,20 @@
   <data name="m_configGroup.Text" xml:space="preserve">
     <value>数据库</value>
   </data>
+  <data name="m_connConfigGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, -1</value>
+  </data>
   <data name="m_connConfigGroup.Size" type="System.Drawing.Size, System.Drawing">
     <value>404, 267</value>
   </data>
+  <data name="m_cancelBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>246, 273</value>
+  </data>
+  <data name="m_cancelBtn.Text" xml:space="preserve">
+    <value>取消</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>406, 346</value>
+    <value>406, 308</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

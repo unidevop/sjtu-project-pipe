@@ -38,10 +38,8 @@ namespace PipeSimulation
             m_autoConnect.Checked = connCfg.IsAutoConnect;
             m_autoConnInterval.Value = (decimal)(connCfg.ReadInterval.TotalMilliseconds / 1000.0);
 
-            m_isConfigConn.Checked = false;
-
             m_autoConnInterval.Enabled = m_autoConnect.Checked;
-            IsConfigConnection_CheckedChanged(m_isConfigConn, null);
+            m_connConfigGroup.Enabled = true;
 
             m_modified = false;
             OnModified();
@@ -63,11 +61,6 @@ namespace PipeSimulation
                 if (IApp.theApp.ObserverModeManager.ActiveModeType == ObserverMode.ObserverMode.eMonitorMode)
                     realTimeDataQuery.Activate();
             }
-        }
-
-        private void IsConfigConnection_CheckedChanged(object sender, EventArgs e)
-        {
-            m_connConfigGroup.Enabled = m_isConfigConn.Checked;
         }
 
         private void ResetButton_Click(object sender, EventArgs e)

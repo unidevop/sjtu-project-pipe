@@ -884,10 +884,17 @@ namespace PipeSimulation
             IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
             if (dataQuery != null && dataQuery.IsConnected)
             {
-                PipeInfo pipeInfo = dataQuery.GetPipeRecord(specificTime, false);
+                try
+                {
+                    PipeInfo pipeInfo = dataQuery.GetPipeRecord(specificTime, false);
 
-                // Drive the model
-                IApp.theApp.DataDriven.DriveModel(pipeInfo);
+                    // Drive the model
+                    IApp.theApp.DataDriven.DriveModel(pipeInfo);
+                }
+                catch (Exception)
+                {
+                    // TODO: Write fail message to log file or status bar
+                }
 
                 UpdateAnimationLabelText();
             }
@@ -899,7 +906,7 @@ namespace PipeSimulation
             int iRecordIndex = trackBarAnimation.Value;
             string strAnimationTime = iRecordIndex.ToString();
 
-            DateTime dateTime;
+            DateTime dateTime = DateTime.Now;
 
             // Get the current pipe info
             PipeInfo pipeInfo = IApp.theApp.DataDriven.CurrentData;
@@ -913,9 +920,17 @@ namespace PipeSimulation
                 IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
                 if (dataQuery != null && dataQuery.IsConnected)
                 {
-                    dateTime = (iRecordIndex != 0) ?
-                        dataQuery.GetPipeTime(toolStripComboBoxPipes.SelectedIndex + 1, iRecordIndex) :
-                        dataQuery.GetPipeStartTime(toolStripComboBoxPipes.SelectedIndex + 1);
+                    try
+                    {
+
+                        dateTime = (iRecordIndex != 0) ?
+                            dataQuery.GetPipeTime(toolStripComboBoxPipes.SelectedIndex + 1, iRecordIndex) :
+                            dataQuery.GetPipeStartTime(toolStripComboBoxPipes.SelectedIndex + 1);
+                    }
+                    catch (Exception)
+                    {
+                        // TODO: Write fail message to log file or status bar
+                    }
                 }
                 else
                 {
@@ -1109,13 +1124,20 @@ namespace PipeSimulation
                 if (dataQuery != null && dataQuery.IsConnected)
                 {
                     int pipeModelCount = IApp.theApp.DataModel.PipeModels.Count;
-                    for (int i = 0; i < pipeModelCount; ++i)
+                    try
                     {
-                        if (dataQuery.IsPipeStarted(i + 1))
+                        for (int i = 0; i < pipeModelCount; ++i)
                         {
-                            string strComboboxItem = string.Format(Resources.IDS_PIPE_INDEX, i + 1);
-                            toolStripComboBoxPipes.Items.Add(strComboboxItem);
+                            if (dataQuery.IsPipeStarted(i + 1))
+                            {
+                                string strComboboxItem = string.Format(Resources.IDS_PIPE_INDEX, i + 1);
+                                toolStripComboBoxPipes.Items.Add(strComboboxItem);
+                            }
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        // TODO: Write fail message to log file or status bar
                     }
 
                     if (pipeModelCount != 0 && toolStripComboBoxPipes.Items.Count > 0)
@@ -1168,10 +1190,17 @@ namespace PipeSimulation
                 IRealtimeDataQuery dataQuery = IApp.theApp.RealTimeDataQuery;
                 if (dataQuery != null && dataQuery.IsConnected)
                 {
-                    PipeInfo queryResult = dataQuery.FetchLatestData();
+                    try
+                    {
+                        PipeInfo queryResult = dataQuery.FetchLatestData();
 
-                    // Drive model
-                    IApp.theApp.DataDriven.DriveModel(queryResult);
+                        // Drive model
+                        IApp.theApp.DataDriven.DriveModel(queryResult);
+                    }
+                    catch (Exception)
+                    {
+                        // TODO: Write fail message to log file or status bar
+                    }
 
                     dataQuery.Activate();
                 }
@@ -1216,31 +1245,38 @@ namespace PipeSimulation
             IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
             if (dataQuery != null && dataQuery.IsConnected)
             {
-                if (iSelectedIndex == 0) // View all pipes
+                try
                 {
-                    // Must from the 1st pipe
-                    beginingTime = dataQuery.GetPipeStartTime(1);
-
-                    int pipeModelCount = IApp.theApp.DataModel.PipeModels.Count;
-                    for (int i = pipeModelCount; i > 0; --i)
+                    if (iSelectedIndex == 0) // View all pipes
                     {
-                        if (dataQuery.IsPipeStarted(i))
+                        // Must from the 1st pipe
+                        beginingTime = dataQuery.GetPipeStartTime(1);
+
+                        int pipeModelCount = IApp.theApp.DataModel.PipeModels.Count;
+                        for (int i = pipeModelCount; i > 0; --i)
                         {
-                            endTime = dataQuery.GetPipeEndTime(i);
-                            break;
+                            if (dataQuery.IsPipeStarted(i))
+                            {
+                                endTime = dataQuery.GetPipeEndTime(i);
+                                break;
+                            }
                         }
                     }
+                    else
+                    {
+                        //// View specific pipe and Get all count
+                        //trackRange[1] = (int)dataQuery.GetPipeRecordCount(iSelectedIndex); // iSelectedIndex should start from 1
+
+                        // Get the beginning time
+                        beginingTime = dataQuery.GetPipeStartTime(iSelectedIndex);
+
+                        // Get the end time
+                        endTime = dataQuery.GetPipeEndTime(iSelectedIndex);
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    //// View specifc pipe and Get all count
-                    //trackRange[1] = (int)dataQuery.GetPipeRecordCount(iSelectedIndex); // iSelectedIndex should start from 1
-
-                    // Get the beginning time
-                    beginingTime = dataQuery.GetPipeStartTime(iSelectedIndex);
-
-                    // Get the end time
-                    endTime = dataQuery.GetPipeEndTime(iSelectedIndex);
+                    // TODO: Write fail message to log file or status bar
                 }
             }
 
@@ -1273,15 +1309,22 @@ namespace PipeSimulation
             // Update the replay animation engine total progress
             replayMode.ReplayAnimationEngine.AnimationTotalProgress = trackRange[1];
 
-            // Save the beingging time and end time
+            // Save the beginning time and end time
             replayMode.ReplayAnimationEngine.AnimationStartTime = beginingTime;
             replayMode.ReplayAnimationEngine.AnimationEndTime = endTime;
 
             // Update the render window
             if (dataQuery != null && dataQuery.IsConnected)
             {
-                PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(beginingTime, false);
-                IApp.theApp.DataDriven.DriveModel(pipeInfo);
+                try
+                {
+                    PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(beginingTime, false);
+                    IApp.theApp.DataDriven.DriveModel(pipeInfo);
+                }
+                catch (Exception)
+                {
+                    // TODO: Write fail message to log file or status bar
+                }
 
                 // Update the animation label text
                 UpdateAnimationLabelText();
@@ -1465,7 +1508,7 @@ namespace PipeSimulation
                     {
                         try
                         {
-                            PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(dateTime, true);
+                            PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(dateTime, true); // TODO: Add try catch protection in case of data query failure
                             if (pipeInfo == null)
                             {
                                 MessageBox.Show(Resources.IDS_NODATA_TO_TIME, this.Text);
