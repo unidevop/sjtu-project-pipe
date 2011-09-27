@@ -203,6 +203,9 @@ namespace PipeSimulation
             }
 
             // Step 3: Deinitialize the event and free the memory of our objects. to do...
+
+            // Write the Application Option
+            ApplicationOptions.Instance().WriteData(System.IO.Path.Combine(CFolderUtility.DataFolder(), /*MSG0*/@"app.opt"));
         }
 
         // Initialize the text actor
@@ -636,6 +639,9 @@ namespace PipeSimulation
 
             // Step 1: Load the file
             LoadXML(xmlFile);
+
+            // Read the Application Option
+            ApplicationOptions.Instance().ReadData(System.IO.Path.Combine(CFolderUtility.DataFolder(), /*MSG0*/@"app.opt"));
 
             // Step 2: Load the 3ds models
             Load3dsModels();
