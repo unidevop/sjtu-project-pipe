@@ -2,6 +2,7 @@
 using System.Xml;
 using PipeSimulation.DataModel;
 using PipeSimulation.Utility;
+using System.Windows.Media.Media3D;
 
 namespace PipeSimulation.Geometry
 {
@@ -12,6 +13,8 @@ namespace PipeSimulation.Geometry
     /// </summary>
     public class CUCS
     {
+        private Matrix3D m_matrix3d = new Matrix3D();
+        private Matrix3D m_matrix3dInvert = new Matrix3D();
         private vtk.vtkTransform m_tranform = new vtk.vtkTransform();
         private vtk.vtkTransform m_tranformInvert = new vtk.vtkTransform();
 
@@ -34,30 +37,32 @@ namespace PipeSimulation.Geometry
             CPoint3D yAxis = CPoint3DSerializer.ReadPoint(yAxisNode); ;
 
             // Calculate the UCS
-            System.Windows.Media.Media3D.Vector3D vecX = new System.Windows.Media.Media3D.Vector3D(xAxis.X, xAxis.Y, xAxis.Z);
+            Vector3D vecX = new Vector3D(xAxis.X, xAxis.Y, xAxis.Z);
             vecX.Normalize();
 
-            System.Windows.Media.Media3D.Vector3D vecY = new System.Windows.Media.Media3D.Vector3D(yAxis.X, yAxis.Y, yAxis.Z);
+            Vector3D vecY = new Vector3D(yAxis.X, yAxis.Y, yAxis.Z);
             vecY.Normalize();
 
             // Get the z axis
-            System.Windows.Media.Media3D.Vector3D vecZ = System.Windows.Media.Media3D.Vector3D.CrossProduct(vecX, vecY);
+            Vector3D vecZ = Vector3D.CrossProduct(vecX, vecY);
 
             // Recalculate the y axis since yaxis may not be preh to xaxis.
-            vecY = System.Windows.Media.Media3D.Vector3D.CrossProduct(vecZ, vecX);
+            vecY = Vector3D.CrossProduct(vecZ, vecX);
 
-            System.Windows.Media.Media3D.Matrix3D matrix;
-            matrix = new System.Windows.Media.Media3D.Matrix3D(vecX.X, vecX.Y, vecX.Z, origin.X,
-                    vecY.X, vecY.Y, vecY.Z, origin.Y,
-                    vecZ.X, vecZ.Y, vecZ.Z, origin.Z,
-                    0, 0, 0, 1.0);
-            //matrix = new System.Windows.Media.Media3D.Matrix3D(vecX.X, vecY.X, vecZ.X, origin.X,
-            //                                                   vecX.Y, vecY.Y, vecZ.Y, origin.Y,
-            //                                                   vecX.Z, vecY.Z, vecZ.Z, origin.Z,
-            //                                                   0, 0, 0, 1.0);
+            // Create matrix3d representation
+            m_matrix3d = new Matrix3D(vecX.X, vecX.Y, vecX.Z, origin.X,
+                                            vecY.X, vecY.Y, vecY.Z, origin.Y,
+                                            vecZ.X, vecZ.Y, vecZ.Z, origin.Z,
+                                            0, 0, 0, 1.0);
+
+            m_matrix3dInvert = new Matrix3D(vecX.X, vecX.Y, vecX.Z, origin.X,
+                                            vecY.X, vecY.Y, vecY.Z, origin.Y,
+                                            vecZ.X, vecZ.Y, vecZ.Z, origin.Z,
+                                            0, 0, 0, 1.0);
+            m_matrix3dInvert.Invert();
 
             // Set transform
-            m_tranform = matrix.ToVTKTransformation();
+            m_tranform = m_matrix3d.ToVTKTransformation();
             m_tranformInvert.DeepCopy(m_tranform);
             m_tranformInvert.Inverse();
         }
@@ -75,6 +80,22 @@ namespace PipeSimulation.Geometry
             get
             {
                 return m_tranformInvert;
+            }
+        }
+
+        public Matrix3D UCSTransformMatrix3d
+        {
+            get
+            {
+                return m_matrix3d;
+            }
+        }
+
+        public Matrix3D UCSTransformMatrix3dInvert
+        {
+            get
+            {
+                return m_matrix3dInvert;
             }
         }
     }

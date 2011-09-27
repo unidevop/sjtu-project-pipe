@@ -4,6 +4,7 @@ using PipeSimulation.DataQuery;
 using PipeSimulation.DataModel;
 using System.Collections.Generic;
 using PipeSimulation.Geometry;
+using System.Windows.Media.Media3D;
 
 namespace PipeSimulation.Utility
 {
@@ -29,7 +30,9 @@ namespace PipeSimulation.Utility
 
             // Get current pipe transformation
             //vtk.vtkTransform transform = currentPipeInfo.Matrix.ToVTKTransformation();
-            vtk.vtkTransform transform = Utility.CPipeTransformUtility.TransformGPSMatrix(currentPipeModel.GPSUCS.UCSTransform, currentPipeInfo.Matrix.ToVTKTransformation());
+            Matrix3D gpsMatrixInModeling = Matrix3D.Multiply(IApp.theApp.DataModel.ModelingUCStoGPSUCS.UCSTransformMatrix3dInvert, currentPipeInfo.Matrix);
+
+            vtk.vtkTransform transform = Utility.CPipeTransformUtility.TransformGPSMatrix(currentPipeModel.GPSUCS.UCSTransform, gpsMatrixInModeling.ToVTKTransformation());
             //Random ro = new Random();
             //transform.Translate(ro.NextDouble() * -20000, ro.NextDouble() * -5000, ro.NextDouble() * -14000);
             //transform.Update();

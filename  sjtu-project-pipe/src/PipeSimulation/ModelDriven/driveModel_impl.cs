@@ -82,7 +82,9 @@ namespace PipeSimulation
 
                         // Drive the model
                         //pipeModel.DriveModel(m_currentPipeInfo.Matrix.ToVTKTransformation());
-                        pipeModel.DriveModel(Utility.CPipeTransformUtility.TransformGPSMatrix(pipeModel.GPSUCS.UCSTransform, m_currentPipeInfo.Matrix.ToVTKTransformation()));
+                        Matrix3D gpsMatrixInModeling = Matrix3D.Multiply(IApp.theApp.DataModel.ModelingUCStoGPSUCS.UCSTransformMatrix3dInvert, m_currentPipeInfo.Matrix);
+
+                        pipeModel.DriveModel(Utility.CPipeTransformUtility.TransformGPSMatrix(pipeModel.GPSUCS.UCSTransform, gpsMatrixInModeling.ToVTKTransformation()));
                     }
                     else if (iPipeIndex < iCurrentPipeIndex)
                     {

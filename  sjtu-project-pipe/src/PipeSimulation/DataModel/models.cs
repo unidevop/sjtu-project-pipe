@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using PipeSimulation.PipeApp;
 using PipeSimulation.DataQuery;
 using PipeSimulation.Geometry;
+using System.Windows.Media.Media3D;
 
 namespace PipeSimulation
 {
@@ -349,7 +350,9 @@ namespace PipeSimulation
 
                     if (m_finalPipeInfo != null)
                     {
-                        m_transFormFinal = Utility.CPipeTransformUtility.TransformGPSMatrix(GPSUCS.UCSTransform, m_finalPipeInfo.Matrix.ToVTKTransformation());
+                        Matrix3D gpsMatrixInModeling = Matrix3D.Multiply(IApp.theApp.DataModel.ModelingUCStoGPSUCS.UCSTransformMatrix3dInvert, m_finalPipeInfo.Matrix);
+
+                        m_transFormFinal = Utility.CPipeTransformUtility.TransformGPSMatrix(GPSUCS.UCSTransform, gpsMatrixInModeling.ToVTKTransformation());
                     }
                 }
             }
