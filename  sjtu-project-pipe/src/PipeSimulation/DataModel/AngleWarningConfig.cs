@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Xml.Serialization;
 
 namespace PipeSimulation.DataModel
 {
     public class AngleWarningConfig
     {
+        [XmlElement("MaximumAlpha")]
         private double m_AlphaMaximum = 4; // Must be greater than 0
+        [XmlElement("MaximumBeta")]
         private double m_BeltaMaximum = 4; // Must be greater than 0
 
         public AngleWarningConfig()
