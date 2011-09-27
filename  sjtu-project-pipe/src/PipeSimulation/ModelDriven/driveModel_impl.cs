@@ -120,7 +120,14 @@ namespace PipeSimulation
                 IHistoryDataQuery dateQuery = IApp.theApp.HistoryTimeDataQuery;
                 if (dateQuery != null && dateQuery.IsConnected)
                 {
-                    DriveModel(dateQuery.GetPipeRecord(iPipeId + 1, iRecordId));
+                    try
+                    {
+                        DriveModel(dateQuery.GetPipeRecord(iPipeId + 1, iRecordId));
+                    }
+                    catch (Exception)
+                    {
+                        // TODO: Write fail message to log file or status bar
+                    }
                 }
                 else
                 {
@@ -156,17 +163,24 @@ namespace PipeSimulation
             
             private void CacheFinalPipeInfoForFinishedPipe(CPipeModel pipeModel, int iPipeIndex)
             {
-                // Caceh the final pipe info
+                // Cache the final pipe info
                 // I think every time to query the pipe info really cost a lot
                 if (pipeModel.FinalPipeInfo == null)
                 {
-                    // Find the final pipe info this pipe model
-                    IHistoryDataQuery historyDataQuery = IApp.theApp.HistoryTimeDataQuery;
-                    PipeInfo lastPipeInfo = historyDataQuery.GetPipeRecord(historyDataQuery.GetPipeEndTime(iPipeIndex), true);
-                    if (lastPipeInfo != null)
+                    try
                     {
-                        // Cache it
-                        pipeModel.FinalPipeInfo = lastPipeInfo;
+                        // Find the final pipe info this pipe model
+                        IHistoryDataQuery historyDataQuery = IApp.theApp.HistoryTimeDataQuery;
+                        PipeInfo lastPipeInfo = historyDataQuery.GetPipeRecord(historyDataQuery.GetPipeEndTime(iPipeIndex), true);
+                        if (lastPipeInfo != null)
+                        {
+                            // Cache it
+                            pipeModel.FinalPipeInfo = lastPipeInfo;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        // TODO: Write fail message to log file or status bar
                     }
                 }
             }
