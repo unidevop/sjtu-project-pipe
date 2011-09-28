@@ -74,6 +74,13 @@ namespace PipeSimulation.DataModel
         /// If the distance is smaller or equal to this value, then we think two pipes are connected.
         /// This unit is Meter.
         /// </summary>
-        public double ConnectedPipeTolerance;
+        public double ConnectedPipeTolerance = 0.01;
+
+        /// <summary>
+        /// This flag is used to define whether if we should update the connection points by last transform
+        /// Because the last transform maybe a little difference with the one when we create the model
+        /// Default is true
+        /// </summary>
+        public bool UpdateConnectionPointPositionByLastTransform = true;
     }
 }
