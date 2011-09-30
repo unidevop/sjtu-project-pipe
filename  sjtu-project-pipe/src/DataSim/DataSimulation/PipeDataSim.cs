@@ -13,9 +13,9 @@ namespace DataSimulation
     {
         private string m_connString;
         protected SqlConnection m_dbConn = null;
-        private DataSet m_dataSet = null;
-        SqlDataAdapter m_gpsDataAdapter = null;
-        SqlDataAdapter m_inclineDataAdapter = null;
+        //private DataSet m_dataSet = null;
+        //SqlDataAdapter m_gpsDataAdapter = null;
+        //SqlDataAdapter m_inclineDataAdapter = null;
 
         //  100 milliseconds
         private Timer m_timer = null; //new Timer(300);
@@ -74,7 +74,7 @@ namespace DataSimulation
                 m_dbConn = new SqlConnection(m_connString);
 
             m_dbConn.Open();
-            InitDataSet();
+            //InitDataSet();
             //Activate();
         }
 
@@ -94,6 +94,7 @@ namespace DataSimulation
             m_timer.Elapsed += new ElapsedEventHandler(WriteData);
             m_timer.AutoReset = true;
             m_timer.Enabled = true;
+            Console.WriteLine("Start Writing data");
         }
 
         void WriteData(object sender, ElapsedEventArgs e)
@@ -111,10 +112,10 @@ namespace DataSimulation
 
                     if (m_curPipeId < m_pipeDataGenArray.Length)
                     {
-                        m_pipeDataGenArray[m_curPipeId].GeneratePipeData(m_dataSet);
+                        m_pipeDataGenArray[m_curPipeId].GeneratePipeData(m_dbConn);
 
-                        m_gpsDataAdapter.Update(m_dataSet, "GPSMeasure");
-                        m_inclineDataAdapter.Update(m_dataSet, "InclineMeasure");
+                        //m_gpsDataAdapter.Update(m_dataSet, "GPSMeasure");
+                        //m_inclineDataAdapter.Update(m_dataSet, "InclineMeasure");
 
                         //Console.WriteLine("Thread id: {0}, current pipe id: {1}",
                         //    System.Threading.Thread.CurrentThread.ManagedThreadId, m_curPipeId + 1);
@@ -140,45 +141,47 @@ namespace DataSimulation
         {
             m_timer.Elapsed -= new ElapsedEventHandler(WriteData);
             m_timer.Enabled = false;
+            Console.WriteLine("End Writing data");
         }
 
-        protected void InitDataSet()
-        {
-            if (m_gpsDataAdapter == null)
-                m_gpsDataAdapter = new SqlDataAdapter();
+        //protected void InitDataSet()
+        //{
+        //    if (m_gpsDataAdapter == null)
+        //        m_gpsDataAdapter = new SqlDataAdapter();
 
-            if (m_inclineDataAdapter == null)
-                m_inclineDataAdapter = new SqlDataAdapter();
+        //    if (m_inclineDataAdapter == null)
+        //        m_inclineDataAdapter = new SqlDataAdapter();
 
-            //  read GPS records
-            SqlCommandBuilder gpsCmdBuilder = new SqlCommandBuilder(m_gpsDataAdapter);
-            SqlCommandBuilder inclineCmdBuilder = new SqlCommandBuilder(m_inclineDataAdapter);
+        //    //  read GPS records
+        //    SqlCommandBuilder gpsCmdBuilder = new SqlCommandBuilder(m_gpsDataAdapter);
+        //    SqlCommandBuilder inclineCmdBuilder = new SqlCommandBuilder(m_inclineDataAdapter);
 
-            if (m_dataSet == null)
-                m_dataSet = new DataSet();
+        //    if (m_dataSet == null)
+        //        m_dataSet = new DataSet();
 
-            m_gpsDataAdapter.SelectCommand = new SqlCommand("SELECT * FROM GPSMeasure", m_dbConn);
-            m_gpsDataAdapter.Fill(m_dataSet, "GPSMeasure");
+        //    m_gpsDataAdapter.SelectCommand = new SqlCommand("SELECT * FROM GPSMeasure", m_dbConn);
+        //    m_gpsDataAdapter.Fill(m_dataSet, "GPSMeasure");
 
-            m_inclineDataAdapter.SelectCommand = new SqlCommand("SELECT * FROM InclineMeasure", m_dbConn);
-            m_inclineDataAdapter.Fill(m_dataSet, "InclineMeasure");
+        //    m_inclineDataAdapter.SelectCommand = new SqlCommand("SELECT * FROM InclineMeasure", m_dbConn);
+        //    m_inclineDataAdapter.Fill(m_dataSet, "InclineMeasure");
 
-            gpsCmdBuilder.GetUpdateCommand();
-            inclineCmdBuilder.GetUpdateCommand();
-        }
+        //    gpsCmdBuilder.GetUpdateCommand();
+        //    inclineCmdBuilder.GetUpdateCommand();
+        //}
 
         void RemoveData()
         {
-            SqlCommand delCmd = new SqlCommand("DELETE FROM GPSMeasure", m_dbConn);
+            SqlCommand delCmd = new SqlCommand("DELETE FROM GPSMeasure;DELETE FROM InclineMeasure", m_dbConn);
             delCmd.ExecuteNonQuery();
 
-            delCmd.CommandText = "DELETE FROM InclineMeasure";
-            delCmd.ExecuteNonQuery();
+            //delCmd.CommandText = "DELETE FROM InclineMeasure";
+            //delCmd.ExecuteNonQuery();
         }
     }
 
     class PipeDataGenerator
     {
+        SqlCommand m_sqlCmd = new SqlCommand();
         int m_id;
         Point3D m_startPt1;
         Point3D m_startPt2;
@@ -291,7 +294,7 @@ namespace DataSimulation
             }
         }
 
-        internal void GeneratePipeData(DataSet dataSet)
+        internal void GeneratePipeData(SqlConnection dbConn/*DataSet dataSet*/)
         {
             if (IsEnded)
                 return;
@@ -299,49 +302,61 @@ namespace DataSimulation
             if (!IsStarted)
                 m_curMeasureTime = m_measureStartTime;
 
-            GenerateGPSData1(dataSet);
-            GenerateGPSData2(dataSet);
-            GenerateInclineData(dataSet);
+            Point3D pt1 = new Point3D();
+            Point3D pt2 = new Point3D();
+
+            string strSql = GenerateGPSData1(ref pt1) + ";" +
+                GenerateGPSData2(pt1, ref pt2) + ";" +
+                GenerateInclineData(pt1, pt2);
+
+            m_sqlCmd.CommandText = strSql;
+            m_sqlCmd.Connection = dbConn;
+            m_sqlCmd.ExecuteNonQuery();
 
             m_curMeasureTime += m_measureInterval;
         }
 
-        void GenerateGPSData1(DataSet dataSet)
+        private string GenerateGPSData1(ref Point3D pt1)
         {
-            DataRow newRow = dataSet.Tables["GPSMeasure"].NewRow();
+            //DataRow newRow = dataSet.Tables["GPSMeasure"].NewRow();
 
-            newRow["PipeID"] = m_id;
-            newRow["ProjectPointID"] = 1;
+            //newRow["PipeID"] = m_id;
+            //newRow["ProjectPointID"] = 1;
+
+            //Point3D pt1;
 
             if (m_curMeasureTime < m_backfillTime)
             {
                 // interpolation point of 1st point's track
-                Point3D pt1 = m_startPt1 + (m_endPt1 - m_startPt1) *
+                pt1 = m_startPt1 + (m_endPt1 - m_startPt1) *
                     (m_curMeasureTime - m_measureStartTime).TotalSeconds / (m_backfillTime - m_measureStartTime).TotalSeconds;
-                newRow["X"] = pt1.X;
-                newRow["Y"] = pt1.Y;
-                newRow["Z"] = pt1.Z;
+                //newRow["X"] = pt1.X;
+                //newRow["Y"] = pt1.Y;
+                //newRow["Z"] = pt1.Z;
             }
             else
             {
-                newRow["X"] = m_endPt1.X;
-                newRow["Y"] = m_endPt1.Y;
-                newRow["Z"] = m_endPt1.Z;
+                pt1 = m_endPt1;
+                //newRow["X"] = m_endPt1.X;
+                //newRow["Y"] = m_endPt1.Y;
+                //newRow["Z"] = m_endPt1.Z;
             }
-            newRow["MeasureTime"] = m_curMeasureTime;
+            //newRow["MeasureTime"] = m_curMeasureTime;
 
-            dataSet.Tables["GPSMeasure"].Rows.Add(newRow);
+            //dataSet.Tables["GPSMeasure"].Rows.Add(newRow);
 
-            Console.Write("Pipe id: {0}, time: {1}, gps1:({2}, {3}, {4})", 
-                m_id, m_curMeasureTime, newRow["X"], newRow["Y"], newRow["Z"]);
+            return String.Format("INSERT INTO GPSMeasure VALUES({0}, {1}, '{2:yyyy-MM-dd HH:mm:ss.fff}', {3}, {4}, {5})",
+                m_id, 1, m_curMeasureTime, pt1.X, pt1.Y, pt1.Z);
+            //Console.Write("Pipe id: {0}, time: {1}, gps1:({2}, {3}, {4})", 
+            //    m_id, m_curMeasureTime, newRow["X"], newRow["Y"], newRow["Z"]);
         }
 
-        private void GenerateGPSData2(DataSet dataSet)
+        private string GenerateGPSData2(Point3D pt1, ref Point3D pt2)
         {
-            DataRow newRow = dataSet.Tables["GPSMeasure"].NewRow();
+            //DataRow newRow = dataSet.Tables["GPSMeasure"].NewRow();
 
-            newRow["PipeID"] = m_id;
-            newRow["ProjectPointID"] = 2;
+            //newRow["PipeID"] = m_id;
+            //newRow["ProjectPointID"] = 2;
 
             if (m_curMeasureTime < m_backfillTime)
             {
@@ -349,23 +364,23 @@ namespace DataSimulation
                 Point3D interpolationPt2 = m_startPt2 + (m_endPt2 - m_startPt2) *
                     (m_curMeasureTime - m_measureStartTime).TotalSeconds / (m_backfillTime - m_measureStartTime).TotalSeconds;
 
-                Point3D pt1;
-                Point3D pt2;
+                //Point3D pt1;
+                //Point3D pt2;
 
-                DataRowCollection gpsDataRows = dataSet.Tables["GPSMeasure"].Rows;
+                //DataRowCollection gpsDataRows = dataSet.Tables["GPSMeasure"].Rows;
 
-                if (gpsDataRows.Count >= 1)
-                {
-                    pt1 = new Point3D((double)(decimal)(gpsDataRows[gpsDataRows.Count - 1]["X"]),
-                                      (double)(decimal)(gpsDataRows[gpsDataRows.Count - 1]["Y"]),
-                                      (double)(decimal)(gpsDataRows[gpsDataRows.Count - 1]["Z"]));
-                }
-                else
-                {
-                    // interpolation point of 1st point's track
-                    pt1 = m_startPt1 + (m_endPt1 - m_startPt1) *
-                        (m_curMeasureTime - m_measureStartTime).TotalSeconds / (m_backfillTime - m_measureStartTime).TotalSeconds;
-                }
+                //if (gpsDataRows.Count >= 1)
+                //{
+                //    pt1 = new Point3D((double)(decimal)(gpsDataRows[gpsDataRows.Count - 1]["X"]),
+                //                      (double)(decimal)(gpsDataRows[gpsDataRows.Count - 1]["Y"]),
+                //                      (double)(decimal)(gpsDataRows[gpsDataRows.Count - 1]["Z"]));
+                //}
+                //else
+                //{
+                //    // interpolation point of 1st point's track
+                //    pt1 = m_startPt1 + (m_endPt1 - m_startPt1) *
+                //        (m_curMeasureTime - m_measureStartTime).TotalSeconds / (m_backfillTime - m_measureStartTime).TotalSeconds;
+                //}
 
                 Vector3D pipeDir = interpolationPt2 - pt1;
 
@@ -373,62 +388,71 @@ namespace DataSimulation
 
                 pt2 = pt1 + MeasurePointsDistance * pipeDir;
 
-                newRow["X"] = pt2.X;
-                newRow["Y"] = pt2.Y;
-                newRow["Z"] = pt2.Z;
+                //newRow["X"] = pt2.X;
+                //newRow["Y"] = pt2.Y;
+                //newRow["Z"] = pt2.Z;
             }
             else
             {
-                newRow["X"] = m_endPt2.X;
-                newRow["Y"] = m_endPt2.Y;
-                newRow["Z"] = m_endPt2.Z;
+                pt2 = m_endPt2;
+                //newRow["X"] = m_endPt2.X;
+                //newRow["Y"] = m_endPt2.Y;
+                //newRow["Z"] = m_endPt2.Z;
             }
-            newRow["MeasureTime"] = m_curMeasureTime;
+            //newRow["MeasureTime"] = m_curMeasureTime;
 
-            dataSet.Tables["GPSMeasure"].Rows.Add(newRow);
+            //dataSet.Tables["GPSMeasure"].Rows.Add(newRow);
 
-            Console.Write(" gps2:({0}, {1}, {2})",
-                newRow["X"], newRow["Y"], newRow["Z"]);
+            return String.Format("INSERT INTO GPSMeasure VALUES({0}, {1}, '{2:yyyy-MM-dd HH:mm:ss.fff}', {3}, {4}, {5})",
+                m_id, 2, m_curMeasureTime, pt2.X, pt2.Y, pt2.Z);
+
+            //Console.Write(" gps2:({0}, {1}, {2})",
+            //    newRow["X"], newRow["Y"], newRow["Z"]);
         }
 
-        void GenerateInclineData(DataSet dataSet)
+        string GenerateInclineData(Point3D pt1, Point3D pt2)
         {
-            DataRow newRow = dataSet.Tables["InclineMeasure"].NewRow();
+            //DataRow newRow = dataSet.Tables["InclineMeasure"].NewRow();
 
-            newRow["PipeID"] = m_id;
-            newRow["ProjectPointID"] = 1;
-            newRow["MeasureTime"] = m_curMeasureTime;
+            //newRow["PipeID"] = m_id;
+            //newRow["ProjectPointID"] = 1;
+            //newRow["MeasureTime"] = m_curMeasureTime;
+
+            double angle1, angle2;
 
             if (m_curMeasureTime < m_backfillTime)
             {
-                newRow["Angle1"] = m_maxAngle * Math.Sin((m_curMeasureTime - m_measureStartTime).TotalSeconds *
+                angle1 = m_maxAngle * Math.Sin((m_curMeasureTime - m_measureStartTime).TotalSeconds *
                                                          Math.PI / 180);
 
-                DataRowCollection gpsDataRows = dataSet.Tables["GPSMeasure"].Rows;
-                if (gpsDataRows.Count >= 2)
-                {
-                    Point3D pt1 = new Point3D((double)(decimal)(gpsDataRows[gpsDataRows.Count - 2]["X"]),
-                                              (double)(decimal)(gpsDataRows[gpsDataRows.Count - 2]["Y"]),
-                                              (double)(decimal)(gpsDataRows[gpsDataRows.Count - 2]["Z"]));
+                //DataRowCollection gpsDataRows = dataSet.Tables["GPSMeasure"].Rows;
+                //if (gpsDataRows.Count >= 2)
+                //{
+                //    Point3D pt1 = new Point3D((double)(decimal)(gpsDataRows[gpsDataRows.Count - 2]["X"]),
+                //                              (double)(decimal)(gpsDataRows[gpsDataRows.Count - 2]["Y"]),
+                //                              (double)(decimal)(gpsDataRows[gpsDataRows.Count - 2]["Z"]));
 
-                    Point3D pt2 = new Point3D((double)(decimal)(gpsDataRows[gpsDataRows.Count - 1]["X"]),
-                                              (double)(decimal)(gpsDataRows[gpsDataRows.Count - 1]["Y"]),
-                                              (double)(decimal)(gpsDataRows[gpsDataRows.Count - 1]["Z"]));
+                //    Point3D pt2 = new Point3D((double)(decimal)(gpsDataRows[gpsDataRows.Count - 1]["X"]),
+                //                              (double)(decimal)(gpsDataRows[gpsDataRows.Count - 1]["Y"]),
+                //                              (double)(decimal)(gpsDataRows[gpsDataRows.Count - 1]["Z"]));
 
-                    newRow["Angle2"] = Math.Asin((pt2.Z - pt1.Z) / MeasurePointsDistance) * 180 / Math.PI;
-                }
-                else
-                    newRow["Angle2"] = 0;
+                    angle2 = Math.Asin((pt2.Z - pt1.Z) / MeasurePointsDistance) * 180 / Math.PI;
+                //}
+                //else
+                //    newRow["Angle2"] = 0;
             }
             else
             {
-                newRow["Angle1"] = 0;
-                newRow["Angle2"] = 0;
+                angle1 = 0;
+                angle2 = 0;
             }
 
-            dataSet.Tables["InclineMeasure"].Rows.Add(newRow);
+            //dataSet.Tables["InclineMeasure"].Rows.Add(newRow);
 
-            Console.WriteLine("Angle1: {0}, Angle2: {1}", newRow["Angle1"], newRow["Angle2"]);
+            return String.Format("INSERT INTO InclineMeasure VALUES({0}, {1}, '{2:yyyy-MM-dd HH:mm:ss.fff}', {3}, {4})",
+                m_id, 1, m_curMeasureTime, angle1, angle2);
+
+            //Console.WriteLine("Angle1: {0}, Angle2: {1}", newRow["Angle1"], newRow["Angle2"]);
         }
     }
 
