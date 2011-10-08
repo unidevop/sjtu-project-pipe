@@ -2,7 +2,6 @@
 
 <System>
 	<Pipes>
-
 		<!-- The first pipe-->
 		<Pipe width ="45" height ="20" length ="80" showInMultipleView ="1">
 			<ModelPath>models\Pipe1.3ds</ModelPath>
@@ -12,9 +11,75 @@
 			<Pylon showInMultipleView ="1">
 				<ModelPath >models\taojia1_2.3ds</ModelPath>
 			</Pylon>
-			<FillModel showInMultipleView ="1">
-				<ModelPath>models\fill1.3ds</ModelPath>
+			<!--<FuboModel showInMultipleView ="1">
+				<ModelPath >models\fill1.3ds</ModelPath>
+			</FuboModel>
+			<FuboModel showInMultipleView ="1">
+				<ModelPath >models\fill2.3ds</ModelPath>
+			</FuboModel>-->
+			<FillModel>
+				<FillSegment showInMultipleView ="1">
+					<ModelPath>models\fill1.3ds</ModelPath>
+					<TimePercent>0.3333</TimePercent>
+					<StartPosition x ="-235211.724" y ="75361.969" z ="-25792.029"/>
+				</FillSegment>
+				<FillSegment showInMultipleView ="1">
+					<ModelPath>models\fill2.3ds</ModelPath>
+					<TimePercent>0.3333</TimePercent>
+					<StartPosition x ="-153190.094" y ="55299.383" z ="-25040.506"/>
+				</FillSegment>
+				<FillSegment showInMultipleView ="1">
+					<ModelPath>models\fill3.3ds</ModelPath>
+					<TimePercent>0.3333</TimePercent>
+					<StartPosition x ="-70698.053" y ="37366.167" z ="-19756.397"/>
+				</FillSegment>
 			</FillModel>
+			<ZhujiangModel showInMultipleView ="1">
+				<ModelPath>models\Pipe1.3ds</ModelPath>
+				<StartPosition x ="-235211.724" y ="75361.969" z ="-25792.029"/>
+			</ZhujiangModel>
+			<CableSystem>
+				<CableState>
+					<CableSegment>
+						<StartPosition x ="-235211.724" y ="75361.969" z ="-25792.029" DriveByPipe ="true"/>
+						<EndPosition x ="-235211.724" y ="75361.969" z ="-25792.029" DriveByPipe ="true"/>
+					</CableSegment>
+					<CableSegment>
+						<StartPosition x ="-235132.114" y ="75449.096" z ="-35442.246" DriveByPipe ="true"/>
+						<EndPosition x ="0" y="0" z="0" DriveByPipe ="true"/>
+					</CableSegment>
+					<CableSegment>
+						<StartPosition x ="-226248.224" y ="70098.901" z ="-6698.504" DriveByPipe ="true"/>
+						<EndPosition x ="-100000" y="100000" z="100000" DriveByPipe ="true"/>
+					</CableSegment>
+					<!--<CableSegment>
+						<StartPosition x ="" y="" z="" DriveByPipe ="true"/>
+						<EndPosition x ="" y="" z="" DriveByPipe ="true"/>
+					</CableSegment>
+					<CableSegment>
+						<StartPosition x ="" y="" z="" DriveByPipe ="true"/>
+						<EndPosition x ="" y="" z="" DriveByPipe ="true"/>
+					</CableSegment>
+					<CableSegment>
+						<StartPosition x ="" y="" z="" DriveByPipe ="true"/>
+						<EndPosition x ="" y="" z="" DriveByPipe ="true"/>
+					</CableSegment>-->
+				</CableState>
+				<CableState>
+					<CableSegment>
+						<StartPosition x ="-226248.224" y ="70098.901" z ="-6698.504" DriveByPipe ="true"/>
+						<EndPosition x ="0" y="0" z="0" DriveByPipe ="true"/>
+					</CableSegment>
+					<CableSegment>
+						<StartPosition x ="-235132.114" y ="75449.096" z ="-35442.246" DriveByPipe ="true"/>
+						<EndPosition x ="-100000" y="100000" z="100000" DriveByPipe ="true"/>
+					</CableSegment>
+				</CableState>
+				<CableSwitchCondition instanceFullName="">
+					<CableSegmentIndex>2</CableSegmentIndex>
+					<CableLength>154</CableLength>
+				</CableSwitchCondition>
+			</CableSystem>
 			<ConnectionPointPair>
 				<StartConnectionPoint x ="-235211.724" y ="75361.969" z ="-25792.029"/>
 				<EndConnectionPoint x ="-153190.094" y ="55299.383" z ="-25040.506"/>
@@ -30,7 +95,7 @@
 			</GPSUCS>
 		</Pipe>
 
-		<!-- The sceond pipe-->
+		<!--The sceond pipe-->
 		<Pipe width ="36" height ="15" length ="90" d1 ="80" d2 ="" t1 ="" t2 =""  showInMultipleView ="1">
 			<ModelPath>models\pipe2.3ds</ModelPath>
 			<Pylon  showInMultipleView ="1">
@@ -57,7 +122,7 @@
 			</GPSUCS>
 		</Pipe>
 
-		<!-- The third pipe-->
+		<!--The third pipe-->
 		<Pipe width ="36" height ="15" length ="90" d1 ="80" d2 ="" t1 ="" t2 =""  showInMultipleView ="1">
 			<ModelPath>models\pipe3.3ds</ModelPath>
 			<Pylon  showInMultipleView ="1">
@@ -110,13 +175,13 @@
 	<Model>
 		<ModelPath>models\ganwu.3ds</ModelPath>
 	</Model>
-  <Model>
-    <ModelPath>models\water1.3ds</ModelPath>
-  </Model>
-  <Model>
-    <ModelPath>models\water2.3ds</ModelPath>
-  </Model>
-  <ModelingUCS>
+	<Model>
+		<ModelPath>models\water1.3ds</ModelPath>
+	</Model>
+	<Model>
+		<ModelPath>models\water2.3ds</ModelPath>
+	</Model>
+	<ModelingUCS>
 		<Origin x ="0" y ="0" z ="0"/>
 		<XAxis x ="1" y ="0" z ="0"/>
 		<YAxis x ="0" y ="1" z ="0"/>
