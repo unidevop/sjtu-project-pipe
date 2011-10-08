@@ -558,6 +558,8 @@ static vtk3DSMesh *create_mesh (char *name, int vertices, int faces)
   new_mesh->aPoints = NULL;
   new_mesh->aCellArray = NULL;
   new_mesh->aPolyData = NULL;
+  new_mesh->textCoords = NULL;
+  new_mesh->textureCoords = 0;
   return new_mesh;
 }
 
