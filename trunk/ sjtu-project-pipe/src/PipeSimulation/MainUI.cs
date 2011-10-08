@@ -21,6 +21,7 @@ using PipeSimulation.DataQuery;
 using SplashScreenThreaded;
 using PipeSimulation.Properties;
 using PipeSimulation.Geometry;
+using PipeSimulation.DataDriven;
 
 namespace PipeSimulation
 {
@@ -142,6 +143,9 @@ namespace PipeSimulation
         // Handler for form load
         private void MainForm_Load(object sender, EventArgs e)
         {
+            // Read the Application Option
+            ApplicationOptions.Instance().ReadData(System.IO.Path.Combine(CFolderUtility.DataFolder(), /*MSG0*/@"app.opt"));
+
             // Initialize the IApp
             IApp.theApp = new AppImpl(this);
 
@@ -203,9 +207,18 @@ namespace PipeSimulation
             }
 
             // Step 3: Deinitialize the event and free the memory of our objects. to do...
+            CReplayMode replayMode = IApp.theApp.ObserverModeManager.ActiveModeInstance as CReplayMode;
+            if (replayMode != null)
+            {
+                replayMode.ReplayAnimationEngine.StopAnimation();
+            }
+
 
             // Write the Application Option
             ApplicationOptions.Instance().WriteData(System.IO.Path.Combine(CFolderUtility.DataFolder(), /*MSG0*/@"app.opt"));
+
+            // Dispose the application instance
+            IApp.theApp.Dispose();
         }
 
         // Initialize the text actor
@@ -315,14 +328,16 @@ namespace PipeSimulation
             }
             else
             {
-                textActorStatistic.VisibilityOn();
-                textActorWarning.VisibilityOn();
+                if (ApplicationOptions.Instance().ViewOptions.ShowDisplayStatiticsText)
+                {
+                    textActorStatistic.VisibilityOn();
+                    textActorWarning.VisibilityOn();
+                }
 
                 // Update statistic text display positon
                 textActorStatistic.SetDisplayPosition(CTextSceneDisplayer.sMinX, (sizeControl.Height - CTextSceneDisplayer.sMinY));
                 textActorWarning.SetDisplayPosition(sizeControl.Width - CTextSceneDisplayer.sMinX, (sizeControl.Height - CTextSceneDisplayer.sMinY));
 
-                textActorStatistic.VisibilityOn();
                 IApp.theApp.StatisticTextDisplayerAdditional.TextActor.SetDisplayPosition(CTextSceneDisplayer.sMinX + 110, (sizeControl.Height - CTextSceneDisplayer.sMinY));
             }
 
@@ -553,6 +568,15 @@ namespace PipeSimulation
             // Initialize Reference Origin
             InitializeReferenceOrigin();
 
+            // Show/hide objects by Application Options
+            ViewOptions viewOptions = ApplicationOptions.Instance().ViewOptions;
+            SetPerspectiveCamera(viewOptions.PerpectiveProjection);
+            SetWarningTextDisplayerVisibility(viewOptions.ShowWarningText);
+            SetStatisticTextDisplayerVisibility(viewOptions.ShowDisplayStatiticsText);
+            SetWCSVisibility(viewOptions.ShowCoordinateSystem);
+            SetNonePipeObjectsVisiblity(viewOptions.ShowNonePipeObjects);
+            ShowOriginVisibility(viewOptions.ShowReferenceOrigin);
+
             // Let the scene show SW Isometric
             IApp.theApp.vtkControl.ShowSWIsoMetricView(IApp.theApp.RendererManager.MainRenderer);
             IApp.theApp.vtkControl.ShowTopView(IApp.theApp.RendererManager.TopViewRenderer);
@@ -640,9 +664,6 @@ namespace PipeSimulation
             // Step 1: Load the file
             LoadXML(xmlFile);
 
-            // Read the Application Option
-            ApplicationOptions.Instance().ReadData(System.IO.Path.Combine(CFolderUtility.DataFolder(), /*MSG0*/@"app.opt"));
-
             // Step 2: Load the 3ds models
             Load3dsModels();
         }
@@ -729,6 +750,14 @@ namespace PipeSimulation
                             IDiskModel subDiskModel = sceneNode as IDiskModel;
                             if (subDiskModel != null)
                                 subDiskModel.LoadModel(System.IO.Path.Combine(CFolderUtility.DataFolder(), subDiskModel.ModelPath));
+                            else if (sceneNode is CFillModel)
+                            {
+                                CFillModel fillModel = sceneNode as CFillModel;
+                                foreach (CFillSegment segment in fillModel.Segments)
+                                {
+                                    segment.LoadModel(System.IO.Path.Combine(CFolderUtility.DataFolder(), segment.ModelPath));
+                                }
+                            }
                         }
                     }
                }
@@ -1403,8 +1432,11 @@ namespace PipeSimulation
             if (CPipeConnetionUtility.CalcaulateConnection(IApp.theApp.DataDriven.CurrentData, out connectionPointPairList))
             {
                 CPipeConnectionIndicator pipeConnectionIndicator = IApp.theApp.PipeConnectionIndicator;
-                pipeConnectionIndicator.Update(connectionPointPairList);
-
+                if (pipeConnectionIndicator != null)
+                {
+                    pipeConnectionIndicator.SetPoints(connectionPointPairList);
+                    pipeConnectionIndicator.Impl.UpatePoints();
+                }
             }
 
             // Update the Text Display
@@ -1542,58 +1574,86 @@ namespace PipeSimulation
 
         void showNonePipeObjects_Click(object sender, EventArgs e)
         {
-            bool bChecked = showNonePipeObjects.Checked;
+            SetNonePipeObjectsVisiblity(showNonePipeObjects.Checked);
+        }
 
+        private void SetNonePipeObjectsVisiblity(bool bVisible)
+        {
             // Visibility for none pipe models
             foreach (CStaticModel staticModel in IApp.theApp.DataModel.StaticsModels)
             {
                 if (staticModel.ModelNode != null)
                 {
-                    staticModel.ModelNode.Visibility = bChecked;
+                    staticModel.ModelNode.Visibility = bVisible;
                 }
             }
 
             IApp.theApp.RenderScene();
+            ApplicationOptions.Instance().ViewOptions.ShowNonePipeObjects = bVisible;
         }
 
         void showOrigin_Click(object sender, EventArgs e)
         {
-            if (null == originCaption) return;
+            ShowOriginVisibility(showOrigin.Checked);
+        }
 
-            ShowHideProp(originCaption, showOrigin.Checked);
+        private void ShowOriginVisibility(bool bVisible)
+        {
+            ShowHideProp(originCaption, bVisible);
+            IApp.theApp.RenderScene();
+            ApplicationOptions.Instance().ViewOptions.ShowReferenceOrigin = bVisible;
         }
 
         void showWCS_Click(object sender, EventArgs e)
         {
-            bool bChecked = showWCS.Checked;
+            SetWCSVisibility(showWCS.Checked);
+        }
+
+        private void SetWCSVisibility(bool bVisible)
+        {
             if (axesWidgetaMain != null)
             {
-                ShowHideProp(axesWidgetaMain.GetOrientationMarker(), bChecked);
+                ShowHideProp(axesWidgetaMain.GetOrientationMarker(), bVisible);
             }
             if (axesWidgetFrontView != null)
             {
-                ShowHideProp(axesWidgetFrontView.GetOrientationMarker(), bChecked);
+                ShowHideProp(axesWidgetFrontView.GetOrientationMarker(), bVisible);
             }
             if (axesWidgetTopView != null)
             {
-                ShowHideProp(axesWidgetTopView.GetOrientationMarker(), bChecked);
+                ShowHideProp(axesWidgetTopView.GetOrientationMarker(), bVisible);
             }
             if (axesWidgetRightView != null)
             {
-                ShowHideProp(axesWidgetRightView.GetOrientationMarker(), bChecked);
+                ShowHideProp(axesWidgetRightView.GetOrientationMarker(), bVisible);
             }
+            IApp.theApp.RenderScene();
+            ApplicationOptions.Instance().ViewOptions.ShowCoordinateSystem = bVisible;
         }
 
         void showWarningTextDisplayer_Click(object sender, EventArgs e)
         {
-            ShowHideProp(IApp.theApp.WarningTextDisplayer.TextActor, showWarningTextDisplayer.Checked);
+            SetWarningTextDisplayerVisibility(showWarningTextDisplayer.Checked);
+        }
+
+        private void SetWarningTextDisplayerVisibility(bool bVisible)
+        {
+            ShowHideProp(IApp.theApp.WarningTextDisplayer.TextActor, bVisible);
+            IApp.theApp.RenderScene();
+            ApplicationOptions.Instance().ViewOptions.ShowWarningText = bVisible;
         }
 
         void showStatisticTextDisplayer_Click(object sender, EventArgs e)
         {
-            bool bChecked = showStatisticTextDisplayer.Checked;
-            ShowHideProp(IApp.theApp.StatisticTextDisplayer.TextActor, bChecked);
-            ShowHideProp(IApp.theApp.StatisticTextDisplayerAdditional.TextActor, bChecked);
+            SetStatisticTextDisplayerVisibility(showStatisticTextDisplayer.Checked);
+        }
+
+        private void SetStatisticTextDisplayerVisibility(bool bVisible)
+        {
+            ShowHideProp(IApp.theApp.StatisticTextDisplayer.TextActor, bVisible);
+            ShowHideProp(IApp.theApp.StatisticTextDisplayerAdditional.TextActor, bVisible);
+            IApp.theApp.RenderScene();
+            ApplicationOptions.Instance().ViewOptions.ShowDisplayStatiticsText = bVisible;
         }
 
         private void ShowHideProp(vtk.vtkProp prop, bool vis)
@@ -1606,8 +1666,6 @@ namespace PipeSimulation
             {
                 prop.VisibilityOff();
             }
-
-            IApp.theApp.RenderScene();
         }
 
         void viewToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
@@ -1672,26 +1730,26 @@ namespace PipeSimulation
 
         private void showPerspectiveCamera_Click(object sender, EventArgs e)
         {
+            SetPerspectiveCamera(true);
+        }
+
+        private void SetPerspectiveCamera(bool bPerspective)
+        {
             // Visbility for parallel and pespective project
             vtk.vtkCamera activeCamera = IApp.theApp.RendererManager.ActiveRenderer.GetActiveCamera();
-            if (activeCamera != null && activeCamera.GetParallelProjection() != 0)
+            if (activeCamera != null)
             {
-                activeCamera.SetParallelProjection(0);
+                activeCamera.SetParallelProjection(bPerspective ? 0 : 1);
             }
 
             IApp.theApp.RenderScene();
+
+            ApplicationOptions.Instance().ViewOptions.PerpectiveProjection = bPerspective;
         }
 
         private void showParallelCamera_Click(object sender, EventArgs e)
         {
-            // Visbility for parallel and pespective project
-            vtk.vtkCamera activeCamera = IApp.theApp.RendererManager.ActiveRenderer.GetActiveCamera();
-            if (activeCamera != null && activeCamera.GetParallelProjection() == 0)
-            {
-                activeCamera.SetParallelProjection(1);
-            }
-
-            IApp.theApp.RenderScene();
+            SetPerspectiveCamera(false);
         }
 
         private void ConnectionSettingMenuItem_Click(object sender, EventArgs e)
@@ -1726,6 +1784,22 @@ namespace PipeSimulation
             CRenderersLayoutStrategy renderersLayoutStrategy = new CRenderersLayoutStrategy(IApp.theApp.RendererManager);
             IApp.theApp.RendererManager.RendererLayoutStrategy = renderersLayoutStrategy;
             IApp.theApp.RenderScene();
+        }
+
+        private void fillToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (FillAnimationSimulationForm fillSimulationDlg = new FillAnimationSimulationForm())
+            {
+                fillSimulationDlg.ShowDialog();
+            }
+        }
+
+        private void zhujiangToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (ZhujiangAnimationSimulationForm zhujiangSimulationDlg = new ZhujiangAnimationSimulationForm())
+            {
+                zhujiangSimulationDlg.ShowDialog();
+            }
         }
     }
 }
