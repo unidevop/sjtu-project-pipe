@@ -2,129 +2,51 @@
 using System.Collections.Generic;
 using PipeSimulation.DataModel;
 using PipeSimulation.Geometry;
+using PipeSimulation.DataQuery;
 
 namespace PipeSimulation.SceneGraph
 {
-    public sealed class CPipeConnectionIndicator
+    /// <summary>
+    /// abstract class to define a two poins indicator
+    /// It uses a implmentation class to do the real graphics representation
+    /// </summary>
+    public abstract class CTwoPointsIndicators
     {
-        const int LINEWIDTH = 2;
-        private vtk.vtkActor m_actor = null;
-        private vtk.vtkPoints m_points = null;
-
-        public CPipeConnectionIndicator()
+        private CTwoPointsIndicatorsImpl m_impl;
+        public CTwoPointsIndicators(CTwoPointsIndicatorsImpl impl)
         {
-            // Construct a line
-            //m_lineSource = new vtk.vtkLineSource();
+            m_impl = impl;
+            m_impl.Parent = this;
+        }
 
-            //vtk.vtkPolyDataMapper dataMapper = new vtk.vtkPolyDataMapper();
-            //dataMapper.SetInputConnection(m_lineSource.GetOutputPort());
+        private List<CTwoPoints> m_pointsList = new List<CTwoPoints>();
+        public IList<CTwoPoints> PointsList
+        {
+            get { return m_pointsList; }
+        }
 
+        public CTwoPointsIndicatorsImpl Impl
+        {
+            get { return m_impl; }
+        }
+    }
+
+    /// <summary>
+    /// The graphics representation for two point indicator
+    /// </summary>
+    public class CTwoPointsIndicatorsImpl
+    {
+        private vtk.vtkActor m_actor = null;
+        private CTwoPointsIndicators m_parent = null;
+
+        public CTwoPointsIndicatorsImpl()
+        {
             m_actor = new vtk.vtkActor();
-            //m_actor.SetMapper(dataMapper);
-            m_actor.GetProperty().SetLineWidth(LINEWIDTH);
             m_actor.GetProperty().SetColor(1, 1, 0); // Yellow
         }
 
-        //public void Update(IList<CPipeConnectionPointPair> connPointPairList)
-        //{
-        //    if (m_actor == null) return;
-
-        //    //// Invisible
-        //    //if (connPointPairList == null)
-        //    //{
-        //    //    Visible = false;
-        //    //    return;
-        //    //}
-
-        //    //// Create points
-        //    //vtk.vtkPoints points = new vtk.vtkPoints();
-        //    //foreach (CPipeConnectionPointPair pair in connPointPairList)
-        //    //{
-        //    //    points.InsertNextPoint(pair.StartConnectionPoint);
-        //    //    points.InsertNextPoint(pair.EndConnectionPoint);
-        //    //}
-
-        //    //vtk.vtkCellArray lines = new vtk.vtkCellArray();
-
-        //    //int iPairCount = connPointPairList.Count;
-        //    //for (int i = 0; i < iPairCount; ++i)
-        //    //{
-        //    //    // Create Linee
-        //    //    vtk.vtkLine line = new vtk.vtkLine();
-        //    //    line.GetPointIds().SetId(0, i * 2);
-        //    //    line.GetPointIds().SetId(1, i * 2 + 1);
-
-        //    //    lines.InsertNextCell(line);
-        //    //}
-
-        //    //vtk.vtkPolyData polyData = new vtk.vtkPolyData();
-        //    //polyData.SetPoints(points);
-        //    //polyData.SetLines(lines);
-
-        //    //vtk.vtkPolyDataMapper dataMapper = new vtk.vtkPolyDataMapper();
-        //    //dataMapper.SetInput(polyData);
-
-        //    //m_actor.SetMapper(dataMapper);
-        //}
-
-        public void Update(IList<CPipeConnectionPointPair> connPointPairList)
+        public virtual void UpatePoints()
         {
-            if (m_actor == null) return;
-
-            // Invisible
-            if (connPointPairList == null)
-            {
-                Visible = false;
-                return;
-            }
-
-            // Update points
-            if (m_points == null)
-            {
-                m_points = new vtk.vtkPoints();
-                
-                // Create Points
-                m_points.Reset();
-                foreach (CPipeConnectionPointPair pair in connPointPairList)
-                {
-                    m_points.InsertNextPoint(pair.StartConnectionPoint.Point);
-                    m_points.InsertNextPoint(pair.EndConnectionPoint.Point);
-                }
-
-                vtk.vtkCellArray lines = new vtk.vtkCellArray();
-                for (int i = 0; i < connPointPairList.Count; ++i)
-                {
-                    // Create Linee
-                    vtk.vtkLine line = new vtk.vtkLine();
-                    line.GetPointIds().SetId(0, i * 2);
-                    line.GetPointIds().SetId(1, i * 2 + 1);
-
-                    lines.InsertNextCell(line);
-                }
-
-                vtk.vtkPolyData polyData = new vtk.vtkPolyData();
-                polyData.SetPoints(m_points);
-                polyData.SetLines(lines);
-
-                vtk.vtkPolyDataMapper dataMapper = new vtk.vtkPolyDataMapper();
-                dataMapper.SetInput(polyData);
-
-                m_actor.SetMapper(dataMapper);
-            }
-            else if (m_points.GetNumberOfPoints() != connPointPairList.Count * 2)
-            {
-                return;
-            }
-            else
-            {
-                m_points.Reset();
-                foreach (CPipeConnectionPointPair pair in connPointPairList)
-                {
-                    m_points.InsertNextPoint(pair.StartConnectionPoint.Point);
-                    m_points.InsertNextPoint(pair.EndConnectionPoint.Point);
-                }
-                m_points.Modified();
-            }
         }
 
         public bool Visible
@@ -144,6 +66,121 @@ namespace PipeSimulation.SceneGraph
         public vtk.vtkActor Actor
         {
             get { return m_actor; }
+        }
+
+        public CTwoPointsIndicators Parent
+        {
+            protected get { return m_parent; }
+            set { m_parent = value; }
+        }
+    }
+
+    /// <summary>
+    /// Line graphic representation for two point indicator
+    /// </summary>
+    public class CLineTwoPointsIndicatorsImpl : CTwoPointsIndicatorsImpl
+    {
+        const int LINEWIDTH = 2;
+        private vtk.vtkPoints m_points = null;
+        public CLineTwoPointsIndicatorsImpl()
+        {
+            Actor.GetProperty().SetLineWidth(LINEWIDTH);
+        }
+
+        public override void UpatePoints()
+        {
+            // Get Point List
+            if (Parent == null) return;
+            IList<CTwoPoints> pointsList = Parent.PointsList;
+
+            // Update points
+            if (m_points == null)
+            {
+                m_points = new vtk.vtkPoints();
+
+                // Create Points
+                m_points.Reset();
+                foreach (CTwoPoints pair in pointsList)
+                {
+                    m_points.InsertNextPoint(pair.First.Point);
+                    m_points.InsertNextPoint(pair.Second.Point);
+                }
+
+                vtk.vtkCellArray lines = new vtk.vtkCellArray();
+                for (int i = 0; i < pointsList.Count; ++i)
+                {
+                    // Create Linee
+                    vtk.vtkLine line = new vtk.vtkLine();
+                    line.GetPointIds().SetId(0, i * 2);
+                    line.GetPointIds().SetId(1, i * 2 + 1);
+
+                    lines.InsertNextCell(line);
+                }
+
+                vtk.vtkPolyData polyData = new vtk.vtkPolyData();
+                polyData.SetPoints(m_points);
+                polyData.SetLines(lines);
+
+                vtk.vtkPolyDataMapper dataMapper = new vtk.vtkPolyDataMapper();
+                dataMapper.SetInput(polyData);
+
+                Actor.SetMapper(dataMapper);
+            }
+            else if (m_points.GetNumberOfPoints() != pointsList.Count * 2)
+            {
+                return;
+            }
+            else
+            {
+                m_points.Reset();
+                foreach (CTwoPoints pair in pointsList)
+                {
+                    m_points.InsertNextPoint(pair.First.Point);
+                    m_points.InsertNextPoint(pair.Second.Point);
+                }
+                m_points.Modified();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Used for pipe connection indicator
+    /// </summary>
+    public sealed class CPipeConnectionIndicator : CTwoPointsIndicators
+    {
+        public CPipeConnectionIndicator(CTwoPointsIndicatorsImpl impl)
+            : base(impl)
+        {
+            this.Impl.Actor.GetProperty().SetLineWidth(ApplicationOptions.Instance().ConnectionPairOption.LineWidth);
+            this.Impl.Actor.GetProperty().SetColor(ApplicationOptions.Instance().ConnectionPairOption.LineColor);
+        }
+
+        public void SetPoints(IList<CPipeConnectionPointPair> connPointPairList)
+        {
+            IList<CTwoPoints> pointsList = PointsList;
+            pointsList.Clear();
+            foreach (CPipeConnectionPointPair pair in connPointPairList)
+            {
+                pointsList.Add(new CTwoPoints(pair.StartConnectionPoint, pair.EndConnectionPoint));
+            }
+        }
+    }
+
+    /// <summary>
+    /// Used for cabling connection
+    /// </summary>
+    public sealed class CCablingConnectionIndicator : CTwoPointsIndicators
+    {
+        public CCablingConnectionIndicator(CTwoPointsIndicatorsImpl impl)
+            : base(impl)
+        {
+            this.Impl.Actor.GetProperty().SetLineWidth(ApplicationOptions.Instance().CablingSimulationOption.LineWidth);
+            this.Impl.Actor.GetProperty().SetColor(ApplicationOptions.Instance().CablingSimulationOption.LineColor);
+        }
+
+        public void SetPoints()
+        {
+            // Get the pipe info
         }
     }
 }

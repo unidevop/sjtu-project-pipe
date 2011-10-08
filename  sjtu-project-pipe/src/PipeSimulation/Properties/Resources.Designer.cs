@@ -211,6 +211,15 @@ namespace PipeSimulation.Properties {
         }
         
         /// <summary>
+        ///   查找类似 回填模拟 的本地化字符串。
+        /// </summary>
+        internal static string IDS_FILL_SIM_DLG_TITLE {
+            get {
+                return ResourceManager.GetString("IDS_FILL_SIM_DLG_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 导入模型... 的本地化字符串。
         /// </summary>
         internal static string IDS_IMPORT_MODELS {
@@ -243,6 +252,15 @@ namespace PipeSimulation.Properties {
         internal static string IDS_PAN_DESC {
             get {
                 return ResourceManager.GetString("IDS_PAN_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 第{0}段沉管 的本地化字符串。
+        /// </summary>
+        internal static string IDS_PIPE_FILL_INDEX {
+            get {
+                return ResourceManager.GetString("IDS_PIPE_FILL_INDEX", resourceCulture);
             }
         }
         
@@ -369,6 +387,15 @@ namespace PipeSimulation.Properties {
         internal static string IDS_WARNING_ISRECORDING {
             get {
                 return ResourceManager.GetString("IDS_WARNING_ISRECORDING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 注浆模拟 的本地化字符串。
+        /// </summary>
+        internal static string IDS_ZHUJIANG_SIM_DLG_TITLE {
+            get {
+                return ResourceManager.GetString("IDS_ZHUJIANG_SIM_DLG_TITLE", resourceCulture);
             }
         }
         

@@ -30,6 +30,8 @@ namespace PipeSimulation.PipeApp
         private IHistoryDataQuery m_historyQuery = null;
         private CPipeConnectionIndicator m_PipeConnectionIndicator = null;
         private ConnectionConfig m_connectionCfg = new ConnectionConfig();
+        private CFillSimulationEngine m_fillSimEngine = new CFillSimulationEngine(new CFillSimScaleImpl());
+        private CZhujiangSimulationEngine m_ZhujiangSimulationEngine = new CZhujiangSimulationEngine(new CZhujiangSimScaleImpl());
 
         public AppImpl(MainUI mainUI)
         {
@@ -160,13 +162,16 @@ namespace PipeSimulation.PipeApp
         {
             get 
             {
+                // If this flag is false, we should *NOT* create a instance.
+                if (!ApplicationOptions.Instance().ConnectionPairOption.ShowConnectionPair) return null;
+
                 if (null == m_PipeConnectionIndicator)
                 {
-                    m_PipeConnectionIndicator = new CPipeConnectionIndicator();
-                    m_rendererManager.MainRenderer.AddActor(m_PipeConnectionIndicator.Actor);
-                    m_rendererManager.TopViewRenderer.AddActor(m_PipeConnectionIndicator.Actor);
-                    m_rendererManager.RightViewRenderer.AddActor(m_PipeConnectionIndicator.Actor);
-                    m_rendererManager.FrontViewRenderer.AddActor(m_PipeConnectionIndicator.Actor);
+                    m_PipeConnectionIndicator = new CPipeConnectionIndicator(new CLineTwoPointsIndicatorsImpl());
+                    m_rendererManager.MainRenderer.AddActor(m_PipeConnectionIndicator.Impl.Actor);
+                    m_rendererManager.TopViewRenderer.AddActor(m_PipeConnectionIndicator.Impl.Actor);
+                    m_rendererManager.RightViewRenderer.AddActor(m_PipeConnectionIndicator.Impl.Actor);
+                    m_rendererManager.FrontViewRenderer.AddActor(m_PipeConnectionIndicator.Impl.Actor);
                 }
                 return m_PipeConnectionIndicator; 
             }
@@ -199,6 +204,16 @@ namespace PipeSimulation.PipeApp
             catch (NullReferenceException)
             {
             }
+        }
+
+        public override CFillSimulationEngine FillSimulationEngine 
+        {
+            get { return m_fillSimEngine; }
+        }
+
+        public override CZhujiangSimulationEngine ZhujiangSimulationEngine
+        {
+            get { return m_ZhujiangSimulationEngine; }
         }
 
         public override void RenderScene()

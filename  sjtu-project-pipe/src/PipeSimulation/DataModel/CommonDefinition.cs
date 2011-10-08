@@ -47,7 +47,9 @@ namespace PipeSimulation
             public static string Pipe { get { return /*MSG0*/"Pipe"; } }
             public static string Pylon { get { return /*MSG0*/"Pylon"; } }
             public static string FillModel { get { return /*MSG0*/"FillModel"; } }
+            public static string ZhujiangModel { get { return /*MSG0*/"ZhujiangModel"; } }
             public static string Model { get { return /*MSG0*/"Model"; } }
+            public static string FuboModel { get { return /*MSG0*/"FuboModel"; } }
 
             public static string modelPath { get { return /*MSG0*/"ModelPath"; } }
 
@@ -69,10 +71,25 @@ namespace PipeSimulation
             public static string pipeModelingUnitToMeter { get { return /*MSG0*/"ModelingUnitToMeter"; } }
             public static string pipeGPSUnitToMeter { get { return /*MSG0*/"GPSUnitToMeter"; } }
 
+            // Fill Parameters
+            public static string TimePercentage { get { return /*MSG0*/"TimePercent"; } }
+            public static string StartPosition { get { return /*MSG0*/"StartPosition"; } }
+            public static string FillSegment { get { return /*MSG0*/"FillSegment"; } }
+
             // Pylon Parameters
             public static string pylonHeight { get { return /*MSG0*/"Height"; } }
             public static string d { get { return /*MSG0*/"d"; } }
             public static string t { get { return /*MSG0*/"t"; } }
+
+            // Cable Parameters
+            public static string CableSystem { get { return /*MSG0*/"CableSystem"; } }
+            public static string CableState { get { return /*MSG0*/"CableState"; } }
+            public static string CableSegment { get { return /*MSG0*/"CableSegment"; } }
+            public static string CableSegmentStartPosition { get { return /*MSG0*/"StartPosition"; } }
+            public static string CableSegmentEndPosition { get { return /*MSG0*/"EndPosition"; } }
+            public static string CableSwitchCondition { get { return /*MSG0*/"CableSwitchCondition"; } }
+            public static string CableSegmentIndex { get { return /*MSG0*/"CableSegmentIndex"; } }
+            public static string CableLength { get { return /*MSG0*/"CableLength"; } }
 
             public static string showInMultipleViews { get { return /*MSGO*/"showInMultipleView"; } }
         }

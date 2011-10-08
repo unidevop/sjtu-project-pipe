@@ -86,6 +86,9 @@ namespace PipeSimulation
             this.saveAsPNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startRecordAVIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopRecordAVIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zhujiangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,6 +110,7 @@ namespace PipeSimulation
             this.toolTipAnimation = new System.Windows.Forms.ToolTip(this.components);
             this.splitContainerMain.Panel2.SuspendLayout();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.m_connSettingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerMain.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -342,7 +346,8 @@ namespace PipeSimulation
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.viewToolStripMenuItem,
-            this.modeToolStripMenuItem,
+            //this.modeToolStripMenuItem,
+            this.processToolStripMenuItem,
             this.toolsToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
@@ -381,7 +386,7 @@ namespace PipeSimulation
             this.replayModeToolStripMenuItem});
             this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
             this.modeToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.modeToolStripMenuItem.Text = "模式(&M)";
+            this.modeToolStripMenuItem.Text = "沉放过程";
             this.modeToolStripMenuItem.DropDownOpening += new System.EventHandler(this.modeToolStripMenuItem_DropDownOpening);
             // 
             // monitorModeToolStripMenuItem
@@ -405,7 +410,7 @@ namespace PipeSimulation
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showParallelCamera,
             this.showPerspectiveCamera,
-            this.toolStripSeparator4,
+            this.toolStripSeparator5,
             this.showStatisticTextDisplayer,
             this.showWarningTextDisplayer,
             this.showWCS,
@@ -508,7 +513,7 @@ namespace PipeSimulation
             this.stopRecordAVIToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.toolsToolStripMenuItem.Text = "工具(&T)";
+            this.toolsToolStripMenuItem.Text = "辅助工具(&T)";
             this.toolsToolStripMenuItem.DropDownOpening += new EventHandler(toolsToolStripMenuItem_DropDownOpening);
             // 
             // saveAsPNGToolStripMenuItem
@@ -535,6 +540,30 @@ namespace PipeSimulation
             this.stopRecordAVIToolStripMenuItem.Text = "停止录制视频";
             this.stopRecordAVIToolStripMenuItem.Click += new EventHandler(stopRecordAVIToolStripMenuItem_Click);
             this.stopRecordAVIToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.E;
+            // 
+            // processToolStripMenuItem
+            // 
+            this.processToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modeToolStripMenuItem, this.fillToolStripMenuItem, this.zhujiangToolStripMenuItem});
+            this.processToolStripMenuItem.Name = "processToolStripMenuItem";
+            this.processToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.processToolStripMenuItem.Text = "工艺过程(&P)";
+            // 
+            // fillToolStripMenuItem
+            // 
+            this.fillToolStripMenuItem.Name = "fillToolStripMenuItem";
+            this.fillToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.fillToolStripMenuItem.Text = "回填模拟";
+            this.fillToolStripMenuItem.Click += new EventHandler(fillToolStripMenuItem_Click);
+            //this.fillToolStripMenuItem.ShortcutKeys = Keys.F1;
+            // 
+            // zhujiangToolStripMenuItem
+            // 
+            this.zhujiangToolStripMenuItem.Name = "zhujiangToolStripMenuItem";
+            this.zhujiangToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.zhujiangToolStripMenuItem.Text = "注浆模拟";
+            this.zhujiangToolStripMenuItem.Click += new EventHandler(zhujiangToolStripMenuItem_Click);
+            //this.fillToolStripMenuItem.ShortcutKeys = Keys.F1;
             // 
             // aboutToolStripMenuItem
             // 
@@ -723,6 +752,13 @@ namespace PipeSimulation
             resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.AccessibleDescription = null;
+            this.toolStripSeparator5.AccessibleName = null;
+            resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            // 
             // m_connSettingMenuItem
             // 
             this.m_connSettingMenuItem.AccessibleDescription = null;
@@ -782,6 +818,9 @@ namespace PipeSimulation
         }
 
         private vtk.vtkCaptionActor2D originCaption;
+        private ToolStripMenuItem processToolStripMenuItem;
+        private ToolStripMenuItem fillToolStripMenuItem;
+        private ToolStripMenuItem zhujiangToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem1;
         private ToolStripMenuItem toolsToolStripMenuItem;
@@ -837,5 +876,6 @@ namespace PipeSimulation
         private ToolTip toolTipAnimation;
         private ToolStripMenuItem m_connSettingMenuItem;
         private ToolStripSeparator toolStripSeparator4;
+        private ToolStripSeparator toolStripSeparator5;
     }
 }

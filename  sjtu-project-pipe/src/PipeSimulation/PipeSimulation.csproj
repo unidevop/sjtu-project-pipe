@@ -111,15 +111,32 @@
     <Compile Include="ConnectionSetting.Designer.cs">
       <DependentUpon>ConnectionSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\cableModels.cs" />
+    <Compile Include="DataModel\fillModels.cs" />
+    <Compile Include="DataModel\fuboModels.cs" />
+    <Compile Include="DataModel\pipeModels.cs" />
+    <Compile Include="DataModel\pylonModels.cs" />
+    <Compile Include="DataModel\staticModels.cs" />
     <Compile Include="DataModel\statisticDisplayer.cs" />
     <Compile Include="DataModel\CommonDefinition.cs" />
     <Compile Include="DataModel\datamode_impl.cs" />
     <Compile Include="DataModel\models.cs" />
+    <Compile Include="DataModel\zhujiangModels.cs" />
     <Compile Include="Geometry\connectionPointPair.cs" />
     <Compile Include="Geometry\point3d.cs" />
     <Compile Include="Geometry\ucs.cs" />
+    <Compile Include="ModelAnimationSimulationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModelAnimationSimulationForm.designer.cs">
+      <DependentUpon>ModelAnimationSimulationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModelDriven\driveModel.cs" />
     <Compile Include="ModelDriven\driveModel_impl.cs" />
+    <Compile Include="ModelDriven\fillSimulationEngine.cs" />
+    <Compile Include="ModelDriven\ModelAnimationSimulationEngine.cs" />
+    <Compile Include="ModelDriven\timerAnimationBase.cs" />
+    <Compile Include="ModelDriven\zhujiangSimulationEngine.cs" />
     <Compile Include="Scene\PipeConnectionIndicator.cs" />
     <Compile Include="Scene\sceneNode_impl.cs" />
     <Compile Include="AppFramework\app_interface.cs" />
@@ -268,6 +285,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainUI.zh-CHS.resx">
       <DependentUpon>MainUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModelAnimationSimulationForm.resx">
+      <DependentUpon>ModelAnimationSimulationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModelAnimationSimulationForm.zh-CHS.resx">
+      <DependentUpon>ModelAnimationSimulationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\res\logo.JPG" />
     <EmbeddedResource Include="SpecifyTime.resx">

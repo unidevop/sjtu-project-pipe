@@ -115,5 +115,28 @@ namespace PipeSimulation.Geometry
             return new CPoint3D(coords);
         }
     }
+
+    /// <summary>
+    /// CTwoPoints
+    /// </summary>
+    public sealed class CTwoPoints
+    {
+        private CPoint3D m_first = new CPoint3D();
+        private CPoint3D m_second = new CPoint3D();
+        public CTwoPoints(CPoint3D first, CPoint3D second)
+        {
+            m_first = new CPoint3D(first.Point);
+            m_second = new CPoint3D(second.Point);
+        }
+
+        public CPoint3D First
+        {
+            get { return new CPoint3D(m_first.Point); }
+        }
+        public CPoint3D Second
+        {
+            get { return new CPoint3D(m_second.Point); }
+        }
+    }
 }
 

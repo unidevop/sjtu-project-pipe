@@ -286,4 +286,13 @@
   <data name="PauseAnimation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>res\PauseAnimation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="IDS_PIPE_FILL_INDEX" xml:space="preserve">
+    <value>第{0}段沉管</value>
+  </data>
+  <data name="IDS_FILL_SIM_DLG_TITLE" xml:space="preserve">
+    <value>回填模拟</value>
+  </data>
+  <data name="IDS_ZHUJIANG_SIM_DLG_TITLE" xml:space="preserve">
+    <value>注浆模拟</value>
+  </data>
 </root>
