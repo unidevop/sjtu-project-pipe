@@ -46,10 +46,14 @@
             this.m_configGroup = new System.Windows.Forms.GroupBox();
             this.m_connConfigGroup = new System.Windows.Forms.GroupBox();
             this.m_cancelBtn = new System.Windows.Forms.Button();
+            this.m_readInterval = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.m_connGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_autoConnInterval)).BeginInit();
             this.m_configGroup.SuspendLayout();
             this.m_connConfigGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.m_readInterval)).BeginInit();
             this.SuspendLayout();
             // 
             // m_connectBtn
@@ -69,6 +73,9 @@
             this.m_connGroup.AccessibleName = null;
             resources.ApplyResources(this.m_connGroup, "m_connGroup");
             this.m_connGroup.BackgroundImage = null;
+            this.m_connGroup.Controls.Add(this.m_readInterval);
+            this.m_connGroup.Controls.Add(this.label3);
+            this.m_connGroup.Controls.Add(this.label4);
             this.m_connGroup.Controls.Add(this.m_autoConnInterval);
             this.m_connGroup.Controls.Add(this.label2);
             this.m_connGroup.Controls.Add(this.m_autoConnect);
@@ -95,7 +102,7 @@
             0,
             0,
             0});
-            this.m_autoConnInterval.ValueChanged += new System.EventHandler(this.AutoConnInterval_ValueChanged);
+            this.m_autoConnInterval.ValueChanged += new System.EventHandler(this.ConnectSettingChanged);
             // 
             // label2
             // 
@@ -132,7 +139,7 @@
             this.m_userName.BackgroundImage = null;
             this.m_userName.Font = null;
             this.m_userName.Name = "m_userName";
-            this.m_userName.TextChanged += new System.EventHandler(this.UserName_TextChanged);
+            this.m_userName.TextChanged += new System.EventHandler(this.ConnectSettingChanged);
             // 
             // m_pwdLabel
             // 
@@ -159,7 +166,7 @@
             this.m_password.Font = null;
             this.m_password.Name = "m_password";
             this.m_password.UseSystemPasswordChar = true;
-            this.m_password.TextChanged += new System.EventHandler(this.Password_TextChanged);
+            this.m_password.TextChanged += new System.EventHandler(this.ConnectSettingChanged);
             // 
             // m_dbServerLabel
             // 
@@ -177,7 +184,7 @@
             this.m_dbServer.BackgroundImage = null;
             this.m_dbServer.Font = null;
             this.m_dbServer.Name = "m_dbServer";
-            this.m_dbServer.TextChanged += new System.EventHandler(this.DbServer_TextChanged);
+            this.m_dbServer.TextChanged += new System.EventHandler(this.ConnectSettingChanged);
             // 
             // m_saveBtn
             // 
@@ -242,6 +249,42 @@
             this.m_cancelBtn.Name = "m_cancelBtn";
             this.m_cancelBtn.UseVisualStyleBackColor = true;
             // 
+            // m_readInterval
+            // 
+            this.m_readInterval.AccessibleDescription = null;
+            this.m_readInterval.AccessibleName = null;
+            resources.ApplyResources(this.m_readInterval, "m_readInterval");
+            this.m_readInterval.DecimalPlaces = 1;
+            this.m_readInterval.Font = null;
+            this.m_readInterval.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.m_readInterval.Name = "m_readInterval";
+            this.m_readInterval.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.m_readInterval.ValueChanged += new System.EventHandler(this.ConnectSettingChanged);
+            // 
+            // label3
+            // 
+            this.label3.AccessibleDescription = null;
+            this.label3.AccessibleName = null;
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Font = null;
+            this.label3.Name = "label3";
+            // 
+            // label4
+            // 
+            this.label4.AccessibleDescription = null;
+            this.label4.AccessibleName = null;
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Font = null;
+            this.label4.Name = "label4";
+            // 
             // ConnectionSetting
             // 
             this.AccessibleDescription = null;
@@ -261,6 +304,7 @@
             this.m_configGroup.ResumeLayout(false);
             this.m_configGroup.PerformLayout();
             this.m_connConfigGroup.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.m_readInterval)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -284,5 +328,8 @@
         private System.Windows.Forms.TextBox m_userName;
         private System.Windows.Forms.GroupBox m_connConfigGroup;
         private System.Windows.Forms.Button m_cancelBtn;
+        private System.Windows.Forms.NumericUpDown m_readInterval;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

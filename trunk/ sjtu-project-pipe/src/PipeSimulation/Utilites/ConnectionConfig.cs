@@ -5,15 +5,63 @@ using System.Linq;
 using System.Text;
 using System.Configuration;
 using System.Text.RegularExpressions;
+using System.Timers;
 
 namespace PipeSimulation.Utility
 {
-    public class ConnectionConfig
+    public class ConnectionConfig : IDisposable
     {
         private Configuration m_config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
         private bool m_modified = false;
 
+        //  default auto connect timer. 100 milliseconds
+        private Timer m_timer = new Timer();
+
         public event Action ConfigChanged;
+        public event Action AutoConnect;
+        public event Action Connected;
+        public event Action Disconnected;
+
+        internal ConnectionConfig()
+        {
+            m_timer.Interval = AutoConnectInterval.TotalMilliseconds;
+
+            if (IsAutoConnect)
+                StartAutoConnect();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                m_timer.Dispose();
+            }
+        }
+
+        private void StartAutoConnect()
+        {
+            m_timer.Elapsed += new ElapsedEventHandler(OnAutoConnect);
+            m_timer.AutoReset = true;
+            m_timer.Enabled = true;
+        }
+
+        private void EndAutoConnect()
+        {
+            m_timer.Elapsed -= new ElapsedEventHandler(OnAutoConnect);
+            m_timer.Enabled = false;
+        }
+
+        private void OnAutoConnect(object sender, ElapsedEventArgs e)
+        {
+            if (AutoConnect != null)
+                AutoConnect();
+        }
 
         internal void SetConnectionString(string dbAdress, string userName, string password)
         {
@@ -29,6 +77,13 @@ namespace PipeSimulation.Utility
 
                 ConfigurationManager.RefreshSection("connectionStrings");
                 ConfigurationManager.RefreshSection("connectionSection");
+
+                m_timer.Interval = AutoConnectInterval.TotalMilliseconds;
+                if (IsAutoConnect)
+                    StartAutoConnect();
+                else
+                    EndAutoConnect();
+
                 m_modified = false;
 
                 if (ConfigChanged != null)
@@ -122,6 +177,24 @@ namespace PipeSimulation.Utility
             }
         }
 
+        internal TimeSpan AutoConnectInterval
+        {
+            get
+            {
+                ConnectionSection connSec = ConfigurationManager.GetSection("connectionSection") as ConnectionSection;
+
+                return connSec.AutoConnectInterval;
+            }
+            set
+            {
+                ConnectionSection connSec = m_config.GetSection("connectionSection") as ConnectionSection;
+
+                //connSec.SectionInformation.ForceSave = true;
+                connSec.AutoConnectInterval = value;
+                m_modified = true;
+            }
+        }
+
     }
 
     // Define a custom section.
@@ -142,6 +215,20 @@ namespace PipeSimulation.Utility
             set
             {
                 this["AutoConnect"] = value;
+            }
+        }
+
+        [ConfigurationProperty("AutoConnectInterval", DefaultValue = "0:0:5", IsRequired = true)]
+        //[TimeSpanValidator(MinValueString = "0:0:0.100", MaxValueString = "0:10:00.000", ExcludeRange = false)]
+        public TimeSpan AutoConnectInterval
+        {
+            get
+            {
+                return (TimeSpan)this["AutoConnectInterval"];
+            }
+            set
+            {
+                this["AutoConnectInterval"] = value;
             }
         }
 

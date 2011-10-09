@@ -95,27 +95,6 @@ namespace PipeSimulation
             IHistoryDataQuery hisDataQuery = IApp.theApp.HistoryTimeDataQuery;
             IRealtimeDataQuery realTimeDataQuery = IApp.theApp.RealTimeDataQuery;
 
-            // Very low performance if the database is not connected
-            //try
-            //{
-            //    if (IApp.theApp.ConnectionCfg.IsAutoConnect)
-            //    {
-            //        if (hisDataQuery != null && !hisDataQuery.IsConnected)
-            //            hisDataQuery.Connect();
-
-            //        if (realTimeDataQuery != null && !realTimeDataQuery.IsConnected)
-            //        {
-            //            realTimeDataQuery.Connect();
-
-            //            if (IApp.theApp.ObserverModeManager.ActiveModeType == ObserverMode.ObserverMode.eMonitorMode)
-            //                realTimeDataQuery.Activate();
-            //        }
-            //    }
-            //}
-            //catch
-            //{
-            //}
-
             bool bConnected = false;
             string strMessage = null;
             if (hisDataQuery == null || !hisDataQuery.IsConnected
@@ -140,6 +119,33 @@ namespace PipeSimulation
             }
         }
 
+        private void OnAutoConnect()
+        {
+            IHistoryDataQuery hisDataQuery = IApp.theApp.HistoryTimeDataQuery;
+            IRealtimeDataQuery realTimeDataQuery = IApp.theApp.RealTimeDataQuery;
+
+            // Very low performance if the database is not connected
+            try
+            {
+                if (IApp.theApp.ConnectionCfg.IsAutoConnect)
+                {
+                    if (hisDataQuery != null && !hisDataQuery.IsConnected)
+                        hisDataQuery.Connect();
+
+                    if (realTimeDataQuery != null && !realTimeDataQuery.IsConnected)
+                    {
+                        realTimeDataQuery.Connect();
+
+                        if (IApp.theApp.ObserverModeManager.ActiveModeType == ObserverMode.ObserverMode.eMonitorMode)
+                            realTimeDataQuery.Activate();
+                    }
+                }
+            }
+            catch
+            {
+            }
+        }
+
         // Handler for form load
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -152,7 +158,7 @@ namespace PipeSimulation
             // Initialize commands
             InitializeCommands();
 
-            // Initalize the Data Query, must be called before InitializeObserverMode
+            // Initialize the Data Query, must be called before InitializeObserverMode
             InitializeDataQuery();
 
             SplashScreen.UdpateStatusText(Resources.IDS_IMPORT_MODELS);
@@ -170,7 +176,7 @@ namespace PipeSimulation
             // Initialize the text actor
             InitializeTextActor();
 
-            // Initialzie Observer mode
+            // Initialize Observer mode
             InitializeObserverMode();
             
             SplashScreen.UdpateStatusText(Resources.IDS_START_APP);
@@ -190,6 +196,8 @@ namespace PipeSimulation
 
             // Initialize the scene
             InitializeScene();
+
+            IApp.theApp.ConnectionCfg.AutoConnect += OnAutoConnect;
         }
 
         // Handler the form closing 
