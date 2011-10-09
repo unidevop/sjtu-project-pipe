@@ -123,6 +123,17 @@ namespace PipeSimulation.DataModel
             set { m_ZhujiangOptions = value; }
         }
         private ZhujiangOptions m_ZhujiangOptions = new ZhujiangOptions();
+
+        /// <summary>
+        /// Attribute to get the view option
+        /// </summary>
+        [XmlElement]
+        public RendererLayoutOptions RendererLayoutOptions
+        {
+            get { return m_RendererLayoutOptions; }
+            set { m_RendererLayoutOptions = value; }
+        }
+        private RendererLayoutOptions m_RendererLayoutOptions = new RendererLayoutOptions();
         
         /// <summary>
         /// The value is used to control the distance of the connected point pair.
@@ -319,6 +330,32 @@ namespace PipeSimulation.DataModel
         {
             get { return m_dTimerInterval; }
             set { m_dTimerInterval = value; }
+        }
+    }
+
+    public class RendererLayoutOptions
+    {
+        [XmlElement("ShowMaximizeAndBackMenuItems")]
+        private bool m_bShowMaximizeAndBackMenuItems = false;
+        private double m_HeightSeperator = 2;
+        private double m_WidthSeperator = 2;
+
+        public bool ShowMaximizeAndBackMenuItems
+        {
+            get { return m_bShowMaximizeAndBackMenuItems; }
+            set { m_bShowMaximizeAndBackMenuItems = value; }
+        }
+
+        public double HeightSeperator
+        {
+            get { return m_HeightSeperator; }
+            set { m_HeightSeperator = value; }
+        }
+
+        public double WidthSeperator
+        {
+            get { return m_WidthSeperator; }
+            set { m_WidthSeperator = value; }
         }
     }
 }
