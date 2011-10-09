@@ -36,7 +36,8 @@ namespace PipeSimulation
             m_userName.Text = connCfg.UserName;
             m_password.Text = connCfg.Password;
             m_autoConnect.Checked = connCfg.IsAutoConnect;
-            m_autoConnInterval.Value = (decimal)(connCfg.ReadInterval.TotalMilliseconds / 1000.0);
+            m_autoConnInterval.Value = (decimal)(connCfg.AutoConnectInterval.TotalMilliseconds / 1000.0);
+            m_readInterval.Value = (decimal)(connCfg.ReadInterval.TotalMilliseconds / 1000.0);
 
             m_autoConnInterval.Enabled = m_autoConnect.Checked;
             m_connConfigGroup.Enabled = true;
@@ -76,7 +77,8 @@ namespace PipeSimulation
 
                 connCfg.SetConnectionString(m_dbServer.Text, m_userName.Text, m_password.Text);
                 connCfg.IsAutoConnect = m_autoConnect.Checked;
-                connCfg.ReadInterval = TimeSpan.FromMilliseconds((double)m_autoConnInterval.Value * 1000.0);
+                connCfg.AutoConnectInterval = TimeSpan.FromMilliseconds((double)m_autoConnInterval.Value * 1000.0);
+                connCfg.ReadInterval = TimeSpan.FromMilliseconds((double)m_readInterval.Value * 1000.0);
 
                 //  TODO: check on invalid values
                 try
@@ -98,25 +100,7 @@ namespace PipeSimulation
             m_saveBtn.Enabled = m_modified;
         }
 
-        private void DbServer_TextChanged(object sender, EventArgs e)
-        {
-            m_modified = true;
-            OnModified();
-        }
-
-        private void UserName_TextChanged(object sender, EventArgs e)
-        {
-            m_modified = true;
-            OnModified();
-        }
-
-        private void Password_TextChanged(object sender, EventArgs e)
-        {
-            m_modified = true;
-            OnModified();
-        }
-
-        private void AutoConnInterval_ValueChanged(object sender, EventArgs e)
+        private void ConnectSettingChanged(object sender, EventArgs e)
         {
             m_modified = true;
             OnModified();
@@ -125,8 +109,7 @@ namespace PipeSimulation
         private void AutoConnect_CheckedChanged(object sender, EventArgs e)
         {
             m_autoConnInterval.Enabled = m_autoConnect.Checked;
-            m_modified = true;
-            OnModified();
+            ConnectSettingChanged(sender, e);
         }
     }
 }
