@@ -184,6 +184,10 @@ namespace PipeSimulation
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized; 
             this.Show();
 
+            bool bShowItems = ApplicationOptions.Instance().RendererLayoutOptions.ShowMaximizeAndBackMenuItems;
+            this.showActiveRendererMaximize.Visible = bShowItems;
+            this.showActiveRendererBackToOriginal.Visible = bShowItems;
+
             // Initialize the scene
             InitializeScene();
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
+using PipeSimulation.DataModel;
 
 namespace PipeSimulation.PipeApp
 {
@@ -112,8 +113,8 @@ namespace PipeSimulation.PipeApp
 
             if (iHeight == 0 || iWidth == 0) return;
 
-            const double dHeightSeperator = 2;
-            const double dWidthSeperator = 2;
+            double dHeightSeperator = ApplicationOptions.Instance().RendererLayoutOptions.HeightSeperator;
+            double dWidthSeperator = ApplicationOptions.Instance().RendererLayoutOptions.WidthSeperator; ;
 
             // Cacluate the width and height for view renderers
             double dViewRendererHeight = (iHeight - 2 * dHeightSeperator) / 3;
