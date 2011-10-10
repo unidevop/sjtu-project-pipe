@@ -153,7 +153,11 @@ public:
   unsigned long GetRedrawMTime();
 
 
-// Did not wrap:  virtual double *GetBounds ();return NULL 
+  // void GetBounds (double bounds[6]);
+/// <summary>
+/// <para>Set / get the bounding box using various methods.</para>
+/// </summary>
+  void GetBounds(array<double>^ bounds);
 
 
   // virtual void ShallowCopy (vtkProp *prop);
