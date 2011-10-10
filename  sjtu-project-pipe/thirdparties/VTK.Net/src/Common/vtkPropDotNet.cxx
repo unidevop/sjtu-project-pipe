@@ -196,7 +196,17 @@ unsigned long vtkProp::GetRedrawMTime()
   return retVal;
 }
 
+void vtkProp::GetBounds(array<double>^ bounds)
+{
+  pin_ptr<double> boundsPin = &bounds[0];
+  double* nativeboundsPin = boundsPin;
+  double* propBounds = vtk::ConvertManagedToNative<::vtkProp>(m_instance)->GetBounds();
 
+  for (int i = 0; i < 6; ++i)
+  {
+	  nativeboundsPin[i] = propBounds[i];
+  }
+}
 
 void vtkProp::ShallowCopy(vtkProp^ prop)
 {
