@@ -41,7 +41,7 @@ namespace PipeSimulation.PipeApp
 
             try
             {
-                ConnectionCfg.ConfigChanged += OnConnectionChanged;
+                ConnectionCfg.ConfigChanged += OnConnectionConfigChanged;
 
                 CreateDataQueryComp();
             }
@@ -224,7 +224,7 @@ namespace PipeSimulation.PipeApp
             }
         }
 
-        protected void OnConnectionChanged()
+        protected void OnConnectionConfigChanged()
         {
             RealTimeDataQuery.Disconnect();
             RealTimeDataQuery.Dispose();

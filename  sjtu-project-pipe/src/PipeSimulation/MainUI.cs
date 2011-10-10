@@ -27,6 +27,8 @@ namespace PipeSimulation
 {
     public partial class MainUI : Form
     {
+        private bool m_connected = false;
+
         public MainUI()
         {
             // Splash Screen suppor
@@ -117,6 +119,11 @@ namespace PipeSimulation
             catch
             {
             }
+
+            if (bConnected != m_connected)
+                IApp.theApp.ConnectionCfg.OnConnectionChanged(bConnected);
+
+            m_connected = bConnected;
         }
 
         private void OnAutoConnect()
@@ -144,6 +151,11 @@ namespace PipeSimulation
             catch
             {
             }
+        }
+
+        private void OnConnectionChanged(bool connected)
+        {
+            observerManager_ModeChanged();
         }
 
         // Handler for form load
@@ -198,6 +210,10 @@ namespace PipeSimulation
             InitializeScene();
 
             IApp.theApp.ConnectionCfg.AutoConnect += OnAutoConnect;
+            IApp.theApp.ConnectionCfg.ConnectionChanged += OnConnectionChanged;
+
+            if (!m_connected)
+                ConnectionSettingMenuItem_Click(m_connSettingMenuItem, null);
         }
 
         // Handler the form closing 
@@ -414,9 +430,12 @@ namespace PipeSimulation
 
                 // Connect to data engine
                 historyDataQuery.Connect();
+
+                m_connected = true;
             }
             catch
             {
+                m_connected = false;
                 MessageBox.Show(new Form(){TopMost = true}, Resources.IDS_ERROR_DATAENGINE_CONNECT, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

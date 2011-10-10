@@ -295,4 +295,7 @@
   <data name="IDS_ZHUJIANG_SIM_DLG_TITLE" xml:space="preserve">
     <value>注浆模拟</value>
   </data>
+  <data name="IDS_WARNING_SAVE_CONFIG" xml:space="preserve">
+    <value>配置已修改，是否保存？</value>
+  </data>
 </root>

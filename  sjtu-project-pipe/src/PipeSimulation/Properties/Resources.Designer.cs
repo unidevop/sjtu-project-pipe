@@ -391,6 +391,15 @@ namespace PipeSimulation.Properties {
         }
         
         /// <summary>
+        ///   查找类似 配置已修改，是否保存？ 的本地化字符串。
+        /// </summary>
+        internal static string IDS_WARNING_SAVE_CONFIG {
+            get {
+                return ResourceManager.GetString("IDS_WARNING_SAVE_CONFIG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 注浆模拟 的本地化字符串。
         /// </summary>
         internal static string IDS_ZHUJIANG_SIM_DLG_TITLE {
