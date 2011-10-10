@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using PipeSimulation.Utility;
 using PipeSimulation.PipeApp;
 using PipeSimulation.DataQuery;
+using PipeSimulation.Properties;
+using System.Data.SqlClient;
 
 namespace PipeSimulation
 {
@@ -26,6 +28,7 @@ namespace PipeSimulation
             base.OnLoad(e);
 
             LoadConfig();
+            IApp.theApp.ConnectionCfg.ConnectionChanged += OnConnectionChanged;
         }
 
         private void LoadConfig()
@@ -42,26 +45,42 @@ namespace PipeSimulation
             m_autoConnInterval.Enabled = m_autoConnect.Checked;
             m_connConfigGroup.Enabled = true;
 
+            IRealtimeDataQuery realTimeDataQuery = IApp.theApp.RealTimeDataQuery;
+            m_connectBtn.Enabled = (realTimeDataQuery == null || !realTimeDataQuery.IsConnected);
+
             m_modified = false;
             OnModified();
         }
 
         private void Connect_ButtonClick(object sender, EventArgs e)
         {
-            // Get DataQuery
-            IHistoryDataQuery hisDataQuery = IApp.theApp.HistoryTimeDataQuery;
-            IRealtimeDataQuery realTimeDataQuery = IApp.theApp.RealTimeDataQuery;
-
-            if (hisDataQuery != null && !hisDataQuery.IsConnected)
-                hisDataQuery.Connect();
-
-            if (realTimeDataQuery != null && !realTimeDataQuery.IsConnected)
+            try
             {
-                realTimeDataQuery.Connect();
+                // Get DataQuery
+                IHistoryDataQuery hisDataQuery = IApp.theApp.HistoryTimeDataQuery;
+                IRealtimeDataQuery realTimeDataQuery = IApp.theApp.RealTimeDataQuery;
 
-                if (IApp.theApp.ObserverModeManager.ActiveModeType == ObserverMode.ObserverMode.eMonitorMode)
-                    realTimeDataQuery.Activate();
+                if (hisDataQuery != null && !hisDataQuery.IsConnected)
+                    hisDataQuery.Connect();
+
+                if (realTimeDataQuery != null && !realTimeDataQuery.IsConnected)
+                {
+                    realTimeDataQuery.Connect();
+
+                    if (IApp.theApp.ObserverModeManager.ActiveModeType == ObserverMode.ObserverMode.eMonitorMode)
+                        realTimeDataQuery.Activate();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, IApp.theApp.MainUI.Text);
+                m_dbServer.Focus();
+            }
+        }
+
+        private void OnConnectionChanged(bool connected)
+        {
+            m_connectBtn.Enabled = !connected;
         }
 
         private void ResetButton_Click(object sender, EventArgs e)
@@ -73,6 +92,10 @@ namespace PipeSimulation
         {
             if (m_modified)
             {
+                //  check on invalid values
+                if (!TestConnect())
+                    return;
+
                 ConnectionConfig connCfg = IApp.theApp.ConnectionCfg;
 
                 connCfg.SetConnectionString(m_dbServer.Text, m_userName.Text, m_password.Text);
@@ -80,7 +103,6 @@ namespace PipeSimulation
                 connCfg.AutoConnectInterval = TimeSpan.FromMilliseconds((double)m_autoConnInterval.Value * 1000.0);
                 connCfg.ReadInterval = TimeSpan.FromMilliseconds((double)m_readInterval.Value * 1000.0);
 
-                //  TODO: check on invalid values
                 try
                 {
                     connCfg.Save();
@@ -90,8 +112,34 @@ namespace PipeSimulation
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, IApp.theApp.MainUI.Text);
+                    m_dbServer.Focus();
                 }
             }
+        }
+
+        private bool TestConnect()
+        {
+            string connString = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3};",
+                m_dbServer.Text, "MeasureDB", m_userName.Text, m_password.Text);
+
+            bool success = false;
+
+            try
+            {
+                using (SqlConnection dbConn = new SqlConnection(connString))
+                {
+                    dbConn.Open();
+                }
+                success = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, IApp.theApp.MainUI.Text);
+                m_dbServer.Focus();
+                success = false;
+            }
+
+            return success;
         }
 
         void OnModified()
@@ -110,6 +158,15 @@ namespace PipeSimulation
         {
             m_autoConnInterval.Enabled = m_autoConnect.Checked;
             ConnectSettingChanged(sender, e);
+        }
+
+        private void CancelBtn_Click(object sender, EventArgs e)
+        {
+            if (m_modified && DialogResult.Yes == MessageBox.Show(Resources.IDS_WARNING_SAVE_CONFIG, this.Text,
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            {
+                SaveButton_Click(sender, e);
+            }
         }
     }
 }

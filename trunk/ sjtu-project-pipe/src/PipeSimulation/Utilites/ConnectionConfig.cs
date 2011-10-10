@@ -19,8 +19,7 @@ namespace PipeSimulation.Utility
 
         public event Action ConfigChanged;
         public event Action AutoConnect;
-        public event Action Connected;
-        public event Action Disconnected;
+        public event Action<bool> ConnectionChanged;
 
         internal ConnectionConfig()
         {
@@ -42,6 +41,12 @@ namespace PipeSimulation.Utility
             {
                 m_timer.Dispose();
             }
+        }
+
+        public void OnConnectionChanged(bool connectionStatus)
+        {
+            if (ConnectionChanged != null)
+                ConnectionChanged(connectionStatus);
         }
 
         private void StartAutoConnect()

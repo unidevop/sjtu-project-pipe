@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectionSetting));
             this.m_connectBtn = new System.Windows.Forms.Button();
             this.m_connGroup = new System.Windows.Forms.GroupBox();
+            this.m_readInterval = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.m_autoConnInterval = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.m_autoConnect = new System.Windows.Forms.CheckBox();
@@ -46,14 +49,11 @@
             this.m_configGroup = new System.Windows.Forms.GroupBox();
             this.m_connConfigGroup = new System.Windows.Forms.GroupBox();
             this.m_cancelBtn = new System.Windows.Forms.Button();
-            this.m_readInterval = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.m_connGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.m_readInterval)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_autoConnInterval)).BeginInit();
             this.m_configGroup.SuspendLayout();
             this.m_connConfigGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.m_readInterval)).BeginInit();
             this.SuspendLayout();
             // 
             // m_connectBtn
@@ -83,6 +83,42 @@
             this.m_connGroup.Font = null;
             this.m_connGroup.Name = "m_connGroup";
             this.m_connGroup.TabStop = false;
+            // 
+            // m_readInterval
+            // 
+            this.m_readInterval.AccessibleDescription = null;
+            this.m_readInterval.AccessibleName = null;
+            resources.ApplyResources(this.m_readInterval, "m_readInterval");
+            this.m_readInterval.DecimalPlaces = 1;
+            this.m_readInterval.Font = null;
+            this.m_readInterval.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.m_readInterval.Name = "m_readInterval";
+            this.m_readInterval.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.m_readInterval.ValueChanged += new System.EventHandler(this.ConnectSettingChanged);
+            // 
+            // label3
+            // 
+            this.label3.AccessibleDescription = null;
+            this.label3.AccessibleName = null;
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Font = null;
+            this.label3.Name = "label3";
+            // 
+            // label4
+            // 
+            this.label4.AccessibleDescription = null;
+            this.label4.AccessibleName = null;
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Font = null;
+            this.label4.Name = "label4";
             // 
             // m_autoConnInterval
             // 
@@ -248,42 +284,7 @@
             this.m_cancelBtn.Font = null;
             this.m_cancelBtn.Name = "m_cancelBtn";
             this.m_cancelBtn.UseVisualStyleBackColor = true;
-            // 
-            // m_readInterval
-            // 
-            this.m_readInterval.AccessibleDescription = null;
-            this.m_readInterval.AccessibleName = null;
-            resources.ApplyResources(this.m_readInterval, "m_readInterval");
-            this.m_readInterval.DecimalPlaces = 1;
-            this.m_readInterval.Font = null;
-            this.m_readInterval.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.m_readInterval.Name = "m_readInterval";
-            this.m_readInterval.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.m_readInterval.ValueChanged += new System.EventHandler(this.ConnectSettingChanged);
-            // 
-            // label3
-            // 
-            this.label3.AccessibleDescription = null;
-            this.label3.AccessibleName = null;
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Font = null;
-            this.label3.Name = "label3";
-            // 
-            // label4
-            // 
-            this.label4.AccessibleDescription = null;
-            this.label4.AccessibleName = null;
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Font = null;
-            this.label4.Name = "label4";
+            this.m_cancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // ConnectionSetting
             // 
@@ -297,14 +298,16 @@
             this.Controls.Add(this.m_connConfigGroup);
             this.Controls.Add(this.m_connectBtn);
             this.Font = null;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ConnectionSetting";
             this.m_connGroup.ResumeLayout(false);
             this.m_connGroup.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.m_readInterval)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_autoConnInterval)).EndInit();
             this.m_configGroup.ResumeLayout(false);
             this.m_configGroup.PerformLayout();
             this.m_connConfigGroup.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.m_readInterval)).EndInit();
             this.ResumeLayout(false);
 
         }
