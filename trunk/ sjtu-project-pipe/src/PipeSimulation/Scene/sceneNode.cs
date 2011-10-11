@@ -109,6 +109,61 @@ namespace PipeSimulation
                     prop.PokeMatrix(transform.GetMatrix());
                 }
             }
+
+            public double[] GetBounds(bool bIncludeInvisible)
+            {
+                double[] allBounds = new double[6];
+                allBounds[0] = allBounds[2] = allBounds[4] = 1.0e+299;
+                allBounds[1] = allBounds[3] = allBounds[5] = -1.0e+299;
+
+                bool bNothingVisible = true;
+
+                InitTraversal();
+                for (int iIndex = 0; iIndex < GetNumberOfItems(); ++iIndex)
+                {
+                    vtk.vtkProp prop = GetNextProp();
+                    if (prop == null) continue;
+
+                    if (!bIncludeInvisible && prop.GetVisibility() == 0) continue;
+
+                    double[] bounds = new double[6];
+                    prop.GetBounds(bounds);
+
+                    if (bounds[0] < allBounds[0])
+                    {
+                        allBounds[0] = bounds[0];
+                    }
+                    if (bounds[1] > allBounds[1])
+                    {
+                        allBounds[1] = bounds[1];
+                    }
+                    if (bounds[2] < allBounds[2])
+                    {
+                        allBounds[2] = bounds[2];
+                    }
+                    if (bounds[3] > allBounds[3])
+                    {
+                        allBounds[3] = bounds[3];
+                    }
+                    if (bounds[4] < allBounds[4])
+                    {
+                        allBounds[4] = bounds[4];
+                    }
+                    if (bounds[5] > allBounds[5])
+                    {
+                        allBounds[5] = bounds[5];
+                    }
+
+                    bNothingVisible = false;
+                }
+
+                if (bNothingVisible)
+                {
+                    return null;
+                }
+
+                return allBounds;
+            }
         }
     }
 }

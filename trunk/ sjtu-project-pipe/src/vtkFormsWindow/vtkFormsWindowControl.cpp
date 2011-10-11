@@ -496,7 +496,7 @@ namespace vtk
 
 	  style->GetCurrentStyle()->StartState(iState);
   }
-    void vtkFormsWindowControl::ShowTopView(vtkRenderer^ renderer)
+    void vtkFormsWindowControl::ShowTopView(vtkRenderer^ renderer, array<double>^ bounds)
     {
 		// Z-
       ::vtkRenderer* pRender = ::vtkRenderer::SafeDownCast(static_cast<::vtkObjectBase*>(renderer->GetNativePointer().ToPointer()));
@@ -509,13 +509,12 @@ namespace vtk
               pCamera->SetPosition(0, 0, 1);
               pCamera->SetViewUp(0,1,0); // Y+
 
-              pRender->ResetCamera();
-              this->GetInteractorNative()->Render();
+              ResetCamera(renderer, bounds);
           }
       }
 	}
 
-    void vtkFormsWindowControl::ShowBottomView(vtkRenderer^ renderer)
+    void vtkFormsWindowControl::ShowBottomView(vtkRenderer^ renderer, array<double>^ bounds)
     {
 		//Z+
       ::vtkRenderer* pRender = ::vtkRenderer::SafeDownCast(static_cast<::vtkObjectBase*>(renderer->GetNativePointer().ToPointer()));
@@ -528,13 +527,12 @@ namespace vtk
               pCamera->SetPosition(0, 0, -1);
               pCamera->SetViewUp(0,1,0); // Y Axis
 
-              pRender->ResetCamera();
-              this->GetInteractorNative()->Render();
+              ResetCamera(renderer, bounds);
           }
       }
 	}
 
-    void vtkFormsWindowControl::ShowLeftView(vtkRenderer^ renderer)
+    void vtkFormsWindowControl::ShowLeftView(vtkRenderer^ renderer, array<double>^ bounds)
     {
 		// X+
       ::vtkRenderer* pRender = ::vtkRenderer::SafeDownCast(static_cast<::vtkObjectBase*>(renderer->GetNativePointer().ToPointer()));
@@ -547,13 +545,12 @@ namespace vtk
               pCamera->SetPosition(-1, 0, 0);
               pCamera->SetViewUp(0,0,1); // Z+
 
-              pRender->ResetCamera();
-              this->GetInteractorNative()->Render();
+              ResetCamera(renderer, bounds);
           }
       }
 	}
 
-    void vtkFormsWindowControl::ShowRightView(vtkRenderer^ renderer)
+    void vtkFormsWindowControl::ShowRightView(vtkRenderer^ renderer, array<double>^ bounds)
     {
 		// X-
       ::vtkRenderer* pRender = ::vtkRenderer::SafeDownCast(static_cast<::vtkObjectBase*>(renderer->GetNativePointer().ToPointer()));
@@ -566,13 +563,12 @@ namespace vtk
               pCamera->SetPosition(1, 0, 0);
               pCamera->SetViewUp(0,0,1); // Z+
 
-              pRender->ResetCamera();
-              this->GetInteractorNative()->Render();
+              ResetCamera(renderer, bounds);
           }
       }
 	}
 
-    void vtkFormsWindowControl::ShowFrontView(vtkRenderer^ renderer)
+    void vtkFormsWindowControl::ShowFrontView(vtkRenderer^ renderer, array<double>^ bounds)
     {
 	  // Y+
       ::vtkRenderer* pRender = ::vtkRenderer::SafeDownCast(static_cast<::vtkObjectBase*>(renderer->GetNativePointer().ToPointer()));
@@ -585,13 +581,12 @@ namespace vtk
               pCamera->SetPosition(0, -1, 0);
               pCamera->SetViewUp(0,0,1); // Z+
 
-              pRender->ResetCamera();
-              this->GetInteractorNative()->Render();
+              ResetCamera(renderer, bounds);
           }
       }
     }
 
-    void vtkFormsWindowControl::ShowBackView(vtkRenderer^ renderer)
+    void vtkFormsWindowControl::ShowBackView(vtkRenderer^ renderer, array<double>^ bounds)
     {
 	  // Y-
       ::vtkRenderer* pRender = ::vtkRenderer::SafeDownCast(static_cast<::vtkObjectBase*>(renderer->GetNativePointer().ToPointer()));
@@ -604,13 +599,12 @@ namespace vtk
               pCamera->SetPosition(0, 1, 0);
               pCamera->SetViewUp(0,0,1); // Z+
 
-              pRender->ResetCamera();
-              this->GetInteractorNative()->Render();
+              ResetCamera(renderer, bounds);
           }
       }
 	}
 
-	void vtkFormsWindowControl::ShowSWIsoMetricView(vtkRenderer^ renderer)
+	void vtkFormsWindowControl::ShowSWIsoMetricView(vtkRenderer^ renderer, array<double>^ bounds)
 	{
       ::vtkRenderer* pRender = ::vtkRenderer::SafeDownCast(static_cast<::vtkObjectBase*>(renderer->GetNativePointer().ToPointer()));
       if (pRender)
@@ -622,13 +616,12 @@ namespace vtk
               pCamera->SetPosition(-1, -1, 1);
               pCamera->SetViewUp(1,1,2);
 
-              pRender->ResetCamera();
-              this->GetInteractorNative()->Render();
+              ResetCamera(renderer, bounds);
           }
       }
 	}
 
-	void vtkFormsWindowControl::ShowSEIsoMetricView(vtkRenderer^ renderer)
+	void vtkFormsWindowControl::ShowSEIsoMetricView(vtkRenderer^ renderer, array<double>^ bounds)
 	{
       ::vtkRenderer* pRender = ::vtkRenderer::SafeDownCast(static_cast<::vtkObjectBase*>(renderer->GetNativePointer().ToPointer()));
       if (pRender)
@@ -640,13 +633,12 @@ namespace vtk
               pCamera->SetPosition(1, -1, 1);
               pCamera->SetViewUp(-1,1,2);
 
-              pRender->ResetCamera();
-              this->GetInteractorNative()->Render();
+              ResetCamera(renderer, bounds);
           }
       }
 	}
 
-	void vtkFormsWindowControl::ShowNEIsoMetricView(vtkRenderer^ renderer)
+	void vtkFormsWindowControl::ShowNEIsoMetricView(vtkRenderer^ renderer, array<double>^ bounds)
 	{
       ::vtkRenderer* pRender = ::vtkRenderer::SafeDownCast(static_cast<::vtkObjectBase*>(renderer->GetNativePointer().ToPointer()));
       if (pRender)
@@ -658,13 +650,12 @@ namespace vtk
               pCamera->SetPosition(-1, 1, 1);
               pCamera->SetViewUp(1,-1,2);
 
-              pRender->ResetCamera();
-              this->GetInteractorNative()->Render();
+              ResetCamera(renderer, bounds);
           }
       }
 	}
 
-	void vtkFormsWindowControl::ShowNWIsoMetricView(vtkRenderer^ renderer)
+	void vtkFormsWindowControl::ShowNWIsoMetricView(vtkRenderer^ renderer, array<double>^ bounds)
 	{
       ::vtkRenderer* pRender = ::vtkRenderer::SafeDownCast(static_cast<::vtkObjectBase*>(renderer->GetNativePointer().ToPointer()));
       if (pRender)
@@ -676,20 +667,34 @@ namespace vtk
               pCamera->SetPosition(1, 1, 1);
               pCamera->SetViewUp(-1,-1,2);
 
-              pRender->ResetCamera();
-              this->GetInteractorNative()->Render();
+              ResetCamera(renderer, bounds);
           }
       }
 	}
 
-  void vtkFormsWindowControl::ResetCamera()
-  {
-	  int x = 0;
-	  int y = 0;
-       static_cast<::vtkWin32RenderWindowInteractor*>(this->GetInteractorNative())->
-        OnChar((HWND) this->Handle.ToPointer(), 'r', x, y);
-  }
+  //void vtkFormsWindowControl::ResetCamera(vtkRenderer^ renderer)
+  //{
+	 // ::vtkRenderer* pRender = ::vtkRenderer::SafeDownCast(static_cast<::vtkObjectBase*>(renderer->GetNativePointer().ToPointer()));
+	 // if (pRender)
+	 // {
+		//  pRender->ResetCamera();
+		//  this->GetInteractorNative()->Render();
+	 // }
+  //}
 
+  void vtkFormsWindowControl::ResetCamera(vtkRenderer^ renderer, array<double>^ bounds)
+  {
+	  ::vtkRenderer* pRender = ::vtkRenderer::SafeDownCast(static_cast<::vtkObjectBase*>(renderer->GetNativePointer().ToPointer()));
+	  if (pRender)
+	  {
+		  pin_ptr<double> boundsPin = &bounds[0];
+		  double* nativeboundsPin = boundsPin;
+
+		  pRender->ResetCamera(nativeboundsPin);
+		  pRender->ResetCameraClippingRange();
+		  this->GetInteractorNative()->Render();
+	  }
+  }
   void vtkFormsWindowControl::FireMouseWheel( System::Windows::Forms::MouseEventArgs^ ea )
     {
     unsigned int nFlags = 0;

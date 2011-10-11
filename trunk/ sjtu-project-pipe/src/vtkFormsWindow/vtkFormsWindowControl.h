@@ -59,18 +59,19 @@ namespace vtk {
 
 	void SetInteractorTrackBall(vtkRenderer^ renderer);
 	void SetInteractorStyleState(int iState);
-	void ResetCamera();
+	//void ResetCamera(vtkRenderer^ renderer);
+	void ResetCamera(vtkRenderer^ renderer, array<double>^ bounds);
 
-    void ShowTopView(vtkRenderer^ renderer);
-    void ShowBottomView(vtkRenderer^ renderer);
-    void ShowLeftView(vtkRenderer^ renderer);
-    void ShowRightView(vtkRenderer^ renderer);
-    void ShowFrontView(vtkRenderer^ renderer);
-    void ShowBackView(vtkRenderer^ renderer);
-	void ShowSWIsoMetricView(vtkRenderer^ renderer);
-	void ShowSEIsoMetricView(vtkRenderer^ renderer);
-	void ShowNEIsoMetricView(vtkRenderer^ renderer);
-	void ShowNWIsoMetricView(vtkRenderer^ renderer);
+    void ShowTopView(vtkRenderer^ renderer, array<double>^ bounds);
+    void ShowBottomView(vtkRenderer^ renderer, array<double>^ bounds);
+    void ShowLeftView(vtkRenderer^ renderer, array<double>^ bounds);
+    void ShowRightView(vtkRenderer^ renderer, array<double>^ bounds);
+    void ShowFrontView(vtkRenderer^ renderer, array<double>^ bounds);
+    void ShowBackView(vtkRenderer^ renderer, array<double>^ bounds);
+	void ShowSWIsoMetricView(vtkRenderer^ renderer, array<double>^ bounds);
+	void ShowSEIsoMetricView(vtkRenderer^ renderer, array<double>^ bounds);
+	void ShowNEIsoMetricView(vtkRenderer^ renderer, array<double>^ bounds);
+	void ShowNWIsoMetricView(vtkRenderer^ renderer, array<double>^ bounds);
 
   protected:
     /// <summary>
