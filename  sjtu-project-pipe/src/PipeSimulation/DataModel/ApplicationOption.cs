@@ -247,6 +247,24 @@ namespace PipeSimulation.DataModel
         [XmlElement("ShowCablingSystem")]
         private bool m_bShowCablingSystem = true;
 
+        [XmlElement("GetBoundsOnlyForPipeModels")]
+        private bool m_bGetBoundsOnlyForPipeModels = true;
+        [XmlElement("IncludeInvisibleBounds")]
+        private bool m_bIncludeInvisibleBounds = false;
+
+        public bool GetBoundsOnlyForPipeModels
+        {
+            get { return m_bGetBoundsOnlyForPipeModels; }
+            set { m_bGetBoundsOnlyForPipeModels = value; }
+        }
+
+        public bool IncludeInvisibleBounds
+        {
+            get { return m_bIncludeInvisibleBounds; }
+            set { m_bIncludeInvisibleBounds = value; }
+        }
+
+
         public bool PerpectiveProjection
         {
             get { return m_bPerspectiveProjection; }

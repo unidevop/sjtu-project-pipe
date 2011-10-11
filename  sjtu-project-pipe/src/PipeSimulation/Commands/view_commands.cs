@@ -1,6 +1,9 @@
 ﻿using PipeSimulation.Commands;
 using PipeSimulation.PipeApp;
 using PipeSimulation.Properties;
+using PipeSimulation.DataModel;
+using PipeSimulation.SceneGraph;
+using PipeSimulation.Utility;
 
 namespace PipeSimulation.Commands
 {
@@ -349,8 +352,9 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.SetInteractorTrackBall(IApp.theApp.RendererManager.ActiveRenderer);
-            IApp.theApp.vtkControl.ResetCamera();
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.SetInteractorTrackBall(activerRenderer);
+            IApp.theApp.vtkControl.ResetCamera(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
             Terminate();
         }
 
@@ -372,7 +376,8 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowTopView(IApp.theApp.RendererManager.ActiveRenderer);
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowTopView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
             Terminate();
         }
 
@@ -394,7 +399,8 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowBottomView(IApp.theApp.RendererManager.ActiveRenderer);
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowBottomView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
             Terminate();
         }
 
@@ -416,7 +422,8 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowFrontView(IApp.theApp.RendererManager.ActiveRenderer);
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowFrontView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
             Terminate();
         }
 
@@ -438,7 +445,8 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowBackView(IApp.theApp.RendererManager.ActiveRenderer);
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowBackView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
             Terminate();
         }
 
@@ -460,7 +468,8 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowLeftView(IApp.theApp.RendererManager.ActiveRenderer);
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowLeftView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
             Terminate();
         }
 
@@ -482,7 +491,8 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowRightView(IApp.theApp.RendererManager.ActiveRenderer);
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowRightView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
             Terminate();
         }
 
@@ -504,7 +514,8 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowSWIsoMetricView(IApp.theApp.RendererManager.ActiveRenderer);
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowSWIsoMetricView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
             Terminate();
         }
 
@@ -526,7 +537,8 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowSEIsoMetricView(IApp.theApp.RendererManager.ActiveRenderer);
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowSEIsoMetricView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
             Terminate();
         }
 
@@ -548,7 +560,8 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowNEIsoMetricView(IApp.theApp.RendererManager.ActiveRenderer);
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowNEIsoMetricView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
             Terminate();
         }
 
@@ -570,7 +583,8 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            IApp.theApp.vtkControl.ShowNWIsoMetricView(IApp.theApp.RendererManager.ActiveRenderer);
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowNWIsoMetricView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
             Terminate();
         }
 

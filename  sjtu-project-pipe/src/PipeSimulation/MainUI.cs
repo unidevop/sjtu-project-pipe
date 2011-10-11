@@ -609,10 +609,10 @@ namespace PipeSimulation
             ShowOriginVisibility(viewOptions.ShowReferenceOrigin);
 
             // Let the scene show SW Isometric
-            IApp.theApp.vtkControl.ShowSWIsoMetricView(IApp.theApp.RendererManager.MainRenderer);
-            IApp.theApp.vtkControl.ShowTopView(IApp.theApp.RendererManager.TopViewRenderer);
-            IApp.theApp.vtkControl.ShowFrontView(IApp.theApp.RendererManager.FrontViewRenderer);
-            IApp.theApp.vtkControl.ShowRightView(IApp.theApp.RendererManager.RightViewRenderer);
+            IApp.theApp.vtkControl.ShowSWIsoMetricView(IApp.theApp.RendererManager.MainRenderer, CBoundingBoxUtil.GetBounds(IApp.theApp.RendererManager.MainRenderer));
+            IApp.theApp.vtkControl.ShowTopView(IApp.theApp.RendererManager.TopViewRenderer, CBoundingBoxUtil.GetBounds(IApp.theApp.RendererManager.TopViewRenderer));
+            IApp.theApp.vtkControl.ShowFrontView(IApp.theApp.RendererManager.FrontViewRenderer, CBoundingBoxUtil.GetBounds(IApp.theApp.RendererManager.FrontViewRenderer));
+            IApp.theApp.vtkControl.ShowRightView(IApp.theApp.RendererManager.RightViewRenderer, CBoundingBoxUtil.GetBounds(IApp.theApp.RendererManager.RightViewRenderer));
         }
 
         private void InitializeObserverMode()
