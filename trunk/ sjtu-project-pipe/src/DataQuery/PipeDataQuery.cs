@@ -138,7 +138,7 @@ namespace PipeSimulation.DataQuery
             }
         }
 
-        protected PipeInfo QueryRecord(string strSql)
+        protected PipeInfo QueryRecord(string strSql, bool queryMaxAngle)
         {
             lock (m_dbConn)
             {
@@ -153,7 +153,8 @@ namespace PipeSimulation.DataQuery
                     }
                 }
 
-                SetMaxAngle(pipeInfo);
+                if (queryMaxAngle)
+                    SetMaxAngle(pipeInfo);
 
                 return pipeInfo;
             }
@@ -184,7 +185,7 @@ namespace PipeSimulation.DataQuery
             return pipeInfo;
         }
 
-        protected PipeInfo ReadLatestData()
+        protected PipeInfo ReadLatestData(bool queryMaxAngle)
         {
             string strSql = @"SELECT TOP 1 GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
               GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, IM.Angle1, IM.Angle2, GPS1.MeasureID, IM.MeasureID 
@@ -193,7 +194,7 @@ namespace PipeSimulation.DataQuery
               INNER JOIN InclineMeasure AS IM ON (GPS1.PipeID=IM.PipeID AND GPS1.MeasureTime=IM.MeasureTime)
               ORDER BY GPS1.MeasureID DESC";
 
-            return QueryRecord(strSql);
+            return QueryRecord(strSql, queryMaxAngle);
         }
 
 #else
@@ -359,19 +360,7 @@ namespace PipeSimulation.DataQuery
                 {
                     PipeInfo latestData = null;
 
-                    if (!m_isReading)
-                    {
-                        latestData = ReadStartData();
-
-                        if (latestData != null)
-                            m_isReading = true;
-                    }
-                    else
-#if NEW_DATA_APPROACH
-                        latestData = ReadLatestUnReadData();
-#else
-                latestData = ReadLatestData();
-#endif
+                    latestData = FetchLatestData();
 
                     if (latestData != null && DataArrivedCallback != null)
                         DataArrivedCallback(latestData);
@@ -395,7 +384,7 @@ namespace PipeSimulation.DataQuery
 #if NEW_DATA_APPROACH
         protected PipeInfo ReadStartData()
         {
-            PipeInfo pipeInfo = ReadLatestData();
+            PipeInfo pipeInfo = ReadLatestData(true);
 
             if (pipeInfo != null)
             {
@@ -404,6 +393,8 @@ namespace PipeSimulation.DataQuery
 
                 m_currentPipeId = pipeInfo.PipeId;
                 QueryMaxAngle(pipeInfo, out m_maxAbsAlpha, out m_maxAbsBeta);
+
+                m_isReading = true;
             }
 
             return pipeInfo;
@@ -419,7 +410,7 @@ namespace PipeSimulation.DataQuery
               GPS1.MeasureTime=IM.MeasureTime AND IM.MeasureID>'{1}')
               ORDER BY GPS1.MeasureID DESC", m_lastGPSMeasureId, m_lastInclineMeasureId);
 
-            PipeInfo pipeInfo = QueryRecord(strSql);
+            PipeInfo pipeInfo = QueryRecord(strSql, true);
 
             if (pipeInfo != null)
             {
@@ -486,7 +477,7 @@ namespace PipeSimulation.DataQuery
 
         public PipeInfo FetchLatestData()
         {
-            return ReadLatestData();
+            return m_isReading ? ReadLatestUnReadData() : ReadStartData();
         }
 
         /// <summary>
@@ -522,6 +513,8 @@ namespace PipeSimulation.DataQuery
         // default time tolerance is 0.5s
         protected static TimeSpan m_timeTolerance = new TimeSpan(0, 0, 0, 0, 500);
 
+        private int m_latestPipeId = 0;
+
         public HistoricalDataQuery(string dbAdress, string dbName,
                                    string userName, string password)
             : base(dbAdress, dbName, userName, password)
@@ -541,9 +534,16 @@ namespace PipeSimulation.DataQuery
         /// <returns></returns>
         public bool IsPipeStarted(int iPipeId)
         {
-            PipeInfo pipeInfo = ReadLatestData();
+            if (iPipeId > m_latestPipeId)
+            {
+                PipeInfo pipeInfo = ReadLatestData(false);
 
-            return pipeInfo != null ? pipeInfo.PipeId >= iPipeId : false;
+                m_latestPipeId = pipeInfo != null ? pipeInfo.PipeId : 0;
+
+                return m_latestPipeId >= iPipeId;
+            }
+
+            return true;
         }
 #else
          //Query
@@ -594,14 +594,9 @@ namespace PipeSimulation.DataQuery
                 //  read Incline records
                 using (SqlCommand sqlCmd = new SqlCommand(strInclineSql, m_dbConn))
                 {
-                    using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
-                    {
-                        if (sqlDataReader.Read())
-                            return sqlDataReader.GetInt32(0);
-                    }
+                    return (Int32)sqlCmd.ExecuteScalar();
                 } 
             }
-            return 0;
         }
 
 #if NEW_DATA_APPROACH
@@ -616,7 +611,7 @@ namespace PipeSimulation.DataQuery
                 ORDER BY MeasureID ASC) InclineMeasure ORDER BY MeasureID DESC))",
                 iRecordIndex, iPipeId);
 
-            return QueryRecord(strSql);
+            return QueryRecord(strSql, true);
         }
 
         public PipeInfo GetPipeRecord(DateTime dateTime, bool bFindNearest)
@@ -636,7 +631,7 @@ namespace PipeSimulation.DataQuery
                 ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{2:yyyy-MM-dd HH:mm:ss.fff}'))",
                 dateTime, m_timeTolerance.TotalMilliseconds, dateTime);
 
-            return QueryRecord(strSql);
+            return QueryRecord(strSql, true);
         }
 #else
         public PipeInfo GetPipeRecord(int iPipeId, int iRecordIndex)
@@ -687,15 +682,9 @@ namespace PipeSimulation.DataQuery
                 //  read Incline records
                 using (SqlCommand sqlCmd = new SqlCommand(strInclineSql, m_dbConn))
                 {
-                    using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
-                    {
-                        if (sqlDataReader.Read())
-                            return sqlDataReader.GetDateTime(0);
-                    }
+                    return (DateTime)(sqlCmd.ExecuteScalar());
                 } 
             }
-
-            return new DateTime();
         }
 
         public DateTime GetPipeEndTime(int iPipeId)
@@ -708,15 +697,9 @@ namespace PipeSimulation.DataQuery
                 //  read Incline records
                 using (SqlCommand sqlCmd = new SqlCommand(strInclineSql, m_dbConn))
                 {
-                    using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
-                    {
-                        if (sqlDataReader.Read())
-                            return sqlDataReader.GetDateTime(0);
-                    }
+                    return (DateTime)(sqlCmd.ExecuteScalar());
                 } 
             }
-
-            return new DateTime();
         }
 
         public DateTime GetPipeTime(int iPipeId, int iRecordIndex)
@@ -730,15 +713,9 @@ namespace PipeSimulation.DataQuery
                 //  read Incline records
                 using (SqlCommand sqlCmd = new SqlCommand(strInclineSql, m_dbConn))
                 {
-                    using (SqlDataReader sqlDataReader = sqlCmd.ExecuteReader())
-                    {
-                        if (sqlDataReader.Read())
-                            return sqlDataReader.GetDateTime(0);
-                    }
+                    return (DateTime)(sqlCmd.ExecuteScalar());
                 } 
             }
-
-            return new DateTime();
         }
     }
 }

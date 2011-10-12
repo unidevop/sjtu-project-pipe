@@ -634,7 +634,7 @@ namespace PipeSimulation
             // Enter the default mode.
             // Default mode should be Monitor mode.
             // But if we found that all pipes have already completed, we should switch to replay mode
-            ObserverMode.ObserverMode eDefaultMode = ObserverMode.ObserverMode.eReplayMode;
+            ObserverMode.ObserverMode eDefaultMode = ObserverMode.ObserverMode.eMonitorMode;
 
             //IDataQuery dataQuery = IApp.theApp.DataQuery;
             //if (dataQuery != null)
@@ -1186,12 +1186,12 @@ namespace PipeSimulation
                     int pipeModelCount = IApp.theApp.DataModel.PipeModels.Count;
                     try
                     {
-                        for (int i = 0; i < pipeModelCount; ++i)
+                        for (int i = pipeModelCount; i > 0; --i)
                         {
-                            if (dataQuery.IsPipeStarted(i + 1))
+                            if (dataQuery.IsPipeStarted(i))
                             {
-                                string strComboboxItem = string.Format(Resources.IDS_PIPE_INDEX, i + 1);
-                                toolStripComboBoxPipes.Items.Add(strComboboxItem);
+                                string strComboboxItem = string.Format(Resources.IDS_PIPE_INDEX, i);
+                                toolStripComboBoxPipes.Items.Insert(0, strComboboxItem);
                             }
                         }
                     }
