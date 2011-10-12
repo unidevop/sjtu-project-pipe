@@ -682,7 +682,9 @@ namespace PipeSimulation.DataQuery
                 //  read Incline records
                 using (SqlCommand sqlCmd = new SqlCommand(strInclineSql, m_dbConn))
                 {
-                    return (DateTime)(sqlCmd.ExecuteScalar());
+                    Object dateTime = sqlCmd.ExecuteScalar();
+
+                    return (dateTime != null) ? (DateTime)dateTime : new DateTime();
                 } 
             }
         }
@@ -697,8 +699,10 @@ namespace PipeSimulation.DataQuery
                 //  read Incline records
                 using (SqlCommand sqlCmd = new SqlCommand(strInclineSql, m_dbConn))
                 {
-                    return (DateTime)(sqlCmd.ExecuteScalar());
-                } 
+                    Object dateTime = sqlCmd.ExecuteScalar();
+
+                    return (dateTime != null) ? (DateTime)dateTime : new DateTime();
+                }
             }
         }
 
@@ -713,8 +717,10 @@ namespace PipeSimulation.DataQuery
                 //  read Incline records
                 using (SqlCommand sqlCmd = new SqlCommand(strInclineSql, m_dbConn))
                 {
-                    return (DateTime)(sqlCmd.ExecuteScalar());
-                } 
+                    Object dateTime = sqlCmd.ExecuteScalar();
+
+                    return (dateTime != null) ? (DateTime)dateTime : new DateTime();
+                }
             }
         }
     }
