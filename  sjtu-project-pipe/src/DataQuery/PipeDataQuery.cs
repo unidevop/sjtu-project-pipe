@@ -628,8 +628,8 @@ namespace PipeSimulation.DataQuery
                 (GPS1.PipeID=GPS2.PipeID AND GPS1.MeasureTime=GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID) 
                 INNER JOIN InclineMeasure AS IM1 ON (GPS1.PipeID=IM1.PipeID AND GPS1.MeasureTime=IM1.MeasureTime AND 
                 ABS(DATEDIFF(SECOND, IM1.MeasureTime, '{0:yyyy-MM-dd HH:mm:ss.fff}')) < {1}) ORDER BY
-                ABS(DATEDIFF(SECOND, IM1.MeasureTime, '{2:yyyy-MM-dd HH:mm:ss.fff}'))",
-                dateTime, m_timeTolerance.TotalSeconds, dateTime);
+                ABS(DATEDIFF(SECOND, IM1.MeasureTime, '{0:yyyy-MM-dd HH:mm:ss.fff}'))",
+                dateTime, m_timeTolerance.TotalSeconds);
 
             return QueryRecord(strSql, true);
         }
