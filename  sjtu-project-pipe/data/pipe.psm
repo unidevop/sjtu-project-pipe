@@ -42,15 +42,15 @@
 				<CableState>
 					<CableSegment>
 						<StartPosition x ="-235211.724" y ="75361.969" z ="-25792.029" DriveByPipe ="true"/>
-						<EndPosition x ="-235211.724" y ="75361.969" z ="-25792.029" DriveByPipe ="true"/>
+						<EndPosition x ="-235211.724" y ="75361.969" z ="-25792.029" DriveByPipe ="false"/>
 					</CableSegment>
 					<CableSegment>
 						<StartPosition x ="-235132.114" y ="75449.096" z ="-35442.246" DriveByPipe ="true"/>
-						<EndPosition x ="0" y="0" z="0" DriveByPipe ="true"/>
+						<EndPosition x ="0" y="0" z="0" DriveByPipe ="false"/>
 					</CableSegment>
 					<CableSegment>
 						<StartPosition x ="-226248.224" y ="70098.901" z ="-6698.504" DriveByPipe ="true"/>
-						<EndPosition x ="-100000" y="100000" z="100000" DriveByPipe ="true"/>
+						<EndPosition x ="-100000" y="100000" z="100000" DriveByPipe ="false"/>
 					</CableSegment>
 					<!--<CableSegment>
 						<StartPosition x ="" y="" z="" DriveByPipe ="true"/>
@@ -68,16 +68,28 @@
 				<CableState>
 					<CableSegment>
 						<StartPosition x ="-226248.224" y ="70098.901" z ="-6698.504" DriveByPipe ="true"/>
-						<EndPosition x ="0" y="0" z="0" DriveByPipe ="true"/>
+						<EndPosition x ="0" y="0" z="0" DriveByPipe ="false"/>
 					</CableSegment>
 					<CableSegment>
 						<StartPosition x ="-235132.114" y ="75449.096" z ="-35442.246" DriveByPipe ="true"/>
-						<EndPosition x ="-100000" y="100000" z="100000" DriveByPipe ="true"/>
+						<EndPosition x ="-100000" y="100000" z="100000" DriveByPipe ="false"/>
+					</CableSegment>
+				</CableState>
+				<CableState>
+					<CableSegment>
+						<StartPosition x ="-235132.114" y ="75449.096" z ="-35442.246" DriveByPipe ="true"/>
+						<EndPosition x ="-100000" y="100000" z="100000" DriveByPipe ="false"/>
+					</CableSegment>
+					<CableSegment>
+						<StartPosition x ="-235132.114" y ="75449.096" z ="-35442.246" DriveByPipe ="true"/>
+						<EndPosition x ="0" y="0" z="0" DriveByPipe ="false"/>
 					</CableSegment>
 				</CableState>
 				<CableSwitchCondition instanceFullName="">
-					<CableSegmentIndex>2</CableSegmentIndex>
-					<CableLength>154</CableLength>
+					<CableSegmentIndex CableStateIndex="0">2</CableSegmentIndex>
+					<CableLength CableStateIndex="0">154</CableLength>
+					<CableLength CableStateIndex="1">160</CableLength>
+					<CableLength CableStateIndex="2">200000</CableLength>
 				</CableSwitchCondition>
 			</CableSystem>
 			<ConnectionPointPair>
