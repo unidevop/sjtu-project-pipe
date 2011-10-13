@@ -87,9 +87,11 @@ namespace PipeSimulation
             public static string CableSegment { get { return /*MSG0*/"CableSegment"; } }
             public static string CableSegmentStartPosition { get { return /*MSG0*/"StartPosition"; } }
             public static string CableSegmentEndPosition { get { return /*MSG0*/"EndPosition"; } }
+            public static string CableSegmentPositionDrivenByPipe { get { return /*MSG0*/"DriveByPipe"; } }
             public static string CableSwitchCondition { get { return /*MSG0*/"CableSwitchCondition"; } }
-            public static string CableSegmentIndex { get { return /*MSG0*/"CableSegmentIndex"; } }
             public static string CableLength { get { return /*MSG0*/"CableLength"; } }
+            public static string CableStateIndex { get { return /*MSG0*/"CableStateIndex"; } }
+            public static string CableSegmentIndex { get { return /*MSG0*/"CableSegmentIndex"; } }
 
             public static string showInMultipleViews { get { return /*MSGO*/"showInMultipleView"; } }
         }

@@ -8,6 +8,7 @@ using PipeSimulation.DataQuery;
 using PipeSimulation.Geometry;
 using System.Windows.Media.Media3D;
 using System.Reflection;
+using System.Collections;
 
 namespace PipeSimulation
 {
@@ -288,10 +289,12 @@ namespace PipeSimulation
                     // Read the start pos
                     XmlNode startNode = node.SelectSingleNode(ModelXMLDefinition.CableSegmentStartPosition);
                     m_ptStartPoint = new CPoint3D(CPoint3DSerializer.ReadPoint(startNode).Point);
+                    m_bStartPointDrivenAtRuntime = bool.Parse(startNode.Attributes[ModelXMLDefinition.CableSegmentPositionDrivenByPipe].Value);
 
                     // Read the end pos
                     XmlNode endNode = node.SelectSingleNode(ModelXMLDefinition.CableSegmentEndPosition);
                     m_ptEndPoint = new CPoint3D(CPoint3DSerializer.ReadPoint(endNode).Point);
+                    m_bEndPointDrivenAtRuntime = bool.Parse(endNode.Attributes[ModelXMLDefinition.CableSegmentPositionDrivenByPipe].Value);
                 }
                 catch (SystemException)
                 {
@@ -328,8 +331,8 @@ namespace PipeSimulation
         public class CCableSwitchLength2StatesCondition : ICableSwitchCondition
         {
             private CCableSystem m_cableSystem = null;
-            private int m_iObserveingCableSegment = 0;
-            private double m_dCableLength = 100; // Meter
+            private CCableSegment m_observingSegment = null;
+            private Dictionary<double, int> m_stateByLengthDict = new Dictionary<double, int>();
             private vtk.vtkTransform m_currentPipeTransform = null;
             private LengthEqualEnum m_eLengthEqual = LengthEqualEnum.eSmaller;
 
@@ -356,13 +359,23 @@ namespace PipeSimulation
                 {
                     // Read the start pos
                     XmlNode segmentIndexNode = node.SelectSingleNode(ModelXMLDefinition.CableSegmentIndex);
-                    m_iObserveingCableSegment = int.Parse(segmentIndexNode.InnerText);
+                    XmlAttribute attrib = segmentIndexNode.Attributes[ModelXMLDefinition.CableStateIndex];
+                    int iStateIndex = int.Parse(attrib.Value);
+                    int iSegmentIndex = int.Parse(segmentIndexNode.InnerText);
+                    m_observingSegment = m_cableSystem.CableStates[iStateIndex].CableSegments[iSegmentIndex];
 
                     // Read the end pos
-                    XmlNode cableLengthNode = node.SelectSingleNode(ModelXMLDefinition.CableLength);
-                    m_dCableLength = double.Parse(cableLengthNode.InnerText);
+                    XmlNodeList cableLengthNodes = node.SelectNodes(ModelXMLDefinition.CableLength);
+                    foreach (XmlNode lengthNode in cableLengthNodes)
+                    {
+                        int i = int.Parse(lengthNode.Attributes[ModelXMLDefinition.CableStateIndex].Value);
+                        double d = double.Parse(lengthNode.InnerText);
 
-                    if (m_dCableLength < 0) m_dCableLength = 100;
+                        if (d > 0 && (i >= 0 && i < m_cableSystem.CableStates.Count) && !m_stateByLengthDict.ContainsKey(d))
+                        {
+                            m_stateByLengthDict.Add(d, i);
+                        }
+                    }
                 }
                 catch (SystemException)
                 {
@@ -370,23 +383,18 @@ namespace PipeSimulation
                 }
             }
 
-            private void SetLengthEqual()
+            private double CalculateCurrentDistance()
             {
-                // Hard code now
-                if (m_cableSystem.CableStates.Count != 2 && null == m_currentPipeTransform) return;
-
                 // We always observer a segment's length
                 // If its length is greater than the m_dCableLength, then we return true
-                CCableSegment segment = m_cableSystem.CableStates[0].CableSegments[m_iObserveingCableSegment];
-
-                CPoint3D ptStartPoint = segment.StartPoint;
-                if (segment.DriveStartPointAtRuntime)
+                CPoint3D ptStartPoint = m_observingSegment.StartPoint;
+                if (m_observingSegment.DriveStartPointAtRuntime)
                 {
                     ptStartPoint = new CPoint3D(m_currentPipeTransform.TransformDoublePoint(ptStartPoint.Point));
                 }
 
-                CPoint3D ptEndPoint = segment.EndPoint;
-                if (segment.DriveEndPointAtRuntime)
+                CPoint3D ptEndPoint = m_observingSegment.EndPoint;
+                if (m_observingSegment.DriveEndPointAtRuntime)
                 {
                     ptEndPoint = new CPoint3D(m_currentPipeTransform.TransformDoublePoint(ptEndPoint.Point));
                 }
@@ -397,19 +405,42 @@ namespace PipeSimulation
                 double dDeltaZ = ptEndPoint.Z - ptStartPoint.Z;
 
                 double dDistance = IApp.theApp.DataModel.ModelingUnitToMeter * Math.Sqrt(dDeltaX * dDeltaX + dDeltaY * dDeltaY + dDeltaZ * dDeltaZ);
+                return dDistance;
+            }
 
-                if (Math.Abs(dDistance - m_dCableLength) <= 1e-6)
+            private int FindStateByLength(double dDistance)
+            {
+                // Iterate the distance to find which state should be activate
+                int iStateIndex = -1;
+
+                ArrayList aKeys = new ArrayList(m_stateByLengthDict.Keys);
+                aKeys.Sort();
+
+                for (int i = 0; i < aKeys.Count; ++i)
                 {
-                    m_eLengthEqual = LengthEqualEnum.eEqual;
+                    double dKey = (double)aKeys[i];
+                    if (dDistance < dKey)
+                    {
+                        iStateIndex = m_stateByLengthDict[dKey];
+                        break;
+                    }
                 }
-                else if (dDistance > m_dCableLength)
-                {
-                    m_eLengthEqual = LengthEqualEnum.eGreater;
-                }
-                else 
-                {
-                    m_eLengthEqual = LengthEqualEnum.eSmaller;
-                }
+
+                return iStateIndex;
+
+
+                //if (Math.Abs(dDistance - m_dCableLength) <= 1e-6)
+                //{
+                //    m_eLengthEqual = LengthEqualEnum.eEqual;
+                //}
+                //else if (dDistance > m_dCableLength)
+                //{
+                //    m_eLengthEqual = LengthEqualEnum.eGreater;
+                //}
+                //else 
+                //{
+                //    m_eLengthEqual = LengthEqualEnum.eSmaller;
+                //}
             }
             #region ICableSwitchCondition member
 
@@ -417,10 +448,14 @@ namespace PipeSimulation
             {
                 try
                 {
-                    SetLengthEqual();
-
                     // Switch to next state
-                    m_cableSystem.ActiveCableState = (m_eLengthEqual == LengthEqualEnum.eSmaller ? m_cableSystem.CableStates[0] : m_cableSystem.CableStates[1]);
+                    int iStateIndex = FindStateByLength(CalculateCurrentDistance());
+                    if (iStateIndex != -1)
+                    {
+                        m_cableSystem.ActiveCableState = m_cableSystem.CableStates[iStateIndex];
+                    }
+
+                    //m_cableSystem.ActiveCableState = (m_eLengthEqual == LengthEqualEnum.eSmaller ? m_cableSystem.CableStates[0] : m_cableSystem.CableStates[1]);
                 }
                 catch
                 {
