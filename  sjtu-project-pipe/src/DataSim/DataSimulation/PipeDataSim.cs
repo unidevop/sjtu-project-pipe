@@ -341,12 +341,12 @@ namespace DataSimulation
                 //newRow["Y"] = m_endPt1.Y;
                 //newRow["Z"] = m_endPt1.Z;
             }
-            //newRow["MeasureTime"] = m_curMeasureTime;
+            //newRow["MeasureTime"] = m_curMeasureTime;//DateTime.Now;
 
             //dataSet.Tables["GPSMeasure"].Rows.Add(newRow);
 
             return String.Format("INSERT INTO GPSMeasure VALUES({0}, {1}, '{2:yyyy-MM-dd HH:mm:ss.fff}', {3}, {4}, {5})",
-                m_id, 1, m_curMeasureTime, pt1.X, pt1.Y, pt1.Z);
+                m_id, 1, m_curMeasureTime/*DateTime.Now*/, pt1.X, pt1.Y, pt1.Z);
             //Console.Write("Pipe id: {0}, time: {1}, gps1:({2}, {3}, {4})", 
             //    m_id, m_curMeasureTime, newRow["X"], newRow["Y"], newRow["Z"]);
         }
@@ -399,12 +399,12 @@ namespace DataSimulation
                 //newRow["Y"] = m_endPt2.Y;
                 //newRow["Z"] = m_endPt2.Z;
             }
-            //newRow["MeasureTime"] = m_curMeasureTime;
+            //newRow["MeasureTime"] = m_curMeasureTime;//DateTime.Now;
 
             //dataSet.Tables["GPSMeasure"].Rows.Add(newRow);
 
             return String.Format("INSERT INTO GPSMeasure VALUES({0}, {1}, '{2:yyyy-MM-dd HH:mm:ss.fff}', {3}, {4}, {5})",
-                m_id, 2, m_curMeasureTime, pt2.X, pt2.Y, pt2.Z);
+                m_id, 2, m_curMeasureTime/*DateTime.Now*/, pt2.X, pt2.Y, pt2.Z);
 
             //Console.Write(" gps2:({0}, {1}, {2})",
             //    newRow["X"], newRow["Y"], newRow["Z"]);
@@ -416,7 +416,7 @@ namespace DataSimulation
 
             //newRow["PipeID"] = m_id;
             //newRow["ProjectPointID"] = 1;
-            //newRow["MeasureTime"] = m_curMeasureTime;
+            //newRow["MeasureTime"] = m_curMeasureTime;// DateTime.Now;
 
             double angle1, angle2;
 
@@ -450,7 +450,7 @@ namespace DataSimulation
             //dataSet.Tables["InclineMeasure"].Rows.Add(newRow);
 
             return String.Format("INSERT INTO InclineMeasure VALUES({0}, {1}, '{2:yyyy-MM-dd HH:mm:ss.fff}', {3}, {4})",
-                m_id, 1, m_curMeasureTime, angle1, angle2);
+                m_id, 1, m_curMeasureTime/*DateTime.Now*/, angle1, angle2);
 
             //Console.WriteLine("Angle1: {0}, Angle2: {1}", newRow["Angle1"], newRow["Angle2"]);
         }
