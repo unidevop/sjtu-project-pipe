@@ -94,7 +94,7 @@ namespace DataSimulation
             m_timer.Elapsed += new ElapsedEventHandler(WriteData);
             m_timer.AutoReset = true;
             m_timer.Enabled = true;
-            Console.WriteLine("Start Writing data");
+            Console.WriteLine("Start Writing data. Start time: {0:yyyy-MM-dd HH:mm:ss.fff}", DateTime.Now);
         }
 
         void WriteData(object sender, ElapsedEventArgs e)
@@ -141,7 +141,7 @@ namespace DataSimulation
         {
             m_timer.Elapsed -= new ElapsedEventHandler(WriteData);
             m_timer.Enabled = false;
-            Console.WriteLine("End Writing data");
+            Console.WriteLine("End Writing data. End time: {0:yyyy-MM-dd HH:mm:ss.fff}", DateTime.Now);
         }
 
         //protected void InitDataSet()
