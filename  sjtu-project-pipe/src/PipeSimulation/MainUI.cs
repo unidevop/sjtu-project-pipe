@@ -219,6 +219,9 @@ namespace PipeSimulation
         // Handler the form closing 
         private void MainUI_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // Stop active command
+            IApp.theApp.CommandManager.StopActiveCommand();
+
             // Step1: Check if video is still recoding, must end record before exit
             if (IApp.theApp.VideoWriter.IsRecording)
             {
@@ -670,6 +673,10 @@ namespace PipeSimulation
             new CNEIsometricCommand(IApp.theApp.CommandManager);
             new CNWIsometricCommand(IApp.theApp.CommandManager);
             new CSaveAsPictureCmd(IApp.theApp.CommandManager);
+            new CFillSimulationCommand(IApp.theApp.CommandManager);
+            new CZhujiangSimulationCommand(IApp.theApp.CommandManager);
+            new CAngleWarningConfigCommand(IApp.theApp.CommandManager);
+            new CConnectionSettingCommand(IApp.theApp.CommandManager);
 
             IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kSwitchActiveRender, null);
         }
@@ -1006,6 +1013,9 @@ namespace PipeSimulation
 
         private void toolStripButtonStartAnimation_Click(object sender, EventArgs e)
         {
+            // Stop active command
+            IApp.theApp.CommandManager.StopActiveCommand();
+
             // CReplayMode.StartAnimation
 
             // The current observer mode instance must be CReplayMode
@@ -1162,6 +1172,9 @@ namespace PipeSimulation
 
         private void observerManager_ModeChanged()
         {
+            // Stop active command
+            IApp.theApp.CommandManager.StopActiveCommand();
+
             // Show/Hide the toolbar
             ObserverMode.ObserverMode mode = IApp.theApp.ObserverModeManager.ActiveModeType;
 
@@ -1269,6 +1282,9 @@ namespace PipeSimulation
 
         private void toolStripComboBoxPipes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Stop active command
+            IApp.theApp.CommandManager.StopActiveCommand();
+
             // The current observer mode instance must be CReplayMode
             CReplayMode replayMode = IApp.theApp.ObserverModeManager.ActiveModeInstance as CReplayMode;
             if (replayMode == null) return;
@@ -1785,22 +1801,12 @@ namespace PipeSimulation
 
         private void ConnectionSettingMenuItem_Click(object sender, EventArgs e)
         {
-            using (ConnectionSetting form = new ConnectionSetting())
-            {
-                if (DialogResult.OK == form.ShowDialog())
-                {
-                }
-            }
+            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kConnectionSetting, m_connSettingMenuItem);
         }
 
         private void AngleWarningToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (AngleWarningConfiguration configForm = new AngleWarningConfiguration())
-            {
-                configForm.ShowDialog();
-
-                IApp.theApp.RenderScene();
-            }
+            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kAngleWarningConfig, AngleWarningToolStripMenuItem);
         }
 
         private void showActiveRendererMaximize_Click(object sender, EventArgs e)
@@ -1819,18 +1825,12 @@ namespace PipeSimulation
 
         private void fillToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (FillAnimationSimulationForm fillSimulationDlg = new FillAnimationSimulationForm())
-            {
-                fillSimulationDlg.ShowDialog();
-            }
+            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kFillSimulation, fillToolStripMenuItem);
         }
 
         private void zhujiangToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (ZhujiangAnimationSimulationForm zhujiangSimulationDlg = new ZhujiangAnimationSimulationForm())
-            {
-                zhujiangSimulationDlg.ShowDialog();
-            }
+            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kZhujiangSimulation, zhujiangToolStripMenuItem);
         }
     }
 }

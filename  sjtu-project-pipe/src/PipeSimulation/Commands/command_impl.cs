@@ -178,6 +178,11 @@ namespace PipeSimulation
                     ToolStripButton obj = m_eventSender as ToolStripButton;
                     obj.Checked = bActivated;
                 }
+                else if (m_eventSender is ToolStripMenuItem)
+                {
+                    ToolStripMenuItem obj = m_eventSender as ToolStripMenuItem;
+                    obj.Checked = bActivated;
+                }
             }
         }
 

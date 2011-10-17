@@ -19,7 +19,11 @@
             kSEIsometric,
             kNEIsometric,
             kNWIsometric,
-            kSaveAsPicture
+            kSaveAsPicture,
+            kFillSimulation,
+            kZhujiangSimulation,
+            kAngleWarningConfig,
+            kConnectionSetting,
         }
     }
 }
