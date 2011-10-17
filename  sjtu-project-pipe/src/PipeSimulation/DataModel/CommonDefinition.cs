@@ -74,6 +74,7 @@ namespace PipeSimulation
             // Fill Parameters
             public static string TimePercentage { get { return /*MSG0*/"TimePercent"; } }
             public static string StartPosition { get { return /*MSG0*/"StartPosition"; } }
+            public static string SacleDirection { get { return /*MSG0*/"SacleDirection"; } }
             public static string FillSegment { get { return /*MSG0*/"FillSegment"; } }
 
             // Pylon Parameters

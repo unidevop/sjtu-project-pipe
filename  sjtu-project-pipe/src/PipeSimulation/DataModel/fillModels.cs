@@ -58,6 +58,7 @@ namespace PipeSimulation
         {
             private double m_timePercentage = 0.5;
             private CPoint3D m_ptStartPoint = new CPoint3D();
+            private Vector3D m_scaleDirection = new Vector3D(1, 1, 0);// default is x.
 
             public CFillSegment(ISceneNode parentNode)
                 :base(parentNode)
@@ -72,6 +73,11 @@ namespace PipeSimulation
             public CPoint3D StartPosition
             {
                 get { return m_ptStartPoint; }
+            }
+
+            public Vector3D ScaleDirection
+            {
+                get { return m_scaleDirection; }
             }
 
             public virtual void ReadFromXMLNode(XmlNode node)
@@ -94,6 +100,17 @@ namespace PipeSimulation
                     {
                         m_ptStartPoint = CPoint3DSerializer.ReadPoint(startPositionNode);
                     }
+
+                    // Read the scaleDirection
+                    XmlNode scaleDirectionNode = node.SelectSingleNode(ModelXMLDefinition.SacleDirection);
+                    CPoint3D scaleDirection = CPoint3DSerializer.ReadPoint(scaleDirectionNode);
+
+                    Vector3D vec = new Vector3D(scaleDirection.X, scaleDirection.Y, scaleDirection.Z);
+                    if (vec.LengthSquared != 0)
+                    {
+                        vec.Normalize();
+                        m_scaleDirection = vec;
+                    } 
                 }
                 catch (SystemException)
                 {

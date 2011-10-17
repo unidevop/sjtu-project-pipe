@@ -104,7 +104,7 @@ namespace PipeSimulation.DataDriven
         {
             try
             {
-                ScaleModel(segment.ModelNode, segment.StartPosition, dScale);
+                ScaleModel(segment.ModelNode, segment.StartPosition, segment.ScaleDirection, dScale);
             }
             catch
             {
