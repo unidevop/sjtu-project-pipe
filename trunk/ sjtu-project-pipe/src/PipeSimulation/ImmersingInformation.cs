@@ -29,11 +29,8 @@ namespace PipeSimulation
         /// <summary>
         /// This function is used to be called outside to refresh the data shown in the UI
         /// </summary>
-        public void UpdateData()
+        public void UpdateData(PipeInfo pipeInfo)
         {
-            // Get Pipe info
-            PipeInfo pipeInfo = IApp.theApp.DataDriven.CurrentData;
-
             // Basic information
             UpdateBasicInformationGroup(pipeInfo);
 
@@ -109,12 +106,15 @@ namespace PipeSimulation
 
         private void ImmersingInformation_Load(object sender, EventArgs e)
         {
-
         }
 
         private void m_groupBoxBasicInformation_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
         }
     }
 }

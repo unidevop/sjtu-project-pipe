@@ -222,6 +222,12 @@ namespace PipeSimulation
             // Stop active command
             IApp.theApp.CommandManager.StopActiveCommand();
 
+            if (m_immersingInformationForm != null)
+            {
+                m_immersingInformationForm.Dispose();
+                m_immersingInformationForm = null;
+            }
+            
             // Step1: Check if video is still recoding, must end record before exit
             if (IApp.theApp.VideoWriter.IsRecording)
             {
@@ -243,7 +249,6 @@ namespace PipeSimulation
             {
                 replayMode.ReplayAnimationEngine.StopAnimation();
             }
-
 
             // Write the Application Option
             ApplicationOptions.Instance().WriteData(System.IO.Path.Combine(CFolderUtility.DataFolder(), /*MSG0*/@"app.opt"));
@@ -459,7 +464,23 @@ namespace PipeSimulation
             }
             else
             {
-                IApp.theApp.DataDriven.DriveModel(queryResult);
+                DriveModel(queryResult);
+            }
+        }
+
+        private ImmersingInformation m_immersingInformationForm = null;
+        private void DriveModel(PipeInfo pipeInfo)
+        {
+            IApp.theApp.DataDriven.DriveModel(pipeInfo);
+
+            // Update the dialog
+            if (IApp.theApp.DataDriven.CurrentData != null)
+            {
+                if (m_immersingInformationForm != null)
+                {
+                    m_immersingInformationForm.UpdateData(IApp.theApp.DataDriven.CurrentData);
+                }
+                
             }
         }
 
@@ -637,7 +658,7 @@ namespace PipeSimulation
             // Enter the default mode.
             // Default mode should be Monitor mode.
             // But if we found that all pipes have already completed, we should switch to replay mode
-            ObserverMode.ObserverMode eDefaultMode = ObserverMode.ObserverMode.eMonitorMode;
+            ObserverMode.ObserverMode eDefaultMode = ObserverMode.ObserverMode.eReplayMode;
 
             //IDataQuery dataQuery = IApp.theApp.DataQuery;
             //if (dataQuery != null)
@@ -922,6 +943,8 @@ namespace PipeSimulation
         {
             monitorModeToolStripMenuItem.Checked = (IApp.theApp.ObserverModeManager.ActiveModeType == ObserverMode.ObserverMode.eMonitorMode);
             replayModeToolStripMenuItem.Checked = (IApp.theApp.ObserverModeManager.ActiveModeType == ObserverMode.ObserverMode.eReplayMode);
+            showImmersingInformation.Enabled = (IApp.theApp.DataDriven.CurrentData != null);
+            showImmersingInformation.Checked = (m_immersingInformationForm != null && m_immersingInformationForm.Visible);
         }
 
         private void trackBarAnimation_Scroll(object sender, EventArgs e)
@@ -956,7 +979,7 @@ namespace PipeSimulation
                     PipeInfo pipeInfo = dataQuery.GetPipeRecord(specificTime, false);
 
                     // Drive the model
-                    IApp.theApp.DataDriven.DriveModel(pipeInfo);
+                    DriveModel(pipeInfo);
                 }
                 catch (Exception)
                 {
@@ -1268,7 +1291,7 @@ namespace PipeSimulation
                         PipeInfo queryResult = dataQuery.FetchLatestData();
 
                         // Drive model
-                        IApp.theApp.DataDriven.DriveModel(queryResult);
+                        DriveModel(queryResult);
                     }
                     catch (Exception)
                     {
@@ -1395,7 +1418,7 @@ namespace PipeSimulation
                 try
                 {
                     PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(beginingTime, false);
-                    IApp.theApp.DataDriven.DriveModel(pipeInfo);
+                    DriveModel(pipeInfo);
                 }
                 catch (Exception)
                 {
@@ -1604,7 +1627,7 @@ namespace PipeSimulation
                             // How to get a track bar value by the date time
                             
                             // Drive Model
-                            IApp.theApp.DataDriven.DriveModel(pipeInfo);
+                            DriveModel(pipeInfo);
 
                             // Update Animation Text
                             UpdateAnimationLabelText();
@@ -1830,12 +1853,28 @@ namespace PipeSimulation
 
         private void zhujiangToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kZhujiangSimulation, zhujiangToolStripMenuItem);
-            using (ImmersingInformation form = new ImmersingInformation())
+            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kZhujiangSimulation, zhujiangToolStripMenuItem);
+        }
+
+        private void showImmersingInformation_Click(object sender, EventArgs e)
+        {
+            if (m_immersingInformationForm == null)
             {
-                form.UpdateData();
-                form.ShowDialog();
+                m_immersingInformationForm = new ImmersingInformation();
+                m_immersingInformationForm.UpdateData(IApp.theApp.DataDriven.CurrentData);
+                m_immersingInformationForm.Show(this);
+                m_immersingInformationForm.FormClosed += new FormClosedEventHandler(m_immersingInformationForm_FormClosed);
             }
+            else
+            {
+                m_immersingInformationForm.Visible = !m_immersingInformationForm.Visible;
+            }
+        }
+
+        void m_immersingInformationForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            m_immersingInformationForm.Dispose();
+            m_immersingInformationForm = null;
         }
     }
 }

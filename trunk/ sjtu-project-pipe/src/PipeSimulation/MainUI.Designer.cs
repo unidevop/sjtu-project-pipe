@@ -86,6 +86,7 @@ namespace PipeSimulation
             this.saveAsPNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startRecordAVIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopRecordAVIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showImmersingInformation = new System.Windows.Forms.ToolStripMenuItem();
             this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zhujiangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -383,7 +384,8 @@ namespace PipeSimulation
             // 
             this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.monitorModeToolStripMenuItem,
-            this.replayModeToolStripMenuItem});
+            this.replayModeToolStripMenuItem,
+            this.showImmersingInformation});
             this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
             this.modeToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.modeToolStripMenuItem.Text = "沉放过程";
@@ -404,6 +406,14 @@ namespace PipeSimulation
             this.replayModeToolStripMenuItem.Text = "回放模式";
             this.replayModeToolStripMenuItem.Click += new System.EventHandler(this.replayModeToolStripMenuItem_Click);
             this.replayModeToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.R;
+            // 
+            // showImmersingInformation
+            // 
+            this.showImmersingInformation.Name = "showImmersingInformation";
+            this.showImmersingInformation.Size = new System.Drawing.Size(151, 22);
+            this.showImmersingInformation.Text = "查看详细沉放信息";
+            this.showImmersingInformation.Click += new System.EventHandler(this.showImmersingInformation_Click);
+            this.showImmersingInformation.ShortcutKeys = Keys.Control | Keys.I;
             // 
             // viewToolStripMenuItem
             // 
@@ -862,6 +872,7 @@ namespace PipeSimulation
         private ToolStripMenuItem showOrigin;
         private ToolStripMenuItem showActiveRendererMaximize;
         private ToolStripMenuItem showActiveRendererBackToOriginal;
+        private ToolStripMenuItem showImmersingInformation;
         private ToolStrip toolStripReplay;
         private ToolStripComboBox toolStripComboBoxPipes;
         private ToolStripSeparator toolStripSeparator3;
