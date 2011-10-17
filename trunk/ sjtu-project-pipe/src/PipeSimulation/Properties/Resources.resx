@@ -298,4 +298,7 @@
   <data name="IDS_WARNING_SAVE_CONFIG" xml:space="preserve">
     <value>配置已修改，是否保存？</value>
   </data>
+  <data name="IDS_PIPE_ID_IMMSERING" xml:space="preserve">
+    <value>第{0}段沉管正在沉放</value>
+  </data>
 </root>
