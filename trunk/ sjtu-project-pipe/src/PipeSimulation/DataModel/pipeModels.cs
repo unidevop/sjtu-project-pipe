@@ -375,7 +375,7 @@ namespace PipeSimulation
                 }
 
                 // Drive the cabling system
-                if (CableSystem != null)
+                if (CableSystem != null && Status == PipeStatus.eWorkingInProgess)
                 {
                     CableSystem.OnPipePosChanged(transform);
                 }
