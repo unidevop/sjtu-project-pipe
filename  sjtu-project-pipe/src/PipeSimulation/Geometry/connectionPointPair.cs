@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Xml;
 using PipeSimulation.DataModel;
+using PipeSimulation.PipeApp;
 
 namespace PipeSimulation.Geometry
 {
@@ -81,6 +82,38 @@ namespace PipeSimulation.Geometry
         public double DeltaZ
         {
             get { return m_endConnectionPoint.Z - m_startConnectionPoint.Z; }
+        }
+
+        /// <summary>
+        /// Get the distance
+        /// </summary>
+        public double DistanceInMeter
+        {
+            get { return Distance * IApp.theApp.DataModel.ModelingUnitToMeter; }
+        }
+
+        /// <summary>
+        /// The EndConnectionPoint.x - StartConnectionPoint.x
+        /// </summary>
+        public double DeltaXInMeter
+        {
+            get { return DeltaX * IApp.theApp.DataModel.ModelingUnitToMeter; }
+        }
+
+        /// <summary>
+        /// The EndConnectionPoint.y - StartConnectionPoint.y
+        /// </summary>
+        public double DeltaYInMeter
+        {
+            get { return DeltaY * IApp.theApp.DataModel.ModelingUnitToMeter; }
+        }
+
+        /// <summary>
+        /// The EndConnectionPoint.z - StartConnectionPoint.z
+        /// </summary>
+        public double DeltaZInMeter
+        {
+            get { return DeltaZ * IApp.theApp.DataModel.ModelingUnitToMeter; }
         }
     }
 }

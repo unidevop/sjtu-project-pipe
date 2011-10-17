@@ -1830,7 +1830,12 @@ namespace PipeSimulation
 
         private void zhujiangToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kZhujiangSimulation, zhujiangToolStripMenuItem);
+            //IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kZhujiangSimulation, zhujiangToolStripMenuItem);
+            using (ImmersingInformation form = new ImmersingInformation())
+            {
+                form.UpdateData();
+                form.ShowDialog();
+            }
         }
     }
 }

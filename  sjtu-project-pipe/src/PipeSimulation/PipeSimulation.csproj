@@ -129,6 +129,12 @@
     <Compile Include="Geometry\connectionPointPair.cs" />
     <Compile Include="Geometry\point3d.cs" />
     <Compile Include="Geometry\ucs.cs" />
+    <Compile Include="ImmersingInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImmersingInformation.Designer.cs">
+      <DependentUpon>ImmersingInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModelAnimationSimulationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,6 +294,12 @@
     <EmbeddedResource Include="ConnectionSetting.zh-CHS.resx">
       <DependentUpon>ConnectionSetting.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ImmersingInformation.resx">
+      <DependentUpon>ImmersingInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImmersingInformation.zh-CHS.resx">
+      <DependentUpon>ImmersingInformation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainUI.zh-CHS.resx">
       <DependentUpon>MainUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -329,6 +341,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="application.ico" />
+    <None Include="Properties\DataSources\PipeSimulation.DataModel.CStatisticData.datasource" />
     <None Include="Properties\res\PauseAnimation.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
