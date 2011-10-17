@@ -59,8 +59,36 @@ namespace PipeSimulation
             // Update Obsever mode
             UpdateObserverMode();
 
+            // Update Angle warning
+            UpdateAngleWarning();
+
             // Update Database Status
             UpdateDatabaseStatus();
+        }
+
+        private void UpdateAngleWarning()
+        {
+            tollStripAngleWarningText.Visible = (IApp.theApp.DataDriven.CurrentData != null);
+
+            CAngleWarningData angleWarningData = new CAngleWarningData();
+            string strWarningText = angleWarningData.ToString();
+
+            try
+            {
+                if (string.IsNullOrEmpty(strWarningText))
+                {
+                    tollStripAngleWarningText.Text = Resources.IDS_ANGLE_NO_WARNING;
+                }
+                else
+                {
+                    tollStripAngleWarningText.Text = angleWarningData.ToString();
+                }
+
+                tollStripAngleWarningText.ForeColor = string.IsNullOrEmpty(strWarningText) ? Color.Black : Color.Red;
+            }
+            catch
+            {
+            }
         }
 
         private void UpdateObserverMode()

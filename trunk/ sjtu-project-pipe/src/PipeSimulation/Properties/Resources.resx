@@ -301,4 +301,13 @@
   <data name="IDS_PIPE_ID_IMMSERING" xml:space="preserve">
     <value>第{0}段沉管正在沉放</value>
   </data>
+  <data name="IDS_ANGLE_ALPHA_WARNING" xml:space="preserve">
+    <value>水平倾角为{0}度，超过预设值{1}。</value>
+  </data>
+  <data name="IDS_ANGLE_BETA_WARNING" xml:space="preserve">
+    <value>垂直倾角为{0}度，超过预设值{1}。</value>
+  </data>
+  <data name="IDS_ANGLE_NO_WARNING" xml:space="preserve">
+    <value>倾角在正常范围内。</value>
+  </data>
 </root>
