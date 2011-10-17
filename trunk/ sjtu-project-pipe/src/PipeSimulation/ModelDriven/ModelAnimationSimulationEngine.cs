@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using PipeSimulation.PipeApp;
 using PipeSimulation.SceneGraph;
 using PipeSimulation.Geometry;
+using System.Windows.Media.Media3D;
 
 namespace PipeSimulation.DataDriven
 {
@@ -104,7 +105,7 @@ namespace PipeSimulation.DataDriven
 
         #endregion
 
-        protected void ScaleModel(CModelNode node, CPoint3D ptScaleCenter, double dScale)
+        protected void ScaleModel(CModelNode node, CPoint3D ptScaleCenter, Vector3D scaleDirection, double dScale)
         {
             try
             {
@@ -115,9 +116,36 @@ namespace PipeSimulation.DataDriven
                 // Scale the segment, because the dProgress is inside the range
                 vtk.vtkTransform transform = new vtk.vtkTransform();
                 transform.Translate(ptScaleCenter.X, ptScaleCenter.Y, ptScaleCenter.Z);
-                transform.Scale(dScaleFactor, 1, 1);
+
+                // Calculate a scale transform along with the given scaleDirection
+                double nx = scaleDirection.X;
+                double ny = scaleDirection.Y;
+                double nz = scaleDirection.Z;
+
+                double dFactorTemp = (dScaleFactor - 1);
+
+                vtk.vtkTransform scaleTransform = new vtk.vtkTransform();
+                vtk.vtkMatrix4x4 scaleMatrix = scaleTransform.GetMatrix();
+                scaleMatrix.SetElement(0, 0, 1 + dFactorTemp * nx * nx);
+                scaleMatrix.SetElement(0, 1, dFactorTemp * nx * ny);
+                scaleMatrix.SetElement(0, 2, dFactorTemp * nx * nz);
+
+                scaleMatrix.SetElement(1, 0, dFactorTemp * nx * ny);
+                scaleMatrix.SetElement(1, 1, 1 + dFactorTemp * ny * ny);
+                scaleMatrix.SetElement(1, 2, dFactorTemp * ny * nz);
+
+                scaleMatrix.SetElement(2, 0, dFactorTemp * nx * nz);
+                scaleMatrix.SetElement(2, 1, dFactorTemp * ny * nz);
+                scaleMatrix.SetElement(2, 2, 1 + dFactorTemp * nz * nz);
+
+                // Mutliply the scale transform
+                vtk.vtkMatrix4x4 scaleMatrix2 = new vtk.vtkMatrix4x4();
+                vtk.vtkMatrix4x4.Multiply4x4(transform.GetMatrix(), scaleMatrix, scaleMatrix2);
+                transform.SetMatrix(scaleMatrix2);
+
                 transform.Translate(-ptScaleCenter.X, -ptScaleCenter.Y, -ptScaleCenter.Z);
 
+                // Update  the node
                 node.PokeMatrix(transform);
 
                 // Pay attention to the dScaleFactor is 0, we must make it invisible.

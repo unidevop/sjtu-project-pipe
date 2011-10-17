@@ -68,7 +68,7 @@ namespace PipeSimulation.DataDriven
             // Update each segment
             double dProgress = 1.0 * iProgress / GetAnimationTotalProgress();
             m_zhujiangModel.ModelNode.Visibility = true;
-            ScaleModel(m_zhujiangModel.ModelNode, m_zhujiangModel.StartPosition, dProgress);
+            ScaleModel(m_zhujiangModel.ModelNode, m_zhujiangModel.StartPosition, m_zhujiangModel.ScaleDirection, dProgress);
 
             // Render the scene
             IApp.theApp.RenderScene();
