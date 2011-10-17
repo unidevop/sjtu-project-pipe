@@ -422,7 +422,7 @@ namespace PipeSimulation
             this.showPerspectiveCamera,
             this.toolStripSeparator5,
             this.showStatisticTextDisplayer,
-            this.showWarningTextDisplayer,
+            //this.showWarningTextDisplayer,
             this.showWCS,
             this.showNonePipeObjects,
             this.showOrigin,

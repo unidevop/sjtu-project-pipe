@@ -282,16 +282,16 @@ namespace PipeSimulation
                 statisticTextDisplayerAdditional.TextActor.GetTextProperty().SetColor(1.0, 1.0, 0.0);
             }
 
-            // Initialize the text for warning
-            CTextSceneDisplayer warningTextDisplayer = IApp.theApp.WarningTextDisplayer as CTextSceneDisplayer;
-            if (warningTextDisplayer != null)
-            {
-                warningTextDisplayer.Setup();
-                warningTextDisplayer.TextActor.GetTextProperty().SetFontSize(18);
-                warningTextDisplayer.TextActor.GetTextProperty().SetJustificationToRight();
-                warningTextDisplayer.TextActor.GetTextProperty().SetVerticalJustificationToTop();
-                warningTextDisplayer.TextActor.GetTextProperty().SetColor(1.0, 0.0, 0.0);
-            }
+            //// Initialize the text for warning
+            //CTextSceneDisplayer warningTextDisplayer = IApp.theApp.WarningTextDisplayer as CTextSceneDisplayer;
+            //if (warningTextDisplayer != null)
+            //{
+            //    warningTextDisplayer.Setup();
+            //    warningTextDisplayer.TextActor.GetTextProperty().SetFontSize(18);
+            //    warningTextDisplayer.TextActor.GetTextProperty().SetJustificationToRight();
+            //    warningTextDisplayer.TextActor.GetTextProperty().SetVerticalJustificationToTop();
+            //    warningTextDisplayer.TextActor.GetTextProperty().SetColor(1.0, 0.0, 0.0);
+            //}
             
             // Watch the size changed to reposition the text actors
             IApp.theApp.vtkControl.SizeChanged += OnControlSizeChanged;
@@ -353,26 +353,26 @@ namespace PipeSimulation
             if (control == null) return;
 
             vtk.vtkTextActor textActorStatistic = IApp.theApp.StatisticTextDisplayer.TextActor;
-            vtk.vtkTextActor textActorWarning = IApp.theApp.WarningTextDisplayer.TextActor;
+            //vtk.vtkTextActor textActorWarning = IApp.theApp.WarningTextDisplayer.TextActor;
 
             Size sizeControl = control.Size;
             if (sizeControl.Width <= CTextSceneDisplayer.sMinX
             || sizeControl.Height <= CTextSceneDisplayer.sMinY)
             {
                 textActorStatistic.VisibilityOff();
-                textActorWarning.VisibilityOff();
+                //textActorWarning.VisibilityOff();
             }
             else
             {
                 if (ApplicationOptions.Instance().ViewOptions.ShowDisplayStatiticsText)
                 {
                     textActorStatistic.VisibilityOn();
-                    textActorWarning.VisibilityOn();
+                    //textActorWarning.VisibilityOn();
                 }
 
                 // Update statistic text display positon
                 textActorStatistic.SetDisplayPosition(CTextSceneDisplayer.sMinX, (sizeControl.Height - CTextSceneDisplayer.sMinY));
-                textActorWarning.SetDisplayPosition(sizeControl.Width - CTextSceneDisplayer.sMinX, (sizeControl.Height - CTextSceneDisplayer.sMinY));
+                //textActorWarning.SetDisplayPosition(sizeControl.Width - CTextSceneDisplayer.sMinX, (sizeControl.Height - CTextSceneDisplayer.sMinY));
 
                 IApp.theApp.StatisticTextDisplayerAdditional.TextActor.SetDisplayPosition(CTextSceneDisplayer.sMinX + 110, (sizeControl.Height - CTextSceneDisplayer.sMinY));
             }
@@ -1518,9 +1518,9 @@ namespace PipeSimulation
             // Make sure we make the StatisticTextDisplayerAdditional appeal after the StatisticTextDisplayer
             IApp.theApp.StatisticTextDisplayerAdditional.DisplayText(statisticData.ToDataString());
 
-            // Update the WarningTextDisplayer
-            CAngleWarningData angleWarningData = new CAngleWarningData();
-            IApp.theApp.WarningTextDisplayer.DisplayText(angleWarningData.ToString());
+            //// Update the WarningTextDisplayer
+            //CAngleWarningData angleWarningData = new CAngleWarningData();
+            //IApp.theApp.WarningTextDisplayer.DisplayText(angleWarningData.ToString());
 
             // Update the Video record
             if (IApp.theApp.VideoWriter.IsRecording)
@@ -1708,9 +1708,9 @@ namespace PipeSimulation
 
         private void SetWarningTextDisplayerVisibility(bool bVisible)
         {
-            ShowHideProp(IApp.theApp.WarningTextDisplayer.TextActor, bVisible);
-            IApp.theApp.RenderScene();
-            ApplicationOptions.Instance().ViewOptions.ShowWarningText = bVisible;
+            //ShowHideProp(IApp.theApp.WarningTextDisplayer.TextActor, bVisible);
+            //IApp.theApp.RenderScene();
+            //ApplicationOptions.Instance().ViewOptions.ShowWarningText = bVisible;
         }
 
         void showStatisticTextDisplayer_Click(object sender, EventArgs e)
@@ -1754,9 +1754,9 @@ namespace PipeSimulation
             showStatisticTextDisplayer.Enabled = !(string.IsNullOrEmpty(IApp.theApp.StatisticTextDisplayer.TextActor.GetInput()));
             showStatisticTextDisplayer.Checked = (IApp.theApp.StatisticTextDisplayer.TextActor.GetVisibility() != 0);
 
-            // Visibility for statistic text displayer
-            showWarningTextDisplayer.Enabled = !(string.IsNullOrEmpty(IApp.theApp.WarningTextDisplayer.TextActor.GetInput()));
-            showWarningTextDisplayer.Checked = (IApp.theApp.WarningTextDisplayer.TextActor.GetVisibility() != 0);
+            //// Visibility for statistic text displayer
+            //showWarningTextDisplayer.Enabled = !(string.IsNullOrEmpty(IApp.theApp.WarningTextDisplayer.TextActor.GetInput()));
+            //showWarningTextDisplayer.Checked = (IApp.theApp.WarningTextDisplayer.TextActor.GetVisibility() != 0);
 
             // Visibility for WCS
             showWCS.Enabled = (axesWidgetaMain != null);
