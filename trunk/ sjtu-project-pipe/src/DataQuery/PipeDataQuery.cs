@@ -17,6 +17,7 @@ namespace PipeSimulation.DataQuery
 
         protected SqlConnection m_dbConn;
 
+        #region comment
 #if !NEW_DATA_APPROACH
         // default incline to GPS time tolerance is 0.3s
         protected static TimeSpan m_inclineGPSMeasureTimeTolerance = new TimeSpan(0, 0, 0, 300);
@@ -24,6 +25,7 @@ namespace PipeSimulation.DataQuery
         // default incline and GPS time tolerance is 0.01s
         protected static TimeSpan m_GPSMeasureTimeTolerance = new TimeSpan(0, 0, 0, 10);
 #endif
+        #endregion
 
         // interval is in milliseconds
         public PipeDataQuery(string dbAdress, string dbName, string userName, string password)
@@ -405,7 +407,7 @@ namespace PipeSimulation.DataQuery
             string strSql = String.Format(@"SELECT TOP 1 GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
               GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, IM.Angle1, IM.Angle2, GPS1.MeasureID, IM.MeasureID 
               FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON (GPS1.PipeID=GPS2.PipeID AND
-              GPS1.MeasureTime = GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID AND GPS1.MeasureID>{0}) 
+              GPS1.MeasureTime = GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID AND GPS1.MeasureID>'{0}') 
               INNER JOIN InclineMeasure AS IM ON (GPS1.PipeID=IM.PipeID AND
               GPS1.MeasureTime=IM.MeasureTime AND IM.MeasureID>'{1}')
               ORDER BY GPS1.MeasureID DESC", m_lastGPSMeasureId, m_lastInclineMeasureId);
@@ -511,7 +513,7 @@ namespace PipeSimulation.DataQuery
     class HistoricalDataQuery : PipeDataQuery, IHistoryDataQuery
     {
         // default time tolerance is 0.5s
-        protected static TimeSpan m_timeTolerance = new TimeSpan(0, 0, 0, 0, 500);
+        protected static TimeSpan m_timeTolerance = new TimeSpan(0, 0, 0, 1);
 
         private int m_latestPipeId = 0;
 
@@ -616,20 +618,34 @@ namespace PipeSimulation.DataQuery
 
         public PipeInfo GetPipeRecord(DateTime dateTime, bool bFindNearest)
         {
+//            string strSql = bFindNearest ? String.Format(@"SELECT TOP 1 GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
+//                GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, IM1.Angle1, IM1.Angle2, GPS1.MeasureID, IM1.MeasureID 
+//                FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON 
+//                (GPS1.PipeID=GPS2.PipeID AND GPS1.MeasureTime=GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID) 
+//                INNER JOIN InclineMeasure AS IM1 ON (GPS1.PipeID=IM1.PipeID AND GPS1.MeasureTime=IM1.MeasureTime) ORDER BY
+//                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{0:yyyy-MM-dd HH:mm:ss.fff}'))", dateTime) :
+//            String.Format(@"SELECT TOP 1 GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
+//                GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, IM1.Angle1, IM1.Angle2, GPS1.MeasureID, IM1.MeasureID 
+//                FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON 
+//                (GPS1.PipeID=GPS2.PipeID AND GPS1.MeasureTime=GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID) 
+//                INNER JOIN InclineMeasure AS IM1 ON (GPS1.PipeID=IM1.PipeID AND GPS1.MeasureTime=IM1.MeasureTime AND 
+//                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{0:yyyy-MM-dd HH:mm:ss.fff}')) < {1}) ORDER BY
+//                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{0:yyyy-MM-dd HH:mm:ss.fff}'))",
+//                dateTime, m_timeTolerance.TotalMilliseconds);
             string strSql = bFindNearest ? String.Format(@"SELECT TOP 1 GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
                 GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, IM1.Angle1, IM1.Angle2, GPS1.MeasureID, IM1.MeasureID 
                 FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON 
                 (GPS1.PipeID=GPS2.PipeID AND GPS1.MeasureTime=GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID) 
-                INNER JOIN InclineMeasure AS IM1 ON (GPS1.PipeID=IM1.PipeID AND GPS1.MeasureTime=IM1.MeasureTime) ORDER BY
-                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{0:yyyy-MM-dd HH:mm:ss.fff}'))", dateTime) :
+                INNER JOIN InclineMeasure AS IM1 ON (GPS1.PipeID=IM1.PipeID AND GPS1.MeasureTime=IM1.MeasureTime) AND
+                IM1.MeasureTime>='{0:yyyy-MM-dd HH:mm:ss.fff}' ORDER BY IM1.MEASURETIME ASC", dateTime) :
             String.Format(@"SELECT TOP 1 GPS1.PipeID, GPS1.MeasureTime, GPS1.X AS X1, GPS1.Y AS Y1, GPS1.Z AS Z1,
                 GPS2.X AS X2, GPS2.Y AS Y2, GPS2.Z AS Z3, IM1.Angle1, IM1.Angle2, GPS1.MeasureID, IM1.MeasureID 
                 FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON 
                 (GPS1.PipeID=GPS2.PipeID AND GPS1.MeasureTime=GPS2.MeasureTime AND GPS1.ProjectPointID<GPS2.ProjectPointID) 
                 INNER JOIN InclineMeasure AS IM1 ON (GPS1.PipeID=IM1.PipeID AND GPS1.MeasureTime=IM1.MeasureTime AND 
-                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{0:yyyy-MM-dd HH:mm:ss.fff}')) < {1}) ORDER BY
-                ABS(DATEDIFF(MILLISECOND, IM1.MeasureTime, '{0:yyyy-MM-dd HH:mm:ss.fff}'))",
-                dateTime, m_timeTolerance.TotalMilliseconds);
+                IM1.MeasureTime>='{0:yyyy-MM-dd HH:mm:ss.fff}' AND IM1.MeasureTime<'{1:yyyy-MM-dd HH:mm:ss.fff}') AND
+                IM1.MeasureTime>='{0:yyyy-MM-dd HH:mm:ss.fff}' ORDER BY IM1.MEASURETIME ASC",
+                dateTime, dateTime + m_timeTolerance + m_timeTolerance);
 
             return QueryRecord(strSql, true);
         }
