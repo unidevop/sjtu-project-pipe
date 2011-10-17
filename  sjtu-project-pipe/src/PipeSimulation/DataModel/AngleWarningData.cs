@@ -19,7 +19,6 @@ namespace PipeSimulation.DataModel
             // Current Beta angle 6 is greater than maximum angle 4.
 
             string strString = string.Empty;
-            const string strChangeLine =  /*MSG0*/"\r\n";
 
             // Get Pipe info
             PipeInfo pipeInfo = IApp.theApp.DataDriven.CurrentData;
@@ -34,37 +33,18 @@ namespace PipeSimulation.DataModel
             double dAlphaAngle = pipeInfo.LatitudinalInclineAngle;
             if (warningConfig.IsAlphaWarning(dAlphaAngle))
             {
-                string strAlphaFormat;
-                strAlphaFormat = /*MSG0*/"Alpha: {0} exceeds the limit {1}.";
-
-                strString = string.Concat(strString, string.Format(strAlphaFormat, 
+                strString = string.Concat(strString, string.Format(Resources.IDS_ANGLE_ALPHA_WARNING, 
                                           string.Format(strAngleFormat, Math.Abs(dAlphaAngle)), 
-                                          string.Format(strAngleFormat, warningConfig.AlphaMaximum)), strChangeLine);
+                                          string.Format(strAngleFormat, warningConfig.AlphaMaximum)));
             }
 
             // Get the current Beta angle
             double dBetaAngle = pipeInfo.LongitudinalInclineAngle;
             if (warningConfig.IsBetaWarning(dBetaAngle))
             {
-                string strBetaFormat;
-                strBetaFormat = /*MSG0*/"Beta: {0} exceeds the limit {1}.";
-
-                strString = string.Concat(strString, string.Format(strBetaFormat, 
+                strString = string.Concat(strString, string.Format(Resources.IDS_ANGLE_BETA_WARNING, 
                                           string.Format(strAngleFormat, Math.Abs(dBetaAngle)), 
-                                          string.Format(strAngleFormat, warningConfig.BetaMaximum)), strChangeLine);
-            }
-
-            // Insert the waring text
-            string strWarningText;
-            strWarningText = /*MSG0*/"------Warning!!!------" + strChangeLine;
-
-            if (!string.IsNullOrEmpty(strString))
-            {
-                strString = string.Concat(strWarningText, strString);
-            }
-            else
-            {
-                strString = string.Concat(strWarningText, "No warnings.");
+                                          string.Format(strAngleFormat, warningConfig.BetaMaximum)));
             }
 
             return strString;

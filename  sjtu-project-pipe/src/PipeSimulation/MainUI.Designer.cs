@@ -96,6 +96,7 @@ namespace PipeSimulation
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusObserverMode = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tollStripAngleWarningText = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusDatabaseStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripReplay = new System.Windows.Forms.ToolStrip();
             this.toolStripComboBoxPipes = new System.Windows.Forms.ToolStripComboBox();
@@ -601,7 +602,7 @@ namespace PipeSimulation
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel, this.toolStripStatusDatabaseStatus, this.toolStripStatusObserverMode});
+            this.toolStripStatusLabel, this.toolStripStatusDatabaseStatus, this.toolStripStatusObserverMode, this.tollStripAngleWarningText});
             this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(763, 22);
@@ -636,6 +637,16 @@ namespace PipeSimulation
             this.toolStripStatusObserverMode.BorderStyle = Border3DStyle.SunkenInner;
             this.toolStripStatusObserverMode.AutoSize = true;
             this.toolStripStatusObserverMode.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // tollStripAngleWarningText;
+            // 
+            this.tollStripAngleWarningText.Name = "tollStripAngleWarningText";
+            this.tollStripAngleWarningText.Size = new System.Drawing.Size(200, 17);
+            this.tollStripAngleWarningText.Text = "";
+            this.tollStripAngleWarningText.BorderSides = ToolStripStatusLabelBorderSides.All;
+            this.tollStripAngleWarningText.BorderStyle = Border3DStyle.SunkenInner;
+            this.tollStripAngleWarningText.AutoSize = true;
+            this.tollStripAngleWarningText.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // toolStripReplay
             // 
@@ -854,6 +865,7 @@ namespace PipeSimulation
         private ToolStripButton toolStripNEIsoMetricView;
         private ToolStripButton toolStripNWIsoMetricView;
         private ToolStripStatusLabel toolStripStatusLabel;
+        private ToolStripStatusLabel tollStripAngleWarningText;
         private ToolStripStatusLabel toolStripStatusObserverMode;
         private ToolStripStatusLabel toolStripStatusDatabaseStatus;
         private ToolStripSeparator toolStripSeparator1;
