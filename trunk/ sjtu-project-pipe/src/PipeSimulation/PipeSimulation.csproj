@@ -98,10 +98,14 @@
     <Compile Include="AppFramework\app.cs" />
     <Compile Include="AppFramework\RendererLayoutStrategy.cs" />
     <Compile Include="AppFramework\RendererManager.cs" />
+    <Compile Include="Commands\AngleWarningConfigCommand.cs" />
     <Compile Include="Commands\command_id.cs" />
     <Compile Include="Commands\command_impl.cs" />
+    <Compile Include="Commands\connectionSettingCommand.cs" />
+    <Compile Include="Commands\fillSimulationCommand.cs" />
     <Compile Include="Commands\savepicturecommand.cs" />
     <Compile Include="Commands\view_commands.cs" />
+    <Compile Include="Commands\zhujiangSimulationCommand.cs" />
     <Compile Include="ConnectionSetting.cs">
       <SubType>Form</SubType>
     </Compile>
