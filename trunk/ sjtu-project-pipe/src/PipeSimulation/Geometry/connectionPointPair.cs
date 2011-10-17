@@ -89,7 +89,7 @@ namespace PipeSimulation.Geometry
         /// </summary>
         public double DistanceInMeter
         {
-            get { return Distance * IApp.theApp.DataModel.ModelingUnitToMeter; }
+            get { return Math.Abs(Distance * IApp.theApp.DataModel.ModelingUnitToMeter); }
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace PipeSimulation.Geometry
         /// </summary>
         public double DeltaXInMeter
         {
-            get { return DeltaX * IApp.theApp.DataModel.ModelingUnitToMeter; }
+            get { return Math.Abs(DeltaX * IApp.theApp.DataModel.ModelingUnitToMeter); }
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace PipeSimulation.Geometry
         /// </summary>
         public double DeltaYInMeter
         {
-            get { return DeltaY * IApp.theApp.DataModel.ModelingUnitToMeter; }
+            get { return Math.Abs(DeltaY * IApp.theApp.DataModel.ModelingUnitToMeter); }
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace PipeSimulation.Geometry
         /// </summary>
         public double DeltaZInMeter
         {
-            get { return DeltaZ * IApp.theApp.DataModel.ModelingUnitToMeter; }
+            get { return Math.Abs(DeltaZ * IApp.theApp.DataModel.ModelingUnitToMeter); }
         }
     }
 }
