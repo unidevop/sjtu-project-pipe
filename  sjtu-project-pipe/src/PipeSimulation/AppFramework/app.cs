@@ -218,10 +218,11 @@ namespace PipeSimulation.PipeApp
 
         public override void RenderScene()
         {
-            if (vtkControl != null)
-            {
-                vtkControl.Invalidate();
-            }
+            //if (vtkControl != null)
+            //{
+            //    vtkControl.Invalidate();
+            //}
+            RenderWindow.GetInteractor().Render();
         }
 
         protected void OnConnectionConfigChanged()

@@ -45,6 +45,7 @@ namespace PipeSimulation
 
                 // Connect to Fill Simulation Engine events
                 CModelAnimationSimulationEngine modelSimEngine = GetModelAnimationSimulationEngine();
+                modelSimEngine.AnimationProgress = 0; // Clear the animation progress
                 modelSimEngine.AnimationStartted += new CTimeAnimationBase.AnimationStarttedHandler(modelSimEngine_AnimationStartted);
                 modelSimEngine.AnimationResume += new CTimeAnimationBase.AnimationResumeHandler(modelSimEngine_AnimationResume);
                 modelSimEngine.AnimationRunning += new CTimeAnimationBase.AnimationRunningHandler(modelSimEngine_AnimationRunning);
@@ -104,6 +105,8 @@ namespace PipeSimulation
             else
             {
                 trackBar.Value = t;
+
+                GetModelAnimationSimulationEngine().UpdateModelByProgress(t);
             }
         }
 

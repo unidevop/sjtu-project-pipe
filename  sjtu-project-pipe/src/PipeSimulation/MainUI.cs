@@ -256,6 +256,13 @@ namespace PipeSimulation
                 m_immersingInformationForm = null;
             }
             
+            // Step 3: Deinitialize the event and free the memory of our objects. to do...
+            CReplayMode replayMode = IApp.theApp.ObserverModeManager.ActiveModeInstance as CReplayMode;
+            if (replayMode != null)
+            {
+                replayMode.ReplayAnimationEngine.StopAnimation();
+            }
+            
             // Step1: Check if video is still recoding, must end record before exit
             if (IApp.theApp.VideoWriter.IsRecording)
             {
@@ -269,13 +276,6 @@ namespace PipeSimulation
             {
                 e.Cancel = true;
                 return;
-            }
-
-            // Step 3: Deinitialize the event and free the memory of our objects. to do...
-            CReplayMode replayMode = IApp.theApp.ObserverModeManager.ActiveModeInstance as CReplayMode;
-            if (replayMode != null)
-            {
-                replayMode.ReplayAnimationEngine.StopAnimation();
             }
 
             // Write the Application Option
@@ -726,6 +726,7 @@ namespace PipeSimulation
             new CZhujiangSimulationCommand(IApp.theApp.CommandManager);
             new CAngleWarningConfigCommand(IApp.theApp.CommandManager);
             new CConnectionSettingCommand(IApp.theApp.CommandManager);
+            new CReplaySimulationCommand(IApp.theApp.CommandManager);
 
             IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kSwitchActiveRender, null);
         }
@@ -1064,16 +1065,15 @@ namespace PipeSimulation
 
         private void toolStripButtonStartAnimation_Click(object sender, EventArgs e)
         {
-            // Stop active command
-            IApp.theApp.CommandManager.StopActiveCommand();
+            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kReplaySimulation, null);
 
-            // CReplayMode.StartAnimation
+            //// CReplayMode.StartAnimation
 
-            // The current observer mode instance must be CReplayMode
-            CReplayMode replayMode = IApp.theApp.ObserverModeManager.ActiveModeInstance as CReplayMode;
-            if (replayMode == null) return;
+            //// The current observer mode instance must be CReplayMode
+            //CReplayMode replayMode = IApp.theApp.ObserverModeManager.ActiveModeInstance as CReplayMode;
+            //if (replayMode == null) return;
 
-            replayMode.ReplayAnimationEngine.StartAnimation();
+            //replayMode.ReplayAnimationEngine.StartAnimation();
         }
 
         private void toolStripButtonPauseAnimation_Click(object sender, EventArgs e)
@@ -1089,13 +1089,16 @@ namespace PipeSimulation
 
         private void toolStripButtonStopAnimation_Click(object sender, EventArgs e)
         {
-            // CReplayMode.StopAnimation
+            // Stop active command
+            IApp.theApp.CommandManager.StopActiveCommand();
 
-            // The current observer mode instance must be CReplayMode
-            CReplayMode replayMode = IApp.theApp.ObserverModeManager.ActiveModeInstance as CReplayMode;
-            if (replayMode == null) return;
+            //// CReplayMode.StopAnimation
 
-            replayMode.ReplayAnimationEngine.StopAnimation();
+            //// The current observer mode instance must be CReplayMode
+            //CReplayMode replayMode = IApp.theApp.ObserverModeManager.ActiveModeInstance as CReplayMode;
+            //if (replayMode == null) return;
+
+            //replayMode.ReplayAnimationEngine.StopAnimation();
         }
 
         private void toolStripButtonBegining_Click(object sender, EventArgs e)
@@ -1180,8 +1183,8 @@ namespace PipeSimulation
 
                 // The current observer mode instance must be CReplayMode
                 CReplayMode replayMode = IApp.theApp.ObserverModeManager.ActiveModeInstance as CReplayMode;
-                if (replayMode == null) return; 
-                
+                if (replayMode == null) return;
+
                 // Update the control value
                 trackBarAnimation.Value = t;
 
