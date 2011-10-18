@@ -78,7 +78,7 @@ namespace PipeSimulation.DataDriven
         public override void StopAnimation()
         {
             base.StopAnimation();
-            //UpdateModelByProgress(0);
+            UpdateModelByProgress(0);
         }
         #endregion
 
