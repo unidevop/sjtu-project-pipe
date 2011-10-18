@@ -172,6 +172,7 @@ namespace DataSimulation
         void RemoveData()
         {
             SqlCommand delCmd = new SqlCommand("DELETE FROM GPSMeasure;DELETE FROM InclineMeasure", m_dbConn);
+            delCmd.CommandTimeout = 300;
             delCmd.ExecuteNonQuery();
 
             //delCmd.CommandText = "DELETE FROM InclineMeasure";
