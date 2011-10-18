@@ -80,7 +80,7 @@ namespace PipeSimulation.DataDriven
             //m_iAnimationProgress = 0;
         }
 
-        public virtual void OnAnimationRunning(int t)
+        protected virtual void OnAnimationRunning(int t)
         {
             if (AnimationRunning != null)
             {
@@ -163,31 +163,34 @@ namespace PipeSimulation.DataDriven
 
         private void m_timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            // Suspend the thread to give the UI thread a change to update.
-            System.Threading.Thread.Sleep(0);
-
-            // If the animation is paused, directly return
-            if (m_bIsPaused) return;
-
-            m_iAnimationProgress += 1;
-            if (m_iAnimationProgress > AnimationTotalProgress)
+            lock (this)
             {
-                bool bLoopPlay = true; // In future, get this value from the config file
-                if (!bLoopPlay)
+                // Suspend the thread to give the UI thread a change to update.
+                System.Threading.Thread.Sleep(0);
+
+                // If the animation is paused, directly return
+                if (m_bIsPaused) return;
+
+                m_iAnimationProgress += 1;
+                if (m_iAnimationProgress > AnimationTotalProgress)
                 {
-                    m_iAnimationProgress = AnimationTotalProgress;
-                    OnAnimationRunning(m_iAnimationProgress);
-                    StopAnimation();
+                    bool bLoopPlay = true; // In future, get this value from the config file
+                    if (!bLoopPlay)
+                    {
+                        m_iAnimationProgress = AnimationTotalProgress;
+                        OnAnimationRunning(m_iAnimationProgress);
+                        StopAnimation();
+                    }
+                    else
+                    {
+                        m_iAnimationProgress = 0;
+                        OnAnimationRunning(m_iAnimationProgress);
+                    }
                 }
                 else
                 {
-                    m_iAnimationProgress = 0;
                     OnAnimationRunning(m_iAnimationProgress);
                 }
-            }
-            else
-            {
-                OnAnimationRunning(m_iAnimationProgress);
             }
         }
 

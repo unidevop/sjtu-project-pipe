@@ -69,16 +69,16 @@ namespace PipeSimulation.DataDriven
             base.StartAnimation();
         }
 
-        public override void OnAnimationRunning(int t)
+        protected override void OnAnimationRunning(int t)
         {
             base.OnAnimationRunning(t);
-            UpdateModelByProgress(t);
+            //UpdateModelByProgress(t);
         }
 
         public override void StopAnimation()
         {
             base.StopAnimation();
-            UpdateModelByProgress(0);
+            //UpdateModelByProgress(0);
         }
         #endregion
 
