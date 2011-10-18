@@ -59,6 +59,12 @@
     <Compile Include="PipeInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\thirdparties\VTK.Net\src\Common\vtkCommonDotNet.vcproj">
+      <Project>{60F63C48-3AFB-4878-BD73-EFB00CDE85C6}</Project>
+      <Name>vtkCommonDotNet</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

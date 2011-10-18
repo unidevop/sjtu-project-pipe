@@ -42,13 +42,17 @@ namespace PipeSimulation
                             XmlAttribute attrib = node.Attributes[ModelXMLDefinition.showInMultipleViews];
                             m_bShowInMultipleView = (int.Parse(attrib.Value) != 0);
                         }
-                        catch
+                        catch(Exception ex)
                         {
+                            string errMsg = ex.Message + "\n" + ex.StackTrace;
+                            vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                         }
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                 }
             }
 
@@ -104,13 +108,17 @@ namespace PipeSimulation
                                 ModelNode.Visibility = false;
                             }
                         }
-                        catch
+                        catch(Exception ex)
                         {
+                            string errMsg = ex.Message + "\n" + ex.StackTrace;
+                            vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                         }
                     }
                 }
-                catch (SystemException)
+                catch (SystemException ex)
                 {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     return false;
                 }
 

@@ -54,8 +54,10 @@ namespace PipeSimulation
                     //    CModelXMLReader.ReadModels(this, modelsNode);
                     //}
                 }
-                catch (SystemException)
+                catch (SystemException ex)
                 {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     throw;
                 }
             }

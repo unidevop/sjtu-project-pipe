@@ -39,8 +39,10 @@ namespace PipeSimulation.DataDriven
                 m_simulationImpl.Model = m_Model;
                 this.AnimationTotalProgress = m_simulationImpl.GetAnimationTotalProgress();
             }
-            catch
+            catch(Exception ex)
             {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
             return true;
         }
@@ -56,8 +58,10 @@ namespace PipeSimulation.DataDriven
             {
                 m_simulationImpl.UpdateModelByProgress(iProgress);
             }
-            catch
+            catch(Exception ex)
             {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
         }
 
@@ -154,8 +158,10 @@ namespace PipeSimulation.DataDriven
                     node.Visibility = false;
                 }
             }
-            catch
+            catch(Exception ex)
             {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
         }
 

@@ -41,8 +41,10 @@ namespace PipeSimulation.DataDriven
                 {
                     m_zhujiangModel = value as CZhujiangModel;
                 }
-                catch
+                catch(Exception ex)
                 {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                 }
             }
         }
@@ -54,8 +56,10 @@ namespace PipeSimulation.DataDriven
                 ZhujiangOptions ZhujiangOptions = ApplicationOptions.Instance().ZhujiangOptions;
                 return ZhujiangOptions.TotalSeconds;
             }
-            catch
+            catch(Exception ex)
             {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
             return 100;
         }

@@ -86,8 +86,10 @@ namespace PipeSimulation
 
                 tollStripAngleWarningText.ForeColor = string.IsNullOrEmpty(strWarningText) ? Color.Black : Color.Red;
             }
-            catch
+            catch(Exception ex)
             {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
         }
 
@@ -114,8 +116,10 @@ namespace PipeSimulation
             {
                 toolStripStatusObserverMode.Text = strMessage;
             }
-            catch
+            catch(Exception ex)
             {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
         }
 
@@ -144,8 +148,10 @@ namespace PipeSimulation
                 toolStripStatusDatabaseStatus.ForeColor = bConnected ? Color.Black : Color.Red;
                 toolStripStatusDatabaseStatus.Text = strMessage;
             }
-            catch
+            catch(Exception ex)
             {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
 
             if (bConnected != m_connected)
@@ -176,8 +182,10 @@ namespace PipeSimulation
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
         }
 
@@ -469,10 +477,13 @@ namespace PipeSimulation
 
                 m_connected = true;
             }
-            catch
+            catch(Exception ex)
             {
                 m_connected = false;
-                MessageBox.Show(new Form(){TopMost = true}, Resources.IDS_ERROR_DATAENGINE_CONNECT, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(new Form() { TopMost = true }, Resources.IDS_ERROR_DATAENGINE_CONNECT, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
         }
 
@@ -813,9 +824,11 @@ namespace PipeSimulation
                     IApp.theApp.DataModel.GPSUnitToMeter = dValue;
                 }
             }
-            catch (SystemException)
+            catch (SystemException ex)
             {
-                MessageBox.Show(new Form(){TopMost = true}, string.Format(Resources.IDS_ERROR_LOAD_XML, xmlFile), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(new Form() { TopMost = true }, string.Format(Resources.IDS_ERROR_LOAD_XML, xmlFile), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                 this.Close();
                 return;
             }
@@ -860,9 +873,11 @@ namespace PipeSimulation
                     }
                 }
             }
-            catch (SystemException)
+            catch (SystemException ex)
             {
-                MessageBox.Show(new Form(){TopMost = true}, Resources.IDS_ERROR_LOAD_MODEL, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(new Form() { TopMost = true }, Resources.IDS_ERROR_LOAD_MODEL, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
         }
 
@@ -1010,9 +1025,10 @@ namespace PipeSimulation
                     // Drive the model
                     DriveModel(pipeInfo);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    // TODO: Write fail message to log file or status bar
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                 }
 
                 UpdateAnimationLabelText();
@@ -1046,9 +1062,10 @@ namespace PipeSimulation
                             dataQuery.GetPipeTime(toolStripComboBoxPipes.SelectedIndex + 1, iRecordIndex) :
                             dataQuery.GetPipeStartTime(toolStripComboBoxPipes.SelectedIndex + 1);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        // TODO: Write fail message to log file or status bar
+                        string errMsg = ex.Message + "\n" + ex.StackTrace;
+                        vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     }
                 }
                 else
@@ -1264,7 +1281,8 @@ namespace PipeSimulation
                     }
                     catch (Exception ex)
                     {
-                        // TODO: Write fail message to log file or status bar
+                        string errMsg = ex.Message + "\n" + ex.StackTrace;
+                        vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     }
 
                     if (pipeModelCount != 0 && toolStripComboBoxPipes.Items.Count > 0)
@@ -1324,9 +1342,10 @@ namespace PipeSimulation
                         // Drive model
                         DriveModel(queryResult);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        // TODO: Write fail message to log file or status bar
+                        string errMsg = ex.Message + "\n" + ex.StackTrace;
+                        vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     }
 
                     dataQuery.Activate();
@@ -1404,9 +1423,10 @@ namespace PipeSimulation
                         endTime = dataQuery.GetPipeEndTime(iSelectedIndex);
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    // TODO: Write fail message to log file or status bar
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                 }
             }
 
@@ -1451,9 +1471,10 @@ namespace PipeSimulation
                     PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(beginingTime, false);
                     DriveModel(pipeInfo);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    // TODO: Write fail message to log file or status bar
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                 }
 
                 // Update the animation label text
@@ -1494,10 +1515,11 @@ namespace PipeSimulation
                     {
                         System.Diagnostics.Process.Start(strFilePath);
                     }
-                    catch
+                    catch(Exception ex)
                     {
-                        
                         MessageBox.Show(string.Format(Resources.IDS_VIDEO_OPENFILE_FAIL, strFilePath), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        string errMsg = ex.Message + "\n" + ex.StackTrace;
+                        vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     }
                 }
             }
@@ -1641,7 +1663,7 @@ namespace PipeSimulation
                     {
                         try
                         {
-                            PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(dateTime, true); // TODO: Add try catch protection in case of data query failure
+                            PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(dateTime, true);
                             if (pipeInfo == null)
                             {
                                 MessageBox.Show(Resources.IDS_NODATA_TO_TIME, this.Text);
@@ -1663,9 +1685,11 @@ namespace PipeSimulation
                             // Update Animation Text
                             UpdateAnimationLabelText();
                         }
-                        catch (SystemException)
+                        catch (Exception ex)
                         {
                             MessageBox.Show(Resources.IDS_NODATA_TO_TIME, this.Text);
+                            string errMsg = ex.Message + "\n" + ex.StackTrace;
+                            vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                             return;
                         }
                     }

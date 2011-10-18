@@ -86,8 +86,10 @@ namespace PipeSimulation.Utility
                 m_WindowToImageFilter.Modified();
                 m_aviWriter.Write();
             }
-            catch
+            catch(Exception ex)
             {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                 // Sometimes, a exception will popup if size of vtk control changed.
                 // Shall we pop up a message box??
             }

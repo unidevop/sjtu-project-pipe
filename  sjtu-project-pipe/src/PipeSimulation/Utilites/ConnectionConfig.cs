@@ -70,8 +70,10 @@ namespace PipeSimulation.Utility
 
         internal void SetConnectionString(string dbAdress, string userName, string password)
         {
-            ConnectionString = String.Format("Data Source={0};Initial Catalog=MeasureDB;User Id={1};Password={2};",
-                dbAdress, userName, password);
+            string dbName = DbName;
+
+            ConnectionString = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3};",
+                dbAdress, dbName, userName, password);
         }
 
         internal void Save()
@@ -115,6 +117,18 @@ namespace PipeSimulation.Utility
             get
             {
                 string pattern = @"(?<=\b(Data Source|Server|Address|Addr|Network Address)\s*?=\s*?)(.+?)(?=;)";
+
+                Match match = Regex.Match(ConnectionString, pattern);
+
+                return match.Success ? match.Value : null;
+            }
+        }
+
+        internal string DbName
+        {
+            get
+            {
+                string pattern = @"(?<=\b(Initial Catalog|Database)\s*?=\s*?)(.+?)(?=;)";
 
                 Match match = Regex.Match(ConnectionString, pattern);
 

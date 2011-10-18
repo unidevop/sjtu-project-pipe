@@ -120,7 +120,7 @@ namespace PipeSimulation
         private bool TestConnect()
         {
             string connString = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3};",
-                m_dbServer.Text, "MeasureDB", m_userName.Text, m_password.Text);
+                m_dbServer.Text, IApp.theApp.ConnectionCfg.DbName, m_userName.Text, m_password.Text);
 
             bool success = false;
 

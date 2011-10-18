@@ -47,8 +47,10 @@ namespace PipeSimulation
                         fillSegment.ReadFromXMLNode(fillSegmentNode);
                     }
                 }
-                catch (SystemException)
+                catch (SystemException ex)
                 {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     throw;
                 }
             }
@@ -112,8 +114,10 @@ namespace PipeSimulation
                         m_scaleDirection = vec;
                     } 
                 }
-                catch (SystemException)
+                catch (SystemException ex)
                 {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     throw;
                 }
             }
