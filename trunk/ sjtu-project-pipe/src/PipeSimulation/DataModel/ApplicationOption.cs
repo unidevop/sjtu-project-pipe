@@ -39,6 +39,8 @@ namespace PipeSimulation.DataModel
             }
             catch (SystemException e)
             {
+                string errMsg = "Read config data failed:\n" + e.Message + "\n" + e.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
         }
 
@@ -53,8 +55,10 @@ namespace PipeSimulation.DataModel
                 System.IO.StreamWriter t = new System.IO.StreamWriter(strAppOptionPath);
                 serializer.Serialize(t, s_appOptions);
             }
-            catch
+            catch(Exception ex)
             {
+                string errMsg = "Write config data failed:\n" + ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
         }
 

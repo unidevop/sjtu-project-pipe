@@ -124,9 +124,10 @@ namespace PipeSimulation
                     {
                         DriveModel(dateQuery.GetPipeRecord(iPipeId + 1, iRecordId));
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        // TODO: Write fail message to log file or status bar
+                        string errMsg = ex.Message + "\n" + ex.StackTrace;
+                        vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     }
                 }
                 else
@@ -178,9 +179,10 @@ namespace PipeSimulation
                             pipeModel.FinalPipeInfo = lastPipeInfo;
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        // TODO: Write fail message to log file or status bar
+                        string errMsg = ex.Message + "\n" + ex.StackTrace;
+                        vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     }
                 }
             }

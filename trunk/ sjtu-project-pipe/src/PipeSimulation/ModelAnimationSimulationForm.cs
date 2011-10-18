@@ -52,8 +52,10 @@ namespace PipeSimulation
                 modelSimEngine.AnimationStopped += new CTimeAnimationBase.AnimationStoppedHandler(modelSimEngine_AnimationStopped);
                 modelSimEngine.AnimationPaused += new CTimeAnimationBase.AnimationPausedHandler(modelSimEngine_AnimationPaused);
             }
-            catch
+            catch(Exception ex)
             {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
         }
 
@@ -152,8 +154,10 @@ namespace PipeSimulation
                 int[] trackRange = { 0, modelSimEngine.AnimationTotalProgress };
                 trackBar.SetRange(trackRange[0], trackRange[1]);
             }
-            catch
+            catch(Exception ex)
             {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
         }
 
@@ -182,8 +186,10 @@ namespace PipeSimulation
                 SetModelVisibility(pipeModel, bFillModelVisible);
 
             }
-            catch
+            catch(Exception ex)
             {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
             
             this.Close();

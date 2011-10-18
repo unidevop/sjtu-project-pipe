@@ -32,8 +32,10 @@ namespace PipeSimulation
                     // Deal with model path, must be only one
                     LoadModelPathNode(node);
                 }
-                catch (SystemException)
+                catch (SystemException ex)
                 {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     throw;
                 }
             }

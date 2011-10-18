@@ -43,8 +43,10 @@ namespace PipeSimulation.Geometry
                 m_aPoint[1] = aPoints[1];
                 m_aPoint[2] = aPoints[2];
             }
-            catch
+            catch(Exception ex)
             {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
         }
 
@@ -108,8 +110,10 @@ namespace PipeSimulation.Geometry
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
 
             return new CPoint3D(coords);

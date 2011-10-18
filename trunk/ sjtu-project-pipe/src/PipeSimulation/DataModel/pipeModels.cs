@@ -129,8 +129,10 @@ namespace PipeSimulation
                        m_gpsUCS.ReadFromXMLNode(gpsUCSNode);
                    }
                 }
-                catch (SystemException)
+                catch (SystemException ex)
                 {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     throw;
                 }
             }

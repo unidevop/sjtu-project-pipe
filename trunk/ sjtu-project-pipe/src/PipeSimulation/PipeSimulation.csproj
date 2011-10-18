@@ -157,6 +157,12 @@
     <Compile Include="Scene\sceneNode.cs" />
     <Compile Include="ModelDriven\observeMode_impl.cs" />
     <Compile Include="DataModel\statistic.cs" />
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="SpecifyTime.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -311,6 +317,9 @@
       <DependentUpon>ModelAnimationSimulationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\res\logo.JPG" />
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SpecifyTime.resx">
       <DependentUpon>SpecifyTime.cs</DependentUpon>
     </EmbeddedResource>

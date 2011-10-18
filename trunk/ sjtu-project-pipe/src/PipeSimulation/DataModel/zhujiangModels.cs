@@ -57,8 +57,10 @@ namespace PipeSimulation
                         m_scaleDirection = vec;
                     }
                 }
-                catch (SystemException)
+                catch (SystemException ex)
                 {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     throw;
                 }
             }

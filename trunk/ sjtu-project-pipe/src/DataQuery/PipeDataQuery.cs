@@ -369,8 +369,8 @@ namespace PipeSimulation.DataQuery
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Exception: {0}", ex.Message);
-                    Console.WriteLine("Exception: {0}", ex.StackTrace);
+                    string errMsg = "Real time fetch data failed:\n" + ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                 }
             }
         }

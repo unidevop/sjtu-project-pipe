@@ -44,8 +44,10 @@ namespace PipeSimulation.DataDriven
                     // Cache the segments to accerlerate
                     m_fillSegments = fillModel.Segments;
                 }
-                catch
+                catch(Exception ex)
                 {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                 }
             }
         }
@@ -57,8 +59,10 @@ namespace PipeSimulation.DataDriven
                 FillOptions fillOptions = ApplicationOptions.Instance().FillOptions;
                 return fillOptions.TotalSeconds;
             }
-            catch
+            catch(Exception ex)
             {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
             return 100;
         }
@@ -106,8 +110,10 @@ namespace PipeSimulation.DataDriven
             {
                 ScaleModel(segment.ModelNode, segment.StartPosition, segment.ScaleDirection, dScale);
             }
-            catch
+            catch(Exception ex)
             {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
         }
     }

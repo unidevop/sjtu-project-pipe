@@ -99,8 +99,10 @@ namespace PipeSimulation
                         m_cableSwitchCondition = CCableSwitchConditionFactory.ReadFromXMLNode(cableConditionNode, this);
                     }
                 }
-                catch (SystemException)
+                catch (SystemException ex)
                 {
+                    string errMsg = "Read cable data failed:\n" + ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     throw;
                 }
             }
@@ -129,8 +131,10 @@ namespace PipeSimulation
                         m_activeCableState.UpdateCablePosition(transform);
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                 }
             }
 
@@ -186,8 +190,10 @@ namespace PipeSimulation
                         normalNode.ReadFromXMLNode(cableSegment);
                     }
                 }
-                catch (SystemException)
+                catch (SystemException ex)
                 {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     throw;
                 }
             }
@@ -296,8 +302,10 @@ namespace PipeSimulation
                     m_ptEndPoint = new CPoint3D(CPoint3DSerializer.ReadPoint(endNode).Point);
                     m_bEndPointDrivenAtRuntime = bool.Parse(endNode.Attributes[ModelXMLDefinition.CableSegmentPositionDrivenByPipe].Value);
                 }
-                catch (SystemException)
+                catch (SystemException ex)
                 {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     throw;
                 }
             }
@@ -377,8 +385,10 @@ namespace PipeSimulation
                         }
                     }
                 }
-                catch (SystemException)
+                catch (SystemException ex)
                 {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     throw;
                 }
             }
@@ -457,8 +467,10 @@ namespace PipeSimulation
 
                     //m_cableSystem.ActiveCableState = (m_eLengthEqual == LengthEqualEnum.eSmaller ? m_cableSystem.CableStates[0] : m_cableSystem.CableStates[1]);
                 }
-                catch
+                catch(Exception ex)
                 {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                 }
             }
 
