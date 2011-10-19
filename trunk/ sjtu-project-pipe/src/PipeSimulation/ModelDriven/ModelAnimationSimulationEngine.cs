@@ -56,7 +56,10 @@ namespace PipeSimulation.DataDriven
         {
             try
             {
-                m_simulationImpl.UpdateModelByProgress(iProgress);
+                if (null != m_simulationImpl)
+                {
+                    m_simulationImpl.UpdateModelByProgress(iProgress);
+                }
             }
             catch(Exception ex)
             {
