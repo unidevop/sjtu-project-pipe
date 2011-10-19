@@ -57,6 +57,7 @@
             this.AlphaAngleTextBox.BackgroundImage = null;
             this.AlphaAngleTextBox.Font = null;
             this.AlphaAngleTextBox.Name = "AlphaAngleTextBox";
+            this.AlphaAngleTextBox.TextChanged += new System.EventHandler(this.AngleTextBox_TextChanged);
             // 
             // AlphaGroupBox
             // 
@@ -91,6 +92,7 @@
             this.BetaTextBox.BackgroundImage = null;
             this.BetaTextBox.Font = null;
             this.BetaTextBox.Name = "BetaTextBox";
+            this.BetaTextBox.TextChanged += new System.EventHandler(this.AngleTextBox_TextChanged);
             // 
             // BetaAnglelabel
             // 

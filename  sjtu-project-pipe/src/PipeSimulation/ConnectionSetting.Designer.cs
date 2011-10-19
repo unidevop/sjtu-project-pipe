@@ -268,8 +268,8 @@
             this.m_connConfigGroup.BackgroundImage = null;
             this.m_connConfigGroup.Controls.Add(this.m_resetBtn);
             this.m_connConfigGroup.Controls.Add(this.m_configGroup);
+            this.m_connConfigGroup.Controls.Add(this.m_connectBtn);
             this.m_connConfigGroup.Controls.Add(this.m_connGroup);
-            this.m_connConfigGroup.Controls.Add(this.m_saveBtn);
             this.m_connConfigGroup.Font = null;
             this.m_connConfigGroup.Name = "m_connConfigGroup";
             this.m_connConfigGroup.TabStop = false;
@@ -296,7 +296,7 @@
             this.CancelButton = this.m_cancelBtn;
             this.Controls.Add(this.m_cancelBtn);
             this.Controls.Add(this.m_connConfigGroup);
-            this.Controls.Add(this.m_connectBtn);
+            this.Controls.Add(this.m_saveBtn);
             this.Font = null;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;

@@ -24,6 +24,7 @@
             kZhujiangSimulation,
             kAngleWarningConfig,
             kConnectionSetting,
+            kSettings,
             kReplaySimulation,
         }
     }
