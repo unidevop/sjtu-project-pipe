@@ -174,6 +174,7 @@ namespace PipeSimulation
         private void buttonOk_Click(object sender, EventArgs e)
         {
             GetModelAnimationSimulationEngine().StopAnimation();
+            this.Close();
             try
             {
                 // Revert all segments animation
@@ -192,7 +193,6 @@ namespace PipeSimulation
                 vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
             
-            this.Close();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
