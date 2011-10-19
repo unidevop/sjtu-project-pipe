@@ -85,6 +85,8 @@ namespace PipeSimulation
                                 ModelNode = new CModelNode();
 
                             vtk.vtkActorCollection actorCollection = obj3dsImporter.ActorCollection();
+                            if (actorCollection == null) return false;
+
                             actorCollection.InitTraversal();
                             for (int iIndex = 0; iIndex < actorCollection.GetNumberOfItems(); ++iIndex)
                             {
