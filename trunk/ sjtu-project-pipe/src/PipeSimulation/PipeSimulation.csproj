@@ -320,6 +320,9 @@
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Settings.zh-CHS.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SpecifyTime.resx">
       <DependentUpon>SpecifyTime.cs</DependentUpon>
     </EmbeddedResource>

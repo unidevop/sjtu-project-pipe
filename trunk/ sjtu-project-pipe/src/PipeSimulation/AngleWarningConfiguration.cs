@@ -14,6 +14,10 @@ namespace PipeSimulation
 {
     public partial class AngleWarningConfiguration : Form
     {
+        private bool m_loaded = false;
+        private bool m_modified = false;
+        public event Action SettingChanged;
+
         public AngleWarningConfiguration()
         {
             InitializeComponent();
@@ -33,6 +37,8 @@ namespace PipeSimulation
 
                 // Set the beta maximum
                 BetaAngle = angleWarningConfig.BetaMaximum;
+
+                m_loaded = true;
             }
             catch (SystemException exception)
             {
@@ -84,7 +90,7 @@ namespace PipeSimulation
             }
         }
 
-        private void OkButton_Click(object sender, EventArgs e)
+        internal void OkButton_Click(object sender, EventArgs e)
         {
             // Get Angle Warning Config
             AngleWarningConfig angleWarningConfig = ApplicationOptions.Instance().AngleWarningConfig;
@@ -129,6 +135,12 @@ namespace PipeSimulation
         private void AlphaGroupBox_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void AngleTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (SettingChanged != null && m_loaded)
+                SettingChanged();
         }
     }
 }

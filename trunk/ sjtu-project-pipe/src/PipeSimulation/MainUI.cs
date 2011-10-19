@@ -260,7 +260,7 @@ namespace PipeSimulation
             IApp.theApp.ConnectionCfg.ConnectionChanged += OnConnectionChanged;
 
             if (!m_connected)
-                ConnectionSettingMenuItem_Click(m_connSettingMenuItem, null);
+                SettingsMenuItem_Click(m_settingsMenuItem, null);
         }
 
         // Handler the form closing 
@@ -748,6 +748,7 @@ namespace PipeSimulation
             new CZhujiangSimulationCommand(IApp.theApp.CommandManager);
             new CAngleWarningConfigCommand(IApp.theApp.CommandManager);
             new CConnectionSettingCommand(IApp.theApp.CommandManager);
+            new CSettingsCommand(IApp.theApp.CommandManager);
             new CReplaySimulationCommand(IApp.theApp.CommandManager);
 
             IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kSwitchActiveRender, null);
@@ -1886,6 +1887,11 @@ namespace PipeSimulation
         private void showParallelCamera_Click(object sender, EventArgs e)
         {
             SetPerspectiveCamera(false);
+        }
+
+        private void SettingsMenuItem_Click(object sender, EventArgs e)
+        {
+            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kSettings, m_settingsMenuItem);
         }
 
         private void ConnectionSettingMenuItem_Click(object sender, EventArgs e)

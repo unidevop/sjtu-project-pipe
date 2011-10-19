@@ -114,6 +114,7 @@ namespace PipeSimulation
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.m_connSettingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_settingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerMain.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -361,7 +362,7 @@ namespace PipeSimulation
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            m_connSettingMenuItem,this.AngleWarningToolStripMenuItem, toolStripSeparator4, this.exitToolStripMenuItem});
+            m_settingsMenuItem, /*m_connSettingMenuItem,this.AngleWarningToolStripMenuItem,*/ toolStripSeparator4, this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "系统(&S)";
@@ -789,6 +790,20 @@ namespace PipeSimulation
             this.m_connSettingMenuItem.Name = "m_connSettingMenuItem";
             this.m_connSettingMenuItem.ShortcutKeyDisplayString = null;
             this.m_connSettingMenuItem.Click += new System.EventHandler(this.ConnectionSettingMenuItem_Click);
+
+            // 
+            // m_settingsMenuItem
+            // 
+            this.m_settingsMenuItem.AccessibleDescription = null;
+            this.m_settingsMenuItem.AccessibleName = null;
+            this.m_settingsMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.m_settingsMenuItem.Text = "设置";
+//            resources.ApplyResources(this.m_settingsMenuItem, "m_settingsMenuItem");
+            this.m_settingsMenuItem.BackgroundImage = null;
+            this.m_settingsMenuItem.Name = "m_connSettingMenuItem";
+            this.m_settingsMenuItem.ShortcutKeyDisplayString = null;
+            this.m_settingsMenuItem.Click += new System.EventHandler(this.SettingsMenuItem_Click);
+
             // 
             // MainUI
             // 
@@ -898,6 +913,7 @@ namespace PipeSimulation
         private ToolStripLabel toolStripLabelAnimationTime;
         private ToolTip toolTipAnimation;
         private ToolStripMenuItem m_connSettingMenuItem;
+        private ToolStripMenuItem m_settingsMenuItem;
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripSeparator toolStripSeparator5;
     }

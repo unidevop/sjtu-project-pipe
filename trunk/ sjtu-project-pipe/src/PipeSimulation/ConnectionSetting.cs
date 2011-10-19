@@ -16,7 +16,10 @@ namespace PipeSimulation
 {
     public partial class ConnectionSetting : Form
     {
+        private bool m_loaded = false;
         private bool m_modified = false;
+
+        public event Action SettingChanged;
 
         public ConnectionSetting()
         {
@@ -33,6 +36,7 @@ namespace PipeSimulation
 
         private void LoadConfig()
         {
+            m_loaded = false;
             ConnectionConfig connCfg = IApp.theApp.ConnectionCfg;
 
             m_dbServer.Text = connCfg.DbAdress;
@@ -49,6 +53,7 @@ namespace PipeSimulation
             m_connectBtn.Enabled = (realTimeDataQuery == null || !realTimeDataQuery.IsConnected);
 
             m_modified = false;
+            m_loaded = true;
             OnModified();
         }
 
@@ -88,7 +93,7 @@ namespace PipeSimulation
             LoadConfig();
         }
 
-        private void SaveButton_Click(object sender, EventArgs e)
+        internal void SaveButton_Click(object sender, EventArgs e)
         {
             if (m_modified)
             {
@@ -96,15 +101,15 @@ namespace PipeSimulation
                 if (!TestConnect())
                     return;
 
-                ConnectionConfig connCfg = IApp.theApp.ConnectionCfg;
-
-                connCfg.SetConnectionString(m_dbServer.Text, m_userName.Text, m_password.Text);
-                connCfg.IsAutoConnect = m_autoConnect.Checked;
-                connCfg.AutoConnectInterval = TimeSpan.FromMilliseconds((double)m_autoConnInterval.Value * 1000.0);
-                connCfg.ReadInterval = TimeSpan.FromMilliseconds((double)m_readInterval.Value * 1000.0);
-
                 try
                 {
+                    ConnectionConfig connCfg = IApp.theApp.ConnectionCfg;
+
+                    connCfg.SetConnectionString(m_dbServer.Text, m_userName.Text, m_password.Text);
+                    connCfg.IsAutoConnect = m_autoConnect.Checked;
+                    connCfg.AutoConnectInterval = TimeSpan.FromMilliseconds((double)m_autoConnInterval.Value * 1000.0);
+                    connCfg.ReadInterval = TimeSpan.FromMilliseconds((double)m_readInterval.Value * 1000.0);
+
                     connCfg.Save();
                     m_modified = false;
                     OnModified();
@@ -146,6 +151,9 @@ namespace PipeSimulation
         {
             m_resetBtn.Enabled = m_modified;
             m_saveBtn.Enabled = m_modified;
+
+            if (SettingChanged != null && m_loaded && m_modified)
+                SettingChanged();
         }
 
         private void ConnectSettingChanged(object sender, EventArgs e)
@@ -160,7 +168,7 @@ namespace PipeSimulation
             ConnectSettingChanged(sender, e);
         }
 
-        private void CancelBtn_Click(object sender, EventArgs e)
+        internal void CancelBtn_Click(object sender, EventArgs e)
         {
             if (m_modified && DialogResult.Yes == MessageBox.Show(Resources.IDS_WARNING_SAVE_CONFIG, this.Text,
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question))

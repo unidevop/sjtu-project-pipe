@@ -139,8 +139,15 @@
   <data name="OkBtn.Text" xml:space="preserve">
     <value>确定</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="OkBtn.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="CancelBtn.Text" xml:space="preserve">
     <value>取消</value>
+  </data>
+  <data name="CancelBtn.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

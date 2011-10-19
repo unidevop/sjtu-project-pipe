@@ -37,5 +37,34 @@ namespace PipeSimulation
                 }
             }
         }
+
+        public class CSettingsCommand : CCommand
+        {
+            public CSettingsCommand(ICommandManager commandManager)
+                : base(commandManager, (ulong)CommandIds.kSettings)
+            {
+            }
+
+            protected override void OnActivate()
+            {
+                try
+                {
+                    using (Settings form = new Settings())
+                    {
+                        if (DialogResult.OK == form.ShowDialog())
+                        {
+                        }
+                    }
+                }
+                catch (SystemException e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+                finally
+                {
+                    Terminate();
+                }
+            }
+        }
     }
 }
