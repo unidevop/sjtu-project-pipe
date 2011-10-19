@@ -43,14 +43,25 @@ namespace PipeSimulation
 
             // Make sure we ouptput all the vtk errors to a temp file in relese mode
             // Else use the win32 output window
-#if !DEBUG
+#if DEBUG
             vtk.vtkFileOutputWindow t = new vtk.vtkFileOutputWindow();
-            t.SetFileName(System.IO.Path.GetTempPath() + /*MSG0*/"PipeSimulation.error");
+            t.SetFileName(System.IO.Path.GetTempPath() + CreateUniqueOutputFileName());
+            t.FlushOn();
             //t.SetAppend(1);
             vtk.vtkOutputWindow.SetInstance(t);
 #endif
 
             InitializeComponent();
+        }
+
+        // Create a unique output file name by a guid and current date time
+        private string CreateUniqueOutputFileName()
+        {
+            string strFileName = string.Concat(/*MSG0*/"PipeSimulation_", Guid.NewGuid().ToString(), /*MSG0*/"_", DateTime.Now.ToString(), /*MSG0*/".error");
+            strFileName = strFileName.Replace('/', '_');
+            strFileName = strFileName.Replace(':', '_');
+
+            return strFileName;
         }
 
         // Handle the OnIdle event
