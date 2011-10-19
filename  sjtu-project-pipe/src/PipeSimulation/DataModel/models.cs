@@ -42,10 +42,9 @@ namespace PipeSimulation
                             XmlAttribute attrib = node.Attributes[ModelXMLDefinition.showInMultipleViews];
                             m_bShowInMultipleView = (int.Parse(attrib.Value) != 0);
                         }
-                        catch(Exception ex)
+                        catch(Exception)
                         {
-                            string errMsg = ex.Message + "\n" + ex.StackTrace;
-                            vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
+                            // Don't catch write the message out since I use this way to deal with none showInMultipleViews attribute.
                         }
                     }
                 }
@@ -93,9 +92,10 @@ namespace PipeSimulation
                                 vtk.vtkActor actor = actorCollection.GetNextActor();
                                 if (actor == null) continue;
 
+                                IRendererManager renderManager = IApp.theApp.RendererManager;
+                                renderManager.MainRenderer.AddActor(actor);
                                 if (m_bShowInMultipleView)
                                 {
-                                    IRendererManager renderManager = IApp.theApp.RendererManager;
                                     renderManager.TopViewRenderer.AddActor(actor);
                                     renderManager.RightViewRenderer.AddActor(actor);
                                     renderManager.FrontViewRenderer.AddActor(actor);
