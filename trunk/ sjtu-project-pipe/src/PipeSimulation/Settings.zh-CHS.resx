@@ -117,236 +117,81 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="m_angleTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;m_pictureBox.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="m_connectTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="m_cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>249, 332</value>
-  </data>
-  <data name="&gt;&gt;m_ok.Name" xml:space="preserve">
-    <value>m_ok</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;m_cancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_pictureBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_backgroundTabPage.Name" xml:space="preserve">
-    <value>m_backgroundTabPage</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Background</value>
-  </data>
-  <data name="&gt;&gt;m_backgroundTabPage.Parent" xml:space="preserve">
-    <value>m_tabControl</value>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 290</value>
   </data>
   <data name="m_connectTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>401, 294</value>
+    <value>410, 293</value>
   </data>
   <data name="m_connectTabPage.Text" xml:space="preserve">
-    <value>Connection Setting</value>
-  </data>
-  <data name="m_tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-2, 0</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>406, 367</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>m_backgroundTabPage</value>
-  </data>
-  <data name="&gt;&gt;m_ok.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="m_cancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="m_backgroundTabPage.Text" xml:space="preserve">
-    <value>Background</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="m_backgroundTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>401, 294</value>
-  </data>
-  <data name="&gt;&gt;m_ok.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="m_ok.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;m_tabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 12</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="m_backgroundColorBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="m_cancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="&gt;&gt;m_connectTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_pictureBox.Name" xml:space="preserve">
-    <value>m_pictureBox</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;m_tabControl.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;m_tabControl.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>连接</value>
   </data>
   <data name="m_angleTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>401, 294</value>
+    <value>410, 304</value>
   </data>
   <data name="m_angleTabPage.Text" xml:space="preserve">
-    <value>Angle Warning</value>
+    <value>倾斜角警告</value>
   </data>
-  <data name="&gt;&gt;m_cancel.Name" xml:space="preserve">
-    <value>m_cancel</value>
+  <data name="m_backgroundColorBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>242, 30</value>
   </data>
-  <data name="&gt;&gt;m_ok.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_backgroundColorBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="&gt;&gt;m_backgroundColorBox.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 10</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Background color:</value>
-  </data>
-  <data name="&gt;&gt;m_tabControl.Name" xml:space="preserve">
-    <value>m_tabControl</value>
-  </data>
-  <data name="&gt;&gt;m_connectTabPage.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="m_cancel.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="m_ok.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 333</value>
-  </data>
-  <data name="&gt;&gt;m_connectTabPage.Name" xml:space="preserve">
-    <value>m_connectTabPage</value>
-  </data>
-  <data name="&gt;&gt;m_backgroundColorBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="m_pictureBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>242, 28</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;m_cancel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="m_pictureBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="m_ok.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="m_backgroundTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="m_angleTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;m_cancel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_connectTabPage.Parent" xml:space="preserve">
-    <value>m_tabControl</value>
-  </data>
-  <data name="&gt;&gt;m_backgroundTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;m_backgroundTabPage.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;m_backgroundColorBox.Name" xml:space="preserve">
-    <value>m_backgroundColorBox</value>
-  </data>
-  <data name="&gt;&gt;m_angleTabPage.Name" xml:space="preserve">
-    <value>m_angleTabPage</value>
-  </data>
-  <data name="&gt;&gt;m_angleTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="m_backgroundColorBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 20</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 34</value>
+    <value>7, 37</value>
   </data>
-  <data name="m_angleTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 13</value>
   </data>
-  <data name="m_connectTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>背景色</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 11</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>387, 132</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="m_backgroundTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>410, 304</value>
+  </data>
+  <data name="m_backgroundTabPage.Text" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="m_tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-1, 0</value>
+  </data>
+  <data name="m_tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>418, 319</value>
+  </data>
+  <data name="m_ok.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 327</value>
+  </data>
+  <data name="m_ok.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="m_ok.Text" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="m_cancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>254, 326</value>
+  </data>
+  <data name="m_cancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="m_cancel.Text" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>417, 360</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -6520,55 +6365,11 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 </value>
   </data>
-  <data name="m_tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>设置</value>
   </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="m_backgroundColorBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>242, 28</value>
-  </data>
-  <data name="m_ok.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>401, 294</value>
-  </data>
-  <data name="&gt;&gt;m_pictureBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="m_backgroundTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="&gt;&gt;m_angleTabPage.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>m_connectTabPage</value>
-  </data>
-  <data name="m_connectTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="&gt;&gt;m_angleTabPage.Parent" xml:space="preserve">
-    <value>m_tabControl</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>387, 122</value>
-  </data>
-  <data name="m_tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>409, 320</value>
-  </data>
-  <data name="m_pictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 25</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>Chinese (Simplified)</value>
-  </metadata>
 </root>
