@@ -141,8 +141,8 @@
   <data name="&gt;&gt;deltaZDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="m_Angle2.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>8, 16</value>
   </data>
   <data name="dataGridView1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -161,6 +161,9 @@
   </data>
   <data name="&gt;&gt;m_MaxAngle2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="m_groupBoxBasicInformation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 12</value>
   </data>
   <data name="m_labelPipeId.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 31</value>
@@ -237,9 +240,6 @@
   <data name="m_groupBoxBasicInformation.Text" xml:space="preserve">
     <value>Basic information</value>
   </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -303,9 +303,6 @@
   <data name="m_buttonOK.Location" type="System.Drawing.Point, System.Drawing">
     <value>501, 609</value>
   </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="m_groupBoxGPS.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -339,11 +336,14 @@
   <data name="&gt;&gt;m_Angle1.Parent" xml:space="preserve">
     <value>m_groupBoxAngle</value>
   </data>
+  <data name="&gt;&gt;m_groupBoxBasicInformation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;dataGridView1.Parent" xml:space="preserve">
     <value>m_groupBoxConnectionPair</value>
   </data>
-  <data name="m_buttonOK.Text" xml:space="preserve">
-    <value>OK</value>
+  <data name="m_labelDateTime.Text" xml:space="preserve">
+    <value>11/10/2011</value>
   </data>
   <data name="m_MaxAngle2.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 24</value>
@@ -362,6 +362,9 @@
   </data>
   <data name="&gt;&gt;cStatisticDataBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="m_groupBoxConnectionPair.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="m_labelDateTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 24</value>
@@ -437,6 +440,9 @@
   </data>
   <data name="&gt;&gt;m_groupBoxConnectionPair.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;m_groupBoxConnectionPair.Name" xml:space="preserve">
+    <value>m_groupBoxConnectionPair</value>
   </data>
   <data name="&gt;&gt;dataGridView1.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -6688,14 +6694,11 @@
   <data name="dataGridView1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="m_GPS1Detail.Text" xml:space="preserve">
-    <value>label2</value>
-  </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="m_buttonOK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="m_groupBoxConnectionPair.Size" type="System.Drawing.Size, System.Drawing">
     <value>611, 137</value>
@@ -6730,6 +6733,9 @@
   <data name="m_MaxAngle2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>638, 653</value>
+  </data>
   <data name="deltaZDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>DeltaZ</value>
   </data>
@@ -6751,14 +6757,11 @@
   <data name="m_GPS2Detail.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="m_groupBoxBasicInformation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 12</value>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="&gt;&gt;m_MaxAngle1.Name" xml:space="preserve">
     <value>m_MaxAngle1</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 17</value>
   </data>
   <data name="&gt;&gt;m_groupBoxConnectionPair.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -6784,11 +6787,14 @@
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>m_groupBoxAngle</value>
   </data>
-  <data name="&gt;&gt;m_GPS1Detail.Parent" xml:space="preserve">
-    <value>m_groupBoxGPS</value>
-  </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Angle2:</value>
+  </data>
+  <data name="m_Angle2.Text" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="m_buttonOK.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;m_groupBoxGPS.Name" xml:space="preserve">
     <value>m_groupBoxGPS</value>
@@ -6799,11 +6805,11 @@
   <data name="&gt;&gt;m_groupBoxAngle.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="m_GPS1Detail.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Max Angle2:</value>
-  </data>
-  <data name="m_labelDateTime.Text" xml:space="preserve">
-    <value>11/10/2011</value>
   </data>
   <data name="distanceDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Distance</value>
@@ -6823,14 +6829,11 @@
   <data name="m_labelPipeId.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 24</value>
   </data>
-  <data name="m_Angle2.Text" xml:space="preserve">
-    <value>label7</value>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="m_groupBoxGPS.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 142</value>
-  </data>
-  <data name="m_Angle2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 24</value>
   </data>
   <data name="m_Angle1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10.8pt, style=Bold</value>
@@ -6838,8 +6841,8 @@
   <data name="&gt;&gt;m_GPS2Detail.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="m_buttonOK.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="&gt;&gt;m_GPS1Detail.Parent" xml:space="preserve">
+    <value>m_groupBoxGPS</value>
   </data>
   <data name="m_GPS2Detail.Text" xml:space="preserve">
     <value>label3</value>
@@ -6853,8 +6856,8 @@
   <data name="&gt;&gt;m_MaxAngle2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;m_groupBoxBasicInformation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="m_Angle2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 24</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>261, 74</value>
@@ -6862,8 +6865,8 @@
   <data name="m_groupBoxAngle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="m_groupBoxGPS.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;m_buttonOK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="dataGridView1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 18</value>
@@ -6871,14 +6874,11 @@
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>638, 653</value>
+  <data name="m_GPS1Detail.Text" xml:space="preserve">
+    <value>label2</value>
   </data>
   <data name="m_groupBoxAngle.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 331</value>
-  </data>
-  <data name="&gt;&gt;m_groupBoxGPS.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="distanceDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
     <value>180</value>
@@ -6892,11 +6892,11 @@
   <data name="&gt;&gt;m_MaxAngle1.Parent" xml:space="preserve">
     <value>m_groupBoxAngle</value>
   </data>
-  <data name="m_GPS1Detail.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="m_Angle2.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="m_groupBoxConnectionPair.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
   </data>
   <data name="m_groupBoxGPS.Size" type="System.Drawing.Size, System.Drawing">
     <value>613, 172</value>
@@ -6904,8 +6904,8 @@
   <data name="&gt;&gt;m_Angle1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;m_groupBoxConnectionPair.Name" xml:space="preserve">
-    <value>m_groupBoxConnectionPair</value>
+  <data name="&gt;&gt;m_groupBoxGPS.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="m_GPS1Detail.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6928,8 +6928,8 @@
   <data name="m_groupBoxAngle.Size" type="System.Drawing.Size, System.Drawing">
     <value>611, 111</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+  <data name="m_groupBoxGPS.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="m_GPS2Detail.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6949,8 +6949,8 @@
   <data name="&gt;&gt;m_labelPipeId.Name" xml:space="preserve">
     <value>m_labelPipeId</value>
   </data>
-  <data name="&gt;&gt;m_buttonOK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 17</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
