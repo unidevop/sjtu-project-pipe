@@ -796,8 +796,8 @@ namespace PipeSimulation
             // 
             this.m_settingsMenuItem.AccessibleDescription = null;
             this.m_settingsMenuItem.AccessibleName = null;
-            this.m_settingsMenuItem.Size = new System.Drawing.Size(92, 22);
-            this.m_settingsMenuItem.Text = "设置";
+            this.m_settingsMenuItem.Size = new System.Drawing.Size(62, 22);
+            this.m_settingsMenuItem.Text = "设置(&T)";
 //            resources.ApplyResources(this.m_settingsMenuItem, "m_settingsMenuItem");
             this.m_settingsMenuItem.BackgroundImage = null;
             this.m_settingsMenuItem.Name = "m_connSettingMenuItem";

@@ -19,7 +19,15 @@ namespace PipeSimulation
         private bool m_loaded = false;
         private bool m_modified = false;
 
-        public event Action SettingChanged;
+        internal event Action SettingChanged;
+
+        internal bool Modified
+        {
+            get
+            {
+                return m_modified;
+            }
+        }
 
         public ConnectionSetting()
         {
@@ -34,7 +42,7 @@ namespace PipeSimulation
             IApp.theApp.ConnectionCfg.ConnectionChanged += OnConnectionChanged;
         }
 
-        private void LoadConfig()
+        internal void LoadConfig()
         {
             m_loaded = false;
             ConnectionConfig connCfg = IApp.theApp.ConnectionCfg;
@@ -152,7 +160,7 @@ namespace PipeSimulation
             m_resetBtn.Enabled = m_modified;
             m_saveBtn.Enabled = m_modified;
 
-            if (SettingChanged != null && m_loaded && m_modified)
+            if (SettingChanged != null && m_loaded)
                 SettingChanged();
         }
 

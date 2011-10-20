@@ -118,80 +118,63 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 290</value>
-  </data>
   <data name="m_connectTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 293</value>
+    <value>415, 273</value>
   </data>
   <data name="m_connectTabPage.Text" xml:space="preserve">
     <value>连接</value>
   </data>
   <data name="m_angleTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 304</value>
+    <value>415, 273</value>
   </data>
   <data name="m_angleTabPage.Text" xml:space="preserve">
     <value>倾斜角警告</value>
   </data>
-  <data name="m_backgroundColorBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>242, 30</value>
-  </data>
   <data name="m_backgroundColorBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>21, 20</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 37</value>
+    <value>37, 25</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 13</value>
+    <value>53, 12</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>背景色</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 11</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>387, 132</value>
+    <value>背景色: </value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>背景</value>
   </data>
   <data name="m_backgroundTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 304</value>
+    <value>415, 273</value>
   </data>
   <data name="m_backgroundTabPage.Text" xml:space="preserve">
-    <value>背景</value>
-  </data>
-  <data name="m_tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-1, 0</value>
+    <value>图形</value>
   </data>
   <data name="m_tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>418, 319</value>
+    <value>423, 299</value>
   </data>
   <data name="m_ok.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 327</value>
-  </data>
-  <data name="m_ok.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>59, 307</value>
   </data>
   <data name="m_ok.Text" xml:space="preserve">
     <value>确定</value>
   </data>
   <data name="m_cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>254, 326</value>
-  </data>
-  <data name="m_cancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
+    <value>174, 307</value>
   </data>
   <data name="m_cancel.Text" xml:space="preserve">
     <value>取消</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="m_resetBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>289, 307</value>
+  </data>
+  <data name="m_resetBtn.Text" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>417, 360</value>
+    <value>422, 340</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -6365,9 +6348,8 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 </value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>设置</value>

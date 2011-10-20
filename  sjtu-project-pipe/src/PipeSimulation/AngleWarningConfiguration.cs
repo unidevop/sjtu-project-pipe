@@ -16,7 +16,15 @@ namespace PipeSimulation
     {
         private bool m_loaded = false;
         private bool m_modified = false;
-        public event Action SettingChanged;
+        internal event Action SettingChanged;
+
+        internal bool Modified
+        {
+            get
+            {
+                return m_modified;
+            }
+        }
 
         public AngleWarningConfiguration()
         {
@@ -26,6 +34,13 @@ namespace PipeSimulation
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+
+            LoadConfig();
+        }
+
+        internal void LoadConfig()
+        {
+            m_loaded = false;
 
             try
             {
@@ -44,6 +59,9 @@ namespace PipeSimulation
             {
                 MessageBox.Show(exception.Message);
             }
+
+            m_loaded = true;
+            m_modified = false;
         }
 
         /// <summary>
@@ -92,6 +110,9 @@ namespace PipeSimulation
 
         internal void OkButton_Click(object sender, EventArgs e)
         {
+            if (!m_modified)
+                return;
+
             // Get Angle Warning Config
             AngleWarningConfig angleWarningConfig = ApplicationOptions.Instance().AngleWarningConfig;
             if (angleWarningConfig == null)
@@ -139,6 +160,8 @@ namespace PipeSimulation
 
         private void AngleTextBox_TextChanged(object sender, EventArgs e)
         {
+            m_modified = true;
+
             if (SettingChanged != null && m_loaded)
                 SettingChanged();
         }

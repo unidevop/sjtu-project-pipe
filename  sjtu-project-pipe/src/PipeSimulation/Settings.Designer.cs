@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.m_tabControl = new System.Windows.Forms.TabControl();
             this.m_connectTabPage = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.m_angleTabPage = new System.Windows.Forms.TabPage();
             this.m_backgroundTabPage = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -39,8 +38,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.m_ok = new System.Windows.Forms.Button();
             this.m_cancel = new System.Windows.Forms.Button();
+            this.m_resetBtn = new System.Windows.Forms.Button();
             this.m_tabControl.SuspendLayout();
-            this.m_connectTabPage.SuspendLayout();
             this.m_backgroundTabPage.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_backgroundColorBox)).BeginInit();
@@ -59,37 +58,26 @@
             this.m_tabControl.Multiline = true;
             this.m_tabControl.Name = "m_tabControl";
             this.m_tabControl.SelectedIndex = 0;
-            this.m_tabControl.SelectedIndexChanged += new System.EventHandler(this.SelectIndexChanged);
             // 
             // m_connectTabPage
             // 
             this.m_connectTabPage.AccessibleDescription = null;
             this.m_connectTabPage.AccessibleName = null;
             resources.ApplyResources(this.m_connectTabPage, "m_connectTabPage");
+            this.m_connectTabPage.BackColor = System.Drawing.Color.WhiteSmoke;
             this.m_connectTabPage.BackgroundImage = null;
-            this.m_connectTabPage.Controls.Add(this.panel1);
             this.m_connectTabPage.Font = null;
             this.m_connectTabPage.Name = "m_connectTabPage";
-            this.m_connectTabPage.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.AccessibleDescription = null;
-            this.panel1.AccessibleName = null;
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.BackgroundImage = null;
-            this.panel1.Font = null;
-            this.panel1.Name = "panel1";
             // 
             // m_angleTabPage
             // 
             this.m_angleTabPage.AccessibleDescription = null;
             this.m_angleTabPage.AccessibleName = null;
             resources.ApplyResources(this.m_angleTabPage, "m_angleTabPage");
+            this.m_angleTabPage.BackColor = System.Drawing.Color.WhiteSmoke;
             this.m_angleTabPage.BackgroundImage = null;
             this.m_angleTabPage.Font = null;
             this.m_angleTabPage.Name = "m_angleTabPage";
-            this.m_angleTabPage.UseVisualStyleBackColor = true;
             // 
             // m_backgroundTabPage
             // 
@@ -159,15 +147,26 @@
             this.m_cancel.UseVisualStyleBackColor = true;
             this.m_cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
+            // m_resetBtn
+            // 
+            this.m_resetBtn.AccessibleDescription = null;
+            this.m_resetBtn.AccessibleName = null;
+            resources.ApplyResources(this.m_resetBtn, "m_resetBtn");
+            this.m_resetBtn.BackgroundImage = null;
+            this.m_resetBtn.Font = null;
+            this.m_resetBtn.Name = "m_resetBtn";
+            this.m_resetBtn.UseVisualStyleBackColor = true;
+            this.m_resetBtn.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
             // Settings
             // 
-            this.AcceptButton = this.m_ok;
             this.AccessibleDescription = null;
             this.AccessibleName = null;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = null;
             this.CancelButton = this.m_cancel;
+            this.Controls.Add(this.m_resetBtn);
             this.Controls.Add(this.m_cancel);
             this.Controls.Add(this.m_ok);
             this.Controls.Add(this.m_tabControl);
@@ -176,7 +175,6 @@
             this.MaximizeBox = false;
             this.Name = "Settings";
             this.m_tabControl.ResumeLayout(false);
-            this.m_connectTabPage.ResumeLayout(false);
             this.m_backgroundTabPage.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -191,11 +189,11 @@
         private System.Windows.Forms.TabPage m_connectTabPage;
         private System.Windows.Forms.TabPage m_angleTabPage;
         private System.Windows.Forms.TabPage m_backgroundTabPage;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button m_ok;
         private System.Windows.Forms.Button m_cancel;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox m_backgroundColorBox;
+        private System.Windows.Forms.Button m_resetBtn;
     }
 }
