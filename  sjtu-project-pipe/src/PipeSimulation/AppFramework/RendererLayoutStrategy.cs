@@ -113,8 +113,11 @@ namespace PipeSimulation.PipeApp
 
             if (iHeight == 0 || iWidth == 0) return;
 
-            double dHeightSeperator = ApplicationOptions.Instance().RendererLayoutOptions.HeightSeperator;
-            double dWidthSeperator = ApplicationOptions.Instance().RendererLayoutOptions.WidthSeperator; ;
+            // Comment the following code since we don't take this one anymore because we will draw the outline instead using the background color
+            //double dHeightSeperator = ApplicationOptions.Instance().RendererLayoutOptions.HeightSeperator;
+            //double dWidthSeperator = ApplicationOptions.Instance().RendererLayoutOptions.WidthSeperator;
+            double dHeightSeperator = 0;
+            double dWidthSeperator = 0;
 
             // Cacluate the width and height for view renderers
             double dViewRendererHeight = (iHeight - 2 * dHeightSeperator) / 3;
