@@ -43,7 +43,7 @@ namespace PipeSimulation
 
             // Make sure we ouptput all the vtk errors to a temp file in relese mode
             // Else use the win32 output window
-#if DEBUG
+#if !DEBUG
             vtk.vtkFileOutputWindow t = new vtk.vtkFileOutputWindow();
             t.SetFileName(System.IO.Path.GetTempPath() + CreateUniqueOutputFileName());
             t.FlushOn();
