@@ -504,7 +504,7 @@ namespace PipeSimulation
             this.showActiveRendererMaximize.Text = "最大化当前视角";
             this.showActiveRendererMaximize.Click += new EventHandler(showActiveRendererMaximize_Click);
             this.showActiveRendererMaximize.ShortcutKeys = Keys.Control | Keys.Shift | Keys.M;
-            this.showActiveRendererMaximize.CheckOnClick = true;
+            this.showActiveRendererMaximize.CheckOnClick = false;
             this.showActiveRendererMaximize.Visible = false;
             // 
             // showActiveRendererBackToOriginal
@@ -514,7 +514,7 @@ namespace PipeSimulation
             this.showActiveRendererBackToOriginal.Text = "还原当前视角";
             this.showActiveRendererBackToOriginal.Click += new EventHandler(showActiveRendererBackToOriginal_Click);
             this.showActiveRendererBackToOriginal.ShortcutKeys = Keys.Control | Keys.Shift | Keys.B;
-            this.showActiveRendererBackToOriginal.CheckOnClick = true;
+            this.showActiveRendererBackToOriginal.CheckOnClick = false;
             this.showActiveRendererBackToOriginal.Visible = false;
             // 
             // toolsToolStripMenuItem

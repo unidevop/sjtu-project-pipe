@@ -107,7 +107,7 @@ namespace PipeSimulation.DataModel
         private ViewOptions m_ViewOptions = new ViewOptions();
 
         /// <summary>
-        /// Attribute to get the view option
+        /// Attribute to get the fill option
         /// </summary>
         [XmlElement]
         public FillOptions FillOptions
@@ -118,7 +118,7 @@ namespace PipeSimulation.DataModel
         private FillOptions m_FillOptions = new FillOptions();
 
         /// <summary>
-        /// Attribute to get the view option
+        /// Attribute to get the zhujiang option
         /// </summary>
         [XmlElement]
         public ZhujiangOptions ZhujiangOptions
@@ -129,7 +129,7 @@ namespace PipeSimulation.DataModel
         private ZhujiangOptions m_ZhujiangOptions = new ZhujiangOptions();
 
         /// <summary>
-        /// Attribute to get the view option
+        /// Attribute to get the renderer layout option
         /// </summary>
         [XmlElement]
         public RendererLayoutOptions RendererLayoutOptions
@@ -138,6 +138,17 @@ namespace PipeSimulation.DataModel
             set { m_RendererLayoutOptions = value; }
         }
         private RendererLayoutOptions m_RendererLayoutOptions = new RendererLayoutOptions();
+        
+        /// <summary>
+        /// Attribute to get the observer mode option
+        /// </summary>
+        [XmlElement]
+        public ObserverModeOptions ObserverModeOptions
+        {
+            get { return m_ObserverModeOptions; }
+            set { m_ObserverModeOptions = value; }
+        }
+        private ObserverModeOptions m_ObserverModeOptions = new ObserverModeOptions();
         
         /// <summary>
         /// The value is used to control the distance of the connected point pair.
@@ -406,6 +417,32 @@ namespace PipeSimulation.DataModel
         {
             get { return m_activeOutlineWidth; }
             set { m_activeOutlineWidth = value; }
+        }
+    }
+
+    public class ObserverModeOptions
+    {
+        [XmlElement("ActiveObserverMode")]
+        private int m_iActiveObserverMode = 0; // 0: obeserver mode 1: replay mode
+
+        [XmlElement("TimerInterval")]
+        private double m_dTimerInterval = 0.2; // 200 ms for each time tick
+
+        public int ActiveObserverMode
+        {
+            get { return m_iActiveObserverMode; }
+            set
+            {
+                if (value < 0) value = 0;
+                if (value > 1) value = 1;
+                m_iActiveObserverMode = value;
+            }
+        }
+
+        public double TimerInterval
+        {
+            get { return m_dTimerInterval; }
+            set { m_dTimerInterval = value; }
         }
     }
 }

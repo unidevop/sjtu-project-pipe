@@ -775,7 +775,12 @@ namespace PipeSimulation
             // Enter the default mode.
             // Default mode should be Monitor mode.
             // But if we found that all pipes have already completed, we should switch to replay mode
+            ObserverModeOptions observerModeOptions = ApplicationOptions.Instance().ObserverModeOptions;
             ObserverMode.ObserverMode eDefaultMode = ObserverMode.ObserverMode.eReplayMode;
+            if (observerModeOptions.ActiveObserverMode == 0)
+            {
+                eDefaultMode = ObserverMode.ObserverMode.eMonitorMode;
+            }
 
             //IDataQuery dataQuery = IApp.theApp.DataQuery;
             //if (dataQuery != null)
@@ -1327,6 +1332,17 @@ namespace PipeSimulation
 
             // Show/Hide the toolbar
             ObserverMode.ObserverMode mode = IApp.theApp.ObserverModeManager.ActiveModeType;
+
+            // Save the observer mode
+            ObserverModeOptions observerModeOptions = ApplicationOptions.Instance().ObserverModeOptions;
+            if (mode == ObserverMode.ObserverMode.eMonitorMode)
+            {
+                observerModeOptions.ActiveObserverMode = 0;
+            }
+            else
+            {
+                observerModeOptions.ActiveObserverMode = 1;
+            }
 
             toolStripReplay.Visible = (mode == ObserverMode.ObserverMode.eReplayMode);
 
