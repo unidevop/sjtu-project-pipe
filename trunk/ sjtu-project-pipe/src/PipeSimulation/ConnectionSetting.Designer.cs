@@ -266,7 +266,6 @@
             this.m_connConfigGroup.AccessibleName = null;
             resources.ApplyResources(this.m_connConfigGroup, "m_connConfigGroup");
             this.m_connConfigGroup.BackgroundImage = null;
-            this.m_connConfigGroup.Controls.Add(this.m_resetBtn);
             this.m_connConfigGroup.Controls.Add(this.m_configGroup);
             this.m_connConfigGroup.Controls.Add(this.m_connectBtn);
             this.m_connConfigGroup.Controls.Add(this.m_connGroup);
@@ -294,6 +293,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = null;
             this.CancelButton = this.m_cancelBtn;
+            this.Controls.Add(this.m_resetBtn);
             this.Controls.Add(this.m_cancelBtn);
             this.Controls.Add(this.m_connConfigGroup);
             this.Controls.Add(this.m_saveBtn);

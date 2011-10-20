@@ -454,6 +454,32 @@ namespace PipeSimulation
             renderManager.RendererLayoutStrategy = renderersLayoutStrategy;
         }
 
+        internal void OnBackgroundChanged()
+        {
+            CRendererManager renderManager = IApp.theApp.RendererManager as CRendererManager;
+            if (renderManager == null) return;
+
+            double[] clrBackground = ApplicationOptions.Instance().ViewOptions.BackgroundColor;
+
+            // Main Renderer
+            vtk.vtkRenderer mainRenderer = renderManager.MainRenderer;
+            mainRenderer.SetBackground(clrBackground);
+
+            // TopView Renderer
+            vtk.vtkRenderer topViewRender = renderManager.TopViewRenderer;
+            topViewRender.SetBackground(clrBackground);
+
+            // front Renderer
+            vtk.vtkRenderer frontViewRenderer = renderManager.FrontViewRenderer;
+            frontViewRenderer.SetBackground(clrBackground);
+
+            // right Renderer
+            vtk.vtkRenderer rightViewRenderer = renderManager.RightViewRenderer;
+            rightViewRenderer.SetBackground(clrBackground);
+
+            IApp.theApp.RenderWindow.Render();
+        }
+
         void renderManager_ActiveRenderChanged(vtk.vtkRenderer previousRender, vtk.vtkRenderer newRenderer)
         {
         }

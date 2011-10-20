@@ -137,9 +137,6 @@
   <data name="&gt;&gt;m_dbServerLabel.Parent" xml:space="preserve">
     <value>m_configGroup</value>
   </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <data name="m_dbServerLabel.Text" xml:space="preserve">
     <value>Server Name</value>
   </data>
@@ -239,20 +236,14 @@
   <data name="$this.Text" xml:space="preserve">
     <value>ConnectionSetting</value>
   </data>
-  <data name="&gt;&gt;m_connConfigGroup.Name" xml:space="preserve">
-    <value>m_connConfigGroup</value>
-  </data>
   <data name="&gt;&gt;m_configGroup.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;m_configGroup.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;m_resetBtn.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;m_connGroup.Name" xml:space="preserve">
-    <value>m_connGroup</value>
   </data>
   <data name="m_autoConnect.Text" xml:space="preserve">
     <value>Auto reconnect</value>
@@ -294,7 +285,7 @@
     <value>True</value>
   </data>
   <data name="&gt;&gt;m_connConfigGroup.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;m_autoConnInterval.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -302,14 +293,17 @@
   <data name="&gt;&gt;m_readInterval.Name" xml:space="preserve">
     <value>m_readInterval</value>
   </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>356, 54</value>
+  </data>
   <data name="&gt;&gt;m_pwdLabel.Parent" xml:space="preserve">
     <value>m_configGroup</value>
   </data>
   <data name="m_pwdLabel.Text" xml:space="preserve">
     <value>Password</value>
   </data>
-  <data name="m_userNameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 49</value>
+  <data name="&gt;&gt;m_password.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="m_configGroup.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -356,8 +350,11 @@
   <data name="m_resetBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>242, 230</value>
   </data>
-  <data name="&gt;&gt;m_readInterval.Parent" xml:space="preserve">
-    <value>m_connGroup</value>
+  <data name="&gt;&gt;m_connConfigGroup.Name" xml:space="preserve">
+    <value>m_connConfigGroup</value>
+  </data>
+  <data name="&gt;&gt;m_cancelBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;numericUpDown1.Name" xml:space="preserve">
     <value>numericUpDown1</value>
@@ -369,7 +366,7 @@
     <value>9</value>
   </data>
   <data name="&gt;&gt;m_resetBtn.Parent" xml:space="preserve">
-    <value>m_connConfigGroup</value>
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;m_cancelBtn.Parent" xml:space="preserve">
     <value>$this</value>
@@ -416,11 +413,11 @@
   <data name="&gt;&gt;m_resetBtn.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;m_password.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;m_readInterval.Parent" xml:space="preserve">
+    <value>m_connGroup</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>356, 54</value>
+  <data name="&gt;&gt;m_connectBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="m_dbServerLabel.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -432,7 +429,10 @@
     <value>244, 275</value>
   </data>
   <data name="&gt;&gt;m_connGroup.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;m_saveBtn.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="m_resetBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -453,7 +453,7 @@
     <value>9</value>
   </data>
   <data name="&gt;&gt;m_cancelBtn.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="m_connectBtn.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -464,14 +464,14 @@
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>m_connGroup</value>
   </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="&gt;&gt;m_autoConnInterval.Parent" xml:space="preserve">
+    <value>m_connGroup</value>
   </data>
   <data name="&gt;&gt;m_saveBtn.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;m_saveBtn.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;numericUpDown1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="m_userNameLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -506,8 +506,8 @@
   <data name="m_connectBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>73, 275</value>
   </data>
-  <data name="&gt;&gt;m_autoConnect.Name" xml:space="preserve">
-    <value>m_autoConnect</value>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
   <data name="&gt;&gt;m_connGroup.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -524,17 +524,20 @@
   <data name="m_connectBtn.Text" xml:space="preserve">
     <value>Connect</value>
   </data>
-  <data name="&gt;&gt;m_userName.Name" xml:space="preserve">
-    <value>m_userName</value>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>362, 20</value>
   </data>
+  <data name="m_dbServer.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>m_connGroup</value>
   </data>
-  <data name="&gt;&gt;m_autoConnInterval.Parent" xml:space="preserve">
-    <value>m_connGroup</value>
+  <data name="m_userNameLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 49</value>
   </data>
   <data name="&gt;&gt;label4.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -6726,8 +6729,8 @@
   <data name="&gt;&gt;m_configGroup.Parent" xml:space="preserve">
     <value>m_connConfigGroup</value>
   </data>
-  <data name="&gt;&gt;m_cancelBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;m_autoConnect.Name" xml:space="preserve">
+    <value>m_autoConnect</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6735,8 +6738,8 @@
   <data name="m_connectBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="&gt;&gt;m_connectBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;m_userName.Name" xml:space="preserve">
+    <value>m_userName</value>
   </data>
   <data name="&gt;&gt;m_autoConnect.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -6748,7 +6751,7 @@
     <value>User Name</value>
   </data>
   <data name="&gt;&gt;m_connectBtn.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;m_connConfigGroup.Parent" xml:space="preserve">
     <value>$this</value>
@@ -6756,8 +6759,8 @@
   <data name="m_password.Size" type="System.Drawing.Size, System.Drawing">
     <value>252, 21</value>
   </data>
-  <data name="&gt;&gt;numericUpDown1.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;m_connGroup.Name" xml:space="preserve">
+    <value>m_connGroup</value>
   </data>
   <data name="&gt;&gt;label3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -6773,9 +6776,6 @@
   </data>
   <data name="&gt;&gt;m_connConfigGroup.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="m_dbServer.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 19</value>
