@@ -1,5 +1,6 @@
 ﻿using System;
 using PipeSimulation.DataDriven;
+using PipeSimulation.DataModel;
 
 namespace PipeSimulation
 {
@@ -95,6 +96,12 @@ namespace PipeSimulation
             {
                 get { return m_endDateTime; }
                 set { m_endDateTime = value; }
+            }
+
+            protected override double GetTimerInterval()
+            {
+                ObserverModeOptions observerModeOptions = ApplicationOptions.Instance().ObserverModeOptions;
+                return observerModeOptions.TimerInterval * 1000; // million second
             }
         }
 
