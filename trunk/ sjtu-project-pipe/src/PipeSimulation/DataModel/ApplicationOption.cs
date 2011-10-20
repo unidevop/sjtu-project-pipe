@@ -358,9 +358,13 @@ namespace PipeSimulation.DataModel
     public class RendererLayoutOptions
     {
         [XmlElement("ShowMaximizeAndBackMenuItems")]
-        private bool m_bShowMaximizeAndBackMenuItems = false;
-        private double m_HeightSeperator = 2;
-        private double m_WidthSeperator = 2;
+        private bool m_bShowMaximizeAndBackMenuItems = true;
+        //private double m_HeightSeperator = 2;
+        //private double m_WidthSeperator = 2;
+        private double[] m_normalOutlineColor = new double[3] { 0, 0, 0 };
+        private float m_normalOutlineWidth = 1.0f;
+        private double[] m_activeOutlineColor = new double[3] { 1, 1, 0 };
+        private float m_activeOutlineWidth = 5.0f;
 
         public bool ShowMaximizeAndBackMenuItems
         {
@@ -368,16 +372,40 @@ namespace PipeSimulation.DataModel
             set { m_bShowMaximizeAndBackMenuItems = value; }
         }
 
-        public double HeightSeperator
+        //public double HeightSeperator
+        //{
+        //    get { return m_HeightSeperator; }
+        //    set { m_HeightSeperator = value; }
+        //}
+
+        //public double WidthSeperator
+        //{
+        //    get { return m_WidthSeperator; }
+        //    set { m_WidthSeperator = value; }
+        //}
+
+        public double[] NormalOutlineColor
         {
-            get { return m_HeightSeperator; }
-            set { m_HeightSeperator = value; }
+            get { return m_normalOutlineColor; }
+            set { m_normalOutlineColor = value; }
         }
 
-        public double WidthSeperator
+        public float NormalOutlineLineWidth
         {
-            get { return m_WidthSeperator; }
-            set { m_WidthSeperator = value; }
+            get { return m_normalOutlineWidth; }
+            set { m_normalOutlineWidth = value; }
+        }
+
+        public double[] ActiveOutlineColor
+        {
+            get { return m_activeOutlineColor; }
+            set { m_activeOutlineColor = value; }
+        }
+
+        public float ActiveOutlineLineWidth
+        {
+            get { return m_activeOutlineWidth; }
+            set { m_activeOutlineWidth = value; }
         }
     }
 }

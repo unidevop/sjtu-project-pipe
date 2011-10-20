@@ -344,6 +344,82 @@ namespace PipeSimulation
             IApp.theApp.vtkControl.SizeChanged += OnControlSizeChanged;
         }
 
+        //void InitializeRenderWindow(vtk.vtkRenderWindow renWin)
+        //{
+        //    CRendererManager renderManager = IApp.theApp.RendererManager as CRendererManager;
+        //    if (renderManager == null) return;
+
+        //    renderManager.ActiveRenderChanged += new CRendererManager.ActiveRenderChangedHandler(renderManager_ActiveRenderChanged);
+
+        //    // Main Renderer
+        //    vtk.vtkRenderer mainRenderer = renderManager.MainRenderer;
+        //    mainRenderer.SetBackground(0.1f, 0.2f, 0.4f);
+        //    mainRenderer.SetLayer(1);
+
+        //    vtk.vtkJPEGReader jpegReader = new vtk.vtkJPEGReader();
+        //    if (jpegReader.CanReadFile(@"C:\sky3.jpg") != 0)
+        //    {
+        //        jpegReader.SetFileName(@"C:\sky3.jpg");
+        //        jpegReader.Update();
+
+        //        vtk.vtkImageData imageData = jpegReader.GetOutput();
+
+        //        vtk.vtkImageActor actor = new vtk.vtkImageActor();
+        //        actor.SetInput(imageData);
+
+        //        vtk.vtkRenderer mainBackgroundRenderer = new vtk.vtkRenderer();
+        //        mainBackgroundRenderer.SetBackground(0, 0, 0);
+        //        mainBackgroundRenderer.AddActor(actor);
+        //        //mainBackgroundRenderer.InteractiveOff();
+        //        mainBackgroundRenderer.SetLayer(0);
+
+        //        renWin.AddRenderer(mainBackgroundRenderer);
+        //        renWin.AddRenderer(mainRenderer);
+        //        renWin.SetNumberOfLayers(2);
+
+        //        //renWin.Render();
+
+        //        double[] origin = imageData.GetOrigin();
+        //        double[] spacing = imageData.GetSpacing();
+        //        int[] extent = imageData.GetExtent();
+
+        //        vtk.vtkCamera camera = mainBackgroundRenderer.GetActiveCamera();
+        //        camera.ParallelProjectionOn();
+        //        double xc = origin[0] + 0.5 * (extent[0] + extent[1]) * spacing[0];
+        //        double yc = origin[1] + 0.5 * (extent[2] + extent[3]) * spacing[1];
+        //        //double xd = (extent[1] - extent[0] + 1)*spacing[0];
+        //        double yd = (extent[3] - extent[2] + 1) * spacing[1];
+        //        double d = camera.GetDistance();
+        //        camera.SetParallelScale(0.5 * yd);
+        //        camera.SetFocalPoint(xc, yc, 0.0);
+        //        camera.SetPosition(xc, yc, d);
+        //    }
+
+        //    // TopView Renderer
+        //    vtk.vtkRenderer topViewRender = renderManager.TopViewRenderer;
+        //    topViewRender.SetBackground(0.1f, 0.2f, 0.4f);
+        //    topViewRender.SetLayer(1);
+        //    //topViewRender.SetBackground(1,0,0);
+        //    renWin.AddRenderer(topViewRender);
+
+        //    // front Renderer
+        //    vtk.vtkRenderer frontViewRenderer = renderManager.FrontViewRenderer;
+        //    frontViewRenderer.SetBackground(0.1f, 0.2f, 0.4f);
+        //    frontViewRenderer.SetLayer(1);
+        //    //frontViewRenderer.SetBackground(0,1,0);
+        //    renWin.AddRenderer(frontViewRenderer);
+
+        //    // right Renderer
+        //    vtk.vtkRenderer rightViewRenderer = renderManager.RightViewRenderer;
+        //    rightViewRenderer.SetBackground(0.1f, 0.2f, 0.4f);
+        //    rightViewRenderer.SetLayer(1);
+        //    //rightViewRenderer.SetBackground(0, 0, 1);
+        //    renWin.AddRenderer(rightViewRenderer);
+
+        //    // Set up layout strategy
+        //    CRenderersLayoutStrategy renderersLayoutStrategy = new CRenderersLayoutStrategy(renderManager);
+        //    renderManager.RendererLayoutStrategy = renderersLayoutStrategy;
+        //}
         void InitializeRenderWindow(vtk.vtkRenderWindow renWin)
         {
             CRendererManager renderManager = IApp.theApp.RendererManager as CRendererManager;
@@ -381,15 +457,6 @@ namespace PipeSimulation
 
         void renderManager_ActiveRenderChanged(vtk.vtkRenderer previousRender, vtk.vtkRenderer newRenderer)
         {
-            if (previousRender != null && previousRender.HasViewProp(m_activerRenderOutlineActor) != 0)
-            {
-                previousRender.RemoveViewProp(m_activerRenderOutlineActor);
-            }
-
-            if (newRenderer != null && previousRender.HasViewProp(m_activerRenderOutlineActor) == 0)
-            {
-                newRenderer.AddViewProp(m_activerRenderOutlineActor);
-            }
         }
 
         protected void OnControlSizeChanged(object sender, EventArgs e)
@@ -1593,19 +1660,39 @@ namespace PipeSimulation
                 IApp.theApp.VideoWriter.CaptureData();
             }
 
-            // Draw a outline
-            if (m_activerRenderOutlineActor == null)
+            // Update Renderer outline
+            UpdateRendererOutline();
+        }
+        
+        private void UpdateRendererOutline()
+        {
+            try
             {
-                m_activerRenderOutlineActor = new vtk.vtkActor2D();
+                // main renderer
+                UpdateRendererOutline(ref m_mainRenderOutlineActor, ref m_mainRenderOutlinePoints, IApp.theApp.RendererManager.MainRenderer);
+                UpdateRendererOutline(ref m_topRenderOutlineActor, ref m_topRenderOutlinePoints, IApp.theApp.RendererManager.TopViewRenderer);
+                UpdateRendererOutline(ref m_rightRenderOutlineActor, ref m_rightRenderOutlinePoints, IApp.theApp.RendererManager.RightViewRenderer);
+                UpdateRendererOutline(ref m_frontRenderOutlineActor, ref m_frontRenderOutlinePoints, IApp.theApp.RendererManager.FrontViewRenderer);
+            }
+            catch (Exception ex)
+            {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
+            }
+        }
 
-                m_activerRenderOutlinePoints = new vtk.vtkPolyData();
-                m_activerRenderOutlinePoints.Allocate(5, 0);
-                //vtk.vtkIdTypeArray
-                //m_activerRenderOutlinePoints.Allocate();
+        private void UpdateRendererOutline(ref vtk.vtkActor2D outlineRendererActor, ref vtk.vtkPolyData polyData, vtk.vtkRenderer renderer)
+        {
+            if (outlineRendererActor == null)
+            {
+                outlineRendererActor = new vtk.vtkActor2D();
+
+                polyData = new vtk.vtkPolyData();
+                polyData.Allocate(5, 0);
 
                 vtk.vtkIdList idList = new vtk.vtkIdList();
                 idList.SetNumberOfIds(5);
-                
+
                 vtk.vtkPoints points = new vtk.vtkPoints();
                 idList.InsertId(0, points.InsertNextPoint(1, 1, 0));
                 idList.InsertId(1, points.InsertNextPoint(2, 1, 0));
@@ -1613,40 +1700,53 @@ namespace PipeSimulation
                 idList.InsertId(3, points.InsertNextPoint(1, 2, 0));
                 idList.InsertId(4, idList.GetId(0));
 
-                m_activerRenderOutlinePoints.SetPoints(points);
-                m_activerRenderOutlinePoints.InsertNextCell(4, idList);
+                polyData.SetPoints(points);
+                polyData.InsertNextCell(4, idList);
 
                 vtk.vtkCoordinate coordinate = new vtk.vtkCoordinate();
                 coordinate.SetCoordinateSystemToDisplay();
                 vtk.vtkPolyDataMapper2D mapper = new vtk.vtkPolyDataMapper2D();
-                mapper.SetInput(m_activerRenderOutlinePoints);
+                mapper.SetInput(polyData);
                 mapper.SetTransformCoordinate(coordinate);
 
-                m_activerRenderOutlineActor.SetMapper(mapper);
-                m_activerRenderOutlineActor.SetPosition(0, 0);
-                m_activerRenderOutlineActor.SetPosition2(1, 1);
+                outlineRendererActor.SetMapper(mapper);
+                outlineRendererActor.SetPosition(0, 0);
+                outlineRendererActor.SetPosition2(1, 1);
 
-                m_activerRenderOutlineActor.GetProperty().SetColor(1, 1, 0);
-                m_activerRenderOutlineActor.GetProperty().SetLineWidth(3);
+                renderer.AddActor(outlineRendererActor);
             }
 
-            if (IApp.theApp.RendererManager.ActiveRenderer.HasViewProp(m_activerRenderOutlineActor) == 0)
+            double[] vp = renderer.GetViewport();
+            renderer.NormalizedDisplayToDisplay(ref vp[0], ref vp[1]);
+            renderer.NormalizedDisplayToDisplay(ref vp[2], ref vp[3]);
+
+            polyData.GetPoints().SetPoint(0, vp[0], vp[1], 0);
+            polyData.GetPoints().SetPoint(1, vp[2], vp[1], 0);
+            polyData.GetPoints().SetPoint(2, vp[2], vp[3], 0);
+            polyData.GetPoints().SetPoint(3, vp[0], vp[3], 0);
+
+            // Change Outline color and width
+            double[] normalOutlineColor = ApplicationOptions.Instance().RendererLayoutOptions.NormalOutlineColor;
+            float normalOutlineWidth = ApplicationOptions.Instance().RendererLayoutOptions.NormalOutlineLineWidth;
+
+            if (renderer == IApp.theApp.RendererManager.ActiveRenderer)
             {
-                IApp.theApp.RendererManager.ActiveRenderer.AddActor(m_activerRenderOutlineActor);
+                normalOutlineColor = ApplicationOptions.Instance().RendererLayoutOptions.ActiveOutlineColor;
+                normalOutlineWidth = ApplicationOptions.Instance().RendererLayoutOptions.ActiveOutlineLineWidth;
             }
 
-            double[] vp = IApp.theApp.RendererManager.ActiveRenderer.GetViewport();
-            IApp.theApp.RendererManager.ActiveRenderer.NormalizedDisplayToDisplay(ref vp[0], ref vp[1]);
-            IApp.theApp.RendererManager.ActiveRenderer.NormalizedDisplayToDisplay(ref vp[2], ref vp[3]);
-
-            m_activerRenderOutlinePoints.GetPoints().SetPoint(0, vp[0] + 1, vp[1] + 1, 0);
-            m_activerRenderOutlinePoints.GetPoints().SetPoint(1, vp[2] - 1, vp[1] + 1, 0);
-            m_activerRenderOutlinePoints.GetPoints().SetPoint(2, vp[2] - 1, vp[3] - 1, 0);
-            m_activerRenderOutlinePoints.GetPoints().SetPoint(3, vp[0] + 1, vp[3] - 1, 0);
+            outlineRendererActor.GetProperty().SetColor(normalOutlineColor);
+            outlineRendererActor.GetProperty().SetLineWidth(normalOutlineWidth);
         }
 
-        private vtk.vtkPolyData m_activerRenderOutlinePoints = null;
-        private vtk.vtkActor2D m_activerRenderOutlineActor = null;
+        private vtk.vtkActor2D m_mainRenderOutlineActor = null;
+        private vtk.vtkActor2D m_topRenderOutlineActor = null;
+        private vtk.vtkActor2D m_rightRenderOutlineActor = null;
+        private vtk.vtkActor2D m_frontRenderOutlineActor = null;
+        private vtk.vtkPolyData m_mainRenderOutlinePoints = null;
+        private vtk.vtkPolyData m_topRenderOutlinePoints = null;
+        private vtk.vtkPolyData m_frontRenderOutlinePoints = null;
+        private vtk.vtkPolyData m_rightRenderOutlinePoints = null;
 
         void viewSpecificTimerScene_Click(object sender, EventArgs e)
         {
@@ -1863,6 +1963,10 @@ namespace PipeSimulation
                 bNonePipeObjectsVisbile = false;
             }
             showNonePipeObjects.Checked = bNonePipeObjectsVisbile; 
+
+            // Renderer layout switch
+            showActiveRendererMaximize.Visible = !(IApp.theApp.RendererManager.RendererLayoutStrategy is CMaximizeActiverRendererLayoutStrategy);
+            showActiveRendererBackToOriginal.Visible = !(IApp.theApp.RendererManager.RendererLayoutStrategy is CRenderersLayoutStrategy);
         }
 
         private void showPerspectiveCamera_Click(object sender, EventArgs e)
