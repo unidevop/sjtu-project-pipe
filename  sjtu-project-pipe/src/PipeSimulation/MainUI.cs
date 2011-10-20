@@ -427,27 +427,26 @@ namespace PipeSimulation
 
             renderManager.ActiveRenderChanged += new CRendererManager.ActiveRenderChangedHandler(renderManager_ActiveRenderChanged);
 
+            double[] clrBackground = ApplicationOptions.Instance().ViewOptions.BackgroundColor;
+
             // Main Renderer
             vtk.vtkRenderer mainRenderer = renderManager.MainRenderer;
-            mainRenderer.SetBackground(0.1f, 0.2f, 0.4f);
+            mainRenderer.SetBackground(clrBackground);
             renWin.AddRenderer(mainRenderer);
 
             // TopView Renderer
             vtk.vtkRenderer topViewRender = renderManager.TopViewRenderer;
-            topViewRender.SetBackground(0.1f, 0.2f, 0.4f);
-            //topViewRender.SetBackground(1,0,0);
+            topViewRender.SetBackground(clrBackground);
             renWin.AddRenderer(topViewRender);
 
             // front Renderer
             vtk.vtkRenderer frontViewRenderer = renderManager.FrontViewRenderer;
-            frontViewRenderer.SetBackground(0.1f, 0.2f, 0.4f);
-            //frontViewRenderer.SetBackground(0,1,0);
+            frontViewRenderer.SetBackground(clrBackground);
             renWin.AddRenderer(frontViewRenderer);
 
             // right Renderer
             vtk.vtkRenderer rightViewRenderer = renderManager.RightViewRenderer;
-            rightViewRenderer.SetBackground(0.1f, 0.2f, 0.4f);
-            //rightViewRenderer.SetBackground(0, 0, 1);
+            rightViewRenderer.SetBackground(clrBackground);
             renWin.AddRenderer(rightViewRenderer);
 
             // Set up layout strategy

@@ -267,25 +267,24 @@ namespace PipeSimulation.DataModel
         [XmlElement("IncludeInvisibleBounds")]
         private bool m_bIncludeInvisibleBounds = false;
 
+        [XmlElement("BackgroundColor")]
+        private double[] m_clrBackground = new double[3] { 0.1f, 0.2f, 0.4f };
+
         public bool GetBoundsOnlyForPipeModels
         {
             get { return m_bGetBoundsOnlyForPipeModels; }
             set { m_bGetBoundsOnlyForPipeModels = value; }
         }
-
         public bool IncludeInvisibleBounds
         {
             get { return m_bIncludeInvisibleBounds; }
             set { m_bIncludeInvisibleBounds = value; }
         }
-
-
         public bool PerpectiveProjection
         {
             get { return m_bPerspectiveProjection; }
             set { m_bPerspectiveProjection = value; }
         }
-
         public bool ShowDisplayStatiticsText
         {
             get { return m_bShowDisplayStatiticsText; }
@@ -315,6 +314,11 @@ namespace PipeSimulation.DataModel
         {
             get { return m_bShowCablingSystem; }
             set { m_bShowCablingSystem = value; }
+        }
+        public double[] BackgroundColor
+        {
+            get { return m_clrBackground; }
+            set { m_clrBackground = value; }
         }
     }
 
