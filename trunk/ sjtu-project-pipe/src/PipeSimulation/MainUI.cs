@@ -486,8 +486,6 @@ namespace PipeSimulation
 
         protected void OnControlSizeChanged(object sender, EventArgs e)
         {
-            UpdateWCS();
-
             Control control = sender as Control;
             if (control == null) return;
 
@@ -521,6 +519,8 @@ namespace PipeSimulation
             {
                 IApp.theApp.RendererManager.RendererLayoutStrategy.ApplyLayout();
             }
+
+            UpdateWCS();
 
             IApp.theApp.RenderScene();
         }
@@ -662,7 +662,7 @@ namespace PipeSimulation
                 axesActor.SetXAxisLabelText(/*MSG0*/"X");
                 axesActor.SetYAxisLabelText(/*MSG0*/"Y");
                 axesActor.SetZAxisLabelText(/*MSG0*/"Z");
-                axesActor.SetTotalLength(2.5, 2.5, 2.5); 
+                axesActor.SetTotalLength(2.5, 2.5, 2.5);
 
                 axesWidgetTopView = new vtk.vtkOrientationMarkerWidget();
                 axesWidgetTopView.SetCurrentRenderer(IApp.theApp.RendererManager.TopViewRenderer);
@@ -713,7 +713,10 @@ namespace PipeSimulation
                 axesWidgetRightView.InteractiveOff();
             }
             double[] rightViewport = IApp.theApp.RendererManager.RightViewRenderer.GetViewport();
-            axesWidgetRightView.SetViewport(rightViewport[0], rightViewport[1], rightViewport[0]+0.08, rightViewport[1] + 0.2);
+            axesWidgetRightView.SetViewport(rightViewport[0], rightViewport[1], rightViewport[0] + 0.08, rightViewport[1] + 0.2);
+
+            // 
+            SetWCSVisibility(ApplicationOptions.Instance().ViewOptions.ShowCoordinateSystem);
         }
 
         private void InitializeReferenceOrigin()
@@ -1889,24 +1892,50 @@ namespace PipeSimulation
 
         private void SetWCSVisibility(bool bVisible)
         {
-            if (axesWidgetaMain != null)
+            ApplicationOptions.Instance().ViewOptions.ShowCoordinateSystem = bVisible;
+
+            // Update the visibility for different renderer layout
+            // This is supposed be done in the derived class, but I don't have more time to refactor it.
+            IRendererLayoutStrategy RendererLayoutStrategy = IApp.theApp.RendererManager.RendererLayoutStrategy;
+            if (RendererLayoutStrategy is CMaximizeActiverRendererLayoutStrategy)
+            {
+                vtk.vtkRenderer activeRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+
+                ShowHideProp(axesWidgetaMain.GetOrientationMarker(), false);
+                ShowHideProp(axesWidgetFrontView.GetOrientationMarker(), false);
+                ShowHideProp(axesWidgetTopView.GetOrientationMarker(), false);
+                ShowHideProp(axesWidgetRightView.GetOrientationMarker(), false);
+
+                // Active One
+                if (activeRenderer == IApp.theApp.RendererManager.MainRenderer)
+                {
+                    ShowHideProp(axesWidgetaMain.GetOrientationMarker(), bVisible);
+                    axesWidgetaMain.SetViewport(0.0, 0.0, 0.25, 0.25);
+                }
+                else if (activeRenderer == IApp.theApp.RendererManager.TopViewRenderer)
+                {
+                    ShowHideProp(axesWidgetTopView.GetOrientationMarker(), bVisible);
+                    axesWidgetTopView.SetViewport(0.0, 0.0, 0.25, 0.25);
+                }
+                else if (activeRenderer == IApp.theApp.RendererManager.FrontViewRenderer)
+                {
+                    ShowHideProp(axesWidgetFrontView.GetOrientationMarker(), bVisible);
+                    axesWidgetFrontView.SetViewport(0.0, 0.0, 0.25, 0.25);
+                }
+                else if (activeRenderer == IApp.theApp.RendererManager.RightViewRenderer)
+                {
+                    ShowHideProp(axesWidgetRightView.GetOrientationMarker(), bVisible);
+                    axesWidgetRightView.SetViewport(0.0, 0.0, 0.25, 0.25);
+                }
+            }
+            else
             {
                 ShowHideProp(axesWidgetaMain.GetOrientationMarker(), bVisible);
-            }
-            if (axesWidgetFrontView != null)
-            {
                 ShowHideProp(axesWidgetFrontView.GetOrientationMarker(), bVisible);
-            }
-            if (axesWidgetTopView != null)
-            {
                 ShowHideProp(axesWidgetTopView.GetOrientationMarker(), bVisible);
-            }
-            if (axesWidgetRightView != null)
-            {
                 ShowHideProp(axesWidgetRightView.GetOrientationMarker(), bVisible);
             }
             IApp.theApp.RenderScene();
-            ApplicationOptions.Instance().ViewOptions.ShowCoordinateSystem = bVisible;
         }
 
         void showWarningTextDisplayer_Click(object sender, EventArgs e)
@@ -1967,13 +1996,7 @@ namespace PipeSimulation
             //showWarningTextDisplayer.Checked = (IApp.theApp.WarningTextDisplayer.TextActor.GetVisibility() != 0);
 
             // Visibility for WCS
-            showWCS.Enabled = (axesWidgetaMain != null);
-            bool bWCSVisible = false;
-            if (axesWidgetaMain != null)
-            {
-                bWCSVisible = (axesWidgetaMain.GetOrientationMarker().GetVisibility() != 0);
-            }
-            showWCS.Checked = bWCSVisible;
+            showWCS.Checked = ApplicationOptions.Instance().ViewOptions.ShowCoordinateSystem;
 
             // Visibility for Origin
             showOrigin.Enabled = (originCaption != null);
@@ -2053,6 +2076,7 @@ namespace PipeSimulation
         {
             CMaximizeActiverRendererLayoutStrategy maximizeActiverRenderLayoutStrategy = new CMaximizeActiverRendererLayoutStrategy(IApp.theApp.RendererManager);
             IApp.theApp.RendererManager.RendererLayoutStrategy = maximizeActiverRenderLayoutStrategy;
+            UpdateWCS();
             IApp.theApp.RenderScene();
         }
 
@@ -2060,6 +2084,7 @@ namespace PipeSimulation
         {
             CRenderersLayoutStrategy renderersLayoutStrategy = new CRenderersLayoutStrategy(IApp.theApp.RendererManager);
             IApp.theApp.RendererManager.RendererLayoutStrategy = renderersLayoutStrategy;
+            UpdateWCS();
             IApp.theApp.RenderScene();
         }
 
