@@ -204,7 +204,9 @@ void vtk3DSImporter::ImportActors (vtkRenderer *renderer)
     actor->SetMapper (polyMapper);
     material = (vtk3DSMatProp *)VTK_LIST_FIND(this->MatPropList, mesh->mtl[0]->name);
     actor->SetProperty (material->aProperty);
-    renderer->AddActor (actor);
+    
+	// Remove this actor since I will add it outside
+	//renderer->AddActor (actor);
 
 	// Add it to the collection
 	ActorCollection->AddItem(actor);
