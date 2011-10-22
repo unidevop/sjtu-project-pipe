@@ -22,19 +22,27 @@ namespace PipeSimulation.Utility
                 bool bIncludeInvisible = ApplicationOptions.Instance().ViewOptions.IncludeInvisibleBounds;
                 if (IApp.theApp.DataModel.PipeModels.Count != 0)
                 {
-                    return GetPipeModelBounds(bIncludeInvisible);
+                    bool bSuccess = true;
+                    double[] bounds = GetPipeModelBounds(bIncludeInvisible, ref bSuccess);
+                    if (bSuccess)
+                    {
+                        return bounds;
+                    }
+
+                    // Else 
+                    // get all visible prop bounds
                 }
             }
 
             return GetAllVisiblePropBounds(render);
         }
 
-        public static double[] GetAllVisiblePropBounds(vtk.vtkRenderer render)
+        private static double[] GetAllVisiblePropBounds(vtk.vtkRenderer render)
         {
             return render.ComputeVisiblePropBounds();
         }
 
-        public static double[] GetPipeModelBounds(bool bIncludeInvisible)
+        private static double[] GetPipeModelBounds(bool bIncludeInvisible, ref bool bSuccess)
         {
             double[] allBounds = new double[6];
             allBounds[0] = allBounds[2] = allBounds[4] = 1.0e+299;
@@ -79,7 +87,12 @@ namespace PipeSimulation.Utility
 
             if (bNothingVisible)
             {
+                bSuccess = false;
                 vtk.vtkMath.UninitializeBounds(allBounds);
+            }
+            else
+            {
+                bSuccess = true;
             }
 
             return allBounds;
