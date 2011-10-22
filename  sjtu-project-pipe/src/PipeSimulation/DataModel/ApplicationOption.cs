@@ -269,6 +269,8 @@ namespace PipeSimulation.DataModel
 
         [XmlElement("BackgroundColor")]
         private double[] m_clrBackground = new double[3] { 0.1f, 0.2f, 0.4f };
+        [XmlElement("BackgroundImageFileName")]
+        private string m_strBackgroundFileName = "sky3.jpg"; // Only the file name
 
         public bool GetBoundsOnlyForPipeModels
         {
@@ -319,6 +321,11 @@ namespace PipeSimulation.DataModel
         {
             get { return m_clrBackground; }
             set { m_clrBackground = value; }
+        }
+        public string BackgroundFileName
+        {
+            get { return m_strBackgroundFileName; }
+            set { m_strBackgroundFileName = value; }
         }
     }
 

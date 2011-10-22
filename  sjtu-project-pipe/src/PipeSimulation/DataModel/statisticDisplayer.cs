@@ -37,7 +37,7 @@ namespace PipeSimulation.DataModel
                 m_textActor.GetTextProperty().SetVerticalJustificationToTop();
                 m_textActor.GetTextProperty().SetColor(1.0, 0.0, 0.0);
 
-                IApp.theApp.RenderWindow.GetRenderers().GetFirstRenderer().AddActor2D(m_textActor);
+                IApp.theApp.RendererManager.MainRenderer.AddActor(m_textActor);
 
                 //m_textActor.AddObserver((uint)vtk.EventIds.RenderEvent, new vtk.vtkDotNetCallback(this.OnTextActorRender));
             }
