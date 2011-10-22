@@ -238,6 +238,9 @@ namespace PipeSimulation
             // Initialize Observer mode
             InitializeObserverMode();
             
+            // Initialize the scene
+            InitializeScene();
+
             SplashScreen.UdpateStatusText(Resources.IDS_START_APP);
             Thread.Sleep(1500);
 
@@ -252,9 +255,6 @@ namespace PipeSimulation
             bool bShowItems = ApplicationOptions.Instance().RendererLayoutOptions.ShowMaximizeAndBackMenuItems;
             this.showActiveRendererMaximize.Visible = bShowItems;
             this.showActiveRendererBackToOriginal.Visible = bShowItems;
-
-            // Initialize the scene
-            InitializeScene();
 
             IApp.theApp.ConnectionCfg.AutoConnect += OnAutoConnect;
             IApp.theApp.ConnectionCfg.ConnectionChanged += OnConnectionChanged;
