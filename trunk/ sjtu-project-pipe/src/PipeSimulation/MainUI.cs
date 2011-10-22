@@ -344,82 +344,53 @@ namespace PipeSimulation
             IApp.theApp.vtkControl.SizeChanged += OnControlSizeChanged;
         }
 
-        //void InitializeRenderWindow(vtk.vtkRenderWindow renWin)
-        //{
-        //    CRendererManager renderManager = IApp.theApp.RendererManager as CRendererManager;
-        //    if (renderManager == null) return;
+        private void LoadImageToRenderer(vtk.vtkRenderer renderer)
+        {
+            try
+            {
+                string backgroundImageFileName = ApplicationOptions.Instance().ViewOptions.BackgroundFileName;
+                if (!string.IsNullOrEmpty(backgroundImageFileName))
+                {
+                    string backgroundImagePath = System.IO.Path.Combine(CFolderUtility.DataFolder(), ApplicationOptions.Instance().ViewOptions.BackgroundFileName);
+                    //string backgroundImagePath = @"C:\sky4.jpg";
+                    vtk.vtkJPEGReader jpegReader = new vtk.vtkJPEGReader();
+                    if (jpegReader.CanReadFile(backgroundImagePath) != 0)
+                    {
+                        jpegReader.SetFileName(backgroundImagePath);
+                        jpegReader.Update();
 
-        //    renderManager.ActiveRenderChanged += new CRendererManager.ActiveRenderChangedHandler(renderManager_ActiveRenderChanged);
+                        vtk.vtkImageData imageData = jpegReader.GetOutput();
 
-        //    // Main Renderer
-        //    vtk.vtkRenderer mainRenderer = renderManager.MainRenderer;
-        //    mainRenderer.SetBackground(0.1f, 0.2f, 0.4f);
-        //    mainRenderer.SetLayer(1);
+                        vtk.vtkImageActor actor = new vtk.vtkImageActor();
+                        actor.SetInput(imageData);
 
-        //    vtk.vtkJPEGReader jpegReader = new vtk.vtkJPEGReader();
-        //    if (jpegReader.CanReadFile(@"C:\sky3.jpg") != 0)
-        //    {
-        //        jpegReader.SetFileName(@"C:\sky3.jpg");
-        //        jpegReader.Update();
+                        renderer.AddActor(actor);
 
-        //        vtk.vtkImageData imageData = jpegReader.GetOutput();
+                        double[] origin = imageData.GetOrigin();
+                        double[] spacing = imageData.GetSpacing();
+                        int[] extent = imageData.GetExtent();
 
-        //        vtk.vtkImageActor actor = new vtk.vtkImageActor();
-        //        actor.SetInput(imageData);
+                        vtk.vtkCamera camera = renderer.GetActiveCamera();
+                        camera.ParallelProjectionOn();
+                        double xc = origin[0] + 0.5 * (extent[0] + extent[1]) * spacing[0];
+                        double yc = origin[1] + 0.5 * (extent[2] + extent[3]) * spacing[1];
+                        //double xd = (extent[1] - extent[0] + 1)*spacing[0];
+                        double yd = (extent[3] - extent[2] + 1) * spacing[1];
+                        double d = camera.GetDistance();
+                        camera.SetParallelScale(0.5 * yd);
+                        camera.SetFocalPoint(xc, yc, 0.0);
+                        camera.SetPosition(xc, yc, d);
+                    }
+                    jpegReader.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
+            }
+        }
 
-        //        vtk.vtkRenderer mainBackgroundRenderer = new vtk.vtkRenderer();
-        //        mainBackgroundRenderer.SetBackground(0, 0, 0);
-        //        mainBackgroundRenderer.AddActor(actor);
-        //        //mainBackgroundRenderer.InteractiveOff();
-        //        mainBackgroundRenderer.SetLayer(0);
-
-        //        renWin.AddRenderer(mainBackgroundRenderer);
-        //        renWin.AddRenderer(mainRenderer);
-        //        renWin.SetNumberOfLayers(2);
-
-        //        //renWin.Render();
-
-        //        double[] origin = imageData.GetOrigin();
-        //        double[] spacing = imageData.GetSpacing();
-        //        int[] extent = imageData.GetExtent();
-
-        //        vtk.vtkCamera camera = mainBackgroundRenderer.GetActiveCamera();
-        //        camera.ParallelProjectionOn();
-        //        double xc = origin[0] + 0.5 * (extent[0] + extent[1]) * spacing[0];
-        //        double yc = origin[1] + 0.5 * (extent[2] + extent[3]) * spacing[1];
-        //        //double xd = (extent[1] - extent[0] + 1)*spacing[0];
-        //        double yd = (extent[3] - extent[2] + 1) * spacing[1];
-        //        double d = camera.GetDistance();
-        //        camera.SetParallelScale(0.5 * yd);
-        //        camera.SetFocalPoint(xc, yc, 0.0);
-        //        camera.SetPosition(xc, yc, d);
-        //    }
-
-        //    // TopView Renderer
-        //    vtk.vtkRenderer topViewRender = renderManager.TopViewRenderer;
-        //    topViewRender.SetBackground(0.1f, 0.2f, 0.4f);
-        //    topViewRender.SetLayer(1);
-        //    //topViewRender.SetBackground(1,0,0);
-        //    renWin.AddRenderer(topViewRender);
-
-        //    // front Renderer
-        //    vtk.vtkRenderer frontViewRenderer = renderManager.FrontViewRenderer;
-        //    frontViewRenderer.SetBackground(0.1f, 0.2f, 0.4f);
-        //    frontViewRenderer.SetLayer(1);
-        //    //frontViewRenderer.SetBackground(0,1,0);
-        //    renWin.AddRenderer(frontViewRenderer);
-
-        //    // right Renderer
-        //    vtk.vtkRenderer rightViewRenderer = renderManager.RightViewRenderer;
-        //    rightViewRenderer.SetBackground(0.1f, 0.2f, 0.4f);
-        //    rightViewRenderer.SetLayer(1);
-        //    //rightViewRenderer.SetBackground(0, 0, 1);
-        //    renWin.AddRenderer(rightViewRenderer);
-
-        //    // Set up layout strategy
-        //    CRenderersLayoutStrategy renderersLayoutStrategy = new CRenderersLayoutStrategy(renderManager);
-        //    renderManager.RendererLayoutStrategy = renderersLayoutStrategy;
-        //}
         void InitializeRenderWindow(vtk.vtkRenderWindow renWin)
         {
             CRendererManager renderManager = IApp.theApp.RendererManager as CRendererManager;
@@ -429,37 +400,54 @@ namespace PipeSimulation
 
             double[] clrBackground = ApplicationOptions.Instance().ViewOptions.BackgroundColor;
 
+            // Background Renderer for the background image
+            vtk.vtkRenderer backgroundRenderer = renderManager.BackgroundRenderer;
+            backgroundRenderer.SetBackground(clrBackground);
+            backgroundRenderer.SetLayer(0);
+            renWin.AddRenderer(backgroundRenderer);
+            LoadImageToRenderer(backgroundRenderer);
+
             // Main Renderer
             vtk.vtkRenderer mainRenderer = renderManager.MainRenderer;
             mainRenderer.SetBackground(clrBackground);
+            mainRenderer.SetLayer(1);
             renWin.AddRenderer(mainRenderer);
 
             // TopView Renderer
             vtk.vtkRenderer topViewRender = renderManager.TopViewRenderer;
             topViewRender.SetBackground(clrBackground);
+            topViewRender.SetLayer(1);
             renWin.AddRenderer(topViewRender);
 
             // front Renderer
             vtk.vtkRenderer frontViewRenderer = renderManager.FrontViewRenderer;
             frontViewRenderer.SetBackground(clrBackground);
+            frontViewRenderer.SetLayer(1);
             renWin.AddRenderer(frontViewRenderer);
 
             // right Renderer
             vtk.vtkRenderer rightViewRenderer = renderManager.RightViewRenderer;
             rightViewRenderer.SetBackground(clrBackground);
+            rightViewRenderer.SetLayer(1);
             renWin.AddRenderer(rightViewRenderer);
+
+            renWin.SetNumberOfLayers(2);
 
             // Set up layout strategy
             CRenderersLayoutStrategy renderersLayoutStrategy = new CRenderersLayoutStrategy(renderManager);
             renderManager.RendererLayoutStrategy = renderersLayoutStrategy;
         }
-
+        
         internal void OnBackgroundChanged()
         {
-            CRendererManager renderManager = IApp.theApp.RendererManager as CRendererManager;
+            IRendererManager renderManager = IApp.theApp.RendererManager;
             if (renderManager == null) return;
 
             double[] clrBackground = ApplicationOptions.Instance().ViewOptions.BackgroundColor;
+
+            // Backgroud Renderer
+            vtk.vtkRenderer backgroundRenderer = renderManager.BackgroundRenderer;
+            backgroundRenderer.SetBackground(clrBackground);
 
             // Main Renderer
             vtk.vtkRenderer mainRenderer = renderManager.MainRenderer;
@@ -757,7 +745,7 @@ namespace PipeSimulation
             //originCaption.SetPosition2(10, 1);
 
             originCaption.VisibilityOff();
-            IApp.theApp.RenderWindow.GetRenderers().GetFirstRenderer().AddActor(originCaption);
+            IApp.theApp.RendererManager.MainRenderer.AddActor(originCaption);
         }
 
         private void InitializeScene()

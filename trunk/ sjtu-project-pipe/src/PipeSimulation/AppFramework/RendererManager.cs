@@ -7,6 +7,7 @@ namespace PipeSimulation.PipeApp
     /// </summary>
     public interface IRendererManager
     {
+        vtk.vtkRenderer BackgroundRenderer { get; }
         vtk.vtkRenderer MainRenderer { get; }
         vtk.vtkRenderer TopViewRenderer { get; }
         vtk.vtkRenderer FrontViewRenderer { get; }
@@ -21,6 +22,7 @@ namespace PipeSimulation.PipeApp
     /// </summary>
     public class CRendererManager : IRendererManager
     {
+        private vtk.vtkRenderer m_BackgroundRenderer = new vtk.vtkRenderer();
         private vtk.vtkRenderer m_MainRenderer = new vtk.vtkRenderer();
         private vtk.vtkRenderer m_TopViewRenderer = new vtk.vtkRenderer();
         private vtk.vtkRenderer m_FrontViewRenderer = new vtk.vtkRenderer();
@@ -35,6 +37,11 @@ namespace PipeSimulation.PipeApp
 
         #region IRendererManager members
 
+        public vtk.vtkRenderer BackgroundRenderer
+        {
+            get { return m_BackgroundRenderer; }
+        }
+        
         public vtk.vtkRenderer MainRenderer
         {
             get { return m_MainRenderer; }
