@@ -73,13 +73,13 @@ namespace vtk {
 	void ShowNEIsoMetricView(vtkRenderer^ renderer, array<double>^ bounds);
 	void ShowNWIsoMetricView(vtkRenderer^ renderer, array<double>^ bounds);
 
+    virtual void InitializeInteractor();
   protected:
     /// <summary>
     /// Clean up any resources being used.
     /// </summary>
     ~vtkFormsWindowControl();
 
-    virtual void InitializeInteractor();
 
     virtual void OnPaint( System::Windows::Forms::PaintEventArgs^ ea ) override;
     virtual void OnPrint( System::Windows::Forms::PaintEventArgs^ ea ) override;
