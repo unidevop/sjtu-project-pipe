@@ -241,6 +241,10 @@ namespace PipeSimulation
             // Initialize the scene
             InitializeScene();
 
+            // Initilaize the interactor first to avoid initialize everything on form showing.
+            IApp.theApp.vtkControl.InitializeInteractor();
+            IApp.theApp.RenderScene();
+
             SplashScreen.UdpateStatusText(Resources.IDS_START_APP);
             Thread.Sleep(1500);
 
