@@ -19,29 +19,29 @@
 			</FuboModel>-->
 			<FillModel>
 				<FillSegment showInMultipleView ="1">
-					<ModelPath>models\huitian1_3.3ds</ModelPath>
+					<ModelPath>models\huitian1_1.3ds</ModelPath>
 					<TimePercent>0.3333</TimePercent>
-					<StartPosition x ="-235211.724" y ="75361.969" z ="-25792.029"/>
-          <SacleDirection x ="82021.63" y ="-20062.586" z ="751.523" />
+					<StartPosition x ="235245.0915" y ="-5088.4901" z ="-21157.4437"/>
+					<SacleDirection x ="-1" y ="0" z ="0" />
 				</FillSegment>
 				<FillSegment showInMultipleView ="1">
 					<ModelPath>models\huitian1_2.3ds</ModelPath>
 					<TimePercent>0.3333</TimePercent>
-					<StartPosition x ="-153190.094" y ="55299.383" z ="-25040.506"/>
-          <SacleDirection x ="82492.041" y ="-17933.216" z ="5284.109" />
+					<StartPosition x ="240156.3909" y ="-4340.7144" z ="-18047.8263"/>
+					<SacleDirection x ="-1" y ="0" z ="0" />
 				</FillSegment>
 				<FillSegment showInMultipleView ="1">
-					<ModelPath>models\huitian1_1.3ds</ModelPath>
+					<ModelPath>models\huitian1_3.3ds</ModelPath>
 					<TimePercent>0.3333</TimePercent>
-					<StartPosition x ="-70698.053" y ="37366.167" z ="-19756.397"/>
-          <SacleDirection x ="70696.411" y ="-37478.381" z ="5284.109" />
-        </FillSegment>
+					<StartPosition x ="240309.6637" y ="-9531.7047" z ="-13066.4376"/>
+					<SacleDirection x ="-1" y ="0" z ="0" />
+				</FillSegment>
 			</FillModel>
 			<ZhujiangModel showInMultipleView ="1">
 				<ModelPath>models\zhujiang1.3ds</ModelPath>
-				<StartPosition x ="-235211.724" y ="75361.969" z ="29433.135"/>
-        <SacleDirection x ="82021.63" y ="-20062.586" z ="751.523" />
-      </ZhujiangModel>
+				<StartPosition x ="235153.2418" y ="-5385.2315" z ="-23714.8691"/>
+				<SacleDirection x ="-1" y ="0" z ="0" />
+			</ZhujiangModel>
 			<CableSystem>
 				<CableState>
 					<CableSegment>
@@ -97,17 +97,17 @@
 				</CableSwitchCondition>
 			</CableSystem>
 			<ConnectionPointPair>
-				<StartConnectionPoint x ="-235211.724" y ="75361.969" z ="-25792.029"/>
-				<EndConnectionPoint x ="-153190.094" y ="55299.383" z ="-25040.506"/>
+				<StartConnectionPoint x ="245529.274" y ="-23473.8221" z ="-17339.683"/>
+				<EndConnectionPoint x ="160890.2432" y ="-22794.2955" z ="-22262.2663"/>
 			</ConnectionPointPair>
 			<ConnectionPointPair>
-				<StartConnectionPoint x ="-235132.114" y ="75449.096" z ="-35442.246"/>
-				<EndConnectionPoint x ="-153359.74" y ="55445.462" z ="-34695.806"/>
+				<StartConnectionPoint x ="245521.2158" y ="-23011.379" z ="-17340.1401"/>
+				<EndConnectionPoint x ="160883.795" y ="-22323.9963" z ="-22288.0573"/>
 			</ConnectionPointPair>
 			<GPSUCS>
-				<Origin x ="-226248.224" y ="70098.901" z ="-6698.504"/>
-				<XAxis x ="57247.261" y ="-14065.963" z ="170.635"/>
-				<YAxis x ="-0.238615578635244" y ="-0.971109791519786" z ="0.00289455470926842"/>
+				<Origin x ="233574.3816" y ="-20415.2549" z ="6961.9225"/>
+				<XAxis x ="-58689.5568" y ="1267.9591" z ="-6117.616"/>
+				<YAxis x ="0" y ="1" z ="0"/>
 			</GPSUCS>
 		</Pipe>
 
@@ -120,43 +120,43 @@
 			<Pylon  showInMultipleView ="1">
 				<ModelPath>models\taojia2_2.3ds</ModelPath>
 			</Pylon>
-      <FillModel>
-        <FillSegment showInMultipleView ="1">
-          <ModelPath>models\huitian2_3.3ds</ModelPath>
-          <TimePercent>0.3333</TimePercent>
-          <StartPosition x ="-235211.724" y ="75361.969" z ="-25792.029"/>
-          <SacleDirection x ="82021.63" y ="-20062.586" z ="751.523" />
-        </FillSegment>
-        <FillSegment showInMultipleView ="1">
-          <ModelPath>models\huitian2_2.3ds</ModelPath>
-          <TimePercent>0.3333</TimePercent>
-          <StartPosition x ="-153190.094" y ="55299.383" z ="-25040.506"/>
-          <SacleDirection x ="82492.041" y ="-17933.216" z ="5284.109" />
-        </FillSegment>
-        <FillSegment showInMultipleView ="1">
-          <ModelPath>models\huitian2_1.3ds</ModelPath>
-          <TimePercent>0.3333</TimePercent>
-          <StartPosition x ="-70698.053" y ="37366.167" z ="-19756.397"/>
-          <SacleDirection x ="70696.411" y ="-37478.381" z ="5284.109" />
-        </FillSegment>
-      </FillModel>
-      <ZhujiangModel showInMultipleView ="1">
-        <ModelPath>models\zhujiang2.3ds</ModelPath>
-        <StartPosition x ="-235211.724" y ="75361.969" z ="29433.135"/>
-        <SacleDirection x ="82021.63" y ="-20062.586" z ="751.523" />
-      </ZhujiangModel>
+			<FillModel>
+				<FillSegment showInMultipleView ="1">
+					<ModelPath>models\huitian2_1.3ds</ModelPath>
+					<TimePercent>0.3333</TimePercent>
+					<StartPosition x ="-235211.724" y ="75361.969" z ="-25792.029"/>
+					<SacleDirection x ="82021.63" y ="-20062.586" z ="751.523" />
+				</FillSegment>
+				<FillSegment showInMultipleView ="1">
+					<ModelPath>models\huitian2_2.3ds</ModelPath>
+					<TimePercent>0.3333</TimePercent>
+					<StartPosition x ="-153190.094" y ="55299.383" z ="-25040.506"/>
+					<SacleDirection x ="82492.041" y ="-17933.216" z ="5284.109" />
+				</FillSegment>
+				<FillSegment showInMultipleView ="1">
+					<ModelPath>models\huitian2_3.3ds</ModelPath>
+					<TimePercent>0.3333</TimePercent>
+					<StartPosition x ="-70698.053" y ="37366.167" z ="-19756.397"/>
+					<SacleDirection x ="70696.411" y ="-37478.381" z ="5284.109" />
+				</FillSegment>
+			</FillModel>
+			<ZhujiangModel showInMultipleView ="1">
+				<ModelPath>models\zhujiang2.3ds</ModelPath>
+				<StartPosition x ="-235211.724" y ="75361.969" z ="29433.135"/>
+				<SacleDirection x ="82021.63" y ="-20062.586" z ="751.523" />
+			</ZhujiangModel>
 			<ConnectionPointPair>
-				<StartConnectionPoint x ="-153190.094" y ="55299.383" z ="-25040.506"/>
+				<StartConnectionPoint x ="160890.2432" y ="-22794.2955" z ="-22262.2663"/>
 				<EndConnectionPoint x ="-70698.053" y ="37366.167" z ="-19756.397"/>
 			</ConnectionPointPair>
 			<ConnectionPointPair>
-				<StartConnectionPoint x ="-153359.74" y ="55445.462" z ="-34695.806"/>
+				<StartConnectionPoint x ="160883.795" y ="-22323.9963" z ="-22288.0573"/>
 				<EndConnectionPoint x ="-70696.411" y ="37478.381" z ="-29433.135"/>
 			</ConnectionPointPair>
 			<GPSUCS>
-				<Origin x ="-144803.078" y ="50463.118" z ="-5649.716"/>
-				<XAxis x ="57514.718" y ="-12505.52" z ="3537.019"/>
-				<YAxis x ="-0.21246727280262" y ="-0.977168183061553" z ="0"/>
+				<Origin x ="150027.8231" y ="-18746.0103" z ="2575.4089"/>
+				<XAxis x ="-58914.4907" y ="-350.8266" z ="-2825.1166"/>
+				<YAxis x ="0" y ="1" z ="0"/>
 			</GPSUCS>
 		</Pipe>
 
@@ -169,31 +169,31 @@
 			<Pylon  showInMultipleView ="1">
 				<ModelPath>models\taojia3_2.3ds</ModelPath>
 			</Pylon>
-      <FillModel>
-        <FillSegment showInMultipleView ="1">
-          <ModelPath>models\huitian3_3.3ds</ModelPath>
-          <TimePercent>0.3333</TimePercent>
-          <StartPosition x ="-235211.724" y ="75361.969" z ="-25792.029"/>
-          <SacleDirection x ="82021.63" y ="-20062.586" z ="751.523" />
-        </FillSegment>
-        <FillSegment showInMultipleView ="1">
-          <ModelPath>models\huitian3_2.3ds</ModelPath>
-          <TimePercent>0.3333</TimePercent>
-          <StartPosition x ="-153190.094" y ="55299.383" z ="-25040.506"/>
-          <SacleDirection x ="82492.041" y ="-17933.216" z ="5284.109" />
-        </FillSegment>
-        <FillSegment showInMultipleView ="1">
-          <ModelPath>models\huitian3_1.3ds</ModelPath>
-          <TimePercent>0.3333</TimePercent>
-          <StartPosition x ="-70698.053" y ="37366.167" z ="-19756.397"/>
-          <SacleDirection x ="70696.411" y ="-37478.381" z ="5284.109" />
-        </FillSegment>
-      </FillModel>
-      <ZhujiangModel showInMultipleView ="1">
-        <ModelPath>models\zhujiang3.3ds</ModelPath>
-        <StartPosition x ="-235211.724" y ="75361.969" z ="29433.135"/>
-        <SacleDirection x ="82021.63" y ="-20062.586" z ="751.523" />
-      </ZhujiangModel>
+			<FillModel>
+				<FillSegment showInMultipleView ="1">
+					<ModelPath>models\huitian3_1.3ds</ModelPath>
+					<TimePercent>0.3333</TimePercent>
+					<StartPosition x ="-235211.724" y ="75361.969" z ="-25792.029"/>
+					<SacleDirection x ="82021.63" y ="-20062.586" z ="751.523" />
+				</FillSegment>
+				<FillSegment showInMultipleView ="1">
+					<ModelPath>models\huitian3_2.3ds</ModelPath>
+					<TimePercent>0.3333</TimePercent>
+					<StartPosition x ="-153190.094" y ="55299.383" z ="-25040.506"/>
+					<SacleDirection x ="82492.041" y ="-17933.216" z ="5284.109" />
+				</FillSegment>
+				<FillSegment showInMultipleView ="1">
+					<ModelPath>models\huitian3_3.3ds</ModelPath>
+					<TimePercent>0.3333</TimePercent>
+					<StartPosition x ="-70698.053" y ="37366.167" z ="-19756.397"/>
+					<SacleDirection x ="70696.411" y ="-37478.381" z ="5284.109" />
+				</FillSegment>
+			</FillModel>
+			<ZhujiangModel showInMultipleView ="1">
+				<ModelPath>models\zhujiang3.3ds</ModelPath>
+				<StartPosition x ="-235211.724" y ="75361.969" z ="29433.135"/>
+				<SacleDirection x ="82021.63" y ="-20062.586" z ="751.523" />
+			</ZhujiangModel>
 			<ConnectionPointPair>
 				<StartConnectionPoint x ="-70698.053" y ="37366.167" z ="-19756.397"/>
 				<EndConnectionPoint x="0" y ="0" z ="0"/>
@@ -215,17 +215,14 @@
 			<ModelPath>models\pipe4.3ds</ModelPath>
 		</Pipe>-->
 	</Pipes>
-	<Model>
+	<Model showInMultipleView ="1">
 		<ModelPath>models\anbi.3ds</ModelPath>
 	</Model>
-  <Model>
-    <ModelPath>models\anbi2.3ds</ModelPath>
-  </Model>
 	<Model>
-		<ModelPath>models\caoping.3ds</ModelPath>
-	</Model>
-	<Model showInMultipleView ="1">
 		<ModelPath>models\anmai.3ds</ModelPath>
+	</Model>
+	<Model>
+		<ModelPath>models\buiding.3ds</ModelPath>
 	</Model>
 	<Model>
 		<ModelPath>models\factory.3ds</ModelPath>
@@ -234,29 +231,26 @@
 		<ModelPath>models\ganwu.3ds</ModelPath>
 	</Model>
 	<Model>
+		<ModelPath>models\grass.3ds</ModelPath>
+	</Model>
+	<Model>
+		<ModelPath>models\jicao.3ds</ModelPath>
+	</Model>
+	<Model>
 		<ModelPath>models\guolu.3ds</ModelPath>
 	</Model>
 	<Model>
-		<ModelPath>models\house.3ds</ModelPath>
+		<ModelPath>models\huatan.3ds</ModelPath>
 	</Model>
-  <Model>
-    <ModelPath>models\jicao.3ds</ModelPath>
-  </Model>
-  <Model>
-    <ModelPath>models\road.3ds</ModelPath>
-  </Model>
-  <Model>
-    <ModelPath>models\tree.3ds</ModelPath>
-  </Model>
-  <Model>
-    <ModelPath>models\water1.3ds</ModelPath>
-  </Model>
-  <Model>
-    <ModelPath>models\water2.3ds</ModelPath>
-  </Model>
-  <Model>
-    <ModelPath>models\water3.3ds</ModelPath>
-  </Model>
+	<Model>
+		<ModelPath>models\road.3ds</ModelPath>
+	</Model>
+	<Model>
+		<ModelPath>models\trees.3ds</ModelPath>
+	</Model>
+	<Model>
+		<ModelPath>models\water.3ds</ModelPath>
+	</Model>
 	<ModelingUCS>
 		<Origin x ="0" y ="0" z ="0"/>
 		<XAxis x ="1" y ="0" z ="0"/>
