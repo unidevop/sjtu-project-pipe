@@ -32,7 +32,6 @@ namespace PipeSimulation.PipeApp
 
         public CRendererManager()
         {
-            ActiveRenderer = MainRenderer;
         }
 
         #region IRendererManager members
@@ -72,15 +71,16 @@ namespace PipeSimulation.PipeApp
             {
                 if (value == null) return;
 
-                if (m_activeRender != value)
+                if (m_activeRender == value) return;
+
+                vtk.vtkRenderer previousRenderer = m_activeRender;
+                m_activeRender = value;
+
+                // Fire the active render changed event
+                if (ActiveRenderChanged != null)
                 {
-                    // Fire the active render changed event
-                    if (ActiveRenderChanged != null)
-                    {
-                        ActiveRenderChanged(m_activeRender, value);
-                    }
+                    ActiveRenderChanged(previousRenderer, m_activeRender);
                 }
-               m_activeRender = value;
             }
         }
 
@@ -91,6 +91,12 @@ namespace PipeSimulation.PipeApp
             {
                 m_RendererLayoutStrategy = value;
                 m_RendererLayoutStrategy.ApplyLayout();
+
+                // Fire the event
+                if (RenderLayoutChanged != null)
+                {
+                    RenderLayoutChanged();
+                }
             }
         }
 
@@ -99,5 +105,9 @@ namespace PipeSimulation.PipeApp
         // Define a delegate
         public delegate void ActiveRenderChangedHandler(vtk.vtkRenderer previousRender, vtk.vtkRenderer newRenderer);
         public event ActiveRenderChangedHandler ActiveRenderChanged;
+
+        // Define a deleagate
+        public delegate void RenderLayoutChangedHandler();
+        public event RenderLayoutChangedHandler RenderLayoutChanged;
     }
 }

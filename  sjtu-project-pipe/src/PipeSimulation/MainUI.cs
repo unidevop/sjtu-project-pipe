@@ -304,6 +304,20 @@ namespace PipeSimulation
             // Write the Application Option
             ApplicationOptions.Instance().WriteData(System.IO.Path.Combine(CFolderUtility.DataFolder(), /*MSG0*/@"app.opt"));
 
+            axesWidgetaMain.Dispose();
+            axesWidgetTopView.Dispose();
+            axesWidgetFrontView.Dispose();
+            axesWidgetRightView.Dispose();
+
+            m_mainRenderOutlineActor.Dispose();
+            m_topRenderOutlineActor.Dispose();
+            m_rightRenderOutlineActor.Dispose();
+            m_frontRenderOutlineActor.Dispose();
+            m_mainRenderOutlinePoints.Dispose();
+            m_topRenderOutlinePoints.Dispose();
+            m_frontRenderOutlinePoints.Dispose();
+            m_rightRenderOutlinePoints.Dispose();
+
             // Dispose the application instance
             IApp.theApp.Dispose();
         }
@@ -401,6 +415,7 @@ namespace PipeSimulation
             if (renderManager == null) return;
 
             renderManager.ActiveRenderChanged += new CRendererManager.ActiveRenderChangedHandler(renderManager_ActiveRenderChanged);
+            renderManager.RenderLayoutChanged += new CRendererManager.RenderLayoutChangedHandler(renderManager_RenderLayoutChanged);
 
             double[] clrBackground = ApplicationOptions.Instance().ViewOptions.BackgroundColor;
 
@@ -453,6 +468,9 @@ namespace PipeSimulation
 
             renWin.SetNumberOfLayers(2);
 
+            // Set active rendere to main renderer
+            renderManager.ActiveRenderer = mainRenderer;
+
             // Set up layout strategy
             CRenderersLayoutStrategy renderersLayoutStrategy = new CRenderersLayoutStrategy(renderManager);
             renderManager.RendererLayoutStrategy = renderersLayoutStrategy;
@@ -490,6 +508,12 @@ namespace PipeSimulation
 
         void renderManager_ActiveRenderChanged(vtk.vtkRenderer previousRender, vtk.vtkRenderer newRenderer)
         {
+            UpdateRendererOutline();
+        }
+
+        void renderManager_RenderLayoutChanged()
+        {
+            UpdateRendererOutline();
         }
 
         protected void OnControlSizeChanged(object sender, EventArgs e)
@@ -526,6 +550,7 @@ namespace PipeSimulation
             if (IApp.theApp.RendererManager.RendererLayoutStrategy != null)
             {
                 IApp.theApp.RendererManager.RendererLayoutStrategy.ApplyLayout();
+                UpdateRendererOutline();
             }
 
             UpdateWCS();
@@ -1730,9 +1755,6 @@ namespace PipeSimulation
             {
                 IApp.theApp.VideoWriter.CaptureData();
             }
-
-            // Update Renderer outline
-            UpdateRendererOutline();
         }
         
         private void UpdateRendererOutline()
@@ -1754,60 +1776,69 @@ namespace PipeSimulation
 
         private void UpdateRendererOutline(ref vtk.vtkActor2D outlineRendererActor, ref vtk.vtkPolyData polyData, vtk.vtkRenderer renderer)
         {
-            if (outlineRendererActor == null)
+            try
             {
-                outlineRendererActor = new vtk.vtkActor2D();
 
-                polyData = new vtk.vtkPolyData();
-                polyData.Allocate(5, 0);
+                if (outlineRendererActor == null)
+                {
+                    outlineRendererActor = new vtk.vtkActor2D();
 
-                vtk.vtkIdList idList = new vtk.vtkIdList();
-                idList.SetNumberOfIds(5);
+                    polyData = new vtk.vtkPolyData();
+                    polyData.Allocate(5, 0);
 
-                vtk.vtkPoints points = new vtk.vtkPoints();
-                idList.InsertId(0, points.InsertNextPoint(1, 1, 0));
-                idList.InsertId(1, points.InsertNextPoint(2, 1, 0));
-                idList.InsertId(2, points.InsertNextPoint(2, 2, 0));
-                idList.InsertId(3, points.InsertNextPoint(1, 2, 0));
-                idList.InsertId(4, idList.GetId(0));
+                    vtk.vtkIdList idList = new vtk.vtkIdList();
+                    idList.SetNumberOfIds(5);
 
-                polyData.SetPoints(points);
-                polyData.InsertNextCell(4, idList);
+                    vtk.vtkPoints points = new vtk.vtkPoints();
+                    idList.InsertId(0, points.InsertNextPoint(1, 1, 0));
+                    idList.InsertId(1, points.InsertNextPoint(2, 1, 0));
+                    idList.InsertId(2, points.InsertNextPoint(2, 2, 0));
+                    idList.InsertId(3, points.InsertNextPoint(1, 2, 0));
+                    idList.InsertId(4, idList.GetId(0));
 
-                vtk.vtkCoordinate coordinate = new vtk.vtkCoordinate();
-                coordinate.SetCoordinateSystemToDisplay();
-                vtk.vtkPolyDataMapper2D mapper = new vtk.vtkPolyDataMapper2D();
-                mapper.SetInput(polyData);
-                mapper.SetTransformCoordinate(coordinate);
+                    polyData.SetPoints(points);
+                    polyData.InsertNextCell(4, idList);
 
-                outlineRendererActor.SetMapper(mapper);
-                outlineRendererActor.SetPosition(0, 0);
-                outlineRendererActor.SetPosition2(1, 1);
+                    vtk.vtkCoordinate coordinate = new vtk.vtkCoordinate();
+                    coordinate.SetCoordinateSystemToDisplay();
+                    vtk.vtkPolyDataMapper2D mapper = new vtk.vtkPolyDataMapper2D();
+                    mapper.SetInput(polyData);
+                    mapper.SetTransformCoordinate(coordinate);
 
-                renderer.AddActor(outlineRendererActor);
+                    outlineRendererActor.SetMapper(mapper);
+                    outlineRendererActor.SetPosition(0, 0);
+                    outlineRendererActor.SetPosition2(1, 1);
+
+                    renderer.AddActor(outlineRendererActor);
+                }
+
+                double[] vp = renderer.GetViewport();
+                renderer.NormalizedDisplayToDisplay(ref vp[0], ref vp[1]);
+                renderer.NormalizedDisplayToDisplay(ref vp[2], ref vp[3]);
+
+                polyData.GetPoints().SetPoint(0, vp[0], vp[1], 0);
+                polyData.GetPoints().SetPoint(1, vp[2], vp[1], 0);
+                polyData.GetPoints().SetPoint(2, vp[2], vp[3], 0);
+                polyData.GetPoints().SetPoint(3, vp[0], vp[3], 0);
+
+                // Change Outline color and width
+                double[] normalOutlineColor = ApplicationOptions.Instance().RendererLayoutOptions.NormalOutlineColor;
+                float normalOutlineWidth = ApplicationOptions.Instance().RendererLayoutOptions.NormalOutlineLineWidth;
+
+                if (renderer == IApp.theApp.RendererManager.ActiveRenderer)
+                {
+                    normalOutlineColor = ApplicationOptions.Instance().RendererLayoutOptions.ActiveOutlineColor;
+                    normalOutlineWidth = ApplicationOptions.Instance().RendererLayoutOptions.ActiveOutlineLineWidth;
+                }
+
+                outlineRendererActor.GetProperty().SetColor(normalOutlineColor);
+                outlineRendererActor.GetProperty().SetLineWidth(normalOutlineWidth);
             }
-
-            double[] vp = renderer.GetViewport();
-            renderer.NormalizedDisplayToDisplay(ref vp[0], ref vp[1]);
-            renderer.NormalizedDisplayToDisplay(ref vp[2], ref vp[3]);
-
-            polyData.GetPoints().SetPoint(0, vp[0], vp[1], 0);
-            polyData.GetPoints().SetPoint(1, vp[2], vp[1], 0);
-            polyData.GetPoints().SetPoint(2, vp[2], vp[3], 0);
-            polyData.GetPoints().SetPoint(3, vp[0], vp[3], 0);
-
-            // Change Outline color and width
-            double[] normalOutlineColor = ApplicationOptions.Instance().RendererLayoutOptions.NormalOutlineColor;
-            float normalOutlineWidth = ApplicationOptions.Instance().RendererLayoutOptions.NormalOutlineLineWidth;
-
-            if (renderer == IApp.theApp.RendererManager.ActiveRenderer)
+            catch (Exception ex)
             {
-                normalOutlineColor = ApplicationOptions.Instance().RendererLayoutOptions.ActiveOutlineColor;
-                normalOutlineWidth = ApplicationOptions.Instance().RendererLayoutOptions.ActiveOutlineLineWidth;
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
             }
-
-            outlineRendererActor.GetProperty().SetColor(normalOutlineColor);
-            outlineRendererActor.GetProperty().SetLineWidth(normalOutlineWidth);
         }
 
         private vtk.vtkActor2D m_mainRenderOutlineActor = null;
