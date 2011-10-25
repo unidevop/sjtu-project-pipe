@@ -1307,10 +1307,18 @@ namespace PipeSimulation
                 if (replayMode == null) return;
 
                 // Update the control value
-                trackBarAnimation.Value = t;
+                try
+                {
+                    trackBarAnimation.Value = t;
 
-                // Drive model
-                DriveModeByTrackBarValue(replayMode, t);
+                    // Drive model
+                    DriveModeByTrackBarValue(replayMode, t);
+                }
+                catch (Exception ex)
+                {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
+                }
             }
         }
 
@@ -1338,7 +1346,15 @@ namespace PipeSimulation
                 toolStripButtonStopAnimation.Checked = false;
                 toolStripButtonStopAnimation.Enabled = false;
 
-                trackBarAnimation.Value = replayMode.ReplayAnimationEngine.AnimationProgress;
+                try
+                {
+                    trackBarAnimation.Value = replayMode.ReplayAnimationEngine.AnimationProgress;
+                }
+                catch (Exception ex)
+                {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
+                }
                 UpdateAnimationLabelText();
 
                 viewSpecificTimerScene.Enabled = true;
@@ -1568,8 +1584,8 @@ namespace PipeSimulation
                 trackRange[1] = 100;
             }
             
-            trackBarAnimation.Value = trackRange[0];
             trackBarAnimation.SetRange(trackRange[0], trackRange[1]);
+            trackBarAnimation.Value = trackRange[0];
 
             // Update the replay animation engine total progress
             replayMode.ReplayAnimationEngine.AnimationTotalProgress = trackRange[1];
