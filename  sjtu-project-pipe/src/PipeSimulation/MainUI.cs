@@ -1880,6 +1880,10 @@ namespace PipeSimulation
                 }
             }
 
+            // Force to reset camera clipping range to avoid some models to be cut when switch this option.
+            vtk.vtkRenderer MainRenderer = IApp.theApp.RendererManager.MainRenderer;
+            MainRenderer.ResetCameraClippingRange();
+
             IApp.theApp.RenderScene();
             ApplicationOptions.Instance().ViewOptions.ShowNonePipeObjects = bVisible;
         }
