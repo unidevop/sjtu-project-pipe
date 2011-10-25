@@ -13,20 +13,28 @@ namespace PipeSimulation.DataQuery
         private double m_lattInclineAngle;
         private double m_longInclineAngle;
 
-        public MatrixCreater(Point3D startPt, Point3D endPt, double lattInclineAngle, double longInclineAngle)
+        private double m_radBetweenInclineAndX = Math.PI / 2;
+
+        public MatrixCreater(Point3D startPt, Point3D endPt, double lattInclineAngle, double longInclineAngle/*, double radBetweenInclineAndX*/)
         {
             m_startPt = startPt;
             m_endPt   = endPt;
             m_lattInclineAngle   = lattInclineAngle;
             m_longInclineAngle   = longInclineAngle;
+
+            //m_radBetweenInclineAndX = longInclineAngle;
         }
 
         public Matrix3D GetMatrix()
         {
             Vector3D vecX = GetXVector();
-            Vector3D vecY = GetYVector();
-            Vector3D vecZ = Vector3D.CrossProduct(vecX, vecY);
+            Vector3D vecIncline = GetInclineVector();
+            Vector3D vecZ = Vector3D.CrossProduct(vecX, vecIncline);
 
+            Vector3D vecY = Vector3D.CrossProduct(vecZ, vecX);
+
+            vecY.Normalize();
+            vecZ.Normalize();
             //return new Matrix3D(vecX.X, vecY.X, vecZ.X, m_startPt.X,
             //                    vecX.Y, vecY.Y, vecZ.Y, m_startPt.Y,
             //                    vecX.Z, vecY.Z, vecZ.Z, m_startPt.Z,
@@ -46,7 +54,7 @@ namespace PipeSimulation.DataQuery
             return vec;
         }
 
-        private Vector3D GetYVector()
+        private Vector3D GetInclineVector()
         {
             double inclineRad = Math.PI * m_lattInclineAngle / 180.0;
             double cosIncline = Math.Cos(inclineRad);
@@ -56,7 +64,7 @@ namespace PipeSimulation.DataQuery
 
             double A = xVector.X * cosIncline;
             double B = xVector.Y * cosIncline;
-            double C = xVector.Z * sinIncline;
+            double C = xVector.Z * sinIncline - Math.Cos(m_radBetweenInclineAndX);
             double A2B2 = A*A + B*B;
 
             Vector3D zVector;
