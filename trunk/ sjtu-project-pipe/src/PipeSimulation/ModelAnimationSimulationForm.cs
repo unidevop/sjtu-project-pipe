@@ -122,9 +122,19 @@ namespace PipeSimulation
             }
             else
             {
-                trackBar.Value = t;
+                // Pay attention to this call which often throw a exception
+                // So I would like to catch the exception
+                try
+                {
+                    trackBar.Value = t;
 
-                GetModelAnimationSimulationEngine().UpdateModelByProgress(t);
+                    GetModelAnimationSimulationEngine().UpdateModelByProgress(t);
+                }
+                catch (Exception ex)
+                {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
+                }
             }
         }
 
