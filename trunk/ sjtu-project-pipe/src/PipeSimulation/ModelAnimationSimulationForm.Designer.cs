@@ -17,7 +17,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModelAnimationSimulationForm));
-            this.comboBoxPipes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxShowhideModel = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -35,19 +34,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // comboBoxPipes
-            // 
-            this.comboBoxPipes.AccessibleDescription = null;
-            this.comboBoxPipes.AccessibleName = null;
-            resources.ApplyResources(this.comboBoxPipes, "comboBoxPipes");
-            this.comboBoxPipes.BackgroundImage = null;
-            this.comboBoxPipes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxPipes.Font = null;
-            this.comboBoxPipes.FormattingEnabled = true;
-            this.comboBoxPipes.Name = "comboBoxPipes";
-            this.toolTip.SetToolTip(this.comboBoxPipes, resources.GetString("comboBoxPipes.ToolTip"));
-            this.comboBoxPipes.SelectedIndexChanged += new System.EventHandler(this.comboBoxPipes_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -77,7 +63,6 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.BackgroundImage = null;
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.comboBoxPipes);
             this.groupBox1.Font = null;
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
@@ -234,7 +219,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBoxPipes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBoxShowhideModel;
         private System.Windows.Forms.GroupBox groupBox1;

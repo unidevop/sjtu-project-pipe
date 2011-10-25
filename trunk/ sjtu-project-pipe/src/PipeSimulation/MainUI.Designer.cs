@@ -560,13 +560,14 @@ namespace PipeSimulation
             this.processToolStripMenuItem.Name = "processToolStripMenuItem";
             this.processToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.processToolStripMenuItem.Text = "工艺过程(&P)";
+            this.processToolStripMenuItem.DropDownOpening += new EventHandler(processToolStripMenuItem_DropDownOpening);
             // 
             // fillToolStripMenuItem
             // 
             this.fillToolStripMenuItem.Name = "fillToolStripMenuItem";
             this.fillToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.fillToolStripMenuItem.Text = "回填模拟";
-            this.fillToolStripMenuItem.Click += new EventHandler(fillToolStripMenuItem_Click);
+            this.fillToolStripMenuItem.DropDownOpening += new EventHandler(fillToolStripMenuItem_DropDownOpening);
             //this.fillToolStripMenuItem.ShortcutKeys = Keys.F1;
             // 
             // zhujiangToolStripMenuItem
@@ -574,7 +575,7 @@ namespace PipeSimulation
             this.zhujiangToolStripMenuItem.Name = "zhujiangToolStripMenuItem";
             this.zhujiangToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.zhujiangToolStripMenuItem.Text = "注浆模拟";
-            this.zhujiangToolStripMenuItem.Click += new EventHandler(zhujiangToolStripMenuItem_Click);
+            this.zhujiangToolStripMenuItem.DropDownOpening += new EventHandler(fillToolStripMenuItem_DropDownOpening);
             //this.fillToolStripMenuItem.ShortcutKeys = Keys.F1;
             // 
             // aboutToolStripMenuItem

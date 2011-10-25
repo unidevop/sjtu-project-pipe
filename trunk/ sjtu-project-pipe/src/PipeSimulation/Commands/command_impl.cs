@@ -79,6 +79,10 @@ namespace PipeSimulation
 
             public object Sender
             {
+                get
+                {
+                    return m_eventSender;
+                }
                 set
                 {
                     m_eventSender = value;
@@ -171,7 +175,7 @@ namespace PipeSimulation
             {
             }
 
-            protected void UpdateSenderStatus(bool bActivated)
+            public void UpdateSenderStatus(bool bActivated)
             {
                 if (m_eventSender is ToolStripButton)
                 {
@@ -246,6 +250,15 @@ namespace PipeSimulation
                 ICommand cmd = FindCommand(id);
                 if (cmd == null) return;
 
+                // Fix a defect that a single command holds different sender
+                if (cmd.Sender != null)
+                {
+                    CCommand cmdImpl = cmd as CCommand;
+                    if (cmdImpl != null)
+                    {
+                        cmdImpl.UpdateSenderStatus(false);
+                    }
+                }
                 cmd.Sender = sender;
                 cmd.Activate();
             }

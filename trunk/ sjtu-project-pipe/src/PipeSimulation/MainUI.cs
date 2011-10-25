@@ -2082,12 +2082,54 @@ namespace PipeSimulation
 
         private void fillToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kFillSimulation, fillToolStripMenuItem);
+            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kFillSimulation, sender);
+        }
+
+        private void fillToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            if (fillToolStripMenuItem.DropDownItems.Count != IApp.theApp.DataModel.PipeModels.Count)
+            {
+                fillToolStripMenuItem.DropDownItems.Clear();
+                for (int iPipeIndex = 0; iPipeIndex < IApp.theApp.DataModel.PipeModels.Count; ++iPipeIndex)
+                {
+                    ToolStripMenuItem subMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+                    subMenuItem.Tag = iPipeIndex;
+                    subMenuItem.Text = string.Format(Resources.IDS_PIPE_FILL_INDEX, iPipeIndex + 1);
+                    //subMenuItem.CheckOnClick = true;
+
+                    subMenuItem.Click += new EventHandler(fillToolStripMenuItem_Click);
+                    this.fillToolStripMenuItem.DropDownItems.Add(subMenuItem);
+                }
+            }
+        }
+
+        private void processToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            fillToolStripMenuItem_DropDownOpening(fillToolStripMenuItem, null);
+            zhujiangToolStripMenuItem_DropDownOpening(zhujiangToolStripMenuItem, null);
         }
 
         private void zhujiangToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kZhujiangSimulation, zhujiangToolStripMenuItem);
+            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kZhujiangSimulation, sender);
+        }
+
+        private void zhujiangToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            if (zhujiangToolStripMenuItem.DropDownItems.Count != IApp.theApp.DataModel.PipeModels.Count)
+            {
+                zhujiangToolStripMenuItem.DropDownItems.Clear();
+                for (int iPipeIndex = 0; iPipeIndex < IApp.theApp.DataModel.PipeModels.Count; ++iPipeIndex)
+                {
+                    ToolStripMenuItem subMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+                    subMenuItem.Tag = iPipeIndex;
+                    subMenuItem.Text = string.Format(Resources.IDS_PIPE_FILL_INDEX, iPipeIndex + 1);
+                    //subMenuItem.CheckOnClick = true;
+
+                    subMenuItem.Click += new EventHandler(zhujiangToolStripMenuItem_Click);
+                    this.zhujiangToolStripMenuItem.DropDownItems.Add(subMenuItem);
+                }
+            }
         }
 
         private void showImmersingInformation_Click(object sender, EventArgs e)

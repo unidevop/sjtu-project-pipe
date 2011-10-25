@@ -16,41 +16,57 @@ namespace PipeSimulation
 {
     public abstract partial class ModelAnimationSimulationForm : Form
     {
+        private int m_iPipeIndex = -1;
         public ModelAnimationSimulationForm()
         {
             InitializeComponent();
+        }
+
+        // Update Pipe Id
+        public int PipeIndex
+        {
+            set 
+            {
+                try
+                {
+                    if (value < 0 || value > IApp.theApp.DataModel.PipeModels.Count)
+                        throw new ArgumentOutOfRangeException(/*MSG0*/"Pipe index is invalid");
+                    m_iPipeIndex = value;
+                }
+                catch
+                {
+                }
+            }
         }
 
         protected virtual void InitializeData()
         {
             try
             {
-                // Step 1: Fill the combo box
-                comboBoxPipes.Items.Clear();
-                int pipeModelCount = IApp.theApp.DataModel.PipeModels.Count;
-                for (int i = 0; i < pipeModelCount; ++i)
-                {
-                    string strComboboxItem = string.Format(Resources.IDS_PIPE_FILL_INDEX, i + 1);
-                    comboBoxPipes.Items.Add(strComboboxItem);
-                }
+                if (m_iPipeIndex == -1) throw new ApplicationException(/*MSG0*/"Don't set a valid PipeIndex");
 
-                if (pipeModelCount != 0)
-                {
-                    comboBoxPipes.SelectedIndex = 0;
-                }
-                else
-                {
-                    // Disable other controls if no pipe is available.
-                }
+                string strPipe = string.Format(Resources.IDS_PIPE_FILL_INDEX, m_iPipeIndex + 1);
+                label1.Text = label1.Text + strPipe;
+
+                // Check or uncheck the show/hide model
+                CPipeModel pipeModel = IApp.theApp.DataModel.PipeModels[m_iPipeIndex];
+                checkBoxShowhideModel.Checked = GetModelVisibility(pipeModel);
 
                 // Connect to Fill Simulation Engine events
                 CModelAnimationSimulationEngine modelSimEngine = GetModelAnimationSimulationEngine();
-                modelSimEngine.AnimationProgress = 0; // Clear the animation progress
                 modelSimEngine.AnimationStartted += new CTimeAnimationBase.AnimationStarttedHandler(modelSimEngine_AnimationStartted);
                 modelSimEngine.AnimationResume += new CTimeAnimationBase.AnimationResumeHandler(modelSimEngine_AnimationResume);
                 modelSimEngine.AnimationRunning += new CTimeAnimationBase.AnimationRunningHandler(modelSimEngine_AnimationRunning);
                 modelSimEngine.AnimationStopped += new CTimeAnimationBase.AnimationStoppedHandler(modelSimEngine_AnimationStopped);
                 modelSimEngine.AnimationPaused += new CTimeAnimationBase.AnimationPausedHandler(modelSimEngine_AnimationPaused);
+
+                // Track bar
+                int[] trackRange = { 0, modelSimEngine.AnimationTotalProgress };
+                trackBar.SetRange(trackRange[0], trackRange[1]);
+
+                modelSimEngine.SetModel(GetModel(pipeModel));
+                modelSimEngine.StopAnimation();
+                modelSimEngine.AnimationProgress = 0; // Clear the animation progress
             }
             catch(Exception ex)
             {
@@ -137,30 +153,6 @@ namespace PipeSimulation
             GetModelAnimationSimulationEngine().GotoEnd();
         }
 
-        private void comboBoxPipes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                // Check or uncheck the show/hide model
-                CPipeModel pipeModel = IApp.theApp.DataModel.PipeModels[comboBoxPipes.SelectedIndex];
-                checkBoxShowhideModel.Checked = GetModelVisibility(pipeModel);
-
-                // Stop Animation
-                CModelAnimationSimulationEngine modelSimEngine = GetModelAnimationSimulationEngine();
-                modelSimEngine.StopAnimation();
-                modelSimEngine.SetModel(GetModel(pipeModel));
-
-                // Track bar
-                int[] trackRange = { 0, modelSimEngine.AnimationTotalProgress };
-                trackBar.SetRange(trackRange[0], trackRange[1]);
-            }
-            catch(Exception ex)
-            {
-                string errMsg = ex.Message + "\n" + ex.StackTrace;
-                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
-            }
-        }
-
         private void trackBar_Scroll(object sender, EventArgs e)
         {
             GetModelAnimationSimulationEngine().AnimationProgress = trackBar.Value;
@@ -181,7 +173,7 @@ namespace PipeSimulation
                 GetModelAnimationSimulationEngine().ShowAllSegmentsWithoutAnimation();
 
                 // Check or uncheck the show/hide model
-                CPipeModel pipeModel = IApp.theApp.DataModel.PipeModels[comboBoxPipes.SelectedIndex];
+                CPipeModel pipeModel = IApp.theApp.DataModel.PipeModels[m_iPipeIndex];
                 bool bFillModelVisible = checkBoxShowhideModel.Checked;
 
                 SetModelVisibility(pipeModel, bFillModelVisible);

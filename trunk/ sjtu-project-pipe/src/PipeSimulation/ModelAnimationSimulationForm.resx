@@ -167,9 +167,6 @@
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>366, 105</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
-  </data>
   <data name="buttonToEnd.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -252,6 +249,9 @@
   <data name="buttonOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;buttonCancel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
@@ -324,9 +324,6 @@
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
   </data>
-  <data name="&gt;&gt;buttonOk.Name" xml:space="preserve">
-    <value>buttonOk</value>
-  </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -378,11 +375,14 @@
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
+  <data name="&gt;&gt;buttonToEnd.Name" xml:space="preserve">
+    <value>buttonToEnd</value>
+  </data>
   <data name="trackBar.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="buttonToBegining.Location" type="System.Drawing.Point, System.Drawing">
-    <value>100, 20</value>
+  <data name="&gt;&gt;buttonOk.Name" xml:space="preserve">
+    <value>buttonOk</value>
   </data>
   <data name="&gt;&gt;comboBoxPipes.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -6601,8 +6601,8 @@
   <data name="groupBox2.Text" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6628,11 +6628,11 @@
   <data name="&gt;&gt;buttonToEnd.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;buttonToEnd.Name" xml:space="preserve">
-    <value>buttonToEnd</value>
+  <data name="buttonToBegining.Location" type="System.Drawing.Point, System.Drawing">
+    <value>100, 20</value>
   </data>
   <data name="&gt;&gt;trackBar.ZOrder" xml:space="preserve">
     <value>0</value>

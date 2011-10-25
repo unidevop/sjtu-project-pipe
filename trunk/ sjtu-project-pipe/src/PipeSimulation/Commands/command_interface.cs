@@ -59,6 +59,7 @@ namespace PipeSimulation
 
             object Sender
             {
+                get;
                 set;
             }
 
