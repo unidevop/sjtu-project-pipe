@@ -70,8 +70,8 @@ namespace PipeSimulation
             // Update Obsever mode
             UpdateObserverMode();
 
-            // Update Angle warning
-            UpdateAngleWarning();
+            //// Update Angle warning
+            //UpdateAngleWarning();
 
             // Update Database Status
             UpdateDatabaseStatus();
@@ -79,13 +79,13 @@ namespace PipeSimulation
 
         private void UpdateAngleWarning()
         {
-            tollStripAngleWarningText.Visible = (IApp.theApp.DataDriven.CurrentData != null);
-
-            CAngleWarningData angleWarningData = new CAngleWarningData();
-            string strWarningText = angleWarningData.ToString();
-
             try
             {
+                tollStripAngleWarningText.Visible = (IApp.theApp.DataDriven.CurrentData != null);
+
+                CAngleWarningData angleWarningData = new CAngleWarningData();
+                string strWarningText = angleWarningData.ToString();
+
                 if (string.IsNullOrEmpty(strWarningText))
                 {
                     tollStripAngleWarningText.Text = Resources.IDS_ANGLE_NO_WARNING;
@@ -616,6 +616,9 @@ namespace PipeSimulation
                 }
                 
             }
+
+            // Update Angle warning
+            UpdateAngleWarning();
         }
 
         private vtk.vtkOrientationMarkerWidget axesWidgetaMain;
