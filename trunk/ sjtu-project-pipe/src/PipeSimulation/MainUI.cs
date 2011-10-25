@@ -404,6 +404,17 @@ namespace PipeSimulation
 
             double[] clrBackground = ApplicationOptions.Instance().ViewOptions.BackgroundColor;
 
+            // Add more arbitary lights to turn the scence a little bit bright
+            vtk.vtkLightKit lightKit = new vtk.vtkLightKit();
+            vtk.vtkLight sceneLight = new vtk.vtkLight();
+            sceneLight.SetAmbientColor(1, 1, 1);
+            sceneLight.SetDiffuseColor(1, 1, 1);
+            sceneLight.SetFocalPoint(0, 0, 0);
+            sceneLight.SetPosition(0, 0, 500000);
+            sceneLight.SetLightTypeToSceneLight();
+            sceneLight.SetIntensity(1);
+            sceneLight.SwitchOn();
+
             // Background Renderer for the background image
             vtk.vtkRenderer backgroundRenderer = renderManager.BackgroundRenderer;
             backgroundRenderer.SetBackground(clrBackground);
@@ -415,24 +426,29 @@ namespace PipeSimulation
             vtk.vtkRenderer mainRenderer = renderManager.MainRenderer;
             mainRenderer.SetBackground(clrBackground);
             mainRenderer.SetLayer(1);
+            mainRenderer.AddLight(sceneLight);
+            lightKit.AddLightsToRenderer(mainRenderer);
             renWin.AddRenderer(mainRenderer);
 
             // TopView Renderer
             vtk.vtkRenderer topViewRender = renderManager.TopViewRenderer;
             topViewRender.SetBackground(clrBackground);
             topViewRender.SetLayer(1);
+            lightKit.AddLightsToRenderer(topViewRender);
             renWin.AddRenderer(topViewRender);
 
             // front Renderer
             vtk.vtkRenderer frontViewRenderer = renderManager.FrontViewRenderer;
             frontViewRenderer.SetBackground(clrBackground);
             frontViewRenderer.SetLayer(1);
+            lightKit.AddLightsToRenderer(frontViewRenderer);
             renWin.AddRenderer(frontViewRenderer);
 
             // right Renderer
             vtk.vtkRenderer rightViewRenderer = renderManager.RightViewRenderer;
             rightViewRenderer.SetBackground(clrBackground);
             rightViewRenderer.SetLayer(1);
+            lightKit.AddLightsToRenderer(rightViewRenderer);
             renWin.AddRenderer(rightViewRenderer);
 
             renWin.SetNumberOfLayers(2);
