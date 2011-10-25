@@ -18,9 +18,24 @@ namespace PipeSimulation.Commands
         {
             try
             {
+                // Parse the pipe index
+                int iPipeIndex = 0;
+
+                ToolStripMenuItem sender = Sender as ToolStripMenuItem;
+                if (sender != null)
+                {
+                    iPipeIndex = int.Parse(sender.Tag.ToString());
+                }
+                if (iPipeIndex < 0 || iPipeIndex > IApp.theApp.DataModel.PipeModels.Count)
+                {
+                    Terminate();
+                    return;
+                } 
+                
                 if (zhujiangSimulationDlg == null)
                 {
                     zhujiangSimulationDlg = new ZhujiangAnimationSimulationForm();
+                    zhujiangSimulationDlg.PipeIndex = iPipeIndex;
                     zhujiangSimulationDlg.Show(IApp.theApp.MainUI);
 
                     zhujiangSimulationDlg.FormClosed += new FormClosedEventHandler(zhujiangSimulationDlg_FormClosed);
@@ -28,6 +43,10 @@ namespace PipeSimulation.Commands
             }
             catch (SystemException e)
             {
+                if (zhujiangSimulationDlg != null)
+                {
+                    zhujiangSimulationDlg.Dispose();
+                } 
                 MessageBox.Show(e.Message);
             }
         }

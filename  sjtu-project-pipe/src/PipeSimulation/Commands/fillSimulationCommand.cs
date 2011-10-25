@@ -18,16 +18,35 @@ namespace PipeSimulation.Commands
             {
                 try
                 {
+                    // Parse the pipe index
+                    int iPipeIndex = 0;
+
+                    ToolStripMenuItem sender = Sender as ToolStripMenuItem;
+                    if (sender != null)
+                    {
+                        iPipeIndex = int.Parse(sender.Tag.ToString());
+                    }
+                    if (iPipeIndex < 0 || iPipeIndex > IApp.theApp.DataModel.PipeModels.Count)
+                    {
+                        Terminate();
+                        return;
+                    }
+
                     if (fillSimulationDlg == null)
                     {
                         fillSimulationDlg = new FillAnimationSimulationForm();
+                        fillSimulationDlg.PipeIndex = iPipeIndex;
                         fillSimulationDlg.Show(IApp.theApp.MainUI);
 
                         fillSimulationDlg.FormClosed += new FormClosedEventHandler(fillSimulationDlg_FormClosed);
                     }
                 }
-                catch (SystemException e)
+                catch (Exception e)
                 {
+                    if (fillSimulationDlg != null)
+                    {
+                        fillSimulationDlg.Dispose();
+                    }
                     MessageBox.Show(e.Message);
                 }
             }

@@ -30,13 +30,13 @@ namespace PipeSimulation.DataDriven
         {
             if (Model == null) return false;
 
-            StopAnimation();
-
             m_Model = Model;
+
             // Get total animation steps
             try
             {
                 m_simulationImpl.Model = m_Model;
+                StopAnimation();
                 this.AnimationTotalProgress = m_simulationImpl.GetAnimationTotalProgress();
             }
             catch(Exception ex)
