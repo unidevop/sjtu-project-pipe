@@ -85,7 +85,11 @@
             this.Icon = null;
             this.Name = "SplashScreenForm";
             this.ShowInTaskbar = false;
+#if DEBUG
             this.TopMost = false;
+#else
+            this.TopMost = true;
+#endif
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SplashForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
