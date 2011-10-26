@@ -60,11 +60,13 @@ namespace PipeSimulation
                 modelSimEngine.AnimationStopped += new CTimeAnimationBase.AnimationStoppedHandler(modelSimEngine_AnimationStopped);
                 modelSimEngine.AnimationPaused += new CTimeAnimationBase.AnimationPausedHandler(modelSimEngine_AnimationPaused);
 
+                // Call SetModel function before update the trackbar range
+                modelSimEngine.SetModel(GetModel(pipeModel));
+
                 // Track bar
                 int[] trackRange = { 0, modelSimEngine.AnimationTotalProgress };
                 trackBar.SetRange(trackRange[0], trackRange[1]);
 
-                modelSimEngine.SetModel(GetModel(pipeModel));
                 modelSimEngine.StopAnimation();
                 modelSimEngine.AnimationProgress = 0; // Clear the animation progress
             }
@@ -241,9 +243,10 @@ namespace PipeSimulation
 
     public class FillAnimationSimulationForm : ModelAnimationSimulationForm
     {
+        private CFillSimulationEngine m_fillSimEngine = new CFillSimulationEngine(new CFillSimScaleImpl());
         protected override CModelAnimationSimulationEngine GetModelAnimationSimulationEngine()
         {
-            return IApp.theApp.FillSimulationEngine;
+            return m_fillSimEngine;
         }
 
         protected override void InitializeData()
@@ -287,9 +290,10 @@ namespace PipeSimulation
 
     public class ZhujiangAnimationSimulationForm : ModelAnimationSimulationForm
     {
+        private CZhujiangSimulationEngine m_ZhujiangSimulationEngine = new CZhujiangSimulationEngine(new CZhujiangSimScaleImpl());
         protected override CModelAnimationSimulationEngine GetModelAnimationSimulationEngine()
         {
-            return IApp.theApp.ZhujiangSimulationEngine;
+            return m_ZhujiangSimulationEngine;
         }
 
         protected override void InitializeData()
