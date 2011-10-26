@@ -71,6 +71,12 @@ namespace PipeSimulation
             public static string pipeModelingUnitToMeter { get { return /*MSG0*/"ModelingUnitToMeter"; } }
             public static string pipeGPSUnitToMeter { get { return /*MSG0*/"GPSUnitToMeter"; } }
 
+            public static string pipeInclinometer { get { return /*MSG0*/"Inclinometer"; } }
+            public static string pipeInclinometerType { get { return /*MSG0*/"type"; } }
+            public static string pipeInclinometerRoll { get { return /*MSG0*/"roll"; } }
+            public static string pipeInclinometerDir { get { return /*MSG0*/"Dir"; } }
+            public static string pipeInclinometerFlipAngle { get { return /*MSG0*/"FlipAngle"; } }
+
             // Fill Parameters
             public static string TimePercentage { get { return /*MSG0*/"TimePercent"; } }
             public static string StartPosition { get { return /*MSG0*/"StartPosition"; } }

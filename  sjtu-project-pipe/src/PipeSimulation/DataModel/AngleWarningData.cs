@@ -30,20 +30,20 @@ namespace PipeSimulation.DataModel
 
             // Get the current Alpha angle
             const string strAngleFormat = "{0:0.###}";
-            double dAlphaAngle = pipeInfo.LatitudinalInclineAngle;
-            if (warningConfig.IsAlphaWarning(dAlphaAngle))
+            double dRollAngle = pipeInfo.RollInclineAngle;
+            if (warningConfig.IsAlphaWarning(dRollAngle))
             {
-                strString = string.Concat(strString, string.Format(Resources.IDS_ANGLE_ALPHA_WARNING, 
-                                          string.Format(strAngleFormat, Math.Abs(dAlphaAngle)), 
+                strString = string.Concat(strString, string.Format(Resources.IDS_ANGLE_ROLL_WARNING, 
+                                          string.Format(strAngleFormat, Math.Abs(dRollAngle)), 
                                           string.Format(strAngleFormat, warningConfig.AlphaMaximum)));
             }
 
             // Get the current Beta angle
-            double dBetaAngle = pipeInfo.LongitudinalInclineAngle;
-            if (warningConfig.IsBetaWarning(dBetaAngle))
+            double dPitchAngle = pipeInfo.PitchInclineAngle;
+            if (warningConfig.IsBetaWarning(dPitchAngle))
             {
-                strString = string.Concat(strString, string.Format(Resources.IDS_ANGLE_BETA_WARNING, 
-                                          string.Format(strAngleFormat, Math.Abs(dBetaAngle)), 
+                strString = string.Concat(strString, string.Format(Resources.IDS_ANGLE_PITCH_WARNING, 
+                                          string.Format(strAngleFormat, Math.Abs(dPitchAngle)), 
                                           string.Format(strAngleFormat, warningConfig.BetaMaximum)));
             }
 

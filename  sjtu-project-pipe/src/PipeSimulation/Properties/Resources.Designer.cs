@@ -121,29 +121,29 @@ namespace PipeSimulation.Properties {
         }
         
         /// <summary>
-        ///   查找类似 水平倾角为{0}度，超过预设值{1}。 的本地化字符串。
-        /// </summary>
-        internal static string IDS_ANGLE_ALPHA_WARNING {
-            get {
-                return ResourceManager.GetString("IDS_ANGLE_ALPHA_WARNING", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 垂直倾角为{0}度，超过预设值{1}。 的本地化字符串。
-        /// </summary>
-        internal static string IDS_ANGLE_BETA_WARNING {
-            get {
-                return ResourceManager.GetString("IDS_ANGLE_BETA_WARNING", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查找类似 倾角在正常范围内。 的本地化字符串。
         /// </summary>
         internal static string IDS_ANGLE_NO_WARNING {
             get {
                 return ResourceManager.GetString("IDS_ANGLE_NO_WARNING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 俯仰角为{0}度，超过预设值{1}。 的本地化字符串。
+        /// </summary>
+        internal static string IDS_ANGLE_PITCH_WARNING {
+            get {
+                return ResourceManager.GetString("IDS_ANGLE_PITCH_WARNING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 侧滚角为{0}度，超过预设值{1}。 的本地化字符串。
+        /// </summary>
+        internal static string IDS_ANGLE_ROLL_WARNING {
+            get {
+                return ResourceManager.GetString("IDS_ANGLE_ROLL_WARNING", resourceCulture);
             }
         }
         

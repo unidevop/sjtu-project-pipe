@@ -15,14 +15,14 @@ namespace PipeSimulation.DataQuery
         private int     m_pipeId;
         private Point3D m_startPt;
         private Point3D m_endPt;
-        private double m_lattInclineAngle;
-        private double m_longInclineAngle;
+        private double m_rollInclineAngle;
+        private double m_pitchInclineAngle;
         private DateTime m_time;
 
         private int m_gpsMeasureId;
         private int m_inclineMeasureId;
-        private double m_maxAlpha;
-        private double m_maxBeta;
+        private double m_maxRoll;
+        private double m_maxPitch;
 
         public PipeInfo(int pipeId, int gpsMeasureId, int inclineMeasureId)
         {
@@ -91,62 +91,60 @@ namespace PipeSimulation.DataQuery
             }
         }
 
-        public double LatitudinalInclineAngle
+        public double RollInclineAngle
         {
             get
             {
-                return m_lattInclineAngle;
+                return m_rollInclineAngle;
             }
             set
             {
-                m_lattInclineAngle = value;
+                m_rollInclineAngle = value;
             }
         }
 
-        public double LongitudinalInclineAngle
+        public double PitchInclineAngle
         {
             get
             {
-                return m_longInclineAngle;
+                return m_pitchInclineAngle;
             }
             set
             {
-                m_longInclineAngle = value;
+                m_pitchInclineAngle = value;
             }
         }
 
-        public double MaxAbsAlpha
+        public double MaxAbsRoll
         {
             get
             {
-                return m_maxAlpha;
+                return m_maxRoll;
             }
             set
             {
-                m_maxAlpha = value;
+                m_maxRoll = value;
             }
         }
 
-        public double MaxAbsBeta
+        public double MaxAbsPitch
         {
             get
             {
-                return m_maxBeta;
+                return m_maxPitch;
             }
             set
             {
-                m_maxBeta = value;
+                m_maxPitch = value;
             }
         }
 
-        public Matrix3D Matrix
+        public Matrix3D GetMatrix(double angleBetweenInclineAndX, bool flipRollAngle)
         {
-            get
-            {
-                MatrixCreater maxtrixCreator = new MatrixCreater(m_startPt, m_endPt, m_lattInclineAngle, m_longInclineAngle);
+            MatrixCreater maxtrixCreator = new MatrixCreater(m_startPt, m_endPt, m_rollInclineAngle, m_pitchInclineAngle,
+                angleBetweenInclineAndX, flipRollAngle);
 
-                return maxtrixCreator.GetMatrix();
-            }
+            return maxtrixCreator.GetMatrix();
         }
 
         public DateTime Time

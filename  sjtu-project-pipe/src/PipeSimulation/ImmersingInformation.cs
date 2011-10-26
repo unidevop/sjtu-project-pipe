@@ -78,14 +78,14 @@ namespace PipeSimulation
         {
             // Angle1
             const string strAngleFormat = "{0:0.###}";
-            m_Angle1.Text =  string.Format(strAngleFormat, pipeInfo.LatitudinalInclineAngle);
+            m_Angle1.Text =  string.Format(strAngleFormat, pipeInfo.RollInclineAngle);
 
-            m_MaxAngle1.Text = string.Format(strAngleFormat, pipeInfo.MaxAbsAlpha);
+            m_MaxAngle1.Text = string.Format(strAngleFormat, pipeInfo.MaxAbsRoll);
 
             // Angle 2
-            m_Angle2.Text =  string.Format(strAngleFormat, pipeInfo.LongitudinalInclineAngle);
+            m_Angle2.Text =  string.Format(strAngleFormat, pipeInfo.PitchInclineAngle);
 
-            m_MaxAngle2.Text = string.Format(strAngleFormat, pipeInfo.MaxAbsBeta);
+            m_MaxAngle2.Text = string.Format(strAngleFormat, pipeInfo.MaxAbsPitch);
         }
 
         private void UpdateConnectionPointPairGroup(PipeInfo pipeInfo)
