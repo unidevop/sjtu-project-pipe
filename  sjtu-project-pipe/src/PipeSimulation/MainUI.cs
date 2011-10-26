@@ -655,7 +655,31 @@ namespace PipeSimulation
                 {
                     m_immersingInformationForm.UpdateData(IApp.theApp.DataDriven.CurrentData);
                 }
-                
+
+                // Update the connection indicator
+                IList<CPipeConnectionPointPair> connectionPointPairList = null;
+                if (CPipeConnetionUtility.CalcaulateConnection(IApp.theApp.DataDriven.CurrentData, out connectionPointPairList))
+                {
+                    CPipeConnectionIndicator pipeConnectionIndicator = IApp.theApp.PipeConnectionIndicator;
+                    if (pipeConnectionIndicator != null)
+                    {
+                        pipeConnectionIndicator.SetPoints(connectionPointPairList);
+                        pipeConnectionIndicator.Impl.UpatePoints();
+                    }
+                }
+
+                // Update the Text Display
+                CStatisticData statisticData = new CStatisticData();
+                statisticData.ConnectionPointPairList = connectionPointPairList;
+
+                IApp.theApp.StatisticTextDisplayer.DisplayText(statisticData.ToTextString());
+
+                // Make sure we make the StatisticTextDisplayerAdditional appeal after the StatisticTextDisplayer
+                IApp.theApp.StatisticTextDisplayerAdditional.DisplayText(statisticData.ToDataString());
+
+                //// Update the WarningTextDisplayer
+                //CAngleWarningData angleWarningData = new CAngleWarningData();
+                //IApp.theApp.WarningTextDisplayer.DisplayText(angleWarningData.ToString());
             }
 
             // Update Angle warning
@@ -1725,31 +1749,6 @@ namespace PipeSimulation
         /// <param name="callData"></param>
         public void OnRenderCallback(vtk.vtkObject caller, uint eventId, object clientData, IntPtr callData)
         {
-            // Update the connection indicator
-            IList<CPipeConnectionPointPair> connectionPointPairList = null;
-            if (CPipeConnetionUtility.CalcaulateConnection(IApp.theApp.DataDriven.CurrentData, out connectionPointPairList))
-            {
-                CPipeConnectionIndicator pipeConnectionIndicator = IApp.theApp.PipeConnectionIndicator;
-                if (pipeConnectionIndicator != null)
-                {
-                    pipeConnectionIndicator.SetPoints(connectionPointPairList);
-                    pipeConnectionIndicator.Impl.UpatePoints();
-                }
-            }
-
-            // Update the Text Display
-            CStatisticData statisticData = new CStatisticData();
-            statisticData.ConnectionPointPairList = connectionPointPairList;
-
-            IApp.theApp.StatisticTextDisplayer.DisplayText(statisticData.ToTextString());
-
-            // Make sure we make the StatisticTextDisplayerAdditional appeal after the StatisticTextDisplayer
-            IApp.theApp.StatisticTextDisplayerAdditional.DisplayText(statisticData.ToDataString());
-
-            //// Update the WarningTextDisplayer
-            //CAngleWarningData angleWarningData = new CAngleWarningData();
-            //IApp.theApp.WarningTextDisplayer.DisplayText(angleWarningData.ToString());
-
             // Update the Video record
             if (IApp.theApp.VideoWriter.IsRecording)
             {
