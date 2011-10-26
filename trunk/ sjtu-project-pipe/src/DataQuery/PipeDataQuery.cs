@@ -102,19 +102,19 @@ namespace PipeSimulation.DataQuery
             if (pipeInfo == null)
                 return;
 
-            double maxAbsAlpha;
-            double maxAbsBeta;
+            double maxAbsRoll;
+            double maxAbsPitch;
 
-            QueryMaxAngle(pipeInfo, out maxAbsAlpha, out maxAbsBeta);
+            QueryMaxAngle(pipeInfo, out maxAbsRoll, out maxAbsPitch);
 
-            pipeInfo.MaxAbsAlpha = maxAbsAlpha;
-            pipeInfo.MaxAbsBeta = maxAbsBeta;
+            pipeInfo.MaxAbsRoll = maxAbsRoll;
+            pipeInfo.MaxAbsPitch = maxAbsPitch;
         }
 
-        protected void QueryMaxAngle(PipeInfo pipeInfo, out double maxAbsAlpha, out double maxAbsBeta)
+        protected void QueryMaxAngle(PipeInfo pipeInfo, out double maxAbsRoll, out double maxAbsPitch)
         {
-            maxAbsAlpha = 0.0;
-            maxAbsBeta = 0.0;
+            maxAbsRoll = 0.0;
+            maxAbsPitch = 0.0;
 
             if (pipeInfo == null)
                 return;
@@ -132,8 +132,8 @@ namespace PipeSimulation.DataQuery
                     {
                         if (sqlDataReader.Read())
                         {
-                            maxAbsAlpha = (double)(sqlDataReader.GetDecimal(0));
-                            maxAbsBeta = (double)(sqlDataReader.GetDecimal(1));
+                            maxAbsRoll = (double)(sqlDataReader.GetDecimal(0));
+                            maxAbsPitch = (double)(sqlDataReader.GetDecimal(1));
                         }
                     }
                 }
@@ -180,8 +180,8 @@ namespace PipeSimulation.DataQuery
                 pipeInfo.EndPoint = new Point3D((double)(sqlDataReader.GetDecimal(5)),
                                                  (double)(sqlDataReader.GetDecimal(6)),
                                                  (double)(sqlDataReader.GetDecimal(7)));
-                pipeInfo.LongitudinalInclineAngle = (double)(sqlDataReader.GetDecimal(8));
-                pipeInfo.LatitudinalInclineAngle = (double)(sqlDataReader.GetDecimal(9));
+                pipeInfo.PitchInclineAngle = (double)(sqlDataReader.GetDecimal(8));
+                pipeInfo.RollInclineAngle = (double)(sqlDataReader.GetDecimal(9));
             }
 
             return pipeInfo;
@@ -309,8 +309,8 @@ namespace PipeSimulation.DataQuery
         protected int m_lastInclineMeasureId = 0;
 
         private int m_currentPipeId = 0;
-        private double m_maxAbsAlpha = 0.0;
-        private double m_maxAbsBeta = 0.0;
+        private double m_maxAbsRoll = 0.0;
+        private double m_maxAbsPitch = 0.0;
 
 #if !NEW_DATA_APPROACH
         private static readonly int m_firstReadCnt = 10;
@@ -394,7 +394,7 @@ namespace PipeSimulation.DataQuery
                 m_lastInclineMeasureId = pipeInfo.InclineMeasureId;
 
                 m_currentPipeId = pipeInfo.PipeId;
-                QueryMaxAngle(pipeInfo, out m_maxAbsAlpha, out m_maxAbsBeta);
+                QueryMaxAngle(pipeInfo, out m_maxAbsRoll, out m_maxAbsPitch);
 
                 m_isReading = true;
             }
@@ -493,20 +493,20 @@ namespace PipeSimulation.DataQuery
 
             if (pipeInfo.PipeId > m_currentPipeId)
             {
-                m_maxAbsAlpha = pipeInfo.LatitudinalInclineAngle;
-                m_maxAbsBeta = pipeInfo.LongitudinalInclineAngle;
+                m_maxAbsRoll = pipeInfo.RollInclineAngle;
+                m_maxAbsPitch = pipeInfo.PitchInclineAngle;
             }
             else if (pipeInfo.PipeId == m_currentPipeId)
             {
-                if (Math.Abs(pipeInfo.LatitudinalInclineAngle) > m_maxAbsAlpha)
-                    m_maxAbsAlpha = pipeInfo.LatitudinalInclineAngle;
+                if (Math.Abs(pipeInfo.RollInclineAngle) > m_maxAbsRoll)
+                    m_maxAbsRoll = pipeInfo.RollInclineAngle;
 
-                if (Math.Abs(pipeInfo.LongitudinalInclineAngle) > m_maxAbsBeta)
-                    m_maxAbsBeta = pipeInfo.LongitudinalInclineAngle;
+                if (Math.Abs(pipeInfo.PitchInclineAngle) > m_maxAbsPitch)
+                    m_maxAbsPitch = pipeInfo.PitchInclineAngle;
             }
 
-            pipeInfo.MaxAbsAlpha = m_maxAbsAlpha;
-            pipeInfo.MaxAbsBeta = m_maxAbsBeta;
+            pipeInfo.MaxAbsRoll = m_maxAbsRoll;
+            pipeInfo.MaxAbsPitch = m_maxAbsPitch;
         }
     }
 

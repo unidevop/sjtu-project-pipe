@@ -419,11 +419,11 @@ namespace DataSimulation
             //newRow["ProjectPointID"] = 1;
             //newRow["MeasureTime"] = m_curMeasureTime;// DateTime.Now;
 
-            double angle1, angle2;
+            double rollAngle, pitchAngle;
 
             if (m_curMeasureTime < m_backfillTime)
             {
-                angle1 = m_maxAngle * Math.Sin((m_curMeasureTime - m_measureStartTime).TotalSeconds *
+                rollAngle = m_maxAngle * Math.Sin((m_curMeasureTime - m_measureStartTime).TotalSeconds *
                                                          Math.PI / 180);
 
                 //DataRowCollection gpsDataRows = dataSet.Tables["GPSMeasure"].Rows;
@@ -437,21 +437,21 @@ namespace DataSimulation
                 //                              (double)(decimal)(gpsDataRows[gpsDataRows.Count - 1]["Y"]),
                 //                              (double)(decimal)(gpsDataRows[gpsDataRows.Count - 1]["Z"]));
 
-                    angle2 = Math.Asin((pt2.Z - pt1.Z) / MeasurePointsDistance) * 180 / Math.PI;
+                    pitchAngle = Math.Asin((pt2.Z - pt1.Z) / MeasurePointsDistance) * 180 / Math.PI;
                 //}
                 //else
                 //    newRow["Angle2"] = 0;
             }
             else
             {
-                angle1 = 0;
-                angle2 = 0;
+                rollAngle = 0;
+                pitchAngle = 0;
             }
 
             //dataSet.Tables["InclineMeasure"].Rows.Add(newRow);
 
             return String.Format("INSERT INTO InclineMeasure VALUES({0}, {1}, '{2:yyyy-MM-dd HH:mm:ss.fff}', {3}, {4})",
-                m_id, 1, m_curMeasureTime/*DateTime.Now*/, angle1, angle2);
+                m_id, 1, m_curMeasureTime/*DateTime.Now*/, pitchAngle, rollAngle);
 
             //Console.WriteLine("Angle1: {0}, Angle2: {1}", newRow["Angle1"], newRow["Angle2"]);
         }

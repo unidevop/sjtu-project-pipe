@@ -10,19 +10,20 @@ namespace PipeSimulation.DataQuery
     {
         private Point3D m_startPt;
         private Point3D m_endPt;
-        private double m_lattInclineAngle;
-        private double m_longInclineAngle;
+        private double m_rollInclineAngle;
+        private double m_pitchInclineAngle;
 
-        private double m_radBetweenInclineAndX = Math.PI / 2;
+        private double m_angleBetweenInclineAndX = 90.0;
 
-        public MatrixCreater(Point3D startPt, Point3D endPt, double lattInclineAngle, double longInclineAngle/*, double radBetweenInclineAndX*/)
+        public MatrixCreater(Point3D startPt, Point3D endPt, double rollInclineAngle, double pitchInclineAngle,
+                             double angleBetweenInclineAndX, bool flipRollAngle)
         {
             m_startPt = startPt;
             m_endPt   = endPt;
-            m_lattInclineAngle   = lattInclineAngle;
-            m_longInclineAngle   = longInclineAngle;
+            m_rollInclineAngle    = flipRollAngle ? -rollInclineAngle : rollInclineAngle;
+            m_pitchInclineAngle   = pitchInclineAngle;
 
-            //m_radBetweenInclineAndX = longInclineAngle;
+            m_angleBetweenInclineAndX = angleBetweenInclineAndX;
         }
 
         public Matrix3D GetMatrix()
@@ -56,7 +57,7 @@ namespace PipeSimulation.DataQuery
 
         private Vector3D GetInclineVector()
         {
-            double inclineRad = Math.PI * m_lattInclineAngle / 180.0;
+            double inclineRad = Math.PI * m_rollInclineAngle / 180.0;
             double cosIncline = Math.Cos(inclineRad);
             double sinIncline = Math.Sin(inclineRad);
 
@@ -64,7 +65,7 @@ namespace PipeSimulation.DataQuery
 
             double A = xVector.X * cosIncline;
             double B = xVector.Y * cosIncline;
-            double C = xVector.Z * sinIncline - Math.Cos(m_radBetweenInclineAndX);
+            double C = xVector.Z * sinIncline - Math.Cos(Math.PI * m_angleBetweenInclineAndX / 180.0);
             double A2B2 = A*A + B*B;
 
             Vector3D zVector;

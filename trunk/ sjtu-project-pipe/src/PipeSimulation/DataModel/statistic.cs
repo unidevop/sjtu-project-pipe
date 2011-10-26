@@ -73,12 +73,12 @@ namespace PipeSimulation.DataModel
 
             // Alpha
             const string strAngleFormat = "{0:0.###}";
-            strString = string.Concat(strString, strChangeLine, string.Format(strAngleFormat, pipeInfo.LatitudinalInclineAngle), strChangeLine);
-            strString = string.Concat(strString, string.Format(strAngleFormat, pipeInfo.MaxAbsAlpha), strChangeLine);
+            strString = string.Concat(strString, strChangeLine, string.Format(strAngleFormat, pipeInfo.RollInclineAngle), strChangeLine);
+            strString = string.Concat(strString, string.Format(strAngleFormat, pipeInfo.MaxAbsRoll), strChangeLine);
 
             // Beta
-            strString = string.Concat(strString, strChangeLine, string.Format(strAngleFormat, pipeInfo.LongitudinalInclineAngle), strChangeLine);
-            strString = string.Concat(strString, string.Format(strAngleFormat, pipeInfo.MaxAbsBeta), strChangeLine);
+            strString = string.Concat(strString, strChangeLine, string.Format(strAngleFormat, pipeInfo.PitchInclineAngle), strChangeLine);
+            strString = string.Concat(strString, string.Format(strAngleFormat, pipeInfo.MaxAbsPitch), strChangeLine);
 
             // Connection Point
             int iPairIndex = 1;
@@ -155,12 +155,12 @@ namespace PipeSimulation.DataModel
             strString = string.Concat(strString, "GPS2(MM): ", strChangeLine);
 
             // Alpha
-            strString = string.Concat(strString, strChangeLine, "Alpha Deg:", strChangeLine);
-            strString = string.Concat(strString, "Max Alpha:", strChangeLine);
+            strString = string.Concat(strString, strChangeLine, "Roll Deg:", strChangeLine);
+            strString = string.Concat(strString, "Max Roll:", strChangeLine);
 
             // Beta
-            strString = string.Concat(strString, strChangeLine, "Beta Deg:", strChangeLine);
-            strString = string.Concat(strString, "Max Beta:", strChangeLine);
+            strString = string.Concat(strString, strChangeLine, "Pitch Deg:", strChangeLine);
+            strString = string.Concat(strString, "Max Pitch:", strChangeLine);
 
             // Connection Point
             int iPairIndex = 1;

@@ -30,7 +30,8 @@ namespace PipeSimulation.Utility
 
             // Get current pipe transformation
             //vtk.vtkTransform transform = currentPipeInfo.Matrix.ToVTKTransformation();
-            Matrix3D gpsMatrixInModeling = Matrix3D.Multiply(IApp.theApp.DataModel.ModelingUCStoGPSUCS.UCSTransformMatrix3dInvert, currentPipeInfo.Matrix);
+            Matrix3D gpsMatrixInModeling = Matrix3D.Multiply(IApp.theApp.DataModel.ModelingUCStoGPSUCS.UCSTransformMatrix3dInvert,
+                currentPipeInfo.GetMatrix(currentPipeModel.RollInclinometer.AngleBetweenInclineAndX, currentPipeModel.RollInclinometer.FlipAngle));
 
             vtk.vtkTransform transform = Utility.CPipeTransformUtility.TransformGPSMatrix(currentPipeModel.GPSUCS.UCSTransform, gpsMatrixInModeling.ToVTKTransformation());
             //Random ro = new Random();

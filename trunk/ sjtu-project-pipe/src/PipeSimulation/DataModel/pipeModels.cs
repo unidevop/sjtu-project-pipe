@@ -38,10 +38,12 @@ namespace PipeSimulation
             private PipeInfo m_finalPipeInfo = null;
             private IList<CPipeConnectionPointPair> m_connectionPointPairList = new List<CPipeConnectionPointPair>();
             private CUCS m_gpsUCS = new CUCS();
+            private InclinometerInfo m_rollInclinometer;
 
             public CPipeModel() : base(null)
             {
                 Status = PipeStatus.eNotStartedYet;
+                m_rollInclinometer = new InclinometerInfo(this);
             }
 
             // Parameters
@@ -128,6 +130,26 @@ namespace PipeSimulation
                    {
                        m_gpsUCS.ReadFromXMLNode(gpsUCSNode);
                    }
+
+                   // Read Inclinometer Info
+                   XmlNode inclinometerNode = pipeNode.SelectSingleNode(ModelXMLDefinition.pipeInclinometer);
+                   if (inclinometerNode != null)
+                   {
+                       bool hasRollInclinometer = false;
+                       foreach (XmlAttribute attri in inclinometerNode.Attributes)
+                       {
+                           if (string.Compare(attri.Name, ModelXMLDefinition.pipeInclinometerType, true) == 0 &&
+                               string.Compare(attri.Value, ModelXMLDefinition.pipeInclinometerRoll, true) == 0)
+                           {
+                               hasRollInclinometer = true;
+                               break;
+                           }
+                       }
+
+                       if (hasRollInclinometer)
+                           m_rollInclinometer.ReadFromXMLNode(inclinometerNode);
+                   }
+                    
                 }
                 catch (SystemException ex)
                 {
@@ -405,11 +427,79 @@ namespace PipeSimulation
 
                     if (m_finalPipeInfo != null)
                     {
-                        Matrix3D gpsMatrixInModeling = Matrix3D.Multiply(IApp.theApp.DataModel.ModelingUCStoGPSUCS.UCSTransformMatrix3dInvert, m_finalPipeInfo.Matrix);
+                        Matrix3D gpsMatrixInModeling = Matrix3D.Multiply(IApp.theApp.DataModel.ModelingUCStoGPSUCS.UCSTransformMatrix3dInvert,
+                            m_finalPipeInfo.GetMatrix(RollInclinometer.AngleBetweenInclineAndX, RollInclinometer.FlipAngle));
 
                         m_transFormFinal = Utility.CPipeTransformUtility.TransformGPSMatrix(GPSUCS.UCSTransform, gpsMatrixInModeling.ToVTKTransformation());
                     }
                 }
+            }
+
+            public InclinometerInfo RollInclinometer
+            {
+                get
+                {
+                    return m_rollInclinometer;
+                }
+            }
+        }
+
+        public struct InclinometerInfo
+        {
+            CPipeModel m_pipeModel;
+            private Vector3D m_dir;
+            private bool m_flipAngle;
+            private double m_angleBetweenInclineAndX;
+
+            public Vector3D Dir
+            {
+                get
+                {
+                    return m_dir;
+                }
+            }
+
+            public bool FlipAngle
+            {
+                get
+                {
+                    return m_flipAngle;
+                }
+            }
+
+            public double AngleBetweenInclineAndX
+            {
+                get
+                {
+                    return m_angleBetweenInclineAndX;
+                }
+            }
+
+            internal InclinometerInfo(CPipeModel pipeModel)
+            {
+                m_pipeModel = pipeModel;
+                m_dir = new Vector3D(0, 1, 0);
+                m_flipAngle = false;
+                m_angleBetweenInclineAndX = 90.0;
+            }
+
+            internal void ReadFromXMLNode(XmlNode node)
+            {
+                // Read the dir node
+                XmlNode dirNode = node.SelectSingleNode(ModelXMLDefinition.pipeInclinometerDir);
+                CPoint3D dir = CPoint3DSerializer.ReadPoint(dirNode);
+
+                m_dir = new Vector3D(dir.X, dir.Y, dir.Z);
+                m_dir.Normalize();
+
+                // Read the FlipAngle node
+                XmlNode flipAngleNode = node.SelectSingleNode(ModelXMLDefinition.pipeInclinometerFlipAngle);
+                m_flipAngle = Boolean.Parse(flipAngleNode.InnerText);
+
+                //  compute angleBetweenInclineAndX
+                Vector3D xDir = new Vector3D(1, 0, 0) * m_pipeModel.GPSUCS.UCSTransformMatrix3d;
+
+                m_angleBetweenInclineAndX = Vector3D.AngleBetween(xDir, m_dir);
             }
         }
     }
