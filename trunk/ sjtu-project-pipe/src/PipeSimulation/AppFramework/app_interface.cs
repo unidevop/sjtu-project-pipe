@@ -35,8 +35,6 @@ namespace PipeSimulation
             abstract public IVideoWriter VideoWriter { get; }
             abstract public CPipeConnectionIndicator PipeConnectionIndicator { get; }
             abstract public ConnectionConfig ConnectionCfg { get; }
-            abstract public CFillSimulationEngine FillSimulationEngine { get; }
-            abstract public CZhujiangSimulationEngine ZhujiangSimulationEngine { get; }
 
             public static IApp theApp
             {

@@ -30,8 +30,6 @@ namespace PipeSimulation.PipeApp
         private IHistoryDataQuery m_historyQuery = null;
         private CPipeConnectionIndicator m_PipeConnectionIndicator = null;
         private ConnectionConfig m_connectionCfg = new ConnectionConfig();
-        private CFillSimulationEngine m_fillSimEngine = new CFillSimulationEngine(new CFillSimScaleImpl());
-        private CZhujiangSimulationEngine m_ZhujiangSimulationEngine = new CZhujiangSimulationEngine(new CZhujiangSimScaleImpl());
 
         public AppImpl(MainUI mainUI)
         {
@@ -204,16 +202,6 @@ namespace PipeSimulation.PipeApp
             catch (NullReferenceException)
             {
             }
-        }
-
-        public override CFillSimulationEngine FillSimulationEngine 
-        {
-            get { return m_fillSimEngine; }
-        }
-
-        public override CZhujiangSimulationEngine ZhujiangSimulationEngine
-        {
-            get { return m_ZhujiangSimulationEngine; }
         }
 
         public override void RenderScene()
