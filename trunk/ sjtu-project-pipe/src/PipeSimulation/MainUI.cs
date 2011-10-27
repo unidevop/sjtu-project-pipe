@@ -910,6 +910,7 @@ namespace PipeSimulation
             new CConnectionSettingCommand(IApp.theApp.CommandManager);
             new CSettingsCommand(IApp.theApp.CommandManager);
             new CReplaySimulationCommand(IApp.theApp.CommandManager);
+            new CExportCurrentPipeInfoCmd(IApp.theApp.CommandManager);
 
             IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kSwitchActiveRender, null);
         }
@@ -2131,6 +2132,17 @@ namespace PipeSimulation
         private void AngleWarningToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kAngleWarningConfig, AngleWarningToolStripMenuItem);
+        }
+
+        private void ExportCurrentPipeInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kExportCurrentPipeInfo, ExportCurrentPipeInfoToolStripMenuItem);
+        }
+
+
+        private void fileToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            ExportCurrentPipeInfoToolStripMenuItem.Enabled = (IApp.theApp.DataDriven.CurrentData != null);
         }
 
         private void showActiveRendererMaximize_Click(object sender, EventArgs e)

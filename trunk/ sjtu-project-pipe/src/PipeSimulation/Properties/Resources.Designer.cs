@@ -220,6 +220,24 @@ namespace PipeSimulation.Properties {
         }
         
         /// <summary>
+        ///   查找类似 文本文档|*.txt 的本地化字符串。
+        /// </summary>
+        internal static string IDS_EXPORT_PIPE_INFO_FILETER {
+            get {
+                return ResourceManager.GetString("IDS_EXPORT_PIPE_INFO_FILETER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 输出当前沉放信息 的本地化字符串。
+        /// </summary>
+        internal static string IDS_EXPORT_PIPE_INFO_TITLE {
+            get {
+                return ResourceManager.GetString("IDS_EXPORT_PIPE_INFO_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 请联系开发者关于以下信息: 的本地化字符串。
         /// </summary>
         internal static string IDS_FATAL_ERROR_TEXT {
@@ -306,6 +324,51 @@ namespace PipeSimulation.Properties {
         internal static string IDS_PIPE_INDEX {
             get {
                 return ResourceManager.GetString("IDS_PIPE_INDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 侧滚角: {0} 最大侧滚角: {1} 俯仰角: {2} 最大俯仰角: {3} 的本地化字符串。
+        /// </summary>
+        internal static string IDS_PIPE_INFO_ANGLE {
+            get {
+                return ResourceManager.GetString("IDS_PIPE_INFO_ANGLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 第{0}个对接点：距离{1}, X分量{2}, Y分量{3}, Z分量{4} 的本地化字符串。
+        /// </summary>
+        internal static string IDS_PIPE_INFO_CONNECTION_PAIR {
+            get {
+                return ResourceManager.GetString("IDS_PIPE_INFO_CONNECTION_PAIR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 沉放时间: {0} 的本地化字符串。
+        /// </summary>
+        internal static string IDS_PIPE_INFO_DATE_TIME {
+            get {
+                return ResourceManager.GetString("IDS_PIPE_INFO_DATE_TIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 第1个GPS坐标信息: {0} 的本地化字符串。
+        /// </summary>
+        internal static string IDS_PIPE_INFO_GPS1 {
+            get {
+                return ResourceManager.GetString("IDS_PIPE_INFO_GPS1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 第2个GPS坐标信息: {0} 的本地化字符串。
+        /// </summary>
+        internal static string IDS_PIPE_INFO_GPS2 {
+            get {
+                return ResourceManager.GetString("IDS_PIPE_INFO_GPS2", resourceCulture);
             }
         }
         

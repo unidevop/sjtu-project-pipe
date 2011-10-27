@@ -67,6 +67,7 @@ namespace PipeSimulation
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AngleWarningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExportCurrentPipeInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showPerspectiveCamera = new System.Windows.Forms.ToolStripMenuItem();
@@ -362,10 +363,11 @@ namespace PipeSimulation
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            m_settingsMenuItem, /*m_connSettingMenuItem,this.AngleWarningToolStripMenuItem,*/ toolStripSeparator4, this.exitToolStripMenuItem});
+            m_settingsMenuItem, /*m_connSettingMenuItem,this.AngleWarningToolStripMenuItem,*/ ExportCurrentPipeInfoToolStripMenuItem, toolStripSeparator4, this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "系统(&S)";
+            this.fileToolStripMenuItem.DropDownOpening += new EventHandler(fileToolStripMenuItem_DropDownOpening);
             // 
             // exitToolStripMenuItem
             // 
@@ -381,6 +383,13 @@ namespace PipeSimulation
             this.AngleWarningToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.AngleWarningToolStripMenuItem.Text = "倾角预警信息配置";
             this.AngleWarningToolStripMenuItem.Click += new System.EventHandler(this.AngleWarningToolStripMenuItem_Click);
+            // 
+            // ExportCurrentPipeInfoToolStripMenuItem
+            // 
+            this.ExportCurrentPipeInfoToolStripMenuItem.Name = "ExportCurrentPipeInfoToolStripMenuItem";
+            this.ExportCurrentPipeInfoToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.ExportCurrentPipeInfoToolStripMenuItem.Text = "输出当前沉放信息";
+            this.ExportCurrentPipeInfoToolStripMenuItem.Click += new System.EventHandler(this.ExportCurrentPipeInfoToolStripMenuItem_Click);
             // 
             // modeToolStripMenuItem
             // 
@@ -847,6 +856,7 @@ namespace PipeSimulation
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AngleWarningToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ExportCurrentPipeInfoToolStripMenuItem;
 
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
