@@ -231,14 +231,14 @@
                 <EndConnectionPoint x ="162264.6574" y ="-40351.4949" z ="-28127.7697"/>
             </ConnectionPointPair>
             <Inclinometer type="roll">
-                <Dir x ="-24.7689" y ="5865.8476" z ="-4.6085"/>
+                <Dir x ="9.5085" y ="974.9662" z ="0.8639"/>
                 <!-- flip incline angle value -->
                 <FlipAngle>false</FlipAngle>
             </Inclinometer>
             <GPSUCS>
                 <Origin x ="229077.7855" y ="-20311.6664" z ="6663.3377"/>
                 <XAxis x ="-58856.1504" y ="1427.3624" z ="-5886.0916"/>
-                <YAxis x ="-24.7689" y ="5865.8476" z ="-4.6085"/>
+                <YAxis x ="9.5085" y ="974.9662" z ="0.8639"/>
             </GPSUCS>
         </Pipe>
 
@@ -465,14 +465,14 @@
                 <EndConnectionPoint x ="77171.4506" y ="-41840.2632" z ="-28519.6919"/>
             </ConnectionPointPair>
             <Inclinometer type="roll">
-                <Dir x ="-11.024" y ="2610.7521" z ="-2.0517"/>
+                <Dir x ="0.3448" y ="211.3446" z ="0.0768"/>
                 <!-- flip incline angle value -->
                 <FlipAngle>false</FlipAngle>
             </Inclinometer>
             <GPSUCS>
                 <Origin x ="145335.8732" y ="-18766.0125" z ="2438.1428"/>
                 <XAxis x ="-58891.6911" y ="-250.7006" z ="-2580.0749"/>
-                <YAxis x ="-11.024" y ="2610.7521" z ="-2.0517"/>
+                <YAxis x ="0.3448" y ="211.3446" z ="0.0768"/>
             </GPSUCS>
         </Pipe>
 
@@ -717,14 +717,14 @@
                 <EndConnectionPoint x="0" y ="0" z ="0"/>
             </ConnectionPointPair>
             <Inclinometer type="roll">
-                <Dir x ="-674.8379" y ="22181.1757" z ="15.253"/>
+                <Dir x ="-10.8389" y ="258.9493" z ="-0.1056"/>
                 <!-- flip incline angle value -->
                 <FlipAngle>false</FlipAngle>
             </Inclinometer>
             <GPSUCS>
                 <Origin x ="64151.7326" y ="-19414.5728" z ="2858.1149"/>
                 <XAxis x ="-59039.2233" y ="-1796.6327" z ="624.1926"/>
-                <YAxis x ="-674.8379" y ="22181.1757" z ="15.253"/>
+                <YAxis x ="-10.8389" y ="258.9493" z ="-0.1056"/>
             </GPSUCS>
         </Pipe>
 
