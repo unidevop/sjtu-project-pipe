@@ -24,26 +24,44 @@ namespace DataSimulation
 
         private int m_curPipeId = -1;
 
-        public PipeDataSim(string connString, TimeSpan writeInterval,
-                           DateTime startTime, DateTime endTime, TimeSpan measureInterval, TimeSpan backfillTimeSpan,
-                           PipeDataGenerator[] pipeDataGenArray)
+        public PipeDataSim(string connString)
         {
-            if ((startTime <= endTime) || (backfillTimeSpan >= endTime - startTime) ||
-                (measureInterval >= endTime - startTime) || pipeDataGenArray.Length == 0)
+            PipeConfig pipeCfg = PipeConfig.Instance();
+
+            TimeSpan writeInterval = pipeCfg.WriteInterval;
+            DateTime startTime = pipeCfg.MeasureStartTime;
+            DateTime endTime = pipeCfg.MeasureEndTime;
+            TimeSpan measureInterval = pipeCfg.MeasureInterval;
+            TimeSpan backfillTimeSpan = pipeCfg.BackfillTimeSpan;
+
+            if ((startTime > endTime) || (backfillTimeSpan >= endTime - startTime) ||
+                (measureInterval >= endTime - startTime))
                 new Exception("Invalid input");
 
             m_connString = connString;
             m_timer = new Timer(writeInterval.TotalMilliseconds);
 
-            m_pipeDataGenArray = pipeDataGenArray;
+            m_pipeDataGenArray = new PipeDataGenerator[pipeCfg.PipeTracks.PipeCollection.Count];
 
+            List<Point3D> Pts1 = new List<Point3D>();
+            List<Point3D> Pts2 = new List<Point3D>();
             TimeSpan pipeMeasureSpan = TimeSpan.FromSeconds((endTime - startTime).TotalSeconds / m_pipeDataGenArray.Length);
             for (int idx = 0; idx < m_pipeDataGenArray.Length; idx++ )
             {
-                m_pipeDataGenArray[idx].MeasureInterval = measureInterval;
-                m_pipeDataGenArray[idx].MeasureStartTime = startTime + TimeSpan.FromSeconds(idx * pipeMeasureSpan.TotalSeconds);
-                m_pipeDataGenArray[idx].MeasureEndTime = m_pipeDataGenArray[idx].MeasureStartTime + pipeMeasureSpan;
-                m_pipeDataGenArray[idx].BackfillTime = m_pipeDataGenArray[idx].MeasureEndTime - backfillTimeSpan;
+                DateTime measureStartTime = startTime + TimeSpan.FromSeconds(idx * pipeMeasureSpan.TotalSeconds);
+                DateTime measureEndTime = measureStartTime + pipeMeasureSpan;
+                DateTime backfillTime = measureEndTime - backfillTimeSpan;
+
+                Pts1.Clear();
+                Pts2.Clear();
+
+                foreach (PipeTrack pipeTrack in pipeCfg.PipeTracks.PipeCollection)
+                {
+                    Pts1.Add(pipeTrack[0].Value);
+                    Pts1.Add(pipeTrack[1].Value);
+                }
+                m_pipeDataGenArray[idx] = new PipeDataGenerator(idx+1, Pts1, Pts2,
+                    measureStartTime, measureEndTime, backfillTime, measureInterval);
             }
             //Connect();
         }
@@ -182,6 +200,85 @@ namespace DataSimulation
 
     class PipeDataGenerator
     {
+        private PipeDataSectionGenerator[] m_pipeDataSectionGenerator = null;
+
+        private int m_curSectionIdx = -1;
+
+        //int m_id;
+        //Point3D m_startPt1;
+        //Point3D m_startPt2;
+        //Point3D m_endPt1;
+        //Point3D m_endPt2;
+
+        //private DateTime m_measureStartTime = DateTime.Now;
+        //private DateTime m_measureEndTime = DateTime.Now;
+
+        //private TimeSpan m_measureInterval = TimeSpan.FromMilliseconds(500);
+        //private DateTime m_backfillTime = DateTime.Now;
+
+        public PipeDataGenerator(int id, List<Point3D> Pts1, List<Point3D> Pts2,
+            DateTime startTime, DateTime endTime, DateTime backfillTime, TimeSpan measureInterval)
+        {
+            if ((startTime > endTime) || (backfillTime > endTime || backfillTime < startTime) ||
+                (measureInterval >= endTime - startTime) || (Pts1.Count != Pts2.Count) || (Pts1.Count == 0))
+                new Exception("Invalid input");
+
+            // compute track distances
+            double overalDistance = 0.0;
+            double [] trackDistances = new double[Pts1.Count - 1];
+
+            for (int idx = 0; idx < trackDistances.Length; idx++ )
+            {
+                trackDistances[idx] = (Pts1[idx + 1] - Pts1[idx]).Length;
+                overalDistance += trackDistances[idx];
+            }
+
+            TimeSpan motionTimeSpan = backfillTime - startTime;
+
+            m_pipeDataSectionGenerator = new PipeDataSectionGenerator[Pts1.Count - 1];
+            for (int idx = 0; idx < m_pipeDataSectionGenerator.Length; idx++)
+            {
+                bool isLastPipe = (idx == m_pipeDataSectionGenerator.Length - 1);
+
+                PipeDataSectionGenerator pipeDataSection = new PipeDataSectionGenerator(id,
+                    Pts1[idx], Pts2[idx], Pts1[idx+1], Pts2[idx+2]);
+
+                pipeDataSection.MeasureInterval = measureInterval;
+                pipeDataSection.MeasureStartTime = (idx == 0) ? startTime :
+                    m_pipeDataSectionGenerator[idx - 1].MeasureEndTime;// startTime + TimeSpan.FromSeconds(idx * pipeMeasureSpan.TotalSeconds);
+                pipeDataSection.MeasureEndTime = isLastPipe ? endTime :
+                    pipeDataSection.MeasureStartTime + TimeSpan.FromSeconds(motionTimeSpan.TotalSeconds * trackDistances[idx]/overalDistance);
+                pipeDataSection.BackfillTime = isLastPipe ? backfillTime : pipeDataSection.MeasureEndTime;
+
+                m_pipeDataSectionGenerator[idx] = pipeDataSection;
+            }
+        }
+
+        public bool IsEnded
+        {
+            get
+            {
+                return m_curSectionIdx >= m_pipeDataSectionGenerator.Length;
+            }
+        }
+
+        public void GeneratePipeData(SqlConnection dbConn)
+        {
+            if (m_curSectionIdx < 0)
+                m_curSectionIdx = 0;
+
+            if (!IsEnded)
+            {
+                m_pipeDataSectionGenerator[m_curSectionIdx].GeneratePipeData(dbConn);
+
+                if (m_pipeDataSectionGenerator[m_curSectionIdx].IsEnded)
+                    ++m_curSectionIdx;
+            }
+        }
+    }
+
+    class PipeDataSectionGenerator
+    {
         SqlCommand m_sqlCmd = new SqlCommand();
         int m_id;
         Point3D m_startPt1;
@@ -199,7 +296,7 @@ namespace DataSimulation
 
         private static readonly double m_maxAngle = 6.0;
 
-        public PipeDataGenerator(int id, Point3D startPt1, Point3D startPt2, Point3D endPt1, Point3D endPt2)
+        public PipeDataSectionGenerator(int id, Point3D startPt1, Point3D startPt2, Point3D endPt1, Point3D endPt2)
         {
             m_id = id;
             m_startPt1 = startPt1;
@@ -456,7 +553,7 @@ namespace DataSimulation
             //Console.WriteLine("Angle1: {0}, Angle2: {1}", newRow["Angle1"], newRow["Angle2"]);
         }
     }
-
+    #region old implement
 #if OLD_IMPL
     class PipeDataSim : IDisposable
     {
@@ -706,4 +803,5 @@ namespace DataSimulation
         }
     }
 #endif
+    #endregion
 }
