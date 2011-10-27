@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MeasureRecord.cs" />
+    <Compile Include="PipeConfig.cs" />
     <Compile Include="PipeDataSim.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
