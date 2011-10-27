@@ -310,4 +310,25 @@
   <data name="IDS_ANGLE_NO_WARNING" xml:space="preserve">
     <value>倾角在正常范围内。</value>
   </data>
+  <data name="IDS_EXPORT_PIPE_INFO_FILETER" xml:space="preserve">
+    <value>文本文档|*.txt</value>
+  </data>
+  <data name="IDS_EXPORT_PIPE_INFO_TITLE" xml:space="preserve">
+    <value>输出当前沉放信息</value>
+  </data>
+  <data name="IDS_PIPE_INFO_ANGLE" xml:space="preserve">
+    <value>侧滚角: {0} 最大侧滚角: {1} 俯仰角: {2} 最大俯仰角: {3}</value>
+  </data>
+  <data name="IDS_PIPE_INFO_GPS1" xml:space="preserve">
+    <value>第1个GPS坐标信息: {0}</value>
+  </data>
+  <data name="IDS_PIPE_INFO_GPS2" xml:space="preserve">
+    <value>第2个GPS坐标信息: {0}</value>
+  </data>
+  <data name="IDS_PIPE_INFO_CONNECTION_PAIR" xml:space="preserve">
+    <value>第{0}个对接点：距离{1}, X分量{2}, Y分量{3}, Z分量{4}</value>
+  </data>
+  <data name="IDS_PIPE_INFO_DATE_TIME" xml:space="preserve">
+    <value>沉放时间: {0}</value>
+  </data>
 </root>

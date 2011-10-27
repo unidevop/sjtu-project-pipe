@@ -102,6 +102,7 @@
     <Compile Include="Commands\command_id.cs" />
     <Compile Include="Commands\command_impl.cs" />
     <Compile Include="Commands\connectionSettingCommand.cs" />
+    <Compile Include="Commands\exportPipeInfoCommand.cs" />
     <Compile Include="Commands\fillSimulationCommand.cs" />
     <Compile Include="Commands\replaySimulationCommand.cs" />
     <Compile Include="Commands\savepicturecommand.cs" />

@@ -26,6 +26,7 @@
             kConnectionSetting,
             kSettings,
             kReplaySimulation,
+            kExportCurrentPipeInfo,
         }
     }
 }
