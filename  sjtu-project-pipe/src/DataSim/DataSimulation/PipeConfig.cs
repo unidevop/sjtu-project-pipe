@@ -81,12 +81,12 @@ namespace DataSimulation
         //{
         //}
 
-        [ConfigurationProperty("pipes", IsRequired = true)]
+        [ConfigurationProperty("", IsDefaultCollection = true)]
         public PipeElementCollection PipeCollection
         {
             get
             {
-                return (PipeElementCollection)this["pipes"];
+                return (PipeElementCollection)this[""];
             }
         }
     }
@@ -119,29 +119,45 @@ namespace DataSimulation
             return ((PipeElement)element).Id;
         }
 
-        [ConfigurationProperty("pipe", IsRequired = true)]
-        public PipeElement Pipe
+        public override ConfigurationElementCollectionType CollectionType
         {
             get
             {
-                return (PipeElement)this["pipe"];
+                return ConfigurationElementCollectionType.BasicMap;
             }
         }
+
+        protected override string ElementName
+        {
+            get
+            {
+                return "pipe";
+            }
+        }
+
+        //[ConfigurationProperty("pipe", IsRequired = true)]
+        //public PipeElement Pipe
+        //{
+        //    get
+        //    {
+        //        return (PipeElement)this["pipe"];
+        //    }
+        //}
     }
 
     internal class PipeElement : ConfigurationElementCollection
     {
         [ConfigurationProperty("id", DefaultValue = "1", IsKey=true, IsRequired = true)]
-        [IntegerValidator(MinValue = 1, MaxValue = 3, ExcludeRange = false)]
+        [IntegerValidator(MinValue = 0, MaxValue = 4, ExcludeRange = false)]
         public int Id
         {
             get
             {
-                return (int)this["id"];
+                return (int)base["id"];
             }
             set
             {
-                this["id"] = value;
+                base["id"] = value;
             }
         }
 
@@ -168,22 +184,44 @@ namespace DataSimulation
 
         protected override object GetElementKey(ConfigurationElement element)
         {
-            return null;
-            //return ((PipeTrack)element).Id;
+            return ((PipeTrack)element).Index;
         }
 
-        [ConfigurationProperty("pos", IsRequired = true)]
-        public PipeTrack TrackPos
+        public override ConfigurationElementCollectionType CollectionType
         {
             get
             {
-                return (PipeTrack)this["pos"];
+                return ConfigurationElementCollectionType.BasicMap;
             }
         }
+
+        protected override string ElementName
+        {
+            get
+            {
+                return "pos";
+            }
+        }
+
+        //[ConfigurationProperty("pos", IsRequired = true)]
+        //public PipeTrack TrackPos
+        //{
+        //    get
+        //    {
+        //        return (PipeTrack)this["pos"];
+        //    }
+        //}
     }
 
     internal class PipeTrack : ConfigurationElementCollection
     {
+        [ConfigurationProperty("index", IsKey = true, IsRequired = true)]
+        [IntegerValidator(MinValue = 0, ExcludeRange = false)]
+        public int Index
+        {
+            get { return (int)base["index"]; }
+        }
+
         public TrackPoint this[int index]
         {
             get
@@ -210,23 +248,39 @@ namespace DataSimulation
             return ((TrackPoint)element).Index;
         }
 
-        [ConfigurationProperty("point", IsRequired = true)]
-        public TrackPoint PointCollection
+        public override ConfigurationElementCollectionType CollectionType
         {
             get
             {
-                return (TrackPoint)this["point"];
+                return ConfigurationElementCollectionType.BasicMap;
             }
         }
+
+        protected override string ElementName
+        {
+            get
+            {
+                return "point";
+            }
+        }
+
+        //[ConfigurationProperty("point", IsRequired = true, IsDefaultCollection=true)]
+        //public TrackPoint PointCollection
+        //{
+        //    get
+        //    {
+        //        return (TrackPoint)this["point"];
+        //    }
+        //}
     }
 
     internal class TrackPoint : ConfigurationElement
     {
         [ConfigurationProperty("index", IsKey = true, IsRequired = true)]
-        //[IntegerValidator(MinValue = 1, MaxValue = 2, ExcludeRange = true)]
+        [IntegerValidator(MinValue = 0, MaxValue = 3, ExcludeRange = false)]
         public int Index
         {
-            get { return (int)this["index"]; }
+            get { return (int)base["index"]; }
         }
 
         [ConfigurationProperty("X", IsRequired = true)]

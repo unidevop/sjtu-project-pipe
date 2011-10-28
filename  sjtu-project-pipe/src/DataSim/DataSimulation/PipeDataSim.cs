@@ -55,10 +55,10 @@ namespace DataSimulation
                 Pts1.Clear();
                 Pts2.Clear();
 
-                foreach (PipeTrack pipeTrack in pipeCfg.PipeTracks.PipeCollection)
+                foreach (PipeTrack pipeTrack in pipeCfg.PipeTracks.PipeCollection[idx])
                 {
                     Pts1.Add(pipeTrack[0].Value);
-                    Pts1.Add(pipeTrack[1].Value);
+                    Pts2.Add(pipeTrack[1].Value);
                 }
                 m_pipeDataGenArray[idx] = new PipeDataGenerator(idx+1, Pts1, Pts2,
                     measureStartTime, measureEndTime, backfillTime, measureInterval);
@@ -241,7 +241,7 @@ namespace DataSimulation
                 bool isLastPipe = (idx == m_pipeDataSectionGenerator.Length - 1);
 
                 PipeDataSectionGenerator pipeDataSection = new PipeDataSectionGenerator(id,
-                    Pts1[idx], Pts2[idx], Pts1[idx+1], Pts2[idx+2]);
+                    Pts1[idx], Pts2[idx], Pts1[idx+1], Pts2[idx+1]);
 
                 pipeDataSection.MeasureInterval = measureInterval;
                 pipeDataSection.MeasureStartTime = (idx == 0) ? startTime :
