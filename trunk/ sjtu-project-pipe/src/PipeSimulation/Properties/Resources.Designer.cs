@@ -427,6 +427,15 @@ namespace PipeSimulation.Properties {
         }
         
         /// <summary>
+        ///   查找类似 监测中 的本地化字符串。
+        /// </summary>
+        internal static string IDS_STATUS_MONITOR {
+            get {
+                return ResourceManager.GetString("IDS_STATUS_MONITOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 现在运行的是【{0}】。 的本地化字符串。
         /// </summary>
         internal static string IDS_STATUS_OBSERVER_MODE {
@@ -441,6 +450,15 @@ namespace PipeSimulation.Properties {
         internal static string IDS_STATUS_READY {
             get {
                 return ResourceManager.GetString("IDS_STATUS_READY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 正在回放 的本地化字符串。
+        /// </summary>
+        internal static string IDS_STATUS_REPLAY {
+            get {
+                return ResourceManager.GetString("IDS_STATUS_REPLAY", resourceCulture);
             }
         }
         

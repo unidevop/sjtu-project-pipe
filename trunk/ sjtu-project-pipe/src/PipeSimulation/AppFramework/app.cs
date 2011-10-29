@@ -192,7 +192,19 @@ namespace PipeSimulation.PipeApp
 
                 if (string.IsNullOrEmpty(statusBarText))
                 {
-                    labelControl.Text = global::PipeSimulation.Properties.Resources.IDS_STATUS_READY;
+                    ObserverMode.ObserverMode observerMode = m_observerModeManager.ActiveModeType;
+                    if (observerMode == ObserverMode.ObserverMode.eMonitorMode)
+                    {
+                        labelControl.Text = global::PipeSimulation.Properties.Resources.IDS_STATUS_MONITOR;
+                    }
+                    else if (observerMode == ObserverMode.ObserverMode.eReplayMode)
+                    {
+                        labelControl.Text = global::PipeSimulation.Properties.Resources.IDS_STATUS_REPLAY;
+                    }
+                    else
+                    {
+                        labelControl.Text = global::PipeSimulation.Properties.Resources.IDS_STATUS_READY;
+                    }
                 }
                 else
                 {

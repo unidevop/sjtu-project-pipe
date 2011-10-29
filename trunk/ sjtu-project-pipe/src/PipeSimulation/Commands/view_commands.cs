@@ -38,8 +38,6 @@ namespace PipeSimulation.Commands
         {
             IApp.theApp.vtkControl.MouseDown += new System.Windows.Forms.MouseEventHandler(vtkControl_MouseDown);
             IApp.theApp.vtkControl.SetInteractorStyleState(0); // for none
-
-            SetStatusBarText(Resources.IDS_STATUS_READY);
         }
 
         private void StopWatchEvents()

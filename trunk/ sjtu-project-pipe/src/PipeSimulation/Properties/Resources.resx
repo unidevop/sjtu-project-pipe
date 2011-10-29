@@ -331,4 +331,10 @@
   <data name="IDS_PIPE_INFO_DATE_TIME" xml:space="preserve">
     <value>沉放时间: {0}</value>
   </data>
+  <data name="IDS_STATUS_MONITOR" xml:space="preserve">
+    <value>监测中</value>
+  </data>
+  <data name="IDS_STATUS_REPLAY" xml:space="preserve">
+    <value>正在回放</value>
+  </data>
 </root>

@@ -75,6 +75,16 @@ namespace PipeSimulation
 
             // Update Database Status
             UpdateDatabaseStatus();
+
+            // Fix status text as one of Dr.Wang's wish list
+            if (IApp.theApp.CommandManager.ActiveComamnd != null)
+            {
+                IApp.theApp.SetStatusBarText(IApp.theApp.CommandManager.ActiveComamnd.StatusBarText);
+            }
+            else
+            {
+                IApp.theApp.SetStatusBarText(null);
+            }
         }
 
         private void UpdateAngleWarning()
