@@ -233,7 +233,13 @@ namespace PipeSimulation
 
             public ICommand ActiveComamnd
             {
-                get { return m_stackActiveCommands.Peek(); }
+                get 
+                {
+                    if (m_stackActiveCommands.Count != 0)
+                        return m_stackActiveCommands.Peek();
+                    else
+                        return null;
+                }
             }
 
             public void StopActiveCommand()
