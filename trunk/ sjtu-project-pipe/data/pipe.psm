@@ -741,35 +741,29 @@
         <ModelPath>models\anmai.3ds</ModelPath>
     </Model>
     <Model>
-        <ModelPath>models\buiding.3ds</ModelPath>
+        <ModelPath>models\building3.3ds</ModelPath>
     </Model>
-    <Model>
+	<!--<Model>
+		<ModelPath>models\building4.3ds</ModelPath>
+	</Model>-->
+	<Model>
         <ModelPath>models\factory.3ds</ModelPath>
     </Model>
     <Model>
         <ModelPath>models\ganwu.3ds</ModelPath>
     </Model>
     <Model>
-        <ModelPath>models\grass.3ds</ModelPath>
+        <ModelPath>models\ground.3ds</ModelPath>
     </Model>
     <Model>
         <ModelPath>models\jicao.3ds</ModelPath>
     </Model>
     <Model>
-        <ModelPath>models\guolu.3ds</ModelPath>
+        <ModelPath>models\ships.3ds</ModelPath>
     </Model>
     <Model>
-        <ModelPath>models\huatan.3ds</ModelPath>
-    </Model>
-    <Model>
-        <ModelPath>models\road.3ds</ModelPath>
-    </Model>
-    <Model>
-        <ModelPath>models\trees.3ds</ModelPath>
-    </Model>
-    <!--<Model>
         <ModelPath>models\water.3ds</ModelPath>
-    </Model>-->
+    </Model>
     <ModelingUCS>
         <Origin x ="0" y ="0" z ="0"/>
         <XAxis x ="1" y ="0" z ="0"/>
