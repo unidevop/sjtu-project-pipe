@@ -50,6 +50,7 @@ namespace PipeSimulation
             public static string ZhujiangModel { get { return /*MSG0*/"ZhujiangModel"; } }
             public static string Model { get { return /*MSG0*/"Model"; } }
             public static string FuboModel { get { return /*MSG0*/"FuboModel"; } }
+            public static string PipeStaticModel { get { return /*MSG0*/"PipeStaticModel"; } }
 
             public static string modelPath { get { return /*MSG0*/"ModelPath"; } }
 

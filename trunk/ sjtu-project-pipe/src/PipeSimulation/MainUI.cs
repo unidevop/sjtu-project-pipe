@@ -972,7 +972,7 @@ namespace PipeSimulation
                 XmlNodeList otherModels = xmlDoc.SelectNodes(ModelXMLDefinition.RootNode + /*MSG0*/"//" + ModelXMLDefinition.Model);
                 foreach (XmlNode otherModel in otherModels)
                 {
-                    CStaticModel staticModel = new CStaticModel();
+                    CStaticModel staticModel = new CStaticModel(null);
                     staticModel.ReadFromXMLNode(otherModel);
                    
                     // Add to static models

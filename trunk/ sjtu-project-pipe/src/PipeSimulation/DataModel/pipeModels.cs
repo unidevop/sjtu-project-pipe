@@ -115,6 +115,14 @@ namespace PipeSimulation
                        normalNode.ReadFromXMLNode(fuboNode);
                    }
 
+                   // Read the static model in ganwu
+                   XmlNode staticPipeModelNode = pipeNode.SelectSingleNode(ModelXMLDefinition.PipeStaticModel);
+                   if (staticPipeModelNode != null)
+                   {
+                       CPipeStaticModel staticPipeModel = new CPipeStaticModel(this);
+                       staticPipeModel.ReadFromXMLNode(staticPipeModelNode);
+                   }
+
                    // Read Connection Pair
                    XmlNodeList connectionPairNodes = pipeNode.SelectNodes(ModelXMLDefinition.pipeConnectionPointPair);
                    foreach (XmlNode connectionPairNode in connectionPairNodes)
@@ -238,6 +246,25 @@ namespace PipeSimulation
                 }
             }
 
+            // Pipe Static Model
+            public CPipeStaticModel PipeStaticModel
+            {
+                get
+                {
+                    List<CPipeStaticModel> pipeStaticModels = new List<CPipeStaticModel>();
+
+                    foreach (ISceneNode subNode in Children)
+                    {
+                        if (subNode is CPipeStaticModel)
+                        {
+                            pipeStaticModels.Add((CPipeStaticModel)subNode);
+                        }
+                    }
+
+                    if (pipeStaticModels.Count == 0) return null;
+                    return pipeStaticModels[0];
+                }
+            }
             //[System.Runtime.CompilerServices.IndexerName(/*MSG0*/"FillModel")]
             //public CFillModel this[int index]
             //{
@@ -367,6 +394,15 @@ namespace PipeSimulation
                     //    }
                     //}
 
+                    // show/hide the pipe static model
+                    foreach (ISceneNode node in Children)
+                    {
+                        if (node is CPipeStaticModel)
+                        {
+                            node.Visible = bNotStartedYet;
+                        }
+                    }
+
                     // show/hide the cable system
                     CCableSystem cableSystem = CableSystem;
                     if (cableSystem != null)
@@ -441,6 +477,17 @@ namespace PipeSimulation
                 {
                     return m_rollInclinometer;
                 }
+            }
+        }
+
+        /// <summary>
+        /// This class is a pipe static model.
+        /// </summary>
+        public class CPipeStaticModel : CStaticModel
+        {
+            public CPipeStaticModel(ISceneNode parentNode)
+                : base(parentNode)
+            {
             }
         }
 
