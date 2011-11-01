@@ -32,6 +32,9 @@
 #include "vtkFloatArray.h"
 #include "vtkPointData.h"
 #include "vtkTexture.h"
+#include <vtkstd/map>
+#include <vtkstd/algorithm>
+#include <vtkStdString.h>
 
 vtkCxxRevisionMacro(vtk3DSImporter, "$Revision: 1.38 $");
 vtkStandardNewMacro(vtk3DSImporter);
@@ -99,6 +102,30 @@ static float read_float (vtk3DSImporter *importer);
 static void read_point (vtk3DSImporter *importer, vtk3DSVector v);
 static char *read_string (vtk3DSImporter *importer);
 static void parse_matTextureMap (vtk3DSImporter *importer, vtk3DSChunk *mainchunk, vtk3DSMatProp* matProp);
+
+// This is a utility class to manager all the textures used by 3ds importer
+// It inherits from the map structure and the image file name is the key to this map.
+// This class can avoid load the same image multiple times to save the memory cost a lot.
+class vtk3dsTextureManager : public vtkstd::map<vtkStdString, vtkTexture*>
+{
+public:
+	vtk3dsTextureManager()
+	{
+	}
+
+	~vtk3dsTextureManager()
+	{
+		  // Free all the textures
+		  for (vtk3dsTextureManager::iterator itr = begin(); itr != end(); ++itr)
+		  {
+			  vtkTexture* pTexture = itr->second;
+			  pTexture->Delete();
+		  }
+	}
+};
+
+// Global variable to holds all 3ds object texture during the whole application.
+vtk3dsTextureManager mapTextures;
 
 vtk3DSImporter::vtk3DSImporter ()
 {
@@ -223,28 +250,54 @@ void vtk3DSImporter::ImportActors (vtkRenderer *renderer)
            strcpy(pEnd + 1, material->tex_map);
         }
 
-		// Initialize the texture
-		vtkBMPReader* bmpReader = vtkBMPReader::New();
-		vtkJPEGReader* jpgReader = vtkJPEGReader::New();
-		vtkTexture* atext = vtkTexture::New() ;
-		if (bmpReader->CanReadFile(sz))
+		// Try to see if the texture with this image file name already exist
+		vtkStdString mapFileName(sz);
+		vtkTexture* pTexture = NULL;
+		vtk3dsTextureManager::const_iterator cIter = mapTextures.find(mapFileName);
+		if (cIter == mapTextures.end())
 		{
-			bmpReader->SetFileName(sz);
-			atext->SetInputConnection( bmpReader->GetOutputPort() );
-		} 
-		else if ( jpgReader->CanReadFile(sz))
-		{
-			jpgReader->SetFileName(sz);
-			atext->SetInputConnection( jpgReader->GetOutputPort() );
-		}
-		atext->InterpolateOn();
-		actor->SetTexture(atext);
+			// Initialize the texture
+			vtkBMPReader* bmpReader = vtkBMPReader::New();
+			vtkJPEGReader* jpgReader = vtkJPEGReader::New();
+			vtkTexture* atext = vtkTexture::New() ;
+			if (bmpReader->CanReadFile(sz))
+			{
+				bmpReader->SetFileName(sz);
+				atext->SetInputConnection( bmpReader->GetOutputPort() );
+			} 
+			else if ( jpgReader->CanReadFile(sz))
+			{
+				jpgReader->SetFileName(sz);
+				atext->SetInputConnection( jpgReader->GetOutputPort() );
+			}
+			atext->InterpolateOn();
+			pTexture = atext;
+			
+			// Save this texture to map
+			mapTextures[mapFileName] = atext;
 
-		bmpReader->Delete();
-		jpgReader->Delete();
-		atext->Delete();
+			// Destory readers
+			bmpReader->Delete();
+			jpgReader->Delete();
+		}
+		else
+		{
+			pTexture = cIter->second;
+		}
+
+		// Set texture to actor
+		if (pTexture)
+		{
+			actor->SetTexture(pTexture);
+		}
 	}
   }
+
+  //for (TextureMap::iterator itr = mapTextures.begin(); itr != mapTextures.end(); ++itr)
+  //{
+	 // vtkTexture* pTexture = itr->second;
+	 // pTexture->Delete();
+  //}
 }
 
 vtkPolyData *vtk3DSImporter::GeneratePolyData (vtk3DSMesh *mesh)
