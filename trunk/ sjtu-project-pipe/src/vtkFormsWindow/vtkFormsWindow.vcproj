@@ -194,55 +194,53 @@
 			AssemblyName="System.Xml, Version=2.0.0.0, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
 			MinFrameworkVersion="131072"
 		/>
-		<AssemblyReference
-			RelativePath="..\..\thirdparties\VTK.Net\src\bin\Debug\vtkCommonDotNet.dll"
-			AssemblyName="vtkCommonDotNet, Version=0.0.0.0, processorArchitecture=x86"
-			MinFrameworkVersion="131072"
+		<ProjectReference
+			ReferencedProjectIdentifier="{60F63C48-3AFB-4878-BD73-EFB00CDE85C6}"
+			RelativePathToProject=".\Common\vtkCommonDotNet.vcproj"
 		/>
-		<AssemblyReference
-			RelativePath="..\..\thirdparties\VTK.Net\src\bin\Debug\vtkFilteringDotNet.dll"
-			AssemblyName="vtkFilteringDotNet, Version=0.0.0.0, processorArchitecture=x86"
-			MinFrameworkVersion="131072"
+		<ProjectReference
+			ReferencedProjectIdentifier="{C5C50907-A08A-40F5-AC19-1130C1FE03F4}"
+			RelativePathToProject=".\Filtering\vtkFilteringDotNet.vcproj"
 		/>
-		<AssemblyReference
-			RelativePath="..\..\thirdparties\VTK.Net\src\bin\Debug\vtkGenericFilteringDotNet.dll"
-			AssemblyName="vtkGenericFilteringDotNet, Version=0.0.0.0, processorArchitecture=x86"
-			MinFrameworkVersion="131072"
+		<ProjectReference
+			ReferencedProjectIdentifier="{57499001-3085-47B8-BCDE-754CEFD0478B}"
+			RelativePathToProject=".\GenericFiltering\vtkGenericFilteringDotNet.vcproj"
 		/>
-		<AssemblyReference
-			RelativePath="..\..\thirdparties\VTK.Net\src\bin\Debug\vtkGraphicsDotNet.dll"
-			AssemblyName="vtkGraphicsDotNet, Version=0.0.0.0, processorArchitecture=x86"
-			MinFrameworkVersion="131072"
+		<ProjectReference
+			ReferencedProjectIdentifier="{F8607B21-061B-4AA1-8972-DDA3C4EDDA02}"
+			RelativePathToProject=".\Graphics\vtkGraphicsDotNet.vcproj"
 		/>
-		<AssemblyReference
-			RelativePath="..\..\thirdparties\VTK.Net\src\bin\Debug\vtkHybridDotNet.dll"
-			AssemblyName="vtkHybridDotNet, Version=0.0.0.0, processorArchitecture=x86"
-			MinFrameworkVersion="131072"
+		<ProjectReference
+			ReferencedProjectIdentifier="{83C2153D-1890-4832-85BE-DF203E19A0FB}"
+			RelativePathToProject=".\Hybrid\vtkHybridDotNet.vcproj"
 		/>
-		<AssemblyReference
-			RelativePath="..\..\thirdparties\VTK.Net\src\bin\Debug\vtkImagingDotNet.dll"
-			AssemblyName="vtkImagingDotNet, Version=0.0.0.0, processorArchitecture=x86"
-			MinFrameworkVersion="131072"
+		<ProjectReference
+			ReferencedProjectIdentifier="{BC1DCFB0-4B13-4B61-8349-2C222946D23E}"
+			RelativePathToProject=".\Imaging\vtkImagingDotNet.vcproj"
 		/>
-		<AssemblyReference
-			RelativePath="..\..\thirdparties\VTK.Net\src\bin\Debug\vtkIODotNet.dll"
-			AssemblyName="vtkIODotNet, Version=0.0.0.0, processorArchitecture=x86"
-			MinFrameworkVersion="131072"
+		<ProjectReference
+			ReferencedProjectIdentifier="{772EDE95-C0DC-4B8F-8200-BB733AEA32DF}"
+			RelativePathToProject=".\IO\vtkIODotNet.vcproj"
 		/>
-		<AssemblyReference
-			RelativePath="..\..\thirdparties\VTK.Net\src\bin\Debug\vtkRenderingDotNet.dll"
-			AssemblyName="vtkRenderingDotNet, Version=0.0.0.0, processorArchitecture=x86"
-			MinFrameworkVersion="131072"
+		<ProjectReference
+			ReferencedProjectIdentifier="{23336713-4ECF-450F-A2B7-98D5CA318C3C}"
+			RelativePathToProject=".\Rendering\vtkRenderingDotNet.vcproj"
 		/>
-		<AssemblyReference
-			RelativePath="..\..\thirdparties\VTK.Net\src\bin\Debug\vtkVolumeRenderingDotNet.dll"
-			AssemblyName="vtkVolumeRenderingDotNet, Version=0.0.0.0, processorArchitecture=x86"
-			MinFrameworkVersion="131072"
+		<ProjectReference
+			ReferencedProjectIdentifier="{2532E55D-90A4-40F7-84E4-431645D2FECC}"
+			RelativePathToProject=".\VolumeRendering\vtkVolumeRendering.vcproj"
 		/>
-		<AssemblyReference
-			RelativePath="..\..\thirdparties\VTK.Net\src\bin\Debug\vtkWidgetsDotNet.dll"
-			AssemblyName="vtkWidgetsDotNet, Version=0.0.0.0, processorArchitecture=x86"
-			MinFrameworkVersion="131072"
+		<ProjectReference
+			ReferencedProjectIdentifier="{BCFD345C-C3C9-49C3-88CA-232AA5FFE94B}"
+			RelativePathToProject=".\VolumeRendering\vtkVolumeRenderingDotNet.vcproj"
+		/>
+		<ProjectReference
+			ReferencedProjectIdentifier="{90E12A62-26B1-422E-A4B1-1DE4C79F3FA3}"
+			RelativePathToProject=".\Widgets\vtkWidgetsDotNet.vcproj"
+		/>
+		<ProjectReference
+			ReferencedProjectIdentifier="{91D12CD1-B842-40E6-B6EB-B4A0CA79A7D0}"
+			RelativePathToProject=".\Wrapping\vtkWrapDotNet.vcproj"
 		/>
 	</References>
 	<Files>
