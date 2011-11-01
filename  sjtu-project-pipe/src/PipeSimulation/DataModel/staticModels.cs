@@ -14,8 +14,8 @@ namespace PipeSimulation
     {
         public class CStaticModel : CSceneNodeFromDisk
         {
-            public CStaticModel()
-                : base(null)
+            public CStaticModel(ISceneNode parentNode)
+                : base(parentNode)
             {
             }
 
