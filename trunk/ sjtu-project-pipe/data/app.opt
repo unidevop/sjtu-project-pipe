@@ -21,7 +21,7 @@
       <double>1</double>
       <double>0</double>
     </LineColor>
-    <ShowConnectionPair>false</ShowConnectionPair>
+    <ShowConnectionPair>true</ShowConnectionPair>
   </ConnectionPairOption>
   <ViewOptions>
     <GetBoundsOnlyForPipeModels>true</GetBoundsOnlyForPipeModels>
