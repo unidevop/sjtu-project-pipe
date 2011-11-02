@@ -366,11 +366,12 @@ namespace PipeSimulation
                 try
                 {
                     // Read the start pos
-                    XmlNode segmentIndexNode = node.SelectSingleNode(ModelXMLDefinition.CableSegmentIndex);
-                    XmlAttribute attrib = segmentIndexNode.Attributes[ModelXMLDefinition.CableStateIndex];
-                    int iStateIndex = int.Parse(attrib.Value);
-                    int iSegmentIndex = int.Parse(segmentIndexNode.InnerText);
-                    m_observingSegment = m_cableSystem.CableStates[iStateIndex].CableSegments[iSegmentIndex];
+                    XmlNode segmentNode = node.SelectSingleNode(ModelXMLDefinition.CableSegment);
+                    if (segmentNode != null)
+                    {
+                        m_observingSegment = new CCableSegment(null);
+                        m_observingSegment.ReadFromXMLNode(segmentNode);
+                    }
 
                     // Read the end pos
                     XmlNodeList cableLengthNodes = node.SelectNodes(ModelXMLDefinition.CableLength);
@@ -437,20 +438,6 @@ namespace PipeSimulation
                 }
 
                 return iStateIndex;
-
-
-                //if (Math.Abs(dDistance - m_dCableLength) <= 1e-6)
-                //{
-                //    m_eLengthEqual = LengthEqualEnum.eEqual;
-                //}
-                //else if (dDistance > m_dCableLength)
-                //{
-                //    m_eLengthEqual = LengthEqualEnum.eGreater;
-                //}
-                //else 
-                //{
-                //    m_eLengthEqual = LengthEqualEnum.eSmaller;
-                //}
             }
             #region ICableSwitchCondition member
 
@@ -458,6 +445,8 @@ namespace PipeSimulation
             {
                 try
                 {
+                    if (m_observingSegment == null) return;
+
                     // Switch to next state
                     int iStateIndex = FindStateByLength(CalculateCurrentDistance());
                     if (iStateIndex != -1)
