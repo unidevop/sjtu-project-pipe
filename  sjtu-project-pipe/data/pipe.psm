@@ -98,7 +98,7 @@
             <EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
           </CableSegment>
           <CableSegment>
-            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
+            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
             <EndPosition x ="241334.9390" y="-11335.9716" z="-13000.0000" DriveByPipe ="true"/>
           </CableSegment>
           <!--P21-P20-E1-3-->
@@ -112,7 +112,7 @@
           </CableSegment>
           <!--P18-P19-E1-4-->
           <CableSegment>
-            <StartPosition x ="246646.7148" y="-666.09.4412" z="400.0000" DriveByPipe ="false"/>
+            <StartPosition x ="246646.7148" y="-66609.4412" z="400.0000" DriveByPipe ="false"/>
             <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
           </CableSegment>
           <CableSegment>
@@ -150,7 +150,7 @@
           </CableSegment>
           <!--P18-P19-E1-4-->
           <CableSegment>
-            <StartPosition x ="246646.7148" y="-666.09.4412" z="400.0000" DriveByPipe ="false"/>
+            <StartPosition x ="246646.7148" y="-66609.4412" z="400.0000" DriveByPipe ="false"/>
             <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
           </CableSegment>
           <CableSegment>
@@ -188,7 +188,7 @@
           </CableSegment>
           <!--P18-P19-E1-4-->
           <CableSegment>
-            <StartPosition x ="246646.7148" y="-666.09.4412" z="400.0000" DriveByPipe ="false"/>
+            <StartPosition x ="246646.7148" y="-66609.4412" z="400.0000" DriveByPipe ="false"/>
             <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
           </CableSegment>
           <CableSegment>
@@ -338,7 +338,7 @@
             <EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
           </CableSegment>
           <CableSegment>
-            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
+            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
             <EndPosition x ="156784.6103" y="-10561.6729" z="-18000.0000" DriveByPipe ="true"/>
           </CableSegment>
         </CableState>
@@ -394,7 +394,7 @@
             <EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
           </CableSegment>
           <CableSegment>
-            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
+            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
             <EndPosition x ="156784.6103" y="-10561.6729" z="-18000.0000" DriveByPipe ="true"/>
           </CableSegment>
           <!--P21-P20-E2-3-->
@@ -408,7 +408,7 @@
           </CableSegment>
           <!--P18-P19-E2-4-->
           <CableSegment>
-            <StartPosition x ="246646.7148" y="-666.09.4412" z="400.0000" DriveByPipe ="false"/>
+            <StartPosition x ="246646.7148" y="-66609.4412" z="400.0000" DriveByPipe ="false"/>
             <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
           </CableSegment>
           <CableSegment>
@@ -446,7 +446,7 @@
           </CableSegment>
           <!--P18-P19-E2-4-->
           <CableSegment>
-            <StartPosition x ="246646.7148" y="-666.09.4412" z="400.0000" DriveByPipe ="false"/>
+            <StartPosition x ="246646.7148" y="-66609.4412" z="400.0000" DriveByPipe ="false"/>
             <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
           </CableSegment>
           <CableSegment>
@@ -484,7 +484,7 @@
           </CableSegment>
           <!--P18-P19-E2-4-->
           <CableSegment>
-            <StartPosition x ="246646.7148" y="-666.09.4412" z="400.0000" DriveByPipe ="false"/>
+            <StartPosition x ="246646.7148" y="-66609.4412" z="400.0000" DriveByPipe ="false"/>
             <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
           </CableSegment>
           <CableSegment>
@@ -635,7 +635,7 @@
             <EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
           </CableSegment>
           <CableSegment>
-            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
+            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
             <EndPosition x ="72025.8413" y="-12064.501" z="-18500.0000" DriveByPipe ="true"/>
           </CableSegment>
         </CableState>
@@ -691,7 +691,7 @@
             <EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
           </CableSegment>
           <CableSegment>
-            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
+            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
             <EndPosition x ="72025.8413" y="-12064.501" z="-18500.0000" DriveByPipe ="true"/>
           </CableSegment>
           <!--P21-P20-E3-3-->
@@ -705,7 +705,7 @@
           </CableSegment>
           <!--P18-P19-E3-4-->
           <CableSegment>
-            <StartPosition x ="246646.7148" y="-666.09.4412" z="400.0000" DriveByPipe ="false"/>
+            <StartPosition x ="246646.7148" y="-66609.4412" z="400.0000" DriveByPipe ="false"/>
             <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
           </CableSegment>
           <CableSegment>
@@ -743,7 +743,7 @@
           </CableSegment>
           <!--P18-P19-E3-4-->
           <CableSegment>
-            <StartPosition x ="246646.7148" y="-666.09.4412" z="400.0000" DriveByPipe ="false"/>
+            <StartPosition x ="246646.7148" y="-66609.4412" z="400.0000" DriveByPipe ="false"/>
             <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
           </CableSegment>
           <CableSegment>
@@ -799,7 +799,7 @@
           </CableSegment>
           <!--P18-P19-E3-4-->
           <CableSegment>
-            <StartPosition x ="246646.7148" y="-666.09.4412" z="400.0000" DriveByPipe ="false"/>
+            <StartPosition x ="246646.7148" y="-66609.4412" z="400.0000" DriveByPipe ="false"/>
             <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
           </CableSegment>
           <CableSegment>
