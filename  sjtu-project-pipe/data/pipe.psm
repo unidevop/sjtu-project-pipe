@@ -18,7 +18,7 @@
                 <ModelPath >models\fill2.3ds</ModelPath>
             </FuboModel>-->
       <PipeStaticModel showInMultipleView ="1">
-        <ModelPath >models\huitian1_2.3ds</ModelPath>
+        <ModelPath >models\pipestatic1.3ds</ModelPath>
       </PipeStaticModel>
       <FillModel>
         <FillSegment showInMultipleView ="1">
@@ -258,7 +258,7 @@
         <ModelPath>models\taojia2_2.3ds</ModelPath>
       </Pylon>
       <PipeStaticModel showInMultipleView ="1">
-        <ModelPath >models\huitian2_2.3ds</ModelPath>
+        <ModelPath >models\pipestatic2.3ds</ModelPath>
       </PipeStaticModel>
       <FillModel>
         <FillSegment showInMultipleView ="1">
@@ -555,7 +555,7 @@
         <ModelPath>models\taojia3_2.3ds</ModelPath>
       </Pylon>
       <PipeStaticModel showInMultipleView ="1">
-        <ModelPath >models\huitian3_2.3ds</ModelPath>
+        <ModelPath >models\pipestatic3.3ds</ModelPath>
       </PipeStaticModel>
       <FillModel>
         <FillSegment showInMultipleView ="1">
