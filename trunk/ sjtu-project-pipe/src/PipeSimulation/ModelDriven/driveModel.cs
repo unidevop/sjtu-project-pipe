@@ -13,7 +13,6 @@ namespace PipeSimulation
         {
             PipeInfo CurrentData { get;}
             void DriveModel(PipeInfo queryResult);
-            void DriveModel(int iPipeId, int iRecordId);
         }
     }
 }
