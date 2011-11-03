@@ -694,6 +694,9 @@ namespace PipeSimulation
 
             // Update Angle warning
             UpdateAngleWarning();
+
+            // Render the scene
+            IApp.theApp.RenderScene();
         }
 
         private vtk.vtkOrientationMarkerWidget axesWidgetaMain;

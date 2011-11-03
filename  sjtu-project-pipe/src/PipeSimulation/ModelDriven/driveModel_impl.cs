@@ -111,30 +111,6 @@ namespace PipeSimulation
                         }
                     }
                 }
-
-                // Render the scene
-                IApp.theApp.RenderScene();
-            }
-
-            public void DriveModel(int iPipeId, int iRecordId)
-            {
-                IHistoryDataQuery dateQuery = IApp.theApp.HistoryTimeDataQuery;
-                if (dateQuery != null && dateQuery.IsConnected)
-                {
-                    try
-                    {
-                        DriveModel(dateQuery.GetPipeRecord(iPipeId + 1, iRecordId));
-                    }
-                    catch (Exception ex)
-                    {
-                        string errMsg = ex.Message + "\n" + ex.StackTrace;
-                        vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
-                    }
-                }
-                else
-                {
-                    DriveModel(iRecordId);
-                }
             }
 
             public PipeInfo CurrentData 
@@ -186,58 +162,6 @@ namespace PipeSimulation
                         vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                     }
                 }
-            }
-
-            // Test function
-            private void DriveModel(int iProgress)
-            {
-                // Here, write a test code here
-
-                //double dMoveDistance = 1000;
-
-                // iProgress should be a range from 1 to 100
-                DrivePipeModel(0, (iProgress >= 0 && iProgress < 30),  (iProgress >= 30), 1.0 * iProgress / 30);
-                DrivePipeModel(1, (iProgress >= 30 && iProgress < 60), (iProgress >= 60), 1.0 * (iProgress - 30) / 30);
-                DrivePipeModel(2, (iProgress >= 60 && iProgress < 90), (iProgress >= 90), 1.0 * (iProgress - 60) / 30);
-                DrivePipeModel(3, (iProgress >= 90 && iProgress <= 100), (iProgress >= 100), 1.0 * (iProgress - 90) / 10);
-
-                IApp.theApp.RenderScene();
-            }
-
-            private static double dMoveDistance = 1000;
-
-            private void DrivePipeModel(int iPipeId, bool bWorking, bool bFinished, double iProgress)
-            {
-                // if iProgress is between the [0, 30), we should show the first pipe 
-                CPipeModel pipeModel = IApp.theApp.DataModel.PipeModels[iPipeId];
-
-                pipeModel.Visible = bWorking || bFinished;
-                foreach (ISceneNode node in pipeModel.Children)
-                {
-                    node.Visible = bWorking;
-               }
-
-                double dDeltaDistance = 0;
-                if (bWorking)
-                {
-                    dDeltaDistance = CDataDriven.dMoveDistance * (1 - iProgress);
-                }
-
-                // From a translation matrix from -z
-                vtk.vtkTransform transform = new vtk.vtkTransform();
-                transform.Translate(0, 0, dDeltaDistance);
-                transform.Update();
-
-                DrivdeModel(pipeModel.ModelNode, transform);
-                foreach (ISceneNode node in pipeModel.Children)
-                {
-                    DrivdeModel(node.ModelNode, transform);
-                }
-            }
-
-            private void DrivdeModel(CModelNode node, vtk.vtkTransform transform)
-            {
-                node.PokeMatrix(transform);
             }
         }
     }
