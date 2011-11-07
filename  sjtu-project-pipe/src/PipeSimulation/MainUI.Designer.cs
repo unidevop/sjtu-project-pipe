@@ -828,7 +828,7 @@ namespace PipeSimulation
             this.Controls.Add(this.statusStrip1);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainUI";
-            this.Text = "天津市滨海新区中央大道工程海河隧道监测仿真系统";
+            this.Text = "天津市滨海新区中央大道海河隧道工程三维实时可视化系统";
             Bitmap appicationBmp = global::PipeSimulation.Properties.Resources.application;
             this.Icon = Icon.FromHandle(appicationBmp.GetHicon());
             this.splitContainerMain.Panel2.ResumeLayout(false);
