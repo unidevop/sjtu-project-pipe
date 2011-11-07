@@ -1085,57 +1085,57 @@ namespace PipeSimulation
 
         private void toolStripZoomAll_Click(object sender, EventArgs e)
         {
-            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kZoomAll, sender);
+            IApp.theApp.CommandManager.ExecuteCommand2((ulong)CommandIds.kZoomAll, sender);
         }
 
         private void toolStripTopView_Click(object sender, EventArgs e)
         {
-            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kTopView, sender);
+            IApp.theApp.CommandManager.ExecuteCommand2((ulong)CommandIds.kTopView, sender);
         }
 
         private void toolStripBottomView_Click(object sender, EventArgs e)
         {
-            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kBottomView, sender);
+            IApp.theApp.CommandManager.ExecuteCommand2((ulong)CommandIds.kBottomView, sender);
         }
 
         private void toolStripFrontView_Click(object sender, EventArgs e)
         {
-            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kFrontView, sender);
+            IApp.theApp.CommandManager.ExecuteCommand2((ulong)CommandIds.kFrontView, sender);
         }
 
         private void toolStripBackView_Click(object sender, EventArgs e)
         {
-            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kBackView, sender);
+            IApp.theApp.CommandManager.ExecuteCommand2((ulong)CommandIds.kBackView, sender);
         }
 
         private void toolStripLeftView_Click(object sender, EventArgs e)
         {
-            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kLeftView, sender);
+            IApp.theApp.CommandManager.ExecuteCommand2((ulong)CommandIds.kLeftView, sender);
         }
 
         private void toolStripRightView_Click(object sender, EventArgs e)
         {
-            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kRightView, sender);
+            IApp.theApp.CommandManager.ExecuteCommand2((ulong)CommandIds.kRightView, sender);
         }
 
         private void toolStripNEIsoMetricView_Click(object sender, EventArgs e)
         {
-            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kNEIsometric, sender);
+            IApp.theApp.CommandManager.ExecuteCommand2((ulong)CommandIds.kNEIsometric, sender);
         }
 
         private void toolStripSWIsoMetricView_Click(object sender, EventArgs e)
         {
-            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kSWIsometric, sender);
+            IApp.theApp.CommandManager.ExecuteCommand2((ulong)CommandIds.kSWIsometric, sender);
         }
 
         private void toolStripSEIsoMetricView_Click(object sender, EventArgs e)
         {
-            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kSEIsometric, sender);
+            IApp.theApp.CommandManager.ExecuteCommand2((ulong)CommandIds.kSEIsometric, sender);
         }
 
         private void toolStripNWIsoMetricView_Click(object sender, EventArgs e)
         {
-            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kNWIsometric, sender);
+            IApp.theApp.CommandManager.ExecuteCommand2((ulong)CommandIds.kNWIsometric, sender);
         }
 
         private void saveAsPNGToolStripMenuItem_Click(object sender, EventArgs e)

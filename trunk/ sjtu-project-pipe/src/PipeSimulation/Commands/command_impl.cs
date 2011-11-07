@@ -129,7 +129,7 @@ namespace PipeSimulation
                 OnResume();
             }
 
-            public void Execute()
+            public virtual void Execute()
             {
             }
 
@@ -267,6 +267,25 @@ namespace PipeSimulation
                 }
                 cmd.Sender = sender;
                 cmd.Activate();
+            }
+
+            public void ExecuteCommand2(ulong id, object sender)
+            {
+                ICommand cmd = FindCommand(id);
+                if (cmd == null) return;
+
+                // Fix a defect that a single command holds different sender
+                if (cmd.Sender != null)
+                {
+                    CCommand cmdImpl = cmd as CCommand;
+                    if (cmdImpl != null)
+                    {
+                        cmdImpl.UpdateSenderStatus(false);
+                    }
+                }
+                cmd.Sender = sender;
+
+                cmd.Execute();
             }
 
             public void OnCommandActivated(ICommand cmd)

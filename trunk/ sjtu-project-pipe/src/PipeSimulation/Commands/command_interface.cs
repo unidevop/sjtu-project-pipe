@@ -92,6 +92,14 @@ namespace PipeSimulation
             /// <param name="id">command id</param>
             void ExecuteCommand(ulong id, object sender);
 
+            /// <summary>
+            /// Use this method to execute a command without terminate the current one. 
+            /// So this command should *NOT* accept any mouse and keyboard events.
+            /// </summary>
+            /// <param name="id"></param>
+            /// <param name="sender"></param>
+            void ExecuteCommand2(ulong id, object sender);
+
             void OnCommandActivated(ICommand cmd);
             void OnCommandTerminated(ICommand cmd);
         }

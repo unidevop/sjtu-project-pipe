@@ -350,14 +350,19 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
-            IApp.theApp.vtkControl.SetInteractorTrackBall(activerRenderer);
-            IApp.theApp.vtkControl.ResetCamera(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
+            Execute();
             Terminate();
         }
 
         protected override void OnTerminate()
         {
+        }
+
+        public override void Execute()
+        {
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.SetInteractorTrackBall(activerRenderer);
+            IApp.theApp.vtkControl.ResetCamera(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
         }
     }
 
@@ -374,13 +379,18 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
-            IApp.theApp.vtkControl.ShowTopView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
+            Execute();
             Terminate();
         }
 
         protected override void OnTerminate()
         {
+        }
+
+        public override void Execute()
+        {
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowTopView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
         }
     }
 
@@ -397,13 +407,18 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
-            IApp.theApp.vtkControl.ShowBottomView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
+            Execute();
             Terminate();
         }
 
         protected override void OnTerminate()
         {
+        }
+
+        public override void Execute()
+        {
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowBottomView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
         }
     }
 
@@ -420,13 +435,18 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
-            IApp.theApp.vtkControl.ShowFrontView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
+            Execute();
             Terminate();
         }
 
         protected override void OnTerminate()
         {
+        }
+
+        public override void Execute()
+        {
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowFrontView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
         }
     }
 
@@ -443,13 +463,18 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
-            IApp.theApp.vtkControl.ShowBackView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
+            Execute();
             Terminate();
         }
 
         protected override void OnTerminate()
         {
+        }
+
+        public override void Execute()
+        {
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowBackView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
         }
     }
 
@@ -466,13 +491,18 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
-            IApp.theApp.vtkControl.ShowLeftView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
+            Execute();
             Terminate();
         }
 
         protected override void OnTerminate()
         {
+        }
+
+        public override void Execute()
+        {
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowLeftView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
         }
     }
 
@@ -489,13 +519,18 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
-            IApp.theApp.vtkControl.ShowRightView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
+            Execute();
             Terminate();
         }
 
         protected override void OnTerminate()
         {
+        }
+
+        public override void Execute()
+        {
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowRightView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
         }
     }
 
@@ -512,13 +547,18 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
-            IApp.theApp.vtkControl.ShowSWIsoMetricView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
+            Execute();
             Terminate();
         }
 
         protected override void OnTerminate()
         {
+        }
+
+        public override void Execute()
+        {
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowSWIsoMetricView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
         }
     }
 
@@ -535,13 +575,18 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
-            IApp.theApp.vtkControl.ShowSEIsoMetricView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
+            Execute();
             Terminate();
         }
 
         protected override void OnTerminate()
         {
+        }
+
+        public override void Execute()
+        {
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowSEIsoMetricView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
         }
     }
 
@@ -558,13 +603,18 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
-            IApp.theApp.vtkControl.ShowNEIsoMetricView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
+            Execute();
             Terminate();
         }
 
         protected override void OnTerminate()
         {
+        }
+
+        public override void Execute()
+        {
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowNEIsoMetricView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
         }
     }
 
@@ -581,13 +631,18 @@ namespace PipeSimulation.Commands
 
         protected override void OnActivate()
         {
-            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
-            IApp.theApp.vtkControl.ShowNWIsoMetricView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
+            Execute();
             Terminate();
         }
 
         protected override void OnTerminate()
         {
+        }
+
+        public override void Execute()
+        {
+            vtk.vtkRenderer activerRenderer = IApp.theApp.RendererManager.ActiveRenderer;
+            IApp.theApp.vtkControl.ShowNWIsoMetricView(activerRenderer, CBoundingBoxUtil.GetBounds(activerRenderer));
         }
     }
 }
