@@ -543,7 +543,7 @@ namespace PipeSimulation
             }
             else
             {
-                if (ApplicationOptions.Instance().ViewOptions.ShowDisplayStatiticsText)
+                if (ApplicationOptions.Instance().ViewOptions.ShowDisplayStatiticsText && ApplicationOptions.Instance().AppOptions.DebugMode)
                 {
                     textActorStatistic.VisibilityOn();
                     //textActorWarning.VisibilityOn();
@@ -679,17 +679,21 @@ namespace PipeSimulation
                 }
 
                 // Update the Text Display
-                CStatisticData statisticData = new CStatisticData();
-                statisticData.ConnectionPointPairList = connectionPointPairList;
+                // Show it only in debug mode
+                if (ApplicationOptions.Instance().AppOptions.DebugMode)
+                {
+                    CStatisticData statisticData = new CStatisticData();
+                    statisticData.ConnectionPointPairList = connectionPointPairList;
 
-                IApp.theApp.StatisticTextDisplayer.DisplayText(statisticData.ToTextString());
+                    IApp.theApp.StatisticTextDisplayer.DisplayText(statisticData.ToTextString());
 
-                // Make sure we make the StatisticTextDisplayerAdditional appeal after the StatisticTextDisplayer
-                IApp.theApp.StatisticTextDisplayerAdditional.DisplayText(statisticData.ToDataString());
+                    // Make sure we make the StatisticTextDisplayerAdditional appeal after the StatisticTextDisplayer
+                    IApp.theApp.StatisticTextDisplayerAdditional.DisplayText(statisticData.ToDataString());
 
-                //// Update the WarningTextDisplayer
-                //CAngleWarningData angleWarningData = new CAngleWarningData();
-                //IApp.theApp.WarningTextDisplayer.DisplayText(angleWarningData.ToString());
+                    //// Update the WarningTextDisplayer
+                    //CAngleWarningData angleWarningData = new CAngleWarningData();
+                    //IApp.theApp.WarningTextDisplayer.DisplayText(angleWarningData.ToString());
+                }
             }
 
             // Update Angle warning
@@ -2065,6 +2069,7 @@ namespace PipeSimulation
             // Visibility for statistic text displayer
             showStatisticTextDisplayer.Enabled = !(string.IsNullOrEmpty(IApp.theApp.StatisticTextDisplayer.TextActor.GetInput()));
             showStatisticTextDisplayer.Checked = (IApp.theApp.StatisticTextDisplayer.TextActor.GetVisibility() != 0);
+            showStatisticTextDisplayer.Visible = ApplicationOptions.Instance().AppOptions.DebugMode;
 
             //// Visibility for statistic text displayer
             //showWarningTextDisplayer.Enabled = !(string.IsNullOrEmpty(IApp.theApp.WarningTextDisplayer.TextActor.GetInput()));
@@ -2081,6 +2086,7 @@ namespace PipeSimulation
                 bOriginVisible = (originCaption.GetVisibility() != 0);
             }
             showOrigin.Checked = bOriginVisible;
+            showOrigin.Visible = ApplicationOptions.Instance().AppOptions.DebugMode;
 
             // Visibility for none pipe models
             // They should work at the same.
