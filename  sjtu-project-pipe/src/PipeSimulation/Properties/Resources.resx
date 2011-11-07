@@ -221,7 +221,7 @@
     <value>导入模型...</value>
   </data>
   <data name="IDS_MONITOR_MODE_TEXT" xml:space="preserve">
-    <value>[实时监听模式]</value>
+    <value>实时监听模式</value>
   </data>
   <data name="IDS_PIPE_INDEX" xml:space="preserve">
     <value>查看第{0}段沉管沉放过程</value>
@@ -230,7 +230,7 @@
     <value>PNG 文件|*.png</value>
   </data>
   <data name="IDS_REPLAY_MODE_TEXT" xml:space="preserve">
-    <value>[回放模式]</value>
+    <value>回放模式</value>
   </data>
   <data name="IDS_SAVE_PICTURE_TITLE" xml:space="preserve">
     <value>截取当前屏幕</value>
