@@ -71,7 +71,7 @@ namespace PipeSimulation
                                           string.Format(strCoordFormat, pipeInfo.EndPoint.X * IApp.theApp.DataModel.GPSUnitToMeter), " ,",
                                           string.Format(strCoordFormat, pipeInfo.EndPoint.Y * IApp.theApp.DataModel.GPSUnitToMeter), " ,",
                                           string.Format(strCoordFormat, pipeInfo.EndPoint.Z * IApp.theApp.DataModel.GPSUnitToMeter), ")");
-            m_GPS2Detail.Text = strStartPoint;
+            m_GPS2Detail.Text = strEndPoint;
         }
 
         private void UpdateAngleInformationGroup(PipeInfo pipeInfo)
