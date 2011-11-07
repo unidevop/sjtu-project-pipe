@@ -314,7 +314,7 @@
 			<Inclinometer type="roll">
 				<Dir x ="9.5085" y ="974.9662" z ="0.8639"/>
 				<!-- flip incline angle value -->
-				<FlipAngle>true</FlipAngle>
+				<FlipAngle>false</FlipAngle>
 			</Inclinometer>
 			<GPSUCS>
 				<Origin x ="229077.7855" y ="-20311.6664" z ="6663.3377"/>
@@ -611,7 +611,7 @@
 			<Inclinometer type="roll">
 				<Dir x ="0.3448" y ="211.3446" z ="0.0768"/>
 				<!-- flip incline angle value -->
-				<FlipAngle>true</FlipAngle>
+				<FlipAngle>false</FlipAngle>
 			</Inclinometer>
 			<GPSUCS>
 				<Origin x ="145335.8732" y ="-18766.0125" z ="2438.1428"/>
@@ -926,7 +926,7 @@
 			<Inclinometer type="roll">
 				<Dir x ="-10.8389" y ="258.9493" z ="-0.1056"/>
 				<!-- flip incline angle value -->
-				<FlipAngle>true</FlipAngle>
+				<FlipAngle>false</FlipAngle>
 			</Inclinometer>
 			<GPSUCS>
 				<Origin x ="64151.7326" y ="-19414.5728" z ="2858.1149"/>
@@ -970,6 +970,9 @@
 	</Model>
 	<Model>
 		<ModelPath>models\water.3ds</ModelPath>
+	</Model>
+	<Model>
+		<ModelPath>models\riverground.3ds</ModelPath>
 	</Model>
 	<ModelingUCS>
 		<Origin x ="0" y ="0" z ="0"/>
