@@ -74,6 +74,17 @@ namespace PipeSimulation.DataModel
         private AngleWarningConfig m_angleWarningConfiguration = new AngleWarningConfig();
 
         /// <summary>
+        /// Attribute to get the application option
+        /// </summary>
+        [XmlElement]
+        public AppOptions AppOptions
+        {
+            get { return m_AppOptions; }
+            set { m_AppOptions = value; } 
+        }
+        private AppOptions m_AppOptions = new AppOptions();
+
+        /// <summary>
         /// Attribute to get the cabling simulation option
         /// </summary>
         [XmlElement]
@@ -454,6 +465,21 @@ namespace PipeSimulation.DataModel
         {
             get { return m_dTimerInterval; }
             set { m_dTimerInterval = value; }
+        }
+    }
+
+    /// <summary>
+    /// Application Option
+    /// </summary>
+    public class AppOptions
+    {
+        [XmlElement("DebugMode")]
+        private bool m_iDebugMode = false;
+
+        public bool DebugMode
+        {
+            get { return m_iDebugMode; }
+            set { m_iDebugMode = value; }
         }
     }
 }
