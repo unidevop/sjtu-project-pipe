@@ -47,9 +47,9 @@ namespace PipeSimulation
                         const string strCoordFormat = "{0,15:0,0.000}";
                         string strStartPoint;
                         strStartPoint = string.Concat("(",
-                                                      string.Format(strCoordFormat, pipeInfo.StartPoint.X * IApp.theApp.DataModel.GPSUnitToMeter), " ,",
-                                                      string.Format(strCoordFormat, pipeInfo.StartPoint.Y * IApp.theApp.DataModel.GPSUnitToMeter), " ,",
-                                                      string.Format(strCoordFormat, pipeInfo.StartPoint.Z * IApp.theApp.DataModel.GPSUnitToMeter), ")");
+                                                      string.Format(strCoordFormat, pipeInfo.StartDisplayPoint.X * IApp.theApp.DataModel.GPSUnitToMeter), " ,",
+                                                      string.Format(strCoordFormat, pipeInfo.StartDisplayPoint.Y * IApp.theApp.DataModel.GPSUnitToMeter), " ,",
+                                                      string.Format(strCoordFormat, pipeInfo.StartDisplayPoint.Z * IApp.theApp.DataModel.GPSUnitToMeter), ")");
 
                         file.WriteLine(string.Format(Resources.IDS_PIPE_INFO_GPS1, strStartPoint));
                         file.WriteLine("");
@@ -57,9 +57,9 @@ namespace PipeSimulation
                         // GPS 2
                         string strEndPoint;
                         strEndPoint = string.Concat("(",
-                                                      string.Format(strCoordFormat, pipeInfo.EndPoint.X * IApp.theApp.DataModel.GPSUnitToMeter), " ,",
-                                                      string.Format(strCoordFormat, pipeInfo.EndPoint.Y * IApp.theApp.DataModel.GPSUnitToMeter), " ,",
-                                                      string.Format(strCoordFormat, pipeInfo.EndPoint.Z * IApp.theApp.DataModel.GPSUnitToMeter), ")");
+                                                      string.Format(strCoordFormat, pipeInfo.EndDisplayPoint.X * IApp.theApp.DataModel.GPSUnitToMeter), " ,",
+                                                      string.Format(strCoordFormat, pipeInfo.EndDisplayPoint.Y * IApp.theApp.DataModel.GPSUnitToMeter), " ,",
+                                                      string.Format(strCoordFormat, pipeInfo.EndDisplayPoint.Z * IApp.theApp.DataModel.GPSUnitToMeter), ")");
                         file.WriteLine(string.Format(Resources.IDS_PIPE_INFO_GPS2, strEndPoint));
                         file.WriteLine("");
 

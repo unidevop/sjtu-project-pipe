@@ -91,6 +91,22 @@ namespace PipeSimulation.DataQuery
             }
         }
 
+        public Point3D StartDisplayPoint
+        {
+            get
+            {
+                return new Point3D(m_startPt.X, m_startPt.Y, -m_startPt.Z);
+            }
+        }
+
+        public Point3D EndDisplayPoint
+        {
+            get
+            {
+                return new Point3D(m_endPt.X, m_endPt.Y, -m_endPt.Z);
+            }
+        }
+
         public double RollInclineAngle
         {
             get
