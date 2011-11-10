@@ -108,6 +108,31 @@ namespace PipeSimulation
                         }
                     }
                 }
+
+                // Add special code to test if the first pipe should show plyon models
+                try
+                {
+                    if (iCurrentPipeIndex == 1)
+                    {
+                        CPipeModel firstPipeModel = IApp.theApp.DataModel.PipeModels[0];
+                        if (firstPipeModel.GPSUCSs.Count == 2)
+                        {
+                             bool IsFirstPipeGPSSwitched = firstPipeModel.IsFirstPipeGPSSwitched(m_currentPipeInfo.Time);
+                            foreach (ISceneNode node in firstPipeModel.Children)
+                            {
+                                if (node is CPylonModel)
+                                {
+                                    node.Visible = (firstPipeModel.Status == PipeStatus.eWorkingInProgess) && IsFirstPipeGPSSwitched;
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
+                }
             }
 
             public PipeInfo CurrentData 

@@ -500,22 +500,29 @@ namespace PipeSimulation
                 if (m_gpsUCSs.Count == 1) return m_gpsUCSs[0];
 
                 // The code should only be reached when there is more than one GPS UCSs.
-                if (m_gpsUCSs.Count == 2) // In this release
+                if (m_gpsUCSs.Count == 2 && IsFirstPipeGPSSwitched(pipeInfo.Time)) // In this release
                 {
-                    DriveModelOptions options = ApplicationOptions.Instance().DriveModelOptions;
-                    if (options.IsFirstPipeGPSSwitcheTimeSet())
-                    {
-                        DateTime FirstPipeGPSSwitchTime = options.FirstPipeGPSSwitchTime;
-
-                        if (pipeInfo.Time >= FirstPipeGPSSwitchTime)
-                        {
-                            return m_gpsUCSs[1]; // Use 2nd for this release
-                        }
-                    }
+                    return m_gpsUCSs[1]; // Use 2nd for this release
                 }
 
                 // Else use the first one
                 return m_gpsUCSs[0];
+            }
+
+            // This method is used to test if the given time is after the second gps installed time
+            public bool IsFirstPipeGPSSwitched(DateTime t)
+            {
+                DriveModelOptions options = ApplicationOptions.Instance().DriveModelOptions;
+                if (options.IsFirstPipeGPSSwitcheTimeSet())
+                {
+                    DateTime FirstPipeGPSSwitchTime = options.FirstPipeGPSSwitchTime;
+
+                    if (t >= FirstPipeGPSSwitchTime)
+                    {
+                        return true;
+                    }
+                }
+                return false;
             }
 
             public InclinometerInfo RollInclinometer
