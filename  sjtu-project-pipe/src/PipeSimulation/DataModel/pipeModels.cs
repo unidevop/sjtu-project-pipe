@@ -489,11 +489,32 @@ namespace PipeSimulation
                 return transform;
             }
 
+            public IList<CUCS> GPSUCSs
+            {
+                get { return m_gpsUCSs; }
+            }
+
             public CUCS GetGPSUCS(PipeInfo pipeInfo)
             {
-                // Here should do something to check which UCS we should use. To do...
                 if (m_gpsUCSs.Count == 0) return new CUCS();
+                if (m_gpsUCSs.Count == 1) return m_gpsUCSs[0];
 
+                // The code should only be reached when there is more than one GPS UCSs.
+                if (m_gpsUCSs.Count == 2) // In this release
+                {
+                    DriveModelOptions options = ApplicationOptions.Instance().DriveModelOptions;
+                    if (options.IsFirstPipeGPSSwitcheTimeSet())
+                    {
+                        DateTime FirstPipeGPSSwitchTime = options.FirstPipeGPSSwitchTime;
+
+                        if (pipeInfo.Time >= FirstPipeGPSSwitchTime)
+                        {
+                            return m_gpsUCSs[1]; // Use 2nd for this release
+                        }
+                    }
+                }
+
+                // Else use the first one
                 return m_gpsUCSs[0];
             }
 

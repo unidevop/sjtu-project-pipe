@@ -1179,6 +1179,25 @@ namespace PipeSimulation
             replayModeToolStripMenuItem.Checked = (IApp.theApp.ObserverModeManager.ActiveModeType == ObserverMode.ObserverMode.eReplayMode);
             showImmersingInformation.Enabled = (IApp.theApp.DataDriven.CurrentData != null);
             showImmersingInformation.Checked = (m_immersingInformationForm != null && m_immersingInformationForm.Visible);
+
+            // 
+            try
+            {
+                CPipeModel firstPipeModel = IApp.theApp.DataModel.PipeModels[0];
+                DriveModelOptions driveModelOption = ApplicationOptions.Instance().DriveModelOptions;
+                bool bFirstPipeWorkingInProgress = (firstPipeModel.Status == PipeStatus.eWorkingInProgess);
+                bool bHasMultipleGPSUCSs = firstPipeModel.GPSUCSs.Count == 2;
+                bool IsFirstPipeGPSSwitcheTimeSet = driveModelOption.IsFirstPipeGPSSwitcheTimeSet();
+
+                setFirstPipeGPSSwitchTime.Enabled = bFirstPipeWorkingInProgress && bHasMultipleGPSUCSs/* && !IsFirstPipeGPSSwitcheTimeSet*/;
+            }
+            catch (Exception ex)
+            {
+                setFirstPipeGPSSwitchTime.Enabled = false;
+
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
+            }
         }
 
         private void trackBarAnimation_Scroll(object sender, EventArgs e)
@@ -2247,6 +2266,29 @@ namespace PipeSimulation
             }
         }
 
+        private void setFirstPipeGPSSwitchTime_Click(object sender, EventArgs e)
+        {
+            DriveModelOptions option = ApplicationOptions.Instance().DriveModelOptions;
+
+            // Get the last switch if it set before
+            DateTime t = DateTime.Now;
+            if (option.IsFirstPipeGPSSwitcheTimeSet())
+            {
+                t = option.FirstPipeGPSSwitchTime;
+            }
+
+            // Pop up the Specify timer dialog
+            using (SpecifyTime form = new SpecifyTime())
+            {
+                form.InitialDateTime = t;
+                if (DialogResult.OK == form.ShowDialog())
+                {
+                    option.FirstPipeGPSSwitchTime = form.SelectedDateTime;
+                    IApp.theApp.RenderScene();
+                }
+            }
+        }
+        
         void m_immersingInformationForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             m_immersingInformationForm.Dispose();
