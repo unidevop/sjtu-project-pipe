@@ -948,13 +948,10 @@
 		<ModelPath>models\anmai.3ds</ModelPath>
 	</Model>
 	<Model>
-		<ModelPath>models\building1.3ds</ModelPath>
+		<ModelPath>models\newbuilding.3ds</ModelPath>
 	</Model>
 	<Model>
-		<ModelPath>models\building2.3ds</ModelPath>
-	</Model>
-	<Model>
-		<ModelPath>models\factory.3ds</ModelPath>
+		<ModelPath>models\newfactory.3ds</ModelPath>
 	</Model>
 	<Model>
 		<ModelPath>models\ganwu.3ds</ModelPath>
