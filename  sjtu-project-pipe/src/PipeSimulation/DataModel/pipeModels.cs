@@ -463,12 +463,28 @@ namespace PipeSimulation
 
                     if (m_finalPipeInfo != null)
                     {
-                        Matrix3D gpsMatrixInModeling = Matrix3D.Multiply(IApp.theApp.DataModel.ModelingUCStoGPSUCS.UCSTransformMatrix3dInvert,
-                            m_finalPipeInfo.GetMatrix(RollInclinometer.AngleBetweenInclineAndX, RollInclinometer.FlipAngle));
-
-                        m_transFormFinal = Utility.CPipeTransformUtility.TransformGPSMatrix(GPSUCS.UCSTransform, gpsMatrixInModeling.ToVTKTransformation());
+                        m_transFormFinal = GetPipeTransformByPipeInfo(m_finalPipeInfo);
                     }
                 }
+            }
+
+            // This method is used to get the Pipe transform by PipeInfo
+            public vtk.vtkTransform GetPipeTransformByPipeInfo(PipeInfo currentPipeInfo)
+            {
+                vtk.vtkTransform transform = new vtk.vtkTransform();
+                try
+                {
+                    Matrix3D gpsMatrixInModeling = Matrix3D.Multiply(IApp.theApp.DataModel.ModelingUCStoGPSUCS.UCSTransformMatrix3dInvert,
+                        m_finalPipeInfo.GetMatrix(RollInclinometer.AngleBetweenInclineAndX, RollInclinometer.FlipAngle));
+                    transform = Utility.CPipeTransformUtility.TransformGPSMatrix(GPSUCS.UCSTransform, gpsMatrixInModeling.ToVTKTransformation());
+                }
+                catch (System.Exception ex)
+                {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
+                }
+
+                return transform;
             }
 
             public InclinometerInfo RollInclinometer
