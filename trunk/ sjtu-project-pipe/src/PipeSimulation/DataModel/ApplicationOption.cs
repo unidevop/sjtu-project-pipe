@@ -456,10 +456,18 @@ namespace PipeSimulation.DataModel
         private double[] m_activeOutlineColor = new double[3] { 1, 1, 0 };
         private float m_activeOutlineWidth = 5.0f;
 
+        private double m_dMainRendereWidthRatio = 9.0 / 16; // (0, 1]
+
         public bool ShowMaximizeAndBackMenuItems
         {
             get { return m_bShowMaximizeAndBackMenuItems; }
             set { m_bShowMaximizeAndBackMenuItems = value; }
+        }
+
+        public double MainRendereWidthRatio
+        {
+            get { return m_dMainRendereWidthRatio; }
+            set { m_dMainRendereWidthRatio = value; }
         }
 
         //public double HeightSeperator
