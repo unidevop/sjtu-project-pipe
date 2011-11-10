@@ -119,14 +119,13 @@ namespace PipeSimulation.PipeApp
             double dHeightSeperator = 0;
             double dWidthSeperator = 0;
 
+            double dMainRendererWidthRatio = ApplicationOptions.Instance().RendererLayoutOptions.MainRendereWidthRatio;
+            if (dMainRendererWidthRatio < 0) dMainRendererWidthRatio = 0.75;
+            else if (dMainRendererWidthRatio > 1) dMainRendererWidthRatio = 0.75;
+
             // Cacluate the width and height for view renderers
             double dViewRendererHeight = (iHeight - 2 * dHeightSeperator) / 3;
-            double dViewRendererWidth = dViewRendererHeight * 16 / 9;
-
-            if (dViewRendererWidth >= iWidth)
-            {
-                dViewRendererWidth = iWidth * 1.0 / 4;
-            }
+            double dViewRendererWidth = iWidth * (1 - dMainRendererWidthRatio);
 
             double dMainRenderWidthRatio = 1.0 * (iWidth - dViewRendererWidth - dWidthSeperator) / iWidth;
             double dViewRenderWidthRatio = 1.0 * (iWidth - dViewRendererWidth) / iWidth;
