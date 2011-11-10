@@ -855,10 +855,49 @@ namespace PipeSimulation
             ShowOriginVisibility(viewOptions.ShowReferenceOrigin);
 
             // Let the scene show SW Isometric
-            IApp.theApp.vtkControl.ShowSWIsoMetricView(IApp.theApp.RendererManager.MainRenderer, CBoundingBoxUtil.GetBounds(IApp.theApp.RendererManager.MainRenderer));
-            IApp.theApp.vtkControl.ShowTopView(IApp.theApp.RendererManager.TopViewRenderer, CBoundingBoxUtil.GetBounds(IApp.theApp.RendererManager.TopViewRenderer));
-            IApp.theApp.vtkControl.ShowFrontView(IApp.theApp.RendererManager.FrontViewRenderer, CBoundingBoxUtil.GetBounds(IApp.theApp.RendererManager.FrontViewRenderer));
-            IApp.theApp.vtkControl.ShowRightView(IApp.theApp.RendererManager.RightViewRenderer, CBoundingBoxUtil.GetBounds(IApp.theApp.RendererManager.RightViewRenderer));
+            SetDefaultView(IApp.theApp.RendererManager.MainRenderer, viewOptions.MainRenderDefaultView);
+            SetDefaultView(IApp.theApp.RendererManager.TopViewRenderer, viewOptions.TopRenderDefaultView);
+            SetDefaultView(IApp.theApp.RendererManager.FrontViewRenderer, viewOptions.FrontRenderDefaultView);
+            SetDefaultView(IApp.theApp.RendererManager.RightViewRenderer, viewOptions.RightRenderDefaultView);
+        }
+
+        private void SetDefaultView(vtk.vtkRenderer renderer, ViewOptions.ViewTypeEnum viewTypeEnum)
+        {
+            switch (viewTypeEnum)
+            {
+                case ViewOptions.ViewTypeEnum.eTopView:
+                    IApp.theApp.vtkControl.ShowTopView(renderer, CBoundingBoxUtil.GetBounds(renderer));
+                    break;
+                case ViewOptions.ViewTypeEnum.eBottomView:
+                    IApp.theApp.vtkControl.ShowBottomView(renderer, CBoundingBoxUtil.GetBounds(renderer));
+                    break;
+                case ViewOptions.ViewTypeEnum.eFrontView:
+                    IApp.theApp.vtkControl.ShowFrontView(renderer, CBoundingBoxUtil.GetBounds(renderer));
+                    break;
+                case ViewOptions.ViewTypeEnum.eBackView:
+                    IApp.theApp.vtkControl.ShowBackView(renderer, CBoundingBoxUtil.GetBounds(renderer));
+                    break;
+                case ViewOptions.ViewTypeEnum.eLeftView:
+                    IApp.theApp.vtkControl.ShowLeftView(renderer, CBoundingBoxUtil.GetBounds(renderer));
+                    break;
+                case ViewOptions.ViewTypeEnum.eRightView:
+                    IApp.theApp.vtkControl.ShowRightView(renderer, CBoundingBoxUtil.GetBounds(renderer));
+                    break;
+                case ViewOptions.ViewTypeEnum.eSWISO:
+                    IApp.theApp.vtkControl.ShowSWIsoMetricView(renderer, CBoundingBoxUtil.GetBounds(renderer));
+                    break;
+                case ViewOptions.ViewTypeEnum.eSEISO:
+                    IApp.theApp.vtkControl.ShowSEIsoMetricView(renderer, CBoundingBoxUtil.GetBounds(renderer));
+                    break;
+                case ViewOptions.ViewTypeEnum.eNWISO:
+                    IApp.theApp.vtkControl.ShowNWIsoMetricView(renderer, CBoundingBoxUtil.GetBounds(renderer));
+                    break;
+                case ViewOptions.ViewTypeEnum.eNEISO:
+                    IApp.theApp.vtkControl.ShowNEIsoMetricView(renderer, CBoundingBoxUtil.GetBounds(renderer));
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void InitializeObserverMode()

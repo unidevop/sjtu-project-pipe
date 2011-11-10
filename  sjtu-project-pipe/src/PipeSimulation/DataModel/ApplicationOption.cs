@@ -294,6 +294,52 @@ namespace PipeSimulation.DataModel
         [XmlElement("BackgroundImageFileName")]
         private string m_strBackgroundFileName = "sky3.jpg"; // Only the file name
 
+        [XmlElement("MainRenderDefaultView")]
+        private ViewTypeEnum m_MainRenderDefaultView = ViewTypeEnum.eSWISO; 
+        [XmlElement("TopRenderDefaultView")]
+        private ViewTypeEnum m_TopRenderDefaultView = ViewTypeEnum.eTopView;
+        [XmlElement("RightRenderDefaultView")]
+        private ViewTypeEnum m_RightRenderDefaultView = ViewTypeEnum.eRightView;
+        [XmlElement("FrontRenderDefaultView")]
+        private ViewTypeEnum m_FrontRenderDefaultView = ViewTypeEnum.eFrontView; 
+
+        public enum ViewTypeEnum
+        {
+            eTopView,
+            eBottomView,
+            eFrontView,
+            eBackView,
+            eLeftView,
+            eRightView,
+            eSWISO,
+            eSEISO,
+            eNWISO,
+            eNEISO
+        }
+        public ViewTypeEnum MainRenderDefaultView
+        {
+            get { return m_MainRenderDefaultView; }
+            set { m_MainRenderDefaultView = value; }
+        }
+
+        public ViewTypeEnum TopRenderDefaultView
+        {
+            get { return m_TopRenderDefaultView; }
+            set { m_TopRenderDefaultView = value; }
+        }
+
+        public ViewTypeEnum RightRenderDefaultView
+        {
+            get { return m_RightRenderDefaultView; }
+            set { m_RightRenderDefaultView = value; }
+        }
+
+        public ViewTypeEnum FrontRenderDefaultView
+        {
+            get { return m_FrontRenderDefaultView; }
+            set { m_FrontRenderDefaultView = value; }
+        }
+
         public bool GetBoundsOnlyForPipeModels
         {
             get { return m_bGetBoundsOnlyForPipeModels; }
