@@ -475,7 +475,7 @@ namespace PipeSimulation
                 try
                 {
                     Matrix3D gpsMatrixInModeling = Matrix3D.Multiply(IApp.theApp.DataModel.ModelingUCStoGPSUCS.UCSTransformMatrix3dInvert,
-                        m_finalPipeInfo.GetMatrix(RollInclinometer.AngleBetweenInclineAndX, RollInclinometer.FlipAngle));
+                        currentPipeInfo.GetMatrix(RollInclinometer.AngleBetweenInclineAndX, RollInclinometer.FlipAngle));
                     transform = Utility.CPipeTransformUtility.TransformGPSMatrix(GPSUCS.UCSTransform, gpsMatrixInModeling.ToVTKTransformation());
                 }
                 catch (System.Exception ex)
