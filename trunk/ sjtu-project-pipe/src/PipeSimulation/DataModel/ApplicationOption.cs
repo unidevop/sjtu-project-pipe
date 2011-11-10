@@ -162,6 +162,17 @@ namespace PipeSimulation.DataModel
         private ObserverModeOptions m_ObserverModeOptions = new ObserverModeOptions();
         
         /// <summary>
+        /// Attribute to get the Drive Model option
+        /// </summary>
+        [XmlElement]
+        public DriveModelOptions DriveModelOptions
+        {
+            get { return m_DriveModelOptions; }
+            set { m_DriveModelOptions = value; } 
+        }
+        private DriveModelOptions m_DriveModelOptions = new DriveModelOptions();
+        
+        /// <summary>
         /// The value is used to control the distance of the connected point pair.
         /// If the distance is smaller or equal to this value, then we think two pipes are connected.
         /// This unit is Meter.
@@ -480,6 +491,31 @@ namespace PipeSimulation.DataModel
         {
             get { return m_iDebugMode; }
             set { m_iDebugMode = value; }
+        }
+    }
+
+    /// <summary>
+    /// Drive Model Option
+    /// </summary>
+    public class DriveModelOptions
+    {
+        static DateTime s_notSetTimer = new DateTime(1990, 1, 1);
+        // Use the 1990-1-1 to indicate that time time is not set.
+        [XmlElement("FirstPipeGPSSwitchTime")]
+        private DateTime m_dtFirstPipeGPSSwitchTime = s_notSetTimer;
+
+        public DateTime FirstPipeGPSSwitchTime
+        {
+            get { return m_dtFirstPipeGPSSwitchTime; }
+            set { m_dtFirstPipeGPSSwitchTime = value; }
+        }
+
+        // This function is used to to test if  the m_dtFirstPipeGPSSwitchTime has been set.
+        public bool IsFirstPipeGPSSwitcheTimeSet()
+        {
+            return m_dtFirstPipeGPSSwitchTime.Year != s_notSetTimer.Year
+                || m_dtFirstPipeGPSSwitchTime.Month != s_notSetTimer.Month
+                || m_dtFirstPipeGPSSwitchTime.Day != s_notSetTimer.Day;
         }
     }
 }
