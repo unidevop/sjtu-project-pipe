@@ -975,9 +975,9 @@
 		<ModelPath>models\riverground.3ds</ModelPath>
 	</Model>
 	<ModelingUCS>
-		<Origin x ="0" y ="0" z ="0"/>
-		<XAxis x ="1" y ="0" z ="0"/>
-		<YAxis x ="0" y ="1" z ="0"/>
+		<Origin x ="284242.660" y ="141313.207" z ="-2.798"/>
+		<XAxis x ="-23.302" y ="-7.460" z ="0"/>
+		<YAxis x ="-1.242" y ="-15.571" z ="0"/>
 	</ModelingUCS>
 	<ModelingUnitToMeter>0.001</ModelingUnitToMeter>
 	<GPSUnitToMeter>1</GPSUnitToMeter>

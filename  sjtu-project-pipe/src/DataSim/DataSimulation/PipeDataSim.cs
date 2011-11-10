@@ -48,9 +48,12 @@ namespace DataSimulation
             TimeSpan pipeMeasureSpan = TimeSpan.FromSeconds((endTime - startTime).TotalSeconds / m_pipeDataGenArray.Length);
             for (int idx = 0; idx < m_pipeDataGenArray.Length; idx++ )
             {
-                DateTime measureStartTime = startTime + TimeSpan.FromSeconds(idx * pipeMeasureSpan.TotalSeconds);
-                DateTime measureEndTime = measureStartTime + pipeMeasureSpan;
-                DateTime backfillTime = measureEndTime - backfillTimeSpan;
+                //DateTime measureStartTime = startTime + TimeSpan.FromSeconds(idx * pipeMeasureSpan.TotalSeconds);
+                //DateTime measureEndTime = measureStartTime + pipeMeasureSpan;
+                //DateTime backfillTime = measureEndTime - backfillTimeSpan;
+                DateTime measureStartTime = pipeCfg.PipeTracks.PipeCollection[idx].StartTime;
+                DateTime measureEndTime = pipeCfg.PipeTracks.PipeCollection[idx].EndTime;
+                DateTime backfillTime = measureEndTime - pipeCfg.PipeTracks.PipeCollection[idx].BackfillTimeSpan;
 
                 Pts1.Clear();
                 Pts2.Clear();
@@ -60,7 +63,8 @@ namespace DataSimulation
                     Pts1.Add(pipeTrack[0].Value);
                     Pts2.Add(pipeTrack[1].Value);
                 }
-                m_pipeDataGenArray[idx] = new PipeDataGenerator(idx+1, Pts1, Pts2,
+                m_pipeDataGenArray[idx] = new PipeDataGenerator(pipeCfg.PipeTracks.PipeCollection[idx].Id,
+                    Pts1, Pts2,
                     measureStartTime, measureEndTime, backfillTime, measureInterval);
             }
             //Connect();
