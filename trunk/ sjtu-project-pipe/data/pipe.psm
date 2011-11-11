@@ -299,19 +299,27 @@
 					<CableLength CableStateIndex="4">200000</CableLength>
 				</CableSwitchCondition>
 			</CableSystem>
-			<ConnectionPointPair>
-				<StartConnectionPoint x ="245647.1183" y ="-41316.3981" z ="-13711.7090"/>
-				<EndConnectionPoint x ="161598.3019" y ="-40353.5567" z ="-18466.1001"/>
+			<ConnectionPointPair ConnectionPointPairName="A-A'">
+				<StartConnectionPoint x ="245347.9403" y ="-41006.2341" z ="-14624.4575"/>
+				<EndConnectionPoint x ="161317.3082" y ="-40182.3692" z ="-19529.1799"/>
 			</ConnectionPointPair>
-			<ConnectionPointPair>
-				<StartConnectionPoint x ="245030.3595" y ="-5921.7866" z ="-13746.6928"/>
-				<EndConnectionPoint x ="160981.5431" y ="-4958.9472" z ="-18501.0839"/>
+			<ConnectionPointPair ConnectionPointPairName="B-B'">
+				<StartConnectionPoint x ="245879.5231" y ="-41006.5902" z ="-22331.5136"/>
+				<EndConnectionPoint x ="161846.131" y ="-40180.7329" z ="-27196.7263"/>
 			</ConnectionPointPair>
-			<ConnectionPointPair>
-				<StartConnectionPoint x ="246311.0916" y ="-41314.3437" z ="-23338.8392"/>
-				<EndConnectionPoint x ="162264.6574" y ="-40351.4949" z ="-28127.7697"/>
+			<ConnectionPointPair ConnectionPointPairName="C-C'">
+				<StartConnectionPoint x ="245268.8216" y ="-5959.6393" z ="-22366.143"/>
+				<EndConnectionPoint x ="161234.2756" y ="-5136.0737" z ="-27214.0441"/>
 			</ConnectionPointPair>
-			<Inclinometer type="roll">
+      <ConnectionPointPair ConnectionPointPairName="D-D'">
+        <StartConnectionPoint x ="244737.2794" y ="-5961.5712" z ="-14659.0954"/>
+        <EndConnectionPoint x ="160702.7529" y ="-5137.7184" z ="-19507.3518"/>
+      </ConnectionPointPair>
+      <ConnectionPointPair ConnectionPointPairName="E-E'">
+        <StartConnectionPoint x ="245234.6804" y ="-23482.5902" z ="-16700.0837"/>
+        <EndConnectionPoint x ="161160.6353" y ="-22659.5778" z ="-21701.9256"/>
+      </ConnectionPointPair>
+      <Inclinometer type="roll">
 				<Dir x ="9.5085" y ="974.9662" z ="0.8639"/>
 				<!-- flip incline angle value -->
 				<FlipAngle>true</FlipAngle>
@@ -596,18 +604,26 @@
 					<CableLength CableStateIndex="3">200000</CableLength>
 				</CableSwitchCondition>
 			</CableSystem>
-			<ConnectionPointPair>
-				<StartConnectionPoint x ="161598.3019" y ="-40353.5567" z ="-18466.1001"/>
-				<EndConnectionPoint x ="76505.4585" y =" -41834.6046" z ="18865.2493"/>
-			</ConnectionPointPair>
-			<ConnectionPointPair>
-				<StartConnectionPoint x ="160981.5431" y ="-4958.9472" z ="-18501.0839"/>
-				<EndConnectionPoint x ="75888.6997" y ="-6439.9950 " z ="-18900.2332"/>
-			</ConnectionPointPair>
-			<ConnectionPointPair>
-				<StartConnectionPoint x ="162264.6574" y ="-40351.4949" z ="-28127.7697"/>
-				<EndConnectionPoint x ="77171.4506" y ="-41840.2632" z ="-28519.6919"/>
-			</ConnectionPointPair>
+      <ConnectionPointPair ConnectionPointPairName="A-A'">
+        <StartConnectionPoint x ="161317.3082" y ="-40182.3692" z ="-19529.1799"/>
+        <EndConnectionPoint x ="76569.5004" y ="-41665.2131" z ="-19836.7215"/>
+      </ConnectionPointPair>
+      <ConnectionPointPair ConnectionPointPairName="B-B'">
+        <StartConnectionPoint x ="161846.131" y ="-40180.7329" z ="-27196.7263"/>
+        <EndConnectionPoint x ="77101.9897" y ="-41661.6357" z ="-27557.9186"/>
+      </ConnectionPointPair>
+      <ConnectionPointPair ConnectionPointPairName="C-C'">
+        <StartConnectionPoint x ="161234.2756" y ="-5136.0737" z ="-27214.0441"/>
+        <EndConnectionPoint x ="76491.4953" y ="-6618.9021" z ="-27594.4801"/>
+      </ConnectionPointPair>
+      <ConnectionPointPair ConnectionPointPairName="D-D'">
+        <StartConnectionPoint x ="160702.7529" y ="-5137.7184" z ="-19507.3518"/>
+        <EndConnectionPoint x ="75958.8763" y ="-6617.967" z ="-19872.5481"/>
+      </ConnectionPointPair>
+      <ConnectionPointPair ConnectionPointPairName="E-E'">
+        <StartConnectionPoint x ="161160.6353" y ="-22659.5778" z ="-21701.9256"/>
+        <EndConnectionPoint x ="76407.6695" y ="-24140.5079" z ="-21935.1695"/>
+      </ConnectionPointPair>
 			<Inclinometer type="roll">
 				<Dir x ="0.3448" y ="211.3446" z ="0.0768"/>
 				<!-- flip incline angle value -->
@@ -911,18 +927,26 @@
 					<CableLength CableStateIndex="3">200000</CableLength>
 				</CableSwitchCondition>
 			</CableSystem>
-			<ConnectionPointPair>
-				<StartConnectionPoint x ="76505.4585" y =" -41834.6046" z ="18865.2493"/>
-				<EndConnectionPoint x="0" y ="0" z ="0"/>
-			</ConnectionPointPair>
-			<ConnectionPointPair>
-				<StartConnectionPoint x ="75888.6997" y ="-6439.9950 " z ="-18900.2332"/>
-				<EndConnectionPoint x="0" y ="0" z ="0"/>
-			</ConnectionPointPair>
-			<ConnectionPointPair>
-				<StartConnectionPoint x ="77171.4506" y ="-41840.2632" z ="-28519.6919"/>
-				<EndConnectionPoint x="0" y ="0" z ="0"/>
-			</ConnectionPointPair>
+      <ConnectionPointPair ConnectionPointPairName="A-A'">
+        <StartConnectionPoint x ="76569.5004" y ="-41665.2131" z ="-19836.7215"/>
+        <EndConnectionPoint x ="0" y ="0" z ="0"/>
+      </ConnectionPointPair>
+      <ConnectionPointPair ConnectionPointPairName="B-B'">
+        <StartConnectionPoint x ="77101.9897" y ="-41661.6357" z ="-27557.9186"/>
+        <EndConnectionPoint x ="0" y ="0" z ="0"/>
+      </ConnectionPointPair>
+      <ConnectionPointPair ConnectionPointPairName="C-C'">
+        <StartConnectionPoint x ="76491.4953" y ="-6618.9021" z ="-27594.4801"/>
+        <EndConnectionPoint x ="0" y ="0" z ="0"/>
+      </ConnectionPointPair>
+      <ConnectionPointPair ConnectionPointPairName="D-D'">
+        <StartConnectionPoint x ="75958.8763" y ="-6617.967" z ="-19872.5481"/>
+        <EndConnectionPoint x ="0" y ="0" z ="0"/>
+      </ConnectionPointPair>
+      <ConnectionPointPair ConnectionPointPairName="E-E'">
+        <StartConnectionPoint x ="76407.6695" y ="-24140.5079" z ="-21935.1695"/>
+        <EndConnectionPoint x ="0" y ="0" z ="0"/>
+      </ConnectionPointPair>
 			<Inclinometer type="roll">
 				<Dir x ="-10.8389" y ="258.9493" z ="-0.1056"/>
 				<!-- flip incline angle value -->
