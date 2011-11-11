@@ -19,6 +19,7 @@ namespace PipeSimulation
             private CPoint3D m_ptEndPoint = new CPoint3D();
             private double[] m_Color = new double[3] { 1, 1, 0 };
             private float m_dLineWidth = 4;
+            private bool m_bShowInMultipleView = true;
 
             public CBoundaryModel() { }
 
@@ -45,6 +46,17 @@ namespace PipeSimulation
                     // Read the end pos
                     XmlNode lineWidth = node.SelectSingleNode(ModelXMLDefinition.BoundaryLineWidth);
                     m_dLineWidth = float.Parse(lineWidth.InnerText);
+
+                    // Read the show in multiple views option
+                    try
+                    {
+                        XmlAttribute attrib = node.Attributes[ModelXMLDefinition.showInMultipleViews];
+                        m_bShowInMultipleView = (int.Parse(attrib.Value) != 0);
+                    }
+                    catch (Exception)
+                    {
+                        // Don't catch write the message out since I use this way to deal with none showInMultipleViews attribute.
+                    }
                 }
                 catch (SystemException ex)
                 {
@@ -78,6 +90,11 @@ namespace PipeSimulation
             {
                 get { return m_dLineWidth; }
             }
+
+            public bool ShowInMultipleView
+            {
+                get { return m_bShowInMultipleView; }
+            }
         }
 
         public class CPipeBoundaryModel : CSceneNode
@@ -86,6 +103,7 @@ namespace PipeSimulation
             private double[] m_Color = new double[3] { 1, 1, 1 };
             private float m_dLineWidth = 4;
             private CPipeBoundaryIndicator m_pipeBoundaryIndicator = null;
+            private bool m_bShowInMultipleView = true;
 
             public CPipeBoundaryModel(ISceneNode parentNode)
                 : base(parentNode)
@@ -111,6 +129,17 @@ namespace PipeSimulation
                     // Read the end pos
                     XmlNode lineWidth = node.SelectSingleNode(ModelXMLDefinition.BoundaryLineWidth);
                     m_dLineWidth = float.Parse(lineWidth.InnerText);
+
+                    // Read the show in multiple views option
+                    try
+                    {
+                        XmlAttribute attrib = node.Attributes[ModelXMLDefinition.showInMultipleViews];
+                        m_bShowInMultipleView = (int.Parse(attrib.Value) != 0);
+                    }
+                    catch (Exception)
+                    {
+                        // Don't catch write the message out since I use this way to deal with none showInMultipleViews attribute.
+                    }
                 }
                 catch (SystemException ex)
                 {
@@ -138,6 +167,11 @@ namespace PipeSimulation
             public CPipeBoundaryIndicator PipeBoundaryIndicator
             {
                 get { return m_pipeBoundaryIndicator; }
+            }
+
+            public bool ShowInMultipleView
+            {
+                get { return m_bShowInMultipleView; }
             }
 
             public void DrawPipeBoundary()
