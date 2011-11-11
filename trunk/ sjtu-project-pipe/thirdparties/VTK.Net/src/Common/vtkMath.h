@@ -47,6 +47,11 @@ public:
   static double DoubleRadiansToDegrees() {return 57.29577951308232;};
 
   // Description:
+  // A mathematical constant (double-precision version). This version
+  // is 6.283185307179586.
+  static double DoubleTwoPi() { return  6.283185307179586; };
+
+  // Description:
   // Rounds a float to the nearest integer.
   static int Round(float f) {
     return static_cast<int>(f + (f >= 0 ? 0.5 : -0.5)); }

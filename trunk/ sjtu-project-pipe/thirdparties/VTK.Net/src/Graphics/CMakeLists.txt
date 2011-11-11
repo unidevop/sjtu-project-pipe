@@ -13,6 +13,7 @@ vtkAppendPolyData.cxx
 vtkApproximatingSubdivisionFilter.cxx
 vtkArrayCalculator.cxx
 vtkArrowSource.cxx
+vtkArcSource.cxx
 vtkAssignAttribute.cxx
 vtkAttributeDataToFieldDataFilter.cxx
 vtkAxes.cxx

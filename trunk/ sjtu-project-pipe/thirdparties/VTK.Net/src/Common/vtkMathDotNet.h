@@ -82,6 +82,13 @@ public:
   static double DoubleRadiansToDegrees();
 
 
+  // static double DoubleTwoPi ();return 
+/// <summary>
+/// <para>A mathematical constant (double-precision version). This version is 6.283185307179586.</para>
+/// </summary>
+  static double DoubleTwoPi();
+
+
   // static int Round (float f);return static_cast int f f 
 /// <summary>
 /// <para>Rounds a float to the nearest integer.</para>

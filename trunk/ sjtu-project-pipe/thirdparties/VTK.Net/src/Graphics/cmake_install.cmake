@@ -38,6 +38,7 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
     "M:/thirdparties/VTK.Net/src/Graphics/vtkApproximatingSubdivisionFilter.h"
     "M:/thirdparties/VTK.Net/src/Graphics/vtkArrayCalculator.h"
     "M:/thirdparties/VTK.Net/src/Graphics/vtkArrowSource.h"
+    "M:/thirdparties/VTK.Net/src/Graphics/vtkArcSource.h"
     "M:/thirdparties/VTK.Net/src/Graphics/vtkAssignAttribute.h"
     "M:/thirdparties/VTK.Net/src/Graphics/vtkAttributeDataToFieldDataFilter.h"
     "M:/thirdparties/VTK.Net/src/Graphics/vtkAxes.h"
