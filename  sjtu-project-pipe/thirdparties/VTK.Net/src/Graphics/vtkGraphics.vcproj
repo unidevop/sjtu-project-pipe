@@ -311,6 +311,9 @@
 				RelativePath="M:\thirdparties\VTK.Net\src\Graphics\vtkArrowSource.cxx">
 			</File>
 			<File
+				RelativePath="M:\thirdparties\VTK.Net\src\Graphics\vtkArcSource.cxx">
+			</File>
+			<File
 				RelativePath="M:\thirdparties\VTK.Net\src\Graphics\vtkAssignAttribute.cxx">
 			</File>
 			<File

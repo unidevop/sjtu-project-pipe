@@ -125,6 +125,14 @@ double vtkMath::DoubleRadiansToDegrees()
 
 
 
+double vtkMath::DoubleTwoPi()
+{
+  double retVal = ::vtkMath::DoubleTwoPi();
+  return retVal;
+}
+
+
+
 int vtkMath::Round(float f)
 {
   int retVal = ::vtkMath::Round(f);
