@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <System>
-	<Pipes>
-		<!-- The first pipe-->
-		<Pipe width ="45" height ="20" length ="80" showInMultipleView ="1">
-			<ModelPath>models\Pipe1.3ds</ModelPath>
-			<Pylon showInMultipleView ="1">
-				<ModelPath >models\taojia1_1.3ds</ModelPath>
-			</Pylon>
-			<Pylon showInMultipleView ="1">
-				<ModelPath >models\taojia1_2.3ds</ModelPath>
-			</Pylon>
-			<!--<FuboModel showInMultipleView ="1">
+  <Pipes>
+    <!-- The first pipe-->
+    <Pipe width ="45" height ="20" length ="80" showInMultipleView ="1">
+      <ModelPath>models\Pipe1.3ds</ModelPath>
+      <Pylon showInMultipleView ="1">
+        <ModelPath >models\taojia1_1.3ds</ModelPath>
+      </Pylon>
+      <Pylon showInMultipleView ="1">
+        <ModelPath >models\taojia1_2.3ds</ModelPath>
+      </Pylon>
+      <!--<FuboModel showInMultipleView ="1">
                 <ModelPath >models\fill1.3ds</ModelPath>
             </FuboModel>
             <FuboModel showInMultipleView ="1">
                 <ModelPath >models\fill2.3ds</ModelPath>
             </FuboModel>-->
-			<PipeStaticModel showInMultipleView ="1">
-				<ModelPath >models\pipestatic1.3ds</ModelPath>
-			</PipeStaticModel>
+      <PipeStaticModel showInMultipleView ="1">
+        <ModelPath >models\pipestatic1.3ds</ModelPath>
+      </PipeStaticModel>
       <PipeBoundary  showInMultipleView ="1">
         <BoundaryPoint x ="161235.1616" y ="-41458.3375" z ="-18000.9595"/>
         <BoundaryPoint x ="161947.9616" y ="-41454.2193" z ="-28626.2491"/>
@@ -32,297 +32,297 @@
         <Color x ="0" y ="0" z ="0"/>
         <LineWidth>2</LineWidth>
       </PipeBoundary>
-			<FillModel>
-				<FillSegment showInMultipleView ="1">
-					<ModelPath>models\huitian1_1.3ds</ModelPath>
-					<TimePercent>0.3333</TimePercent>
-					<StartPosition x ="239549.9406" y ="-76892.4638" z ="-20616.6801"/>
-					<SacleDirection x ="-56919.5433 " y ="2334.0164" z ="-3169.8816" />
-				</FillSegment>
-				<FillSegment showInMultipleView ="1">
-					<ModelPath>models\huitian1_2.3ds</ModelPath>
-					<TimePercent>0.3333</TimePercent>
-					<StartPosition x ="239377.6468" y ="-89597.4988" z ="-17869.2515"/>
-					<SacleDirection x ="-56920.681" y ="2334.2112" z ="-3168.3147" />
-				</FillSegment>
-				<FillSegment showInMultipleView ="1">
-					<ModelPath>models\huitian1_3.3ds</ModelPath>
-					<TimePercent>0.3333</TimePercent>
-					<StartPosition x ="238483.1131" y ="-110943.7055 " z ="-12427.9673"/>
-					<SacleDirection x ="-48433.8469" y ="-943.6197" z ="123.4518" />
-				</FillSegment>
-			</FillModel>
-			<ZhujiangModel showInMultipleView ="1">
-				<ModelPath>models\zhujiang1.3ds</ModelPath>
-				<StartPosition x ="237839.3756" y ="-63676.3799" z ="-23542.0488"/>
-				<SacleDirection x ="-63377.0662" y ="621.213" z ="-3524.3993" />
-			</ZhujiangModel>
-			<CableSystem>
-				<CableState>
-					<!--P8-P8-E1_2-->
-					<CableSegment>
-						<StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="165291.6319" y="-37872.8427" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P10-P11-E1-1-->
-					<CableSegment>
-						<StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="165395.7126" y="-9439.6809" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P7-P6-E1-4-->
-					<CableSegment>
-						<StartPosition x ="-77215.4470" y="147105.7699" z="-2000.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
-						<EndPosition x ="241334.9390" y="-11335.9716" z="-13000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P13-P14-E1-3-->
-					<CableSegment>
-						<StartPosition x ="-56834.8115" y="-108983.4956" z="-900.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
-						<EndPosition x ="242050.3104" y="-39987.7943" z="-14000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P3-P1-E1-3-->
-					<CableSegment>
-						<StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="242050.3104" y="-39987.7943" z="-14000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P15-P16-E1-4-->
-					<CableSegment>
-						<StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
-						<EndPosition x ="241334.9390" y="-11335.9716" z="-13000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P21-P20-E1-3-->
-					<CableSegment>
-						<StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
-						<EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="242050.3104" y="-39987.7943" z="-14000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P18-P19-E1-4-->
-					<CableSegment>
-						<StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="241334.9390" y="-11335.9716" z="-13000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-				</CableState>
-				<CableState>
-					<!--P8-P8-E1_2-->
-					<CableSegment>
-						<StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="165291.6319" y="-37872.8427" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P10-P11-E1-1-->
-					<CableSegment>
-						<StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="165395.7126" y="-9439.6809" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P3-P1-E1-3-->
-					<CableSegment>
-						<StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="242050.3104" y="-39987.7943" z="-14000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P15-P16-E1-4-->
-					<CableSegment>
-						<StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
-						<EndPosition x ="241334.9390" y="-11335.9716" z="-13000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P21-P20-E1-3-->
-					<CableSegment>
-						<StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
-						<EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="242050.3104" y="-39987.7943" z="-14000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P18-P19-E1-4-->
-					<CableSegment>
-						<StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="241334.9390" y="-11335.9716" z="-13000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P7-P6-E1-6-->
-					<CableSegment>
-						<StartPosition x ="-77215.4470" y="147105.7699" z="-2000.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
-						<EndPosition x ="201231.4539" y="-8004.9275" z="-16000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P13-P14-E1-5-->
-					<CableSegment>
-						<StartPosition x ="-56834.8115" y="-108983.4956" z="-900.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
-						<EndPosition x ="204572.1854" y="-38720.166" z="-16000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-				</CableState>
-				<CableState>
-					<!--P8-P8-E1_2-->
-					<CableSegment>
-						<StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="165291.6319" y="-37872.8427" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P10-P11-E1-1-->
-					<CableSegment>
-						<StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="165395.7126" y="-9439.6809" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P21-P20-E1-3-->
-					<CableSegment>
-						<StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
-						<EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="242050.3104" y="-39987.7943" z="-14000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P18-P19-E1-4-->
-					<CableSegment>
-						<StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="241334.9390" y="-11335.9716" z="-13000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P3-P1-E1-6-->
-					<CableSegment>
-						<StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="201231.4539" y="-8004.9275" z="-16000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P15-P16-E1-5-->
-					<CableSegment>
-						<StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="204572.1854" y="-38720.166" z="-16000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-				</CableState>
-				<CableState>
-					<!--P21-P20-E1-3-->
-					<CableSegment>
-						<StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
-						<EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="242050.3104" y="-39987.7943" z="-14000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P18-P19-E1-4-->
-					<CableSegment>
-						<StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="241334.9390" y="-11335.9716" z="-13000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P3-P1-E1-2-->
-					<CableSegment>
-						<StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="165291.6319" y="-37872.8427" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P15-P16-E1-1-->
-					<CableSegment>
-						<StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="165395.7126" y="-9439.6809" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-				</CableState>
-				<CableSwitchCondition instanceFullName="">
-					<CableSegment>
-						<StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="165395.7126" y="-9439.6809" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<CableLength CableStateIndex="0">148.3135</CableLength>
-					<CableLength CableStateIndex="1">169.2971</CableLength>
-					<CableLength CableStateIndex="2">243.9447</CableLength>
-					<CableLength CableStateIndex="4">200000</CableLength>
-				</CableSwitchCondition>
-			</CableSystem>
-			<ConnectionPointPair ConnectionPointPairName="A-A'">
-				<StartConnectionPoint x ="245347.9403" y ="-41006.2341" z ="-14624.4575"/>
-				<EndConnectionPoint x ="161317.3082" y ="-40182.3692" z ="-19529.1799"/>
-			</ConnectionPointPair>
-			<ConnectionPointPair ConnectionPointPairName="B-B'">
-				<StartConnectionPoint x ="245879.5231" y ="-41006.5902" z ="-22331.5136"/>
-				<EndConnectionPoint x ="161846.131" y ="-40180.7329" z ="-27196.7263"/>
-			</ConnectionPointPair>
-			<ConnectionPointPair ConnectionPointPairName="C-C'">
-				<StartConnectionPoint x ="245268.8216" y ="-5959.6393" z ="-22366.143"/>
-				<EndConnectionPoint x ="161234.2756" y ="-5136.0737" z ="-27214.0441"/>
-			</ConnectionPointPair>
+      <FillModel>
+        <FillSegment showInMultipleView ="1">
+          <ModelPath>models\huitian1_1.3ds</ModelPath>
+          <TimePercent>0.3333</TimePercent>
+          <StartPosition x ="239549.9406" y ="-76892.4638" z ="-20616.6801"/>
+          <SacleDirection x ="-56919.5433 " y ="2334.0164" z ="-3169.8816" />
+        </FillSegment>
+        <FillSegment showInMultipleView ="1">
+          <ModelPath>models\huitian1_2.3ds</ModelPath>
+          <TimePercent>0.3333</TimePercent>
+          <StartPosition x ="239377.6468" y ="-89597.4988" z ="-17869.2515"/>
+          <SacleDirection x ="-56920.681" y ="2334.2112" z ="-3168.3147" />
+        </FillSegment>
+        <FillSegment showInMultipleView ="1">
+          <ModelPath>models\huitian1_3.3ds</ModelPath>
+          <TimePercent>0.3333</TimePercent>
+          <StartPosition x ="238483.1131" y ="-110943.7055 " z ="-12427.9673"/>
+          <SacleDirection x ="-48433.8469" y ="-943.6197" z ="123.4518" />
+        </FillSegment>
+      </FillModel>
+      <ZhujiangModel showInMultipleView ="1">
+        <ModelPath>models\zhujiang1.3ds</ModelPath>
+        <StartPosition x ="237839.3756" y ="-63676.3799" z ="-23542.0488"/>
+        <SacleDirection x ="-63377.0662" y ="621.213" z ="-3524.3993" />
+      </ZhujiangModel>
+      <CableSystem>
+        <CableState>
+          <!--P8-P8-E1_2-->
+          <CableSegment>
+            <StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="165291.6319" y="-37872.8427" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P10-P11-E1-1-->
+          <CableSegment>
+            <StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="165395.7126" y="-9439.6809" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P7-P6-E1-4-->
+          <CableSegment>
+            <StartPosition x ="-77215.4470" y="147105.7699" z="-2000.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
+            <EndPosition x ="241334.9390" y="-11335.9716" z="-13000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P13-P14-E1-3-->
+          <CableSegment>
+            <StartPosition x ="-56834.8115" y="-108983.4956" z="-900.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
+            <EndPosition x ="242050.3104" y="-39987.7943" z="-14000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P3-P1-E1-3-->
+          <CableSegment>
+            <StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="242050.3104" y="-39987.7943" z="-14000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P15-P16-E1-4-->
+          <CableSegment>
+            <StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
+            <EndPosition x ="241334.9390" y="-11335.9716" z="-13000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P21-P20-E1-3-->
+          <CableSegment>
+            <StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
+            <EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="242050.3104" y="-39987.7943" z="-14000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P18-P19-E1-4-->
+          <CableSegment>
+            <StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="241334.9390" y="-11335.9716" z="-13000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+        </CableState>
+        <CableState>
+          <!--P8-P8-E1_2-->
+          <CableSegment>
+            <StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="165291.6319" y="-37872.8427" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P10-P11-E1-1-->
+          <CableSegment>
+            <StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="165395.7126" y="-9439.6809" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P3-P1-E1-3-->
+          <CableSegment>
+            <StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="242050.3104" y="-39987.7943" z="-14000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P15-P16-E1-4-->
+          <CableSegment>
+            <StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
+            <EndPosition x ="241334.9390" y="-11335.9716" z="-13000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P21-P20-E1-3-->
+          <CableSegment>
+            <StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
+            <EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="242050.3104" y="-39987.7943" z="-14000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P18-P19-E1-4-->
+          <CableSegment>
+            <StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="241334.9390" y="-11335.9716" z="-13000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P7-P6-E1-6-->
+          <CableSegment>
+            <StartPosition x ="-77215.4470" y="147105.7699" z="-2000.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
+            <EndPosition x ="201231.4539" y="-8004.9275" z="-16000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P13-P14-E1-5-->
+          <CableSegment>
+            <StartPosition x ="-56834.8115" y="-108983.4956" z="-900.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
+            <EndPosition x ="204572.1854" y="-38720.166" z="-16000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+        </CableState>
+        <CableState>
+          <!--P8-P8-E1_2-->
+          <CableSegment>
+            <StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="165291.6319" y="-37872.8427" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P10-P11-E1-1-->
+          <CableSegment>
+            <StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="165395.7126" y="-9439.6809" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P21-P20-E1-3-->
+          <CableSegment>
+            <StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
+            <EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="242050.3104" y="-39987.7943" z="-14000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P18-P19-E1-4-->
+          <CableSegment>
+            <StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="241334.9390" y="-11335.9716" z="-13000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P3-P1-E1-6-->
+          <CableSegment>
+            <StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="201231.4539" y="-8004.9275" z="-16000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P15-P16-E1-5-->
+          <CableSegment>
+            <StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="204572.1854" y="-38720.166" z="-16000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+        </CableState>
+        <CableState>
+          <!--P21-P20-E1-3-->
+          <CableSegment>
+            <StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
+            <EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="242050.3104" y="-39987.7943" z="-14000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P18-P19-E1-4-->
+          <CableSegment>
+            <StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="241334.9390" y="-11335.9716" z="-13000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P3-P1-E1-2-->
+          <CableSegment>
+            <StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="165291.6319" y="-37872.8427" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P15-P16-E1-1-->
+          <CableSegment>
+            <StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="165395.7126" y="-9439.6809" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+        </CableState>
+        <CableSwitchCondition instanceFullName="">
+          <CableSegment>
+            <StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="165395.7126" y="-9439.6809" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <CableLength CableStateIndex="0">148.3135</CableLength>
+          <CableLength CableStateIndex="1">169.2971</CableLength>
+          <CableLength CableStateIndex="2">243.9447</CableLength>
+          <CableLength CableStateIndex="4">200000</CableLength>
+        </CableSwitchCondition>
+      </CableSystem>
+      <ConnectionPointPair ConnectionPointPairName="A-A'">
+        <StartConnectionPoint x ="245347.9403" y ="-41006.2341" z ="-14624.4575"/>
+        <EndConnectionPoint x ="161317.3082" y ="-40182.3692" z ="-19529.1799"/>
+      </ConnectionPointPair>
+      <ConnectionPointPair ConnectionPointPairName="B-B'">
+        <StartConnectionPoint x ="245879.5231" y ="-41006.5902" z ="-22331.5136"/>
+        <EndConnectionPoint x ="161846.131" y ="-40180.7329" z ="-27196.7263"/>
+      </ConnectionPointPair>
+      <ConnectionPointPair ConnectionPointPairName="C-C'">
+        <StartConnectionPoint x ="245268.8216" y ="-5959.6393" z ="-22366.143"/>
+        <EndConnectionPoint x ="161234.2756" y ="-5136.0737" z ="-27214.0441"/>
+      </ConnectionPointPair>
       <ConnectionPointPair ConnectionPointPairName="D-D'">
         <StartConnectionPoint x ="244737.2794" y ="-5961.5712" z ="-14659.0954"/>
         <EndConnectionPoint x ="160702.7529" y ="-5137.7184" z ="-19507.3518"/>
@@ -332,290 +332,295 @@
         <EndConnectionPoint x ="161160.6353" y ="-22659.5778" z ="-21701.9256"/>
       </ConnectionPointPair>
       <Inclinometer type="roll">
-				<Dir x ="9.5085" y ="974.9662" z ="0.8639"/>
-				<!-- flip incline angle value -->
-				<FlipAngle>true</FlipAngle>
-			</Inclinometer>
-			<GPSUCS>
-				<Origin x ="229077.7855" y ="-20311.6664" z ="6663.3377"/>
-				<XAxis x ="-58856.1504" y ="1427.3624" z ="-5886.0916"/>
-				<YAxis x ="9.5085" y ="974.9662" z ="0.8639"/>
-			</GPSUCS>
-		</Pipe>
+        <Dir x ="9.5085" y ="974.9662" z ="0.8639"/>
+        <!-- flip incline angle value -->
+        <FlipAngle>true</FlipAngle>
+      </Inclinometer>
+      <GPSUCS>
+        <Origin x ="229077.7855" y ="-20311.6664" z ="6663.3377"/>
+        <XAxis x ="-58856.1504" y ="1427.3624" z ="-5886.0916"/>
+        <YAxis x ="9.5085" y ="974.9662" z ="0.8639"/>
+      </GPSUCS>
+      <GPSUCS>
+        <Origin x ="229077.7855" y ="-20311.6664" z ="6663.3377"/>
+        <XAxis x ="-58856.1504" y ="1427.3624" z ="-5886.0916"/>
+        <YAxis x ="9.5085" y ="974.9662" z ="0.8639"/>
+      </GPSUCS>
+    </Pipe>
 
-		<!--The sceond pipe-->
-		<Pipe width ="36" height ="15" length ="90" d1 ="80" d2=""  t1=""  t2=""   showInMultipleView ="1">
-			<ModelPath>models\pipe2.3ds</ModelPath>
-			<Pylon  showInMultipleView ="1">
-				<ModelPath>models\taojia2_1.3ds</ModelPath>
-			</Pylon>
-			<Pylon  showInMultipleView ="1">
-				<ModelPath>models\taojia2_2.3ds</ModelPath>
-			</Pylon>
-			<PipeStaticModel showInMultipleView ="1">
-				<ModelPath >models\pipestatic2.3ds</ModelPath>
-			</PipeStaticModel>
-			<FillModel>
-				<FillSegment showInMultipleView ="1">
-					<ModelPath>models\huitian2_1.3ds</ModelPath>
-					<TimePercent>0.3333</TimePercent>
-					<StartPosition x ="173855.0451" y ="-67586.9392" z ="-24303.0518"/>
-					<SacleDirection x ="-47440.2128" y ="-2160.0688" z ="5231.6854" />
-				</FillSegment>
-				<FillSegment showInMultipleView ="1">
-					<ModelPath>models\huitian2_2.3ds</ModelPath>
-					<TimePercent>0.3333</TimePercent>
-					<StartPosition x ="182139.9088" y ="-79745.2832" z ="-21074.7422"/>
-					<SacleDirection x ="-67015.2701" y ="-3071.1974" z ="-868.1059" />
-				</FillSegment>
-				<FillSegment showInMultipleView ="1">
-					<ModelPath>models\huitian2_3.3ds</ModelPath>
-					<TimePercent>0.3333</TimePercent>
-					<StartPosition x ="190865.0078" y ="-114110.7115" z ="-12290.5342"/>
-					<SacleDirection x ="-73742.7152" y ="-3377.9155" z ="201.8836" />
-				</FillSegment>
-			</FillModel>
-			<ZhujiangModel showInMultipleView ="1">
-				<ModelPath>models\zhujiang2.3ds</ModelPath>
-				<StartPosition x ="161649.3651" y ="-50391.0795" z ="-28349.1346"/>
-				<SacleDirection x ="-72231.8165" y ="-3992.0661" z ="3752.2296" />
-			</ZhujiangModel>
-			<CableSystem>
-				<CableState>
-					<!--P8-P8-E2_2-->
-					<CableSegment>
-						<StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="80960.4876" y="-37088.9054" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P10-P11-E2-1-->
-					<CableSegment>
-						<StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="81071.8825" y="-8627.3630" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P7-P6-E2-4-->
-					<CableSegment>
-						<StartPosition x ="-77215.4470" y="147105.7699" z="-2000.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
-						<EndPosition x ="156784.6103" y="-10561.6729" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P13-P14-E2-3-->
-					<CableSegment>
-						<StartPosition x ="-56834.8115" y="-108983.4956" z="-900.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
-						<EndPosition x ="157513.6798" y="-38781.0116" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P3-P1-E2-3-->
-					<CableSegment>
-						<StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="157513.6798" y="-38781.0116" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P15-P16-E2-4-->
-					<CableSegment>
-						<StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
-						<EndPosition x ="156784.6103" y="-10561.6729" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-				</CableState>
-				<CableState>
-					<!--P8-P8-E2_2-->
-					<CableSegment>
-						<StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="80960.4876" y="-37088.9054" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P10-P11-E2-1-->
-					<CableSegment>
-						<StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="81071.8825" y="-8627.3630" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P3-P1-E2-3-->
-					<CableSegment>
-						<StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="157513.6798" y="-38781.0116" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P15-P16-E2-4-->
-					<CableSegment>
-						<StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
-						<EndPosition x ="156784.6103" y="-10561.6729" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P7-P6-E2-6-->
-					<CableSegment>
-						<StartPosition x ="-77215.4470" y="147105.7699" z="-2000.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
-						<EndPosition x ="116957.91" y="-7186.9738" z="-19000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P13-P14-E2-5-->
-					<CableSegment>
-						<StartPosition x ="-56834.8115" y="-108983.4956" z="-900.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
-						<EndPosition x ="120336.4367" y="-38895.8499" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P21-P20-E2-3-->
-					<CableSegment>
-						<StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
-						<EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="157513.6798" y="-38781.0116" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P18-P19-E2-4-->
-					<CableSegment>
-						<StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="156784.6103" y="-10561.6729" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-				</CableState>
-				<CableState>
-					<!--P8-P8-E2_2-->
-					<CableSegment>
-						<StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="80960.4876" y="-37088.9054" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P10-P11-E2-1-->
-					<CableSegment>
-						<StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="81071.8825" y="-8627.3630" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P21-P20-E2-3-->
-					<CableSegment>
-						<StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
-						<EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="157513.6798" y="-38781.0116" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P18-P19-E2-4-->
-					<CableSegment>
-						<StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="156784.6103" y="-10561.6729" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P3-P1-E2-6-->
-					<CableSegment>
-						<StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="116957.91" y="-7186.9738" z="-19000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P15-P16-E2-5-->
-					<CableSegment>
-						<StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
-						<EndPosition x ="120336.4367" y="-38895.8499" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-				</CableState>
-				<CableState>
-					<!--P21-P20-E2-3-->
-					<CableSegment>
-						<StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
-						<EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="157513.6798" y="-38781.0116" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P18-P19-E2-4-->
-					<CableSegment>
-						<StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="156784.6103" y="-10561.6729" z="-18000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P3-P1-E2-2-->
-					<CableSegment>
-						<StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="80960.4876" y="-37088.9054" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P15-P16-E2-1-->
-					<CableSegment>
-						<StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="81071.8825" y="-8627.3630" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-				</CableState>
-				<CableSwitchCondition instanceFullName="">
-					<CableSegment>
-						<StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="81071.8825" y="-8627.3630" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<CableLength CableStateIndex="0">140.6419</CableLength>
-					<CableLength CableStateIndex="1">169.297</CableLength>
-					<CableLength CableStateIndex="2">243.9447543</CableLength>
-					<CableLength CableStateIndex="3">200000</CableLength>
-				</CableSwitchCondition>
-			</CableSystem>
+    <!--The sceond pipe-->
+    <Pipe width ="36" height ="15" length ="90" d1 ="80" d2=""  t1=""  t2=""   showInMultipleView ="1">
+      <ModelPath>models\pipe2.3ds</ModelPath>
+      <Pylon  showInMultipleView ="1">
+        <ModelPath>models\taojia2_1.3ds</ModelPath>
+      </Pylon>
+      <Pylon  showInMultipleView ="1">
+        <ModelPath>models\taojia2_2.3ds</ModelPath>
+      </Pylon>
+      <PipeStaticModel showInMultipleView ="1">
+        <ModelPath >models\pipestatic2.3ds</ModelPath>
+      </PipeStaticModel>
+      <FillModel>
+        <FillSegment showInMultipleView ="1">
+          <ModelPath>models\huitian2_1.3ds</ModelPath>
+          <TimePercent>0.3333</TimePercent>
+          <StartPosition x ="173855.0451" y ="-67586.9392" z ="-24303.0518"/>
+          <SacleDirection x ="-47440.2128" y ="-2160.0688" z ="5231.6854" />
+        </FillSegment>
+        <FillSegment showInMultipleView ="1">
+          <ModelPath>models\huitian2_2.3ds</ModelPath>
+          <TimePercent>0.3333</TimePercent>
+          <StartPosition x ="182139.9088" y ="-79745.2832" z ="-21074.7422"/>
+          <SacleDirection x ="-67015.2701" y ="-3071.1974" z ="-868.1059" />
+        </FillSegment>
+        <FillSegment showInMultipleView ="1">
+          <ModelPath>models\huitian2_3.3ds</ModelPath>
+          <TimePercent>0.3333</TimePercent>
+          <StartPosition x ="190865.0078" y ="-114110.7115" z ="-12290.5342"/>
+          <SacleDirection x ="-73742.7152" y ="-3377.9155" z ="201.8836" />
+        </FillSegment>
+      </FillModel>
+      <ZhujiangModel showInMultipleView ="1">
+        <ModelPath>models\zhujiang2.3ds</ModelPath>
+        <StartPosition x ="161649.3651" y ="-50391.0795" z ="-28349.1346"/>
+        <SacleDirection x ="-72231.8165" y ="-3992.0661" z ="3752.2296" />
+      </ZhujiangModel>
+      <CableSystem>
+        <CableState>
+          <!--P8-P8-E2_2-->
+          <CableSegment>
+            <StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="80960.4876" y="-37088.9054" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P10-P11-E2-1-->
+          <CableSegment>
+            <StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="81071.8825" y="-8627.3630" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P7-P6-E2-4-->
+          <CableSegment>
+            <StartPosition x ="-77215.4470" y="147105.7699" z="-2000.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
+            <EndPosition x ="156784.6103" y="-10561.6729" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P13-P14-E2-3-->
+          <CableSegment>
+            <StartPosition x ="-56834.8115" y="-108983.4956" z="-900.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
+            <EndPosition x ="157513.6798" y="-38781.0116" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P3-P1-E2-3-->
+          <CableSegment>
+            <StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="157513.6798" y="-38781.0116" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P15-P16-E2-4-->
+          <CableSegment>
+            <StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
+            <EndPosition x ="156784.6103" y="-10561.6729" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+        </CableState>
+        <CableState>
+          <!--P8-P8-E2_2-->
+          <CableSegment>
+            <StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="80960.4876" y="-37088.9054" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P10-P11-E2-1-->
+          <CableSegment>
+            <StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="81071.8825" y="-8627.3630" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P3-P1-E2-3-->
+          <CableSegment>
+            <StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="157513.6798" y="-38781.0116" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P15-P16-E2-4-->
+          <CableSegment>
+            <StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
+            <EndPosition x ="156784.6103" y="-10561.6729" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P7-P6-E2-6-->
+          <CableSegment>
+            <StartPosition x ="-77215.4470" y="147105.7699" z="-2000.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
+            <EndPosition x ="116957.91" y="-7186.9738" z="-19000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P13-P14-E2-5-->
+          <CableSegment>
+            <StartPosition x ="-56834.8115" y="-108983.4956" z="-900.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
+            <EndPosition x ="120336.4367" y="-38895.8499" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P21-P20-E2-3-->
+          <CableSegment>
+            <StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
+            <EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="157513.6798" y="-38781.0116" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P18-P19-E2-4-->
+          <CableSegment>
+            <StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="156784.6103" y="-10561.6729" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+        </CableState>
+        <CableState>
+          <!--P8-P8-E2_2-->
+          <CableSegment>
+            <StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="80960.4876" y="-37088.9054" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P10-P11-E2-1-->
+          <CableSegment>
+            <StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="81071.8825" y="-8627.3630" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P21-P20-E2-3-->
+          <CableSegment>
+            <StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
+            <EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="157513.6798" y="-38781.0116" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P18-P19-E2-4-->
+          <CableSegment>
+            <StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="156784.6103" y="-10561.6729" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P3-P1-E2-6-->
+          <CableSegment>
+            <StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="116957.91" y="-7186.9738" z="-19000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P15-P16-E2-5-->
+          <CableSegment>
+            <StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
+            <EndPosition x ="120336.4367" y="-38895.8499" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+        </CableState>
+        <CableState>
+          <!--P21-P20-E2-3-->
+          <CableSegment>
+            <StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
+            <EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="157513.6798" y="-38781.0116" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P18-P19-E2-4-->
+          <CableSegment>
+            <StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="156784.6103" y="-10561.6729" z="-18000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P3-P1-E2-2-->
+          <CableSegment>
+            <StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="80960.4876" y="-37088.9054" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P15-P16-E2-1-->
+          <CableSegment>
+            <StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="81071.8825" y="-8627.3630" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+        </CableState>
+        <CableSwitchCondition instanceFullName="">
+          <CableSegment>
+            <StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="81071.8825" y="-8627.3630" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <CableLength CableStateIndex="0">140.6419</CableLength>
+          <CableLength CableStateIndex="1">169.297</CableLength>
+          <CableLength CableStateIndex="2">243.9447543</CableLength>
+          <CableLength CableStateIndex="3">200000</CableLength>
+        </CableSwitchCondition>
+      </CableSystem>
       <ConnectionPointPair ConnectionPointPairName="A-A'">
         <StartConnectionPoint x ="161317.3082" y ="-40182.3692" z ="-19529.1799"/>
         <EndConnectionPoint x ="76569.5004" y ="-41665.2131" z ="-19836.7215"/>
@@ -636,309 +641,309 @@
         <StartConnectionPoint x ="161160.6353" y ="-22659.5778" z ="-21701.9256"/>
         <EndConnectionPoint x ="76407.6695" y ="-24140.5079" z ="-21935.1695"/>
       </ConnectionPointPair>
-			<Inclinometer type="roll">
-				<Dir x ="0.3448" y ="211.3446" z ="0.0768"/>
-				<!-- flip incline angle value -->
-				<FlipAngle>true</FlipAngle>
-			</Inclinometer>
-			<GPSUCS>
-				<Origin x ="145335.8732" y ="-18766.0125" z ="2438.1428"/>
-				<XAxis x ="-58891.6911" y ="-250.7006" z ="-2580.0749"/>
-				<YAxis x ="0.3448" y ="211.3446" z ="0.0768"/>
-			</GPSUCS>
-		</Pipe>
+      <Inclinometer type="roll">
+        <Dir x ="0.3448" y ="211.3446" z ="0.0768"/>
+        <!-- flip incline angle value -->
+        <FlipAngle>true</FlipAngle>
+      </Inclinometer>
+      <GPSUCS>
+        <Origin x ="145335.8732" y ="-18766.0125" z ="2438.1428"/>
+        <XAxis x ="-58891.6911" y ="-250.7006" z ="-2580.0749"/>
+        <YAxis x ="0.3448" y ="211.3446" z ="0.0768"/>
+      </GPSUCS>
+    </Pipe>
 
-		<!--The third pipe-->
-		<Pipe width ="36" height ="15" length ="90" d1 ="80" d2=""  t1=""  t2=""   showInMultipleView ="1">
-			<ModelPath>models\pipe3.3ds</ModelPath>
-			<Pylon  showInMultipleView ="1">
-				<ModelPath>models\taojia3_1.3ds</ModelPath>
-			</Pylon>
-			<Pylon  showInMultipleView ="1">
-				<ModelPath>models\taojia3_2.3ds</ModelPath>
-			</Pylon>
-			<PipeStaticModel showInMultipleView ="1">
-				<ModelPath >models\pipestatic3.3ds</ModelPath>
-			</PipeStaticModel>
-			<FillModel>
-				<FillSegment showInMultipleView ="1">
-					<ModelPath>models\huitian3_1.3ds</ModelPath>
-					<TimePercent>0.3333</TimePercent>
-					<StartPosition x ="91404.3294" y ="-86667.8373" z ="-24458.7342"/>
-					<SacleDirection x ="-74723.2639" y ="-3870.0361" z ="2604.5534" />
-				</FillSegment>
-				<FillSegment showInMultipleView ="1">
-					<ModelPath>models\huitian3_2.3ds</ModelPath>
-					<TimePercent>0.3333</TimePercent>
-					<StartPosition x ="102500.2194" y ="-94419.2076" z ="-21796.9212"/>
-					<SacleDirection x ="-93305.7453" y ="-9477.7619" z ="2695.7304" />
-				</FillSegment>
-				<FillSegment showInMultipleView ="1">
-					<ModelPath>models\huitian3_3.3ds</ModelPath>
-					<TimePercent>0.3333</TimePercent>
-					<StartPosition x ="118021.4387" y ="-116986.0119" z ="-12094.4216"/>
-					<SacleDirection x ="-96217.9718" y ="-4448.2464" z ="263.7093" />
-				</FillSegment>
-			</FillModel>
-			<ZhujiangModel showInMultipleView ="1">
-				<ModelPath>models\zhujiang3.3ds</ModelPath>
-				<StartPosition x ="76642.4511" y ="-71352.9987" z ="-28095.0964"/>
-				<SacleDirection x ="-57997.6239" y ="-2665.4926 " z ="2380.9192" />
-			</ZhujiangModel>
-			<CableSystem>
-				<CableState>
-					<!--P8-P8-E3_2-->
-					<CableSegment>
-						<StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="1485.9152" y="-42502.4038" z="-14500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P10-P11-E3-1-->
-					<CableSegment>
-						<StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="873.7259" y="-13170.8869" z="-14500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P7-P6-E3-4-->
-					<CableSegment>
-						<StartPosition x ="-77215.4470" y="147105.7699" z="-2000.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
-						<EndPosition x ="72025.8413" y="-12064.501" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P13-P14-E3-3-->
-					<CableSegment>
-						<StartPosition x ="-56834.8115" y="-108983.4956" z="-900.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
-						<EndPosition x ="72738.0618" y="-40232.2957" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P3-P1-E3-3-->
-					<CableSegment>
-						<StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="72738.0618" y="-40232.2957" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P15-P16-E3-4-->
-					<CableSegment>
-						<StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
-						<EndPosition x ="72025.8413" y="-12064.501" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-				</CableState>
-				<CableState>
-					<!--P8-P8-E3_2-->
-					<CableSegment>
-						<StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="1485.9152" y="-42502.4038" z="-14500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P10-P11-E3-1-->
-					<CableSegment>
-						<StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="873.7259" y="-13170.8869" z="-14500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P3-P1-E3-3-->
-					<CableSegment>
-						<StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="72738.0618" y="-40232.2957" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P15-P16-E3-4-->
-					<CableSegment>
-						<StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
-						<EndPosition x ="72025.8413" y="-12064.501" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P7-P6-E3-6-->
-					<CableSegment>
-						<StartPosition x ="-77215.4470" y="147105.7699" z="-2000.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
-						<EndPosition x ="34028.5918" y="-10245.6093" z="-17000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P13-P14-E3-5-->
-					<CableSegment>
-						<StartPosition x ="-56834.8115" y="-108983.4956" z="-900.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
-						<EndPosition x ="72025.8413" y="-40196.112" z="-17000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P21-P20-E3-3-->
-					<CableSegment>
-						<StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
-						<EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="72738.0618" y="-40232.2957" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P18-P19-E3-4-->
-					<CableSegment>
-						<StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="72025.8413" y="-12064.501" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-				</CableState>
-				<CableState>
-					<!--P8-P8-E3_2-->
-					<CableSegment>
-						<StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="1485.9152" y="-42502.4038" z="-14500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P10-P11-E3-1-->
-					<CableSegment>
-						<StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="873.7259" y="-13170.8869" z="-14500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P21-P20-E3-3-->
-					<CableSegment>
-						<StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
-						<EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="72738.0618" y="-40232.2957" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P18-P19-E3-4-->
-					<CableSegment>
-						<StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="72025.8413" y="-12064.501" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P3-P1-E3-6-->
-					<CableSegment>
-						<StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="34028.5918" y="-10245.6093" z="-17000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P15-P16-E3-5-->
-					<CableSegment>
-						<StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="72025.8413" y="-40196.112" z="-17000.0000" DriveByPipe ="true"/>
-					</CableSegment>
-				</CableState>
-				<CableState>
-					<!--P8-P8-E3_2-->
-					<CableSegment>
-						<StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="1485.9152" y="-42502.4038" z="-14500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P10-P11-E3-1-->
-					<CableSegment>
-						<StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="873.7259" y="-13170.8869" z="-14500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P21-P20-E3-3-->
-					<CableSegment>
-						<StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
-						<EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="72738.0618" y="-40232.2957" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P18-P19-E3-4-->
-					<CableSegment>
-						<StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="72025.8413" y="-12064.501" z="-18500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P3-P1-E3-2-->
-					<CableSegment>
-						<StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="1485.9152" y="-42502.4038" z="-14500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<!--P15-P16-E3-1-->
-					<CableSegment>
-						<StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
-					</CableSegment>
-					<CableSegment>
-						<StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
-						<EndPosition x ="873.7259" y="-13170.8869" z="-14500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-				</CableState>
-				<CableSwitchCondition instanceFullName="">
-					<CableSegment>
-						<StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
-						<EndPosition x ="873.7259" y="-13170.8869" z="-14500.0000" DriveByPipe ="true"/>
-					</CableSegment>
-					<CableLength CableStateIndex="0">145.0754</CableLength>
-					<CableLength CableStateIndex="1">172.7596</CableLength>
-					<CableLength CableStateIndex="2">210.0000</CableLength>
-					<CableLength CableStateIndex="3">200000</CableLength>
-				</CableSwitchCondition>
-			</CableSystem>
+    <!--The third pipe-->
+    <Pipe width ="36" height ="15" length ="90" d1 ="80" d2=""  t1=""  t2=""   showInMultipleView ="1">
+      <ModelPath>models\pipe3.3ds</ModelPath>
+      <Pylon  showInMultipleView ="1">
+        <ModelPath>models\taojia3_1.3ds</ModelPath>
+      </Pylon>
+      <Pylon  showInMultipleView ="1">
+        <ModelPath>models\taojia3_2.3ds</ModelPath>
+      </Pylon>
+      <PipeStaticModel showInMultipleView ="1">
+        <ModelPath >models\pipestatic3.3ds</ModelPath>
+      </PipeStaticModel>
+      <FillModel>
+        <FillSegment showInMultipleView ="1">
+          <ModelPath>models\huitian3_1.3ds</ModelPath>
+          <TimePercent>0.3333</TimePercent>
+          <StartPosition x ="91404.3294" y ="-86667.8373" z ="-24458.7342"/>
+          <SacleDirection x ="-74723.2639" y ="-3870.0361" z ="2604.5534" />
+        </FillSegment>
+        <FillSegment showInMultipleView ="1">
+          <ModelPath>models\huitian3_2.3ds</ModelPath>
+          <TimePercent>0.3333</TimePercent>
+          <StartPosition x ="102500.2194" y ="-94419.2076" z ="-21796.9212"/>
+          <SacleDirection x ="-93305.7453" y ="-9477.7619" z ="2695.7304" />
+        </FillSegment>
+        <FillSegment showInMultipleView ="1">
+          <ModelPath>models\huitian3_3.3ds</ModelPath>
+          <TimePercent>0.3333</TimePercent>
+          <StartPosition x ="118021.4387" y ="-116986.0119" z ="-12094.4216"/>
+          <SacleDirection x ="-96217.9718" y ="-4448.2464" z ="263.7093" />
+        </FillSegment>
+      </FillModel>
+      <ZhujiangModel showInMultipleView ="1">
+        <ModelPath>models\zhujiang3.3ds</ModelPath>
+        <StartPosition x ="76642.4511" y ="-71352.9987" z ="-28095.0964"/>
+        <SacleDirection x ="-57997.6239" y ="-2665.4926 " z ="2380.9192" />
+      </ZhujiangModel>
+      <CableSystem>
+        <CableState>
+          <!--P8-P8-E3_2-->
+          <CableSegment>
+            <StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="1485.9152" y="-42502.4038" z="-14500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P10-P11-E3-1-->
+          <CableSegment>
+            <StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="873.7259" y="-13170.8869" z="-14500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P7-P6-E3-4-->
+          <CableSegment>
+            <StartPosition x ="-77215.4470" y="147105.7699" z="-2000.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
+            <EndPosition x ="72025.8413" y="-12064.501" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P13-P14-E3-3-->
+          <CableSegment>
+            <StartPosition x ="-56834.8115" y="-108983.4956" z="-900.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
+            <EndPosition x ="72738.0618" y="-40232.2957" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P3-P1-E3-3-->
+          <CableSegment>
+            <StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="72738.0618" y="-40232.2957" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P15-P16-E3-4-->
+          <CableSegment>
+            <StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
+            <EndPosition x ="72025.8413" y="-12064.501" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+        </CableState>
+        <CableState>
+          <!--P8-P8-E3_2-->
+          <CableSegment>
+            <StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="1485.9152" y="-42502.4038" z="-14500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P10-P11-E3-1-->
+          <CableSegment>
+            <StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="873.7259" y="-13170.8869" z="-14500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P3-P1-E3-3-->
+          <CableSegment>
+            <StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="72738.0618" y="-40232.2957" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P15-P16-E3-4-->
+          <CableSegment>
+            <StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>16
+            <EndPosition x ="72025.8413" y="-12064.501" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P7-P6-E3-6-->
+          <CableSegment>
+            <StartPosition x ="-77215.4470" y="147105.7699" z="-2000.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-29767.2619" y="146535.5288" z="-1000.0000" DriveByPipe ="false"/>
+            <EndPosition x ="34028.5918" y="-10245.6093" z="-17000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P13-P14-E3-5-->
+          <CableSegment>
+            <StartPosition x ="-56834.8115" y="-108983.4956" z="-900.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-3800.8433" y="-108946.8133" z="250.0000" DriveByPipe ="false"/>
+            <EndPosition x ="72025.8413" y="-40196.112" z="-17000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P21-P20-E3-3-->
+          <CableSegment>
+            <StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
+            <EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="72738.0618" y="-40232.2957" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P18-P19-E3-4-->
+          <CableSegment>
+            <StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="72025.8413" y="-12064.501" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+        </CableState>
+        <CableState>
+          <!--P8-P8-E3_2-->
+          <CableSegment>
+            <StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="1485.9152" y="-42502.4038" z="-14500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P10-P11-E3-1-->
+          <CableSegment>
+            <StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="873.7259" y="-13170.8869" z="-14500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P21-P20-E3-3-->
+          <CableSegment>
+            <StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
+            <EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="72738.0618" y="-40232.2957" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P18-P19-E3-4-->
+          <CableSegment>
+            <StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="72025.8413" y="-12064.501" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P3-P1-E3-6-->
+          <CableSegment>
+            <StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="34028.5918" y="-10245.6093" z="-17000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P15-P16-E3-5-->
+          <CableSegment>
+            <StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="72025.8413" y="-40196.112" z="-17000.0000" DriveByPipe ="true"/>
+          </CableSegment>
+        </CableState>
+        <CableState>
+          <!--P8-P8-E3_2-->
+          <CableSegment>
+            <StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-191224.1855" y="6884.3152" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="1485.9152" y="-42502.4038" z="-14500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P10-P11-E3-1-->
+          <CableSegment>
+            <StartPosition x ="-190064.4894" y="-31003.1028" z="-400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-183058.7094" y="-74750.5374" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="873.7259" y="-13170.8869" z="-14500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P21-P20-E3-3-->
+          <CableSegment>
+            <StartPosition x ="253642.7179" y="24255.6265" z="350.0000" DriveByPipe ="false"/>
+            <EndPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="72738.0618" y="-40232.2957" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P18-P19-E3-4-->
+          <CableSegment>
+            <StartPosition x ="246666.7905" y="-66368.2531" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="242939.8286" y="-51652.3848" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="72025.8413" y="-12064.501" z="-18500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P3-P1-E3-2-->
+          <CableSegment>
+            <StartPosition x ="-5986.2243" y="12501.0326" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="-2616.6345" y="1002.8927" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="1485.9152" y="-42502.4038" z="-14500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <!--P15-P16-E3-1-->
+          <CableSegment>
+            <StartPosition x ="4678.6375" y="-76885.5936" z="800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
+          </CableSegment>
+          <CableSegment>
+            <StartPosition x ="3451.3560" y="-50459.8234" z="1800.0000" DriveByPipe ="false"/>
+            <EndPosition x ="873.7259" y="-13170.8869" z="-14500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+        </CableState>
+        <CableSwitchCondition instanceFullName="">
+          <CableSegment>
+            <StartPosition x ="-195084.6716" y="98713.2667" z="400.0000" DriveByPipe ="false"/>
+            <EndPosition x ="873.7259" y="-13170.8869" z="-14500.0000" DriveByPipe ="true"/>
+          </CableSegment>
+          <CableLength CableStateIndex="0">145.0754</CableLength>
+          <CableLength CableStateIndex="1">172.7596</CableLength>
+          <CableLength CableStateIndex="2">210.0000</CableLength>
+          <CableLength CableStateIndex="3">200000</CableLength>
+        </CableSwitchCondition>
+      </CableSystem>
       <ConnectionPointPair ConnectionPointPairName="A-A'">
         <StartConnectionPoint x ="76569.5004" y ="-41665.2131" z ="-19836.7215"/>
         <EndConnectionPoint x ="0" y ="0" z ="0"/>
@@ -959,57 +964,57 @@
         <StartConnectionPoint x ="76407.6695" y ="-24140.5079" z ="-21935.1695"/>
         <EndConnectionPoint x ="0" y ="0" z ="0"/>
       </ConnectionPointPair>
-			<Inclinometer type="roll">
-				<Dir x ="-10.8389" y ="258.9493" z ="-0.1056"/>
-				<!-- flip incline angle value -->
-				<FlipAngle>true</FlipAngle>
-			</Inclinometer>
-			<GPSUCS>
-				<Origin x ="64151.7326" y ="-19414.5728" z ="2858.1149"/>
-				<XAxis x ="-59039.2233" y ="-1796.6327" z ="624.1926"/>
-				<YAxis x ="-10.8389" y ="258.9493" z ="-0.1056"/>
-			</GPSUCS>
-		</Pipe>
+      <Inclinometer type="roll">
+        <Dir x ="-10.8389" y ="258.9493" z ="-0.1056"/>
+        <!-- flip incline angle value -->
+        <FlipAngle>true</FlipAngle>
+      </Inclinometer>
+      <GPSUCS>
+        <Origin x ="64151.7326" y ="-19414.5728" z ="2858.1149"/>
+        <XAxis x ="-59039.2233" y ="-1796.6327" z ="624.1926"/>
+        <YAxis x ="-10.8389" y ="258.9493" z ="-0.1056"/>
+      </GPSUCS>
+    </Pipe>
 
-		<!-- The forth pipe-->
-		<!--
+    <!-- The forth pipe-->
+    <!--
         <Pipe width ="36" height ="15" length ="90" d1 ="80" d2  t1  t2 >
             <ModelPath>models\pipe4.3ds</ModelPath>
         </Pipe>-->
-	</Pipes>
-	<Model showInMultipleView ="1">
-		<ModelPath>models\anbi.3ds</ModelPath>
-	</Model>
-	<Model>
-		<ModelPath>models\anmai.3ds</ModelPath>
-	</Model>
-	<Model>
-		<ModelPath>models\building1.3ds</ModelPath>
-	</Model>
-	<Model>
-		<ModelPath>models\building2.3ds</ModelPath>
-	</Model>
-	<Model>
-		<ModelPath>models\newfactory.3ds</ModelPath>
-	</Model>
-	<Model>
-		<ModelPath>models\ganwu.3ds</ModelPath>
-	</Model>
-	<Model>
-		<ModelPath>models\ground.3ds</ModelPath>
-	</Model>
-	<Model>
-		<ModelPath>models\jicao.3ds</ModelPath>
-	</Model>
-	<Model>
-		<ModelPath>models\ships.3ds</ModelPath>
-	</Model>
-	<Model>
-		<ModelPath>models\water.3ds</ModelPath>
-	</Model>
-	<Model>
-		<ModelPath>models\riverground.3ds</ModelPath>
-	</Model>
+  </Pipes>
+  <Model showInMultipleView ="1">
+    <ModelPath>models\anbi.3ds</ModelPath>
+  </Model>
+  <Model  showInMultipleView ="1">
+    <ModelPath>models\anmai.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\building1.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\building2.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\newfactory.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\ganwu.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\ground.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\jicao.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\ships.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\water.3ds</ModelPath>
+  </Model>
+  <Model>
+    <ModelPath>models\riverground.3ds</ModelPath>
+  </Model>
   <PipesBoundary  showInMultipleView ="1">
     <StartPosition x ="241975.3582" y ="584.6731" z ="-6924.7816"/>
     <EndPosition x ="825.5181" y ="900.8838" z ="-6500.8134"/>
@@ -1017,7 +1022,7 @@
     <Color x ="1" y ="1" z ="1"/>
     <LineWidth>2</LineWidth>
   </PipesBoundary>
-    <PipesBoundary  showInMultipleView ="1">
+  <PipesBoundary  showInMultipleView ="1">
     <StartPosition x ="242038.2052" y ="-46250.0499" z ="-6920.3388"/>
     <EndPosition x ="8954.0915" y ="-48146.8335" z ="-6510.2832"/>
     <CenterPosition x ="183453.9696" y ="-7169114.509" z ="-5951.1013"/>
@@ -1025,10 +1030,15 @@
     <LineWidth>2</LineWidth>
   </PipesBoundary>
   <ModelingUCS>
-		<Origin x ="284242.660" y ="141313.207" z ="-2.798"/>
-		<XAxis x ="-23.302" y ="-7.460" z ="0"/>
-		<YAxis x ="-1.242" y ="-15.571" z ="0"/>
-	</ModelingUCS>
-	<ModelingUnitToMeter>0.001</ModelingUnitToMeter>
-	<GPSUnitToMeter>1</GPSUnitToMeter>
+    <!--<Origin x ="284242.660" y ="141313.207" z ="-2.798"/>
+    <XAxis x ="-23.302" y ="-7.460" z ="0"/>
+    <YAxis x ="-1.242" y ="-15.571" z ="0"/>
+  </ModelingUCS>-->
+  <ModelingUCS>
+    <Origin x ="0" y ="0" z ="0"/>
+    <XAxis x ="1" y ="0" z ="0"/>
+    <YAxis x ="0" y ="1" z ="0"/>
+  </ModelingUCS>
+  <ModelingUnitToMeter>0.001</ModelingUnitToMeter>
+  <GPSUnitToMeter>1</GPSUnitToMeter>
 </System>
