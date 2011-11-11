@@ -20,6 +20,18 @@
 			<PipeStaticModel showInMultipleView ="1">
 				<ModelPath >models\pipestatic1.3ds</ModelPath>
 			</PipeStaticModel>
+      <PipeBoundary>
+        <BoundaryPoint x ="100000" y ="5000" z ="6000"/>
+        <BoundaryPoint x ="100000" y ="5000" z ="3000"/>
+        <BoundaryPoint x ="100000" y ="-5000" z ="3000"/>
+        <BoundaryPoint x ="100000" y ="-5000" z ="6000"/>
+        <BoundaryPoint x ="200000" y ="5000" z ="6000"/>
+        <BoundaryPoint x ="200000" y ="5000" z ="3000"/>
+        <BoundaryPoint x ="200000" y ="-5000" z ="3000"/>
+        <BoundaryPoint x ="200000" y ="-5000" z ="6000"/>
+        <Color x ="1" y ="1" z ="1"/>
+        <LineWidth>2</LineWidth>
+      </PipeBoundary>
 			<FillModel>
 				<FillSegment showInMultipleView ="1">
 					<ModelPath>models\huitian1_1.3ds</ModelPath>
@@ -1001,14 +1013,14 @@
     <CenterPosition x ="147914.273" y ="-1557970.14" z ="-6258.6512"/>
     <Color x ="1" y ="1" z ="1"/>
     <LineWidth>2</LineWidth>
-  </PipeBoundary>
-  <PipeBoundary>
+  </PipesBoundary>
+    <PipesBoundary>
     <CenterPosition x ="148643.7035" y ="-1559340.349" z ="-6259.7671"/>
     <EndPosition x =" 243932.3516" y =" -48816.4602" z =" -6611.0092"/>
     <StartPosition x ="-7817.6915" y ="-53922.702" z ="-6167.7435"/>
     <Color x ="1" y ="1" z ="1"/>
     <LineWidth>2</LineWidth>
-  </PipeBoundary>
+  </PipesBoundary>
   <ModelingUCS>
 		<Origin x ="284242.660" y ="141313.207" z ="-2.798"/>
 		<XAxis x ="-23.302" y ="-7.460" z ="0"/>
