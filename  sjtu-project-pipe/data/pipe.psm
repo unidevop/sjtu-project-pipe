@@ -995,7 +995,21 @@
 	<Model>
 		<ModelPath>models\riverground.3ds</ModelPath>
 	</Model>
-	<ModelingUCS>
+  <PipeBoundary>
+    <StartPosition x ="-9085.7968" y ="-3798.3864" z ="-6171.6096"/>
+    <EndPosition x ="245208.5134" y ="1078.4705" z ="-6619.3209"/>
+    <CenterPosition x ="147914.273" y ="-1557970.14" z ="-6258.6512"/>
+    <Color x ="1" y ="1" z ="1"/>
+    <LineWidth>2</LineWidth>
+  </PipeBoundary>
+  <PipeBoundary>
+    <CenterPosition x ="148643.7035" y ="-1559340.349" z ="-6259.7671"/>
+    <EndPosition x =" 243932.3516" y =" -48816.4602" z =" -6611.0092"/>
+    <StartPosition x ="-7817.6915" y ="-53922.702" z ="-6167.7435"/>
+    <Color x ="1" y ="1" z ="1"/>
+    <LineWidth>2</LineWidth>
+  </PipeBoundary>
+  <ModelingUCS>
 		<Origin x ="284242.660" y ="141313.207" z ="-2.798"/>
 		<XAxis x ="-23.302" y ="-7.460" z ="0"/>
 		<YAxis x ="-1.242" y ="-15.571" z ="0"/>
