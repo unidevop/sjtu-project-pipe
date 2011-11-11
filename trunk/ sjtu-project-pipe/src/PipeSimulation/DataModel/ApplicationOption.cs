@@ -96,6 +96,17 @@ namespace PipeSimulation.DataModel
         private CablingSimulationOption m_CablingSimulationOption = new CablingSimulationOption();
 
         /// <summary>
+        /// Attribute to get the cabling simulation option
+        /// </summary>
+        [XmlElement]
+        public PipeBoundaryOption PipeBoundaryOption
+        {
+            get { return m_PipeBoundaryOption; }
+            set { m_PipeBoundaryOption = value; }
+        }
+        private PipeBoundaryOption m_PipeBoundaryOption = new PipeBoundaryOption();
+
+        /// <summary>
         /// Attribute to get the connection pair option
         /// </summary>
         [XmlElement]
@@ -216,6 +227,39 @@ namespace PipeSimulation.DataModel
             set
             {
                 Array.Copy(value, m_dCablingLineColor, 3);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Pipe Boundary Option
+    /// </summary>
+    public class PipeBoundaryOption
+    {
+        [XmlElement("LineWidth")]
+        private float m_fLineWidth = 2.0f;
+        [XmlElement("LineColor")]
+        private double[] m_dLineColor = new double[3] { 0, 0, 0 };
+
+        public PipeBoundaryOption()
+        {
+        }
+
+        public float LineWidth
+        {
+            get { return m_fLineWidth; }
+            set
+            {
+                m_fLineWidth = value;
+            }
+        }
+
+        public double[] LineColor
+        {
+            get { return m_dLineColor; }
+            set
+            {
+                Array.Copy(value, m_dLineColor, 3);
             }
         }
     }
