@@ -355,6 +355,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="application.ico" />
+    <None Include="Properties\res\connectionpairs.jpg" />
     <None Include="Properties\DataSources\PipeSimulation.DataModel.CStatisticData.datasource" />
     <None Include="Properties\res\PauseAnimation.png" />
   </ItemGroup>

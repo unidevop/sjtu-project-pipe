@@ -42,6 +42,7 @@ namespace PipeSimulation.Utility
                 foreach (CPipeConnectionPointPair pair in currentPipeModel.ConnectionPointPairList)
                 {
                     CPipeConnectionPointPair newPair = new CPipeConnectionPointPair();
+                    newPair.Name = pair.Name;
 
                     // If the pipe is first pipe, we should use its start connection point to be the previous end connection point.
                     newPair.StartConnectionPoint = pair.StartConnectionPoint;
@@ -62,6 +63,7 @@ namespace PipeSimulation.Utility
                 foreach (CPipeConnectionPointPair pair in currentPipeModel.ConnectionPointPairList)
                 {
                     CPipeConnectionPointPair newPair = new CPipeConnectionPointPair();
+                    newPair.Name = pair.Name;
 
                     // For none first pipe, we should take care if the first pipe is not placed as the position of the modeling one.
                     double[] lastPipeStartConnectionPoint = null;

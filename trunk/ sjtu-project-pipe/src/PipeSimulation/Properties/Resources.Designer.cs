@@ -88,6 +88,13 @@ namespace PipeSimulation.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap connectionpairs {
+            get {
+                object obj = ResourceManager.GetObject("connectionpairs", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap EndAnimation {
             get {
                 object obj = ResourceManager.GetObject("EndAnimation", resourceCulture);
