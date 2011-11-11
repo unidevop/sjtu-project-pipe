@@ -175,13 +175,15 @@ namespace PipeSimulation.DataQuery
 
                 pipeInfo.Time = sqlDataReader.GetDateTime(1);
 
+                const double mToMm = 1000.0;
+
                 //  negate z component to convert to right-hand coordinate system
-                pipeInfo.StartPoint = new Point3D((double)(sqlDataReader.GetDecimal(2)),
-                                                  (double)(sqlDataReader.GetDecimal(3)),
-                                                  -(double)(sqlDataReader.GetDecimal(4)));
-                pipeInfo.EndPoint = new Point3D((double)(sqlDataReader.GetDecimal(5)),
-                                                 (double)(sqlDataReader.GetDecimal(6)),
-                                                 -(double)(sqlDataReader.GetDecimal(7)));
+                pipeInfo.StartPoint = new Point3D((double)(sqlDataReader.GetDecimal(2)) * mToMm,
+                                                  (double)(sqlDataReader.GetDecimal(3)) * mToMm,
+                                                  -(double)(sqlDataReader.GetDecimal(4)) * mToMm);
+                pipeInfo.EndPoint = new Point3D((double)(sqlDataReader.GetDecimal(5)) * mToMm,
+                                                 (double)(sqlDataReader.GetDecimal(6)) * mToMm,
+                                                 -(double)(sqlDataReader.GetDecimal(7)) * mToMm);
                 pipeInfo.PitchInclineAngle = (double)(sqlDataReader.GetDecimal(8));
                 pipeInfo.RollInclineAngle = (double)(sqlDataReader.GetDecimal(9));
             }
