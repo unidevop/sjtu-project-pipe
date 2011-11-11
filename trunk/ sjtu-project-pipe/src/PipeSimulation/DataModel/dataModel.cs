@@ -37,6 +37,8 @@ namespace PipeSimulation
             /// GPS Unit to Meter, default is M, so the value is 1
             /// </summary>
             double GPSUnitToMeter { get; set; }
+
+            IList<CBoundaryModel> BoundaryModels { get; }
         }
     }
 }

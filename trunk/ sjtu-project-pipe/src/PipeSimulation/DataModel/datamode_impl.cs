@@ -16,6 +16,7 @@ namespace PipeSimulation
             //private ISceneManager m_sceneManager = new CSceneManger();
             private IList<CPipeModel> m_pipeModels = new List<CPipeModel>();
             private IList<CStaticModel> m_staticModels = new List<CStaticModel>();
+            private IList<CBoundaryModel> m_BoundaryModels = new List<CBoundaryModel>();
             private double m_dModelingUnitToMeter = 0.01;
             private double m_dGPSUnitToMeter = 1;
             private CUCS m_ucsModelingToGPS = new CUCS();
@@ -39,6 +40,11 @@ namespace PipeSimulation
             public IList<CStaticModel> StaticsModels
             {
                 get { return m_staticModels; }
+            }
+
+            public IList<CBoundaryModel> BoundaryModels 
+            {
+                get { return m_BoundaryModels; }
             }
 
             /// <summary>

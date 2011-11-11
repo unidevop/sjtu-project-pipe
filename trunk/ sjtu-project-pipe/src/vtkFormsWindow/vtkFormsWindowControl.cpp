@@ -13,6 +13,7 @@
 #include "vtkPolyDataMapper.h"
 #include "vtkActor.h"
 #include "vtkProperty.h"
+#include "vtkArcSource.h"
 
 #include "vtkFormsWindowControl.h"
 #include "vtkCamera.h"
@@ -831,4 +832,33 @@ namespace vtk
       }   
     } 
 
+  void vtkFormsWindowControl::AddArcToActor(vtkActor^ actor, array<double>^ center, array<double>^ startpoint, array<double>^ endpoint)
+	{
+		::vtkActor* pActor = ::vtkActor::SafeDownCast(static_cast<::vtkObjectBase*>(actor->GetNativePointer().ToPointer()));
+		if (pActor)
+		{
+			pin_ptr<double> centerPin = &center[0];
+			double* nativeCenterPin = centerPin;
+
+			pin_ptr<double> startpointPin = &startpoint[0];
+			double* nativeStartpoint = startpointPin;
+
+			pin_ptr<double> endpointPin = &endpoint[0];
+			double* nativeEndpoint = endpointPin;
+
+			::vtkArcSource* arcSource = ::vtkArcSource::New();
+			arcSource->SetCenter(nativeCenterPin);
+			arcSource->SetPoint1(nativeStartpoint);
+			arcSource->SetPoint2(nativeEndpoint);
+			arcSource->SetResolution(80);
+
+			::vtkPolyDataMapper *coneMapper = ::vtkPolyDataMapper::New();  
+			coneMapper->SetInputConnection( arcSource->GetOutputPort() );
+
+			pActor->SetMapper( coneMapper );
+
+			arcSource->Delete();
+			coneMapper->Delete();
+		}
+	}
   }

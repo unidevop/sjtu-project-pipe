@@ -861,6 +861,27 @@ namespace PipeSimulation
             SetDefaultView(IApp.theApp.RendererManager.RightViewRenderer, viewOptions.RightRenderDefaultView);
         }
 
+        void InitializePipeIdeaBoundary()
+        {
+            foreach (CBoundaryModel boundaryModel in IApp.theApp.DataModel.BoundaryModels)
+            {
+                vtk.vtkActor actor = new vtk.vtkActor();
+                IApp.theApp.RendererManager.MainRenderer.AddActor(actor);
+                IApp.theApp.RendererManager.TopViewRenderer.AddActor(actor);
+                IApp.theApp.RendererManager.RightViewRenderer.AddActor(actor);
+                IApp.theApp.RendererManager.FrontViewRenderer.AddActor(actor);
+
+                actor.GetProperty().SetColor(boundaryModel.Color);
+                actor.GetProperty().SetLineWidth(boundaryModel.LineWidth);
+                //actor.GetProperty().SetLineStipplePattern(1);
+                //actor.GetProperty().SetLineStippleRepeatFactor(1);
+
+                IApp.theApp.vtkControl.AddArcToActor(actor, boundaryModel.Center.Point,
+                                                                                     boundaryModel.StartPoint.Point,
+                                                                                     boundaryModel.EndPoint.Point);
+            }
+        }
+
         private void SetDefaultView(vtk.vtkRenderer renderer, ViewOptions.ViewTypeEnum viewTypeEnum)
         {
             switch (viewTypeEnum)
@@ -994,6 +1015,9 @@ namespace PipeSimulation
 
             // Step 2: Load the 3ds models
             Load3dsModels();
+
+            // Step3 : Initalize Boundary Modesls
+            InitializePipeIdeaBoundary();
         }
 
         private void LoadXML(string xmlFile)
@@ -1052,6 +1076,18 @@ namespace PipeSimulation
 
                     IApp.theApp.DataModel.GPSUnitToMeter = dValue;
                 }
+
+                // Read the boundary
+                XmlNodeList boundaryNodes = xmlDoc.SelectNodes(ModelXMLDefinition.RootNode + /*MSG0*/"//" + ModelXMLDefinition.PipeBoundary);
+                foreach (XmlNode boundaryNode in boundaryNodes)
+                {
+                    CBoundaryModel boundaryModel = new CBoundaryModel();
+                    boundaryModel.ReadFromXMLNode(boundaryNode);
+
+                    // Add to boundary Models
+                    IApp.theApp.DataModel.BoundaryModels.Add(boundaryModel);
+                }
+
             }
             catch (SystemException ex)
             {

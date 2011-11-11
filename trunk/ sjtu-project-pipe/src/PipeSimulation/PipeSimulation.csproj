@@ -117,6 +117,7 @@
     <Compile Include="ConnectionSetting.Designer.cs">
       <DependentUpon>ConnectionSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\boundaryModel.cs" />
     <Compile Include="DataModel\cableModels.cs" />
     <Compile Include="DataModel\fillModels.cs" />
     <Compile Include="DataModel\fuboModels.cs" />
