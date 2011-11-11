@@ -13,6 +13,7 @@ namespace PipeSimulation.Geometry
     {
         private CPoint3D m_startConnectionPoint = new CPoint3D(); // This value is used to determine the connection point to the previous pipe models
         private CPoint3D m_endConnectionPoint = new CPoint3D(); // This value is used to determine the connection point to the next pipe model
+        private string m_strName;
 
         public CPipeConnectionPointPair()
         {
@@ -27,6 +28,14 @@ namespace PipeSimulation.Geometry
             // Read the end connection point
             XmlNode endConnectionPointNode = connectionPairNode.SelectSingleNode(ModelXMLDefinition.pipeEndConnPoint);
             m_endConnectionPoint = CPoint3DSerializer.ReadPoint(endConnectionPointNode);
+
+            try
+            {
+                m_strName = connectionPairNode.Attributes[ModelXMLDefinition.pipeConnectionPointPairName].Value;
+            }
+            catch (Exception)
+            {
+            }
         }
 
         public CPoint3D StartConnectionPoint
@@ -50,6 +59,12 @@ namespace PipeSimulation.Geometry
             {
                 m_endConnectionPoint = new CPoint3D(value.Point);
             }
+        }
+
+        public string Name
+        {
+            get { return m_strName; }
+            set { m_strName = value; }
         }
 
         /// <summary>

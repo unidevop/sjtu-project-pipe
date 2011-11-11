@@ -117,24 +117,162 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="BackView" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\BackView.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="IDS_WARNING_SAVE_CONFIG" xml:space="preserve">
+    <value>配置已修改，是否保存？</value>
   </data>
-  <data name="BottomView" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\BottomView.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="IDS_ERROR_LOAD_XML" xml:space="preserve">
+    <value>致命错误：读取{0}出错。</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="NavBarZoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\NavBarZoom.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IDS_MONITOR_MODE_TEXT" xml:space="preserve">
+    <value>实时监听模式</value>
+  </data>
+  <data name="PauseAnimation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\PauseAnimation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IDS_STATUS_READY" xml:space="preserve">
+    <value>准备就绪</value>
   </data>
   <data name="FrontView" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>res\FrontView.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SWIsoMetric" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\SWIsoMetric.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BottomView" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\BottomView.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IDS_EXPORT_PIPE_INFO_TITLE" xml:space="preserve">
+    <value>输出当前沉放信息</value>
+  </data>
+  <data name="IDS_PIPE_INFO_DATE_TIME" xml:space="preserve">
+    <value>沉放时间: {0}</value>
+  </data>
+  <data name="IDS_ABOUT_VERSION" xml:space="preserve">
+    <value>版本 {0} {0}</value>
+  </data>
+  <data name="NWIsoMetric" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\NWIsoMetric.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StopAnimation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\StopAnimation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IDS_PIPE_INFO_CONNECTION_PAIR" xml:space="preserve">
+    <value>第{0}个对接点：距离{1}, X分量{2}, Y分量{3}, Z分量{4}</value>
+  </data>
+  <data name="EndAnimation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\EndAnimation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\logo.JPG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="IDS_PAN_DESC" xml:space="preserve">
     <value>平移视图</value>
+  </data>
+  <data name="SWOrbit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\SWOrbit.cur;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="IDS_START_APP" xml:space="preserve">
+    <value>启动程序...</value>
+  </data>
+  <data name="NavBarPan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\NavBarPan.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IDS_PIPE_FILL_INDEX" xml:space="preserve">
+    <value>第{0}段沉管</value>
+  </data>
+  <data name="IDS_DB_DIS_CONNECTED" xml:space="preserve">
+    <value>未连接到数据库。</value>
+  </data>
+  <data name="IDS_ERROR_LOAD_MODEL" xml:space="preserve">
+    <value>错误：读取某些模型文件出错。</value>
+  </data>
+  <data name="BackView" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\BackView.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IDS_PIPE_INFO_ANGLE" xml:space="preserve">
+    <value>侧滚角: {0} 最大侧滚角: {1} 俯仰角: {2} 最大俯仰角: {3}</value>
+  </data>
+  <data name="record_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\record_icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RightView" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\RightView.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IDS_VIDEO_OUTPUT_SUCCEED" xml:space="preserve">
+    <value>视频文件{0}已经录制成功。您想打开该视频吗？</value>
+  </data>
+  <data name="IDS_ERROR_MAXIMUMANGLE" xml:space="preserve">
+    <value>最大倾角必须大于0</value>
+  </data>
+  <data name="IDS_DB_CONNECTED" xml:space="preserve">
+    <value>数据库已经成功连接。</value>
+  </data>
+  <data name="SWPan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\SWPan.cur;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="IDS_ROTATE_DESC" xml:space="preserve">
     <value>旋转视图</value>
   </data>
-  <data name="IDS_ZOOM_DESC" xml:space="preserve">
-    <value>缩放视图</value>
+  <data name="IDS_VIDEO_OPENFILE_FAIL" xml:space="preserve">
+    <value>不能打开{0}。</value>
+  </data>
+  <data name="IDS_ERROR_DATAENGINE_CONNECT" xml:space="preserve">
+    <value>不能连接到数据库。</value>
+  </data>
+  <data name="IDS_IMPORT_MODELS" xml:space="preserve">
+    <value>导入模型...</value>
+  </data>
+  <data name="IDS_WARNING_EXIT" xml:space="preserve">
+    <value>您真的想退出程序？</value>
+  </data>
+  <data name="IDS_STATUS_MONITOR" xml:space="preserve">
+    <value>监测中</value>
+  </data>
+  <data name="IDS_PIPE_INFO_GPS1" xml:space="preserve">
+    <value>第1个GPS坐标信息: {0}</value>
+  </data>
+  <data name="IDS_EXPORT_PIPE_INFO_FILETER" xml:space="preserve">
+    <value>文本文档|*.txt</value>
+  </data>
+  <data name="IDS_SAVE_PICTURE_TITLE" xml:space="preserve">
+    <value>截取当前屏幕</value>
+  </data>
+  <data name="IDS_PNG_FILTER" xml:space="preserve">
+    <value>PNG 文件|*.png</value>
+  </data>
+  <data name="IDS_STATUS_OBSERVER_MODE" xml:space="preserve">
+    <value>现在运行的是【{0}】。</value>
+  </data>
+  <data name="IDS_NODATA_TO_TIME" xml:space="preserve">
+    <value>找不到该时刻的数据</value>
+  </data>
+  <data name="IDS_FILL_SIM_DLG_TITLE" xml:space="preserve">
+    <value>回填模拟</value>
+  </data>
+  <data name="IDS_PIPE_INFO_GPS2" xml:space="preserve">
+    <value>第2个GPS坐标信息: {0}</value>
+  </data>
+  <data name="NavBarZoomAll" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\NavBarZoomAll.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SWZoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\SWZoom.cur;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SEIsoMetric" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\SEIsoMetric.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IDS_ERROR_DATAFILE_NOT_FOUND" xml:space="preserve">
+    <value>致命错误：不能找到{0}。</value>
+  </data>
+  <data name="application" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\application.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IDS_ANGLE_ROLL_WARNING" xml:space="preserve">
+    <value>侧滚角为{0}度，超过预设值{1}。</value>
   </data>
   <data name="LeftView" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>res\LeftView.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,167 +280,35 @@
   <data name="NavBarOrbit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>res\NavBarOrbit.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NavBarPan" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\NavBarPan.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="NavBarZoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\NavBarZoom.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="NavBarZoomAll" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\NavBarZoomAll.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="NEIsoMetric" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\NEIsoMetric.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="NWIsoMetric" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\NWIsoMetric.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RightView" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\RightView.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SEIsoMetric" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\SEIsoMetric.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SWIsoMetric" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\SWIsoMetric.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SWOrbit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\SWOrbit.cur;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SWPan" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\SWPan.cur;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SWZoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\SWZoom.cur;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="TopView" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\TopView.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\logo.JPG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BeginingAnimation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\BeginingAnimation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="EndAnimation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\EndAnimation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="StartAnimation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\StartAnimation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="StopAnimation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\StopAnimation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="record_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\record_icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="IDS_PIPE_INDEX" xml:space="preserve">
+    <value>查看第{0}段沉管沉放过程</value>
   </data>
   <data name="IDS_ABOUT_TITLE" xml:space="preserve">
     <value>关于 {0} {0}</value>
   </data>
-  <data name="IDS_ABOUT_VERSION" xml:space="preserve">
-    <value>版本 {0} {0}</value>
-  </data>
   <data name="IDS_AVI_FILTER" xml:space="preserve">
     <value>AVI 文件|*.avi</value>
-  </data>
-  <data name="IDS_ERROR_DATAENGINE_CONNECT" xml:space="preserve">
-    <value>不能连接到数据库。</value>
-  </data>
-  <data name="IDS_ERROR_DATAFILE_NOT_FOUND" xml:space="preserve">
-    <value>致命错误：不能找到{0}。</value>
-  </data>
-  <data name="IDS_ERROR_LOAD_MODEL" xml:space="preserve">
-    <value>错误：读取某些模型文件出错。</value>
-  </data>
-  <data name="IDS_ERROR_LOAD_XML" xml:space="preserve">
-    <value>致命错误：读取{0}出错。</value>
-  </data>
-  <data name="IDS_IMPORT_MODELS" xml:space="preserve">
-    <value>导入模型...</value>
-  </data>
-  <data name="IDS_MONITOR_MODE_TEXT" xml:space="preserve">
-    <value>实时监听模式</value>
-  </data>
-  <data name="IDS_PIPE_INDEX" xml:space="preserve">
-    <value>查看第{0}段沉管沉放过程</value>
-  </data>
-  <data name="IDS_PNG_FILTER" xml:space="preserve">
-    <value>PNG 文件|*.png</value>
-  </data>
-  <data name="IDS_REPLAY_MODE_TEXT" xml:space="preserve">
-    <value>回放模式</value>
-  </data>
-  <data name="IDS_SAVE_PICTURE_TITLE" xml:space="preserve">
-    <value>截取当前屏幕</value>
-  </data>
-  <data name="IDS_START_APP" xml:space="preserve">
-    <value>启动程序...</value>
-  </data>
-  <data name="IDS_VIDEO_OPENFILE_FAIL" xml:space="preserve">
-    <value>不能打开{0}。</value>
-  </data>
-  <data name="IDS_VIDEO_OUTPUT_SUCCEED" xml:space="preserve">
-    <value>视频文件{0}已经录制成功。您想打开该视频吗？</value>
-  </data>
-  <data name="IDS_VIDEO_TITLE" xml:space="preserve">
-    <value>保存视频文件</value>
-  </data>
-  <data name="IDS_WARNING_EXIT" xml:space="preserve">
-    <value>您真的想退出程序？</value>
   </data>
   <data name="IDS_WARNING_ISRECORDING" xml:space="preserve">
     <value>正在录制视频，关闭程序前请先停止录制！</value>
   </data>
-  <data name="application" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\application.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IDS_ERROR_MAXIMUMANGLE" xml:space="preserve">
-    <value>最大倾角必须大于0</value>
-  </data>
-  <data name="IDS_PIPES_ALL" xml:space="preserve">
-    <value>查看所有沉管沉放过程</value>
-  </data>
-  <data name="IDS_NODATA_TO_TIME" xml:space="preserve">
-    <value>找不到该时刻的数据</value>
-  </data>
-  <data name="IDS_STATUS_OBSERVER_MODE" xml:space="preserve">
-    <value>现在运行的是【{0}】。</value>
-  </data>
-  <data name="IDS_STATUS_READY" xml:space="preserve">
-    <value>准备就绪</value>
-  </data>
-  <data name="IDS_DB_CONNECTED" xml:space="preserve">
-    <value>数据库已经成功连接。</value>
-  </data>
-  <data name="IDS_DB_DIS_CONNECTED" xml:space="preserve">
-    <value>未连接到数据库。</value>
-  </data>
   <data name="IDS_FATAL_ERROR_TEXT" xml:space="preserve">
     <value>请联系开发者关于以下信息:</value>
   </data>
-  <data name="IDS_FATAL_ERROR_TITLE" xml:space="preserve">
-    <value>致命错误</value>
+  <data name="IDS_ZOOM_DESC" xml:space="preserve">
+    <value>缩放视图</value>
   </data>
-  <data name="PauseAnimation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>res\PauseAnimation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="IDS_VIDEO_TITLE" xml:space="preserve">
+    <value>保存视频文件</value>
   </data>
-  <data name="IDS_PIPE_FILL_INDEX" xml:space="preserve">
-    <value>第{0}段沉管</value>
-  </data>
-  <data name="IDS_FILL_SIM_DLG_TITLE" xml:space="preserve">
-    <value>回填模拟</value>
-  </data>
-  <data name="IDS_ZHUJIANG_SIM_DLG_TITLE" xml:space="preserve">
-    <value>注浆模拟</value>
-  </data>
-  <data name="IDS_WARNING_SAVE_CONFIG" xml:space="preserve">
-    <value>配置已修改，是否保存？</value>
+  <data name="IDS_STATUS_REPLAY" xml:space="preserve">
+    <value>正在回放</value>
   </data>
   <data name="IDS_PIPE_ID_IMMSERING" xml:space="preserve">
     <value>第{0}段沉管正在沉放</value>
   </data>
-  <data name="IDS_ANGLE_ROLL_WARNING" xml:space="preserve">
-    <value>侧滚角为{0}度，超过预设值{1}。</value>
+  <data name="BeginingAnimation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\BeginingAnimation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IDS_ANGLE_PITCH_WARNING" xml:space="preserve">
     <value>俯仰角为{0}度，超过预设值{1}。</value>
@@ -310,31 +316,28 @@
   <data name="IDS_ANGLE_NO_WARNING" xml:space="preserve">
     <value>倾角在正常范围内。</value>
   </data>
-  <data name="IDS_EXPORT_PIPE_INFO_FILETER" xml:space="preserve">
-    <value>文本文档|*.txt</value>
+  <data name="IDS_ZHUJIANG_SIM_DLG_TITLE" xml:space="preserve">
+    <value>注浆模拟</value>
   </data>
-  <data name="IDS_EXPORT_PIPE_INFO_TITLE" xml:space="preserve">
-    <value>输出当前沉放信息</value>
+  <data name="StartAnimation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\StartAnimation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IDS_PIPE_INFO_ANGLE" xml:space="preserve">
-    <value>侧滚角: {0} 最大侧滚角: {1} 俯仰角: {2} 最大俯仰角: {3}</value>
+  <data name="TopView" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\TopView.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IDS_PIPE_INFO_GPS1" xml:space="preserve">
-    <value>第1个GPS坐标信息: {0}</value>
+  <data name="IDS_FATAL_ERROR_TITLE" xml:space="preserve">
+    <value>致命错误</value>
   </data>
-  <data name="IDS_PIPE_INFO_GPS2" xml:space="preserve">
-    <value>第2个GPS坐标信息: {0}</value>
+  <data name="IDS_PIPES_ALL" xml:space="preserve">
+    <value>查看所有沉管沉放过程</value>
   </data>
-  <data name="IDS_PIPE_INFO_CONNECTION_PAIR" xml:space="preserve">
-    <value>第{0}个对接点：距离{1}, X分量{2}, Y分量{3}, Z分量{4}</value>
+  <data name="NEIsoMetric" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\NEIsoMetric.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IDS_PIPE_INFO_DATE_TIME" xml:space="preserve">
-    <value>沉放时间: {0}</value>
+  <data name="IDS_REPLAY_MODE_TEXT" xml:space="preserve">
+    <value>回放模式</value>
   </data>
-  <data name="IDS_STATUS_MONITOR" xml:space="preserve">
-    <value>监测中</value>
-  </data>
-  <data name="IDS_STATUS_REPLAY" xml:space="preserve">
-    <value>正在回放</value>
+  <data name="connectionpairs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>res\connectionpairs.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

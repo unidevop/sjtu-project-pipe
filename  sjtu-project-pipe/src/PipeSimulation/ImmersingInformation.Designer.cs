@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImmersingInformation));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle89 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle90 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle91 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle92 = new System.Windows.Forms.DataGridViewCellStyle();
             this.m_labelPipeId = new System.Windows.Forms.Label();
             this.m_groupBoxGPS = new System.Windows.Forms.GroupBox();
             this.m_GPS2Detail = new System.Windows.Forms.Label();
@@ -50,7 +50,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.m_groupBoxConnectionPair = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.NameConnectionPair = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.distanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deltaXDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deltaYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +64,7 @@
             this.m_groupBoxGPS.SuspendLayout();
             this.m_groupBoxAngle.SuspendLayout();
             this.m_groupBoxConnectionPair.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cStatisticDataBindingSource)).BeginInit();
             this.m_groupBoxBasicInformation.SuspendLayout();
@@ -210,10 +213,22 @@
             this.m_groupBoxConnectionPair.AccessibleName = null;
             resources.ApplyResources(this.m_groupBoxConnectionPair, "m_groupBoxConnectionPair");
             this.m_groupBoxConnectionPair.BackgroundImage = null;
+            this.m_groupBoxConnectionPair.Controls.Add(this.pictureBox1);
             this.m_groupBoxConnectionPair.Controls.Add(this.dataGridView1);
             this.m_groupBoxConnectionPair.Font = null;
             this.m_groupBoxConnectionPair.Name = "m_groupBoxConnectionPair";
             this.m_groupBoxConnectionPair.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.AccessibleDescription = null;
+            this.pictureBox1.AccessibleName = null;
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.BackgroundImage = global::PipeSimulation.Properties.Resources.connectionpairs;
+            this.pictureBox1.Font = null;
+            this.pictureBox1.ImageLocation = null;
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.TabStop = false;
             // 
             // dataGridView1
             // 
@@ -226,6 +241,7 @@
             this.dataGridView1.BackgroundImage = null;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NameConnectionPair,
             this.distanceDataGridViewTextBoxColumn,
             this.deltaXDataGridViewTextBoxColumn,
             this.deltaYDataGridViewTextBoxColumn,
@@ -236,15 +252,22 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 24;
             // 
+            // NameConnectionPair
+            // 
+            this.NameConnectionPair.DataPropertyName = "Name";
+            resources.ApplyResources(this.NameConnectionPair, "NameConnectionPair");
+            this.NameConnectionPair.Name = "NameConnectionPair";
+            this.NameConnectionPair.ReadOnly = true;
+            // 
             // distanceDataGridViewTextBoxColumn
             // 
             this.distanceDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.distanceDataGridViewTextBoxColumn.DataPropertyName = "DistanceInMeter";
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle1.Format = "N3";
-            dataGridViewCellStyle1.NullValue = "0";
-            this.distanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle89.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle89.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle89.Format = "N3";
+            dataGridViewCellStyle89.NullValue = "0";
+            this.distanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle89;
             resources.ApplyResources(this.distanceDataGridViewTextBoxColumn, "distanceDataGridViewTextBoxColumn");
             this.distanceDataGridViewTextBoxColumn.Name = "distanceDataGridViewTextBoxColumn";
             this.distanceDataGridViewTextBoxColumn.ReadOnly = true;
@@ -254,11 +277,11 @@
             // 
             this.deltaXDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.deltaXDataGridViewTextBoxColumn.DataPropertyName = "DeltaXInMeter";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.Format = "N3";
-            dataGridViewCellStyle2.NullValue = "0";
-            this.deltaXDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle90.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle90.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle90.Format = "N3";
+            dataGridViewCellStyle90.NullValue = "0";
+            this.deltaXDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle90;
             resources.ApplyResources(this.deltaXDataGridViewTextBoxColumn, "deltaXDataGridViewTextBoxColumn");
             this.deltaXDataGridViewTextBoxColumn.Name = "deltaXDataGridViewTextBoxColumn";
             this.deltaXDataGridViewTextBoxColumn.ReadOnly = true;
@@ -268,11 +291,11 @@
             // 
             this.deltaYDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.deltaYDataGridViewTextBoxColumn.DataPropertyName = "DeltaYInMeter";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle3.Format = "N3";
-            dataGridViewCellStyle3.NullValue = "0";
-            this.deltaYDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle91.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle91.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle91.Format = "N3";
+            dataGridViewCellStyle91.NullValue = "0";
+            this.deltaYDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle91;
             resources.ApplyResources(this.deltaYDataGridViewTextBoxColumn, "deltaYDataGridViewTextBoxColumn");
             this.deltaYDataGridViewTextBoxColumn.Name = "deltaYDataGridViewTextBoxColumn";
             this.deltaYDataGridViewTextBoxColumn.ReadOnly = true;
@@ -282,11 +305,11 @@
             // 
             this.deltaZDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.deltaZDataGridViewTextBoxColumn.DataPropertyName = "DeltaZInMeter";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle4.Format = "N3";
-            dataGridViewCellStyle4.NullValue = "0";
-            this.deltaZDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle92.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle92.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle92.Format = "N3";
+            dataGridViewCellStyle92.NullValue = "0";
+            this.deltaZDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle92;
             resources.ApplyResources(this.deltaZDataGridViewTextBoxColumn, "deltaZDataGridViewTextBoxColumn");
             this.deltaZDataGridViewTextBoxColumn.Name = "deltaZDataGridViewTextBoxColumn";
             this.deltaZDataGridViewTextBoxColumn.ReadOnly = true;
@@ -349,6 +372,7 @@
             this.m_groupBoxAngle.ResumeLayout(false);
             this.m_groupBoxAngle.PerformLayout();
             this.m_groupBoxConnectionPair.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cStatisticDataBindingSource)).EndInit();
             this.m_groupBoxBasicInformation.ResumeLayout(false);
@@ -380,9 +404,11 @@
         private System.Windows.Forms.BindingSource cStatisticDataBindingSource;
         private System.Windows.Forms.Label m_labelDateTime;
         private System.Windows.Forms.GroupBox m_groupBoxBasicInformation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameConnectionPair;
         private System.Windows.Forms.DataGridViewTextBoxColumn distanceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn deltaXDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn deltaYDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn deltaZDataGridViewTextBoxColumn;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
