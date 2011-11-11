@@ -21,15 +21,15 @@
 				<ModelPath >models\pipestatic1.3ds</ModelPath>
 			</PipeStaticModel>
       <PipeBoundary  showInMultipleView ="1">
-        <BoundaryPoint x ="100000" y ="5000" z ="6000"/>
-        <BoundaryPoint x ="100000" y ="5000" z ="3000"/>
-        <BoundaryPoint x ="100000" y ="-5000" z ="3000"/>
-        <BoundaryPoint x ="100000" y ="-5000" z ="6000"/>
-        <BoundaryPoint x ="200000" y ="5000" z ="6000"/>
-        <BoundaryPoint x ="200000" y ="5000" z ="3000"/>
-        <BoundaryPoint x ="200000" y ="-5000" z ="3000"/>
-        <BoundaryPoint x ="200000" y ="-5000" z ="6000"/>
-        <Color x ="1" y ="1" z ="1"/>
+        <BoundaryPoint x ="161235.1616" y ="-41458.3375" z ="-18000.9595"/>
+        <BoundaryPoint x ="161947.9616" y ="-41454.2193" z ="-28626.2491"/>
+        <BoundaryPoint x ="161290.3544" y ="-3859.9888" z ="-28626.7195"/>
+        <BoundaryPoint x ="160577.5542" y ="-3864.0708" z ="-18001.437"/>
+        <BoundaryPoint x ="245268.6659" y ="-42281.354" z ="-13151.6932"/>
+        <BoundaryPoint x ="246001.4448" y ="-42279.0866" z ="-23776.4534"/>
+        <BoundaryPoint x ="245346.3564" y ="-4684.812" z ="-23813.6113"/>
+        <BoundaryPoint x ="244613.5775" y ="-4687.0794" z ="-13188.8511"/>
+        <Color x ="0" y ="0" z ="0"/>
         <LineWidth>2</LineWidth>
       </PipeBoundary>
 			<FillModel>
@@ -984,7 +984,10 @@
 		<ModelPath>models\anmai.3ds</ModelPath>
 	</Model>
 	<Model>
-		<ModelPath>models\newbuilding.3ds</ModelPath>
+		<ModelPath>models\building1.3ds</ModelPath>
+	</Model>
+	<Model>
+		<ModelPath>models\building2.3ds</ModelPath>
 	</Model>
 	<Model>
 		<ModelPath>models\newfactory.3ds</ModelPath>
