@@ -1028,16 +1028,11 @@
     <CenterPosition x ="183453.9696" y ="-7169114.509" z ="-5951.1013"/>
     <Color x ="1" y ="1" z ="1"/>
     <LineWidth>2</LineWidth>
-  </PipesBoundary>
+  </PipesBoundary> 
   <ModelingUCS>
-    <!--<Origin x ="284242.660" y ="141313.207" z ="-2.798"/>
-    <XAxis x ="-23.302" y ="-7.460" z ="0"/>
-    <YAxis x ="-1.242" y ="-15.571" z ="0"/>
-  </ModelingUCS>-->
-  <ModelingUCS>
-    <Origin x ="0" y ="0" z ="0"/>
-    <XAxis x ="1" y ="0" z ="0"/>
-    <YAxis x ="0" y ="1" z ="0"/>
+      <Origin x ="284242300" y ="141310600" z ="-718"/>
+      <XAxis x ="23.65" y ="8.63" z ="0"/>
+      <YAxis x ="8.63" y ="-23.65" z ="0"/>
   </ModelingUCS>
   <ModelingUnitToMeter>0.001</ModelingUnitToMeter>
   <GPSUnitToMeter>1</GPSUnitToMeter>
