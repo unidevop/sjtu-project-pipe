@@ -73,6 +73,8 @@ namespace vtk {
 	void ShowNEIsoMetricView(vtkRenderer^ renderer, array<double>^ bounds);
 	void ShowNWIsoMetricView(vtkRenderer^ renderer, array<double>^ bounds);
 
+	void AddArcToActor(vtkActor^ actor, array<double>^ center, array<double>^ startpoint, array<double>^ endpoint);
+
     virtual void InitializeInteractor();
   protected:
     /// <summary>
