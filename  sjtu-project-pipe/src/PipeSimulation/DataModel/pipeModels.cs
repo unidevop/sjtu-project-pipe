@@ -497,14 +497,73 @@ namespace PipeSimulation
                 }
             }
 
+            //static Point3D Multiply(Point3D pt, Matrix3D mtx)
+            //{
+            //    Point3D ptTrans = new Point3D();
+
+            //    ptTrans.X = pt.X * mtx.M11 + pt.Y * mtx.M12 + pt.Z * mtx.M13 + mtx.M14;
+            //    ptTrans.Y = pt.X * mtx.M21 + pt.Y * mtx.M22 + pt.Z * mtx.M23 + mtx.M24;
+            //    ptTrans.Z = pt.X * mtx.M31 + pt.Y * mtx.M32 + pt.Z * mtx.M33 + mtx.M34;
+
+            //    return ptTrans;
+            //}
+
             // This method is used to get the Pipe transform by PipeInfo
             public vtk.vtkTransform GetPipeTransformByPipeInfo(PipeInfo currentPipeInfo)
             {
                 vtk.vtkTransform transform = new vtk.vtkTransform();
                 try
                 {
-                    Matrix3D gpsMatrixInModeling = Matrix3D.Multiply(IApp.theApp.DataModel.ModelingUCStoGPSUCS.UCSTransformMatrix3dInvert,
-                        currentPipeInfo.GetMatrix(RollInclinometer.AngleBetweenInclineAndX(currentPipeInfo), RollInclinometer.FlipAngle));
+                    Matrix3D mtxInverse = IApp.theApp.DataModel.ModelingUCStoGPSUCS.UCSTransformMatrix3dInvert;
+/*
+                    Matrix3D mtx = IApp.theApp.DataModel.ModelingUCStoGPSUCS.UCSTransformMatrix3d;
+                    Point3D ptModel = new Point3D(229077.7855, -20311.6664, 6663.3377);
+                    //Point4D ptGPS = mtx.Transform(ptModel);
+                    //ptGPS = mtxInverse.Transform(ptModel);
+                    Point3D ptGPS3D = new Point3D(229077.7855, -20311.6664, 6663.3377);
+
+                    ptGPS3D = Point3D.Multiply(ptGPS3D, mtx);
+                    ptGPS3D = Multiply(ptModel, mtx);
+
+                    ptModel = new Point3D(170221.6351, -18884.3040, 777.2461);
+                    ptGPS3D = Multiply(ptModel, mtx);
+
+                    // pipe 2
+                    ptModel = new Point3D(-65056.7454, 31624.0175, 16468.5881);
+                    ptGPS3D = Multiply(ptModel, mtx);
+
+
+                    ptModel = new Point3D(-123948.4365, 31373.3169, 13888.5132);
+                    ptGPS3D = Multiply(ptModel, mtx);
+
+
+                    ptModel = new Point3D(145335.8732, -18766.0125, 2438.1428);
+                    ptGPS3D = Multiply(ptModel, mtx);
+
+
+                    ptModel = new Point3D(86456.178, -19016.662, -142.2348);
+                    ptGPS3D = Multiply(ptModel, mtx);
+
+                    // pipe 3
+                    ptModel = new Point3D(-63267.9612, 86785.6880, 16634.6744);
+                    ptGPS3D = Multiply(ptModel, mtx);
+
+
+                    ptModel = new Point3D(-122307.1845, 84989.0553, 13758.867);
+                    ptGPS3D = Multiply(ptModel, mtx);
+
+
+                    ptModel = new Point3D(64151.7326, -19414.5728, 2858.1149);
+                    ptGPS3D = Multiply(ptModel, mtx);
+
+
+                    ptModel = new Point3D(5112.5093, -21211.2055, 3482.3075);
+                    ptGPS3D = Multiply(ptModel, mtx);
+                    */
+//                    mtx = 
+                    //Matrix3D gpsMatrixInModeling = Matrix3D.Multiply(IApp.theApp.DataModel.ModelingUCStoGPSUCS.UCSTransformMatrix3dInvert,
+                    //    currentPipeInfo.GetMatrix(mtx, RollInclinometer.AngleBetweenInclineAndX(currentPipeInfo), RollInclinometer.FlipAngle));
+                    Matrix3D gpsMatrixInModeling = currentPipeInfo.GetMatrix(mtxInverse, RollInclinometer.AngleBetweenInclineAndX(currentPipeInfo), RollInclinometer.FlipAngle);
                     transform = Utility.CPipeTransformUtility.TransformGPSMatrix(GetGPSUCS(currentPipeInfo).UCSTransform, gpsMatrixInModeling.ToVTKTransformation());
                 }
                 catch (System.Exception ex)
