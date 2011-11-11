@@ -160,7 +160,14 @@ namespace PipeSimulation
                        if (hasRollInclinometer)
                            m_rollInclinometer.ReadFromXMLNode(inclinometerNode);
                    }
-                    
+
+                   // Read the pipes boundary
+                   XmlNode boundaryPipeNode = pipeNode.SelectSingleNode(ModelXMLDefinition.PipeBoundary);
+                   if (boundaryPipeNode != null)
+                   {
+                       CPipeBoundaryModel boundaryModel = new CPipeBoundaryModel(this);
+                       boundaryModel.ReadFromXMLNode(boundaryPipeNode);
+                   }
                 }
                 catch (SystemException ex)
                 {
@@ -334,6 +341,26 @@ namespace PipeSimulation
 
                     if (cableSystems.Count == 0) return null;
                     return cableSystems[0];
+                }
+            }
+
+            // Boundary Model
+            public CPipeBoundaryModel BoundaryModel
+            {
+                get
+                {
+                    List<CPipeBoundaryModel> BoundaryModels = new List<CPipeBoundaryModel>();
+
+                    foreach (ISceneNode subNode in Children)
+                    {
+                        if (subNode is CPipeBoundaryModel)
+                        {
+                            BoundaryModels.Add((CPipeBoundaryModel)subNode);
+                        }
+                    }
+
+                    if (BoundaryModels.Count == 0) return null;
+                    return BoundaryModels[0];
                 }
             }
 

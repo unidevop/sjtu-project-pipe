@@ -51,6 +51,7 @@ namespace PipeSimulation
             public static string Model { get { return /*MSG0*/"Model"; } }
             public static string FuboModel { get { return /*MSG0*/"FuboModel"; } }
             public static string PipeStaticModel { get { return /*MSG0*/"PipeStaticModel"; } }
+            public static string PipesBoundary { get { return /*MSG0*/"PipesBoundary"; } }
             public static string PipeBoundary { get { return /*MSG0*/"PipeBoundary"; } }
 
             public static string modelPath { get { return /*MSG0*/"ModelPath"; } }
@@ -109,6 +110,7 @@ namespace PipeSimulation
             public static string BoundaryCenterPosition { get { return /*MSG0*/"CenterPosition"; } }
             public static string BoundaryColor { get { return /*MSG0*/"Color"; } }
             public static string BoundaryLineWidth { get { return /*MSG0*/"LineWidth"; } }
+            public static string BoundaryPoint { get { return /*MSG0*/"BoundaryPoint"; } }
 
             public static string showInMultipleViews { get { return /*MSGO*/"showInMultipleView"; } }
         }

@@ -861,7 +861,7 @@ namespace PipeSimulation
             SetDefaultView(IApp.theApp.RendererManager.RightViewRenderer, viewOptions.RightRenderDefaultView);
         }
 
-        void InitializePipeIdeaBoundary()
+        void InitializePipeMoveBoundary()
         {
             foreach (CBoundaryModel boundaryModel in IApp.theApp.DataModel.BoundaryModels)
             {
@@ -1017,7 +1017,10 @@ namespace PipeSimulation
             Load3dsModels();
 
             // Step3 : Initalize Boundary Modesls
-            InitializePipeIdeaBoundary();
+            InitializePipeMoveBoundary();
+
+            // Step 4 : Initialize Boundary pipe models
+            InitializePipeBoundary();
         }
 
         private void LoadXML(string xmlFile)
@@ -1077,8 +1080,8 @@ namespace PipeSimulation
                     IApp.theApp.DataModel.GPSUnitToMeter = dValue;
                 }
 
-                // Read the boundary
-                XmlNodeList boundaryNodes = xmlDoc.SelectNodes(ModelXMLDefinition.RootNode + /*MSG0*/"//" + ModelXMLDefinition.PipeBoundary);
+                // Read the pipes boundary
+                XmlNodeList boundaryNodes = xmlDoc.SelectNodes(ModelXMLDefinition.RootNode + /*MSG0*/"//" + ModelXMLDefinition.PipesBoundary);
                 foreach (XmlNode boundaryNode in boundaryNodes)
                 {
                     CBoundaryModel boundaryModel = new CBoundaryModel();
@@ -1143,6 +1146,33 @@ namespace PipeSimulation
                 MessageBox.Show(new Form() { TopMost = true }, Resources.IDS_ERROR_LOAD_MODEL, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 string errMsg = ex.Message + "\n" + ex.StackTrace;
                 vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
+            }
+        }
+
+        private void InitializePipeBoundary()
+        {
+            foreach (CPipeModel pipeModel in IApp.theApp.DataModel.PipeModels)
+            {
+                // Show the boundary pipe model
+                CPipeBoundaryModel boundaryModel = pipeModel.BoundaryModel;
+                if (boundaryModel != null)
+                {
+                    DrawPipeBoundary(boundaryModel);
+                }
+            }
+        }
+
+        private void DrawPipeBoundary(CPipeBoundaryModel boundaryModel)
+        {
+            if (boundaryModel == null) return;
+            boundaryModel.DrawPipeBoundary();
+            CPipeBoundaryIndicator pipeBoundaryIndicator = boundaryModel.PipeBoundaryIndicator;
+            if (null != pipeBoundaryIndicator)
+            {
+                IApp.theApp.RendererManager.MainRenderer.AddActor(pipeBoundaryIndicator.Impl.Actor);
+                IApp.theApp.RendererManager.TopViewRenderer.AddActor(pipeBoundaryIndicator.Impl.Actor);
+                IApp.theApp.RendererManager.RightViewRenderer.AddActor(pipeBoundaryIndicator.Impl.Actor);
+                IApp.theApp.RendererManager.FrontViewRenderer.AddActor(pipeBoundaryIndicator.Impl.Actor);
             }
         }
 

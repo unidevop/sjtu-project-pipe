@@ -183,4 +183,17 @@ namespace PipeSimulation.SceneGraph
             // Get the pipe info
         }
     }
+
+    public sealed class CPipeBoundaryIndicator : CTwoPointsIndicators
+    {
+        private CPipeBoundaryModel m_PipeBoundaryModel = null;
+        public CPipeBoundaryIndicator(CPipeBoundaryModel pipeBoundaryModel, CTwoPointsIndicatorsImpl impl)
+            : base(impl)
+        {
+            m_PipeBoundaryModel = pipeBoundaryModel;
+
+            this.Impl.Actor.GetProperty().SetLineWidth(ApplicationOptions.Instance().PipeBoundaryOption.LineWidth);
+            this.Impl.Actor.GetProperty().SetColor(ApplicationOptions.Instance().PipeBoundaryOption.LineColor);
+        }
+    }
 }
