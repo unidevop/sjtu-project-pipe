@@ -6,14 +6,25 @@
     <AlphaMaximum>4</AlphaMaximum>
     <BetaMaximum>4</BetaMaximum>
   </AngleWarningConfig>
+  <AppOptions>
+    <DebugMode>false</DebugMode>
+  </AppOptions>
   <CablingSimulationOption>
+    <LineWidth>2</LineWidth>
+    <LineColor>
+      <double>0.5</double>
+      <double>0.5</double>
+      <double>0.5</double>
+    </LineColor>
+  </CablingSimulationOption>
+  <PipeBoundaryOption>
     <LineWidth>2</LineWidth>
     <LineColor>
       <double>0</double>
       <double>0</double>
       <double>0</double>
     </LineColor>
-  </CablingSimulationOption>
+  </PipeBoundaryOption>
   <ConnectionPairOption>
     <LineWidth>2</LineWidth>
     <LineColor>
@@ -21,17 +32,21 @@
       <double>1</double>
       <double>0</double>
     </LineColor>
-    <ShowConnectionPair>true</ShowConnectionPair>
+    <ShowConnectionPair>false</ShowConnectionPair>
   </ConnectionPairOption>
   <ViewOptions>
+    <MainRenderDefaultView>eSWISO</MainRenderDefaultView>
+    <TopRenderDefaultView>eTopView</TopRenderDefaultView>
+    <RightRenderDefaultView>eRightView</RightRenderDefaultView>
+    <FrontRenderDefaultView>eFrontView</FrontRenderDefaultView>
     <GetBoundsOnlyForPipeModels>true</GetBoundsOnlyForPipeModels>
     <IncludeInvisibleBounds>false</IncludeInvisibleBounds>
-    <PerpectiveProjection>false</PerpectiveProjection>
+    <PerpectiveProjection>true</PerpectiveProjection>
     <ShowDisplayStatiticsText>false</ShowDisplayStatiticsText>
     <ShowWarningText>false</ShowWarningText>
     <ShowCoordinateSystem>true</ShowCoordinateSystem>
     <ShowNonePipeObjects>true</ShowNonePipeObjects>
-    <ShowReferenceOrigin>true</ShowReferenceOrigin>
+    <ShowReferenceOrigin>false</ShowReferenceOrigin>
     <ShowCablingSystem>true</ShowCablingSystem>
     <BackgroundColor>
       <double>0</double>
@@ -50,12 +65,13 @@
   </ZhujiangOptions>
   <RendererLayoutOptions>
     <ShowMaximizeAndBackMenuItems>true</ShowMaximizeAndBackMenuItems>
+    <MainRendereWidthRatio>0.75</MainRendereWidthRatio>
     <NormalOutlineColor>
       <double>0</double>
       <double>0</double>
       <double>0</double>
     </NormalOutlineColor>
-    <NormalOutlineLineWidth>1</NormalOutlineLineWidth>
+    <NormalOutlineLineWidth>2</NormalOutlineLineWidth>
     <ActiveOutlineColor>
       <double>1</double>
       <double>1</double>
