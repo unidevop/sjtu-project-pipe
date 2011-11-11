@@ -384,7 +384,7 @@ namespace DataSimulation
         {
             get
             {
-                return m_curMeasureTime >= m_measureEndTime;
+                return m_curMeasureTime > m_measureEndTime;
             }
         }
 
