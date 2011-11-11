@@ -866,10 +866,14 @@ namespace PipeSimulation
             foreach (CBoundaryModel boundaryModel in IApp.theApp.DataModel.BoundaryModels)
             {
                 vtk.vtkActor actor = new vtk.vtkActor();
+
                 IApp.theApp.RendererManager.MainRenderer.AddActor(actor);
-                IApp.theApp.RendererManager.TopViewRenderer.AddActor(actor);
-                IApp.theApp.RendererManager.RightViewRenderer.AddActor(actor);
-                IApp.theApp.RendererManager.FrontViewRenderer.AddActor(actor);
+                if (boundaryModel.ShowInMultipleView)
+                {
+                    IApp.theApp.RendererManager.TopViewRenderer.AddActor(actor);
+                    IApp.theApp.RendererManager.RightViewRenderer.AddActor(actor);
+                    IApp.theApp.RendererManager.FrontViewRenderer.AddActor(actor);
+                }
 
                 actor.GetProperty().SetColor(boundaryModel.Color);
                 actor.GetProperty().SetLineWidth(boundaryModel.LineWidth);
@@ -1170,9 +1174,12 @@ namespace PipeSimulation
             if (null != pipeBoundaryIndicator)
             {
                 IApp.theApp.RendererManager.MainRenderer.AddActor(pipeBoundaryIndicator.Impl.Actor);
-                IApp.theApp.RendererManager.TopViewRenderer.AddActor(pipeBoundaryIndicator.Impl.Actor);
-                IApp.theApp.RendererManager.RightViewRenderer.AddActor(pipeBoundaryIndicator.Impl.Actor);
-                IApp.theApp.RendererManager.FrontViewRenderer.AddActor(pipeBoundaryIndicator.Impl.Actor);
+                if (boundaryModel.ShowInMultipleView)
+                {
+                    IApp.theApp.RendererManager.TopViewRenderer.AddActor(pipeBoundaryIndicator.Impl.Actor);
+                    IApp.theApp.RendererManager.RightViewRenderer.AddActor(pipeBoundaryIndicator.Impl.Actor);
+                    IApp.theApp.RendererManager.FrontViewRenderer.AddActor(pipeBoundaryIndicator.Impl.Actor);
+                }
             }
         }
 
