@@ -20,7 +20,7 @@
 			<PipeStaticModel showInMultipleView ="1">
 				<ModelPath >models\pipestatic1.3ds</ModelPath>
 			</PipeStaticModel>
-      <PipeBoundary>
+      <PipeBoundary  showInMultipleView ="1">
         <BoundaryPoint x ="100000" y ="5000" z ="6000"/>
         <BoundaryPoint x ="100000" y ="5000" z ="3000"/>
         <BoundaryPoint x ="100000" y ="-5000" z ="3000"/>
@@ -1007,17 +1007,17 @@
 	<Model>
 		<ModelPath>models\riverground.3ds</ModelPath>
 	</Model>
-  <PipeBoundary>
-    <StartPosition x ="-9085.7968" y ="-3798.3864" z ="-6171.6096"/>
-    <EndPosition x ="245208.5134" y ="1078.4705" z ="-6619.3209"/>
-    <CenterPosition x ="147914.273" y ="-1557970.14" z ="-6258.6512"/>
+  <PipesBoundary  showInMultipleView ="1">
+    <StartPosition x ="241975.3582" y ="584.6731" z ="-6924.7816"/>
+    <EndPosition x ="825.5181" y ="900.8838" z ="-6500.8134"/>
+    <CenterPosition x ="118147.2822" y ="-2480603.904" z ="-6405.3143"/>
     <Color x ="1" y ="1" z ="1"/>
     <LineWidth>2</LineWidth>
   </PipesBoundary>
-    <PipesBoundary>
-    <CenterPosition x ="148643.7035" y ="-1559340.349" z ="-6259.7671"/>
-    <EndPosition x =" 243932.3516" y =" -48816.4602" z =" -6611.0092"/>
-    <StartPosition x ="-7817.6915" y ="-53922.702" z ="-6167.7435"/>
+    <PipesBoundary  showInMultipleView ="1">
+    <StartPosition x ="242038.2052" y ="-46250.0499" z ="-6920.3388"/>
+    <EndPosition x ="8954.0915" y ="-48146.8335" z ="-6510.2832"/>
+    <CenterPosition x ="183453.9696" y ="-7169114.509" z ="-5951.1013"/>
     <Color x ="1" y ="1" z ="1"/>
     <LineWidth>2</LineWidth>
   </PipesBoundary>
