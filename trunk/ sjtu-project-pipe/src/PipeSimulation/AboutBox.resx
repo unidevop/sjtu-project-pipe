@@ -162,9 +162,6 @@
   <data name="okButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>339, 240</value>
   </data>
-  <data name="labelVersion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 3, 0</value>
-  </data>
   <data name="labelProductName.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -749,6 +746,9 @@
   <data name="labelCopyright.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
+  <data name="logoPictureBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -760,6 +760,9 @@
   </data>
   <data name="labelVersion.Location" type="System.Drawing.Point, System.Drawing">
     <value>143, 26</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;okButton.Name" xml:space="preserve">
     <value>okButton</value>
@@ -794,14 +797,8 @@
   <data name="logoPictureBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 259</value>
   </data>
-  <data name="&gt;&gt;labelCompanyName.Name" xml:space="preserve">
-    <value>labelCompanyName</value>
-  </data>
   <data name="&gt;&gt;okButton.ZOrder" xml:space="preserve">
     <value>6</value>
-  </data>
-  <data name="&gt;&gt;labelProductName.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="&gt;&gt;labelCompanyName.Parent" xml:space="preserve">
     <value>tableLayoutPanel</value>
@@ -863,8 +860,11 @@
   <data name="labelCopyright.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="labelVersion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 0, 3, 0</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
   </data>
   <data name="labelCompanyName.Location" type="System.Drawing.Point, System.Drawing">
     <value>143, 78</value>
@@ -887,14 +887,14 @@
   <data name="&gt;&gt;tableLayoutPanel.Name" xml:space="preserve">
     <value>tableLayoutPanel</value>
   </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
+  <data name="&gt;&gt;labelProductName.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;labelCopyright.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="logoPictureBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="&gt;&gt;labelCompanyName.Name" xml:space="preserve">
+    <value>labelCompanyName</value>
   </data>
   <data name="&gt;&gt;labelCopyright.Parent" xml:space="preserve">
     <value>tableLayoutPanel</value>
