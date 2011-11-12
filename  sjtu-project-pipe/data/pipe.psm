@@ -270,7 +270,7 @@
           </CableSegment>
           <CableSegment>
             <StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-            <EndPosition x ="242050.3104" y="-39987.7943" z="-14000.0000" DriveByPipe ="true"/>
+            <EndPosition x ="242050.3104" y="-39987.7943" z="-13000.0000" DriveByPipe ="true"/>
           </CableSegment>
           <!--P18-P19-E1-4-->
           <CableSegment>
@@ -308,7 +308,7 @@
           <CableLength CableStateIndex="0">148.3135</CableLength>
           <CableLength CableStateIndex="1">169.2971</CableLength>
           <CableLength CableStateIndex="2">243.9447</CableLength>
-          <CableLength CableStateIndex="4">200000</CableLength>
+          <CableLength CableStateIndex="3">200000</CableLength>
         </CableSwitchCondition>
       </CableSystem>
       <ConnectionPointPair ConnectionPointPairName="A-A'">
@@ -332,15 +332,25 @@
         <EndConnectionPoint x ="161160.6353" y ="-22659.5778" z ="-21701.9256"/>
       </ConnectionPointPair>
       <Inclinometer type="roll">
-        <Dir x ="9.5085" y ="974.9662" z ="0.8639"/>
+        <Dir x ="72.6268" y ="7454.7818" z ="6.5999"/>
         <!-- flip incline angle value -->
         <FlipAngle>true</FlipAngle>
       </Inclinometer>
       <GPSUCS>
-        <Origin x ="229077.7855" y ="-20311.6664" z ="6663.3377"/>
-        <XAxis x ="-58856.1504" y ="1427.3624" z ="-5886.0916"/>
-        <YAxis x ="9.5085" y ="974.9662" z ="0.8639"/>
+        <!--<Origin x ="229077.7855" y ="-20311.6664" z ="6663.3377"/>-->
+        <Origin x ="223312.3304" y ="-23271.7338" z ="-15167.5121"/>
+        <!--<XAxis x ="-58856.1504" y ="1427.3624" z ="-5886.0916"/>-->
+		 <XAxis x ="-5640.4168" y ="55.2961" z ="0"/>
+		 <!--<XAxis x ="-5640.4168" y ="55.2961" z ="-390.2506"/>-->
+        <YAxis x ="72.6268" y ="7454.7818" z ="6.5999"/>
       </GPSUCS>
+      <!--<GPSUCS>
+        --><!--<Origin x ="229077.7855" y ="-20311.6664" z ="6663.3377"/>--><!--
+        <Origin x ="229077.7855" y ="-20311.6664" z ="-13336.6623"/>
+        --><!--<XAxis x ="-58856.1504" y ="1427.3624" z ="-5886.0916"/>--><!--
+		 <XAxis x ="-58856.1504" y ="1427.3624" z ="0"/>
+        <YAxis x ="9.5085" y ="974.9662" z ="0.8639"/>
+      </GPSUCS>-->
       <GPSUCS>
         <Origin x ="229077.7855" y ="-20311.6664" z ="6663.3377"/>
         <XAxis x ="-58856.1504" y ="1427.3624" z ="-5886.0916"/>
@@ -989,10 +999,7 @@
     <ModelPath>models\anmai.3ds</ModelPath>
   </Model>
   <Model>
-    <ModelPath>models\building1.3ds</ModelPath>
-  </Model>
-  <Model>
-    <ModelPath>models\building2.3ds</ModelPath>
+    <ModelPath>models\newbuilding.3ds</ModelPath>
   </Model>
   <Model>
     <ModelPath>models\newfactory.3ds</ModelPath>
