@@ -6,7 +6,7 @@ using System.Windows.Media.Media3D;
 
 namespace PipeSimulation.DataQuery
 {
-    class MatrixCreater
+    public class MatrixCreater
     {
         private Point3D m_startPt;
         private Point3D m_endPt;
