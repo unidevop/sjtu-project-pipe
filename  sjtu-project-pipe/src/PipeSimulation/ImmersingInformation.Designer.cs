@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImmersingInformation));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle89 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle90 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle91 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle92 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.m_labelPipeId = new System.Windows.Forms.Label();
             this.m_groupBoxGPS = new System.Windows.Forms.GroupBox();
             this.m_GPS2Detail = new System.Windows.Forms.Label();
@@ -263,11 +263,11 @@
             // 
             this.distanceDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.distanceDataGridViewTextBoxColumn.DataPropertyName = "DistanceInMeter";
-            dataGridViewCellStyle89.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle89.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle89.Format = "N3";
-            dataGridViewCellStyle89.NullValue = "0";
-            this.distanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle89;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle1.Format = "N3";
+            dataGridViewCellStyle1.NullValue = "0";
+            this.distanceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.distanceDataGridViewTextBoxColumn, "distanceDataGridViewTextBoxColumn");
             this.distanceDataGridViewTextBoxColumn.Name = "distanceDataGridViewTextBoxColumn";
             this.distanceDataGridViewTextBoxColumn.ReadOnly = true;
@@ -277,11 +277,11 @@
             // 
             this.deltaXDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.deltaXDataGridViewTextBoxColumn.DataPropertyName = "DeltaXInMeter";
-            dataGridViewCellStyle90.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle90.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle90.Format = "N3";
-            dataGridViewCellStyle90.NullValue = "0";
-            this.deltaXDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle90;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.Format = "N3";
+            dataGridViewCellStyle2.NullValue = "0";
+            this.deltaXDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(this.deltaXDataGridViewTextBoxColumn, "deltaXDataGridViewTextBoxColumn");
             this.deltaXDataGridViewTextBoxColumn.Name = "deltaXDataGridViewTextBoxColumn";
             this.deltaXDataGridViewTextBoxColumn.ReadOnly = true;
@@ -291,11 +291,11 @@
             // 
             this.deltaYDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.deltaYDataGridViewTextBoxColumn.DataPropertyName = "DeltaYInMeter";
-            dataGridViewCellStyle91.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle91.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle91.Format = "N3";
-            dataGridViewCellStyle91.NullValue = "0";
-            this.deltaYDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle91;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle3.Format = "N3";
+            dataGridViewCellStyle3.NullValue = "0";
+            this.deltaYDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(this.deltaYDataGridViewTextBoxColumn, "deltaYDataGridViewTextBoxColumn");
             this.deltaYDataGridViewTextBoxColumn.Name = "deltaYDataGridViewTextBoxColumn";
             this.deltaYDataGridViewTextBoxColumn.ReadOnly = true;
@@ -305,11 +305,11 @@
             // 
             this.deltaZDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.deltaZDataGridViewTextBoxColumn.DataPropertyName = "DeltaZInMeter";
-            dataGridViewCellStyle92.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle92.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle92.Format = "N3";
-            dataGridViewCellStyle92.NullValue = "0";
-            this.deltaZDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle92;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.Format = "N3";
+            dataGridViewCellStyle4.NullValue = "0";
+            this.deltaZDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(this.deltaZDataGridViewTextBoxColumn, "deltaZDataGridViewTextBoxColumn");
             this.deltaZDataGridViewTextBoxColumn.Name = "deltaZDataGridViewTextBoxColumn";
             this.deltaZDataGridViewTextBoxColumn.ReadOnly = true;
@@ -317,7 +317,7 @@
             // 
             // cStatisticDataBindingSource
             // 
-            this.cStatisticDataBindingSource.DataSource = typeof(Geometry.CPipeConnectionPointPair);
+            this.cStatisticDataBindingSource.DataSource = typeof(PipeSimulation.Geometry.CPipeConnectionPointPair);
             // 
             // m_buttonOK
             // 
