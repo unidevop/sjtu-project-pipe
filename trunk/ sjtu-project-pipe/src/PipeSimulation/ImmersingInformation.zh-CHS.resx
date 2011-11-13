@@ -118,12 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="m_groupBoxGPS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 141</value>
-  </data>
-  <data name="m_groupBoxGPS.Text" xml:space="preserve">
-    <value>GPS信息(单位：毫米)</value>
-  </data>
   <data name="m_GPS2Detail.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 139</value>
   </data>
@@ -142,8 +136,11 @@
   <data name="label1.Text" xml:space="preserve">
     <value>第一个GPS坐标：</value>
   </data>
-  <data name="m_groupBoxAngle.Text" xml:space="preserve">
-    <value>倾角信息(单位：度)</value>
+  <data name="m_groupBoxGPS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 141</value>
+  </data>
+  <data name="m_groupBoxGPS.Text" xml:space="preserve">
+    <value>GPS信息(单位：毫米)</value>
   </data>
   <data name="m_MaxAngle2.Location" type="System.Drawing.Point, System.Drawing">
     <value>371, 67</value>
@@ -181,16 +178,16 @@
   <data name="label3.Text" xml:space="preserve">
     <value>侧滚角：</value>
   </data>
-  <data name="m_groupBoxConnectionPair.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 456</value>
-  </data>
-  <data name="m_groupBoxConnectionPair.Size" type="System.Drawing.Size, System.Drawing">
-    <value>611, 305</value>
-  </data>
-  <data name="m_groupBoxConnectionPair.Text" xml:space="preserve">
-    <value>对接点信息(单位：米)</value>
+  <data name="m_groupBoxAngle.Text" xml:space="preserve">
+    <value>倾角信息(单位：度)</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="m_groupBoxConnectionPair.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="pictureBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
   <data name="pictureBox1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>
   </data>
@@ -1051,11 +1048,8 @@
   <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
   </data>
-  <data name="dataGridView1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 116</value>
-  </data>
-  <data name="dataGridView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>605, 189</value>
+  <data name="dataGridView1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="distanceDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>距离</value>
@@ -1072,6 +1066,24 @@
   </data>
   <data name="deltaZDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Z分量</value>
+  </data>
+  <data name="dataGridView1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 116</value>
+  </data>
+  <data name="dataGridView1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>605, 189</value>
+  </data>
+  <data name="m_groupBoxConnectionPair.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 456</value>
+  </data>
+  <data name="m_groupBoxConnectionPair.Size" type="System.Drawing.Size, System.Drawing">
+    <value>611, 305</value>
+  </data>
+  <data name="m_groupBoxConnectionPair.Text" xml:space="preserve">
+    <value>对接点信息(单位：米)</value>
+  </data>
+  <data name="m_buttonOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="m_buttonOK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -7270,6 +7282,6 @@
 </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>详细沉放信息</value>
+    <value>详细浮运沉放信息</value>
   </data>
 </root>

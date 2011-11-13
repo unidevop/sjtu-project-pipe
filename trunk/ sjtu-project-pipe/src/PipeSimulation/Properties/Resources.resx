@@ -146,10 +146,10 @@
     <value>res\BottomView.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IDS_EXPORT_PIPE_INFO_TITLE" xml:space="preserve">
-    <value>输出当前沉放信息</value>
+    <value>输出当前浮运沉放信息</value>
   </data>
   <data name="IDS_PIPE_INFO_DATE_TIME" xml:space="preserve">
-    <value>沉放时间: {0}</value>
+    <value>浮运沉放时间: {0}</value>
   </data>
   <data name="IDS_ABOUT_VERSION" xml:space="preserve">
     <value>版本 {0} {0}</value>
@@ -305,7 +305,7 @@
     <value>正在回放</value>
   </data>
   <data name="IDS_PIPE_ID_IMMSERING" xml:space="preserve">
-    <value>第{0}段沉管正在沉放</value>
+    <value>第{0}段沉管正在浮运沉放</value>
   </data>
   <data name="BeginingAnimation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>res\BeginingAnimation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -329,7 +329,7 @@
     <value>致命错误</value>
   </data>
   <data name="IDS_PIPES_ALL" xml:space="preserve">
-    <value>查看所有沉管沉放过程</value>
+    <value>查看所有沉管浮运沉放过程</value>
   </data>
   <data name="NEIsoMetric" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>res\NEIsoMetric.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

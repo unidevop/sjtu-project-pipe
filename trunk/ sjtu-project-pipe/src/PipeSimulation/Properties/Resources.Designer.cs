@@ -236,7 +236,7 @@ namespace PipeSimulation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 输出当前沉放信息.
+        ///   Looks up a localized string similar to 输出当前浮运沉放信息.
         /// </summary>
         internal static string IDS_EXPORT_PIPE_INFO_TITLE {
             get {
@@ -317,7 +317,7 @@ namespace PipeSimulation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 第{0}段沉管正在沉放.
+        ///   Looks up a localized string similar to 第{0}段沉管正在浮运沉放.
         /// </summary>
         internal static string IDS_PIPE_ID_IMMSERING {
             get {
@@ -353,7 +353,7 @@ namespace PipeSimulation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 沉放时间: {0}.
+        ///   Looks up a localized string similar to 浮运沉放时间: {0}.
         /// </summary>
         internal static string IDS_PIPE_INFO_DATE_TIME {
             get {
@@ -380,7 +380,7 @@ namespace PipeSimulation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 查看所有沉管沉放过程.
+        ///   Looks up a localized string similar to 查看所有沉管浮运沉放过程.
         /// </summary>
         internal static string IDS_PIPES_ALL {
             get {
