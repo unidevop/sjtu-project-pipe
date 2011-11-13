@@ -155,6 +155,12 @@ namespace PipeSimulation.DataQuery
                     }
                 }
 
+                const double errorData = -900000;   // in mm
+
+                if (pipeInfo != null &&
+                    (pipeInfo.StartPoint.Z < errorData || pipeInfo.EndPoint.Z < errorData))
+                    return null;
+
                 if (queryMaxAngle)
                     SetMaxAngle(pipeInfo);
 
