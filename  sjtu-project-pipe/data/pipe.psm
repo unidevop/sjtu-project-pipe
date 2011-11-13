@@ -270,7 +270,7 @@
           </CableSegment>
           <CableSegment>
             <StartPosition x ="247293.1037" y="8284.4231" z="1800.0000" DriveByPipe ="false"/>
-            <EndPosition x ="242050.3104" y="-39987.7943" z="-14000.0000" DriveByPipe ="true"/>
+            <EndPosition x ="242050.3104" y="-39987.7943" z="-13000.0000" DriveByPipe ="true"/>
           </CableSegment>
           <!--P18-P19-E1-4-->
           <CableSegment>
@@ -308,7 +308,7 @@
           <CableLength CableStateIndex="0">148.3135</CableLength>
           <CableLength CableStateIndex="1">169.2971</CableLength>
           <CableLength CableStateIndex="2">243.9447</CableLength>
-          <CableLength CableStateIndex="4">200000</CableLength>
+          <CableLength CableStateIndex="3">200000</CableLength>
         </CableSwitchCondition>
       </CableSystem>
       <ConnectionPointPair ConnectionPointPairName="A-A'">
@@ -992,10 +992,7 @@
     <ModelPath>models\anmai.3ds</ModelPath>
   </Model>
   <Model>
-    <ModelPath>models\building1.3ds</ModelPath>
-  </Model>
-  <Model>
-    <ModelPath>models\building2.3ds</ModelPath>
+    <ModelPath>models\newbuilding.3ds</ModelPath>
   </Model>
   <Model>
     <ModelPath>models\newfactory.3ds</ModelPath>
