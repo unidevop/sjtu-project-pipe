@@ -389,7 +389,7 @@ namespace PipeSimulation
             // 
             this.ExportCurrentPipeInfoToolStripMenuItem.Name = "ExportCurrentPipeInfoToolStripMenuItem";
             this.ExportCurrentPipeInfoToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
-            this.ExportCurrentPipeInfoToolStripMenuItem.Text = "输出当前沉放信息";
+            this.ExportCurrentPipeInfoToolStripMenuItem.Text = "输出当前浮运沉放信息";
             this.ExportCurrentPipeInfoToolStripMenuItem.Click += new System.EventHandler(this.ExportCurrentPipeInfoToolStripMenuItem_Click);
             // 
             // modeToolStripMenuItem
@@ -401,7 +401,7 @@ namespace PipeSimulation
             this.setFirstPipeGPSSwitchTime});
             this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
             this.modeToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.modeToolStripMenuItem.Text = "沉放过程";
+            this.modeToolStripMenuItem.Text = "浮运沉放过程";
             this.modeToolStripMenuItem.DropDownOpening += new System.EventHandler(this.modeToolStripMenuItem_DropDownOpening);
             // 
             // monitorModeToolStripMenuItem
@@ -424,7 +424,7 @@ namespace PipeSimulation
             // 
             this.showImmersingInformation.Name = "showImmersingInformation";
             this.showImmersingInformation.Size = new System.Drawing.Size(151, 22);
-            this.showImmersingInformation.Text = "查看详细沉放信息";
+            this.showImmersingInformation.Text = "查看详细浮运沉放信息";
             this.showImmersingInformation.Click += new System.EventHandler(this.showImmersingInformation_Click);
             this.showImmersingInformation.ShortcutKeys = Keys.Control | Keys.I;
             // 

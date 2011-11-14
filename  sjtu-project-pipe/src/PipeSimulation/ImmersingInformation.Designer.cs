@@ -317,7 +317,7 @@
             // 
             // cStatisticDataBindingSource
             // 
-            this.cStatisticDataBindingSource.DataSource = typeof(PipeSimulation.Geometry.CPipeConnectionPointPair);
+            this.cStatisticDataBindingSource.DataSource = typeof(Geometry.CPipeConnectionPointPair);
             // 
             // m_buttonOK
             // 
