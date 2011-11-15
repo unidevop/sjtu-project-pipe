@@ -50,7 +50,7 @@ vtkAVIWriter::vtkAVIWriter()
   this->Internals->StreamCompressed = NULL;
   this->Internals->AVIFile = NULL;
   this->Time = 0;
-  this->Rate = 15;
+  this->Rate = 5;
   this->Internals->hDIB = NULL;  // handle to DIB, temp handle
 }
 
