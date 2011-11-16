@@ -33,9 +33,11 @@ namespace PipeSimulation.DataModel
         {
             try
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(ApplicationOptions));
-                System.IO.StreamReader t = new System.IO.StreamReader(strAppOptionPath);
-                s_appOptions = (ApplicationOptions)serializer.Deserialize(t);
+                using (System.IO.StreamReader t = new System.IO.StreamReader(strAppOptionPath))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(ApplicationOptions));
+                    s_appOptions = (ApplicationOptions)serializer.Deserialize(t);
+                }
             }
             catch (SystemException e)
             {
@@ -51,9 +53,11 @@ namespace PipeSimulation.DataModel
         {
             try
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(ApplicationOptions));
-                System.IO.StreamWriter t = new System.IO.StreamWriter(strAppOptionPath);
-                serializer.Serialize(t, s_appOptions);
+                using (System.IO.StreamWriter t = new System.IO.StreamWriter(strAppOptionPath))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(ApplicationOptions));
+                    serializer.Serialize(t, s_appOptions);
+                }
             }
             catch(Exception ex)
             {
