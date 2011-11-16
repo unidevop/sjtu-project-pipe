@@ -36,13 +36,9 @@ namespace PipeSimulation.DataQuery
 
             vecY.Normalize();
             vecZ.Normalize();
-            //return new Matrix3D(vecX.X, vecY.X, vecZ.X, m_startPt.X,
-            //                    vecX.Y, vecY.Y, vecZ.Y, m_startPt.Y,
-            //                    vecX.Z, vecY.Z, vecZ.Z, m_startPt.Z,
-            //                    0, 0, 0, 1.0);
-            return new Matrix3D(vecX.X, vecX.Y, vecX.Z, m_startPt.X,
-                                vecY.X, vecY.Y, vecY.Z, m_startPt.Y,
-                                vecZ.X, vecZ.Y, vecZ.Z, m_startPt.Z,
+            return new Matrix3D(vecX.X, vecY.X, vecZ.X, m_startPt.X,
+                                vecX.Y, vecY.Y, vecZ.Y, m_startPt.Y,
+                                vecX.Z, vecY.Z, vecZ.Z, m_startPt.Z,
                                 0, 0, 0, 1.0);
         }
 
