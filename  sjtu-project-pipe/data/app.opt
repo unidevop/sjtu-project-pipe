@@ -83,4 +83,7 @@
     <ActiveObserverMode>1</ActiveObserverMode>
     <TimerInterval>0.2</TimerInterval>
   </ObserverModeOptions>
+  <DriveModelOptions>
+    <FirstPipeGPSSwitchTime>2011-11-13T21:00:26</FirstPipeGPSSwitchTime>
+  </DriveModelOptions>
 </ApplicationOptions>
