@@ -1344,19 +1344,26 @@ namespace PipeSimulation
                     PipeInfo pipeInfo = dataQuery.GetPipeRecord(specificTime, false);
 
                     // Drive the model
-                    DriveModel(pipeInfo);
+=                   DriveModel(pipeInfo);
+
+                    if (pipeInfo != null)
+                    {
+                        UpdateAnimationLabelTextByPipeInfo(pipeInfo);
+                    }
+                    else
+                    {
+                        UpdateAnimationLabelTextByDateTime(specificTime);
+                    }
                 }
                 catch (Exception ex)
                 {
                     string errMsg = ex.Message + "\n" + ex.StackTrace;
                     vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                 }
-
-                UpdateAnimationLabelText();
             }
         }
 
-        private void UpdateAnimationLabelText()
+        private void UpdateAnimationLabelTextByTrackbarValue()
         {
             // Get Current Record Index
             int iRecordIndex = trackBarAnimation.Value;
@@ -1364,38 +1371,52 @@ namespace PipeSimulation
 
             DateTime dateTime = DateTime.Now;
 
-            // Get the current pipe info
-            PipeInfo pipeInfo = IApp.theApp.DataDriven.CurrentData;
-            if (pipeInfo != null)
+            // Get the real time expression
+            IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
+            if (dataQuery != null && dataQuery.IsConnected)
             {
-                dateTime = pipeInfo.Time;
+                try
+                {
+                    dateTime = (iRecordIndex != 0) ?
+                        dataQuery.GetPipeTime(toolStripComboBoxPipes.SelectedIndex + 1, iRecordIndex) :
+                        dataQuery.GetPipeStartTime(toolStripComboBoxPipes.SelectedIndex + 1);
+
+                    UpdateAnimationLabelTextByDateTime(dateTime);
+                }
+                catch (Exception ex)
+                {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
+                }
             }
             else
             {
-                // Get the real time expression
-                IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
-                if (dataQuery != null && dataQuery.IsConnected)
-                {
-                    try
-                    {
-
-                        dateTime = (iRecordIndex != 0) ?
-                            dataQuery.GetPipeTime(toolStripComboBoxPipes.SelectedIndex + 1, iRecordIndex) :
-                            dataQuery.GetPipeStartTime(toolStripComboBoxPipes.SelectedIndex + 1);
-                    }
-                    catch (Exception ex)
-                    {
-                        string errMsg = ex.Message + "\n" + ex.StackTrace;
-                        vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
-                    }
-                }
-                else
-                {
-                    return;
-                }
+                return;
             }
+        }
 
-            strAnimationTime = string.Concat(dateTime.ToLongDateString(), /*MSG0*/" ", dateTime.ToLongTimeString());
+        private void UpdateAnimationLabelTextByPipeInfo(PipeInfo pipeInfo)
+        {
+            // Pipe info must be not null
+            DateTime dateTime = DateTime.Now;
+
+            // Get the current pipe info
+            try
+            {
+                dateTime = pipeInfo.Time;
+
+                UpdateAnimationLabelTextByDateTime(dateTime);
+            }
+            catch (Exception ex)
+            {
+                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
+            }
+        }
+
+        private void UpdateAnimationLabelTextByDateTime(DateTime dCurrentTime)
+        {
+            string strAnimationTime = string.Concat(dCurrentTime.ToLongDateString(), /*MSG0*/" ", dCurrentTime.ToLongTimeString());
 
             // Update the label
             toolStripLabelAnimationTime.Text = strAnimationTime;
@@ -1566,13 +1587,13 @@ namespace PipeSimulation
                 try
                 {
                     trackBarAnimation.Value = replayMode.ReplayAnimationEngine.AnimationProgress;
+                    UpdateAnimationLabelTextByTrackbarValue();
                 }
                 catch (Exception ex)
                 {
                     string errMsg = ex.Message + "\n" + ex.StackTrace;
                     vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                 }
-                UpdateAnimationLabelText();
 
                 viewSpecificTimerScene.Enabled = true;
             }
@@ -1818,6 +1839,16 @@ namespace PipeSimulation
                 {
                     PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(beginingTime, false);
                     DriveModel(pipeInfo);
+
+                    if (pipeInfo != null)
+                    {
+                        UpdateAnimationLabelTextByPipeInfo(pipeInfo);
+                    }
+                    else
+                    {
+                        // Update the animation label text
+                        UpdateAnimationLabelTextByDateTime(beginingTime);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -1825,8 +1856,6 @@ namespace PipeSimulation
                     vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                 }
 
-                // Update the animation label text
-                UpdateAnimationLabelText();
             }
         }
 
@@ -2045,7 +2074,7 @@ namespace PipeSimulation
                             DriveModel(pipeInfo);
 
                             // Update Animation Text
-                            UpdateAnimationLabelText();
+                            UpdateAnimationLabelTextByPipeInfo(pipeInfo);
                         }
                         catch (Exception ex)
                         {
