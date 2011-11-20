@@ -1344,7 +1344,7 @@ namespace PipeSimulation
                     PipeInfo pipeInfo = dataQuery.GetPipeRecord(specificTime, false);
 
                     // Drive the model
-=                   DriveModel(pipeInfo);
+                   DriveModel(pipeInfo);
 
                     if (pipeInfo != null)
                     {
