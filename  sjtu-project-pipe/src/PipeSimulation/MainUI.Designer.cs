@@ -768,7 +768,7 @@ namespace PipeSimulation
             this.trackBarAnimation.Location = new System.Drawing.Point(230, 1);
             this.trackBarAnimation.Name = "trackBarAnimation";
             this.trackBarAnimation.AutoSize = false;
-            this.trackBarAnimation.Size = new System.Drawing.Size(186, 10);
+            this.trackBarAnimation.Size = new System.Drawing.Size(400, 10);
             this.trackBarAnimation.TabIndex = 0;
             this.trackBarAnimation.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarAnimation.Value = 3;
