@@ -155,21 +155,10 @@ namespace PipeSimulation.DataQuery
             }
         }
 
-        static Point3D Multiply(Point3D pt, Matrix3D mtx)
-        {
-            Point3D ptTrans = new Point3D();
-
-            ptTrans.X = pt.X * mtx.M11 + pt.Y * mtx.M12 + pt.Z * mtx.M13 + mtx.M14;
-            ptTrans.Y = pt.X * mtx.M21 + pt.Y * mtx.M22 + pt.Z * mtx.M23 + mtx.M24;
-            ptTrans.Z = pt.X * mtx.M31 + pt.Y * mtx.M32 + pt.Z * mtx.M33 + mtx.M34;
-
-            return ptTrans;
-        }
-
         public Matrix3D GetMatrix(Matrix3D mtx, double angleBetweenInclineAndX, bool flipRollAngle)
         {
-            Point3D startPt = Multiply(m_startPt, mtx);
-            Point3D endPt = Multiply(m_endPt, mtx);
+            Point3D startPt = m_startPt * mtx;
+            Point3D endPt = m_endPt * mtx;
 
             MatrixCreater maxtrixCreator = new MatrixCreater(startPt, endPt, m_rollInclineAngle, m_pitchInclineAngle,
                 angleBetweenInclineAndX, flipRollAngle);

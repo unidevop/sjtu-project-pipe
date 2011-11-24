@@ -332,6 +332,11 @@
         <EndConnectionPoint x ="161160.6353" y ="-22659.5778" z ="-21701.9256"/>
       </ConnectionPointPair>
       <Inclinometer type="roll">
+        <Dir x ="72.6268" y ="7454.7818" z ="6.5999"/>
+        <!-- flip incline angle value -->
+        <FlipAngle>true</FlipAngle>
+      </Inclinometer>
+      <Inclinometer type="roll">
         <!--<Dir x ="72.6268" y ="7454.7818" z ="6.5999"/>-->
         <Dir x ="30.2158" y ="3098.2243" z ="2.7451"/>
         <!-- flip incline angle value -->
@@ -346,14 +351,14 @@
 
         <!--（E1原始）-->
         <XAxis x ="-5640.4168" y ="55.2961" z ="-390.2506"/>
-        <YAxis x ="-72.6268" y ="-7454.7818" z ="-6.5999"/>
+        <YAxis x ="72.6268" y ="7454.7818" z ="6.5999"/>
       </GPSUCS>
       <GPSUCS>
         <!--修正后-->
-        <Origin x ="229352.5724" y ="-20757.8187" z ="6877.6033"/>
+        <!--<Origin x ="229352.5724" y ="-20757.8187" z ="6877.6033"/>-->
 
         <!--（E1原始）-->
-        <!--<Origin x ="229352.5724" y ="-23757.8187" z ="6877.6033"/>-->
+        <Origin x ="229352.5724" y ="-23757.8187" z ="6877.6033"/>
 
         <!--修正后-->
         <!--<XAxis x ="-57400.0117" y ="-1144.2127" z ="600"/>-->
@@ -363,7 +368,7 @@
 
         <!--（E1原始）-->
         <!--<YAxis x ="30.2158" y ="3098.2243" z ="2.7451"/>-->
-        <YAxis x ="-30.2158" y ="-3098.2243" z ="-2.7451"/>
+        <YAxis x ="30.2158" y ="3098.2243" z ="2.7451"/>
       </GPSUCS>
     </Pipe>
 
@@ -663,7 +668,7 @@
       <Inclinometer type="roll">
         <Dir x ="0.3448" y ="211.3446" z ="0.0768"/>
         <!-- flip incline angle value -->
-        <FlipAngle>true</FlipAngle>
+        <FlipAngle>false</FlipAngle>
       </Inclinometer>
       <GPSUCS>
         <Origin x ="145335.8732" y ="-18766.0125" z ="2438.1428"/>
@@ -986,7 +991,7 @@
       <Inclinometer type="roll">
         <Dir x ="-10.8389" y ="258.9493" z ="-0.1056"/>
         <!-- flip incline angle value -->
-        <FlipAngle>true</FlipAngle>
+        <FlipAngle>false</FlipAngle>
       </Inclinometer>
       <GPSUCS>
         <Origin x ="64151.7326" y ="-19414.5728" z ="2858.1149"/>
