@@ -10,8 +10,6 @@ namespace PipeSimulation.Utility
             vtk.vtkMatrix4x4 transform = new vtk.vtkMatrix4x4();
             transform.DeepCopy(gpsTransform);
 
-            transform.Transpose();
-            currentGPSTransform.Transpose();
             // gpsTransform.Invert * currentGPSTransform
             transform.Invert();
 
