@@ -2035,14 +2035,36 @@ namespace PipeSimulation
                                 return;
                             }
 
-                            // Drive Pipe Index
-                            if (toolStripComboBoxPipes.Items.Count > pipeInfo.PipeId)
-                            {
-                                toolStripComboBoxPipes.SelectedIndex = pipeInfo.PipeId;
-                            }
+                            // Use the latest time
+                            dateTime = pipeInfo.Time;
+
+                            //// Drive Pipe Index
+                            //if (toolStripComboBoxPipes.Items.Count > pipeInfo.PipeId)
+                            //{
+                            //    toolStripComboBoxPipes.SelectedIndex = pipeInfo.PipeId;
+                            //}
 
                             // Update the track bar value
-                            // How to get a track bar value by the date time
+                            try
+                            {
+                                // How to get a track bar value by the date time
+                                CReplayMode replayMode = IApp.theApp.ObserverModeManager.ActiveModeInstance as CReplayMode;
+                                DateTime startTime = replayMode.ReplayAnimationEngine.AnimationStartTime;
+                                DateTime endTime = replayMode.ReplayAnimationEngine.AnimationEndTime;
+
+                                double intelopValue = 1.0 * (dateTime - startTime).Ticks / (endTime - startTime).Ticks;
+                                double linearValue = intelopValue * (trackBarAnimation.Maximum - trackBarAnimation.Minimum) + trackBarAnimation.Minimum;
+
+                                int iTrackBarValue = (int)linearValue;
+                                trackBarAnimation.Value = iTrackBarValue;
+
+                                replayMode.ReplayAnimationEngine.AnimationProgress = iTrackBarValue;
+                            }
+                            catch(Exception ex)
+                            {
+                                string errMsg = ex.Message + "\n" + ex.StackTrace;
+                                vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
+                            }
                             
                             // Drive Model
                             DriveModel(pipeInfo);
