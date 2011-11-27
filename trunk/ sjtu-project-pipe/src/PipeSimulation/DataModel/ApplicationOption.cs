@@ -605,6 +605,8 @@ namespace PipeSimulation.DataModel
         // Use the 1990-1-1 to indicate that time time is not set.
         [XmlElement("FirstPipeGPSSwitchTime")]
         private DateTime m_dtFirstPipeGPSSwitchTime = s_notSetTimer;
+        [XmlElement("ShowWrongDateTimeInRed")]
+        private bool m_bShowWrongDateTimeInRed = false;
 
         public DateTime FirstPipeGPSSwitchTime
         {
@@ -618,6 +620,12 @@ namespace PipeSimulation.DataModel
             return m_dtFirstPipeGPSSwitchTime.Year != s_notSetTimer.Year
                 || m_dtFirstPipeGPSSwitchTime.Month != s_notSetTimer.Month
                 || m_dtFirstPipeGPSSwitchTime.Day != s_notSetTimer.Day;
+        }
+
+        public bool ShowWrongDateTimeInRed
+        {
+            get { return m_bShowWrongDateTimeInRed; }
+            set { m_bShowWrongDateTimeInRed = value; }
         }
     }
 }

@@ -1352,7 +1352,7 @@ namespace PipeSimulation
                     }
                     else
                     {
-                        UpdateAnimationLabelTextByDateTime(specificTime);
+                        UpdateAnimationLabelTextByDateTime(specificTime, false);
                     }
                 }
                 catch (Exception ex)
@@ -1360,38 +1360,6 @@ namespace PipeSimulation
                     string errMsg = ex.Message + "\n" + ex.StackTrace;
                     vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
                 }
-            }
-        }
-
-        private void UpdateAnimationLabelTextByTrackbarValue()
-        {
-            // Get Current Record Index
-            int iRecordIndex = trackBarAnimation.Value;
-            string strAnimationTime = iRecordIndex.ToString();
-
-            DateTime dateTime = DateTime.Now;
-
-            // Get the real time expression
-            IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
-            if (dataQuery != null && dataQuery.IsConnected)
-            {
-                try
-                {
-                    dateTime = (iRecordIndex != 0) ?
-                        dataQuery.GetPipeTime(toolStripComboBoxPipes.SelectedIndex + 1, iRecordIndex) :
-                        dataQuery.GetPipeStartTime(toolStripComboBoxPipes.SelectedIndex + 1);
-
-                    UpdateAnimationLabelTextByDateTime(dateTime);
-                }
-                catch (Exception ex)
-                {
-                    string errMsg = ex.Message + "\n" + ex.StackTrace;
-                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
-                }
-            }
-            else
-            {
-                return;
             }
         }
 
@@ -1405,7 +1373,7 @@ namespace PipeSimulation
             {
                 dateTime = pipeInfo.Time;
 
-                UpdateAnimationLabelTextByDateTime(dateTime);
+                UpdateAnimationLabelTextByDateTime(dateTime, true);
             }
             catch (Exception ex)
             {
@@ -1414,12 +1382,18 @@ namespace PipeSimulation
             }
         }
 
-        private void UpdateAnimationLabelTextByDateTime(DateTime dCurrentTime)
+        private void UpdateAnimationLabelTextByDateTime(DateTime dCurrentTime, bool bTimeExisting)
         {
             string strAnimationTime = string.Concat(dCurrentTime.ToLongDateString(), /*MSG0*/" ", dCurrentTime.ToLongTimeString());
 
             // Update the label
             toolStripLabelAnimationTime.Text = strAnimationTime;
+
+            if (ApplicationOptions.Instance().DriveModelOptions.ShowWrongDateTimeInRed)
+            {
+                // Update the color
+                toolStripLabelAnimationTime.ForeColor = bTimeExisting ? Color.Black : Color.Red;
+            }
         }
 
         private void toolStripButtonStartAnimation_Click(object sender, EventArgs e)
@@ -1587,7 +1561,7 @@ namespace PipeSimulation
                 try
                 {
                     trackBarAnimation.Value = replayMode.ReplayAnimationEngine.AnimationProgress;
-                    UpdateAnimationLabelTextByTrackbarValue();
+                    DriveModeByTrackBarValue(replayMode, trackBarAnimation.Value);
                 }
                 catch (Exception ex)
                 {
@@ -1847,7 +1821,7 @@ namespace PipeSimulation
                     else
                     {
                         // Update the animation label text
-                        UpdateAnimationLabelTextByDateTime(beginingTime);
+                        UpdateAnimationLabelTextByDateTime(beginingTime, false);
                     }
                 }
                 catch (Exception ex)
