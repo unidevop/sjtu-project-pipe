@@ -185,7 +185,7 @@
     <value>第{0}段沉管</value>
   </data>
   <data name="IDS_DB_DIS_CONNECTED" xml:space="preserve">
-    <value>未连接到数据库。</value>
+    <value>未连接到数据库</value>
   </data>
   <data name="IDS_ERROR_LOAD_MODEL" xml:space="preserve">
     <value>错误：读取某些模型文件出错。</value>
@@ -209,7 +209,7 @@
     <value>最大倾角必须大于0</value>
   </data>
   <data name="IDS_DB_CONNECTED" xml:space="preserve">
-    <value>数据库已经成功连接。</value>
+    <value>数据库已经成功连接</value>
   </data>
   <data name="SWPan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>res\SWPan.cur;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -245,7 +245,7 @@
     <value>PNG 文件|*.png</value>
   </data>
   <data name="IDS_STATUS_OBSERVER_MODE" xml:space="preserve">
-    <value>现在运行的是【{0}】。</value>
+    <value>现在运行的是【{0}】</value>
   </data>
   <data name="IDS_NODATA_TO_TIME" xml:space="preserve">
     <value>找不到该时刻的数据</value>
@@ -272,7 +272,7 @@
     <value>..\Resources\application.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IDS_ANGLE_ROLL_WARNING" xml:space="preserve">
-    <value>侧滚角为{0}度，超过预设值{1}。</value>
+    <value>侧滚角为{0}度，超过预设值{1}</value>
   </data>
   <data name="LeftView" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>res\LeftView.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -311,10 +311,10 @@
     <value>res\BeginingAnimation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IDS_ANGLE_PITCH_WARNING" xml:space="preserve">
-    <value>俯仰角为{0}度，超过预设值{1}。</value>
+    <value>俯仰角为{0}度，超过预设值{1}</value>
   </data>
   <data name="IDS_ANGLE_NO_WARNING" xml:space="preserve">
-    <value>倾角在正常范围内。</value>
+    <value>倾角在正常范围内</value>
   </data>
   <data name="IDS_ZHUJIANG_SIM_DLG_TITLE" xml:space="preserve">
     <value>注浆模拟</value>
