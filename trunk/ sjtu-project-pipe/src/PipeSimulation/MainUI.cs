@@ -2038,11 +2038,11 @@ namespace PipeSimulation
                             // Use the latest time
                             dateTime = pipeInfo.Time;
 
-                            //// Drive Pipe Index
-                            //if (toolStripComboBoxPipes.Items.Count > pipeInfo.PipeId)
-                            //{
-                            //    toolStripComboBoxPipes.SelectedIndex = pipeInfo.PipeId;
-                            //}
+                            // Drive Pipe Index
+                            if (pipeInfo.PipeId < toolStripComboBoxPipes.Items.Count)
+                            {
+                                toolStripComboBoxPipes.SelectedIndex = pipeInfo.PipeId;
+                            }
 
                             // Update the track bar value
                             try
