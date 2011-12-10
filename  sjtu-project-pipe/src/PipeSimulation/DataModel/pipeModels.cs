@@ -36,7 +36,7 @@ namespace PipeSimulation
             private PipeStatus m_ePipeStatus;
             private vtk.vtkTransform m_transFormFinal = null;
             private PipeInfo m_finalPipeInfo = null;
-            private IList<CPipeConnectionPointPair> m_connectionPointPairList = new List<CPipeConnectionPointPair>();
+            private IList<CPipeConnectionPointPairEx> m_connectionPointPairList = new List<CPipeConnectionPointPairEx>();
             private IList<CUCS> m_gpsUCSs = new List<CUCS>();
             private IList<InclinometerInfo> m_rollInclinometer = new List<InclinometerInfo>();
 
@@ -126,7 +126,7 @@ namespace PipeSimulation
                    XmlNodeList connectionPairNodes = pipeNode.SelectNodes(ModelXMLDefinition.pipeConnectionPointPair);
                    foreach (XmlNode connectionPairNode in connectionPairNodes)
                    {
-                       CPipeConnectionPointPair connectionPair = new CPipeConnectionPointPair();
+                       CPipeConnectionPointPairEx connectionPair = new CPipeConnectionPointPairEx();
                        connectionPair.ReadFromXMLNode(connectionPairNode);
                        m_connectionPointPairList.Add(connectionPair);
                    }
@@ -219,7 +219,7 @@ namespace PipeSimulation
             public double Length { get { return m_dLength; } internal set { m_dLength = value; } }
             public double Width { get { return m_dWidth; } internal set { m_dWidth = value; } }
             public double Height { get { return m_dHeight; } internal set { m_dHeight = value; } }
-            public IList<CPipeConnectionPointPair> ConnectionPointPairList { get { return m_connectionPointPairList; } }
+            public IList<CPipeConnectionPointPairEx> ConnectionPointPairList { get { return m_connectionPointPairList; } }
 
             // Pylon Model
             public IList<CPylonModel> PylonModels

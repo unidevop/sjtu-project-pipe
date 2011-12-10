@@ -11,8 +11,8 @@ namespace PipeSimulation.Geometry
     /// </summary>
     public class CPipeConnectionPointPair
     {
-        private CPoint3D m_startConnectionPoint = new CPoint3D(); // This value is used to determine the connection point to the previous pipe models
-        private CPoint3D m_endConnectionPoint = new CPoint3D(); // This value is used to determine the connection point to the next pipe model
+        private CPoint3D m_startConnectionPoint = new CPoint3D(); // This value is used to determine start connection point for this pipe
+        private CPoint3D m_endConnectionPoint = new CPoint3D(); // This value is used to determine the end connection point for this pipe
         private string m_strName;
 
         public CPipeConnectionPointPair()
@@ -131,4 +131,62 @@ namespace PipeSimulation.Geometry
             get { return Math.Abs(DeltaZ * IApp.theApp.DataModel.ModelingUnitToMeter); }
         }
     }
+
+    // Add a new ConnectionPositionEnum to indicate that if the point is static, on previous pipe, on this pipe.
+    public enum ConnectionPositionEnum
+    {
+        kStaticPosition,
+        kOnPreviousPipe,
+        kOnThisPipe
+    }
+
+    /// <summary>
+    /// This class is used to simulation the connection point pair
+    /// </summary>
+    public class CPipeConnectionPointPairEx : CPipeConnectionPointPair
+    {
+        private ConnectionPositionEnum m_startPositionEnum = ConnectionPositionEnum.kOnPreviousPipe;
+        private ConnectionPositionEnum m_endPositionEnum = ConnectionPositionEnum.kOnThisPipe;
+
+        public CPipeConnectionPointPairEx()
+        {
+        }
+
+        public override void ReadFromXMLNode(XmlNode connectionPairNode)
+        {
+            try
+            {
+                base.ReadFromXMLNode(connectionPairNode);
+
+                // Read the start connection point
+                XmlNode startPositionEnum = connectionPairNode.SelectSingleNode(ModelXMLDefinition.pipeStartConnPositionEnum);
+                m_startPositionEnum = ParseConnectionPositionEnum(int.Parse(startPositionEnum.InnerText));
+
+                // Read the end connection point
+                XmlNode endPositionEnum = connectionPairNode.SelectSingleNode(ModelXMLDefinition.pipeEndConnPositionEnum);
+                m_endPositionEnum = ParseConnectionPositionEnum(int.Parse(endPositionEnum.InnerText));
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        public ConnectionPositionEnum StartPositionEnum
+        {
+            get { return m_startPositionEnum; }
+        }
+
+        public ConnectionPositionEnum EndPositionEnum
+        {
+            get { return m_endPositionEnum; }
+        }
+
+        private ConnectionPositionEnum ParseConnectionPositionEnum(int iPositionEnum)
+        {
+            if (iPositionEnum == 0) return ConnectionPositionEnum.kStaticPosition;
+            else if (iPositionEnum == 1) return ConnectionPositionEnum.kOnPreviousPipe;
+            else if (iPositionEnum == 2) return ConnectionPositionEnum.kOnThisPipe;
+            else throw new ArgumentException("Input a invalid value for ConnectionPositionEnum");
+        }
+    } 
 }

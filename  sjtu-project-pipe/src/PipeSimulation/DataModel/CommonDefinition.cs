@@ -63,7 +63,9 @@ namespace PipeSimulation
             public static string pipeConnectionPointPair { get { return /*MSG0*/"ConnectionPointPair"; } }
             public static string pipeConnectionPointPairName { get { return /*MSG0*/"ConnectionPointPairName"; } }
             public static string pipeStartConnPoint { get { return /*MSG0*/"StartConnectionPoint"; } }
+            public static string pipeStartConnPositionEnum { get { return /*MSG0*/"StartConnectionPositionEnum"; } }
             public static string pipeEndConnPoint { get { return /*MSG0*/"EndConnectionPoint"; } }
+            public static string pipeEndConnPositionEnum { get { return /*MSG0*/"EndConnectionPositionEnum"; } }
             public static string pipeCoordX { get { return /*MSG0*/"x"; } }
             public static string pipeCoordY { get { return /*MSG0*/"y"; } }
             public static string pipeCoordZ { get { return /*MSG0*/"z"; } }
