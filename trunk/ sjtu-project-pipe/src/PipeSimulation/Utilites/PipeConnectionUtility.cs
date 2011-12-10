@@ -190,7 +190,7 @@ namespace PipeSimulation.Utility
                     else if (pair.EndPositionEnum == ConnectionPositionEnum.kOnThisPipe)
                     {
                         double[] ptTransformed = new double[3];
-                        transform.TransformPoint(pair.StartConnectionPoint.Point, ptTransformed);
+                        transform.TransformPoint(pair.EndConnectionPoint.Point, ptTransformed);
                         newPair.EndConnectionPoint = new CPoint3D(ptTransformed);
                     }
                     else if (pair.EndPositionEnum == ConnectionPositionEnum.kOnPreviousPipe)
