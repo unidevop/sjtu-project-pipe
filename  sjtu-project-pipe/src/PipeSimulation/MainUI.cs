@@ -1341,7 +1341,7 @@ namespace PipeSimulation
             {
                 try
                 {
-                    PipeInfo pipeInfo = dataQuery.GetPipeRecord(specificTime, false);
+                    PipeInfo pipeInfo = dataQuery.GetPipeRecord(specificTime, true);
 
                     // Drive the model
                    DriveModel(pipeInfo);
@@ -1811,7 +1811,7 @@ namespace PipeSimulation
             {
                 try
                 {
-                    PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(beginingTime, false);
+                    PipeInfo pipeInfo = IApp.theApp.HistoryTimeDataQuery.GetPipeRecord(beginingTime, true);
                     DriveModel(pipeInfo);
 
                     if (pipeInfo != null)
