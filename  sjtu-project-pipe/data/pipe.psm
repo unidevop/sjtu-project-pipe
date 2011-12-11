@@ -21,10 +21,10 @@
         <ModelPath >models\pipestatic1.3ds</ModelPath>
       </PipeStaticModel>
       <PipeBoundary  showInMultipleView ="1">
-        <BoundaryPoint x ="161235.1616" y ="-41458.3375" z ="-15000.9595"/>
-        <BoundaryPoint x ="161947.9616" y ="-41454.2193" z ="-25626.2491"/>
-        <BoundaryPoint x ="161290.3544" y ="-3859.9888" z ="-25626.7195"/>
-        <BoundaryPoint x ="160577.5542" y ="-3864.0708" z ="-15001.437"/>
+        <BoundaryPoint x ="161235.1616" y ="-38858.3375" z ="-14000.9595"/>
+        <BoundaryPoint x ="161947.9616" y ="-38854.2193" z ="-24626.2491"/>
+        <BoundaryPoint x ="161290.3544" y ="-1259.9888" z ="-24626.7195"/>
+        <BoundaryPoint x ="160577.5542" y ="-1264.0708" z ="-14001.437"/>
         <BoundaryPoint x ="245268.6659" y ="-42281.354" z ="-12151.6932"/>
         <BoundaryPoint x ="246001.4448" y ="-42279.0866" z ="-22776.4534"/>
         <BoundaryPoint x ="245346.3564" y ="-4684.812" z ="-22813.6113"/>
@@ -316,31 +316,31 @@
 		<!--StartConnectionPositionEnum的值为， 0表示这起点是静止的，1表示起是位于前一段管上，2是表示起在本段管上-->
 		<!--EndConnectionPositionEnum的值为， 0表示这终点是静止的，1表示终点是位于前一段管上，2是表示终点在本段管上-->
 		<ConnectionPointPair ConnectionPointPairName="A-A'">
-			<StartConnectionPoint x ="245347.9403" y ="-41006.2341" z ="-14624.4575"/>
+			<StartConnectionPoint x ="245347.9403" y ="-41006.2341" z ="-12824.4575"/>
 			<StartConnectionPositionEnum>0</StartConnectionPositionEnum>
 			<EndConnectionPoint x ="245347.9403" y ="-41006.2341" z ="-14624.4575"/>
 			<EndConnectionPositionEnum>2</EndConnectionPositionEnum>
 		</ConnectionPointPair>
 		<ConnectionPointPair ConnectionPointPairName="B-B'">
-			<StartConnectionPoint x ="245879.5231" y ="-41006.5902" z ="-22331.5136"/>
+			<StartConnectionPoint x ="245879.5231" y ="-41006.5902" z ="-20531.5136"/>
 			<StartConnectionPositionEnum>0</StartConnectionPositionEnum>
 			<EndConnectionPoint  x ="245879.5231" y ="-41006.5902" z ="-22331.5136"/>
 			<EndConnectionPositionEnum>2</EndConnectionPositionEnum>
 		</ConnectionPointPair>
 		<ConnectionPointPair ConnectionPointPairName="C-C'">
-			<StartConnectionPoint x ="245268.8216" y ="-5959.6393" z ="-22366.143"/>
+			<StartConnectionPoint x ="246068.8216" y ="-5959.6393" z ="-20566.143"/>
 			<StartConnectionPositionEnum>0</StartConnectionPositionEnum>
 			<EndConnectionPoint x ="245268.8216" y ="-5959.6393" z ="-22366.143"/>
 			<EndConnectionPositionEnum>2</EndConnectionPositionEnum>
 		</ConnectionPointPair>
 		<ConnectionPointPair ConnectionPointPairName="D-D'">
-			<StartConnectionPoint x ="244737.2794" y ="-5961.5712" z ="-14659.0954"/>
+			<StartConnectionPoint x ="245937.2794" y ="-5961.5712" z ="-12859.0954"/>
 			<StartConnectionPositionEnum>0</StartConnectionPositionEnum>
 			<EndConnectionPoint x ="244737.2794" y ="-5961.5712" z ="-14659.0954"/>
 			<EndConnectionPositionEnum>2</EndConnectionPositionEnum>
 		</ConnectionPointPair>
 		<ConnectionPointPair ConnectionPointPairName="E-E'">
-			<StartConnectionPoint x ="245234.6804" y ="-23482.5902" z ="-16700.0837"/>
+			<StartConnectionPoint x ="245734.6804" y ="-23482.5902" z ="-14900.0837"/>
 			<StartConnectionPositionEnum>0</StartConnectionPositionEnum>
 			<EndConnectionPoint x ="245234.6804" y ="-23482.5902" z ="-16700.0837"/>
 			<EndConnectionPositionEnum>2</EndConnectionPositionEnum>
@@ -394,14 +394,14 @@
         <ModelPath >models\pipestatic2.3ds</ModelPath>
       </PipeStaticModel>
 	    <PipeBoundary  showInMultipleView ="1">
-        <BoundaryPoint x ="161235.1616" y ="-41458.3375" z ="-15000.9595"/>
-        <BoundaryPoint x ="161947.9616" y ="-41454.2193" z ="-25626.2491"/>
-        <BoundaryPoint x ="161290.3544" y ="-3859.9888" z ="-25626.7195"/>
-        <BoundaryPoint x ="160577.5542" y ="-3864.0708" z ="-15001.437"/>
-        <BoundaryPoint x ="76235.1616" y ="-42281.354" z ="-15000.9595"/>
-        <BoundaryPoint x ="76235.1616" y ="-42279.0866" z ="-25626.2491"/>
-        <BoundaryPoint x ="76235.1616" y ="-4684.812" z ="-25626.2491"/>
-        <BoundaryPoint x ="76235.1616" y ="-4687.0794" z ="-15000.9595"/>
+            <BoundaryPoint x ="161235.1616" y ="-38858.3375" z ="-14000.9595"/>
+        <BoundaryPoint x ="161947.9616" y ="-38854.2193" z ="-24626.2491"/>
+        <BoundaryPoint x ="161290.3544" y ="-1259.9888" z ="-24626.7195"/>
+        <BoundaryPoint x ="160577.5542" y ="-1264.0708" z ="-14001.437"/>
+        <BoundaryPoint x ="74735.1616" y ="-37681.354" z ="-15000.9595"/>
+        <BoundaryPoint x ="74735.1616" y ="-37679.0866" z ="-25626.2491"/>
+        <BoundaryPoint x ="74735.1616" y ="-84.812" z ="-25626.2491"/>
+        <BoundaryPoint x ="74735.1616" y ="-87.0794" z ="-15000.9595"/>
         <Color x ="0" y ="0" z ="0"/>
         <LineWidth>2</LineWidth>
       </PipeBoundary>
@@ -701,14 +701,14 @@
 			<EndConnectionPositionEnum>2</EndConnectionPositionEnum>
 	  </ConnectionPointPair>
       <Inclinometer type="roll">
-        <Dir x ="-365.4252" y ="7520.4118" z ="-15.0763"/>
+        <Dir x ="-22.6536" y ="456.2605" z ="-0.9304"/>
         <!-- flip incline angle value -->
         <FlipAngle>false</FlipAngle>
       </Inclinometer>
       <GPSUCS>
-        <Origin x ="146427.7960" y ="-20292.0598" z ="-495.268"/>
-        <XAxis x ="-57447.1982" y ="-2830.9600" z ="-2682.909"/>
-        <YAxis x ="-365.4252" y ="7520.4118" z ="-15.0763"/>
+        <Origin x ="147398.6244" y ="-20547.1055" z ="3980.4372"/>
+        <XAxis x ="-57921.762" y ="-3916.1335" z ="-2574.0333"/>
+        <YAxis x ="-22.6536" y ="456.2605" z ="-0.9304"/>
       </GPSUCS>
     </Pipe>
 
