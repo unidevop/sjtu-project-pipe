@@ -101,14 +101,14 @@ namespace PipeSimulation.DataQuery
         /// </summary>
         /// <param name="iPipeId">the given pipe id</param>
         /// <returns>DateTime</returns>
-        DateTime GetPipeStartTime(int iPipeId);
+        DateTime GetPipeStartTime(int iPipeId, bool bFindPrecese);
 
         /// <summary>
         /// Get End time for the given pipe id, IsPipeEnded function must be called before calling this function.
         /// </summary>
         /// <param name="iPipeId">the given pipe id</param>
         /// <returns>DateTime</returns>
-        DateTime GetPipeEndTime(int iPipeId);
+        DateTime GetPipeEndTime(int iPipeId, bool bFindPrecese);
 
         /// <summary>
         /// Get the date time by the given pipe id and record index

@@ -204,7 +204,7 @@ namespace PipeSimulation.DataQuery
               FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON (GPS1.PipeID=GPS2.PipeID AND
               GPS1.MeasureTime = GPS2.MeasureTime AND GPS1.ProjectPointID < GPS2.ProjectPointID) 
               INNER JOIN InclineMeasure AS IM ON (GPS1.PipeID=IM.PipeID AND GPS1.MeasureTime=IM.MeasureTime)
-              ORDER BY GPS1.MeasureID DESC";
+              WHERE GPS1.Z<'900' AND GPS2.Z<'900' ORDER BY GPS1.MeasureID DESC";
 
             return QueryRecord(strSql, queryMaxAngle);
         }
@@ -698,9 +698,15 @@ namespace PipeSimulation.DataQuery
         }
 #endif
 
-        public DateTime GetPipeStartTime(int iPipeId)
+        public DateTime GetPipeStartTime(int iPipeId, bool bFindPrecese)
         {
-            string strInclineSql = String.Format(@"SELECT TOP 1 MeasureTime FROM InclineMeasure
+            string strInclineSql = bFindPrecese ?
+                String.Format(@"SELECT TOP 1  GPS1.MeasureTime
+              FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON (GPS1.PipeID=GPS2.PipeID AND
+              GPS1.MeasureTime = GPS2.MeasureTime AND GPS1.ProjectPointID < GPS2.ProjectPointID) 
+              INNER JOIN InclineMeasure AS IM ON (GPS1.PipeID=IM.PipeID AND GPS1.MeasureTime=IM.MeasureTime)
+              WHERE GPS1.Z<'900' AND GPS2.Z<'900' AND GPS1.PipeID='{0}'", iPipeId) :
+                String.Format(@"SELECT TOP 1 MeasureTime FROM InclineMeasure
                                                    WHERE PipeID='{0}'", iPipeId);
 
             lock (m_dbConn)
@@ -715,10 +721,16 @@ namespace PipeSimulation.DataQuery
             }
         }
 
-        public DateTime GetPipeEndTime(int iPipeId)
+        public DateTime GetPipeEndTime(int iPipeId, bool bFindPrecese)
         {
-            string strInclineSql = String.Format(@"SELECT TOP 1 MeasureTime FROM InclineMeasure
-                                                   WHERE PipeID='{0}' ORDER BY MeasureTime DESC", iPipeId);
+            string strInclineSql = bFindPrecese ?
+                String.Format(@"SELECT TOP 1  GPS1.MeasureTime
+              FROM GPSMeasure AS GPS1 INNER JOIN GPSMeasure AS GPS2 ON (GPS1.PipeID=GPS2.PipeID AND
+              GPS1.MeasureTime = GPS2.MeasureTime AND GPS1.ProjectPointID < GPS2.ProjectPointID) 
+              INNER JOIN InclineMeasure AS IM ON (GPS1.PipeID=IM.PipeID AND GPS1.MeasureTime=IM.MeasureTime)
+              WHERE GPS1.Z<'900' AND GPS2.Z<'900' AND GPS1.PipeID='{0}' ORDER BY GPS1.MeasureID DESC", iPipeId) : 
+                String.Format(@"SELECT TOP 1 MeasureTime FROM InclineMeasure
+                                WHERE PipeID='{0}' ORDER BY MeasureTime DESC", iPipeId);
 
             lock (m_dbConn)
             {

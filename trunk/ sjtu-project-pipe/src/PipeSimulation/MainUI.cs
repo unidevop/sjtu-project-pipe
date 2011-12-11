@@ -1742,14 +1742,14 @@ namespace PipeSimulation
                     if (iSelectedIndex == 0) // View all pipes
                     {
                         // Must from the 1st pipe
-                        beginingTime = dataQuery.GetPipeStartTime(1);
+                        beginingTime = dataQuery.GetPipeStartTime(1, true);
 
                         int pipeModelCount = IApp.theApp.DataModel.PipeModels.Count;
                         for (int i = pipeModelCount; i > 0; --i)
                         {
                             if (dataQuery.IsPipeStarted(i))
                             {
-                                endTime = dataQuery.GetPipeEndTime(i);
+                                endTime = dataQuery.GetPipeEndTime(i, true);
                                 break;
                             }
                         }
@@ -1760,10 +1760,10 @@ namespace PipeSimulation
                         //trackRange[1] = (int)dataQuery.GetPipeRecordCount(iSelectedIndex); // iSelectedIndex should start from 1
 
                         // Get the beginning time
-                        beginingTime = dataQuery.GetPipeStartTime(iSelectedIndex);
+                        beginingTime = dataQuery.GetPipeStartTime(iSelectedIndex, true);
 
                         // Get the end time
-                        endTime = dataQuery.GetPipeEndTime(iSelectedIndex);
+                        endTime = dataQuery.GetPipeEndTime(iSelectedIndex, true);
                     }
                 }
                 catch (Exception ex)

@@ -171,7 +171,7 @@ namespace PipeSimulation
                     {
                         // Find the final pipe info this pipe model
                         IHistoryDataQuery historyDataQuery = IApp.theApp.HistoryTimeDataQuery;
-                        PipeInfo lastPipeInfo = historyDataQuery.GetPipeRecord(historyDataQuery.GetPipeEndTime(iPipeIndex), true);
+                        PipeInfo lastPipeInfo = historyDataQuery.GetPipeRecord(historyDataQuery.GetPipeEndTime(iPipeIndex, true), true);
                         if (lastPipeInfo != null)
                         {
                             // Cache it
