@@ -1330,6 +1330,9 @@ namespace PipeSimulation
             DateTime startTime = replayMode.ReplayAnimationEngine.AnimationStartTime;
             DateTime endTime = replayMode.ReplayAnimationEngine.AnimationEndTime;
 
+            // Check the startTime and endTime is valid or not.
+            if (startTime.Equals(DateTime.MinValue) || endTime.Equals(DateTime.MinValue)) return;
+
             DateTime specificTime;
             double linearValue = 1.0 * (iValue - trackBarAnimation.Minimum) / (trackBarAnimation.Maximum - trackBarAnimation.Minimum);
             double intelopValue = (endTime - startTime).Ticks * linearValue;
