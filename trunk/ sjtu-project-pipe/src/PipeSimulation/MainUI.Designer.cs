@@ -694,7 +694,7 @@ namespace PipeSimulation
             this.toolStripComboBoxPipes.Items.AddRange(new object[] { });
             this.toolStripComboBoxPipes.MaxDropDownItems = 80;
             this.toolStripComboBoxPipes.Name = "toolStripComboBoxPipes";
-            this.toolStripComboBoxPipes.Size = new System.Drawing.Size(160, 48);
+            this.toolStripComboBoxPipes.Size = new System.Drawing.Size(170, 48);
             this.toolStripComboBoxPipes.AutoSize = true;
             this.toolStripComboBoxPipes.DropDownStyle = ComboBoxStyle.DropDownList;
             this.toolStripComboBoxPipes.SelectedIndexChanged += new EventHandler(toolStripComboBoxPipes_SelectedIndexChanged);
