@@ -76,7 +76,7 @@
             this.labelProductName.AccessibleName = null;
             resources.ApplyResources(this.labelProductName, "labelProductName");
             this.labelProductName.Font = null;
-            this.labelProductName.MaximumSize = new System.Drawing.Size(0, 21);
+            this.labelProductName.MaximumSize = new System.Drawing.Size(0, 16);
             this.labelProductName.Name = "labelProductName";
             // 
             // labelVersion
@@ -85,7 +85,7 @@
             this.labelVersion.AccessibleName = null;
             resources.ApplyResources(this.labelVersion, "labelVersion");
             this.labelVersion.Font = null;
-            this.labelVersion.MaximumSize = new System.Drawing.Size(0, 21);
+            this.labelVersion.MaximumSize = new System.Drawing.Size(0, 16);
             this.labelVersion.Name = "labelVersion";
             // 
             // labelCopyright
@@ -94,7 +94,7 @@
             this.labelCopyright.AccessibleName = null;
             resources.ApplyResources(this.labelCopyright, "labelCopyright");
             this.labelCopyright.Font = null;
-            this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 21);
+            this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 16);
             this.labelCopyright.Name = "labelCopyright";
             // 
             // labelAuthorizeTo
@@ -103,7 +103,7 @@
             this.labelAuthorizeTo.AccessibleName = null;
             resources.ApplyResources(this.labelAuthorizeTo, "labelAuthorizeTo");
             this.labelAuthorizeTo.Font = null;
-            this.labelAuthorizeTo.MaximumSize = new System.Drawing.Size(0, 21);
+            this.labelAuthorizeTo.MaximumSize = new System.Drawing.Size(0, 16);
             this.labelAuthorizeTo.Name = "labelAuthorizeTo";
             // 
             // textBoxDescription
