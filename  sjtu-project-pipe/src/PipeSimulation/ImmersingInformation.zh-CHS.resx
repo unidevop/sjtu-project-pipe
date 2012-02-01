@@ -118,70 +118,172 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="m_labelPipeId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 23</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="m_labelPipeId.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="m_labelPipeId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 18</value>
+  </data>
   <data name="m_GPS2Detail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 139</value>
+    <value>8, 104</value>
+  </data>
+  <data name="m_GPS2Detail.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="m_GPS2Detail.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 18</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 79</value>
+  </data>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 17</value>
+    <value>95, 12</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>第二个GPS坐标：</value>
   </data>
   <data name="m_GPS1Detail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 65</value>
+    <value>8, 49</value>
+  </data>
+  <data name="m_GPS1Detail.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="m_GPS1Detail.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 18</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 24</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 17</value>
+    <value>95, 12</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>第一个GPS坐标：</value>
   </data>
   <data name="m_groupBoxGPS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 141</value>
+    <value>10, 106</value>
+  </data>
+  <data name="m_groupBoxGPS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="m_groupBoxGPS.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="m_groupBoxGPS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>460, 129</value>
   </data>
   <data name="m_groupBoxGPS.Text" xml:space="preserve">
     <value>GPS信息(单位：毫米)</value>
   </data>
   <data name="m_MaxAngle2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>371, 67</value>
+    <value>278, 50</value>
+  </data>
+  <data name="m_MaxAngle2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="m_MaxAngle2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 18</value>
   </data>
   <data name="m_MaxAngle1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>371, 31</value>
+    <value>278, 23</value>
+  </data>
+  <data name="m_MaxAngle1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="m_MaxAngle1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 18</value>
   </data>
   <data name="m_Angle2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>95, 69</value>
+    <value>71, 52</value>
+  </data>
+  <data name="m_Angle2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="m_Angle2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 18</value>
   </data>
   <data name="m_Angle1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>95, 31</value>
+    <value>71, 23</value>
+  </data>
+  <data name="m_Angle1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="m_Angle1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 18</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>261, 75</value>
+    <value>196, 56</value>
+  </data>
+  <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 12</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>最大俯仰角：</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 75</value>
+    <value>8, 56</value>
+  </data>
+  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 17</value>
+    <value>53, 12</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>俯仰角：</value>
   </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 26</value>
+  </data>
+  <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 12</value>
+  </data>
   <data name="label4.Text" xml:space="preserve">
     <value>最大侧滚角：</value>
   </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 26</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 17</value>
+    <value>53, 12</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>侧滚角：</value>
   </data>
+  <data name="m_groupBoxAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 248</value>
+  </data>
+  <data name="m_groupBoxAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="m_groupBoxAngle.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="m_groupBoxAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>458, 83</value>
+  </data>
   <data name="m_groupBoxAngle.Text" xml:space="preserve">
     <value>倾角信息(单位：度)</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="m_groupBoxConnectionPair.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -1042,8 +1144,14 @@
         SL0pRQCP/9k=
 </value>
   </data>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 16</value>
+  </data>
+  <data name="pictureBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>606, 88</value>
+    <value>454, 66</value>
   </data>
   <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -1068,16 +1176,25 @@
     <value>Z分量</value>
   </data>
   <data name="dataGridView1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 116</value>
+    <value>2, 87</value>
+  </data>
+  <data name="dataGridView1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="dataGridView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>605, 189</value>
+    <value>454, 142</value>
   </data>
   <data name="m_groupBoxConnectionPair.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 456</value>
+    <value>10, 342</value>
+  </data>
+  <data name="m_groupBoxConnectionPair.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="m_groupBoxConnectionPair.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="m_groupBoxConnectionPair.Size" type="System.Drawing.Size, System.Drawing">
-    <value>611, 305</value>
+    <value>458, 229</value>
   </data>
   <data name="m_groupBoxConnectionPair.Text" xml:space="preserve">
     <value>对接点信息(单位：米)</value>
@@ -1089,25 +1206,46 @@
     <value>NoControl</value>
   </data>
   <data name="m_buttonOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>511, 767</value>
+    <value>382, 589</value>
+  </data>
+  <data name="m_buttonOK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="m_buttonOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 32</value>
+    <value>84, 24</value>
   </data>
   <data name="m_buttonOK.Text" xml:space="preserve">
     <value>确定</value>
   </data>
+  <data name="m_labelDateTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 59</value>
+  </data>
+  <data name="m_labelDateTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="m_labelDateTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 18</value>
+  </data>
   <data name="m_groupBoxBasicInformation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 12</value>
+    <value>10, 9</value>
+  </data>
+  <data name="m_groupBoxBasicInformation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="m_groupBoxBasicInformation.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="m_groupBoxBasicInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>613, 119</value>
+    <value>460, 89</value>
   </data>
   <data name="m_groupBoxBasicInformation.Text" xml:space="preserve">
     <value>基本信息</value>
   </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>637, 816</value>
+    <value>478, 622</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
