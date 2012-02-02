@@ -104,6 +104,7 @@
     <Compile Include="Commands\connectionSettingCommand.cs" />
     <Compile Include="Commands\exportPipeInfoCommand.cs" />
     <Compile Include="Commands\fillSimulationCommand.cs" />
+    <Compile Include="Commands\modelingUCSToGPSUCSConverterCommand.cs" />
     <Compile Include="Commands\replaySimulationCommand.cs" />
     <Compile Include="Commands\savepicturecommand.cs" />
     <Compile Include="Commands\view_commands.cs" />
@@ -150,6 +151,12 @@
     <Compile Include="ModelDriven\ModelAnimationSimulationEngine.cs" />
     <Compile Include="ModelDriven\timerAnimationBase.cs" />
     <Compile Include="ModelDriven\zhujiangSimulationEngine.cs" />
+    <Compile Include="ModelingUCS__GPSUCS_Converter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModelingUCS__GPSUCS_Converter.Designer.cs">
+      <DependentUpon>ModelingUCS__GPSUCS_Converter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Scene\PipeConnectionIndicator.cs" />
     <Compile Include="Scene\sceneNode_impl.cs" />
     <Compile Include="AppFramework\app_interface.cs" />
@@ -317,6 +324,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModelAnimationSimulationForm.zh-CHS.resx">
       <DependentUpon>ModelAnimationSimulationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModelingUCS__GPSUCS_Converter.resx">
+      <DependentUpon>ModelingUCS__GPSUCS_Converter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModelingUCS__GPSUCS_Converter.zh-CHS.resx">
+      <DependentUpon>ModelingUCS__GPSUCS_Converter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\res\logo.JPG" />
     <EmbeddedResource Include="Settings.resx">

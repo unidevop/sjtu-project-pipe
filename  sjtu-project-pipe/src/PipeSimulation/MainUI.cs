@@ -984,6 +984,7 @@ namespace PipeSimulation
             new CSEIsometricCommand(IApp.theApp.CommandManager);
             new CNEIsometricCommand(IApp.theApp.CommandManager);
             new CNWIsometricCommand(IApp.theApp.CommandManager);
+            new CModelingUCSToGPSUCSConverterCmd(IApp.theApp.CommandManager);
             new CSaveAsPictureCmd(IApp.theApp.CommandManager);
             new CFillSimulationCommand(IApp.theApp.CommandManager);
             new CZhujiangSimulationCommand(IApp.theApp.CommandManager);
@@ -2433,6 +2434,11 @@ namespace PipeSimulation
         {
             m_immersingInformationForm.Dispose();
             m_immersingInformationForm = null;
+        }
+
+        private void modelingUCS_GPSUCS_Converter_Click(object sender, EventArgs e)
+        {
+            IApp.theApp.CommandManager.ExecuteCommand((ulong)CommandIds.kModelingUCSToGPSUCSConverter, null);
         }
     }
 }

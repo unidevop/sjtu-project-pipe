@@ -84,6 +84,7 @@ namespace PipeSimulation
             this.monitorModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.replayModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modelingUCS_GPSUCS_Converter = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsPNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startRecordAVIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopRecordAVIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -538,6 +539,7 @@ namespace PipeSimulation
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modelingUCS_GPSUCS_Converter,
             this.saveAsPNGToolStripMenuItem,
             this.startRecordAVIToolStripMenuItem,
             this.stopRecordAVIToolStripMenuItem});
@@ -545,6 +547,14 @@ namespace PipeSimulation
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "辅助工具(&T)";
             this.toolsToolStripMenuItem.DropDownOpening += new EventHandler(toolsToolStripMenuItem_DropDownOpening);
+            // 
+            // modelingUCS_GPSUCS_Converter
+            // 
+            this.modelingUCS_GPSUCS_Converter.Name = "modelingUCS_GPSUCS_Converter";
+            this.modelingUCS_GPSUCS_Converter.Size = new System.Drawing.Size(154, 22);
+            this.modelingUCS_GPSUCS_Converter.Text = "模型坐标系与GPS城建坐标系转换";
+            this.modelingUCS_GPSUCS_Converter.Click += new EventHandler(modelingUCS_GPSUCS_Converter_Click);
+            this.modelingUCS_GPSUCS_Converter.ShortcutKeys = Keys.Control | Keys.C;
             // 
             // saveAsPNGToolStripMenuItem
             // 
@@ -880,6 +890,7 @@ namespace PipeSimulation
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem1;
         private ToolStripMenuItem toolsToolStripMenuItem;
+        private ToolStripMenuItem modelingUCS_GPSUCS_Converter;
         private ToolStripMenuItem saveAsPNGToolStripMenuItem;
         private ToolStripMenuItem startRecordAVIToolStripMenuItem;
         private ToolStripMenuItem stopRecordAVIToolStripMenuItem;

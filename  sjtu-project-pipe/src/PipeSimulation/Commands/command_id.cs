@@ -19,6 +19,7 @@
             kSEIsometric,
             kNEIsometric,
             kNWIsometric,
+            kModelingUCSToGPSUCSConverter,
             kSaveAsPicture,
             kFillSimulation,
             kZhujiangSimulation,
