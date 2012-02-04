@@ -1334,10 +1334,12 @@ namespace PipeSimulation
             // Check the startTime and endTime is valid or not.
             if (startTime.Equals(DateTime.MinValue) || endTime.Equals(DateTime.MinValue)) return;
 
-            DateTime specificTime;
-            double linearValue = 1.0 * (iValue - trackBarAnimation.Minimum) / (trackBarAnimation.Maximum - trackBarAnimation.Minimum);
-            double intelopValue = (endTime - startTime).Ticks * linearValue;
-            specificTime = startTime + new TimeSpan((long)(intelopValue));
+            DateTime specificTime = startTime;
+            IProgress2DateTimeMapper dateTimeMapper = m_pipeProgressController.GetMapper(toolStripComboBoxPipes.SelectedIndex);
+            if (dateTimeMapper != null)
+            {
+                specificTime = dateTimeMapper.GetDateTime(iValue);
+            }
 
             // Pipe Info
             IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
@@ -1700,6 +1702,7 @@ namespace PipeSimulation
             }
         }
 
+        private CPipeProgressController m_pipeProgressController = null;
         private void toolStripComboBoxPipes_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Stop active command
@@ -1734,72 +1737,23 @@ namespace PipeSimulation
             toolStripButtonStopAnimation.Checked = false;
             toolStripButtonStopAnimation.Enabled = false;
 
-            // Query the time
+            // Always construct this object to construct its internal mappers
+            m_pipeProgressController = new CPipeProgressController();
+
+            int[] trackRange = { 0, int.MaxValue };
             DateTime beginingTime = DateTime.Now;
             DateTime endTime = DateTime.Now;
 
-            IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
-            if (dataQuery != null && dataQuery.IsConnected)
+            IProgress2DateTimeMapper dateTimeMapper = m_pipeProgressController.GetMapper(iSelectedIndex);
+            if (dateTimeMapper != null)
             {
-                try
-                {
-                    if (iSelectedIndex == 0) // View all pipes
-                    {
-                        // Must from the 1st pipe
-                        beginingTime = dataQuery.GetPipeStartTime(1, true);
+                trackRange[0] = dateTimeMapper.GetMinimumRange();
+                trackRange[1] = dateTimeMapper.GetMaximumRange();
 
-                        int pipeModelCount = IApp.theApp.DataModel.PipeModels.Count;
-                        for (int i = pipeModelCount; i > 0; --i)
-                        {
-                            if (dataQuery.IsPipeStarted(i))
-                            {
-                                endTime = dataQuery.GetPipeEndTime(i, true);
-                                break;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        //// View specific pipe and Get all count
-                        //trackRange[1] = (int)dataQuery.GetPipeRecordCount(iSelectedIndex); // iSelectedIndex should start from 1
-
-                        // Get the beginning time
-                        beginingTime = dataQuery.GetPipeStartTime(iSelectedIndex, true);
-
-                        // Get the end time
-                        endTime = dataQuery.GetPipeEndTime(iSelectedIndex, true);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    string errMsg = ex.Message + "\n" + ex.StackTrace;
-                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
-                }
+                beginingTime = dateTimeMapper.GetDateTime(trackRange[0]);
+                endTime = dateTimeMapper.GetDateTime(trackRange[1]);
             }
 
-            // Set Range for the track bar
-            // This logic is stated as below
-            // If the total seconds of timespan is large than int.MaxValue, the int.MaxValue is used as the maximum range
-            // If the total seconds of timespan is small than int.MaxValue, the total seconds will be used as the maximum range
-
-            int[] trackRange = { 0, int.MaxValue };
-
-            TimeSpan timeDuration = (endTime - beginingTime);
-            double totalSeconds = timeDuration.TotalSeconds;
-
-            if (totalSeconds > int.MaxValue)
-            {
-                trackRange[1] = int.MaxValue;
-            }
-            else
-            {
-                trackRange[1] = (int)totalSeconds;
-            }
-            if (trackRange[1] <= 0)
-            {
-                trackRange[1] = 100;
-            }
-            
             trackBarAnimation.SetRange(trackRange[0], trackRange[1]);
             trackBarAnimation.Value = trackRange[0];
 
@@ -1811,6 +1765,7 @@ namespace PipeSimulation
             replayMode.ReplayAnimationEngine.AnimationEndTime = endTime;
 
             // Update the render window
+            IHistoryDataQuery dataQuery = IApp.theApp.HistoryTimeDataQuery;
             if (dataQuery != null && dataQuery.IsConnected)
             {
                 try
@@ -2052,17 +2007,15 @@ namespace PipeSimulation
                             try
                             {
                                 // How to get a track bar value by the date time
-                                CReplayMode replayMode = IApp.theApp.ObserverModeManager.ActiveModeInstance as CReplayMode;
-                                DateTime startTime = replayMode.ReplayAnimationEngine.AnimationStartTime;
-                                DateTime endTime = replayMode.ReplayAnimationEngine.AnimationEndTime;
+                                IProgress2DateTimeMapper dateTimeMapper = m_pipeProgressController.GetMapper(pipeInfo.PipeId);
+                                if (dateTimeMapper != null)
+                                {
+                                    int iTrackBarValue = (int)dateTimeMapper.GetPosition(dateTime);
+                                    trackBarAnimation.Value = iTrackBarValue;
 
-                                double intelopValue = 1.0 * (dateTime - startTime).Ticks / (endTime - startTime).Ticks;
-                                double linearValue = intelopValue * (trackBarAnimation.Maximum - trackBarAnimation.Minimum) + trackBarAnimation.Minimum;
-
-                                int iTrackBarValue = (int)linearValue;
-                                trackBarAnimation.Value = iTrackBarValue;
-
-                                replayMode.ReplayAnimationEngine.AnimationProgress = iTrackBarValue;
+                                    CReplayMode replayMode = IApp.theApp.ObserverModeManager.ActiveModeInstance as CReplayMode;
+                                    replayMode.ReplayAnimationEngine.AnimationProgress = iTrackBarValue;
+                                }
                             }
                             catch(Exception ex)
                             {
