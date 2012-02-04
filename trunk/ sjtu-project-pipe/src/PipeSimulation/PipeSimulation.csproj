@@ -225,6 +225,7 @@
     <Compile Include="Utilites\modelReader.cs" />
     <Compile Include="Utilites\PipeConnectionUtility.cs" />
     <Compile Include="Utilites\PipeTransformUtility.cs" />
+    <Compile Include="Utilites\progress2DateTimeMapper.cs" />
     <Compile Include="Utilites\videoWriter.cs" />
   </ItemGroup>
   <ItemGroup>
