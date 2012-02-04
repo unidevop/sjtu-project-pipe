@@ -20,9 +20,9 @@
   <PipeBoundaryOption>
     <LineWidth>2</LineWidth>
     <LineColor>
-      <double>0</double>
-      <double>0</double>
-      <double>0</double>
+      <double>254</double>
+      <double>12</double>
+      <double>12</double>
     </LineColor>
   </PipeBoundaryOption>
   <ConnectionPairOption>
@@ -84,6 +84,7 @@
     <TimerInterval>0.2</TimerInterval>
   </ObserverModeOptions>
   <DriveModelOptions>
-    <FirstPipeGPSSwitchTime>2011-11-13T21:00:26</FirstPipeGPSSwitchTime>
+    <FirstPipeGPSSwitchTime>2011-11-13T08:00:26</FirstPipeGPSSwitchTime>
+    <ShowWrongDateTimeInRed>false</ShowWrongDateTimeInRed>
   </DriveModelOptions>
 </ApplicationOptions>
