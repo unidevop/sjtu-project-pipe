@@ -724,6 +724,18 @@
       <PipeStaticModel showInMultipleView ="1">
         <ModelPath >models\pipestatic3.3ds</ModelPath>
       </PipeStaticModel>
+		<PipeBoundary  showInMultipleView ="1">
+			<BoundaryPoint x ="-10265.1616" y ="-41858.3375" z ="-13500.9595"/>
+			<BoundaryPoint x ="-10265.9616" y ="-41854.2193" z ="-24114.2491"/>
+			<BoundaryPoint x ="-10265.3544" y ="-4259.9888" z ="-24114.7195"/>
+			<BoundaryPoint x ="-10265.5542" y ="-4264.0708" z ="-13500.437"/>
+			<BoundaryPoint x ="74735.1616" y ="-37681.354" z ="-15000.9595"/>
+			<BoundaryPoint x ="74735.1616" y ="-37679.0866" z ="-25626.2491"/>
+			<BoundaryPoint x ="74735.1616" y ="-84.812" z ="-25626.2491"/>
+			<BoundaryPoint x ="74735.1616" y ="-87.0794" z ="-15000.9595"/>
+			<Color x ="0" y ="0" z ="0"/>
+			<LineWidth>2</LineWidth>
+		</PipeBoundary>
       <FillModel>
         <FillSegment showInMultipleView ="1">
           <ModelPath>models\huitian3_1.3ds</ModelPath>
@@ -1003,35 +1015,49 @@
           <CableLength CableStateIndex="3">200000</CableLength>
         </CableSwitchCondition>
       </CableSystem>
+		<!--StartConnectionPoint为对接点的起始坐标-->
+		<!--EndConnectionPoint为对接点的终止坐标-->
+		<!--StartConnectionPositionEnum的值为， 0表示这起点是静止的，1表示起是位于前一段管上，2是表示起在本段管上-->
+		<!--EndConnectionPositionEnum的值为， 0表示这终点是静止的，1表示终点是位于前一段管上，2是表示终点在本段管上-->
       <ConnectionPointPair ConnectionPointPairName="A-A'">
-        <StartConnectionPoint x ="76569.5004" y ="-41665.2131" z ="-19836.7215"/>
-        <EndConnectionPoint x ="0" y ="0" z ="0"/>
-      </ConnectionPointPair>
+          <StartConnectionPoint x ="76569.5004" y ="-41665.2131" z ="-19836.7215"/>
+		  <StartConnectionPositionEnum>1</StartConnectionPositionEnum>
+		  <EndConnectionPoint x ="76569.5004" y ="-41665.2131" z ="-19836.7215"/>
+		  <EndConnectionPositionEnum>2</EndConnectionPositionEnum>
+	  </ConnectionPointPair>
       <ConnectionPointPair ConnectionPointPairName="B-B'">
-        <StartConnectionPoint x ="77101.9897" y ="-41661.6357" z ="-27557.9186"/>
-        <EndConnectionPoint x ="0" y ="0" z ="0"/>
-      </ConnectionPointPair>
+          <StartConnectionPoint x ="77101.9897" y ="-41661.6357" z ="-27557.9186"/>
+		  <StartConnectionPositionEnum>1</StartConnectionPositionEnum>
+		  <EndConnectionPoint x ="77101.9897" y ="-41661.6357" z ="-27557.9186"/>
+		  <EndConnectionPositionEnum>2</EndConnectionPositionEnum>
+	  </ConnectionPointPair>
       <ConnectionPointPair ConnectionPointPairName="C-C'">
-        <StartConnectionPoint x ="76491.4953" y ="-6618.9021" z ="-27594.4801"/>
-        <EndConnectionPoint x ="0" y ="0" z ="0"/>
-      </ConnectionPointPair>
+          <StartConnectionPoint x ="76491.4953" y ="-6618.9021" z ="-27594.4801"/>
+		  <StartConnectionPositionEnum>1</StartConnectionPositionEnum>
+		  <EndConnectionPoint x ="76491.4953" y ="-6618.9021" z ="-27594.4801"/>
+		  <EndConnectionPositionEnum>2</EndConnectionPositionEnum>
+	  </ConnectionPointPair>
       <ConnectionPointPair ConnectionPointPairName="D-D'">
-        <StartConnectionPoint x ="75958.8763" y ="-6617.967" z ="-19872.5481"/>
-        <EndConnectionPoint x ="0" y ="0" z ="0"/>
-      </ConnectionPointPair>
+          <StartConnectionPoint x ="75958.8763" y ="-6617.967" z ="-19872.5481"/>
+		  <StartConnectionPositionEnum>1</StartConnectionPositionEnum>
+		  <EndConnectionPoint x ="75958.8763" y ="-6617.967" z ="-19872.5481"/>
+		  <EndConnectionPositionEnum>2</EndConnectionPositionEnum>
+	  </ConnectionPointPair>
       <ConnectionPointPair ConnectionPointPairName="E-E'">
-        <StartConnectionPoint x ="76407.6695" y ="-24140.5079" z ="-21935.1695"/>
-        <EndConnectionPoint x ="0" y ="0" z ="0"/>
-      </ConnectionPointPair>
+          <StartConnectionPoint x ="76407.6695" y ="-24140.5079" z ="-21935.1695"/>
+		  <StartConnectionPositionEnum>1</StartConnectionPositionEnum>
+		  <EndConnectionPoint x ="76407.6695" y ="-24140.5079" z ="-21935.1695"/>
+		  <EndConnectionPositionEnum>2</EndConnectionPositionEnum>
+	  </ConnectionPointPair>
       <Inclinometer type="roll">
-        <Dir x ="-10.8389" y ="258.9493" z ="-0.1056"/>
+        <Dir x ="-650.4392" y ="8398.8758" z ="6.293"/>
         <!-- flip incline angle value -->
         <FlipAngle>false</FlipAngle>
       </Inclinometer>
       <GPSUCS>
-        <Origin x ="64151.7326" y ="-19414.5728" z ="2858.1149"/>
-        <XAxis x ="-59039.2233" y ="-1796.6327" z ="624.1926"/>
-        <YAxis x ="-10.8389" y ="258.9493" z ="-0.1056"/>
+        <Origin x ="64390.5308" y ="-24610.337" z ="4601.5828"/>
+        <XAxis x ="-58337.7038" y ="2168.1686" z ="745.8125"/>
+        <YAxis x ="-650.4392" y ="8398.8758" z ="6.293"/>  
       </GPSUCS>
     </Pipe>
 
