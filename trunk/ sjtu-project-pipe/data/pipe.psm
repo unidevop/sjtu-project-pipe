@@ -379,6 +379,20 @@
         <!--<YAxis x ="30.2158" y ="3098.2243" z ="2.7451"/>-->
         <YAxis x ="30.2158" y ="3098.2243" z ="2.7451"/>
       </GPSUCS>
+		<PipeWorkingTimeRanges>
+			<PipeWorkingTimeRange>
+				<StartTime>2011-11-12T09:12:48</StartTime>
+				<EndTime>2011-11-12T14:09:18</EndTime>
+			</PipeWorkingTimeRange>
+			<PipeWorkingTimeRange>
+				<StartTime>2011-11-13T17:02:03</StartTime>
+				<EndTime>2011-11-14T00:09:36</EndTime>
+			</PipeWorkingTimeRange>
+			<PipeWorkingTimeRange>
+				<StartTime>2011-11-14T07:46:58</StartTime>
+				<EndTime>2011-11-14T20:54:15</EndTime>
+			</PipeWorkingTimeRange>
+		</PipeWorkingTimeRanges>
     </Pipe>
 
     <!--The sceond pipe-->
@@ -710,6 +724,20 @@
         <XAxis x ="-57921.762" y ="-3916.1335" z ="-2574.0333"/>
         <YAxis x ="-22.6536" y ="456.2605" z ="-0.9304"/>
       </GPSUCS>
+		<PipeWorkingTimeRanges>
+			<PipeWorkingTimeRange>
+				<StartTime>2011-12-09T12:36:19</StartTime>
+				<EndTime>2011-12-09T15:35:28</EndTime>
+			</PipeWorkingTimeRange>
+			<PipeWorkingTimeRange>
+				<StartTime>2011-12-10T14:11:43</StartTime>
+				<EndTime>2011-12-10T20:08:13</EndTime>
+			</PipeWorkingTimeRange>
+			<PipeWorkingTimeRange>
+				<StartTime>2011-12-11T07:49:52</StartTime>
+				<EndTime>2011-12-11T15:36:06</EndTime>
+			</PipeWorkingTimeRange>
+		</PipeWorkingTimeRanges>
     </Pipe>
 
     <!--The third pipe-->
@@ -1059,6 +1087,16 @@
         <XAxis x ="-58337.7038" y ="2168.1686" z ="745.8125"/>
         <YAxis x ="-650.4392" y ="8398.8758" z ="6.293"/>  
       </GPSUCS>
+		<PipeWorkingTimeRanges>
+			<PipeWorkingTimeRange>
+				<StartTime>2011-12-29T09:33:38</StartTime>
+				<EndTime>2011-12-29T14:00:32</EndTime>
+			</PipeWorkingTimeRange>
+			<PipeWorkingTimeRange>
+				<StartTime>2011-12-30T07:45:11</StartTime>
+				<EndTime>2011-12-30T22:12:45</EndTime>
+			</PipeWorkingTimeRange>
+		</PipeWorkingTimeRanges>
     </Pipe>
 
     <!-- The forth pipe-->
