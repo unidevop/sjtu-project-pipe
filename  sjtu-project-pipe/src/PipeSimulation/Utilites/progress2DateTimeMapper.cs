@@ -243,48 +243,6 @@ namespace PipeSimulation.Utility
         }
     }
 
-    public class CPipeWorkingTimeRange
-    {
-        private DateTime m_startTime = new DateTime();
-        private DateTime m_endTime = new DateTime();
-
-        public CPipeWorkingTimeRange(DateTime startTime, DateTime endTime)
-        {
-            m_startTime = startTime;
-            m_endTime = endTime;
-
-            // Make sure end time is after start time
-            if (m_startTime.CompareTo(m_endTime) > 0)
-            {
-                DateTime t = m_startTime;
-                m_startTime = m_endTime;
-                m_endTime = t;
-            }
-        }
-
-        public DateTime StartTime
-        {
-            get { return m_startTime; }
-        }
-
-        public DateTime EndTime
-        {
-            get { return m_endTime; }
-        }
-
-        public double GetTimeTotalSeconds()
-        {
-            TimeSpan timeDuration = EndTime - StartTime;
-            return timeDuration.TotalSeconds;
-        }
-    }
-
-    public class CPipeWorkingRanges : List<CPipeWorkingTimeRange>
-    {
-        public CPipeWorkingRanges()
-        {
-        }
-    }
 
     /// <summary>
     /// This class acts a manager of the Progress to date time mappers
@@ -300,19 +258,17 @@ namespace PipeSimulation.Utility
 
         private void Initialize()
         {
-            // Read data from ApplicationOption
-            IDictionary<int, CPipeWorkingRanges> pipeRanges = new Dictionary<int, CPipeWorkingRanges>();
-
-            IEnumerator<KeyValuePair<int, CPipeWorkingRanges>> enumerator = pipeRanges.GetEnumerator();
-            while (enumerator.MoveNext())
+            int iPipeId = 0;
+            foreach (CPipeModel pipeModel in IApp.theApp.DataModel.PipeModels)
             {
-                KeyValuePair<int, CPipeWorkingRanges> current = enumerator.Current;
-                int iIndex = current.Key;
+                iPipeId++;
+
+                if (pipeModel.PipeWorkingRanges == null) continue;
 
                 // Insert to Idictionary
-                if (!m_listProgress2DateTimeMapper.ContainsKey(iIndex))
+                if (!m_listProgress2DateTimeMapper.ContainsKey(iPipeId))
                 {
-                    m_listProgress2DateTimeMapper[iIndex] = new CRemoveUnusedDateTimerMapper(current.Value);
+                    m_listProgress2DateTimeMapper[iPipeId] = new CRemoveUnusedDateTimerMapper(pipeModel.PipeWorkingRanges);
                 }
             }
         }

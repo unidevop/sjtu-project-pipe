@@ -39,6 +39,7 @@ namespace PipeSimulation
             private IList<CPipeConnectionPointPairEx> m_connectionPointPairList = new List<CPipeConnectionPointPairEx>();
             private IList<CUCS> m_gpsUCSs = new List<CUCS>();
             private IList<InclinometerInfo> m_rollInclinometer = new List<InclinometerInfo>();
+            private CPipeWorkingRanges m_pipeWorkingRanges = null;
 
             public CPipeModel() : base(null)
             {
@@ -172,6 +173,14 @@ namespace PipeSimulation
                        CPipeBoundaryModel boundaryModel = new CPipeBoundaryModel(this);
                        boundaryModel.ReadFromXMLNode(boundaryPipeNode);
                    }
+
+                    // Read PipeWorkingTimeRanges
+                    XmlNode pipeWorkingTimeRangesNode = pipeNode.SelectSingleNode(ModelXMLDefinition.PipeWorkingTimeRanges);
+                    if (pipeWorkingTimeRangesNode != null)
+                    {
+                        m_pipeWorkingRanges = new CPipeWorkingRanges();
+                        m_pipeWorkingRanges.ReadFromXMLNode(pipeWorkingTimeRangesNode);
+                    }
                 }
                 catch (SystemException ex)
                 {
@@ -220,6 +229,7 @@ namespace PipeSimulation
             public double Width { get { return m_dWidth; } internal set { m_dWidth = value; } }
             public double Height { get { return m_dHeight; } internal set { m_dHeight = value; } }
             public IList<CPipeConnectionPointPairEx> ConnectionPointPairList { get { return m_connectionPointPairList; } }
+            public CPipeWorkingRanges PipeWorkingRanges { get { return m_pipeWorkingRanges; } }
 
             // Pylon Model
             public IList<CPylonModel> PylonModels
@@ -649,5 +659,77 @@ namespace PipeSimulation
                 //m_angleBetweenInclineAndX = Vector3D.AngleBetween(xDir, m_dir);
             }
         }
+
+        public class CPipeWorkingTimeRange
+        {
+            private DateTime m_startTime = new DateTime();
+            private DateTime m_endTime = new DateTime();
+
+            public CPipeWorkingTimeRange(DateTime startTime, DateTime endTime)
+            {
+                m_startTime = startTime;
+                m_endTime = endTime;
+
+                // Make sure end time is after start time
+                if (m_startTime.CompareTo(m_endTime) > 0)
+                {
+                    DateTime t = m_startTime;
+                    m_startTime = m_endTime;
+                    m_endTime = t;
+                }
+            }
+
+            public DateTime StartTime
+            {
+                get { return m_startTime; }
+            }
+
+            public DateTime EndTime
+            {
+                get { return m_endTime; }
+            }
+
+            public double GetTimeTotalSeconds()
+            {
+                TimeSpan timeDuration = EndTime - StartTime;
+                return timeDuration.TotalSeconds;
+            }
+        }
+
+        public class CPipeWorkingRanges : List<CPipeWorkingTimeRange>
+        {
+            public CPipeWorkingRanges()
+            {
+            }
+
+            public virtual void ReadFromXMLNode(XmlNode pipeWorkingTimeRangesNode)
+            {
+                try
+                {
+                    XmlNodeList pipeWorkingTimeRangeNodes = pipeWorkingTimeRangesNode.SelectNodes(ModelXMLDefinition.PipeWorkingTimeRange);
+                    foreach (XmlNode pipeWorkingTimeRangeNode in pipeWorkingTimeRangeNodes)
+                    {
+                        XmlNode pipeWorkingTimeStartTimeNode = pipeWorkingTimeRangeNode.SelectSingleNode(ModelXMLDefinition.PipeWorkingTimeStartTime);
+                        XmlNode pipeWorkingTimeEndTimeNode = pipeWorkingTimeRangeNode.SelectSingleNode(ModelXMLDefinition.PipeWorkingTimeEndTime);
+
+                        if (pipeWorkingTimeStartTimeNode != null && pipeWorkingTimeEndTimeNode != null)
+                        {
+                            DateTime startTime = DateTime.Parse(pipeWorkingTimeStartTimeNode.InnerText);
+                            DateTime endTime = DateTime.Parse(pipeWorkingTimeEndTimeNode.InnerText);
+
+                            // Add this one
+                            Add(new CPipeWorkingTimeRange(startTime, endTime));
+                        }
+                    }
+                }
+                catch (SystemException ex)
+                {
+                    string errMsg = ex.Message + "\n" + ex.StackTrace;
+                    vtk.vtkOutputWindow.GetInstance().DisplayErrorText(errMsg);
+                    throw;
+                }
+            }
+        }
+
     }
 }

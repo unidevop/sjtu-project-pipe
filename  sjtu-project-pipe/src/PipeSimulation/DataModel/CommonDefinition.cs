@@ -114,6 +114,12 @@ namespace PipeSimulation
             public static string BoundaryLineWidth { get { return /*MSG0*/"LineWidth"; } }
             public static string BoundaryPoint { get { return /*MSG0*/"BoundaryPoint"; } }
 
+            // Working Time Range
+            public static string PipeWorkingTimeRanges { get { return /*MSG0*/"PipeWorkingTimeRanges"; } }
+            public static string PipeWorkingTimeRange { get { return /*MSG0*/"PipeWorkingTimeRange"; } }
+            public static string PipeWorkingTimeStartTime { get { return /*MSG0*/"StartTime"; } }
+            public static string PipeWorkingTimeEndTime { get { return /*MSG0*/"EndTime"; } }
+
             public static string showInMultipleViews { get { return /*MSGO*/"showInMultipleView"; } }
         }
     }
