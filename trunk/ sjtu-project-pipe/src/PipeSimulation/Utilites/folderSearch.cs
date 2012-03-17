@@ -11,6 +11,8 @@ namespace PipeSimulation
         /// </summary>
         public static class CFolderUtility
         {
+            private static string m_dataFolder;
+
             /// <summary>
             /// Assembly Executing Path
             /// </summary>
@@ -26,6 +28,12 @@ namespace PipeSimulation
             /// </summary>
             public static string DataFolder()
             {
+                // If we already set the data folder, return this one
+                if (!string.IsNullOrEmpty(m_dataFolder))
+                {
+                    return m_dataFolder;
+                }
+
 #if DEBUG
                 // Hard code now, need to be change after migrate the new solution file sturcture.
                 return /*MSG0*/@"M:\Data\";
@@ -51,6 +59,11 @@ namespace PipeSimulation
                     return strAssemblyPath + /*MSG0*/@"\Data\";
                 }
 #endif
+            }
+
+            static public void SetDataFolder(string dataFolder)
+            {
+                m_dataFolder = dataFolder;
             }
         }
     }
