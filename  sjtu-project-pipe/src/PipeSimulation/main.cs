@@ -22,9 +22,7 @@ namespace PipeSimulation
             Application.SetCompatibleTextRenderingDefault(false);
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(/*MSG0*/"zh-chs");
 
-            MainUI mainFrm = new MainUI();
-            Application.Idle += new EventHandler(mainFrm.OnIdle);
-            Application.Run(mainFrm);
+            Application.Run(new EntryUI());
         }
 
         static void CurrentDomain_UnhandledException

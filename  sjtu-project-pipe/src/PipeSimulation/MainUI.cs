@@ -28,9 +28,21 @@ namespace PipeSimulation
     public partial class MainUI : Form
     {
         private bool m_connected = false;
+        private string m_projectPath = null;
 
-        public MainUI()
+        public MainUI(object s)
         {
+            // Update data folder by the given parameter
+            m_projectPath = s as string;
+            if (string.IsNullOrEmpty(m_projectPath))
+            {
+                m_projectPath = System.IO.Path.Combine(CFolderUtility.DataFolder(), /*MSG0*/@"pipe.psm");
+            }
+            else
+            {
+                CFolderUtility.SetDataFolder(Path.GetDirectoryName(m_projectPath));
+            }
+
             // Splash Screen suppor
             // Step 1: Hide 
             this.Hide();
@@ -52,6 +64,9 @@ namespace PipeSimulation
 #endif
 
             InitializeComponent();
+
+            // Update the form's title to its file name
+            this.Text = Path.GetFileNameWithoutExtension(m_projectPath);
         }
 
         // Create a unique output file name by a guid and current date time
@@ -1006,17 +1021,17 @@ namespace PipeSimulation
             // Get the assembly executing data path
             //String strPath = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
 
-            string xmlFile = System.IO.Path.Combine(CFolderUtility.DataFolder(), /*MSG0*/@"pipe.psm");
+            //string xmlFile = System.IO.Path.Combine(CFolderUtility.DataFolder(), /*MSG0*/@"pipe.psm");
 
-            if (!System.IO.File.Exists(xmlFile))
-            {
-                MessageBox.Show(new Form(){TopMost = true}, string.Format(Resources.IDS_ERROR_DATAFILE_NOT_FOUND, xmlFile), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-                return;
-            }
+            //if (!System.IO.File.Exists(xmlFile))
+            //{
+            //    MessageBox.Show(new Form() { TopMost = true }, string.Format(Resources.IDS_ERROR_DATAFILE_NOT_FOUND, xmlFile), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    this.Close();
+            //    return;
+            //}
 
             // Step 1: Load the file
-            LoadXML(xmlFile);
+            LoadXML(m_projectPath);
 
             // Step 2: Load the 3ds models
             Load3dsModels();

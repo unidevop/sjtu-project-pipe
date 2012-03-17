@@ -130,6 +130,12 @@
     <Compile Include="DataModel\datamode_impl.cs" />
     <Compile Include="DataModel\models.cs" />
     <Compile Include="DataModel\zhujiangModels.cs" />
+    <Compile Include="EntryUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntryUI.Designer.cs">
+      <DependentUpon>EntryUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Geometry\connectionPointPair.cs" />
     <Compile Include="Geometry\point3d.cs" />
     <Compile Include="Geometry\ucs.cs" />
@@ -310,6 +316,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConnectionSetting.zh-CHS.resx">
       <DependentUpon>ConnectionSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntryUI.resx">
+      <DependentUpon>EntryUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntryUI.zh-CHS.resx">
+      <DependentUpon>EntryUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImmersingInformation.resx">
       <DependentUpon>ImmersingInformation.cs</DependentUpon>

@@ -299,6 +299,15 @@ namespace PipeSimulation.Properties {
         }
         
         /// <summary>
+        ///   查找类似 打开沉管项目 的本地化字符串。
+        /// </summary>
+        internal static string IDS_OPEN_PROJECT_TITLE {
+            get {
+                return ResourceManager.GetString("IDS_OPEN_PROJECT_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 平移视图 的本地化字符串。
         /// </summary>
         internal static string IDS_PAN_DESC {
@@ -394,6 +403,15 @@ namespace PipeSimulation.Properties {
         internal static string IDS_PNG_FILTER {
             get {
                 return ResourceManager.GetString("IDS_PNG_FILTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 沉管项目|*.psm 的本地化字符串。
+        /// </summary>
+        internal static string IDS_PSM_FILTER {
+            get {
+                return ResourceManager.GetString("IDS_PSM_FILTER", resourceCulture);
             }
         }
         
