@@ -119,16 +119,10 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="m_connectBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 234</value>
+    <value>165, 233</value>
   </data>
   <data name="m_connectBtn.Text" xml:space="preserve">
     <value>手动连接</value>
-  </data>
-  <data name="m_connGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>390, 88</value>
-  </data>
-  <data name="m_connGroup.Text" xml:space="preserve">
-    <value>连接</value>
   </data>
   <data name="m_readInterval.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 21</value>
@@ -204,8 +198,26 @@
   <data name="label1.Text" xml:space="preserve">
     <value>自动重连间隔时间</value>
   </data>
+  <data name="m_connGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 141</value>
+  </data>
+  <data name="m_connGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 88</value>
+  </data>
+  <data name="m_connGroup.Text" xml:space="preserve">
+    <value>连接</value>
+  </data>
+  <data name="m_userName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>115, 73</value>
+  </data>
+  <data name="m_userName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>265, 21</value>
+  </data>
   <data name="m_pwdLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="m_pwdLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 100</value>
   </data>
   <data name="m_pwdLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 12</value>
@@ -216,11 +228,20 @@
   <data name="m_userNameLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="m_userNameLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 76</value>
+  </data>
   <data name="m_userNameLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 12</value>
   </data>
   <data name="m_userNameLabel.Text" xml:space="preserve">
     <value>用户名</value>
+  </data>
+  <data name="m_password.Location" type="System.Drawing.Point, System.Drawing">
+    <value>115, 100</value>
+  </data>
+  <data name="m_password.Size" type="System.Drawing.Size, System.Drawing">
+    <value>265, 21</value>
   </data>
   <data name="m_dbServerLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -235,7 +256,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_saveBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 273</value>
+    <value>64, 281</value>
   </data>
   <data name="m_saveBtn.Text" xml:space="preserve">
     <value>保存</value>
@@ -247,7 +268,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_resetBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 272</value>
+    <value>166, 280</value>
   </data>
   <data name="m_resetBtn.Text" xml:space="preserve">
     <value>重置</value>
@@ -255,11 +276,26 @@
   <data name="m_resetBtn.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="m_dbNameLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="m_dbNameLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_dbNameLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 12</value>
+  </data>
+  <data name="m_dbNameLabel.Text" xml:space="preserve">
+    <value>数据库名称</value>
+  </data>
+  <data name="m_dbName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>265, 21</value>
+  </data>
   <data name="m_configGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 17</value>
+    <value>9, 10</value>
   </data>
   <data name="m_configGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>386, 114</value>
+    <value>386, 129</value>
   </data>
   <data name="m_configGroup.Text" xml:space="preserve">
     <value>数据库</value>
@@ -268,10 +304,10 @@
     <value>1, -1</value>
   </data>
   <data name="m_connConfigGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>404, 267</value>
+    <value>404, 264</value>
   </data>
   <data name="m_cancelBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>268, 272</value>
+    <value>268, 280</value>
   </data>
   <data name="m_cancelBtn.Text" xml:space="preserve">
     <value>取消</value>
@@ -280,7 +316,7 @@
     <value>False</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>406, 308</value>
+    <value>406, 310</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

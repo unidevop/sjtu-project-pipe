@@ -47,6 +47,8 @@
             this.m_saveBtn = new System.Windows.Forms.Button();
             this.m_resetBtn = new System.Windows.Forms.Button();
             this.m_configGroup = new System.Windows.Forms.GroupBox();
+            this.m_dbNameLabel = new System.Windows.Forms.Label();
+            this.m_dbName = new System.Windows.Forms.TextBox();
             this.m_connConfigGroup = new System.Windows.Forms.GroupBox();
             this.m_cancelBtn = new System.Windows.Forms.Button();
             this.m_connGroup.SuspendLayout();
@@ -250,6 +252,8 @@
             this.m_configGroup.AccessibleName = null;
             resources.ApplyResources(this.m_configGroup, "m_configGroup");
             this.m_configGroup.BackgroundImage = null;
+            this.m_configGroup.Controls.Add(this.m_dbNameLabel);
+            this.m_configGroup.Controls.Add(this.m_dbName);
             this.m_configGroup.Controls.Add(this.m_dbServer);
             this.m_configGroup.Controls.Add(this.m_dbServerLabel);
             this.m_configGroup.Controls.Add(this.m_password);
@@ -259,6 +263,24 @@
             this.m_configGroup.Font = null;
             this.m_configGroup.Name = "m_configGroup";
             this.m_configGroup.TabStop = false;
+            // 
+            // m_dbNameLabel
+            // 
+            this.m_dbNameLabel.AccessibleDescription = null;
+            this.m_dbNameLabel.AccessibleName = null;
+            resources.ApplyResources(this.m_dbNameLabel, "m_dbNameLabel");
+            this.m_dbNameLabel.Font = null;
+            this.m_dbNameLabel.Name = "m_dbNameLabel";
+            // 
+            // m_dbName
+            // 
+            this.m_dbName.AccessibleDescription = null;
+            this.m_dbName.AccessibleName = null;
+            resources.ApplyResources(this.m_dbName, "m_dbName");
+            this.m_dbName.BackgroundImage = null;
+            this.m_dbName.Font = null;
+            this.m_dbName.Name = "m_dbName";
+            this.m_dbName.TextChanged += new System.EventHandler(this.ConnectSettingChanged);
             // 
             // m_connConfigGroup
             // 
@@ -334,5 +356,7 @@
         private System.Windows.Forms.NumericUpDown m_readInterval;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label m_dbNameLabel;
+        private System.Windows.Forms.TextBox m_dbName;
     }
 }
