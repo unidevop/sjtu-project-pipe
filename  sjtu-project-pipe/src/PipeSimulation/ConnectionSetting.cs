@@ -48,6 +48,7 @@ namespace PipeSimulation
             ConnectionConfig connCfg = IApp.theApp.ConnectionCfg;
 
             m_dbServer.Text = connCfg.DbAdress;
+            m_dbName.Text = connCfg.DbName;
             m_userName.Text = connCfg.UserName;
             m_password.Text = connCfg.Password;
             m_autoConnect.Checked = connCfg.IsAutoConnect;
@@ -113,7 +114,7 @@ namespace PipeSimulation
                 {
                     ConnectionConfig connCfg = IApp.theApp.ConnectionCfg;
 
-                    connCfg.SetConnectionString(m_dbServer.Text, m_userName.Text, m_password.Text);
+                    connCfg.SetConnectionString(m_dbServer.Text, m_dbName.Text, m_userName.Text, m_password.Text);
                     connCfg.IsAutoConnect = m_autoConnect.Checked;
                     connCfg.AutoConnectInterval = TimeSpan.FromMilliseconds((double)m_autoConnInterval.Value * 1000.0);
                     connCfg.ReadInterval = TimeSpan.FromMilliseconds((double)m_readInterval.Value * 1000.0);
@@ -133,7 +134,7 @@ namespace PipeSimulation
         private bool TestConnect()
         {
             string connString = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3};",
-                m_dbServer.Text, IApp.theApp.ConnectionCfg.DbName, m_userName.Text, m_password.Text);
+                m_dbServer.Text, m_dbName.Text, m_userName.Text, m_password.Text);
 
             bool success = false;
 

@@ -68,10 +68,8 @@ namespace PipeSimulation.Utility
                 AutoConnect();
         }
 
-        internal void SetConnectionString(string dbAdress, string userName, string password)
+        internal void SetConnectionString(string dbAdress, string dbName, string userName, string password)
         {
-            string dbName = DbName;
-
             ConnectionString = String.Format("Data Source={0};Initial Catalog={1};User Id={2};Password={3};",
                 dbAdress, dbName, userName, password);
         }
