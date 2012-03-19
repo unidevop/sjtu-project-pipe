@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("天津市滨海新区中央大道海河隧道工程三维实时可视化系统")]
-[assembly: AssemblyDescription("天津市滨海新区中央大道海河隧道工程三维实时可视化系统")]
+[assembly: AssemblyTitle("3D-Immsered Tube SPS 2011")]
+[assembly: AssemblyDescription("3D-Immsered Tube SPS 2011")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("上海交大海科集团有限公司")]
-[assembly: AssemblyProduct("PipeSimulation")]
+[assembly: AssemblyProduct("3D-Immsered Tube SPS 2011")]
 [assembly: AssemblyCopyright("版权所有 © 上海交大海科集团有限公司2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
